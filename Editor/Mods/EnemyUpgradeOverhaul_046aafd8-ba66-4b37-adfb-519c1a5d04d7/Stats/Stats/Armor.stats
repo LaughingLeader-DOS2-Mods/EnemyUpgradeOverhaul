@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="239de60a-29b5-4010-bf7d-f6169d4ddd8a">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Belts" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" value="EMPTY" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_LightingRod" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="LightningRod" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Backstab" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="Backstab" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_WeatherProof" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="WeatherProof" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_LoneWolf" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="LoneWolf" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Leech" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="Leech" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_QuickStep" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="QuickStep" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Unstable" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="Unstable;Vitalty" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_NaturalConductor" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="NaturalConductor" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_ResistDead" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ResistDead;ResurrectExtraHealth" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_RangerLoreRangedAPBonus" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="RangerLoreRangedAPBonus" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Bully" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="Bully" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_ResistDead2" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ResistDead;ResurrectToFullHealth" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_WhatARush" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="WhatARush" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Torturer" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_LLENEMY_TalentBeltBase" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="Torturer" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

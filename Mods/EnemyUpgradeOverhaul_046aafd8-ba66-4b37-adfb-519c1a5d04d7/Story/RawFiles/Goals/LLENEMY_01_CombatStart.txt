@@ -1,0 +1,158 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//REGION QUEUE_SETUP
+IF
+DB_LeaderLib_Combat_ActiveCombat(_CombatID)
+AND
+NOT DB_LLENEMY_CombatQueue(_CombatID, _)
+AND
+IntegertoString(_CombatID, _CombatIDStr)
+AND
+StringConcatenate("LLENEMY_CombatQueue_", _CombatIDStr, _TimerName)
+THEN
+DB_LLENEMY_CombatQueue(_CombatID, _TimerName);
+
+PROC
+LLENEMY_Queue_AddToCombatQueue((CHARACTERGUID)_Character, (INTEGER)_CombatID)
+AND
+DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
+THEN
+TimerCancel(_TimerName);
+TimerLaunch(_TimerName, 500);
+Stack(_TimerName, _Character);
+
+IF
+CombatEnded(_CombatID)
+AND
+DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
+THEN
+LLENEMY_Queue_ClearData(_CombatID, _TimerName);
+NOT DB_LLENEMY_CombatQueue(_CombatID, _TimerName);
+
+PROC
+LLENEMY_Queue_ClearData((INTEGER)_CombatID, (STRING)_TimerName)
+AND
+DB_TopOfStack(_TimerName, _TopValue)
+THEN
+NOT DB_TopOfStack(_TimerName, _TopValue);
+
+PROC
+LLENEMY_Queue_ClearData((INTEGER)_CombatID, (STRING)_TimerName)
+AND
+DB_StackInternalCounter(_Amount, _TimerName)
+THEN
+NOT DB_StackInternalCounter(_Amount, _TimerName);
+
+PROC
+LLENEMY_Queue_ClearData((INTEGER)_CombatID, (STRING)_TimerName)
+AND
+DB_StackInternalCounter(_NewAmount, _TimerName)
+THEN
+NOT DB_StackInternalCounter(_NewAmount, _TimerName);
+
+PROC
+LLENEMY_Queue_ClearData((INTEGER)_CombatID, (STRING)_TimerName)
+AND
+DB_StackInternalMember(_NewAmount, _TimerName, _Value)
+THEN
+NOT DB_StackInternalMember(_NewAmount, _TimerName, _Value);
+//END_REGION
+
+//REGION ADD_TO_QUEUE
+QRY
+LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Character, (INTEGER)_CombatID)
+AND
+CharacterIsPlayer(_Character, 0)
+AND
+CharacterIsPartyFollower(_Character, 0)
+AND
+CharacterIsSummon(_Character, 0)
+AND
+CombatGetInvolvedPlayer(_CombatID, 1, _Player)
+AND
+CharacterIsEnemy(_Character, _Player, 1)
+THEN
+DB_NOOP(1);
+
+IF
+ObjectEnteredCombat((CHARACTERGUID)_Character, _CombatID)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
+THEN
+LLENEMY_OnCharacterJoinedCombat(_Character, _CombatID);
+
+//NPC became hostile in the middle of combat
+PROC
+ProcMakeNPCHostile((CHARACTERGUID)_Player, (CHARACTERGUID)_Character)
+AND
+DB_CombatCharacters(_Character, _CombatID)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
+THEN
+LLENEMY_OnCharacterJoinedCombat(_Character, _CombatID);
+
+PROC
+LLENEMY_OnCharacterJoinedCombat((CHARACTERGUID)_Character, (INTEGER)_CombatID)
+THEN
+LLENEMY_Queue_AddToCombatQueue(_Character, _CombatID);
+//END_REGION
+
+//REGION QUEUE_RUNNING
+IF
+TimerFinished(_TimerName)
+AND
+DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
+AND
+DB_TopOfStackObject(_TimerName, _Character)
+AND
+DB_Stack_UUID(_Character, _UUID)
+AND
+ObjectIsCharacter((CHARACTERGUID)_Character, 1)
+THEN
+NOT DB_Stack_UUID(_Character, _UUID);
+LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:DB_TopOfStack] Applying buffs to character in via combat queue [",_TimerName,"].");
+LLENEMY_Upgrades_RollForUpgrades(_Character);
+LLENEMY_Upgrades_OnRollingDone(_Character);
+PopStack(_TimerName);
+
+IF
+TimerFinished(_TimerName)
+AND
+DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
+AND
+DB_StackInternalCounter(_Amount, _TimerName)
+AND
+_Amount > 0
+THEN
+TimerCancel(_TimerName);
+TimerLaunch(_TimerName, 150);
+
+IF
+TimerFinished(_TimerName)
+AND
+DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
+AND
+DB_StackInternalCounter(_Amount, _TimerName)
+AND
+_Amount <= 0
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:TimerFinished] Combat Queue [",_TimerName,"] was completed.");
+//END_REGION
+
+//REGION POST_QUEUE
+PROC
+LLENEMY_OnCharacterJoinedCombat((CHARACTERGUID)_Character, (INTEGER)_CombatID)
+AND
+NOT DB_LLENEMY_CombatQueue(_CombatID, _)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:OnCharacterJoinedCombat] Combat queue doesn't exist. Applying buffs instantly.");
+LLENEMY_Upgrades_RollForUpgrades(_Character);
+//END_REGION
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="a1fa1d2f-c335-4902-898c-4228c3c07d52">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcDaggers" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Daggers" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcUnarmed" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Unarmed" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcWands_Water" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Wands_Water" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcSwords" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Swords" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcAxes" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Axes" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcClubs" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Clubs" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcTwoHandedSwords" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_TwoHandedSwords" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcTwoHandedAxes" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_TwoHandedAxes" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcTwoHandedMaces" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_TwoHandedMaces" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcSpears" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Spears" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcStaffs" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Staffs" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;FaroutDude" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcStaffs_Fire" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Staffs_Fire" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;FaroutDude" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcStaffs_Water" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Staffs_Water" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;FaroutDude" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcStaffs_Poison" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Staffs_Poison" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;FaroutDude" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcStaffs_Earth" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Staffs_Earth" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;FaroutDude" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcStaffs_Air" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Staffs_Air" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;FaroutDude" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcBows" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Bows" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;ElementalRanger" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcCrossbows" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Crossbows" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;ElementalRanger" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcWands_Fire" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Wands_Fire" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcWands_Air" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Wands_Air" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="_NpcWands_Poison" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Wands_Poison" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Damage" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" value="ViolentMagic;Ambidextrous" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

@@ -1,0 +1,19 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", "0.9.0.0");
+LeaderUpdater_Register_ActiveGoal("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_ZZZ_Updater");
+
+KBSECTION
+IF
+GameStarted(_Level, _)
+AND
+IsGameLevel(_Level, 1)
+AND
+LeaderUpdater_QRY_ModUpdateNeeded("EnemyUpgradeOverhaul", "LaughingLeader", "0.9.0.0")
+THEN
+LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", "0.9.0.0");
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

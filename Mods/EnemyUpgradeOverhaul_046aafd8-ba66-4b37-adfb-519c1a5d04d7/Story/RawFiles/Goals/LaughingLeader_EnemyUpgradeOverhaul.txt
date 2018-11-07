@@ -1,0 +1,35 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Internal_CompleteIfStarted(); // Existing saves
+KBSECTION
+PROC
+LLENEMY_Internal_Start()
+THEN
+DebugBreak("[LLENEMY] Starting Enemy Upgrade Overhaul.");
+GoalCompleted;
+
+IF
+GameEventSet("GAMEEVENT_GameStarted")
+THEN
+LLENEMY_Internal_Start();
+
+PROC
+LLENEMY_Internal_CompleteIfStarted()
+AND
+DB_StoryStarted(_)
+THEN
+DebugBreak("[LLENEMY:CompleteIfStarted] Enemy Upgrade Overhaul was added to an existing save.");
+LLENEMY_Internal_Start();
+
+// For saves where this goal is active, but wasn't completed
+IF
+SavegameLoaded(_,_,_,_)
+AND
+DB_StoryStarted(_)
+THEN
+DebugBreak("[LLENEMY:SavegameLoaded] Enemy Upgrade Overhaul was added to an existing save.");
+LLENEMY_Internal_Start();
+EXITSECTION
+
+ENDEXITSECTION

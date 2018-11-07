@@ -1,0 +1,60 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Stats_InitSettings();
+
+KBSECTION
+//REGION SETTINGS
+PROC
+LLENEMY_Stats_InitSettings()
+THEN
+LLENEMY_Upgrades_AddGroup("Stats", "LLENEMY_StatUpgradesDisabled", "LLENEMY_StatsRolled", "LLENEMY_StatsUpgradeAdded");
+LLENEMY_Upgrades_AddType("Stats", "Armor", 40, 70, 2);
+LLENEMY_Upgrades_AddType("Stats", "MagicArmor", 60, 90, 2);
+LLENEMY_Upgrades_AddType("Stats", "Vitality", 20, 80, 1);
+LLENEMY_Upgrades_AddType("Stats", "Damage", 1, 19, 4);
+
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_5", 90, 1);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_10", 40, 1);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_15", 37, 2);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_20", 20, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_25", 16, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_30", 10, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_35", 9, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_40", 7, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_45", 5, 5);
+LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_50", 1, 5);
+
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_5", 90, 1);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_10", 40, 1);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_15", 37, 2);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_20", 20, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_25", 16, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_30", 10, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_35", 9, 41);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_40", 7, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_45", 5, 5);
+LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_50", 1, 5);
+
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_5", 90, 1);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_10", 63, 2);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_15", 51, 2);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_20", 43, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_25", 37, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_30", 15, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_35", 12, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_40", 9, 5);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_45", 7, 6);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_50", 2, 7);
+
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_5", 90, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_10", 30, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_15", 20, 5);
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_20", 10, 6);
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_25", 3, 7);
+//END_REGION
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

@@ -1,0 +1,5 @@
+treasure itemtypes "Common","Uncommon","Rare","Epic","Legendary","Divine","Unique"
+
+new treasuretable "LLENEMY_GranadaStatus_GrenadeStash"
+new subtable "6,1"
+object category "T_ST_Grenades",1,0,0,0,0,0,0,0

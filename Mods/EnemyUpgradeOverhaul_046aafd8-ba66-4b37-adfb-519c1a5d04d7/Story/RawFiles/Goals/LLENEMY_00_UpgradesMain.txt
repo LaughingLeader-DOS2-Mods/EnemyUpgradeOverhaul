@@ -1,0 +1,203 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//REGION REGISTERING
+PROC
+LLENEMY_Upgrades_AddGroup((STRING)_Group, (STRING)_GlobalDisableFlag, (STRING)_RolledForFlag, (STRING)_GroupSuccessFlag)
+THEN
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag);
+
+PROC
+LLENEMY_Upgrades_AddType((STRING)_Group, (STRING)_Type, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints)
+THEN
+DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints);
+
+PROC
+LLENEMY_Upgrades_AddStatus((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Range, (INTEGER)_ChallengePoints)
+THEN
+LLENEMY_Upgrades_AddStatus(_Group, _Type, _Status, _Range, _ChallengePoints, -1.0);
+
+PROC
+LLENEMY_Upgrades_AddStatus((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Range, (INTEGER)_ChallengePoints, (REAL)_Duration)
+AND
+NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _,_)
+THEN
+DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, 1, 1);
+
+PROC
+LLENEMY_Upgrades_AddStatus((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Range, (INTEGER)_ChallengePoints, (REAL)_Duration)
+AND
+DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt)
+AND
+IntegerSum(_StartInt, _Range, _EndInt)
+AND
+IntegerSum(_EndInt, 1, _NextStartInt)
+THEN
+NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt);
+DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _NextStartInt, _EndInt);
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _EndInt, _Duration, _ChallengePoints);
+
+PROC
+LLENEMY_Upgrades_AddStatusToRange((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints)
+THEN
+LLENEMY_Upgrades_AddStatusToRange(_Group, _Type, _Status, _MinRoll, _MaxRoll, _ChallengePoints, -1.0);
+
+PROC
+LLENEMY_Upgrades_AddStatusToRange((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints, (REAL)_Duration)
+THEN
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _ChallengePoints);
+
+//Hopefully this should never actually be needed, as it could create gaps of "nothing" if the LastInt is upped without anything between the two values
+PROC
+LLENEMY_Upgrades_AddStatusToRange((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints, (REAL)_Duration)
+AND
+DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt)
+AND
+_MaxRoll > _LastInt
+THEN
+NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt);
+DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _MaxRoll);
+//END_REGION
+
+//REGION APPLYING
+PROC
+LLENEMY_Upgrades_ClearFlags((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
+AND
+ObjectGetFlag(_Character, _RolledForFlag, 1)
+THEN
+ObjectClearFlag(_Character, _RolledForFlag);
+
+PROC
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character)
+THEN
+DB_NOOP(1);
+
+PROC
+LLENEMY_Upgrades_RollForUpgrades((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
+AND
+NOT DB_GlobalFlag(_GlobalDisableFlag)
+AND
+LLENEMY_Upgrades_Internal_QRY_SetRolledFlag(_Character, _RolledForFlag)
+AND
+LeaderLib_Random_QRY(100)
+AND
+DB_LeaderLib_Random(_Roll)
+THEN
+NOT DB_LeaderLib_Random(_Roll);
+LLENEMY_Upgrades_OnRollForGroup(_Character, _Roll, _Group, _GroupSuccessFlag);
+
+QRY
+LLENEMY_Upgrades_Internal_QRY_SetRolledFlag((CHARACTERGUID)_Character, (STRING)_Flag)
+AND
+_Flag == ""
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Upgrades_Internal_QRY_SetRolledFlag((CHARACTERGUID)_Character, (STRING)_Flag)
+AND
+_Flag != ""
+AND
+ObjectGetFlag(_Character, _Flag, 0)
+THEN
+ObjectSetFlag(_Character, _Flag);
+
+PROC
+LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag)
+AND
+IntegertoString(_Roll, _RollStr)
+AND
+DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _CP)
+AND
+IntegertoString(_MinRoll, _MinStr)
+AND
+IntegertoString(_MaxRoll, _MaxStr)
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:OnRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
+
+PROC
+LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag)
+AND
+DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _CP)
+AND
+_Roll <= _MaxRoll
+AND
+_Roll >= _MinRoll
+THEN
+LLENEMY_Upgrades_CanRollForStatusUpgrade(_Character, _Group, _Type);
+LLENEMY_Upgrades_RollForStatusUpgrade(_Character, _Group, _Type, _GroupSuccessFlag);
+LLENEMY_Upgrades_CleanupBlockUpgrades(_Character, _Group, _Type);
+
+//Intercept and add to DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type) to block a specific group from applying regularly
+PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+THEN
+DB_NOOP(1);
+
+PROC
+LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_GroupSuccessFlag)
+AND
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type)
+AND
+DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _, _EndInt)
+AND
+LeaderLib_Random_QRY(_EndInt)
+AND
+DB_LeaderLib_Random(_Roll)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
+AND
+_Roll <= _MaxRoll
+AND
+_Roll >= _MinRoll
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+NOT DB_LeaderLib_Random(_Roll);
+LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForTalent] [",_Name,"] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
+LLENEMY_Upgrades_ApplyUpgrade(_Character, _Status, _Duration, _CP);
+LLENEMY_Upgrades_OnRollForGroupSucceeded(_Character, _Group, _Type, _GroupSuccessFlag);
+
+PROC
+LLENEMY_Upgrades_OnRollForGroupSucceeded((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_GroupSuccessFlag)
+AND
+_GroupSuccessFlag != ""
+THEN
+ObjectSetFlag(_Character, _GroupSuccessFlag);
+
+PROC
+LLENEMY_Upgrades_CleanupBlockUpgrades((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type)
+THEN
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type);
+
+PROC
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+AND
+NOT GetVarInteger(_Character, "LLENEMY_ChallengePoints", _)
+THEN
+SetVarInteger(_Character, "LLENEMY_ChallengePoints", 0);
+
+PROC
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+AND
+GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
+AND
+IntegerSum(_CP, _TotalPoints, _NextTotal)
+THEN
+SetVarInteger(_Character, "LLENEMY_ChallengePoints", _NextTotal);
+ApplyStatus(_Character, _Status, _Duration, 0, _Character);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

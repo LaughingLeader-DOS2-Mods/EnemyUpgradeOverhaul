@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="e2a8d59b-0e34-4a7c-bf5f-db7a2bb34cde">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_BACKSTAB" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Assassin" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy can backstab with non-dagger weapons." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Ability_Scoundrel" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_AddedWeaponTalent" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Backstab" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_BULLY" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Bully" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy has 50% extra damage against opponents that are Slowed, Crippled or Knocked Down." />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Bully" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_Executioner" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_LEECH" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Leech" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy is healed when standing in blood." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_Leech" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Leech" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_LIGHTNINGROD" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Lightning Rod" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy is immune to stun, and gains health when hit by Air skills." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Ability_Aerotheurge" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_LightingRod" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_LLENEMY_Talent_LightningRod" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_LONEWOLF" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Lone Wolf" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities. " />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_LoneWolf" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_LoneWolf" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_NATURALCONDUCTOR" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Natural Conductor" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy is hasted when standing on electric surfaces." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_Escapist" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_NaturalConductor" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_LLENEMY_Talent_NaturalConductor" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_QUICKSTEP" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: The Pawn" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy gets 1 AP worth of free movement each turn." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_The_Pawn" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_QuickStep" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_RANGERRANGE" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Quickdraw" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy has increased attack range of Bows and Crossbows by 1m." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Ability_Huntsman" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_AddedWeaponTalent" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_RangerLoreRangedAPBonus" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_RESISTDEAD" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent:  Comeback Kid" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy will revive once when killed, coming back with 30% health." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_ComebackKid" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_ResistDead" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_RESISTDEAD2" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent:  Elite Comeback Kid" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy will revive once when killed, coming back with full health." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_ComebackKid" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_ResistDead2" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_UNSTABLE" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent:  Unstable" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_Unstable" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Unstable" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_WEATHERPROOF" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Weather Proof" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy is immune to enviromental effects." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Ability_Hydrosophist" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_WeatherProof" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_WHATARUSH" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: What a Rush" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy has Increased recovery and maximum Action Points when their health is below 50%." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_WhatARush" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_WhatARush" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_TORTURER" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent: Torturer" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Enemy has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Talent_Torturer" />
+        <field name="Items" type="StringStatObjectFieldDefinition" value="LLENEMY_TalentBelt_Torturer" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_TALENT_BASE" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Talent" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_AddedTalent" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="BringIntoCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="27" enumeration_type_name="FormatStringColor" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_NECROFIRE_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_NECROFIRE" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Giant_NecroFire_A_01:Dummy_StatusFX;RS3_FX_Char_ElementalDevil_NecroFire_A_02:Dummy_L_HandFX,Dummy_R_HandFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="cc067904-9e61-40ef-a449-909a866bc6a4" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_WATER_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_WATER" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Giant_Water_A_01:Dummy_BodyFX;RS3_FX_Char_ElementalDevil_Giant_Water_A_01_Head:Dummy_StatusFX;RS3_FX_Char_ElementalDevil_Water_A_02:Dummy_R_HandFX,Dummy_L_HandFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="d14d655e-3d4b-42a4-953a-0e270e352865" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_BLESSED_ICE_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_BLESSED_ICE" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Giant_Ice_A_01_Head:Dummy_StatusFX;RS3_FX_Char_ElementalDevil_Giant_Ice_A_01:Dummy_BodyFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="c30ef511-3470-4e77-bd66-496bed706c50" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_POISON_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_POISON" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Giant_Poison_A_01:Dummy_BodyFX;RS3_FX_Char_ElementalDevil_Giant_Poison_A_01_Head:Dummy_StatusFX;RS3_FX_Char_ElementalDevil_Poison_A_02:Dummy_L_HandFX,Dummy_R_HandFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="060f26e9-4fc9-4bde-b1ae-0ad3254fc3c5" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_ACID_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_ACID" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Giant_Acid_A_01:Dummy_BodyFX;RS3_FX_Char_ElementalDevil_Giant_Acid_A_01_Head:Dummy_StatusFX;RS3_FX_Char_ElementalDevil_Acid_A_02:Dummy_L_HandFX,Dummy_R_HandFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="8a81bcda-0dac-4b13-a66f-7596a4575227" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_ELECTRIC_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_ELECTRIC" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Giant_Electric_A_01:Dummy_BodyFX;RS3_FX_Char_ElementalDevil_Giant_Electric_A_01_Light:Head_Bone;RS3_FX_Char_ElementalDevil_Electric_A_02:Dummy_R_HandFX,Dummy_L_HandFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="5ea43c69-8488-4f6a-a143-5de77f103be2" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_CURSED_ELECTRIC_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_CURSED_ELECTRIC" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Giant_CursedElectric_A_01:Dummy_BodyFX;RS3_FX_Char_ElementalDevil_Giant_CursedElectric_A_01_Light:Head_Bone;RS3_FX_Char_ElementalDevil_CursedElectric_A_02:Dummy_R_HandFX,Dummy_L_HandFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="6f089d03-d4dd-4c44-bd3a-d5e08b48db53" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_BLOOD_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_BLOOD" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Blood_A_02:Dummy_L_HandFX,Dummy_R_HandFX;RS3_FX_Char_ElementalDevil_Giant_Blood_A_01:Dummy_StatusFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="3e65bbf8-ed43-4ad8-a84a-1a8a77ffd8bd" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_OIL_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_OIL" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Oil_A_02:Dummy_L_HandFX,Dummy_R_HandFX;RS3_FX_Char_ElementalDevil_Giant_Oil_A_01:Dummy_StatusFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="18daf88a-3c7a-48f1-b9e4-f99cfbb6d3fe" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_FIRE_G" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="LLENEMY_INF_FIRE" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Fire_A_02:Dummy_L_HandFX,Dummy_R_HandFX;RS3_FX_Char_ElementalDevil_Giant_Fire_A_01:Dummy_StatusFX" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="f46b1af8-500b-4a04-a852-674c4a44a14b" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_OIL" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Oil Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Earth_OilInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="21" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Oil_A_01:Dummy_StatusFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="f4038f51-a8b3-4a33-b8f8-1ad2745ad575" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Oil" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Projectile_IncarnatePyroclasticRock" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_BLOOD" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Blood Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Fire_BloodInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="26" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Blood_A_01:Dummy_StatusFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="b5a84a17-59d5-43c0-985e-358609be2e46" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Blood" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Target_IncarnateMosquitoSwarm" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_CURSED_ELECTRIC" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Cursed Electric Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Skillcrafting_Air_CursedElectricInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="22" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_CursedElectric_A_01:Dummy_BodyFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="1e371b32-a9e4-40cd-a5d2-6795ce9722ce" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Cursed_Electric" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Projectile_IncarnateLightningBolt;Shout_IncarnateElectricFence" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_ELECTRIC" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Electric Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Air_ElectricInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="22" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Electric_A_01:Dummy_BodyFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="3425a484-bdfe-4a44-a04a-7ff984a4a457" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Electric" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Projectile_IncarnateLightningBolt" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_ACID" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Acid Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Skillcrafting_Earth_AcidInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="9" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Acid_A_01:Dummy_BodyFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="82cb5e43-73f5-425f-8eed-0a6e2a53f139" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Acid" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Projectile_IncarnatePoisonDart;Projectile_IncarnateAcidSpores" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_POISON" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Poison Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Earth_PoisonInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="9" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Poison_A_01:Dummy_BodyFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="9e68d1ce-bcbc-4b99-aeed-d5c6d9c28311" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Poison" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Projectile_IncarnatePoisonDart" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_BLESSED_ICE" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Blessed Ice Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Skillcrafting_Water_BlessedIceInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="23" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Ice_A_01_Dummy_BodyFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="2a61fae8-8fa4-4af3-b816-8e94f18e8628" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Blessed_Ice" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Target_IncarnateRestoration;Cone_IncarnateSteamLance" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_WATER" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Water Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Water_WaterInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="23" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Water_A_01:Dummy_BodyFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="bb9f1adc-f4c9-426b-ac6b-f550c02b4ad6" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Water" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Target_IncarnateRestoration" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_FIRE" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Fire Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Fire_FireInfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="24" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_Fire_A_01:Dummy_StatusFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="0818161f-b295-40a1-96d1-2503d72b2396" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Fire" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Projectile_IncarnateFireball" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="LLENEMY_INF_NECROFIRE" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Necrofire Infusion" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Skillcrafting_Fire_NecroFireinfusion" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" value="24" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Char_ElementalDevil_NecroFire_A_01:Dummy_StatusFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="MaterialType" />
+        <field name="Material" type="StringStatObjectFieldDefinition" value="fdb2aba4-7cac-450c-b412-b639911c309b" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_Infusion_Necrofire" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_LLENEMY_ElementalInfusion" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="Projectile_IncarnateFireball;Projectile_IncarnateInfectiousFlame" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

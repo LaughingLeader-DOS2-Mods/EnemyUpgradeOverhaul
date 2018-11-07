@@ -1,0 +1,247 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Rewards_InitSettings();
+KBSECTION
+//REGION SETTINGS
+PROC
+LLENEMY_Rewards_InitSettings()
+THEN
+LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Easy", 1, 10);
+LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Medium", 11, 16);
+LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Hard", 17, 25);
+LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
+LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
+
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "RewardTiny", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "RewardCombat", 25);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "Luck1", 5);
+
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "RewardSmall", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "RewardCombat", 20);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "Luck2", 5);
+
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Hard", "RewardMedium", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Hard", "RewardCombat", 15);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Hard", "Luck3", 5);
+
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Insane", "RewardBig", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Insane", "RewardCombat", 10);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Insane", "Luck4", 5);
+
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Impossible", "RewardBig", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Impossible", "LuckTop", 5);
+
+LLENEMY_Rewards_AddTreasureEffect("Luck1", "LLENEMY_FX_Rewards_Lucky_01");
+LLENEMY_Rewards_AddTreasureEffect("Luck2", "LLENEMY_FX_Rewards_Lucky_02");
+LLENEMY_Rewards_AddTreasureEffect("Luck3", "LLENEMY_FX_Rewards_Lucky_03");
+LLENEMY_Rewards_AddTreasureEffect("Luck4", "LLENEMY_FX_Rewards_Lucky_04");
+LLENEMY_Rewards_AddTreasureEffect("LuckTop", "LLENEMY_FX_Rewards_Lucky_05");
+
+//Default if nothing else plays
+LLENEMY_Rewards_AddRewardEffect("LLENEMY_FX_Rewards_Generic_Weak_01", 1, 16);
+LLENEMY_Rewards_AddRewardEffect("LLENEMY_FX_Rewards_Generic_Strong_01", 17, 999);
+
+PROC
+LLENEMY_Rewards_AddTreasurePool((STRING)_Name, (INTEGER)_MinAmount, (INTEGER)_MaxAmount)
+THEN
+DB_LLENEMY_Rewards_TreasurePool(_Name, _MinAmount, _MaxAmount);
+
+PROC
+LLENEMY_Rewards_AddTreasure((STRING)_Pool, (STRING)_Treasure, (INTEGER)_Range)
+AND
+NOT DB_LLENEMY_Rewards_PoolVariables(_Pool, _,_)
+THEN
+DB_LLENEMY_Rewards_PoolVariables(_Pool, 1, 1);
+
+PROC
+LLENEMY_Rewards_AddTreasure((STRING)_Pool, (STRING)_Treasure, (INTEGER)_Range)
+AND
+DB_LLENEMY_Rewards_PoolVariables(_Pool, _StartInt, _LastInt)
+AND
+IntegerSum(_StartInt, _Range, _EndInt)
+AND
+IntegerSum(_EndInt, 1, _NextStartInt)
+THEN
+NOT DB_LLENEMY_Rewards_PoolVariables(_Pool, _StartInt, _LastInt);
+DB_LLENEMY_Rewards_PoolVariables(_Pool, _NextStartInt, _EndInt);
+DB_LLENEMY_Rewards_Treasure(_Pool, _Treasure, _StartInt, _EndInt);
+
+PROC
+LLENEMY_Rewards_AddRewardEffect((STRING)_Effect, (INTEGER)_MinCP, (INTEGER)_MaxCP)
+THEN
+DB_LLENEMY_Rewards_CPEffects(_Effect, _MinCP, _MaxCP);
+
+PROC
+LLENEMY_Rewards_AddTreasureEffect((STRING)_Treasure, (STRING)_Effect)
+THEN
+DB_LLENEMY_Rewards_TreasureEffects(_Treasure, _Effect);
+//END_REGION
+
+//REGION TREASURE_GENERATION
+IF
+CharacterPrecogDying(_Character)
+AND
+GetVarInteger(_Character, "LLENEMY_ChallengePoints", _CP)
+AND
+_CP > 0
+AND
+DB_LLENEMY_Rewards_TreasurePool(_Pool, _MinAmount, _MaxAmount)
+AND
+_CP <= _MaxAmount
+AND
+_CP >= _MinAmount
+AND
+DB_LLENEMY_Rewards_PoolVariables(_Pool, _StartInt, _EndInt)
+AND
+LeaderLib_Random_QRY(_EndInt)
+AND
+DB_LeaderLib_Random(_Roll)
+AND
+DB_LLENEMY_Rewards_Treasure(_Pool, _Treasure, _MinRoll, _MaxRoll)
+AND
+_Roll <= _MaxRoll
+AND
+_Roll >= _MinRoll
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+NOT DB_LeaderLib_Random(_Roll);
+LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] will generate treasure [",_Treasure,"] when dead.");
+DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Character, _Treasure);
+ObjectSetFlag(_Character, "LLENEMY_GenerateRewards");
+
+IF
+CharacterPrecogDying(_Character)
+AND
+ObjectGetFlag(_Character, "LLENEMY_GenerateRewards", 1)
+AND
+GetPosition(_Character, _x, _y, _z)
+AND
+CharacterGetLevel(_Character, _Level)
+AND
+CreateItemTemplateAtPosition("LOOT_LeaderLib_BackPack_Invisible_98fa7688-0810-4113-ba94-9a8c8463f830", _X, _y, _z, _Backpack)
+AND
+LLENEMY_Rewards_QRY_Internal_StoreBackpack(_Character, _Backpack)
+AND
+DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Character, _Treasure)
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] generated treasure [",_Treasure,"].");
+GenerateTreasure(_Backpack, _Treasure, _Level, _Character);
+MoveAllItemsTo(_Backpack, _Character);
+
+QRY
+LLENEMY_Rewards_QRY_Internal_StoreBackpack((CHARACTERGUID)_Character, (ITEMGUID)_Backpack)
+THEN
+DB_LLENEMY_Rewards_Temp_Backpacks(_Character, _Backpack);
+//PlaySound(_Character, "SE_FX_GP_ScriptedEvent_Fane_Romance_BuildUp");
+
+IF
+CharacterPrecogDying(_Character)
+AND
+DB_LLENEMY_Rewards_Temp_Backpacks(_Character, _Backpack)
+THEN
+NOT DB_LLENEMY_Rewards_Temp_Backpacks(_Character, _Backpack);
+ItemRemove(_Backpack);
+//END_REGION
+
+//REGION EFFECTS
+IF
+CharacterDied(_Character)
+AND
+DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Character, _Treasure)
+AND
+GetPosition(_Character, _x, _y, _z)
+AND
+DB_LLENEMY_Rewards_TreasureEffects(_Treasure, _Effect)
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterDied] [",_Name,"] Played treasure effect [",_Effect,"] for treasure [",_Treasure,"].");
+PlayEffectAtPosition(_Effect, _x, _y, _z);
+DB_LLENEMY_Rewards_Temp_PlayedEffect(_Character);
+NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Character, _Treasure);
+//PlaySound(_Character, "UI_Game_PerceptionReveal_Puzzle");
+
+IF
+CharacterDied(_Character)
+AND
+DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Character, _Treasure)
+THEN
+NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Character, _Treasure);
+
+IF
+CharacterDied(_Character)
+AND
+NOT DB_LLENEMY_Rewards_Temp_PlayedEffect(_Character)
+AND
+ObjectGetFlag(_Character, "LLENEMY_GenerateRewards", 1)
+AND
+GetVarInteger(_Character, "LLENEMY_ChallengePoints", _CP)
+AND
+_CP > 0
+AND
+GetPosition(_Character, _x, _y, _z)
+AND
+DB_LLENEMY_Rewards_CPEffects(_Effect, _MinCP, _MaxCP)
+AND
+_CP <= _MaxCP
+AND
+_CP >= _MinCP
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+AND
+IntegertoString(_CP, _CpStr)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterDied] [",_Name,"] Played treasure effect [",_Effect,"] for Challenge Points value [",_CpStr,"].");
+PlayEffectAtPosition(_Effect, _x, _y, _z);
+//PlaySound(_Character, "UI_Game_PerceptionReveal_Puzzle");
+
+IF
+CharacterDied(_Character)
+AND
+DB_LLENEMY_Rewards_Temp_PlayedEffect(_Character)
+THEN
+NOT DB_LLENEMY_Rewards_Temp_PlayedEffect(_Character);
+
+IF
+CharacterDied(_Character)
+AND
+ObjectGetFlag(_Character, "LLENEMY_GenerateRewards", 1)
+THEN
+ObjectClearFlag(_Character, "LLENEMY_GenerateRewards");
+//END_REGION
+
+//REGION DEBUG
+PROC
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character)
+AND
+GetVarInteger(_Character, "LLENEMY_ChallengePoints", _ChallengePoints)
+AND
+_ChallengePoints > 0
+AND
+IntegertoString(_ChallengePoints, _PointsStr)
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Upgrades:OnRollingDone] Enemy [",_Name,"] Challenge Points value is [",_PointsStr,"].");
+
+IF
+CharacterDied(_Character)
+AND
+GetVarInteger(_Character, "LLENEMY_ChallengePoints", _ChallengePoints)
+AND
+_ChallengePoints > 0
+AND
+IntegertoString(_ChallengePoints, _PointsStr)
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:Debug] Enemy [",_Name,"] died. Challenge Points [",_PointsStr,"].");
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
