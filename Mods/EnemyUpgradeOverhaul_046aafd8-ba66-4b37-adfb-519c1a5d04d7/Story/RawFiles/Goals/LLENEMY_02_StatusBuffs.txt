@@ -12,7 +12,7 @@ LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 20, 9);
 LLENEMY_Upgrades_AddType("Buffs", "Normal", 21, 79, 5);
 LLENEMY_Upgrades_AddType("Buffs", "Weak", 80, 100, 3);
 
-//Group, Type, _Status, RangeChance, _ChallengePoints, _Duration
+//Group, Type, _Status, RangeChance, _CP, _Duration
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HASTED", 4, 1, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "CLEAR_MINDED", 5, 1);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "RESTED", 8, 2);
@@ -163,9 +163,9 @@ ObjectGetFlag(_Enemy, "LLENEMY_TalentUpgradeAdded", 0)
 AND
 HasActiveStatus(_Enemy, "LLENEMY_TALENT_UNSTABLE", 0)
 AND
-DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_TALENT_UNSTABLE", _MinRoll, _MaxRoll, _Duration, _ChallengePoints)
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_TALENT_UNSTABLE", _MinRoll, _MaxRoll, _Duration, _CP)
 THEN
-LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_UNSTABLE", _Duration, _ChallengePoints);
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_UNSTABLE", _Duration, _CP);
 ObjectSetFlag(_Enemy, "LLENEMY_TalentUpgradeAdded");
 
 IF

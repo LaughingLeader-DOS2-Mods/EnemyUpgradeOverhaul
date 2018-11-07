@@ -111,22 +111,9 @@ ObjectSetFlag(_Character, _Flag);
 PROC
 LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag)
 AND
-IntegertoString(_Roll, _RollStr)
-AND
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _CP)
 AND
-IntegertoString(_MinRoll, _MinStr)
-AND
-IntegertoString(_MaxRoll, _MaxStr)
-AND
-CharacterGetDisplayName(_Character, _, _Name)
-THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:OnRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
-
-PROC
-LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag)
-AND
-DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _CP)
+LLENEMY_Upgrades_QRY_Internal_LogGroupRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group)
 AND
 _Roll <= _MaxRoll
 AND
@@ -135,6 +122,34 @@ THEN
 LLENEMY_Upgrades_CanRollForStatusUpgrade(_Character, _Group, _Type);
 LLENEMY_Upgrades_RollForStatusUpgrade(_Character, _Group, _Type, _GroupSuccessFlag);
 LLENEMY_Upgrades_CleanupBlockUpgrades(_Character, _Group, _Type);
+
+QRY
+LLENEMY_Upgrades_QRY_Internal_LogGroupRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (STRING)_Group)
+AND
+IntegertoString(_Roll, _RollStr)
+AND
+IntegertoString(_MinRoll, _MinStr)
+AND
+IntegertoString(_MaxRoll, _MaxStr)
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Upgrades:LogGroupRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
+
+PROC
+LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag)
+AND
+_Roll == 0
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:OnRollForGroup] [",_Name,"] Rolled a 0 for group [",_Group,"]! Critical failure!");
+LLENEMY_Upgrades_OnGroupCriticalFailure(_Character, _Group);
+
+PROC
+LLENEMY_Upgrades_OnGroupCriticalFailure((CHARACTERGUID)_Character, (STRING)_Group)
+THEN
+DB_NOOP(1);
 
 //Intercept and add to DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type) to block a specific group from applying regularly
 PROC
@@ -153,7 +168,11 @@ LeaderLib_Random_QRY(_EndInt)
 AND
 DB_LeaderLib_Random(_Roll)
 AND
+LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure(_Character, _Group, _Type, _Roll)
+AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
+AND
+LLENEMY_Upgrades_QRY_Internal_LogTypeRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group, _Type)
 AND
 _Roll <= _MaxRoll
 AND
@@ -165,6 +184,39 @@ NOT DB_LeaderLib_Random(_Roll);
 LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForTalent] [",_Name,"] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
 LLENEMY_Upgrades_ApplyUpgrade(_Character, _Status, _Duration, _CP);
 LLENEMY_Upgrades_OnRollForGroupSucceeded(_Character, _Group, _Type, _GroupSuccessFlag);
+
+QRY
+LLENEMY_Upgrades_QRY_Internal_LogTypeRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (STRING)_Group, (STRING)_Type)
+AND
+IntegertoString(_Roll, _RollStr)
+AND
+IntegertoString(_MinRoll, _MinStr)
+AND
+IntegertoString(_MaxRoll, _MaxStr)
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Upgrades:LogTypeRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
+
+QRY
+LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_Roll)
+THEN
+LLENEMY_Upgrades_Internal_CheckForTypeCriticalFailure(_Character, _Group, _Type, _Roll);
+
+PROC
+LLENEMY_Upgrades_Internal_CheckForTypeCriticalFailure((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_Roll)
+AND
+_Roll == 0
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:CheckForTypeCriticalFailure] [",_Name,"] Rolled a 0 for Group [",_Group,"] and Type [",_Type,"]! Critical failure!");
+LLENEMY_Upgrades_OnTypeCriticalFailure(_Character, _Group, _Type);
+
+PROC
+LLENEMY_Upgrades_OnTypeCriticalFailure((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+THEN
+DB_NOOP(1);
 
 PROC
 LLENEMY_Upgrades_OnRollForGroupSucceeded((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_GroupSuccessFlag)

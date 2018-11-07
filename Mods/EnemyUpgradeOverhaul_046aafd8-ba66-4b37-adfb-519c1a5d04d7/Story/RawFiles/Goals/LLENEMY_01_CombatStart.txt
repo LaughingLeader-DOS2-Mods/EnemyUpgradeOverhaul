@@ -14,6 +14,8 @@ AND
 StringConcatenate("LLENEMY_CombatQueue_", _CombatIDStr, _TimerName)
 THEN
 DB_LLENEMY_CombatQueue(_CombatID, _TimerName);
+//Reset seed
+LeaderLib_Random_CreateSeed();
 
 PROC
 LLENEMY_Queue_AddToCombatQueue((CHARACTERGUID)_Character, (INTEGER)_CombatID)
