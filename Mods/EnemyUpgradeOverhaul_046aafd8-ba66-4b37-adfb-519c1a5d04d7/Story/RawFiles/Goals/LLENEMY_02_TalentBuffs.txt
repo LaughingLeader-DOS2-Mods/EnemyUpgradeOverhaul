@@ -8,8 +8,8 @@ PROC
 LLENEMY_Talents_InitSettings()
 THEN
 LLENEMY_Upgrades_AddGroup("Talents", "LLENEMY_TalentUpgradesDisabled", "LLENEMY_TalentUpgradeRolled", "LLENEMY_TalentUpgradeAdded");
-LLENEMY_Upgrades_AddType("Talents", "Elite", 1, 20, 8);
-LLENEMY_Upgrades_AddType("Talents", "Normal", 36, 80, 5);
+LLENEMY_Upgrades_AddType("Talents", "Elite", 1, 100, 8);
+LLENEMY_Upgrades_AddType("Talents", "Normal", 360, 597, 5);
 
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_LEECH", 30, 2);
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_QUICKSTEP", 28, 4);

@@ -8,130 +8,126 @@ PROC
 LLENEMY_Buffs_InitSettings()
 THEN
 LLENEMY_Upgrades_AddGroup("Buffs", "LLENEMY_BuffUpgradesDisabled", "LLENEMY_BuffRolled", "LLENEMY_BuffUpgradeAdded");
-LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 20, 9);
-LLENEMY_Upgrades_AddType("Buffs", "Normal", 21, 79, 5);
-LLENEMY_Upgrades_AddType("Buffs", "Weak", 80, 100, 3);
+LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 200, 9);
+LLENEMY_Upgrades_AddType("Buffs", "Normal", 210, 790, 5);
+LLENEMY_Upgrades_AddType("Buffs", "Weak", 800, 999, 3);
+// Can overlap with Elite/Normal
+LLENEMY_Upgrades_AddType("Buffs", "Aura", 150, 500, 7);
+ // Can overlap with Elite
+LLENEMY_Upgrades_AddType("Buffs", "Immunity", 1, 99, 12);
 
-//Group, Type, _Status, RangeChance, _CP, _Duration
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HASTED", 4, 1, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "CLEAR_MINDED", 5, 1);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "RESTED", 8, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "MAGIC_SHELL", 12, 2, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FORTIFIED", 14, 2, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HORNS", 12, 1);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "WINGS", 8, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "IMPROVED_INITIATIVE", 5, 1);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FARSIGHT", 10, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "DRUNK", 5, 0, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "AIR_IMMUNITY_AURA", 50, 5, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "EARTH_IMMUNITY_AURA", 40, 5, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "ELEMENTAL_IMMUNITY_AURA", 10, 9, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "EVASION_AURA", 130, 3);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FAVOURABLE_WIND_AURA", 90, 3);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FIRE_BRAND_AURA", 160, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FIRE_IMMUNITY_AURA", 40, 6, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FROST_AURA", 100, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "GUARDIAN_ANGEL_AURA", 50, 3);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "PHYSICAL_IMMUNITY_AURA", 10, 9, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VACUUM_AURA", 60, 5);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VAMPIRISM_AURA", 50, 5);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VENOM_AURA", 169, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "WATER_IMMUNITY_AURA", 40, 5, 12.0);
 
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_GRANADA", 18, 6);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_FEROCITY", 9, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_COURAGE", 9, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FORTIFIED", 6, 4, 24.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HASTED", 7, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "ETHEREAL_SOLES", 6, 1, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BLESSED", 4, 2, 18.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FIREBLOOD", 11, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "EVADING", 7, 3, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BREATHING_BUBBLE", 5, 3, 18.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "SPARKING_SWINGS", 7, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 100, 3, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 180, 8);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEMONIC_TUTELAGE", 80, 5);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_TONGUES", 160, 5);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 59, 7);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 180, 6);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 130, 4);
 
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 3, 12, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 2, 10, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEMONIC_TUTELAGE", 5, 5);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 5, 3, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 8, 7);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 12, 4);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_TONGUES", 14, 5);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 12, 8);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 20, 6);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 5, 4, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "ELECTRIC_SKIN", 60, 6, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "FIRE_SKIN", 40, 7, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "ICE_SKIN", 60, 6, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_BURNING", 240, 5, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_ELECTRIFYING", 240, 5, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_POISONING", 249, 5, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "POISON_SKIN", 110, 6, 12.0);
 
-//Extra
-LLENEMY_Upgrades_AddType("Buffs", "Aura", 19, 29, 7); // Can overlap with Elite/Normal
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BLESSED", 60, 2, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BREATHING_BUBBLE", 50, 3, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "ETHEREAL_SOLES", 90, 1, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "EVADING", 80, 3, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FIREBLOOD", 60, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FORTIFIED", 130, 4, 24.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HASTED", 179, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_COURAGE", 60, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_FEROCITY", 60, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_GRANADA", 90, 6);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "SPARKING_SWINGS", 140, 4);
 
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "PHYSICAL_IMMUNITY_AURA", 1, 9, 6.0); // Ruin Your Day
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "ELEMENTAL_IMMUNITY_AURA", 1, 9, 6.0); // Ruin Your Day, Part 2
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "AIR_IMMUNITY_AURA", 4, 5, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "EARTH_IMMUNITY_AURA", 4, 5, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "WATER_IMMUNITY_AURA", 4, 5, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FIRE_IMMUNITY_AURA", 4, 6, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FAVOURABLE_WIND_AURA", 10, 3);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FIRE_BRAND_AURA", 8, 4);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VENOM_AURA", 5, 4);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VAMPIRISM_AURA", 4, 5);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FROST_AURA", 10, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "EVASION_AURA", 13, 3);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "GUARDIAN_ANGEL_AURA", 5, 3);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VACUUM_AURA", 8, 5);
-
-//Extra
-LLENEMY_Upgrades_AddType("Buffs", "Immunity", 1, 10, 12); // Can overlap with Elite
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_BURNING", 3, 5, 18.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_ELECTRIFYING", 4, 5, 18.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_POISONING", 4, 5, 18.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "FIRE_SKIN", 9, 7, 12.0); // Fire tends to do more damage
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "ICE_SKIN", 9, 6, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "ELECTRIC_SKIN", 9, 6, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "POISON_SKIN", 9, 6, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "CLEAR_MINDED", 180, 1);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "DRUNK", 19, 0, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FARSIGHT", 50, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FORTIFIED", 100, 2, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HASTED", 120, 1, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HORNS", 50, 1);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "IMPROVED_INITIATIVE", 160, 1);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "MAGIC_SHELL", 100, 2, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "RESTED", 190, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "WINGS", 30, 2);
 
 //Rolled separately, in addition to the previous types
 LLENEMY_Upgrades_AddGroup("Bonus", "LLENEMY_BonusBuffUpgradesDisabled", "LLENEMY_BonusBuffRolled", "LLENEMY_BonusBuffUpgradeAdded");
-LLENEMY_Upgrades_AddType("Bonus", "Infusion", 60, 90, 7);
-LLENEMY_Upgrades_AddType("Bonus", "Infusion_Elite", 1, 16, 10);
+LLENEMY_Upgrades_AddType("Bonus", "Infusion_Elite", 1, 199, 10);
+LLENEMY_Upgrades_AddType("Bonus", "Infusion", 300, 599, 7);
 
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ACID", 6, 4);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_CURSED_ELECTRIC", 4, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLESSED_ICE", 4, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_NECROFIRE", 3, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_FIRE", 6, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_WATER", 12, 3);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_POISON", 13, 4);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ELECTRIC", 10, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLOOD", 13, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_OIL", 13, 5);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ACID", 60, 4);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLESSED_ICE", 60, 5);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLOOD", 140, 5);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_CURSED_ELECTRIC", 50, 5);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ELECTRIC", 110, 5);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_FIRE", 110, 5);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_NECROFIRE", 60, 6);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_OIL", 139, 5);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_POISON", 140, 4);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_WATER", 130, 3);
 
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_FIRE_G", 8, 7);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_WATER_G", 10, 4);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_POISON_G", 12, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ELECTRIC_G", 12, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLOOD_G", 12, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_OIL_G", 12, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ACID_G", 6, 8);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_CURSED_ELECTRIC_G", 6, 9);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLESSED_ICE_G", 6, 8);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_NECROFIRE_G", 6, 10);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ACID_G", 60, 8);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLESSED_ICE_G", 60, 8);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLOOD_G", 140, 6);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_CURSED_ELECTRIC_G", 50, 9);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ELECTRIC_G", 110, 6);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_FIRE_G", 110, 7);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_NECROFIRE_G", 60, 10);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_OIL_G", 139, 6);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_POISON_G", 140, 6);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_WATER_G", 130, 4);
 
 //Can overlap with other infusions
-LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_SHADOW", 37, 59, 6);
-LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_WARP", 81, 100, 5);
-LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_RANGED", 1, 42, 10);
-LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_POWER", 69, 100, 10);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_RANGED", 199, 499, 4);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_POWER", 799, 999, 4);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion_Eite", "LLENEMY_INF_SHADOW", 1, 99, 7);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion_Eite", "LLENEMY_INF_WARP", 566, 666, 7);
 
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_ChemicalWarfare", 5);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_MindMaggot", 3);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_BlessedIce", 4);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_WaterBlessedBalloon", 5);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_MustardGas", 5);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_BlessedOilFlask", 4);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_CursedMolotov", 4);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_CursedPoisonFlask", 4);
-
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Love", 9);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Terror", 9);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Ice", 9);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Holy", 11);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Tremor", 12);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_SmokeBomb", 15);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Taser", 20);
-
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_ArmorPiercing", 40);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Nailbomb", 40);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_OilFlask", 40);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_WaterBalloon", 50);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_PoisonFlask", 45);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Molotov", 40);
-LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Flashbang", 30);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_ChemicalWarfare", 10);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_MindMaggot", 10);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_BlessedIce", 10);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_WaterBlessedBalloon", 10);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_MustardGas", 10);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_BlessedOilFlask", 10);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_CursedMolotov", 10);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_CursedPoisonFlask", 10);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Love", 40);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Terror", 40);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Ice", 40);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Holy", 40);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Tremor", 40);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_SmokeBomb", 70);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Taser", 50);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_ArmorPiercing", 50);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Nailbomb", 100);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_OilFlask", 100);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_WaterBalloon", 100);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_PoisonFlask", 100);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Molotov", 89);
+LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Flashbang", 60);
 
 PROC
 LLENEMY_Buffs_AddGrenadeSkill((STRING)_Skill, (INTEGER)_Range)
@@ -201,9 +197,7 @@ CharacterGetLevel(_Enemy, _Level)
 AND
 GetPosition(_Enemy, _x, _y, _z)
 AND
-DB_LLENEMY_LastGrenadeInt(_, _LastInt)
-AND
-LeaderLib_Random_QRY(_LastInt)
+LeaderLib_Random_QRY(999)
 AND
 DB_LeaderLib_Random(_Roll)
 AND

@@ -85,7 +85,7 @@ NOT DB_GlobalFlag(_GlobalDisableFlag)
 AND
 LLENEMY_Upgrades_Internal_QRY_SetRolledFlag(_Character, _RolledForFlag)
 AND
-LeaderLib_Random_QRY(100)
+LeaderLib_Random_QRY(999)
 AND
 DB_LeaderLib_Random(_Roll)
 THEN
@@ -249,6 +249,86 @@ THEN
 SetVarInteger(_Character, "LLENEMY_ChallengePoints", _NextTotal);
 ApplyStatus(_Character, _Status, _Duration, 0, _Character);
 //END_REGION
+
+//REGION DEBUG
+IF
+TextEventSet("llenemy_rantest")
+AND
+GetTextEventParamInteger(1, _Modulo)
+AND
+GetTextEventParamInteger(2, _RollAmount)
+THEN
+LeaderLog_LogInt("DEBUG", "[LLENEMY:Debug:RandomTest] Rolling [",_RollAmount,"] times with modulo [",_Modulo,"].");
+DB_LLENEMY_Debug_TestRan(_Modulo, _RollAmount);
+LeaderLib_Random_CreateSeed();
+LLENEMY_Debug_TestRandom();
+
+PROC
+LLENEMY_Debug_TestRandom()
+AND
+DB_LLENEMY_Debug_TestRan(_Modulo, _RollAmount)
+AND
+_RollAmount > 0
+AND
+IntegerSubtract(_RollAmount, 1, _NextAmount)
+AND
+LeaderLib_Random_QRY(_Modulo)
+AND
+DB_LeaderLib_Random(_Ran)
+THEN
+LeaderLog_LogInt("DEBUG", "[LLENEMY:Debug:RandomTest] Roll [",_RollAmount,"] = [",_Ran,"]");
+NOT DB_LLENEMY_Debug_TestRan(_Modulo, _RollAmount);
+DB_LLENEMY_Debug_TestRan(_Modulo, _NextAmount);
+LLENEMY_Debug_TestRandom();
+
+PROC
+LLENEMY_Debug_TestRandom()
+AND
+DB_LLENEMY_Debug_TestRan(_Modulo, _RollAmount)
+AND
+_RollAmount <= 0
+THEN
+NOT DB_LLENEMY_Debug_TestRan(_Modulo, _RollAmount);
+LeaderLog_Log("DEBUG", "[LLENEMY:Debug:RandomTest] Rolling complete.");
+
+IF
+TextEventSet("llenemy_randefaulttest")
+AND
+GetTextEventParamInteger(1, _Modulo)
+AND
+GetTextEventParamInteger(2, _RollAmount)
+THEN
+LeaderLog_LogInt("DEBUG", "[LLENEMY:Debug:RandomDefaultTest] Rolling [",_RollAmount,"] times with modulo [",_Modulo,"].");
+DB_LLENEMY_Debug_TestRanDefault(_Modulo, _RollAmount);
+LLENEMY_Debug_TestRandomDefault();
+
+PROC
+LLENEMY_Debug_TestRandomDefault()
+AND
+DB_LLENEMY_Debug_TestRanDefault(_Modulo, _RollAmount)
+AND
+_RollAmount > 0
+AND
+IntegerSubtract(_RollAmount, 1, _NextAmount)
+AND
+Random(_Modulo, _Ran)
+THEN
+LeaderLog_LogInt("DEBUG", "[LLENEMY:Debug:RandomTest] Result [",_Ran,"] Roll Number [",_RollAmount,"]");
+NOT DB_LLENEMY_Debug_TestRanDefault(_Modulo, _RollAmount);
+DB_LLENEMY_Debug_TestRanDefault(_Modulo, _NextAmount);
+LLENEMY_Debug_TestRandomDefault();
+
+PROC
+LLENEMY_Debug_TestRandomDefault()
+AND
+DB_LLENEMY_Debug_TestRanDefault(_Modulo, _RollAmount)
+AND
+_RollAmount <= 0
+THEN
+NOT DB_LLENEMY_Debug_TestRanDefault(_Modulo, _RollAmount);
+LeaderLog_Log("DEBUG", "[LLENEMY:Debug:RandomTest] Rolling complete.");
+//END_REGION
+
 EXITSECTION
 
 ENDEXITSECTION
