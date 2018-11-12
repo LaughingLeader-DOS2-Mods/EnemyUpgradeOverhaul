@@ -204,7 +204,7 @@
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Enable \"Buff\" Upgrades. Includes upgrade types Weak, Normal, Elite, Immunity, and Aura."
+                                                   "value" : "Enable Buff Upgrades. Includes upgrade types Weak, Normal, Elite, Immunity, and Aura."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -524,7 +524,7 @@
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Disable \"Stats\" Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades."
+                                                   "value" : "Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1196,7 +1196,7 @@
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Enable \"Stats\" Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades."
+                                                   "value" : "Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1517,7 +1517,7 @@
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Disable \"Bonus\" Upgrades. Includes upgrade types Infusion and Elite Infusion."
+                                                   "value" : "Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1591,7 +1591,7 @@
                                  {
                                     "flag" : [
                                        {
-                                          "name" : {"type" : 22, "value" : "LLENEMY_BuffUpgradesDisabled"},"value" : {"type" : 19, "value" : 1}}
+                                          "name" : {"type" : 22, "value" : "LLENEMY_BonusBuffUpgradesDisabled"},"value" : {"type" : 19, "value" : 1}}
                                     ],"type" : {"type" : 22, "value" : "Global"}}
                               ]
                            }
@@ -1713,7 +1713,7 @@
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Disable \"Buff\" Upgrades. Includes upgrade types Weak, Normal, Elite, Immunity, and Aura."
+                                                   "value" : "Disable Buff Upgrades. Includes upgrade types Weak, Normal, Elite, Immunity, and Aura."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -2231,7 +2231,7 @@
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Enable \"Bonus\" Upgrades. Includes upgrade types Infusion and Elite Infusion."
+                                                   "value" : "Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -2305,7 +2305,7 @@
                                  {
                                     "flag" : [
                                        {
-                                          "name" : {"type" : 22, "value" : "LLENEMY_BuffUpgradesDisabled"},"value" : {"type" : 19, "value" : 0}}
+                                          "name" : {"type" : 22, "value" : "LLENEMY_BonusBuffUpgradesDisabled"},"value" : {"type" : 19, "value" : 0}}
                                     ],"type" : {"type" : 22, "value" : "Global"}}
                               ]
                            }
@@ -2492,7 +2492,7 @@
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Enable \"Talent\" Upgrades. Includes talent types Normal, Elite, and Weapon."
+                                                   "value" : "Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -2696,7 +2696,7 @@
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Disable \"Talent\" Upgrades. Includes talent types Normal, Elite, and Weapon."
+                                                   "value" : "Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -2800,7 +2800,7 @@
          },
          "editorData" : {
             "needLayout" : {"type" : 19, "value" : 0},
-            "nextNodeId" : {"type" : 5, "value" : 54}
+            "nextNodeId" : {"type" : 5, "value" : 59}
          }
       }
    }

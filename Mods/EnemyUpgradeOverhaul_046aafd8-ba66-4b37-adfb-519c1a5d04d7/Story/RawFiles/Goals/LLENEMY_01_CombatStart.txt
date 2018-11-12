@@ -3,9 +3,28 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
+//REGION SKIP_COMBAT
+//Windego tutorial fight. Skip this since it's not actually a real combat, and negative auras may leave permanent debuffs
+IF
+ObjectEnteredCombat(CHARACTERGUID_S_GLO_Windego_d783285f-d3be-4cba-8333-db8976cef182, _CombatID)
+AND
+DB_CurrentLevel("TUT_Tutorial_A")
+THEN
+DB_LLENEMY_SkipCombat(_CombatID);
+
+IF
+CombatEnded(_CombatID)
+AND
+DB_LLENEMY_SkipCombat(_CombatID)
+THEN
+NOT DB_LLENEMY_SkipCombat(_CombatID);
+//END_REGION
+
 //REGION QUEUE_SETUP
 IF
 DB_LeaderLib_Combat_ActiveCombat(_CombatID)
+AND
+NOT DB_LLENEMY_SkipCombat(_CombatID)
 AND
 NOT DB_LLENEMY_CombatQueue(_CombatID, _)
 AND
@@ -82,6 +101,8 @@ DB_NOOP(1);
 IF
 ObjectEnteredCombat((CHARACTERGUID)_Character, _CombatID)
 AND
+NOT DB_LLENEMY_SkipCombat(_CombatID)
+AND
 LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
 THEN
 LLENEMY_OnCharacterJoinedCombat(_Character, _CombatID);
@@ -91,6 +112,8 @@ PROC
 ProcMakeNPCHostile((CHARACTERGUID)_Player, (CHARACTERGUID)_Character)
 AND
 DB_CombatCharacters(_Character, _CombatID)
+AND
+NOT DB_LLENEMY_SkipCombat(_CombatID)
 AND
 LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
 THEN
@@ -107,6 +130,8 @@ IF
 TimerFinished(_TimerName)
 AND
 DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
+AND
+NOT DB_LLENEMY_SkipCombat(_CombatID)
 AND
 DB_TopOfStackObject(_TimerName, _Character)
 AND
@@ -125,6 +150,8 @@ TimerFinished(_TimerName)
 AND
 DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
 AND
+NOT DB_LLENEMY_SkipCombat(_CombatID)
+AND
 DB_StackInternalCounter(_Amount, _TimerName)
 AND
 _Amount > 0
@@ -137,11 +164,23 @@ TimerFinished(_TimerName)
 AND
 DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
 AND
+NOT DB_LLENEMY_SkipCombat(_CombatID)
+AND
 DB_StackInternalCounter(_Amount, _TimerName)
 AND
 _Amount <= 0
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:TimerFinished] Combat Queue [",_TimerName,"] was completed.");
+
+IF
+TimerFinished(_TimerName)
+AND
+DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
+AND
+DB_LLENEMY_SkipCombat(_CombatID)
+THEN
+LLENEMY_Queue_ClearData(_CombatID, _TimerName);
+LeaderLog_LogInt("DEBUG", "[LLENEMY:CombatQueue:TimerFinished] Skipping combat with ID [",_CombatID,"].");
 //END_REGION
 
 //REGION POST_QUEUE
