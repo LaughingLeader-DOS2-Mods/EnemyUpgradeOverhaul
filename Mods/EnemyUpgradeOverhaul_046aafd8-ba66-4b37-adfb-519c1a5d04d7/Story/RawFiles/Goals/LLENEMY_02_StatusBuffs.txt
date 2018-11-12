@@ -9,12 +9,15 @@ LLENEMY_Buffs_InitSettings()
 THEN
 LLENEMY_Upgrades_AddGroup("Buffs", "LLENEMY_BuffUpgradesDisabled", "LLENEMY_BuffRolled", "LLENEMY_BuffUpgradeAdded");
 LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 200, 9);
-LLENEMY_Upgrades_AddType("Buffs", "Normal", 210, 790, 5);
-LLENEMY_Upgrades_AddType("Buffs", "Weak", 800, 999, 3);
+LLENEMY_Upgrades_AddType("Buffs", "Normal", 201, 500, 5);
+LLENEMY_Upgrades_AddType("Buffs", "Weak", 501, 999, 3);
 // Can overlap with Elite/Normal
-LLENEMY_Upgrades_AddType("Buffs", "Aura", 150, 500, 7);
+LLENEMY_Upgrades_AddType("Buffs", "Aura", 50, 99, 7);
+LLENEMY_Upgrades_AddType("Buffs", "Aura", 400, 459, 7);
  // Can overlap with Elite
-LLENEMY_Upgrades_AddType("Buffs", "Immunity", 1, 99, 12);
+LLENEMY_Upgrades_AddType("Buffs", "Immunity", 1, 55, 12);
+//Normal range
+LLENEMY_Upgrades_AddType("Buffs", "Immunity", 230, 289, 12);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "AIR_IMMUNITY_AURA", 50, 5, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "EARTH_IMMUNITY_AURA", 40, 5, 12.0);
@@ -75,7 +78,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "WINGS", 30, 2);
 
 //Rolled separately, in addition to the previous types
 LLENEMY_Upgrades_AddGroup("Bonus", "LLENEMY_BonusBuffUpgradesDisabled", "LLENEMY_BonusBuffRolled", "LLENEMY_BonusBuffUpgradeAdded");
-LLENEMY_Upgrades_AddType("Bonus", "Infusion_Elite", 1, 199, 10);
+LLENEMY_Upgrades_AddType("Bonus", "Infusion_Elite", 1, 99, 10);
 LLENEMY_Upgrades_AddType("Bonus", "Infusion", 300, 599, 7);
 
 LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ACID", 60, 4);

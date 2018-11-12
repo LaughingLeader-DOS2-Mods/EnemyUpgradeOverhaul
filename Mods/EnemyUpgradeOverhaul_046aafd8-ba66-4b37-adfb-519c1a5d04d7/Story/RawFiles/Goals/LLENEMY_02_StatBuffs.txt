@@ -12,8 +12,8 @@ LLENEMY_Upgrades_AddGroup("Stats", "LLENEMY_StatUpgradesDisabled", "LLENEMY_Stat
 //999 max
 LLENEMY_Upgrades_AddType("Stats", "Armor", 400, 700, 2);
 LLENEMY_Upgrades_AddType("Stats", "MagicArmor", 600, 900, 2);
-LLENEMY_Upgrades_AddType("Stats", "Vitality", 200, 800, 1);
-LLENEMY_Upgrades_AddType("Stats", "Damage", 1, 190, 4);
+LLENEMY_Upgrades_AddType("Stats", "Vitality", 270, 800, 1);
+LLENEMY_Upgrades_AddType("Stats", "Damage", 1, 150, 4);
 
 LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_50",  10, 5);
 LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_45",  30, 5);

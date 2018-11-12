@@ -200,6 +200,12 @@ SetVarInteger(_Character, "LLENEMY_ChallengePoints", _CP);
 //REGION TREASURE_GENERATION
 IF
 CharacterPrecogDying(_Character)
+AND
+NOT DB_GlobalFlag("LLENEMY_RewardsDisabled")
+AND
+CharacterIsPlayer(_Character, 0)
+AND
+CharacterIsSummon(_Character, 0)
 THEN
 LLENEMY_Rewards_SetupTreasure(_Character);
 LLENEMY_Rewards_SetupBonusTreasure(_Character);

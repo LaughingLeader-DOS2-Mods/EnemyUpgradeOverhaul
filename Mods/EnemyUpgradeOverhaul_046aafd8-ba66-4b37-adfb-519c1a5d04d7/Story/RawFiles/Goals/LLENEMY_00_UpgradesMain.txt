@@ -61,6 +61,22 @@ NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt);
 DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _MaxRoll);
 //END_REGION
 
+//REGION RESET_DATA
+PROC
+LLENEMY_Upgrades_ResetData()
+THEN
+SysClear("DB_LLENEMY_Upgrades_Groups", 4);
+SysClear("DB_LLENEMY_Upgrades_Types", 5);
+SysClear("DB_LLENEMY_Upgrades_Statuses", 7);
+SysClear("DB_LLENEMY_Upgrades_LastTypeValues", 4);
+SysClear("DB_LLENEMY_LastGrenadeInt", 2);
+SysClear("DB_LLENEMY_GrenadeSkills", 3);
+
+LLENEMY_Buffs_InitSettings();
+LLENEMY_Talents_InitSettings();
+LLENEMY_Stats_InitSettings();
+//END_REGION
+
 //REGION APPLYING
 PROC
 LLENEMY_Upgrades_ClearFlags((CHARACTERGUID)_Character)
@@ -113,7 +129,7 @@ LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRI
 AND
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _CP)
 AND
-LLENEMY_Upgrades_QRY_Internal_LogGroupRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group)
+LLENEMY_Upgrades_QRY_Internal_LogGroupRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group, _Type)
 AND
 _Roll <= _MaxRoll
 AND
@@ -124,7 +140,7 @@ LLENEMY_Upgrades_RollForStatusUpgrade(_Character, _Group, _Type, _GroupSuccessFl
 LLENEMY_Upgrades_CleanupBlockUpgrades(_Character, _Group, _Type);
 
 QRY
-LLENEMY_Upgrades_QRY_Internal_LogGroupRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (STRING)_Group)
+LLENEMY_Upgrades_QRY_Internal_LogGroupRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (STRING)_Group, (STRING)_Type)
 AND
 IntegertoString(_Roll, _RollStr)
 AND
@@ -134,7 +150,7 @@ IntegertoString(_MaxRoll, _MaxStr)
 AND
 CharacterGetDisplayName(_Character, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Upgrades:LogGroupRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
+LeaderLog_Log("DEBUG", "[LLENEMY:Upgrades:LogGroupRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
 
 PROC
 LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag)
