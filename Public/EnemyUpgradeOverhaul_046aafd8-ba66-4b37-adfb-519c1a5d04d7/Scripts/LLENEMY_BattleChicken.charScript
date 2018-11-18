@@ -1,0 +1,60 @@
+INIT
+	CHARACTER:__Me
+
+EVENTS
+
+EVENT LLENEMY_BattleChicken_Summoned
+VARS
+	CHARACTERTEMPLATE:_Template
+	CHARACTER:_Owner
+ON
+	OnCharacterStatusAttempt(__Me, SUMMONING)
+ACTIONS
+	CharacterPlayEffect(__Me, "RS3_FX_Skills_Totem_Impact_Summon_Overlay_01")
+IF "c1&c2"
+	CharacterGetTemplate(__Me, _Template)
+	IsEqual(_Template, LLENEMY_Animals_Chicken_BattleChicken_B_3e25cbea-a588-46ae-9020-2e081676966d)
+THEN
+	CharacterApplyStatus(__Me, FIRE_IMMUNITY, -1, 1, __Me)
+	CharacterApplyStatus(__Me, FLAMING_CRESCENDO, 3, 0, __Me)
+	SetFlag(__Me, "LLENEMY_BattleChicken_FlamingCrescendoActive")
+ELIF "c1"
+	IsEqual(_Template, LLENEMY_Animals_Chicken_BattleChicken_C_09ed8c09-a51c-4ee2-aa41-a5f4332ac861)
+THEN
+	//LLENEMY_BattleChicken_PBR_Tinted_Medic
+	//SetMaterial(__Me, "4602b609-c93f-4d45-a2cb-273462c0b54e", -1, 1, 0, 0, 0, 0, 0)
+	//LLENEMY_BattleChicken_Medic_PBR
+	SetMaterial(__Me, "bf1b4603-ed69-4599-bc97-158b9f671986", -1, 1, 0, 0, 0, 0, 0)
+	CharacterApplyStatus(__Me, HEALING_TEARS, -1, 1, __Me)
+	IF "c1"
+		CharacterGetOwner(_Owner, __Me)
+	THEN
+		TeleportTo(__Me, _Owner)
+	ENDIF
+ENDIF
+
+EVENT LLENEMY_BattleChicken_KeepExploding
+ON
+	OnCharacterStatusRemoved(__Me, FLAMING_CRESCENDO)
+ACTIONS
+IF "c1"
+	HasFlag(__Me, "LLENEMY_BattleChicken_FlamingCrescendoActive")
+THEN
+	CharacterApplyStatus(__Me, FLAMING_CRESCENDO, 2, 0, __Me)
+ENDIF
+
+EVENT LLENEMY_BattleChicken_Dying
+ON
+	OnCharacterStatusAttempt(__Me, DYING)
+ACTIONS
+	CharacterPlayEffect(__Me, "RS3_FX_Skills_Totem_Impact_Cannibalize_01")
+	PlayEffectAt(__Me, "RS3_FX_Skills_Totem_Impact_Target_Touch_Root_01_Addon_Feathers")
+	SetFlag(__Me, "LLENEMY_BattleChicken_IsDying")
+BEHAVIOUR
+
+REACTION LLENEMY_BattleChicken_DyingAnimation,999
+USAGE ALL
+CHECK "c1"
+	HasFlag(__Me, "LLENEMY_BattleChicken_IsDying")
+ACTIONS
+	CharacterPlayAnimation("die_front_down", 1, 0)

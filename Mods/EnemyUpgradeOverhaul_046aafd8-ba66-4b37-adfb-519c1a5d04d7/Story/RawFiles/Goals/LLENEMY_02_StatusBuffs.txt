@@ -36,21 +36,22 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "WATER_IMMUNITY_AURA", 40, 5, 12.0);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 100, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 180, 8);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEMONIC_TUTELAGE", 80, 5);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_TONGUES", 160, 5);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_TONGUES", 140, 5);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 100, 9);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 59, 7);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 180, 6);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 130, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 190, 6);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 120, 4);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "ELECTRIC_SKIN", 60, 6, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "FIRE_SKIN", 40, 7, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "ICE_SKIN", 60, 6, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_BURNING", 240, 5, 18.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_ELECTRIFYING", 240, 5, 18.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_POISONING", 249, 5, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_BURNING", 120, 5, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_ELECTRIFYING", 120, 5, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "IMMUNE_TO_POISONING", 129, 5, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "LLENEMY_IMMUNITY_LOSECONTROL", 360, 7);
 LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "POISON_SKIN", 110, 6, 12.0);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BLESSED", 60, 2, 18.0);
@@ -80,6 +81,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "WINGS", 30, 2);
 LLENEMY_Upgrades_AddGroup("Bonus", "LLENEMY_BonusBuffUpgradesDisabled", "LLENEMY_BonusBuffRolled", "LLENEMY_BonusBuffUpgradeAdded");
 LLENEMY_Upgrades_AddType("Bonus", "Infusion_Elite", 1, 99, 10);
 LLENEMY_Upgrades_AddType("Bonus", "Infusion", 300, 599, 7);
+LLENEMY_Upgrades_AddType("Bonus", "Special", 90, 350, 2);
 
 LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ACID", 60, 4);
 LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLESSED_ICE", 60, 5);
@@ -108,6 +110,9 @@ LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_RANGED", 199
 LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_POWER", 799, 999, 4);
 LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion_Eite", "LLENEMY_INF_SHADOW", 1, 99, 7);
 LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion_Eite", "LLENEMY_INF_WARP", 566, 666, 7);
+
+//Special
+LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_DOUBLE_DIP", 30, 4, 0.0);
 
 LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_ChemicalWarfare", 10);
 LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_MindMaggot", 10);
@@ -213,6 +218,17 @@ THEN
 NOT DB_LeaderLib_Random(_Roll);
 CreateExplosionAtPosition(_x, _y, _z, _Skill, _Level);
 CharacterStatusText(_Enemy, "<font color='#FF4500' size='30'>A grenade explodes!</font>");
+//END_REGION
+
+//REGION SPECIAL_UPGRADES
+IF
+CharacterStatusApplied(_Character, "LLENEMY_DOUBLE_DIP", _)
+THEN
+PlayEffect(_Character, "LLENEMY_FX_Status_DoubleDip_Overlay_01", "");
+LLENEMY_Upgrades_ResetRolledFlags(_Character);
+LLENEMY_Upgrades_RollForUpgrades(_Character);
+LLENEMY_Upgrades_OnRollingDone(_Character);
+RemoveStatus(_Character, "LLENEMY_DOUBLE_DIP");
 //END_REGION
 
 EXITSECTION

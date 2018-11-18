@@ -191,6 +191,7 @@ NOT DB_LLENEMY_CombatQueue(_CombatID, _)
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:OnCharacterJoinedCombat] Combat queue doesn't exist. Applying buffs instantly.");
 LLENEMY_Upgrades_RollForUpgrades(_Character);
+LLENEMY_Upgrades_OnRollingDone(_Character);
 //END_REGION
 
 EXITSECTION

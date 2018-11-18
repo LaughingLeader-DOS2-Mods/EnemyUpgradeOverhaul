@@ -16,6 +16,7 @@ Editor/Mods/EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7/Levels/*
 # Asset Folders      #
 ######################
 Public/EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7/Assets/*
+Public/EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7/Content/*
 #Public/EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7/GUI/*
 
 # Editor files       #
@@ -116,3 +117,4 @@ ReConHistory.txt
 ehthumbs.db
 Thumbs.db
 *.lnk
+*.debugInfo

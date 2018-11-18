@@ -125,11 +125,18 @@ THEN
 ObjectSetFlag(_Character, _Flag);
 
 PROC
+LLENEMY_Upgrades_ResetRolledFlags((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisabledFlag, _RolledForFlag, _GroupSuccessFlag)
+THEN
+ObjectClearFlag(_Character, _RolledForFlag);
+
+PROC
 LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag)
 AND
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _CP)
-AND
-LLENEMY_Upgrades_QRY_Internal_LogGroupRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group, _Type)
+//AND
+//LLENEMY_Upgrades_QRY_Internal_LogGroupRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group, _Type)
 AND
 _Roll <= _MaxRoll
 AND
@@ -177,18 +184,18 @@ PROC
 LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_GroupSuccessFlag)
 AND
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type)
+//AND
+//DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _, _EndInt) // 999 is now the max for everything
 AND
-DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _, _EndInt)
-AND
-LeaderLib_Random_QRY(_EndInt)
+LeaderLib_Random_QRY(999)
 AND
 DB_LeaderLib_Random(_Roll)
 AND
 LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure(_Character, _Group, _Type, _Roll)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
-AND
-LLENEMY_Upgrades_QRY_Internal_LogTypeRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group, _Type)
+//AND
+//LLENEMY_Upgrades_QRY_Internal_LogTypeRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group, _Type)
 AND
 _Roll <= _MaxRoll
 AND

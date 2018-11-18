@@ -1,0 +1,17 @@
+new equipment "LLENEMY_BattleChicken_A"
+add equipmentgroup
+add equipment entry "LLENEMY_BattleChicken_Claw_A"
+add equipmentgroup
+add equipment entry "NoShield"
+
+new equipment "LLENEMY_BattleChicken_B"
+add equipmentgroup
+add equipment entry "LLENEMY_BattleChicken_Claw_B"
+add equipmentgroup
+add equipment entry "NoShield"
+
+new equipment "LLENEMY_BattleChicken_C"
+add equipmentgroup
+add equipment entry "LLENEMY_BattleChicken_Claw_C"
+add equipmentgroup
+add equipment entry "NoShield"
