@@ -9,11 +9,11 @@ LLENEMY_Buffs_InitSettings()
 THEN
 LLENEMY_Upgrades_AddGroup("Buffs", "LLENEMY_BuffUpgradesDisabled", "LLENEMY_BuffRolled", "LLENEMY_BuffUpgradeAdded");
 LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 200, 9);
-LLENEMY_Upgrades_AddType("Buffs", "Normal", 201, 500, 5);
-LLENEMY_Upgrades_AddType("Buffs", "Weak", 501, 999, 3);
+LLENEMY_Upgrades_AddType("Buffs", "Normal", 201, 799, 5);
+LLENEMY_Upgrades_AddType("Buffs", "Weak", 800, 999, 3);
 // Can overlap with Elite/Normal
-LLENEMY_Upgrades_AddType("Buffs", "Aura", 50, 99, 7);
-LLENEMY_Upgrades_AddType("Buffs", "Aura", 400, 459, 7);
+LLENEMY_Upgrades_AddType("Buffs", "Aura", 50, 150, 7);
+LLENEMY_Upgrades_AddType("Buffs", "Aura", 400, 550, 7);
  // Can overlap with Elite
 LLENEMY_Upgrades_AddType("Buffs", "Immunity", 1, 55, 12);
 //Normal range
@@ -72,7 +72,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FARSIGHT", 50, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FORTIFIED", 100, 2, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HASTED", 120, 1, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HORNS", 50, 1);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "IMPROVED_INITIATIVE", 160, 1);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FAVOURABLE_WIND", 160, 1);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "MAGIC_SHELL", 100, 2, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "RESTED", 190, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "WINGS", 30, 2);
@@ -113,6 +113,7 @@ LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion_Eite", "LLENEMY_INF_WARP", 
 
 //Special
 LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_DOUBLE_DIP", 30, 4, 0.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_PERSEVERANCE_MASTERY", 150, 6);
 
 LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_ChemicalWarfare", 10);
 LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_MindMaggot", 10);

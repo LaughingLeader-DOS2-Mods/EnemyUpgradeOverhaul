@@ -64,3 +64,4 @@ Stats_LLENEMY_Talent_NaturalConductor	Talent: Natural Conductor
 Stats_LLENEMY_Talent_Unstable	Talent: Unstable
 Stats_LLENEMY_Talent_Weatherproof	Talent: Weatherproof
 Stats_LLENEMY_ChickenOverlord	Chicken Overlord
+Stats_LLENEMY_PerseveranceMastery	Perseverance Mastery

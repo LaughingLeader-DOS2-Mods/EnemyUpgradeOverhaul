@@ -51,3 +51,5 @@ LLENEMY_TALENT_WHATARUSH_Description	Enemy has Increased recovery and maximum Ac
 LLENEMY_TALENT_WHATARUSH_DisplayName	Talent: What a Rush
 LLENEMY_DOUBLE_DIP_DisplayName	Double Dip
 LLENEMY_DOUBLE_DIP_Description	Character is growing even more powerful through a second round of upgrades!
+LLENEMY_PERSEVERANCE_MASTERY_DisplayName	Perseverance Mastery
+LLENEMY_PERSEVERANCE_MASTERY_Description	Character is persevering through sheer force of will.
