@@ -40,6 +40,8 @@ PROC
 LLENEMY_Queue_AddToCombatQueue((CHARACTERGUID)_Character, (INTEGER)_CombatID)
 AND
 DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
+AND
+NOT DB_Stack_UUID(_Character, _)
 THEN
 TimerCancel(_TimerName);
 TimerLaunch(_TimerName, 500);
@@ -115,12 +117,14 @@ DB_CombatCharacters(_Character, _CombatID)
 AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
 AND
-LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
+CharacterIsPlayer(_Player, 1)
 THEN
 LLENEMY_OnCharacterJoinedCombat(_Character, _CombatID);
 
 PROC
 LLENEMY_OnCharacterJoinedCombat((CHARACTERGUID)_Character, (INTEGER)_CombatID)
+AND
+DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
 THEN
 LLENEMY_Queue_AddToCombatQueue(_Character, _CombatID);
 //END_REGION
