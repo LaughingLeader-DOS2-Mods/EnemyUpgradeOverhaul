@@ -19,7 +19,7 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="LaughingLeader" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Upgrades enemies with a wide variety of buffs when they enter combat, and provides bonus treasure depending on how tough they become." type="30" />
+                    <attribute id="Description" value="Upgrades enemies with a wide variety of buffs when they enter combat, and provides bonus treasure depending on the challenge they present." type="30" />
                     <attribute id="Folder" value="EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />

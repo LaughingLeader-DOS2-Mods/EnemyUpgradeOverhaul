@@ -32,12 +32,15 @@ FindValidPosition(_x, _y, _z, 10.0, _Enemy, _tx, _ty, _tz)
 AND
 DB_LLENEMY_ChickenArmada_Members(_Remaining, _Template)
 AND
-TemporaryCharacterCreateAtPosition(_tx, _ty, _tz, _Template, 0, _Chicken)
+TemporaryCharacterCreateAtPosition(_tx, _ty, _tz, _Template, 1, _Chicken)
 AND
 IntegerSubtract(_Remaining, 1, _NextRemaining)
 AND
 GetFaction(_Enemy, _Faction)
 THEN
+SetTag(_Chicken, "LLENEMY_IsTemporaryCharacter");
+SetTag(_Chicken, "LLENEMY_ChickenArmada");
+PlayEffect(_Chicken, "RS3_FX_Skills_Totem_Impact_Summon_Overlay_01");
 ApplyStatus(_Chicken, "SUMMONING_ABILITY", 180.0, 0, _Enemy);
 SetFaction(_Chicken, _Faction);
 ProcCharacterFollowCharacter(_Chicken, _Enemy);
@@ -45,14 +48,28 @@ CharacterSetCorpseLootable(_Chicken, 0);
 LLENEMY_Skills_CreateChickenArmada(_Enemy, _NextRemaining);
 
 IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_Commands_RemoveTemporaryCharacter")
+CharacterPrecogDying(_Chicken)
+AND
+IsTagged(_Chicken, "LLENEMY_ChickenArmada", 1)
+AND
+GetPosition(_Chicken, _x, _y, _z)
 THEN
-RemoveTemporaryCharacter(_Character);
+//CharacterFlushQueue(_Chicken);
+PlayEffect(_Chicken, "RS3_FX_Skills_Totem_Impact_Cannibalize_01");
+PlayEffectAtPosition("RS3_FX_Skills_Totem_Impact_Target_Touch_Root_01_Addon_Feathers", _x, _y, _z);
+CharacterSetAnimationOverride(_Chicken, "die_front_down");
 
 IF
-ObjectFlagSet("LLENEMY_BattleChicken_IsDying", (CHARACTERGUID)_Chicken, _)
+StoryEvent((CHARACTERGUID)_Character, "LLENEMY_OnBattleChickenDied")
 THEN
-PlayAnimation(_Chicken, "die_front_down", "LLENEMY_Commands_RemoveTemporaryCharacter");
+ProcObjectTimer(_Character, "LLENEMY_Timers_RemoveTemporaryCharacter", 1200);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "LLENEMY_Timers_RemoveTemporaryCharacter")
+AND
+IsTagged(_Character, "LLENEMY_IsTemporaryCharacter", 1)
+THEN
+RemoveTemporaryCharacter(_Character);
 //END_REGION
 
 EXITSECTION

@@ -47,7 +47,7 @@ LLENEMY_TALENT_UNSTABLE_Description	Enemy will explode in a bloody cloud when ki
 LLENEMY_TALENT_UNSTABLE_DisplayName	Talent: Unstable
 LLENEMY_TALENT_WEATHERPROOF_Description	Enemy is immune to enviromental effects.
 LLENEMY_TALENT_WEATHERPROOF_DisplayName	Talent: Weatherproof
-LLENEMY_TALENT_WHATARUSH_Description	Enemy has Increased recovery and maximum Action Points when their health is below 50%.
+LLENEMY_TALENT_WHATARUSH_Description	Enemy has increased recovery and maximum Action Points when their health is below 50%.
 LLENEMY_TALENT_WHATARUSH_DisplayName	Talent: What a Rush
 LLENEMY_DOUBLE_DIP_DisplayName	Double Dip
 LLENEMY_DOUBLE_DIP_Description	Character is growing even more powerful through a second round of upgrades!
