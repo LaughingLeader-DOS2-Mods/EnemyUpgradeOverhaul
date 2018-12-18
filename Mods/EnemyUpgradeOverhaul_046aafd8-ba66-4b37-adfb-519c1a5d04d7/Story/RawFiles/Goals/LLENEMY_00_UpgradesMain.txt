@@ -514,6 +514,7 @@ LLENEMY_Upgrades_Internal_ApplyEliteBonuses(_Character, _Group, _Type, _NewAmoun
 LLENEMY_Upgrades_Internal_OnEliteBonusRolled(_Character, _Group, _Type, _NewAmount);
 //END_REGION
 
+
 EXITSECTION
 
 ENDEXITSECTION

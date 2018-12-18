@@ -8,7 +8,7 @@ VARS
 	CHARACTERTEMPLATE:_Template
 	CHARACTER:_Owner
 ON
-	OnCharacterStatusAttempt(__Me, SUMMONING)
+	OnCharacterStatusAttempt(__Me, SUMMONING_ABILITY)
 ACTIONS
 	CharacterPlayEffect(__Me, "RS3_FX_Skills_Totem_Impact_Summon_Overlay_01")
 IF "c1&c2"
@@ -50,11 +50,29 @@ ACTIONS
 	CharacterPlayEffect(__Me, "RS3_FX_Skills_Totem_Impact_Cannibalize_01")
 	PlayEffectAt(__Me, "RS3_FX_Skills_Totem_Impact_Target_Touch_Root_01_Addon_Feathers")
 	SetFlag(__Me, "LLENEMY_BattleChicken_IsDying")
-BEHAVIOUR
 
-REACTION LLENEMY_BattleChicken_DyingAnimation,999
-USAGE ALL
-CHECK "c1"
-	HasFlag(__Me, "LLENEMY_BattleChicken_IsDying")
+EVENT LLENEMY_BattleChicken_LeaveTimer_Start
+ON
+	OnCharacterStatusRemoved(__Me, SUMMONING_ABILITY)
 ACTIONS
-	CharacterPlayAnimation("die_front_down", 1, 0)
+	CharacterDie(__Me, Lifetime, __Me)
+
+/*
+EVENT LLENEMY_BattleChicken_LeaveTimer_Start
+ON
+	OnLeftCombat(__Me, _)
+ACTIONS
+	StartTimer("LLENEMY_Timers_BattleChicken_Leave", 15.0, 0)
+	
+EVENT LLENEMY_BattleChicken_LeaveTimer_Cancel
+ON
+	OnEnteredCombat(__Me, _)
+ACTIONS
+	StopTimer("LLENEMY_Timers_BattleChicken_Leave")
+
+EVENT LLENEMY_BattleChicken_LeaveTimer_Done
+ON
+	OnTimer("LLENEMY_Timers_BattleChicken_Leave")
+ACTIONS
+	CharacterDie(__Me, Lifetime, __Me)
+*/

@@ -1,0 +1,61 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_SKills_InitSettings();
+
+KBSECTION
+//REGION SETTINGS
+PROC
+LLENEMY_SKills_InitSettings()
+THEN
+DB_LLENEMY_ChickenArmada_Members(5, "LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110");
+DB_LLENEMY_ChickenArmada_Members(4, "LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110");
+DB_LLENEMY_ChickenArmada_Members(3, "LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110");
+DB_LLENEMY_ChickenArmada_Members(2, "LLENEMY_Animals_Chicken_BattleChicken_B_3e25cbea-a588-46ae-9020-2e081676966d");
+DB_LLENEMY_ChickenArmada_Members(1, "LLENEMY_Animals_Chicken_BattleChicken_C_09ed8c09-a51c-4ee2-aa41-a5f4332ac861");
+//END_REGION
+
+//REGION CHICKEN_ARMADA
+IF
+SkillCast(_Enemy, "Shout_LLENEMY_SummonChickenArmada", _, _)
+THEN
+LLENEMY_Skills_CreateChickenArmada(_Enemy, 5);
+
+PROC
+LLENEMY_Skills_CreateChickenArmada((CHARACTERGUID)_Enemy, (INTEGER)_Remaining)
+AND
+_Remaining > 0
+AND
+GetPosition(_Enemy, _x, _y, _z)
+AND
+FindValidPosition(_x, _y, _z, 10.0, _Enemy, _tx, _ty, _tz)
+AND
+DB_LLENEMY_ChickenArmada_Members(_Remaining, _Template)
+AND
+TemporaryCharacterCreateAtPosition(_tx, _ty, _tz, _Template, 0, _Chicken)
+AND
+IntegerSubtract(_Remaining, 1, _NextRemaining)
+AND
+GetFaction(_Enemy, _Faction)
+THEN
+ApplyStatus(_Chicken, "SUMMONING_ABILITY", 180.0, 0, _Enemy);
+SetFaction(_Chicken, _Faction);
+ProcCharacterFollowCharacter(_Chicken, _Enemy);
+CharacterSetCorpseLootable(_Chicken, 0);
+LLENEMY_Skills_CreateChickenArmada(_Enemy, _NextRemaining);
+
+IF
+StoryEvent((CHARACTERGUID)_Character, "LLENEMY_Commands_RemoveTemporaryCharacter")
+THEN
+RemoveTemporaryCharacter(_Character);
+
+IF
+ObjectFlagSet("LLENEMY_BattleChicken_IsDying", (CHARACTERGUID)_Chicken, _)
+THEN
+PlayAnimation(_Chicken, "die_front_down", "LLENEMY_Commands_RemoveTemporaryCharacter");
+//END_REGION
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

@@ -12,7 +12,7 @@
                             <attribute id="MD5" value="" type="23" />
                             <attribute id="Name" value="LeaderLib - Definitive Edition" type="22" />
                             <attribute id="UUID" value="7e737d2f-31d2-4751-963f-be6ccc59cd0c" type="22" />
-                            <attribute id="Version" value="285671424" type="4" />
+                            <attribute id="Version" value="285736960" type="4" />
                         </node>
                     </children>
                 </node>
@@ -37,7 +37,24 @@
                         <node id="PublishVersion">
                             <attribute id="Version" value="907936416" type="4" />
                         </node>
-                        <node id="Scripts" />
+                        <node id="Scripts">
+                            <children>
+                                <node id="Script">
+                                    <attribute id="UUID" value="00d53598-9c33-4f7c-b3ec-e8addb041ffe" type="22" />
+                                    <children>
+                                        <node id="Parameters">
+                                            <children>
+                                                <node id="Parameter">
+                                                    <attribute id="MapKey" value="HardcoreOnly" type="22" />
+                                                    <attribute id="Type" value="1" type="4" />
+                                                    <attribute id="Value" value="0" type="23" />
+                                                </node>
+                                            </children>
+                                        </node>
+                                    </children>
+                                </node>
+                            </children>
+                        </node>
                         <node id="TargetModes">
                             <children>
                                 <node id="Target">

@@ -806,7 +806,7 @@ data "Act part" "0"
 data "Flags" "ChickenImmunity"
 data "VitalityBoost" "50"
 data "MovementSpeedBoost" "25"
-data "Summoning" "9"
+data "Summoning" "10"
 data "MaxSummons" "10"
 
 new entry "LLENEMY_DOUBLE_DIP"

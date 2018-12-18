@@ -1,0 +1,49 @@
+INIT
+
+
+EVENTS
+
+/*
+EVENT LLENEMY_ChickenArmada_Summon
+VARS
+	CHARACTER:_Enemy
+	CHARACTER:_Chicken1
+	CHARACTER:_Chicken2
+	CHARACTER:_Chicken3
+	CHARACTER:_Chicken4
+	CHARACTER:_Chicken5
+	INT:_IsSummon
+	FIXEDSTRING:_Faction
+	FLOAT:_LevelF
+	INT:_Level
+	INT:_Turns
+ON
+	OnSkillCast(_Enemy, Shout_LLENEMY_SummonChickenArmada)
+ACTIONS
+IF "c1&c2"
+	CharacterGetStat(_LevelF, _Enemy, Level)
+	GetFaction(_Faction, _Enemy)
+THEN
+	Cast(_Level, _LevelF)
+	Set(_IsSummon, 0)
+	SpawnCharacter(_Chicken1, LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110, _Enemy, 0, _IsSummon, _Enemy, _Level)
+	SpawnCharacter(_Chicken2, LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110, _Enemy, 0, _IsSummon, _Enemy, _Level)
+	SpawnCharacter(_Chicken3, LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110, _Enemy, 0, _IsSummon, _Enemy, _Level)
+	SpawnCharacter(_Chicken4, LLENEMY_Animals_Chicken_BattleChicken_B_3e25cbea-a588-46ae-9020-2e081676966d, _Enemy, 0, _IsSummon, _Enemy, _Level)
+	SpawnCharacter(_Chicken5, LLENEMY_Animals_Chicken_BattleChicken_C_09ed8c09-a51c-4ee2-aa41-a5f4332ac861, _Enemy, 0, _IsSummon, _Enemy, _Level)
+
+	SetFaction(_Chicken1, _Faction)
+	SetFaction(_Chicken2, _Faction)
+	SetFaction(_Chicken3, _Faction)
+	SetFaction(_Chicken4, _Faction)
+	SetFaction(_Chicken5, _Faction)
+	
+	Set(_Turns, 5)
+	
+	CharacterApplyStatus(_Chicken1, SUMMONING_ABILITY, _Turns, 0, _Enemy)
+	CharacterApplyStatus(_Chicken2, SUMMONING_ABILITY, _Turns, 0, _Enemy)
+	CharacterApplyStatus(_Chicken3, SUMMONING_ABILITY, _Turns, 0, _Enemy)
+	CharacterApplyStatus(_Chicken4, SUMMONING_ABILITY, _Turns, 0, _Enemy)
+	CharacterApplyStatus(_Chicken5, SUMMONING_ABILITY, _Turns, 0, _Enemy)
+ENDIF
+*/

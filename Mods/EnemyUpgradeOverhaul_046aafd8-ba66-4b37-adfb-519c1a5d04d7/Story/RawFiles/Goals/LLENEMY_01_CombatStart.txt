@@ -94,6 +94,8 @@ CharacterIsPartyFollower(_Character, 0)
 AND
 CharacterIsSummon(_Character, 0)
 AND
+IsTagged(_Character, "LLENEMY_UpgradesDisabled", 0)
+AND
 CombatGetInvolvedPlayer(_CombatID, 1, _Player)
 AND
 CharacterIsEnemy(_Character, _Player, 1)
