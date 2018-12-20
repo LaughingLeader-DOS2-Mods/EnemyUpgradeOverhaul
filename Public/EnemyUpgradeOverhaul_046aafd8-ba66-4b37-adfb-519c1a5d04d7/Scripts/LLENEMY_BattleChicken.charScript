@@ -17,7 +17,7 @@ IF "c1&c2"
 THEN
 	CharacterApplyStatus(__Me, FIRE_IMMUNITY, -1, 1, __Me)
 	//CharacterApplyStatus(__Me, FLAMING_CRESCENDO, 3, 0, __Me)
-	SetFlag(__Me, "LLENEMY_BattleChicken_FlamingCrescendoActive")
+	//SetFlag(__Me, "LLENEMY_BattleChicken_FlamingCrescendoActive")
 ELIF "c1"
 	IsEqual(_Template, LLENEMY_Animals_Chicken_BattleChicken_C_09ed8c09-a51c-4ee2-aa41-a5f4332ac861)
 THEN
@@ -25,12 +25,7 @@ THEN
 	//SetMaterial(__Me, "4602b609-c93f-4d45-a2cb-273462c0b54e", -1, 1, 0, 0, 0, 0, 0)
 	//LLENEMY_BattleChicken_Medic_PBR
 	SetMaterial(__Me, "bf1b4603-ed69-4599-bc97-158b9f671986", -1, 1, 0, 0, 0, 0, 0)
-	CharacterApplyStatus(__Me, HEALING_TEARS, -1, 1, __Me)
-	IF "c1"
-		CharacterGetOwner(_Owner, __Me)
-	THEN
-		TeleportTo(__Me, _Owner)
-	ENDIF
+	//CharacterApplyStatus(__Me, HEALING_TEARS, -1, 1, __Me)
 ENDIF
 
 /*
@@ -44,6 +39,20 @@ THEN
 	CharacterApplyStatus(__Me, FLAMING_CRESCENDO, 2, 0, __Me)
 ENDIF
 */
+
+EVENT LLENEMY_BattleChicken_FollowOwner
+VARS
+	CHARACTER:_Owner
+ON
+	OnLeftCombat(__Me, _)
+ACTIONS
+IF "c1&!c2&!c3"
+	GetVar(_Owner, __Me, "LLENEMY_ChickenOverlord")
+	CharacterIsDead(_Owner, 1)
+	IsInCombat(_Owner)
+THEN
+	CharacterCharacterEvent(__Me, _Owner, "LLENEMY_BattleChicken_FollowOwner")
+ENDIF
 
 EVENT LLENEMY_BattleChicken_Died
 ON

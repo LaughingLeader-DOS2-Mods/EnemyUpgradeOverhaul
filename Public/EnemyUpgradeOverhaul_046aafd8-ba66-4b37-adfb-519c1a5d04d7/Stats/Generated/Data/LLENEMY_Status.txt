@@ -807,7 +807,7 @@ data "Flags" "ChickenImmunity"
 data "VitalityBoost" "50"
 data "MovementSpeedBoost" "25"
 data "Summoning" "10"
-data "MaxSummons" "10"
+data "MaxSummons" "4"
 
 new entry "LLENEMY_DOUBLE_DIP"
 type "StatusData"
