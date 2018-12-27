@@ -6,10 +6,17 @@
         <node id="root">
             <children>
                 <node id="DialogVariable">
+                    <attribute id="DefaultValue" value="Disabled" type="23" />
+                    <attribute id="Description" value="" type="23" />
+                    <attribute id="UUID" value="4f2c6435-4ddc-4e2c-90d9-6506acb179ba" type="31" />
+                    <attribute id="name" value="LLENEMY_EnemyLeveling_ExpectedLevel" type="22" />
+                    <attribute id="type" value="String" type="23" />
+                </node>
+                <node id="DialogVariable">
                     <attribute id="DefaultValue" value="0" type="23" />
                     <attribute id="Description" value="" type="23" />
                     <attribute id="UUID" value="374d0f1d-bd61-4736-ad24-b1876a803c2f" type="31" />
-                    <attribute id="name" value="LLENEMY_EnemyLevelingModifier" type="22" />
+                    <attribute id="name" value="LLENEMY_EnemyLeveling_Modifier" type="22" />
                     <attribute id="type" value="Int" type="23" />
                 </node>
             </children>

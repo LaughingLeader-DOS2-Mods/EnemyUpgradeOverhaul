@@ -29,6 +29,52 @@ THEN
 ObjectClearFlag(_Speaker, "LLENEMY_EnemyLeveling_Reset");
 LLENEMY_Scaling_ResetLevelModifier();
 
+IF
+DialogStarted("LLENEMY_Settings", _)
+THEN
+LLENEMY_Scaling_UpdateDialogVariables();
+
+IF
+DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
+THEN
+LLENEMY_Scaling_UpdateDialogVariables();
+
+IF
+GlobalFlagCleared("LLENEMY_EnemyLevelingEnabled")
+THEN
+LLENEMY_Scaling_UpdateDialogVariables();
+
+PROC
+LLENEMY_Scaling_UpdateDialogVariables()
+AND
+DB_LLENEMY_LevelModifier(_Modifier)
+THEN
+DialogSetVariableInt("LLENEMY_Settings", "LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f", _Modifier);
+
+PROC
+LLENEMY_Scaling_UpdateDialogVariables()
+AND
+NOT DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
+THEN
+DialogSetVariableString("LLENEMY_Settings", "LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba", "Disabled");
+
+PROC
+LLENEMY_Scaling_UpdateDialogVariables()
+AND
+DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
+AND
+CharacterGetHostCharacter(_Host)
+AND
+CharacterGetLevel(_Host, _Level)
+AND
+DB_LLENEMY_LevelModifier(_Modifier)
+AND
+IntegerSum(_Level, _Modifier, _EnemyLevel)
+AND
+IntegertoString(_EnemyLevel, _EnemyLevelStr)
+THEN
+DialogSetVariableString("LLENEMY_Settings", "LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba", _EnemyLevelStr);
+
 /*
 IF
 DialogEnded("LLENEMY_Settings", _Instance)
@@ -51,7 +97,7 @@ IntegerMax(0, _NextModifier, _ClampedModifier)
 THEN
 NOT DB_LLENEMY_LevelModifier(_Modifier);
 DB_LLENEMY_LevelModifier(_ClampedModifier);
-DialogSetVariableInt("LLENEMY_Settings", "LLENEMY_EnemyLevelingModifier_374d0f1d-bd61-4736-ad24-b1876a803c2f", _ClampedModifier);
+LLENEMY_Scaling_UpdateDialogVariables();
 
 PROC
 LLENEMY_Scaling_ResetLevelModifier()
@@ -60,7 +106,7 @@ DB_LLENEMY_LevelModifier(_Modifier)
 THEN
 NOT DB_LLENEMY_LevelModifier(_Modifier);
 DB_LLENEMY_LevelModifier(0);
-DialogSetVariableInt("LLENEMY_Settings", "LLENEMY_EnemyLevelingModifier_374d0f1d-bd61-4736-ad24-b1876a803c2f", 0);
+LLENEMY_Scaling_UpdateDialogVariables();
 //END_REGION
 
 //REGION LEVELING

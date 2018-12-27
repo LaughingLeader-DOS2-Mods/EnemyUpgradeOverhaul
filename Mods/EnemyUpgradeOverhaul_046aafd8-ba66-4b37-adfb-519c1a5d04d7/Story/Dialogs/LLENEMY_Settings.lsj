@@ -2779,12 +2779,15 @@
                                                 "DialogVariables" : [
                                                    {
                                                       "DialogVariables" : {"type" : 22, "value" : "374d0f1d-bd61-4736-ad24-b1876a803c2f"}
+                                                   },
+                                                   {
+                                                      "DialogVariables" : {"type" : 22, "value" : "4f2c6435-4ddc-4e2c-90d9-6506acb179ba"}
                                                    }
                                                 ],
                                                 "TagText" : {
                                                    "handle" : "ls::TranslatedStringRepository::s_HandleUnknown",
                                                    "type" : 28,
-                                                   "value" : "Enemy Scaling Settings<br>Level Modifier: [LLENEMY_EnemyLevelingModifier_374d0f1d-bd61-4736-ad24-b1876a803c2f]"
+                                                   "value" : "Enemy Scaling Settings<br>Level Modifier: [LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f]<br>Scaled Enemy Level: [LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba]"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
