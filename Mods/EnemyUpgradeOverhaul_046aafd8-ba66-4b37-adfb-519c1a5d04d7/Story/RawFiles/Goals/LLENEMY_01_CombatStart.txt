@@ -147,6 +147,7 @@ ObjectIsCharacter((CHARACTERGUID)_Character, 1)
 THEN
 NOT DB_Stack_UUID(_Character, _UUID);
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:DB_TopOfStack] Applying buffs to character in via combat queue [",_TimerName,"].");
+LLENEMY_Scaling_LevelUpEnemy(_Character);
 LLENEMY_Upgrades_RollForUpgrades(_Character);
 LLENEMY_Upgrades_OnRollingDone(_Character);
 PopStack(_TimerName);
@@ -196,6 +197,7 @@ AND
 NOT DB_LLENEMY_CombatQueue(_CombatID, _)
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:OnCharacterJoinedCombat] Combat queue doesn't exist. Applying buffs instantly.");
+LLENEMY_Scaling_LevelUpEnemy(_Character);
 LLENEMY_Upgrades_RollForUpgrades(_Character);
 LLENEMY_Upgrades_OnRollingDone(_Character);
 //END_REGION

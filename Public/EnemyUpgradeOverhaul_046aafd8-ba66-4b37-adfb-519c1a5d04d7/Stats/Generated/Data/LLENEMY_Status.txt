@@ -109,6 +109,13 @@ data "Description" "LLENEMY_TALENT_QUICKSTEP_Description"
 data "DescriptionRef" "Enemy gets 1 AP worth of free movement each turn."
 data "Icon" "Talent_The_Pawn"
 data "Items" "LLENEMY_TalentBelt_QuickStep"
+data "StatsId" "Stats_LLENEMY_Talent_Quickstep"
+
+new entry "Stats_LLENEMY_Talent_Quickstep"
+type "Potion"
+data "Act" "1"
+data "Act part" "0"
+data "RogueLore" "1"
 
 new entry "LLENEMY_TALENT_RANGERRANGE"
 type "StatusData"

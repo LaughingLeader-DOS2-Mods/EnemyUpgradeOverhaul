@@ -33,6 +33,7 @@ Stats_LLENEMY_Boost_Vitality_35	Vitality Boost
 Stats_LLENEMY_Boost_Vitality_40	Vitality Boost
 Stats_LLENEMY_Boost_Vitality_45	Vitality Boost
 Stats_LLENEMY_Boost_Vitality_50	Vitality Boost
+Stats_LLENEMY_ChickenOverlord	Chicken Overlord
 Stats_LLENEMY_Infusion_Acid	Melter
 Stats_LLENEMY_Infusion_Acid_G	Elite Melter
 Stats_LLENEMY_Infusion_Blessed_Ice	Heatsapper
@@ -58,10 +59,10 @@ Stats_LLENEMY_Infusion_Warp	Warper
 Stats_LLENEMY_Infusion_Water	Cascader
 Stats_LLENEMY_Infusion_Water_G	Elite Cascader
 Stats_LLENEMY_LoseControlImmunity	Perfect Control
+Stats_LLENEMY_PerseveranceMastery	Perseverance Mastery
 Stats_LLENEMY_RangerRange	Talent: Quickdraw
 Stats_LLENEMY_Talent_LightningRod	Talent: Lightning Rod
 Stats_LLENEMY_Talent_NaturalConductor	Talent: Natural Conductor
+Stats_LLENEMY_Talent_Quickstep	Talent: The Pawn
 Stats_LLENEMY_Talent_Unstable	Talent: Unstable
 Stats_LLENEMY_Talent_Weatherproof	Talent: Weatherproof
-Stats_LLENEMY_ChickenOverlord	Chicken Overlord
-Stats_LLENEMY_PerseveranceMastery	Perseverance Mastery
