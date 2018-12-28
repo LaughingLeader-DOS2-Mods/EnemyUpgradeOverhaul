@@ -93,10 +93,12 @@ DB_LLENEMY_LevelModifier(_Modifier)
 AND
 IntegerSum(_Modifier, _ByAmount, _NextModifier)
 AND
-IntegerMax(0, _NextModifier, _ClampedModifier)
+IntegerMax(-1, _NextModifier, _ClampedModifier1)
+AND
+IntegerMin(_ClampedModifier1, 20, _ClampedModifier2)
 THEN
 NOT DB_LLENEMY_LevelModifier(_Modifier);
-DB_LLENEMY_LevelModifier(_ClampedModifier);
+DB_LLENEMY_LevelModifier(_ClampedModifier2);
 LLENEMY_Scaling_UpdateDialogVariables();
 
 PROC
@@ -122,6 +124,8 @@ AND
 DB_LLENEMY_LevelModifier(_Modifier)
 AND
 IntegerSum(_Level, _Modifier, _TargetLevel)
+AND
+_TargetLevel > 1
 THEN
 CharacterLevelUpTo(_Character, _TargetLevel);
 //END_REGION
