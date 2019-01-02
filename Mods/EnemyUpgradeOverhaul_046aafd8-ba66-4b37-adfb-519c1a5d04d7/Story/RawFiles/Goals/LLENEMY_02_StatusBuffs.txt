@@ -33,15 +33,15 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VAMPIRISM_AURA", 50, 5);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VENOM_AURA", 169, 4);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "WATER_IMMUNITY_AURA", 40, 5, 12.0);
 
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 100, 3, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 180, 8);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 120, 3, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_TONGUES", 160, 5);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 80, 9);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 59, 7);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 190, 6);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 20, 9);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 69, 7);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 200, 6);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 120, 4);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Immunity", "ELECTRIC_SKIN", 60, 6, 12.0);
