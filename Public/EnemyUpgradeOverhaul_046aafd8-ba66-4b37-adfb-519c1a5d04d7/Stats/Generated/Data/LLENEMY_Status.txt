@@ -811,7 +811,7 @@ type "Potion"
 data "Act" "1"
 data "Act part" "0"
 data "Flags" "ChickenImmunity"
-data "VitalityBoost" "5"
+data "VitalityBoost" "10"
 data "MovementSpeedBoost" "25"
 data "Summoning" "5"
 

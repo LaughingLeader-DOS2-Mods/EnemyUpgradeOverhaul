@@ -187,7 +187,7 @@ DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _MaxRoll);
 
 //REGION RESET_DATA
 PROC
-LLENEMY_Upgrades_ResetData()
+LLENEMY_Upgrades_ResetUpgradeData()
 THEN
 SysClear("DB_LLENEMY_Upgrades_Groups", 4);
 SysClear("DB_LLENEMY_Upgrades_Types", 5);
@@ -199,6 +199,14 @@ SysClear("DB_LLENEMY_GrenadeSkills", 3);
 LLENEMY_Buffs_InitSettings();
 LLENEMY_Talents_InitSettings();
 LLENEMY_Stats_InitSettings();
+//END_REGION
+
+//REGION UPDATES
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, "1.1.1.0")
+THEN
+LLENEMY_Upgrades_ResetUpgradeData();
+LeaderLog_Log("DEBUG", "[LLENEMY:UpgradesMain:LeaderUpdater_ModUpdated] Updating upgrade settings from version [",_OldVersion,"].");
 //END_REGION
 
 //REGION APPLYING

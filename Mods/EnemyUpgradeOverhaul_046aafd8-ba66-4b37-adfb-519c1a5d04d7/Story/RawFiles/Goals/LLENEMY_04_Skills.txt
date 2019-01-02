@@ -11,14 +11,8 @@ THEN
 LLENEMY_Skills_AddChickenMember("LLENEMY_Animals_Chicken_BattleChicken_C_09ed8c09-a51c-4ee2-aa41-a5f4332ac861");
 LLENEMY_Skills_AddChickenMember("LLENEMY_Animals_Chicken_BattleChicken_B_3e25cbea-a588-46ae-9020-2e081676966d");
 LLENEMY_Skills_AddChickenMember("LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110");
-LLENEMY_Skills_AddChickenMember("LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110");
-LLENEMY_Skills_AddChickenMember("LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110");
-
-PROC
-LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, "1.0.0.1")
-THEN
-SysClear("DB_LLENEMY_ChickenArmada_Members", 2);
-LLENEMY_SKills_InitSettings();
+//LLENEMY_Skills_AddChickenMember("LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110");
+//LLENEMY_Skills_AddChickenMember("LLENEMY_Animals_Chicken_BattleChicken_A_2f26c1bf-5ecd-41f2-a692-9333d8435110");
 
 PROC
 LLENEMY_Skills_AddChickenMember((STRING)_Template)
@@ -28,6 +22,22 @@ AND
 IntegerSum(_Count, 1, _Index)
 THEN
 DB_LLENEMY_ChickenArmada_Members(_Index, _Template);
+//END_REGION
+
+//REGION RESET_DATA
+PROC
+LLENEMY_Skills_ResetData()
+THEN
+SysClear("DB_LLENEMY_ChickenArmada_Members", 2);
+LLENEMY_SKills_InitSettings();
+//END_REGION
+
+//REGION UPDATES
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, "1.1.1.0")
+THEN
+LLENEMY_Skills_ResetData();
+LeaderLog_Log("DEBUG", "[LLENEMY:Skills:LeaderUpdater_ModUpdated] Updating skill settings from version [",_OldVersion,"].");
 //END_REGION
 
 //REGION CHICKEN_ARMADA
