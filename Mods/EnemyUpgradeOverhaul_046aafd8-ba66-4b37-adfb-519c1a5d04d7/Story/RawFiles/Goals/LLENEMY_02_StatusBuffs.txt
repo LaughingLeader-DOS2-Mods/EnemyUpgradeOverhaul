@@ -79,30 +79,30 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "WINGS", 30, 2);
 //Rolled separately, in addition to the previous types
 LLENEMY_Upgrades_AddGroup("Bonus", "LLENEMY_BonusBuffUpgradesDisabled", "LLENEMY_BonusBuffRolled", "LLENEMY_BonusBuffUpgradeAdded");
 LLENEMY_Upgrades_AddType("Bonus", "Infusion_Elite", 1, 99, 10);
-LLENEMY_Upgrades_AddType("Bonus", "Infusion", 300, 599, 7);
+LLENEMY_Upgrades_AddType("Bonus", "Infusion", 400, 599, 7);
 LLENEMY_Upgrades_AddType("Bonus", "Special", 90, 350, 2);
 
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ACID", 60, 4);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLESSED_ICE", 60, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLOOD", 140, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_CURSED_ELECTRIC", 50, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ELECTRIC", 110, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_FIRE", 110, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_NECROFIRE", 60, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_OIL", 139, 5);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_POISON", 140, 4);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_WATER", 130, 3);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ACID", 60, 4, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLESSED_ICE", 60, 5, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLOOD", 140, 5, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_CURSED_ELECTRIC", 50, 5, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ELECTRIC", 110, 5, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_FIRE", 110, 5, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_NECROFIRE", 60, 6, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_OIL", 139, 5, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_POISON", 140, 4, 24.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_WATER", 130, 3, 24.0);
 
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ACID_G", 60, 8);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLESSED_ICE_G", 60, 8);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLOOD_G", 140, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_CURSED_ELECTRIC_G", 50, 9);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ELECTRIC_G", 110, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_FIRE_G", 110, 7);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_NECROFIRE_G", 60, 10);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_OIL_G", 139, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_POISON_G", 140, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_WATER_G", 130, 4);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ACID_G", 60, 8, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLESSED_ICE_G", 60, 8, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLOOD_G", 140, 6, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_CURSED_ELECTRIC_G", 50, 9, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ELECTRIC_G", 110, 6, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_FIRE_G", 110, 7, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_NECROFIRE_G", 60, 10, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_OIL_G", 139, 6, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_POISON_G", 140, 6, 36.0);
+LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_WATER_G", 130, 4, 48.0);
 
 //Can overlap with other infusions
 LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_RANGED", 199, 499, 4);

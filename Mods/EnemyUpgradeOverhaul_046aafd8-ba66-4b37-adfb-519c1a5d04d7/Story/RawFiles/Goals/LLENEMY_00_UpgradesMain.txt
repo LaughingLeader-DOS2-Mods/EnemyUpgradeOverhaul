@@ -331,7 +331,7 @@ AND
 CharacterGetDisplayName(_Character, _, _Name)
 THEN
 NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForTalent] [",_Name,"] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
+LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForStatusUpgrade] [",_Name,"] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
 LLENEMY_Upgrades_ApplyUpgrade(_Character, _Status, _Duration, _CP);
 LLENEMY_Upgrades_OnRollForGroupSucceeded(_Character, _Group, _Type, _GroupSuccessFlag);
 
