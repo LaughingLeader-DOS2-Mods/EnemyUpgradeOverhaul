@@ -115,11 +115,22 @@ LLENEMY_OnCharacterJoinedCombat(_Character, _CombatID);
 PROC
 ProcMakeNPCHostile((CHARACTERGUID)_Player, (CHARACTERGUID)_Character)
 AND
-DB_CombatCharacters(_Character, _CombatID)
+CharacterIsPlayer(_Player, 1)
+AND
+CombatGetIDForCharacter(_Character, _CombatID)
 AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
+THEN
+LLENEMY_OnCharacterJoinedCombat(_Character, _CombatID);
+
+PROC
+ProcMakeNPCHostile((CHARACTERGUID)_Character, (CHARACTERGUID)_Player)
 AND
 CharacterIsPlayer(_Player, 1)
+AND
+CombatGetIDForCharacter(_Character, _CombatID)
+AND
+NOT DB_LLENEMY_SkipCombat(_CombatID)
 THEN
 LLENEMY_OnCharacterJoinedCombat(_Character, _CombatID);
 
