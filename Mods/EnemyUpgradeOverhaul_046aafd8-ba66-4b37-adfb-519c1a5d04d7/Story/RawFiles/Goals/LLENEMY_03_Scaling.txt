@@ -115,6 +115,8 @@ LLENEMY_Scaling_UpdateDialogVariables();
 PROC
 LLENEMY_Scaling_LevelUpEnemy((CHARACTERGUID)_Character)
 AND
+NOT DB_Origins(_Character) // Don't do anything for Origin characters, since they may be recruited again
+AND
 DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
 AND
 CharacterGetHostCharacter(_Host)

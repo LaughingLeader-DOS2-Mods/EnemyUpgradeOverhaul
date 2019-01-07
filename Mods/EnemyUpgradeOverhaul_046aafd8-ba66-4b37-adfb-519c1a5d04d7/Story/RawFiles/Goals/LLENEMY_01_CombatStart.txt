@@ -88,6 +88,8 @@ NOT DB_StackInternalMember(_NewAmount, _TimerName, _Value);
 QRY
 LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Character, (INTEGER)_CombatID)
 AND
+NOT DB_Origins(_Character) // Don't do anything for Origin characters, since they may be recruited again
+AND
 CharacterIsPlayer(_Character, 0)
 AND
 CharacterIsPartyFollower(_Character, 0)
