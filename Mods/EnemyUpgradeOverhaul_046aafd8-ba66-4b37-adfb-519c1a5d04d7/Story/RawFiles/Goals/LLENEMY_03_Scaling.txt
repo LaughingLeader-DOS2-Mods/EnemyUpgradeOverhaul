@@ -126,6 +126,25 @@ AND
 DB_LLENEMY_LevelModifier(_Modifier)
 AND
 IntegerSum(_Level, _Modifier, _TargetLevel)
+THEN
+LLENEMY_Scaling_Internal_LevelUpEnemyWithCap(_Character, _TargetLevel);
+
+PROC
+LLENEMY_Scaling_Internal_LevelUpEnemyWithCap((CHARACTERGUID)_Character, (INTEGER)_TargetLevel)
+AND
+NOT DB_GlobalFlag("LLENEMY_Debug_LevelCapDisabled")
+AND
+IntegerMin(_TargetLevel, 35, _CappedLevel)
+AND
+_CappedLevel > 1
+THEN
+CharacterLevelUpTo(_Character, _CappedLevel);
+
+//May crash if the target level is greater than 35
+PROC
+LLENEMY_Scaling_Internal_LevelUpEnemyWithCap((CHARACTERGUID)_Character, (INTEGER)_TargetLevel)
+AND
+DB_GlobalFlag("LLENEMY_Debug_LevelCapDisabled")
 AND
 _TargetLevel > 1
 THEN
