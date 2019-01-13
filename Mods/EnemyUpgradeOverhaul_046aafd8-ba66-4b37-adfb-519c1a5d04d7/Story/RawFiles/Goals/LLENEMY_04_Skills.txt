@@ -34,7 +34,9 @@ LLENEMY_SKills_InitSettings();
 
 //REGION UPDATES
 PROC
-LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, "1.1.1.0")
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 1, 0)
 THEN
 LLENEMY_Skills_ResetData();
 LeaderLog_Log("DEBUG", "[LLENEMY:Skills:LeaderUpdater_ModUpdated] Updating skill settings from version [",_OldVersion,"].");
