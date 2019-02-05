@@ -90,6 +90,8 @@ LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Character, (INTEGER)_CombatID)
 AND
 NOT DB_Origins(_Character) // Don't do anything for Origin characters, since they may be recruited again
 AND
+NOT DB_IsPlayer(_Character)
+AND
 CharacterIsPlayer(_Character, 0)
 AND
 CharacterIsPartyFollower(_Character, 0)
@@ -109,6 +111,8 @@ ObjectEnteredCombat((CHARACTERGUID)_Character, _CombatID)
 AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
 AND
+NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Character)
+AND
 LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
 THEN
 LLENEMY_OnCharacterJoinedCombat(_Character, _CombatID);
@@ -119,7 +123,13 @@ ProcMakeNPCHostile((CHARACTERGUID)_Player, (CHARACTERGUID)_Character)
 AND
 CharacterIsPlayer(_Player, 1)
 AND
+NOT DB_IsPlayer(_Character)
+AND
+NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Character)
+AND
 CombatGetIDForCharacter(_Character, _CombatID)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
 AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
 THEN
@@ -130,7 +140,13 @@ ProcMakeNPCHostile((CHARACTERGUID)_Character, (CHARACTERGUID)_Player)
 AND
 CharacterIsPlayer(_Player, 1)
 AND
+NOT DB_IsPlayer(_Character)
+AND
+NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Character)
+AND
 CombatGetIDForCharacter(_Character, _CombatID)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
 AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
 THEN
