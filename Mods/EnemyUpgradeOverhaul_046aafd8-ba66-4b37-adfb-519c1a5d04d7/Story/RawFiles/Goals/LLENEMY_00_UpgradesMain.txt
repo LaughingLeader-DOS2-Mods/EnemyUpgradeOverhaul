@@ -205,6 +205,14 @@ LLENEMY_Stats_InitSettings();
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
 AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 2, 0)
+THEN
+LLENEMY_Upgrades_ResetUpgradeData();
+LLENEMY_Debug_RemoveStackedWeaponAuras("VENOM_AURA", "FIRE_BRAND_AURA");
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
 LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 1, 2)
 THEN
 LLENEMY_Upgrades_ResetUpgradeData();
@@ -220,6 +228,25 @@ AND
 LeaderLib_Helper_QRY_HasPermanentStatus(_Enemy, _Status)
 THEN
 RemoveStatus(_Enemy, _Status);
+
+//Two bonus weapon aura statuses apparently cause lag?
+PROC
+LLENEMY_Debug_RemoveStackedWeaponAuras((STRING)_Status, (STRING)_Status2)
+AND
+DB_CombatCharacters(_Enemy, _CombatID)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+HasActiveStatus(_Enemy, _Status, 1)
+AND
+DB_CombatCharacters(_OtherEnemy, _CombatID)
+AND
+NOT DB_IsPlayer(_OtherEnemy)
+AND
+HasActiveStatus(_OtherEnemy, _Status2, 1)
+THEN
+RemoveStatus(_Enemy, _Status);
+//RemoveStatus(_OtherEnemy, _Status2);
 //END_REGION
 
 //REGION APPLYING

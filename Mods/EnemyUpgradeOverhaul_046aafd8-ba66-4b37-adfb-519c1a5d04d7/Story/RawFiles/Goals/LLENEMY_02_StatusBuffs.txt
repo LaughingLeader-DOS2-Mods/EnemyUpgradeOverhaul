@@ -13,7 +13,7 @@ LLENEMY_Upgrades_AddType("Buffs", "Normal", 201, 799, 5);
 LLENEMY_Upgrades_AddType("Buffs", "Weak", 800, 999, 3);
 // Can overlap with Elite/Normal
 LLENEMY_Upgrades_AddType("Buffs", "Aura", 50, 150, 7);
-LLENEMY_Upgrades_AddType("Buffs", "Aura", 400, 550, 7);
+//LLENEMY_Upgrades_AddType("Buffs", "Aura", 400, 550, 7);
  // Can overlap with Elite/Normal
 LLENEMY_Upgrades_AddType("Buffs", "Immunity", 1, 55, 12);
 LLENEMY_Upgrades_AddType("Buffs", "Immunity", 230, 289, 12);
@@ -21,16 +21,16 @@ LLENEMY_Upgrades_AddType("Buffs", "Immunity", 230, 289, 12);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "AIR_IMMUNITY_AURA", 50, 5, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "EARTH_IMMUNITY_AURA", 40, 5, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "ELEMENTAL_IMMUNITY_AURA", 10, 9, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "EVASION_AURA", 130, 3, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FAVOURABLE_WIND_AURA", 90, 3, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FIRE_BRAND_AURA", 160, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "EVASION_AURA", 80, 3, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FAVOURABLE_WIND_AURA", 210, 3, 12.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FIRE_BRAND_AURA", 20, 4);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FIRE_IMMUNITY_AURA", 40, 6, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FROST_AURA", 100, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "GUARDIAN_ANGEL_AURA", 50, 3);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "FROST_AURA", 70, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "GUARDIAN_ANGEL_AURA", 120, 3);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "PHYSICAL_IMMUNITY_AURA", 10, 9, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VACUUM_AURA", 60, 5, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VAMPIRISM_AURA", 50, 5);
-LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VENOM_AURA", 169, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VACUUM_AURA", 120, 5, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VAMPIRISM_AURA", 160, 5);
+LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "VENOM_AURA", 29, 4);
 LLENEMY_Upgrades_AddStatus("Buffs", "Aura", "WATER_IMMUNITY_AURA", 40, 5, 12.0);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 120, 3, 6.0);
