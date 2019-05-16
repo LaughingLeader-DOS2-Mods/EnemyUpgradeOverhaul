@@ -166,6 +166,7 @@ AND
 NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Character)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_GRANADA");
+LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Blocked upgrade [LLENEMY_GRANADA] from applying to a non-humanoid.");
 
 //Guaranteed talent status
 IF
@@ -237,8 +238,58 @@ LLENEMY_Upgrades_ResetRolledFlags(_Character);
 LLENEMY_Upgrades_RollForUpgrades(_Character);
 LLENEMY_Upgrades_OnRollingDone(_Character);
 RemoveStatus(_Character, "LLENEMY_DOUBLE_DIP");
-//END_REGION
 
+IF
+StoryEvent((CHARACTERGUID)_Character, "LLENEMY_Automaton_SummonPositionSet")
+AND
+GetVarFloat3(_Character, "LLENEMY_Automaton_SummonPosition", _x, _y, _z)
+AND
+PlayLoopEffectAtPosition("LLENEMY_FX_UI_Targeter_LandingSpot_01", _x, _y, _z, _Handle)
+THEN
+DB_LLENEMY_Summoning_Temp_CountdownFX(_Character, "LLENEMY_SUMMON_AUTOMATON", _Handle);
+DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", 2, _x, _y, _z);
+
+IF
+CharacterStatusAttempt(_Character, "LLENEMY_SUMMON_AUTOMATON_TICK", _)
+AND
+DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", _Turns, _x, _y, _z)
+AND
+IntegerSubtract(_Turns, 1, _NextTurns)
+AND
+NOT LLENEMY_Summoning_QRY_TurnsComplete(_Character, "LLENEMY_SUMMON_AUTOMATON", _NextTurns)
+THEN
+NOT DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", _Turns, _x, _y, _z);
+DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", _NextTurns, _x, _y, _z);
+
+QRY
+LLENEMY_Summoning_QRY_TurnsComplete((CHARACTERGUID)_Character, (STRING)_SummonID, (INTEGER)_NextTurns)
+AND
+_NextTurns <= 0
+THEN
+LLENEMY_Summoning_OnSummoningReady(_Character, _SummonID);
+
+PROC
+LLENEMY_Summoning_OnSummoningReady((CHARACTERGUID)_Character, (STRING)_SummonID)
+AND
+DB_LLENEMY_Summoning_Temp_CountdownFX(_Character, _SummonID, _Handle)
+THEN
+StopLoopEffect(_Handle);
+NOT DB_LLENEMY_Summoning_Temp_CountdownFX(_Character, _SummonID, _Handle);
+
+PROC
+LLENEMY_Summoning_OnSummoningReady((CHARACTERGUID)_Character, "LLENEMY_SUMMON_AUTOMATON")
+AND
+DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", _Turns, _x, _y, _z)
+THEN
+NOT DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", _Turns, _x, _y, _z);
+//LeaderLib_Skills_UseSkillAtPosition(_Character, _x, _y, _z, "ProjectileStrike_LLENEMY_SummonAutomaton", 0, 0);
+CharacterUseSkillAtPosition(_Character, "ProjectileStrike_LLENEMY_SummonAutomaton", _x, _y, _z, 0, 1);
+
+IF
+StoryEvent(_Automaton, "LLENEMY_Automaton_PlayActivateAnimation")
+THEN
+PlayAnimation(_Automaton, "Custom_Activate_01", "LLENEMY_Automaton_ClearInactive");
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
