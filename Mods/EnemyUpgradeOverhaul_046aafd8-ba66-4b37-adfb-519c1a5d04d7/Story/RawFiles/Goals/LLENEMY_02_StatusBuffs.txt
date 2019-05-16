@@ -159,6 +159,14 @@ DB_LLENEMY_LastGrenadeInt(_NextStartInt, _EndInt);
 //END_REGION
 
 //REGION GRENADE_ENTHUSIAST
+//Prevent weird things like voidlings from getting grenades
+PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_GRANADA")
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Character)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_GRANADA");
+
 //Guaranteed talent status
 IF
 CharacterStatusApplied(_Enemy, "LLENEMY_GRANADA", _)

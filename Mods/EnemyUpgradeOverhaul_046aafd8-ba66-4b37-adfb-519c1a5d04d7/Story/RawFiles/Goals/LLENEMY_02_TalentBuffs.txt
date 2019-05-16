@@ -30,7 +30,7 @@ LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_BACKSTAB", 499, 
 
 //REGION WEAPON_TALENT_ROLLING
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Talents", "Weapon");
 

@@ -298,6 +298,12 @@ DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisabledFlag, _RolledForFlag, _GroupSu
 THEN
 ObjectClearFlag(_Character, _RolledForFlag);
 
+//Intercept and add to DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type) to block a specific group from applying regularly
+PROC
+LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+THEN
+DB_NOOP(1);
+
 PROC
 LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag)
 AND
@@ -309,9 +315,9 @@ _Roll <= _MaxRoll
 AND
 _Roll >= _MinRoll
 THEN
-LLENEMY_Upgrades_CanRollForStatusUpgrade(_Character, _Group, _Type);
+LLENEMY_Upgrades_CanRollForGroupUpgrade(_Character, _Group, _Type);
 LLENEMY_Upgrades_RollForStatusUpgrade(_Character, _Group, _Type, _GroupSuccessFlag);
-LLENEMY_Upgrades_CleanupBlockUpgrades(_Character, _Group, _Type);
+LLENEMY_Upgrades_CleanupBlockedUpgrades(_Character, _Group, _Type);
 
 QRY
 LLENEMY_Upgrades_QRY_Internal_LogGroupRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (STRING)_Group, (STRING)_Type)
@@ -341,10 +347,15 @@ LLENEMY_Upgrades_OnGroupCriticalFailure((CHARACTERGUID)_Character, (STRING)_Grou
 THEN
 DB_NOOP(1);
 
-//Intercept and add to DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type) to block a specific group from applying regularly
-PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+QRY
+LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status)
 THEN
+LLENEMY_Upgrades_CanRollForStatusUpgrade(_Character, _Group, _Type, _Status);
+
+PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status)
+THEN
+//DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status)
 DB_NOOP(1);
 
 PROC
@@ -361,6 +372,10 @@ AND
 LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure(_Character, _Group, _Type, _Roll)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
+AND
+LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade(_Character, _Group, _Type, _Status)
+AND
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status)
 //AND
 //LLENEMY_Upgrades_QRY_Internal_LogTypeRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group, _Type)
 AND
@@ -416,11 +431,18 @@ THEN
 ObjectSetFlag(_Character, _GroupSuccessFlag);
 
 PROC
-LLENEMY_Upgrades_CleanupBlockUpgrades((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+LLENEMY_Upgrades_CleanupBlockedUpgrades((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
 AND
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type)
 THEN
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type);
+
+PROC
+LLENEMY_Upgrades_CleanupBlockedUpgrades((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status)
+THEN
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
 
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
