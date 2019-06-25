@@ -15,3 +15,15 @@ add equipmentgroup
 add equipment entry "LLENEMY_BattleChicken_Claw_C"
 add equipmentgroup
 add equipment entry "NoShield"
+
+new equipment "LLENEMY_SallowMan"
+add equipmentgroup
+add equipment entry "_LLENEMY_SallowManUnarmed"
+add equipmentgroup
+add equipment entry "_LLENEMY_SallowManUnarmed"
+
+new equipment "LLENEMY_Demon_Fence"
+add equipmentgroup
+add equipment entry "_LLENEMY_Demons_Fence_Daggers"
+add equipmentgroup
+add equipment entry "_LLENEMY_Demons_Fence_Daggers"

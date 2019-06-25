@@ -246,3 +246,4 @@ data "SpawnObject" "ccda6778-4ab9-45c7-beff-8dede26f04e8"
 data "SpawnLifetime" "3"
 data "AiCalculationSkillOverride" "Target_DummyTargetSkill"
 data "CycleConditions" "Enemy;!Dead"
+

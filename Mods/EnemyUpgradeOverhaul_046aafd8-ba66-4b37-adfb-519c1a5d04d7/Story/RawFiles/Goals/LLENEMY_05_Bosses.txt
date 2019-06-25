@@ -1,0 +1,134 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Boss_InitSettings();
+KBSECTION
+PROC
+LLENEMY_Boss_InitSettings()
+THEN
+//Templates
+LLENEMY_Boss_RegisterBossTemplate("ARX_Demon_Fence_8e8f7bd0-c8ab-44ce-b88b-a5470785fadd", "LLENEMY_Demon_Fence");
+LLENEMY_Boss_RegisterBossTemplate("Animals_Bear_A_db1772ac-3a79-4ea4-95eb-01c40ceb44ed", "Animals_Bear_A");
+LLENEMY_Boss_RegisterBossTemplate("Animals_Bear_A_Voidwoken_a0f68491-6af5-4190-9c45-c4559d29c08f", "Animals_Bear_A_Voidwoken");
+LLENEMY_Boss_RegisterBossTemplate("Animals_Birds_Condor_A_eb7bcef4-d00c-44ab-96e3-533476192126", "Summon_Condor_Equip");
+LLENEMY_Boss_RegisterBossTemplate("Animals_Frog_Merman_A_Giant_e9f49cf8-ac0d-4d18-8c0b-04c241c52323", "Animals_Voidwoken_Merman_A_Strong");
+LLENEMY_Boss_RegisterBossTemplate("Animals_Tiger_A_Enhanced_A_931199b8-4a3d-4992-b442-796e2a54df0c", "Animals_Tiger_A_Enhanced_A");
+LLENEMY_Boss_RegisterBossTemplate("Animals_Wolf_A_Black_1e024c1e-45be-4492-bcaf-39a47f20e682", "Animals_Wolf_A_Black");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Demon_Grunt_A_Melee_3f9a9804-d76e-4c40-be9d-1b5ac64cd732", "Demon_Grunt_A_Melee_Dagger_Dual");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Demon_Grunt_A_Melee_3f9a9804-d76e-4c40-be9d-1b5ac64cd732", "Demon_Grunt_A_Melee_Sword_1H");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Demon_Grunt_A_Melee_3f9a9804-d76e-4c40-be9d-1b5ac64cd732", "Demon_Grunt_A_Melee_Sword_2H");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Demon_Grunt_A_Melee_3f9a9804-d76e-4c40-be9d-1b5ac64cd732", "Demon_Grunt_A_Unarmed");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Demon_Hound_A_0b385807-7de8-42e9-bda2-c9a7e76da496", "Demon_Hound_A");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_SwallowMan_A_91f9d254-6ed1-41cf-aee4-19b4f88e9460", "LLENEMY_SallowMan");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Troll_B_5bdadf37-625f-40b9-a3a3-d87b79a5275c", "Creatures_Troll_A");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Voidwoken_Caster_aa02c121-3200-44ce-a9e9-d22c46ac848e", "Voidwoken_Grunt_Ranged");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Voidwoken_Grunt_A_5c702815-5a42-43fd-83f8-f6a321803ebe", "Voidwoken_Grunt_Melee");
+LLENEMY_Boss_RegisterBossTemplate("Creatures_Voidwoken_Troll_A_e3727ad8-152c-4d2a-8c71-8093a5e68839", "Creatures_Troll_A");
+
+PROC
+LLENEMY_Boss_RegisterBossTemplate((STRING)_Template, (STRING)_Equipment)
+AND
+NOT DB_LeaderLib_Array_Data("LLENEMY_Bosses_Templates", _, _Template)
+THEN
+LeaderLib_Array_AddToArray("LLENEMY_Bosses_Templates", _Template);
+DB_LLENEMY_Boss_TemplateEquipment(_Template, _Equipment);
+
+IF
+TextEventSet("llenemy_bosstest")
+AND
+CharacterGetHostCharacter(_Host)
+THEN
+LLENEMY_Boss_CreateShadowBoss(_Host);
+
+PROC
+LLENEMY_Boss_CreateShadowBoss((GUIDSTRING)_Target)
+AND
+GetPosition(_Target, _x, _y, _z)
+THEN
+LLENEMY_Boss_CreateShadowBoss(_x, _y, _z);
+
+PROC
+LLENEMY_Boss_CreateShadowBoss((REAL)_x, (REAL)_y, (REAL)_z)
+AND
+LeaderLib_Array_QRY_Random("LLENEMY_Bosses_Templates")
+AND
+DB_LeaderLib_Array_Temp_RandomResult("LLENEMY_Bosses_Templates", _Index, _Template)
+AND
+CharacterGetHostCharacter(_Host)
+AND
+FindValidPosition(_x, _y, _z, 10.0, _Host, _tx, _ty, _tz)
+AND
+CharacterCreateAtPosition(_tx, _ty, _tz, "LLENEMY_Boss_Base_A_6b69b3a9-2e30-4152-bf9e-6436171c3e69", 0, _Boss)
+AND
+DB_LLENEMY_Boss_TemplateEquipment(_Template, _Equipment)
+THEN
+NOT DB_LeaderLib_Array_Temp_RandomResult("LLENEMY_Bosses_Templates", _Index, _Template);
+//DB_LLENEMY_Boss_Temp_Transform(_Boss, _Template);
+CharacterTransform(_Boss, _Template, 0, 1, 0, 1, 1, 0, 1);
+PlayAnimation(_Boss, "", "");
+PlayAnimation(_Boss, "spawn", "LLENEMY_Boss_BossSpawned");
+//CharacterTransformAppearanceToWithEquipmentSet(_Boss, _Boss, _Equipment, 0);
+//SetCanJoinCombat(_Boss, 0);
+//CharacterSetDetached(_Boss, 1);
+//ProcObjectTimer(_Boss, "LLENEMY_Timers_Boss_Transform", 1000);
+LeaderLib_Timers_StartObjectObjectTimer(_Host, _Boss, 50, "LLENEMY_Timers_Boss_Setup", "LLENEMY_Boss_SetupBoss");
+LeaderLib_Timers_StartObjectTimer(_Boss, 2000, "LLENEMY_Timers_Boss_SpawnFallbackTimer", "LLENEMY_Boss_BossSpawned");
+/*
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Boss, "LLENEMY_Timers_Boss_Transform")
+AND
+DB_LLENEMY_Boss_Temp_Transform(_Boss, _Template)
+THEN
+NOT DB_LLENEMY_Boss_Temp_Transform(_Boss, _Template);
+CharacterTransform(_Boss, _Template, 0, 1, 0, 1, 1, 0, 1);
+*/
+
+PROC
+LeaderLib_Timers_ObjectObjectTimerFinished((CHARACTERGUID)_Host, (CHARACTERGUID)_Boss, "LLENEMY_Boss_SetupBoss")
+AND
+NOT DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
+AND
+CharacterGetLevel(_Host, _Level)
+THEN
+CharacterLevelUpTo(_Boss, _Level);
+
+PROC
+LeaderLib_Timers_ObjectObjectTimerFinished((CHARACTERGUID)_Host, (CHARACTERGUID)_Boss, "LLENEMY_Boss_SetupBoss")
+THEN
+DB_NOOP(1);
+//CharacterSetDetached(_Boss, 0);
+//PlayAnimation(_Boss, "spawn", "LLENEMY_Boss_BossSpawned");
+//LeaderLib_Timers_StartObjectTimer(_Boss, 2000, "LLENEMY_Timers_Boss_SpawnFallbackTimer", "LLENEMY_Boss_BossSpawned");
+
+IF
+StoryEvent((CHARACTERGUID)_Boss, "LLENEMY_Boss_BossSpawned")
+AND
+CharacterGetEquippedItem(_Boss, "Weapon", (ITEMGUID)_Weapon)
+AND
+CharacterGetLevel(_Boss, _Level)
+THEN
+ItemLevelUpTo(_Weapon, _Level);
+
+IF
+StoryEvent((CHARACTERGUID)_Boss, "LLENEMY_Boss_BossSpawned")
+AND
+CharacterGetEquippedItem(_Boss, "Shield", (ITEMGUID)_Weapon)
+AND
+CharacterGetLevel(_Boss, _Level)
+THEN
+ItemLevelUpTo(_Weapon, _Level);
+
+IF
+StoryEvent((CHARACTERGUID)_Boss, "LLENEMY_Boss_BossSpawned")
+THEN
+LeaderLib_Timers_CancelObjectTimer(_Boss, "LLENEMY_Timers_Boss_SpawnFallbackTimer");
+ApplyStatus(_Boss, "LLENEMY_BOSS_SHADOW", -1.0, 0, _Boss);
+SetIsBoss(_Boss, 1);
+SetFaction(_Boss,"Evil NPC");
+SetCanJoinCombat(_Boss, 1);
+//CharacterAddToPlayerCharacter(_Boss, _Host);
+//CharacterMakePlayer(_Boss, _Host);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
