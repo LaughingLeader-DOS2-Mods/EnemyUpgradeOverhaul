@@ -10,10 +10,34 @@ LLENEMY_Stats_InitSettings()
 THEN
 LLENEMY_Upgrades_AddGroup("Stats", "LLENEMY_StatUpgradesDisabled", "LLENEMY_StatsRolled", "LLENEMY_StatsUpgradeAdded");
 //999 max
-LLENEMY_Upgrades_AddType("Stats", "Armor", 400, 700, 2);
-LLENEMY_Upgrades_AddType("Stats", "MagicArmor", 600, 900, 2);
+
 LLENEMY_Upgrades_AddType("Stats", "Vitality", 270, 800, 1);
 LLENEMY_Upgrades_AddType("Stats", "Damage", 1, 150, 4);
+
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_50", 5, 7);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_45", 25, 6);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_40", 49, 5);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_35", 55, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_30", 68, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_25", 73, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_20", 86, 3);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_15", 138, 2);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_10", 200, 2);
+LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_5", 300, 1);
+
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_25", 10, 7);
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_20", 60, 6);
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_15", 90, 5);
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_10", 300, 4);
+LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_5", 539, 3);
+
+PROC
+LLENEMY_Stats_InitSettings()
+AND
+LLENEMY_Stats_QRY_CanAddArmorUpgrades()
+THEN
+LLENEMY_Upgrades_AddType("Stats", "Armor", 400, 700, 2);
+LLENEMY_Upgrades_AddType("Stats", "MagicArmor", 600, 900, 2);
 
 LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_50",  10, 5);
 LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_45",  30, 5);
@@ -36,23 +60,38 @@ LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_20",
 LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_15",  175, 1);
 LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_10",  200, 2);
 LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_5",   300, 1);
+//END_REGION
 
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_50", 5, 7);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_45", 25, 6);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_40", 49, 5);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_35", 55, 4);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_30", 68, 4);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_25", 73, 3);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_20", 86, 3);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_15", 138, 2);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_10", 200, 2);
-LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_5", 300, 1);
+QRY
+LLENEMY_Stats_QRY_CanAddArmorUpgrades()
+AND
+NOT SysIsActive("AS_Willpower")
+THEN
+DB_NOOP(1);
 
-LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_25", 10, 7);
-LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_20", 60, 6);
-LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_15", 90, 5);
-LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_10", 300, 4);
-LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_5", 539, 3);
+//REGION DIVINE_WAR_COMPATIBILITY
+PROC
+LLENEMY_Stats_RemoveArmorUpgrades()
+AND
+DB_LLENEMY_Upgrades_Types("Stats", "Armor", _MinRoll, _MaxRoll, _ChallengePoints)
+THEN
+NOT DB_LLENEMY_Upgrades_Types("Stats", "Armor", _MinRoll, _MaxRoll, _ChallengePoints);
+
+PROC
+LLENEMY_Stats_RemoveArmorUpgrades()
+AND
+DB_LLENEMY_Upgrades_Types("Stats", "MagicArmor", _MinRoll, _MaxRoll, _ChallengePoints)
+THEN
+NOT DB_LLENEMY_Upgrades_Types("Stats", "MagicArmor", _MinRoll, _MaxRoll, _ChallengePoints);
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 4, 0)
+AND
+SysIsActive("AS_Willpower")
+THEN
+LLENEMY_Stats_RemoveArmorUpgrades();
 //END_REGION
 
 EXITSECTION
