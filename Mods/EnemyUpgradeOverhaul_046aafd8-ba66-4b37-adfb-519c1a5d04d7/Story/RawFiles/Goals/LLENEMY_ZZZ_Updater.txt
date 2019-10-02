@@ -1,7 +1,7 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", "1.1.4.0");
+LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", "1.1.5.0");
 LeaderUpdater_Register_ActiveGoal("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_ZZZ_Updater");
 LeaderLib_Register_ModMenu("EnemyUpgradeOverhaul.Settings", "[Enemy Upgrade Overhaul] Settings", "LLENEMY_Settings", "EnemyUpgradeOverhaul", "LaughingLeader");
 
@@ -11,9 +11,9 @@ GameStarted(_Level, _)
 AND
 IsGameLevel(_Level, 1)
 AND
-LeaderUpdater_QRY_ModUpdateNeeded("EnemyUpgradeOverhaul", "LaughingLeader", "1.1.4.0")
+LeaderUpdater_QRY_ModUpdateNeeded("EnemyUpgradeOverhaul", "LaughingLeader", "1.1.5.0")
 THEN
-LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", "1.1.4.0");
+LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", "1.1.5.0");
 
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
