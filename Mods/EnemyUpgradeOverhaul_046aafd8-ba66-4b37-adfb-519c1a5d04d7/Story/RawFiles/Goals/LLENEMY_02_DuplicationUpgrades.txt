@@ -1,0 +1,72 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Duplication_InitSettings();
+KBSECTION
+//REGION SETTINGS
+PROC
+LLENEMY_Duplication_InitSettings()
+THEN
+LLENEMY_Upgrades_AddGroup("Duplication", "LLENEMY_DuplicationUpgradesDisabled", "LLENEMY_DuplicationRolled", "LLENEMY_DuplicationUpgradeAdded");
+
+LLENEMY_Upgrades_AddType("Duplication", "Elite", 1, 99, 8);
+LLENEMY_Upgrades_AddType("Duplication", "Normal", 550, 798, 5);
+
+LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 900, 11);
+LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_DOUBLE", 99, 11);
+
+LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAKEST", 500, 2);
+LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAK", 300, 4);
+LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 199, 6);
+//END_REGION
+
+//REGION Duplication
+PROC
+LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats)
+AND
+CharacterCreateOutOfSightToObject("LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", _Source, _Source, 0, "", _Dupe)
+AND
+GetFaction(_Source, _Faction)
+THEN
+CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 0, 1, 1, 0, 0);
+SetFaction(_Dupe, _Faction);
+ChangeAttitude(_Source, _Dupe, 200);
+ChangeAttitude(_Dupe, _Source, 200);
+SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
+SetStoryEvent(_Dupe, "LLENEMY_Dupe_ApplyStats");
+TeleportTo(_Dupe, _Source, "LLENEMY_DupeCharacterTeleported", 1, 1, 0);
+CharacterAttachToGroup(_Dupe, _Source);
+PlayEffect(_Dupe, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01");
+//END_REGION
+
+//REGION DUPE_STATUS_APPLIED
+IF
+CharacterStatusApplied(_Char, "LLENEMY_DUPE_ELITE_SINGLE", _)
+THEN
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_DUPE_ELITE_DOUBLE", _)
+THEN
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A");
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_SAME", _)
+THEN
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_A");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_WEAK", _)
+THEN
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_Weak");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_WEAKEST", _)
+THEN
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_Weakest");
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

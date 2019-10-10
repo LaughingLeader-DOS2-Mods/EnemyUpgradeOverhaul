@@ -12,17 +12,6 @@ LLENEMY_Upgrades_AddType("Talents", "Elite", 1, 99, 8);
 LLENEMY_Upgrades_AddType("Talents", "Normal", 360, 499, 5);
 LLENEMY_Upgrades_AddType("Talents", "Weapon", 50, 600, 4);
 
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_LEECH", 399, 2);
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_NATURALCONDUCTOR", 100, 4);
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_QUICKSTEP", 500, 4);
-
-LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_BACKSTAB", 499, 4);
-LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_RANGERRANGE", 500, 3);
-
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_LEECH", 399, 2);
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_QUICKSTEP", 500, 4);
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_NATURALCONDUCTOR", 100, 4);
-
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LIGHTNINGROD", 260, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LONEWOLF", 100, 12);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD", 50, 8);
@@ -30,6 +19,10 @@ LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD2", 20,
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_TORTURER", 259, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_UNSTABLE", 70, 5);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_WHATARUSH", 240, 6);
+
+LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_LEECH", 399, 2);
+LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_QUICKSTEP", 500, 4);
+LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_NATURALCONDUCTOR", 100, 4);
 
 LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_RANGERRANGE", 500, 3);
 LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_BACKSTAB", 499, 4);
