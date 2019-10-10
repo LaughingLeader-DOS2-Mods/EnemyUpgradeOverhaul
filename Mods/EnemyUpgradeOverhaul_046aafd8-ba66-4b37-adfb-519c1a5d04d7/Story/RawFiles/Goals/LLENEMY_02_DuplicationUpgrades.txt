@@ -22,49 +22,124 @@ LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 
 
 //REGION Duplication
 PROC
+LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Duplication", (STRING)_Type)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Duplication", _Type);
+
+PROC
 LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats)
+THEN
+LLENEMY_Duplication_CreateDuplicate(_Source, _Stats, 0, 0, 0);
+
+PROC
+LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_ChallengePoints)
+AND
+DB_CurrentLevel(_Region)
 AND
 CharacterCreateOutOfSightToObject("LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", _Source, _Source, 0, "", _Dupe)
 AND
 GetFaction(_Source, _Faction)
 THEN
 CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 0, 1, 1, 0, 0);
+CharacterTransformAppearanceTo(_Dupe, _Source, 0, 1);
 SetFaction(_Dupe, _Faction);
 ChangeAttitude(_Source, _Dupe, 200);
 ChangeAttitude(_Dupe, _Source, 200);
 SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
-SetStoryEvent(_Dupe, "LLENEMY_Dupe_ApplyStats");
+SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
+DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
+
+IF
+CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_StatsApplied")
+AND
+DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities)
+THEN
+NOT DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+LLENEMY_Duplication_SetupDuplicate(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+
+IF
+CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_StatsApplied")
+THEN
 TeleportTo(_Dupe, _Source, "LLENEMY_DupeCharacterTeleported", 1, 1, 0);
-CharacterAttachToGroup(_Dupe, _Source);
+CharacterSetFollowCharacter(_Dupe, _Source);
 PlayEffect(_Dupe, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01");
+
+IF
+CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_StatsApplied")
+AND
+CharacterGetDisplayName(_Source, _, _Name)
+AND
+StringConcatenate(_Name, " (Shadow)", _DupeName)
+THEN
+CharacterSetCustomName(_Dupe, _DupeName);
+
+PROC
+LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, 1, (INTEGER)_CopyAbilities)
+THEN
+LeaderLib_Helper_CopyAttributes(_Dupe, _Source);
+
+PROC
+LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, 1)
+THEN
+LeaderLib_Helper_CopyAbilities(_Dupe, _Source);
 //END_REGION
 
 //REGION DUPE_STATUS_APPLIED
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_ELITE_SINGLE", _)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_ELITE_SINGLE", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A");
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_ELITE_DOUBLE", _)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_ELITE_DOUBLE", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A");
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A");
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_SAME", _)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_NORMAL_SAME", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_A");
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_A", 1, 1, _ChallengePoints);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_WEAK", _)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_NORMAL_WEAK", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_Weak");
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_Weak", 0, 1, _ChallengePoints);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_WEAKEST", _)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_NORMAL_WEAKEST", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_Weakest");
+LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_Weakest", 0, 1, _ChallengePoints);
+//END_REGION
+
+//REGION CLEANUP
+IF
+StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeDying")
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
+THEN
+NOT DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region);
+
+IF
+RegionEnded(_Region)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
+THEN
+NOT DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region);
 //END_REGION
 EXITSECTION
 

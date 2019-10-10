@@ -1,0 +1,30 @@
+INIT
+	ITEM:__Me
+	EXTERN INT:%LLENEMY_Container_DestroyWhenEmpty = 1
+	INT:%LLENEMY_Container_IsDestroying = 0
+EVENTS
+
+EVENT LLENEMY_Container_Destroy
+VARS
+	ITEM:_Item
+ON
+	OnItemClosed(__Me)	
+ACTIONS
+IF "!c1"
+	IsEqual(%LLENEMY_Container_DestroyWhenEmpty, 0)
+THEN
+	ItemEvent(__Me, "LLENEMY_Container_OnClosed_CheckDestroy")
+ELSE
+	ItemEvent(__Me, "LLENEMY_Container_OnClosed")
+ENDIF
+/*
+IF "!c1&(!c2|(c2&c3))&!c4"
+	IsEqual(%LLENEMY_Container_DestroyWhenEmpty, 0)
+	ItemGetFromInventory(_Item, __Me)
+	IsEqual(_Item, null)
+	IsEqual(%LLENEMY_Container_IsDestroying, 1)
+THEN
+	Set(%LLENEMY_Container_IsDestroying, 1)
+	ItemDestroy(__Me)
+ENDIF
+*/
