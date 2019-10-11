@@ -86,6 +86,11 @@ PROC
 LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, 1)
 THEN
 LeaderLib_Helper_CopyAbilities(_Dupe, _Source);
+
+PROC
+LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities)
+THEN
+LeaderLib_Helper_CopyLevel(_Dupe, _Source);
 //END_REGION
 
 //REGION DUPE_STATUS_APPLIED
