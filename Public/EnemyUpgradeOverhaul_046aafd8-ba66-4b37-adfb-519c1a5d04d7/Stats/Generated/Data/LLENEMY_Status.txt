@@ -982,3 +982,4 @@ new entry "LLENEMY_DUPE_ELITE_DOUBLE"
 type "StatusData"
 data "StatusType" "CONSUME"
 using "LLENEMY_HIDDEN_CONSUME_BASE"
+
