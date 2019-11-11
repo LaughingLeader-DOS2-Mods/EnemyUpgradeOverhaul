@@ -205,7 +205,14 @@ LLENEMY_Stats_InitSettings();
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
 AND
-DB_LeaderLib_StringExt_VersionIsLessThan(_OldVersion, 1,2,0,0)
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,2,1,0)
+THEN
+LLENEMY_Upgrades_ResetUpgradeData();
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,2,0,0)
 THEN
 GlobalSetFlag("LLENEMY_DuplicationUpgradesDisabled");
 LLENEMY_Upgrades_ResetUpgradeData();
