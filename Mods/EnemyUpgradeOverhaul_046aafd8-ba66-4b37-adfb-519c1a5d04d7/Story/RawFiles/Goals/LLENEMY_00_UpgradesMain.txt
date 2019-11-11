@@ -277,17 +277,16 @@ ObjectClearFlag(_Character, _RolledForFlag);
 PROC
 LLENEMY_Upgrades_RollForUpgrades((CHARACTERGUID)_Character)
 AND
+LeaderLib_Random_QRY(999)
+AND
+DB_LeaderLib_Random(_Roll)
+AND
 DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
 AND
 NOT DB_GlobalFlag(_GlobalDisableFlag)
 AND
 LLENEMY_Upgrades_Internal_QRY_SetRolledFlag(_Character, _RolledForFlag)
-AND
-LeaderLib_Random_QRY(999)
-AND
-DB_LeaderLib_Random(_Roll)
 THEN
-NOT DB_LeaderLib_Random(_Roll);
 LLENEMY_Upgrades_OnRollForGroup(_Character, _Roll, _Group, _GroupSuccessFlag);
 
 QRY
