@@ -78,7 +78,7 @@ DB_LLENEMY_Rewards_TreasureEffects(_Treasure, _Effect);
 
 //REGION CRITICAL_FAILURE_BONUS
 PROC
-LLENEMY_Upgrades_OnGroupCriticalFailure((CHARACTERGUID)_Char, (STRING)_Group)
+LLENEMY_Upgrades_OnCriticalFailure((CHARACTERGUID)_Char)
 THEN
 LLENEMY_Rewards_AddBonusTreasureStatus(_Char);
 

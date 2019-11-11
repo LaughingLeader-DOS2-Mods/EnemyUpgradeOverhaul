@@ -35,7 +35,7 @@ THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Talents", "Weapon");
 
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon", (STRING)_GroupSuccessFlag, (INTEGER)_Roll, (STRING)_Name)
 AND
 NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
 AND
@@ -45,21 +45,16 @@ LeaderLib_Helper_QRY_IsNonMagicalRangedWeapon(_Weapon)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_TALENT_RANGERRANGE", _MinRoll, _MaxRoll, _Duration, _ChallengePoints)
 AND
-LeaderLib_Random_QRY(999)
-AND
-DB_LeaderLib_Random(_Roll)
-AND
 _Roll <= _MaxRoll
 AND
 _Roll >= _MinRoll
 THEN
-NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_RANGERRANGE]. Applying.");
+LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_RANGERRANGE]. Applying to (",_Name,").");
 LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_RANGERRANGE", _Duration, _ChallengePoints);
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon", (STRING)_GroupSuccessFlag, (INTEGER)_Roll, (STRING)_Name)
 AND
 NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
 AND
@@ -71,21 +66,17 @@ StringContains(_Template, "_Dagger_", 0)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_TALENT_BACKSTAB", _MinRoll, _MaxRoll, _Duration, _ChallengePoints)
 AND
-LeaderLib_Random_QRY(999)
-AND
-DB_LeaderLib_Random(_Roll)
-AND
 _Roll <= _MaxRoll
 AND
 _Roll >= _MinRoll
 THEN
 NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_BACKSTAB]. Applying.");
+LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_BACKSTAB]. Applying to (",_Name,").");
 LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_BACKSTAB", _Duration, _ChallengePoints);
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon", (STRING)_GroupSuccessFlag, (INTEGER)_Roll, (STRING)_Name)
 AND
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
 THEN

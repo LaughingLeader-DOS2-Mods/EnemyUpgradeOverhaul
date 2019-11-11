@@ -12,7 +12,7 @@ LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 99, 9);
 LLENEMY_Upgrades_AddType("Buffs", "Normal", 100, 699, 5);
 LLENEMY_Upgrades_AddType("Buffs", "Weak", 700, 999, 3);
 
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 120, 3, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 80, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
@@ -20,8 +20,8 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_TONGUES", 160, 5);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 20, 9);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 69, 7);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 200, 6);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 120, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 220, 6);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 140, 4);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BLESSED", 60, 2, 18.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BREATHING_BUBBLE", 50, 3, 18.0);
