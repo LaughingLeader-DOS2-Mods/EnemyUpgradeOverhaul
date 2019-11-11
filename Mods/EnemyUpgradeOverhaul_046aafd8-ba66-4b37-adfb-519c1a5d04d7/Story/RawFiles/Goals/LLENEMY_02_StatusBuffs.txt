@@ -24,14 +24,14 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 220, 6);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 140, 4);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BLESSED", 60, 2, 18.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BREATHING_BUBBLE", 50, 3, 18.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BREATHING_BUBBLE", 40, 3, 18.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "ETHEREAL_SOLES", 90, 1, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "EVADING", 80, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FIREBLOOD", 60, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FORTIFIED", 130, 4, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HASTED", 179, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_COURAGE", 60, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_FEROCITY", 60, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_FEROCITY", 70, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_GRANADA", 90, 6);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "SPARKING_SWINGS", 140, 4);
 
