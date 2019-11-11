@@ -220,6 +220,7 @@ LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldV
 AND
 LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,2,1,0)
 THEN
+GlobalSetFlag("LLENEMY_DuplicationUpgradesDisabled"); // Not ready yet
 LLENEMY_Upgrades_ResetUpgradeData();
 
 PROC
