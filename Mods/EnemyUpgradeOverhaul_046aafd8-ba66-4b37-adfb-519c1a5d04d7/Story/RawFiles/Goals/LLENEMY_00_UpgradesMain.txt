@@ -165,6 +165,7 @@ NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt);
 DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _NextStartInt, _CappedEnd);
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _CappedEnd, _Duration, _ChallengePoints);
 
+/*
 IF
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _EndInt, _Duration, _ChallengePoints)
 AND
@@ -173,6 +174,7 @@ AND
 IntegertoString(_EndInt, _EndStr)
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY_00_UpgradesMain:DB_LLENEMY_Upgrades_Statuses] Added (",_Group,":",_Type,":",_Status,") Start(",_StartStr,") End(",_EndStr,").");
+*/
 
 PROC
 LLENEMY_Upgrades_AddStatusToRange((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints)
@@ -412,16 +414,9 @@ AND
 _Roll <= _MaxRoll
 AND
 _Roll >= _MinRoll
-AND
-IntegertoString(_Roll, _RollStr)
-AND
-IntegertoString(_MinRoll, _MinRollStr)
-AND
-IntegertoString(_MaxRoll, _MaxRollStr)
 THEN
 NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForStatusUpgrade] [",_Name,"] Roll (",_RollStr,") successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForStatusUpgrade] [",_Name,"] MinRoll (",_MinRollStr,") MaxRoll (",_MaxRollStr,") for [",_Group,":",_Type,"] Status [",_Status,"].");
+LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForStatusUpgrade] [",_Name,"] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
 LLENEMY_Upgrades_ApplyUpgrade(_Character, _Status, _Duration, _CP);
 LLENEMY_Upgrades_OnRollForGroupSucceeded(_Character, _Group, _Type, _GroupSuccessFlag);
 
