@@ -13,7 +13,7 @@ LLENEMY_Upgrades_AddType("Buffs", "Normal", 100, 699, 5);
 LLENEMY_Upgrades_AddType("Buffs", "Weak", 700, 999, 3);
 
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 80, 3, 6.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_TONGUES", 160, 5);
