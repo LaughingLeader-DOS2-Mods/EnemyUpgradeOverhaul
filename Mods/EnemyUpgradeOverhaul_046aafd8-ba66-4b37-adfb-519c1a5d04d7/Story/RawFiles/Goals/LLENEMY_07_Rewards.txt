@@ -425,8 +425,6 @@ LLENEMY_Rewards_OnCharacterDied(_Dupe, _Treasure);
 IF
 StoryEvent((ITEMGUID)_Item, "LLENEMY_Container_OnClosed_CheckDestroy")
 AND
-LeaderLog_QRY_Log("DEBUG", "Test")
-AND
 ItemIsDestroyed(_Item, 0)
 AND
 ContainerGetGoldValue(_Item, _Value)
