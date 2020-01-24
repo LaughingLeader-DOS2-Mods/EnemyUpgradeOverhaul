@@ -23,6 +23,7 @@ PROC
 LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
+SetStoryEvent(_Enemy, "LeaderLog_Commands_SetSkillRequirement");
 LLENEMY_BonusSkills_AddToEnemy(_Enemy, _Type);
 
 /* [OSITOOLS_ONLY]

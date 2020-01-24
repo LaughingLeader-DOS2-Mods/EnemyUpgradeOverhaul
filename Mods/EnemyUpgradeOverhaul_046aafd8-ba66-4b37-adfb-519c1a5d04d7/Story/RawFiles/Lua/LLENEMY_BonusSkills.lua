@@ -297,8 +297,39 @@ local weapontype_requirements = {
 	--Wand = {"MeleeWeapon"},
 }
 
+---@class WeaponRequirementFlag
+local WeaponRequirementFlag = {
+	flag = "",
+	requirements = "None",
+}
+
+WeaponRequirementFlag.__index = WeaponRequirementFlag
+
+function WeaponRequirementFlag:Create(flag, requirements)
+    local this =
+    {
+		flag = flag,
+		requirements = requirements
+	}
+	setmetatable(this, self)
+    return this
+end
+
+local weapontype_requirements_flags = {}
+weapontype_requirements_flags[#weapontype_requirements_flags+1] = WeaponRequirementFlag:Create("LeaderLib_SkillRequirement_DaggerWeapon", {"DaggerWeapon", "MeleeWeapon"})
+weapontype_requirements_flags[#weapontype_requirements_flags+1] = WeaponRequirementFlag:Create("LeaderLib_SkillRequirement_StaffWeapon", {"StaffWeapon", "MeleeWeapon"})
+weapontype_requirements_flags[#weapontype_requirements_flags+1] = WeaponRequirementFlag:Create("LeaderLib_SkillRequirement_MeleeWeapon", "MeleeWeapon")
+weapontype_requirements_flags[#weapontype_requirements_flags+1] = WeaponRequirementFlag:Create("LeaderLib_SkillRequirement_RangedWeapon", "RangedWeapon")
+--weapontype_requirements_flags[#weapontype_requirements_flags+1] = WeaponRequirementFlag:Create("LeaderLib_SkillRequirement_WandWeapon", "WandWeapon")
+
+
 local function GetWeaponRequirement(enemy)
-	local weapon = CharacterGetEquippedWeapon(enemy)
+	for i,v in pairs(weapontype_requirements_flags) do
+		if ObjectGetFlag(enemy, v.flag) == 1 then
+			return v.requirements
+		end
+	end
+	--[[ local weapon = CharacterGetEquippedWeapon(enemy)
 	if weapon ~= nil then
 		local stat = NRD_ItemGetStatsId(weapon)
 		local weapontype = NRD_StatGetString(stat, "WeaponType")
@@ -306,7 +337,7 @@ local function GetWeaponRequirement(enemy)
 		if req_entry ~= nil then
 			return req_entry
 		end
-	end
+	end ]]
 	return "None"
 end
 
