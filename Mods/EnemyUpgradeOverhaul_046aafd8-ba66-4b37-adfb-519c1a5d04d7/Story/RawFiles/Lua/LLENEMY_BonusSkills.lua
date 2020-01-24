@@ -250,15 +250,20 @@ function LLENEMY_Ext_BuildEnemySkills()
 	for k,skill in pairs(skills) do
 		local isenemy = Ext.StatGetAttribute(skill, "IsEnemySkill")
 		if (isenemy == "Yes" and string.find(skill, "Enemy")) and not IgnoreSkill(skill) then
-			local ability = Ext.StatGetAttribute(skill, "Ability")
-			local requirement = Ext.StatGetAttribute(skill, "Requirement")
-			local sp = Ext.StatGetAttribute(skill, "Magic Cost")
-			local tier = Ext.StatGetAttribute(skill, "Tier")
-			local skillgroup = GetSkillGroup(ability)
-			if skillgroup ~= nil then
-				skillgroup.skills[#skillgroup.skills+1] = SkillEntry:Create(skill, requirement, sp, tier)
-				--Ext.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
-				Ext.Print(tostring(skill))
+			local ap = Ext.StatGetAttribute(skill, "ActionPoints")
+			local cd = Ext.StatGetAttribute(skill, "Cooldown")
+			
+			if ap > 0 or cd > 0 then
+				local ability = Ext.StatGetAttribute(skill, "Ability")
+				local requirement = Ext.StatGetAttribute(skill, "Requirement")
+				local sp = Ext.StatGetAttribute(skill, "Magic Cost")
+				local tier = Ext.StatGetAttribute(skill, "Tier")
+				local skillgroup = GetSkillGroup(ability)
+				if skillgroup ~= nil then
+					skillgroup.skills[#skillgroup.skills+1] = SkillEntry:Create(skill, requirement, sp, tier)
+					--Ext.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
+					Ext.Print(tostring(skill))
+				end
 			end
 		end
 	end
