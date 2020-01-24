@@ -89,21 +89,12 @@ local function OverrideStats()
     Ext.Print("[LLENEMY:Bootstrap.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
 end
 
-local EnemySkills = {
-	Warfare = {},
-	Ranger = {}
-}
-
-local function BuildEnemySkills()
-	local skills = Ext.GetStatEntries("SkillData")
-
-
-end
+Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEMY_BonusSkills.lua")
 
 local ModuleLoad = function ()
     Ext.Print("[LLENEMY:Bootstrap.lua] Module is loading.")
 	OverrideStats();
-	BuildEnemySkills();
+	LLENEMY_Ext_BuildEnemySkills();
 end
 
 local function SessionLoading()
@@ -116,10 +107,6 @@ if Ext.RegisterListener ~= nil then
     Ext.RegisterListener("ModuleLoading", ModuleLoad)
 else
     Ext.Print("[LLENEMY:Bootstrap.lua] [*WARNING*] Extender version is less than v36! Stat overrides ain't happenin', chief.")
-end
-
-function LLENEMY_Ext_AddBonusSkills(enemy,bonus_type)
-
 end
 
 Ext.Print("[LLENEMY:Bootstrap.lua] Finished running.")
