@@ -1,66 +1,66 @@
 local stat_overrides = {
 	_NpcDaggers = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	},
 	_NpcUnarmed = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	},
 	_NpcWands_Water = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	},
 	_NpcSwords = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	},
 	_NpcAxes = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	},
 	_NpcClubs = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	},
 	_NpcTwoHandedSwords = {
-		Talents = { "ViolentMagic" }
+		Talents = "ViolentMagic"
 	},
 	_NpcTwoHandedAxes = {
-		Talents = { "ViolentMagic" }
+		Talents = "ViolentMagic"
 	},
 	_NpcTwoHandedMaces = {
-		Talents = { "ViolentMagic" }
+		Talents = "ViolentMagic"
 	},
 	_NpcSpears = {
-		Talents = { "ViolentMagic" }
+		Talents = "ViolentMagic"
 	},
 	_NpcStaffs = {
-		Talents = { "ViolentMagic;FaroutDude" }
+		Talents = "ViolentMagic;FaroutDude"
 	},
 	_NpcStaffs_Fire = {
-		Talents = { "ViolentMagic;FaroutDude" }
+		Talents = "ViolentMagic;FaroutDude"
 	},
 	_NpcStaffs_Water = {
-		Talents = { "ViolentMagic;FaroutDude" }
+		Talents = "ViolentMagic;FaroutDude"
 	},
 	_NpcStaffs_Poison = {
-		Talents = { "ViolentMagic;FaroutDude" }
+		Talents = "ViolentMagic;FaroutDude"
 	},
 	_NpcStaffs_Earth = {
-		Talents = { "ViolentMagic;FaroutDude" }
+		Talents = "ViolentMagic;FaroutDude"
 	},
 	_NpcStaffs_Air = {
-		Talents = { "ViolentMagic;FaroutDude" }
+		Talents = "ViolentMagic;FaroutDude"
 	},
 	_NpcBows = {
-		Talents = { "ViolentMagic;ElementalRanger" }
+		Talents = "ViolentMagic;ElementalRanger"
 	},
 	_NpcCrossbows = {
-		Talents = { "ViolentMagic;ElementalRanger" }
+		Talents = "ViolentMagic;ElementalRanger"
 	},
 	_NpcWands_Fire = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	},
 	_NpcWands_Air = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	},
 	_NpcWands_Poison = {
-		Talents = { "ViolentMagic;Ambidextrous" }
+		Talents = "ViolentMagic;Ambidextrous"
 	}
 }
 
