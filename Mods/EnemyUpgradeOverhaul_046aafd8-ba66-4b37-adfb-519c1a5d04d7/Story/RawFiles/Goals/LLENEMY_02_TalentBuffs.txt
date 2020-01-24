@@ -25,7 +25,38 @@ LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_QUICKSTEP", 500,
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_NATURALCONDUCTOR", 100, 4);
 
 LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_RANGERRANGE", 500, 3);
-LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_BACKSTAB", 499, 4);
+//LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_BACKSTAB", 499, 4);
+//END_REGION
+
+//REGION GIFTBAG_TALENTS
+PROC
+LLENEMY_Talents_InitSettings()
+AND
+SysIsActive("CMP_Talents")
+THEN
+LLENEMY_Talents_InitGiftBagTalents();
+
+PROC
+LLENEMY_Talents_InitGiftBagTalents()
+AND
+GlobalGetFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded", 0)
+THEN
+LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_SADIST", 50, 10);
+LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_GLADIATOR", 100, 6);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_HAYMAKER", 100, 8);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_INDOMITABLE", 50, 12);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_SOULCATCHER", 20, 12);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_MAGICCYCLES", 100, 6);
+LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_MASTERTHIEF", 90, 4);
+LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_GREEDYVESSEL", 90, 4);
+GlobalSetFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
+//END_REGION
+
+//REGION MELEE_WEAPON_TALENT
+PROC
+LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Talents", "Melee")
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Talents", "Melee");
 //END_REGION
 
 //REGION WEAPON_TALENT_ROLLING
@@ -60,6 +91,8 @@ LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful f
 LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_RANGERRANGE", _Duration, _ChallengePoints);
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
+//Backstab
+/*
 PROC
 LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon", (STRING)_GroupSuccessFlag, (STRING)_Name)
 AND
@@ -87,6 +120,61 @@ NOT DB_LeaderLib_Random(_Roll);
 LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_BACKSTAB]. Applying to (",_Name,").");
 LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_BACKSTAB", _Duration, _ChallengePoints);
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
+*/
+
+//Gladiator
+PROC
+LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon", (STRING)_GroupSuccessFlag, (STRING)_Name)
+AND
+NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
+AND
+CharacterGetEquippedShield(_Enemy, _Shield)
+AND
+_Shield != NULL_00000000-0000-0000-0000-000000000000
+AND
+LeaderLib_Random_QRY(999)
+AND
+DB_LeaderLib_Random(_Roll)
+AND
+LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure(_Enemy, "Talents", "Weapon", _Roll)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_TALENT_GLADIATOR", _MinRoll, _MaxRoll, _Duration, _ChallengePoints)
+AND
+_Roll <= _MaxRoll
+AND
+_Roll >= _MinRoll
+THEN
+NOT DB_LeaderLib_Random(_Roll);
+LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_GLADIATOR]. Applying to (",_Name,").");
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_GLADIATOR", _Duration, _ChallengePoints);
+DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
+
+//Sadist
+PROC
+LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon", (STRING)_GroupSuccessFlag, (STRING)_Name)
+AND
+NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
+AND
+CharacterGetEquippedShield(_Enemy, _Shield)
+AND
+_Shield != NULL_00000000-0000-0000-0000-000000000000
+AND
+LeaderLib_Random_QRY(999)
+AND
+DB_LeaderLib_Random(_Roll)
+AND
+LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure(_Enemy, "Talents", "Weapon", _Roll)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_TALENT_SADIST", _MinRoll, _MaxRoll, _Duration, _ChallengePoints)
+AND
+_Roll <= _MaxRoll
+AND
+_Roll >= _MinRoll
+THEN
+NOT DB_LeaderLib_Random(_Roll);
+LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_SADIST]. Applying to (",_Name,").");
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_SADIST", _Duration, _ChallengePoints);
+DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 PROC
 LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon", (STRING)_GroupSuccessFlag, (STRING)_Name)
@@ -96,50 +184,28 @@ THEN
 NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 //END_REGION
 
-//REGION TALENT_WORKAROUNDS
+//REGION TOGGLE_SCRIPT_TOGGLING
 IF
-CharacterPrecogDying(_Enemy)
-AND
-HasActiveStatus(_Enemy, "LLENEMY_TALENT_RESISTDEAD", 1)
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD", _)
 THEN
-DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 20);
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
 
 IF
-CharacterPrecogDying(_Enemy)
-AND
-HasActiveStatus(_Enemy, "LLENEMY_TALENT_RESISTDEAD2", 1)
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD2", _)
 THEN
-DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 100);
-
-IF
-CharacterDied(_Enemy)
-AND
-DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 20)
-THEN
-//20% health resurrection
-PlayEffect(_Enemy, "LLENEMY_FX_Status_ComebackKid_Resurrect_01");
-LeaderLib_Skills_UseSkillOnTarget(_Enemy, _Enemy, "Target_EnemyResurrect", 0, 0);
-
-IF
-CharacterDied(_Enemy)
-AND
-DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 100)
-THEN
-PlayEffect(_Enemy, "LLENEMY_FX_Status_ComebackKid_Resurrect_01");
-CharacterResurrect(_Enemy);
-
-IF
-CharacterStatusRemoved(_Enemy, "RESURRECT", _)
-AND
-DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, _Amount)
-THEN
-NOT DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, _Amount);
-//Reroll buffs! Let the evil floowwwww.
-LLENEMY_Upgrades_ClearFlags(_Enemy);
-LLENEMY_Upgrades_RollForUpgrades(_Enemy);
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
 //END_REGION
 
 //REGION LEVELING_TALENT_BELTS
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,3,0,0)
+THEN
+SysClear("DB_LLENEMY_Talents_Temp_DeleteItem", 2);
+
+
+/* // No longer needed since the belt stats now start with an underscore, which let them auto-level and make them hidden from the UI
 IF
 CharacterStatusApplied(_Enemy, _Status, _)
 AND
@@ -192,17 +258,19 @@ AND
 DB_LLENEMY_Talents_Temp_DeleteItem(_Enemy, _Item)
 THEN
 NOT DB_LLENEMY_Talents_Temp_DeleteItem(_Enemy, _Item);
+*/
 //END_REGION
 
-//REGION TALENT_IMPLEMENTS
+//REGION NATURAL_CONDUCTOR
 IF
-CharacterStatusApplied(_Character, "SurfaceEnter", _)
-AND
-HasActiveStatus(_Character, "LLENEMY_TALENT_NATURALCONDUCTOR", 1)
-AND
-LLENEMY_QRY_IsInElectrifiedSurface(_Character)
+CharacterStatusRemoved(_Char, "LLENEMY_TALENT_NATURALCONDUCTOR", _)
 THEN
-ApplyStatus(_Character, "HASTED", 6.0, 0, _Character);
+LeaderLib_ToggleScripts_DisableScriptForObject(_Char, "LLENEMY_NaturalConductor_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_NATURALCONDUCTOR", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_NaturalConductor_Active", "EnemyUpgradeOverhaul");
 
 QRY
 LLENEMY_QRY_IsInElectrifiedSurface((CHARACTERGUID)_Character)

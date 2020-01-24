@@ -209,6 +209,8 @@ SysClear("DB_LLENEMY_Upgrades_LastTypeValues", 4);
 SysClear("DB_LLENEMY_LastGrenadeInt", 2);
 SysClear("DB_LLENEMY_GrenadeSkills", 3);
 
+GlobalClearFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
+
 LLENEMY_Buffs_InitSettings();
 LLENEMY_Talents_InitSettings();
 LLENEMY_Stats_InitSettings();

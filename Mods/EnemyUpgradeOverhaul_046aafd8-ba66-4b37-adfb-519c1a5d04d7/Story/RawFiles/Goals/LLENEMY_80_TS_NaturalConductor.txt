@@ -1,0 +1,17 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterStatusApplied(_Character, "SurfaceEnter", _)
+AND
+HasActiveStatus(_Character, "LLENEMY_TALENT_NATURALCONDUCTOR", 1)
+AND
+LLENEMY_QRY_IsInElectrifiedSurface(_Character)
+THEN
+ApplyStatus(_Character, "HASTED", 6.0, 0, _Character);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"

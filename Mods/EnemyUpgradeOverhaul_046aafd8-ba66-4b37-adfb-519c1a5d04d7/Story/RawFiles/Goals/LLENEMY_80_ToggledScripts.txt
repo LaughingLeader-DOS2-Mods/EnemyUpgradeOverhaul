@@ -1,0 +1,20 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+LLENEMY_ToggleScripts_RegisterScripts();
+
+KBSECTION
+
+//REGION SETTINGS
+PROC
+LLENEMY_ToggleScripts_RegisterScripts()
+THEN
+LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Granada", "LLENEMY_Granada_Active", 0);
+LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_ResistDead", "LLENEMY_ResistDead_Active", 0);
+LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_NaturalConductor", "LLENEMY_NaturalConductor_Active", 0);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

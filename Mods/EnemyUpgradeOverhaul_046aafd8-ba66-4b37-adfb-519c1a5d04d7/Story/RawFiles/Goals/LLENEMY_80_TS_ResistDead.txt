@@ -1,0 +1,50 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterPrecogDying(_Enemy)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_RESISTDEAD", 1)
+THEN
+DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 20);
+
+IF
+CharacterPrecogDying(_Enemy)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_RESISTDEAD2", 1)
+THEN
+DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 100);
+
+IF
+CharacterDied(_Enemy)
+AND
+DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 20)
+THEN
+//20% health resurrection
+PlayEffect(_Enemy, "LLENEMY_FX_Status_ComebackKid_Resurrect_01");
+LeaderLib_Skills_UseSkillOnTarget(_Enemy, _Enemy, "Target_EnemyResurrect", 0, 0);
+
+IF
+CharacterDied(_Enemy)
+AND
+DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 100)
+THEN
+PlayEffect(_Enemy, "LLENEMY_FX_Status_ComebackKid_Resurrect_01");
+CharacterResurrect(_Enemy);
+
+IF
+CharacterStatusRemoved(_Enemy, "RESURRECT", _)
+AND
+DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, _Amount)
+THEN
+NOT DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, _Amount);
+//Reroll buffs! Let the evil floowwwww.
+LeaderLib_ToggleScripts_DisableScriptForObject(_Enemy, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
+LLENEMY_Upgrades_ClearFlags(_Enemy);
+LLENEMY_Upgrades_RollForUpgrades(_Enemy);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"

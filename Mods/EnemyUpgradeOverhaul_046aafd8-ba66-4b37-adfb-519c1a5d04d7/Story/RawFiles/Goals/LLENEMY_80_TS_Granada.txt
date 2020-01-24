@@ -1,0 +1,38 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterStatusRemoved(_Enemy, "RESURRECT", _)
+AND
+ObjectGetFlag(_Enemy, "LLENEMY_AddedGrenadeStash", 1)
+THEN
+ApplyStatus(_Enemy, "LLENEMY_GRANADA", -1.0, 0, _Enemy);
+
+IF
+CharacterStatusApplied(_Enemy, "KNOCKED_DOWN", _)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_GRANADA", 1)
+AND
+CharacterGetLevel(_Enemy, _Level)
+AND
+GetPosition(_Enemy, _x, _y, _z)
+AND
+LeaderLib_Random_QRY(999)
+AND
+DB_LeaderLib_Random(_Roll)
+AND
+DB_LLENEMY_GrenadeSkills(_Skill, _MinRoll, _MaxRoll)
+AND
+_Roll <= _MaxRoll
+AND
+_Roll >= _MinRoll
+THEN
+NOT DB_LeaderLib_Random(_Roll);
+CreateExplosionAtPosition(_x, _y, _z, _Skill, _Level);
+CharacterStatusText(_Enemy, "<font color='#FF4500' size='30'>A grenade explodes!</font>");
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"

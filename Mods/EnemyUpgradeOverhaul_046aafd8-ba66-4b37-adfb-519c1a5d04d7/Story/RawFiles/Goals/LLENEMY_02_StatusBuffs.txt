@@ -166,6 +166,11 @@ THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_GRANADA");
 LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Blocked upgrade [LLENEMY_GRANADA] from applying to a non-humanoid.");
 
+IF
+CharacterStatusApplied(_Enemy, "LLENEMY_GRANADA", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Enemy, "LLENEMY_Granada_Active", "EnemyUpgradeOverhaul");
+
 //Guaranteed talent status
 IF
 CharacterStatusApplied(_Enemy, "LLENEMY_GRANADA", _)
@@ -195,36 +200,6 @@ GenerateTreasure(_Backpack, "LLENEMY_GranadaStatus_GrenadeStash", _Level, _Enemy
 MoveAllItemsTo(_Backpack, _Enemy);
 ItemRemove(_Backpack);
 ObjectSetFlag(_Enemy, "LLENEMY_AddedGrenadeStash");
-
-IF
-CharacterStatusRemoved(_Enemy, "RESURRECT", _)
-AND
-ObjectGetFlag(_Enemy, "LLENEMY_AddedGrenadeStash", 1)
-THEN
-ApplyStatus(_Enemy, "LLENEMY_GRANADA", -1.0, 0, _Enemy);
-
-IF
-CharacterStatusApplied(_Enemy, "KNOCKED_DOWN", _)
-AND
-HasActiveStatus(_Enemy, "LLENEMY_GRANADA", 1)
-AND
-CharacterGetLevel(_Enemy, _Level)
-AND
-GetPosition(_Enemy, _x, _y, _z)
-AND
-LeaderLib_Random_QRY(999)
-AND
-DB_LeaderLib_Random(_Roll)
-AND
-DB_LLENEMY_GrenadeSkills(_Skill, _MinRoll, _MaxRoll)
-AND
-_Roll <= _MaxRoll
-AND
-_Roll >= _MinRoll
-THEN
-NOT DB_LeaderLib_Random(_Roll);
-CreateExplosionAtPosition(_x, _y, _z, _Skill, _Level);
-CharacterStatusText(_Enemy, "<font color='#FF4500' size='30'>A grenade explodes!</font>");
 //END_REGION
 
 //REGION SPECIAL_UPGRADES
