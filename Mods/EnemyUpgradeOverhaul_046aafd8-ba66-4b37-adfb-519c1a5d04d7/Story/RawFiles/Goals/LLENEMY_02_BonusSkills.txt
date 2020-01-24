@@ -16,11 +16,11 @@ LLENEMY_Upgrades_AddType("BonusSkills", "Elite", 800, 999, 4);
 LLENEMY_Upgrades_AddType("BonusSkills", "Source1", 100, 150, 4);
 LLENEMY_Upgrades_AddType("BonusSkills", "Source2", 850, 900, 4);
 
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE", 900, 2);
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_NORMALSET", 99, 6);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE", 700, 2);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SET_NORMAL", 299, 6);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 900, 10);
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 999, 4);
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Source2", "LLENEMY_BONUSSKILLS_SOURCE", 999, 4);
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_ELITESET", 900, 10);
 
 DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_SINGLE", 1, 0);
 DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_NORMALSET", 4, 0);
@@ -58,6 +58,17 @@ IntegertoString(_SourceAllowed, _SourceAllowedStr)
 THEN
 NRD_LuaCall("LLENEMY_Ext_AddBonusSkills", _EnemyStr, _AddSkillsStr, _SourceAllowedStr);
 */
+
+IF
+CharacterStatusAttempt(_Char, "LLENEMY_BONUSSKILLS_SOURCE", _)
+AND
+CharacterGetMaxSourcePoints(_Char, _Max)
+AND
+IntegerSum(_Max, 1, _NextMax)
+AND
+IntegerMin(3, _NextMax, _Next) // Cap it at 3 max
+THEN
+CharacterOverrideMaxSourcePoints(_Char, _Next);
 //END_REGION
 EXITSECTION
 
