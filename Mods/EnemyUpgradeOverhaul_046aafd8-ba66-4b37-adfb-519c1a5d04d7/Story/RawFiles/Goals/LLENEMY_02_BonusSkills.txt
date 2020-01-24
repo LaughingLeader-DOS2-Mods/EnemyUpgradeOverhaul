@@ -1,0 +1,46 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_BonusSkills_InitSettings();
+KBSECTION
+//REGION SETTINGS
+PROC
+LLENEMY_BonusSkills_InitSettings()
+AND
+LeaderLib_QRY_ExtenderIsActive()
+THEN
+LLENEMY_Upgrades_AddGroup("BonusSkills", "LLENEMY_BonusSkillsUpgradesDisabled", "LLENEMY_BonusSkillsRolled", "LLENEMY_BonusSkillsUpgradeAdded");
+
+LLENEMY_Upgrades_AddType("BonusSkills", "Set", 1, 99, 14);
+LLENEMY_Upgrades_AddType("BonusSkills", "Single", 550, 798, 5);
+LLENEMY_Upgrades_AddType("BonusSkills", "Source", 799, 900, 8);
+//END_REGION
+
+//REGION ROLLING
+//Manually Roll
+PROC
+LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
+LLENEMY_BonusSkills_AddToEnemy(_Enemy, _Type);
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_BonusSkills_AddToEnemy((CHARACTERGUID)_Enemy, (STRING)_Type)
+AND
+String(_Enemy, _EnemyStr)
+THEN
+NRD_LuaCall("LLENEMY_Ext_AddBonusSkills", _EnemyStr, _Type);
+*/
+
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_BonusSkills_AddToEnemy((CHARACTERGUID)_Enemy, (STRING)_Type)
+THEN
+DB_NOOP(1);
+// [END_NO_OSITOOLS]
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
