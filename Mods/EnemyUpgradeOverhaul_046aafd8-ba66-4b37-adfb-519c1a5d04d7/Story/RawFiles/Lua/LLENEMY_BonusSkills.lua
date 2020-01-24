@@ -230,6 +230,7 @@ local ignored_skills = {
 local ignored_skillwords = {
 	"Arrow",
 	"Burrow",
+	"CakeBomber",
 	"Debug",
 	"Drillworm",
 	"Dummy",
@@ -413,6 +414,8 @@ local function GetPreferredSkillGroup(ability,requirement)
 	return nil
 end
 
+local ATTEMPTS_MAX = 40
+
 function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingstr)
 	local remaining = tonumber(remainingstr)
 	local source_skills_remaining = tonumber(source_skills_remainingstr)
@@ -446,7 +449,7 @@ function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingst
 				remaining = remaining - 1
 				success = true
 			else
-				Ext.Print("[LLENEMY_BonusSkills.lua] -- Skipping source skill for '" .. tostring(enemy) .. "'.")
+				--Ext.Print("[LLENEMY_BonusSkills.lua] -- Skipping source skill for '" .. tostring(enemy) .. "'.")
 				attempts = attempts + 1
 			end
 		else 
@@ -461,7 +464,7 @@ function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingst
 			end
 		end
 
-		if attempts >= 30 then
+		if attempts >= ATTEMPTS_MAX then
 			Ext.Print("[LLENEMY_BonusSkills.lua] Enemy '" .. tostring(enemy) .. "' hit the maximum amount of random attempts when getting a skill from group ("..skillgroup.id..").")
 			attempts = 0
 			remaining = 0
