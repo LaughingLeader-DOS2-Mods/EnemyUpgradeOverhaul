@@ -122,6 +122,7 @@ local function GetSkillGroup(ability)
 end
 
 local ignored_skills = {
+	Jump_EnemyVoidGlide = true,
 	Cone_EnemyCorrosiveSpray_Beetle = true,
 	Cone_EnemyFlamebreath_Salamander = true,
 	Cone_EnemyGroundSmash_Dragon = true,
