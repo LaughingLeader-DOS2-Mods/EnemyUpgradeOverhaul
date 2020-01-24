@@ -201,6 +201,7 @@ local ignored_skills = {
 	Projectile_TotemKillingSpell = true,
 	Teleportation_EnemyInsectBurrow = true,
 	Teleportation_EnemyMagisterTorturerTeleport = true,
+	Target_EnemyDeepDwellerShacklesOfPain = true,
 }
 
 local ignored_skillwords = {
@@ -373,7 +374,9 @@ local function GetPreferredSkillGroup(ability,requirement)
 	return nil
 end
 
-function LLENEMY_Ext_AddBonusSkills(enemy,remaining,source_skills_remaining)
+function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingstr)
+	local remaining = tostring(remainingstr)
+	local source_skills_remaining = tostring(source_skills_remainingstr)
 	local preferred_ability = GetHighestAbility(enemy)
 	local preferred_requirement = GetWeaponRequirement(enemy)
 	local sp_max = CharacterGetMaxSourcePoints(enemy)
