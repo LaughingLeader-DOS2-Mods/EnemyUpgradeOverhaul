@@ -73,9 +73,53 @@ local function GetSkillGroup(ability)
 	return nil
 end
 
+local ignored_skills = {
+	Target_ChickenResurrect = true,
+	Target_FaceRipper = true,
+	Shout_PolymorphIntoDwarf = true,
+	Shout_PolymorphIntoElf = true,
+	Shout_PolymorphIntoHuman = true,
+	Shout_PolymorphIntoLizard = true,
+	Shout_Undead_PolymorphIntoDwarf = true,
+	Shout_Undead_PolymorphIntoElf = true,
+	Shout_Undead_PolymorphIntoHuman = true,
+	Shout_Undead_PolymorphIntoLizard = true,
+	Shout_PlayDead = true,
+	Projectile_EnemyFlight_Ooze = true,
+	Projectile_EnemyFlight_Ooze_Fire = true,
+	Projectile_EnemyFlight_Ooze_Poison = true,
+	Projectile_EnemyFlight_Wolf = true,
+	Projectile_EnemyInfectiousBlood_Bat = true,
+}
+
+local ignored_skillwords = {
+	"Suicide",
+	"Invulnerability",
+	"Quest",
+	"QUEST",
+	"LLENEMY",
+	"SourceVampirism",
+	"_Kraken_",
+	"Projectile_Incarnate",
+	"Projectile_Grenade_",
+	"EnemyStaffOfMagus",
+	"_Alan",
+	"_Adrama",
+	"_Puppet",
+	"_Ooze",
+	"_Explosion",
+	"EnemyHound",
+	"Dummy",
+	"_Newt",
+}
+
 local function IgnoreSkill(skill)
-	if string.find(skill, "Quest") or string.find(skill, "QUEST") then
+	if ignored_skills[skill] == true then return true end
+	if string.sub(skill,1,1) == "_" then
 		return true
+	end
+	for _,word in pairs(ignored_skillwords) do
+		if string.find(skill, word) then return true end
 	end
 	return false
 end
