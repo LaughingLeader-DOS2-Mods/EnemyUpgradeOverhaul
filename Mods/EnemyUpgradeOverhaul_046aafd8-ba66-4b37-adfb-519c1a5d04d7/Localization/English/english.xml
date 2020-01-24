@@ -110,6 +110,14 @@
 	<content contentuid="h2f3fff9cge409g42a9gb29fgff5fc6065221" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_DisplayName">Summon Chicken Armada</content>
 	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUS_TREASURE_ROLL_Description">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
 	<content contentuid="h194ac7f5g9da2g4067g83efgf23de735ad79" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUS_TREASURE_ROLL_DisplayName">Bonus Treasure</content>
+	<content contentuid="h358b00a4g6320g494fg9441g94add11507ba" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_ELITE_Description">Character has an elite set of new bonus skills.</content>
+	<content contentuid="h7040a2f0g29d3g43d6ga656gb5eb0aac1934" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_ELITE_DisplayName">Skilled: Elite</content>
+	<content contentuid="h2e45720ag8842g4c73g917fg7e1d2044cb52" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_NORMAL_Description">Character has a set of new bonus skills.</content>
+	<content contentuid="h5aa2a41bgbaa4g46d0g9987ge5c19c4b4aa4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_NORMAL_DisplayName">Skilled: Exceptional</content>
+	<content contentuid="hbacea44ag4103g49ccgbd8fgb9f026bb437d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SINGLE_Description">Character has a new bonus skill.</content>
+	<content contentuid="he79478e5gfa95g4461gba2bg9122ba540b28" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SINGLE_DisplayName">Skilled: Basic</content>
+	<content contentuid="h2b3daf7egef57g4286g9247gf5c0b9752757" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SOURCE_Description">Character has a new bonus source skill.</content>
+	<content contentuid="hd1a568b1g2c56g4343gb1fcg4ae8f47c28e4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SOURCE_DisplayName">Skilled: Sourcery</content>
 	<content contentuid="h35042572gd0f8g42f0gbc95g44d818841347" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_CHICKEN_OVERLORD_Description">Character is the Overlord for an armada of chickens. Beware! Bwark!</content>
 	<content contentuid="h9bc9d98ag9fa9g4d23g88c4ge55de8f8c73a" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_CHICKEN_OVERLORD_DisplayName">Chicken Overlord</content>
 	<content contentuid="hf6486123g0005g46c9g8a40ga098203e2ab6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_Description">Character is growing even more powerful through a second round of upgrades!</content>
