@@ -88,7 +88,7 @@ _Roll >= _MinRoll
 THEN
 NOT DB_LeaderLib_Random(_Roll);
 LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_RANGERRANGE]. Applying to (",_Name,").");
-LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_RANGERRANGE", _Duration, _ChallengePoints);
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_TALENT_RANGERRANGE", _Duration, _ChallengePoints);
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 //Backstab
@@ -118,7 +118,7 @@ _Roll >= _MinRoll
 THEN
 NOT DB_LeaderLib_Random(_Roll);
 LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_BACKSTAB]. Applying to (",_Name,").");
-LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_BACKSTAB", _Duration, _ChallengePoints);
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_TALENT_BACKSTAB", _Duration, _ChallengePoints);
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 */
 
@@ -146,7 +146,7 @@ _Roll >= _MinRoll
 THEN
 NOT DB_LeaderLib_Random(_Roll);
 LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_GLADIATOR]. Applying to (",_Name,").");
-LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_GLADIATOR", _Duration, _ChallengePoints);
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_TALENT_GLADIATOR", _Duration, _ChallengePoints);
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 //Sadist
@@ -173,7 +173,7 @@ _Roll >= _MinRoll
 THEN
 NOT DB_LeaderLib_Random(_Roll);
 LeaderLog_Log("DEBUG", "[LLENEMY:Talents:RollForStatusUpgrade] Roll successful for weapon talent status [LLENEMY_TALENT_SADIST]. Applying to (",_Name,").");
-LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_SADIST", _Duration, _ChallengePoints);
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_TALENT_SADIST", _Duration, _ChallengePoints);
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 PROC

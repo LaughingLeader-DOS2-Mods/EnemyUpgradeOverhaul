@@ -181,7 +181,7 @@ HasActiveStatus(_Enemy, "LLENEMY_TALENT_UNSTABLE", 0)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_TALENT_UNSTABLE", _MinRoll, _MaxRoll, _Duration, _CP)
 THEN
-LLENEMY_Upgrades_ApplyUpgrade(_Enemy, "LLENEMY_TALENT_UNSTABLE", _Duration, _CP);
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_TALENT_UNSTABLE", _Duration, _CP);
 ObjectSetFlag(_Enemy, "LLENEMY_TalentUpgradeAdded");
 
 IF
