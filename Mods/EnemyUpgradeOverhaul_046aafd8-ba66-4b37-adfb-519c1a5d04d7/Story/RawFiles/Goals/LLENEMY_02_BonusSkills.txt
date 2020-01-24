@@ -11,9 +11,10 @@ LeaderLib_QRY_ExtenderIsActive()
 THEN
 LLENEMY_Upgrades_AddGroup("BonusSkills", "LLENEMY_BonusSkillsUpgradesDisabled", "LLENEMY_BonusSkillsRolled", "LLENEMY_BonusSkillsUpgradeAdded");
 
-LLENEMY_Upgrades_AddType("BonusSkills", "Set", 1, 99, 14);
-LLENEMY_Upgrades_AddType("BonusSkills", "Single", 550, 798, 5);
-LLENEMY_Upgrades_AddType("BonusSkills", "Source", 799, 900, 8);
+LLENEMY_Upgrades_AddType("BonusSkills", "EliteSet", 1, 99, 18);
+LLENEMY_Upgrades_AddType("BonusSkills", "NormalSet", 100, 399, 10);
+LLENEMY_Upgrades_AddType("BonusSkills", "Single", 400, 999, 5);
+LLENEMY_Upgrades_AddType("BonusSkills", "Source", 90, 500, 8);
 //END_REGION
 
 //REGION ROLLING
