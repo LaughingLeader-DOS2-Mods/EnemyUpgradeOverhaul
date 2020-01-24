@@ -29,7 +29,6 @@ DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_ELITESET", 6, 2);
 //END_REGION
 
 //REGION ROLLING
-//Manually Roll
 PROC
 LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
 AND
@@ -43,6 +42,25 @@ AND
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type)
 THEN
 SetStoryEvent(_Enemy, "LeaderLog_Commands_SetSkillRequirement");
+
+// Prevent Magisters from getting source skills
+PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Enemy, (STRING)_Group, (STRING)_Type, "LLENEMY_BONUSSKILLS_SOURCE")
+AND
+IsTagged(_Enemy, "MAGISTER", 1)
+AND
+IsBoss(_Enemy, 0)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SOURCE");
+
+IF
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SOURCE")
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_BONUSSKILLS_SINGLE", _MinRoll, _MaxRoll, _Duration, _CP)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_BONUSSKILLS_SINGLE", 0)
+THEN
+LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SINGLE", _Duration, _CP);
 
 /* [OSITOOLS_ONLY]
 PROC
