@@ -26,8 +26,16 @@ function SkillGroup:GetRandom(enemy, requirement)
 	local max = #self.skills*2
 	while attempts < (#self.skills*2) do
 		local skill = LeaderLib.Common.GetRandomTableEntry(self.skills)
-		if CharacterHasSkill(enemy, skill) ~= 1 and (requirement == "None" or requirement == skill.requirement or attempts >= max-1) then
-			return skill
+		if type(requirement) == "string" then
+			if CharacterHasSkill(enemy, skill.id) ~= 1 and (requirement == "None" or requirement == skill.requirement or attempts >= max-1) then
+				return skill
+			end
+		elseif type(requirement) == "table" then
+			for _,v in pairs(requirement) do
+				if CharacterHasSkill(enemy, skill.id) ~= 1 and (v == "None" or v == skill.requirement or attempts >= max-1) then
+					return skill
+				end
+			end
 		end
 		attempts = attempts + 1
 	end
@@ -91,6 +99,7 @@ local ignored_skills = {
 	Jump_EnemyCurseDive_Kraken = true,
 	Jump_EnemyPhoenixDive_Shambling = true,
 	Jump_EnemyPhoenixDive_Shambling_Boss = true,
+	Jump_EnemySpiderBurrow = true,
 	Jump_EnemyTacticalRetreat_Frog = true,
 	Jump_EnemyTacticalRetreat_Mordus = true,
 	MultiStrike_EnemyVault_ArenaChampion = true,
@@ -117,20 +126,34 @@ local ignored_skills = {
 	Projectile_EnemyFrog_Air = true,
 	Projectile_EnemyInfectiousBlood_Bat = true,
 	Projectile_EnemyLightningBolt_Frog = true,
+	Projectile_EnemyMessengerOwl = true,
 	Projectile_EnemyPoisonball_Acid = true,
 	Projectile_EnemyPoisonball_Troll = true,
+	Projectile_EnemyTotemAir = true,
+	Projectile_EnemyTotemBlood = true,
+	Projectile_EnemyTotemBone = true,
+	Projectile_EnemyTotemFire = true,
+	Projectile_EnemyTotemOil = true,
+	Projectile_EnemyTotemPoison = true,
+	Projectile_EnemyTotemWater = true,
+	Projectile_EnemyTotemWood = true,
+	Projectile_EnemyVWPoisonBall = true,
+	Projectile_TotemKillingSpell = true,
 	Projectile_TurretBallistaShot_LadyVengeance = true,
 	Quake_EnemyEarthquake_Bear = true,
 	Rain_EnemyBlood_Windego = true,
 	Rain_EnemyRain_Short = true,
 	Rain_EnemyWater_Blessed = true,
 	Rush_EnemyBatteringRam_Demons = true,
+	Rush_EnemyTurtleBatteringRam = true,
+	Shout_ChainPull = true,
 	Shout_EnemyBoneCage_Dog = true,
 	Shout_EnemyChameleonSkin_PurgedDaughter = true,
 	Shout_EnemyContamination_Shambling = true,
 	Shout_EnemyFear_Scarecrow = true,
 	Shout_EnemyFear_Wolf = true,
 	Shout_EnemyIgnition_Troll = true,
+	Shout_EnemyInspire = true,
 	Storm_EnemyLightning_MotherTree = true,
 	Summon_EnemyBoneTroll_Dog = true,
 	Summon_EnemyBoneTroll_Mini = true,
@@ -145,6 +168,7 @@ local ignored_skills = {
 	Summon_EnemySkeleton_Regular = true,
 	Summon_EnemySkeleton_Strong = true,
 	Summon_EnemySkeleton_Weak = true,
+	Summon_EnemyTotemFromSurface = false,
 	Summon_EnemyTotem_Blood = true,
 	Summon_EnemyTotem_Fire_Witch = true,
 	Summon_EnemyTotem_Poison = true,
@@ -167,6 +191,8 @@ local ignored_skills = {
 	Target_EnemyCurse_Witch = true,
 	Target_EnemyDeathWish_Dog = true,
 	Target_EnemyDecayingTouch_Heart = true,
+	Target_EnemyDeepDwellerShacklesOfPain = true,
+	Target_EnemyDemonicConsume = true,
 	Target_EnemyDemonicMadness_Heart = true,
 	Target_EnemyEnrage_Wolf = true,
 	Target_EnemyFortify_Shambling = true,
@@ -185,9 +211,12 @@ local ignored_skills = {
 	Target_EnemyVacuumTouch_Heart = true,
 	Target_EnemyVacuum_SilentMonk = true,
 	Target_EnemyWormTremor_MotherTree = true,
+	Target_NULLSKILL = true,
 	Teleportation_EnemyFeatherFallSelf_Lucian = true,
 	Teleportation_EnemyFeatherFallSelf_SkeletonMage = true,
 	Teleportation_EnemyFreeFall_Werewolf = true,
+	Teleportation_EnemyInsectBurrow = true,
+	Teleportation_EnemyMagisterTorturerTeleport = true,
 	Teleportation_EnemyNetherswap_Heart	 = true,
 	Teleportation_EnemyResurrect_Alan = true,
 	Teleportation_EnemyResurrect_Alexandar = true,
@@ -196,19 +225,17 @@ local ignored_skills = {
 	Teleportation_EnemyResurrect_Werewolf = true,
 	Teleportation_ResurrectScroll = true,
 	Teleportation_StoryModeFreeResurrect = true,
-	Target_NULLSKILL = true,
-	Shout_ChainPull = true,
-	Projectile_TotemKillingSpell = true,
-	Teleportation_EnemyInsectBurrow = true,
-	Teleportation_EnemyMagisterTorturerTeleport = true,
-	Target_EnemyDeepDwellerShacklesOfPain = true,
 }
 
 local ignored_skillwords = {
+	"Arrow",
+	"Burrow",
 	"Debug",
+	"Drillworm",
 	"Dummy",
-	"EnemyHound",
 	"EnemyStaffOfMagus",
+	"SilentMonk",
+	"Hound",
 	"Invulnerability",
 	"LLENEMY",
 	"Projectile_Grenade_",
@@ -217,25 +244,25 @@ local ignored_skillwords = {
 	"Quest",
 	"SourceVampirism",
 	"Suicide",
+	"TEST",
 	"Talent",
+	"Trap",
+	"Turret",
 	"_Adrama",
 	"_Alan",
 	"_Explosion",
 	"_Item_",
 	"_Kraken_",
+	"_LLMIME_",
 	"_LeaderLib_",
 	"_Newt",
 	"_Ooze",
 	"_Puppet",
 	"_Status_",
-	"_LLMIME_",
-	"Trap",
-	"TEST",
-	"Turret",
-	"Arrow",
 }
 
 local function IgnoreSkill(skill)
+	if ignored_skills[skill] == false then return false end
 	if ignored_skills[skill] == true then return true end
 	if string.sub(skill,1,1) == "_" then
 		return true
@@ -284,7 +311,6 @@ local function GetHighestAbility(enemy)
 	end
 	return last_highest_ability
 end
-
 
 local weapontype_requirements = {
 	Sword = "MeleeWeapon",
@@ -342,6 +368,19 @@ local function GetWeaponRequirement(enemy)
 	return "None"
 end
 
+local function TierWithinLevelRange(tier, level)
+	if tier == "Starter" or tier == "" or tier == "None" then
+		return true
+	elseif tier == "Novice" and level >= 4 then
+		return true
+	elseif tier == "Adept" and level >= 9 then
+		return true
+	elseif tier == "Master" and level >= 16 then
+		return true
+	end
+	return false
+end
+
 local function GetPreferredSkillGroup(ability,requirement)
 	if ability ~= "None" then
 		for k,v in pairs(EnemySkills) do
@@ -375,11 +414,12 @@ local function GetPreferredSkillGroup(ability,requirement)
 end
 
 function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingstr)
-	local remaining = tostring(remainingstr)
-	local source_skills_remaining = tostring(source_skills_remainingstr)
+	local remaining = tonumber(remainingstr)
+	local source_skills_remaining = tonumber(source_skills_remainingstr)
 	local preferred_ability = GetHighestAbility(enemy)
 	local preferred_requirement = GetWeaponRequirement(enemy)
 	local sp_max = CharacterGetMaxSourcePoints(enemy)
+	local level = CharacterGetLevel(enemy)
 
 	Ext.Print("[LLENEMY_BonusSkills.lua] Enemy '" .. tostring(enemy) .. "' preferred Ability (".. tostring(preferred_ability) ..") Requirement (".. tostring(LeaderLib.Common.Dump(preferred_requirement)) ..") Max SP ("..tostring(sp_max)..").")
 
@@ -390,18 +430,21 @@ function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingst
 	end
 	local attempts = 0
 	while remaining > 0 do
+		local success = false
 		local skill = skillgroup:GetRandom(enemy, preferred_requirement)
-		if skill ~= nil then
+		if skill ~= nil and TierWithinLevelRange(skill.tier, level) then
 			if skill.sp > 0 and source_skills_remaining > 0 then
 				Ext.Print("[LLENEMY_BonusSkills.lua] -- Adding *SOURCE* skill (".. tostring(skill.id) ..") to enemy '" .. tostring(enemy) .. "'.")
 				CharacterAddSkill(enemy, skill.id, 0)
 				source_skills_remaining = source_skills_remaining - 1
 				remaining = remaining - 1
+				success = true
 			end
 			if skill.sp == 0 then
 				Ext.Print("[LLENEMY_BonusSkills.lua] -- Adding skill (".. tostring(skill.id) ..") to enemy '" .. tostring(enemy) .. "'.")
 				CharacterAddSkill(enemy, skill.id, 0)
 				remaining = remaining - 1
+				success = true
 			else
 				Ext.Print("[LLENEMY_BonusSkills.lua] -- Skipping source skill for '" .. tostring(enemy) .. "'.")
 				attempts = attempts + 1
@@ -409,6 +452,15 @@ function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingst
 		else 
 			attempts = attempts + 1
 		end
+
+		--- Get another random skillgroup when no preference is set
+		if success and preferred_ability == "None" then
+			local nextskillgroup = GetPreferredSkillGroup(preferred_ability, preferred_requirement)
+			if nextskillgroup ~= nil then
+				skillgroup = nextskillgroup
+			end
+		end
+
 		if attempts >= 30 then
 			Ext.Print("[LLENEMY_BonusSkills.lua] Enemy '" .. tostring(enemy) .. "' hit the maximum amount of random attempts when getting a skill from group ("..skillgroup.id..").")
 			attempts = 0
