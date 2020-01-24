@@ -420,7 +420,7 @@ _Roll >= _MinRoll
 THEN
 NOT DB_LeaderLib_Random(_Roll);
 LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForStatusUpgrade] [",_Name,"] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
-LLENEMY_Upgrades_ApplyUpgrade(_Character, _Status, _Duration, _CP);
+LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _Status, _Duration, _CP);
 LLENEMY_Upgrades_OnRollForGroupSucceeded(_Character, _Group, _Type, _GroupSuccessFlag);
 
 QRY
@@ -478,14 +478,14 @@ THEN
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
 
 PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
 NOT GetVarInteger(_Character, "LLENEMY_ChallengePoints", _)
 THEN
 SetVarInteger(_Character, "LLENEMY_ChallengePoints", 0);
 
 PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
 GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
 AND
@@ -496,7 +496,7 @@ ApplyStatus(_Character, _Status, _Duration, 0, _Character);
 
 /*
 PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
 GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
 AND
@@ -512,7 +512,7 @@ CharacterSetCustomName(_Character, _NewName);
 */
 
 PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
 GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
 AND
@@ -630,7 +630,7 @@ CharacterGetDisplayName(_Character, _, _Name)
 THEN
 NOT DB_LeaderLib_Random(_Roll);
 LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:ApplyEliteBonuses] Adding elite bonus to [",_Name,"] - [",_Group,":",_Type,"] Status [",_Status,"].");
-LLENEMY_Upgrades_ApplyUpgrade(_Character, _Status, _Duration, _CP);
+LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _Status, _Duration, _CP);
 
 PROC
 LLENEMY_Upgrades_Internal_OnEliteBonusRolled((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_Amount)
