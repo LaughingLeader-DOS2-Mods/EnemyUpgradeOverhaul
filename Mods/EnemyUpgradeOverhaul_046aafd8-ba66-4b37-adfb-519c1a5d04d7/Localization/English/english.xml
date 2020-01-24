@@ -1,0 +1,184 @@
+<contentList>
+	<content contentuid="h9bcf1767g7b81g4ae1gbf20ge19a6b4454ef" Source="CONT_LLENEMY_DuplicantTreasure">Shadow Treasure</content>
+	<content contentuid="ha3ccca0bg576dg4a64gb2edg8819d8f2cdc0" Source="LLENEMY_Animals_Chicken_BattleChicken_A">Chicken Infantry</content>
+	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>
+	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
+	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
+	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_10">Armor Boost</content>
+	<content contentuid="h6f37a8adgd0e7g447fg816cg6248d5b69a10" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_15">Armor Boost</content>
+	<content contentuid="hf60945a4g7f7ag445cgacceg7f43da4a7f06" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_20">Armor Boost</content>
+	<content contentuid="h0c6343ecg8be2g4c1ag90b6g4549612a33e0" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_25">Armor Boost</content>
+	<content contentuid="h78190c63gaa74g4228gb184g7cc2e09afb27" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_30">Armor Boost</content>
+	<content contentuid="h7083987bg5f4dg45b6gbc43g96939df3b059" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_35">Armor Boost</content>
+	<content contentuid="hd58a85d5g8c13g41a7gb3fegd9a7fbdd4e9d" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_40">Armor Boost</content>
+	<content contentuid="h127721f1g27f1g4ffag9b50gf2720cedb009" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_45">Armor Boost</content>
+	<content contentuid="h05040c61g84bfg4989ga083g48f7642fbeb5" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_5">Armor Boost</content>
+	<content contentuid="h00b9a551g2b32g43d4g8c3fg450945250ef0" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_50">Armor Boost</content>
+	<content contentuid="h842eaa46gb961g4b6dgbf83g833dd133bd7e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_10">Damage Boost</content>
+	<content contentuid="h0d80c25ag2866g4c58g9cdag227856e9e48c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_15">Damage Boost</content>
+	<content contentuid="hdc4e3c6dg30acg45c6ga046g0182ff2c70de" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_20">Damage Boost</content>
+	<content contentuid="hb03b0770g292ag4844g977dgf0e7534a1f5b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_25">Damage Boost</content>
+	<content contentuid="h6f6ccb6ag9cc6g4122g9040g432f4e787491" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_5">Damage Boost</content>
+	<content contentuid="h719b59cdg64e5g4fe1g97bbgd6bd66675614" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_10">Magic Armor Boost</content>
+	<content contentuid="h7dc61280g5743g4a60g85c1g8bde41a13abb" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_15">Magic Armor Boost</content>
+	<content contentuid="h897741cbg8002g4c03g816fgcdba9d369b54" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_20">Magic Armor Boost</content>
+	<content contentuid="hef0955d5g3d94g4d39g87b1g20872d999f16" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_25">Magic Armor Boost</content>
+	<content contentuid="hd65fa52bge450g485cg8d08g084b1ef35990" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_30">Magic Armor Boost</content>
+	<content contentuid="hce14d863g96b1g4817ga295gbea6423c0190" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_35">Magic Armor Boost</content>
+	<content contentuid="h8ab2aa74g8581g4bf1g8e93ge8405d3572f3" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_40">Magic Armor Boost</content>
+	<content contentuid="h95d57e81gc533g4236gbb95g2ee7097f5155" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_45">Magic Armor Boost</content>
+	<content contentuid="h8fecc0a7g0c7eg4a22g8528g1a6ac5bf5f30" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_5">Magic Armor Boost</content>
+	<content contentuid="hd571cf40g88eeg4dedgb36dg9297c7ffb725" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_50">Magic Armor Boost</content>
+	<content contentuid="h9edeb358g11e7g4372g92e7g8a164695e1e4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_10">Vitality Boost</content>
+	<content contentuid="hf4b01510gb94fg4c53g973bgdd15df71e687" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_15">Vitality Boost</content>
+	<content contentuid="h80e776e3gfe62g41c6g9bb0g4fc913baf4a4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_20">Vitality Boost</content>
+	<content contentuid="ha9dfee58ge73fg47e4gb9f7g1ff2ced6635e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_25">Vitality Boost</content>
+	<content contentuid="h844592e8g9000g4ce9gafd0ga87c8b086ef1" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_30">Vitality Boost</content>
+	<content contentuid="hfe5af913g4943g4a55g9572gb009a79c71a2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_35">Vitality Boost</content>
+	<content contentuid="hb3bee298g2eb6g461bgafb8ge07c9ecc8094" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_40">Vitality Boost</content>
+	<content contentuid="h3555a8feg9f0ag4a50g87a0gc1fde8ca3ce4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_45">Vitality Boost</content>
+	<content contentuid="h0982817bgf111g4dc3g811bga9fbd51ab0ca" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_5">Vitality Boost</content>
+	<content contentuid="h5b647354gce9dg4797gadc0g78ed927e407c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_50">Vitality Boost</content>
+	<content contentuid="h47cc8f43g77e0g4fafg908dg744a41931eec" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ChickenOverlord">Chicken Overlord</content>
+	<content contentuid="h1dec449dgfec9g48eaga922gbbf72721497e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Duplicant">Shadow Duplicant</content>
+	<content contentuid="h0d2a065eg9cbag47fdgabe7gf919c9a87875" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Acid">Melter</content>
+	<content contentuid="h5c8f2c50g5a43g4a6agac29ge06c1f5ad378" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Acid_G">Elite Melter</content>
+	<content contentuid="h0ab60959ga9a0g49b3g9f1cgc98d30ea13f1" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blessed_Ice">Heatsapper</content>
+	<content contentuid="h106bb9f5ge8a1g4019g9d9dgebb27474f992" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blessed_Ice_G">Elite Heatsapper</content>
+	<content contentuid="h66ec71efgc7eeg47f2g920bgcbe909afcee4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blood">Bloodbender</content>
+	<content contentuid="ha4a3d3cfg755ag46deg86d2g4f1060841ee2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blood_G">Elite Bloodbender</content>
+	<content contentuid="h81f47302g60dag426agb491g72452b206a43" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Cursed_Electric">Teslacoil</content>
+	<content contentuid="h2f7446a2gcb4ag4ee6gbf5age4425fa2851b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Cursed_Electric_G">Elite Teslacoil</content>
+	<content contentuid="h387574fbg27c8g4eafg97bfg00d5ebd19c95" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Electric">Circuitbreaker</content>
+	<content contentuid="h5f6eb2f9g93d6g4054gae42gd34eb9d7bbf6" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Electric_G">Elite Circuitbreaker</content>
+	<content contentuid="h29ba8b31g5c24g4d12ga056gb4a3880fadf5" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Fire">Firestarter</content>
+	<content contentuid="h7a8c8cd6ge3f7g4f9bgb0a3g98c51b7e9066" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Fire_G">Elite Firestarter</content>
+	<content contentuid="h57740f6ag6754g45bbg8310g304b3f91ab87" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Necrofire">Infernoblazer</content>
+	<content contentuid="hfd58a531g37f8g4573gbce3gdbac65d61add" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Necrofire_G">Elite Infernoblazer</content>
+	<content contentuid="h9f5a8ee9gda2dg4e5bg96fcgb6c8c3f7cc50" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Oil">Earthcracker</content>
+	<content contentuid="h1b451d33g304bg4112gab43g51a4721adab7" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Oil_G">Elite Earthcracker</content>
+	<content contentuid="hb992f98bg2019g4e2agb1f6g54d713d3ae4f" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Poison">Venomstriker</content>
+	<content contentuid="h27f6719cgc82fg4176g8f60g170b786d3c24" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Poison_G">Elite Venomstriker</content>
+	<content contentuid="h044ae60egd895g431fga21dgffdf784593c7" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Power">Power Boost</content>
+	<content contentuid="h7ce216e9gc9f4g4753gb39dgf42c27bfc01a" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Ranged">Range Boost</content>
+	<content contentuid="h5cee1628g461bg4ac8ga1e9ga90077d376e4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Shadow">Shadoweaver</content>
+	<content contentuid="h786bb4a3gfc26g4a8dgab1bg0261c03bf617" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Warp">Warper</content>
+	<content contentuid="hd7df35a9gde1fg4d22g93f6gcb11fba955a0" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Water">Cascader</content>
+	<content contentuid="hdee6d2a6gee37g4892g84e8g83a79ebfd9ed" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Water_G">Elite Cascader</content>
+	<content contentuid="hd8e442d5ge3fag4dbfg87d1g7403c979c4f7" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_LoseControlImmunity">Perfect Control</content>
+	<content contentuid="h5bf766cag0d92g4374gac83g28032389d45b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_PerseveranceMastery">Perseverance Mastery</content>
+	<content contentuid="h5b62279dg9bebg46c7g83f6gd05c7a9c9310" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_RangerRange">Talent: Quickdraw</content>
+	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LightningRod">Talent: Lightning Rod</content>
+	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_NaturalConductor">Talent: Natural Conductor</content>
+	<content contentuid="hf3eea666ge611g406eg9838gcaf7b89b5c93" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Quickstep">Talent: The Pawn</content>
+	<content contentuid="hdf0ea9a2g01cbg481dg8107g6ee870f53548" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Unstable">Talent: Unstable</content>
+	<content contentuid="ha0ac17b6gee82g44d9g81b9g66c9a941e010" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Weatherproof">Talent: Weatherproof</content>
+	<content contentuid="h9c5daca5g3786g435agb9feg0ad41260a1bc" Source="LLENEMY_Settings.lsj">Enable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades.</content>
+	<content contentuid="hf13c9277g29bfg4baegbecega1e5cd8aef76" Source="LLENEMY_Settings.lsj">Enemy Scaling Settings</content>
+	<content contentuid="hb8e49700gfb78g4a25gb451g21026ea98f20" Source="LLENEMY_Settings.lsj">Enable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite.</content>
+	<content contentuid="h085c6ba2g63acg48f6g9c2ag677294738be0" Source="LLENEMY_Settings.lsj">Disable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades.</content>
+	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefd" Source="LLENEMY_Settings.lsj">[Exit]</content>
+	<content contentuid="hdb982497gc47dg4fd4gabdega3d6af9b0760" Source="LLENEMY_Settings.lsj">Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.</content>
+	<content contentuid="ha5f6b750g5322g4043gac1dgfc82734fde21" Source="LLENEMY_Settings.lsj">Updated settings.</content>
+	<content contentuid="h09982c04g289bg4d01gad23gaa88d6fc43fc" Source="LLENEMY_Settings.lsj">Only the host can edit these settings.</content>
+	<content contentuid="h6efe8867g66bbg4d4ag936bgbb477bc57265" Source="LLENEMY_Settings.lsj">[Back]</content>
+	<content contentuid="h6493380bgf46eg46fdga0f8g399ed299b249" Source="LLENEMY_Settings.lsj">[DEBUG] Disable Enemy Level Limit - &lt;b&gt;WARNING&lt;/b&gt; - Enemy levels above 35 may crash the game. Uncap at your own risk!</content>
+	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6" Source="LLENEMY_Settings.lsj">Upgrade Group Settings</content>
+	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Settings.lsj">Settings updated.</content>
+	<content contentuid="hbe6a42a1g49e0g44e0g9546g4b45f038d6cb" Source="LLENEMY_Settings.lsj">Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras.</content>
+	<content contentuid="h90795f7dg9422g4b51g9835g0449efe50b1b" Source="LLENEMY_Settings.lsj">Enemy Upgrade Overhaul Settings</content>
+	<content contentuid="h506de539g84a3g464fgba77g2fe643c629d9" Source="LLENEMY_Settings.lsj">Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.</content>
+	<content contentuid="h279bcad6g5064g45ccg8e09g870c92e0cf6e" Source="LLENEMY_Settings.lsj">[Host Required] Upgrade Group Settings</content>
+	<content contentuid="h451c2d3eg3c6eg4366g8a31ga9792596a488" Source="LLENEMY_Settings.lsj">Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion.</content>
+	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14" Source="LLENEMY_Settings.lsj">Enabling Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value.</content>
+	<content contentuid="hae44c262g8fffg4f1cg8740g4874c69c39e7" Source="LLENEMY_Settings.lsj">Enable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras.</content>
+	<content contentuid="hd80e21d0gc2ffg4df8gbc9fgcdd3f5248980" Source="LLENEMY_Settings.lsj">Decrease Level Modifier -1</content>
+	<content contentuid="h2e424a5ag2a45g4c6bg9ca3gd3302a0c31ed" Source="LLENEMY_Settings.lsj">[DEBUG] Enable Enemy Level Limit [&lt;b&gt;Recommended&lt;/b&gt;] - Enemy levels above 35 may crash the game, so enable the limit to prevent leveling above 35.</content>
+	<content contentuid="h7b712de8ga474g487bgb2d8gd05c1e1d71c6" Source="LLENEMY_Settings.lsj">Increase Level Modifier +1</content>
+	<content contentuid="he98adb62g6a62g43abg9723g160e736ebd6d" Source="LLENEMY_Settings.lsj">Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite.</content>
+	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19" Source="LLENEMY_Settings.lsj">Rewards Settings</content>
+	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefde089gb44bg48f7g94eega74d094062ae" Source="LLENEMY_Settings.lsj">[Exit]</content>
+	<content contentuid="h75f46066g5231g4e21g86dfg11366f459400" Source="LLENEMY_Settings.lsj">Enemy Scaling Settings&lt;br&gt;Level Modifier: [LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f]&lt;br&gt;Scaled Enemy Level: [LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba]</content>
+	<content contentuid="h369c8cf4g1083g4df3gbc79gac57bc3f6074" Source="LLENEMY_Settings.lsj">Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion.</content>
+	<content contentuid="h061dd3e2gfbc2g47afg860bg1a623122d95e" Source="LLENEMY_Settings.lsj">Reset Level Modifier (0)</content>
+	<content contentuid="hf652aa9fgeca8g4265ga6b2ge3d557dfb11c" Source="LLENEMY_Settings.lsj">Disabling Enemy Level Scaling</content>
+	<content contentuid="h43542436ge2dcg49f8g9233g292e2f887bf6" Source="LLENEMY_Settings.lsj">Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon.</content>
+	<content contentuid="h5a190392g61c4g439dgbd08gc227c5e69923" Source="LLENEMY_Settings.lsj">Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns).</content>
+	<content contentuid="h46cf8395ga421g4d8eg994cg9cc757c5b41d" Source="LLENEMY_Settings.lsj">Enable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns).</content>
+	<content contentuid="he4a9526dg0dd1g4babg824eg01a0e9993e55" Source="LLENEMY_Settings.lsj">Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon.</content>
+	<content contentuid="h1d2be7b0gea03g4bfagbeaag02c29c65b877" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_Description">Summons your glorious chicken armada to the battlefield. Bwak!</content>
+	<content contentuid="h2f3fff9cge409g42a9gb29fgff5fc6065221" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_DisplayName">Summon Chicken Armada</content>
+	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUS_TREASURE_ROLL_Description">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
+	<content contentuid="h194ac7f5g9da2g4067g83efgf23de735ad79" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUS_TREASURE_ROLL_DisplayName">Bonus Treasure</content>
+	<content contentuid="h35042572gd0f8g42f0gbc95g44d818841347" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_CHICKEN_OVERLORD_Description">Character is the Overlord for an armada of chickens. Beware! Bwark!</content>
+	<content contentuid="h9bc9d98ag9fa9g4d23g88c4ge55de8f8c73a" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_CHICKEN_OVERLORD_DisplayName">Chicken Overlord</content>
+	<content contentuid="hf6486123g0005g46c9g8a40ga098203e2ab6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_Description">Character is growing even more powerful through a second round of upgrades!</content>
+	<content contentuid="hf180561cge97ag426cg84ddg83dd257ce95d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_DisplayName">Double Dip</content>
+	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_Description">Character is a living shadow of another character.</content>
+	<content contentuid="hf91deedcga4c7g427eg8153g2e347c06d3e8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_DisplayName">Shadow Duplicant</content>
+	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_Description">Character is obsessed with collecting grenades. One misstep and boom!</content>
+	<content contentuid="h77532147gd01fg47efgb317gbf00813dbcb6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_DisplayName">Grenade Enthusiast</content>
+	<content contentuid="h626f03b5gb1a5g4e8eg94b3g1686a8687718" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_LOSECONTROL_Description">Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.</content>
+	<content contentuid="h8cfd1ba3gcfb3g4f0cga950gc29672af34c9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_LOSECONTROL_DisplayName">Perfect Control</content>
+	<content contentuid="he9cb8fddg5db3g4d64ga27cgb93613250725" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ACID_DisplayName">Melter</content>
+	<content contentuid="h6e85fa28gc76eg423egaf24g5c0c278717bf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLESSED_ICE_DisplayName">Heatsapper</content>
+	<content contentuid="h0d2c2ac4g44e2g48dfg835dgcc860fcdd0d9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLOOD_DisplayName">Bloodbender</content>
+	<content contentuid="hd71fe8a1g0247g42c5g8bfcg2408029eca06" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_CURSED_ELECTRIC_DisplayName">Teslacoil</content>
+	<content contentuid="hd419ca09g8d69g4af6g840egdd4a81f7587f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ELECTRIC_DisplayName">Circuitbreaker</content>
+	<content contentuid="hc3f8497bg97acg449ag910ag07b825f3b8bb" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_FIRE_DisplayName">Firestarter</content>
+	<content contentuid="h8e75cbbdg06d7g4404gbfb2g92f6fd11147d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_NECROFIRE_DisplayName">Infernoblazer</content>
+	<content contentuid="hba68eb52gbd87g443fga8acgb61922bf4211" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_OIL_DisplayName">Oil Earthcracker</content>
+	<content contentuid="h78f9641bgaf92g4bc4gb27bg759d63a0353f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_POISON_DisplayName">Venomstriker</content>
+	<content contentuid="h645270dag6b15g47a8gad4bgfcc34034a77e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_WATER_DisplayName">Cascader</content>
+	<content contentuid="h04644a8dg313cg4d53gb2b4g1dc1a5fea103" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_Description">Character is infused with a mysterious power, granting a variety of bonuses and extra skills.</content>
+	<content contentuid="h77bbc2b5gb387g4ba2g97c6gbbc058bbb5c6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_DisplayName">Infused</content>
+	<content contentuid="hea2ac23fg62fag4befg9b85g1277c11011e6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_ELITE_Description">Character is infused with tremendous power, granting a variety of bonuses and extra skills.</content>
+	<content contentuid="hffc4903fg3cb8g48e0gb183g8e5d9eeaa066" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_ELITE_DisplayName">Super-Infused</content>
+	<content contentuid="h52cf2d76g890fg4255g913agaf040b1015cf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_PERSEVERANCE_MASTERY_Description">Character is persevering through sheer force of will.</content>
+	<content contentuid="hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_PERSEVERANCE_MASTERY_DisplayName">Perseverance Mastery</content>
+	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_Description">Enemy can backstab with non-dagger weapons.</content>
+	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_DisplayName">Talent: Assassin</content>
+	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BASE_DisplayName">Talent</content>
+	<content contentuid="h5ad0d829g7dd4g4a79gaa2cgd5d882d05390" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BULLY_Description">Enemy has 50% extra damage against opponents that are Slowed, Crippled or Knocked Down.</content>
+	<content contentuid="hdd62da1agf6adg438dg811cg08c9e58e07c9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BULLY_DisplayName">Talent: Bully</content>
+	<content contentuid="h80df5eb1gf3cag41cfgbaecg1c053ae7e83c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_GLADIATOR_Description">Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.&lt;br&gt;Can happen only once per turn. </content>
+	<content contentuid="h3d6d46bbg4819g48fbga980gcb521d5c49d8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_GLADIATOR_DisplayName">Talent: Gladiator</content>
+	<content contentuid="he845eb33gfbffg4903ga161ge64d9dbf567d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_GREEDYVESSEL_Description">Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.</content>
+	<content contentuid="h4cf1c406gceb1g411fga0d9gc9832cc4d2f5" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_GREEDYVESSEL_DisplayName">Talent: Greedy Vessel</content>
+	<content contentuid="h5461b448g15ceg403dg8076ge4a9b00e6675" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_HAYMAKER_Description">Character&apos;s attacks never miss but they cannot deal critical strikes.</content>
+	<content contentuid="h0dda4bf0g924ag4c8bgaf5ag1d6e7e643b50" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_HAYMAKER_DisplayName">Talent: Haymaker</content>
+	<content contentuid="h055079e8g89f6g4275gb06ag48f70f0c7e1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_INDOMITABLE_Description">Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.&lt;br&gt;Can happen once every 3 turns.</content>
+	<content contentuid="hb52d1ac1g7c4fg45a4g87d8g52056a5a2ba2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_INDOMITABLE_DisplayName">Talent: Indomitable</content>
+	<content contentuid="hc2dfd3fcg7132g4e47g9a89g35e2089966df" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LEECH_Description">Enemy is healed when standing in blood.</content>
+	<content contentuid="h7e28471fg1959g47e6g9d58g4d4f8ce054f6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LEECH_DisplayName">Talent: Leech</content>
+	<content contentuid="h176db059gab0eg4ec8g8017geb16079d503a" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LIGHTNINGROD_Description">Enemy is immune to stun, and gains health when hit by &lt;font color=&apos;#7d71d9&apos;&gt;Air Damage&lt;/font&gt;.</content>
+	<content contentuid="hbc7f9c3dg471bg47c6ga015g77c92a439e4e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LIGHTNINGROD_DisplayName">Talent: Lightning Rod</content>
+	<content contentuid="h07429824g8a6eg4c0cg865cg55b38f50646d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LONEWOLF_Description">Enemy has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.</content>
+	<content contentuid="h3b229661g43b9g44e1gbaebgc33ab487ce44" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LONEWOLF_DisplayName">Talent: Lone Wolf</content>
+	<content contentuid="h3ab830begfaf4g4524g9b76g97e55e6b1703" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MAGICCYCLES_Description">At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.</content>
+	<content contentuid="h09ee507ag16fag471cg9e13gf4b0a614dcb8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MAGICCYCLES_DisplayName">Talent: Magic Cycles</content>
+	<content contentuid="h95fbde3bg3be6g4b7cgb6acg1bacabcba562" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MASTERTHIEF_Description">Character has a chance to steal a consumable item on attack.&lt;br&gt;Can only happen once per turn.</content>
+	<content contentuid="hba05c2f9g55f0g4b5agb936g5ff5daa6877e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MASTERTHIEF_DisplayName">Talent: Master Thief</content>
+	<content contentuid="h16915945gaa26g46f1gaae7g3a2d3b46631e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_NATURALCONDUCTOR_Description">Enemy gains &lt;font color=&apos;#7d71d9&apos;&gt;Hasted&lt;/font&gt; when standing on electric surfaces.</content>
+	<content contentuid="h52b7f26cg0535g416bgb820ge7e49b19197f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_NATURALCONDUCTOR_DisplayName">Talent: Natural Conductor</content>
+	<content contentuid="h3d82bfaag7871g4fe4gb3d0gf326ec25ad1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_QUICKSTEP_Description">Enemy gets 1 AP worth of free movement each turn.</content>
+	<content contentuid="h79f5b874g6cb3g4a99ga1cfg9f472c12036f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_QUICKSTEP_DisplayName">Talent: The Pawn</content>
+	<content contentuid="h8edc2076g91e3g43d3g8314g5efb21208571" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RANGERRANGE_Description">Enemy has increased attack range of Bows and Crossbows by 2m.</content>
+	<content contentuid="h15a9ae98gb2d3g49d5gbccbg0aecd38fe18c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RANGERRANGE_DisplayName">Talent: Quickdraw</content>
+	<content contentuid="h38491eddg4d2cg40adg96f3g33994e1a96d6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RESISTDEAD_Description">Enemy will revive once when killed, coming back with 30% health.</content>
+	<content contentuid="h12db0e65g1dceg4d56g8857gb018ab29f393" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RESISTDEAD_DisplayName">Talent:  Comeback Kid</content>
+	<content contentuid="hc0a53dd7g55f4g4c2cgae98g350ed1b9cbb9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RESISTDEAD2_Description">Enemy will revive once when killed, coming back with full health.</content>
+	<content contentuid="haec75225g4305g4fcdg8e61g0f9b4de56075" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RESISTDEAD2_DisplayName">Talent: Elite Comeback Kid</content>
+	<content contentuid="hf34ecf43gdb49g40b5g9e50g876244609429" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_SADIST_Description">Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.</content>
+	<content contentuid="h1c81c46bg9330g4d43gba21g6b72b951b3fd" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_SADIST_DisplayName">Talent: Sadist</content>
+	<content contentuid="h3f78a207gadfdg4801gb063g787c9f108845" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_SOULCATCHER_Description">When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.</content>
+	<content contentuid="h9a2a7390gc764g4fa0g8e97gf73ffac2a93c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_SOULCATCHER_DisplayName">Talent: Soulcatcher</content>
+	<content contentuid="h64144ff5gee91g4ac5g87cdg43d27aaacef3" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_TORTURER_Description">Enemy has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.</content>
+	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_TORTURER_DisplayName">Talent: Torturer</content>
+	<content contentuid="hf39968a3gf18eg4e17gba81g6d3cff64d4aa" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_UNSTABLE_Description">Enemy will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.</content>
+	<content contentuid="h2b8ca96eg181cg4d13gaef5g84d2bb6f88fc" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_UNSTABLE_DisplayName">Talent: Unstable</content>
+	<content contentuid="h08f37745g3fbeg43d9gaf74g9e9bfd4ca89f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WEATHERPROOF_Description">Enemy is immune to enviromental effects.</content>
+	<content contentuid="hdb001da6g340cg4f00g9190g13e8c1a96f90" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WEATHERPROOF_DisplayName">Talent: Weatherproof</content>
+	<content contentuid="he6532e10gc9d5g4923g9544g033fca885329" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_Description">Enemy has increased recovery and maximum Action Points when their health is below 50%.</content>
+	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_DisplayName">Talent: What a Rush</content>
+</contentList>

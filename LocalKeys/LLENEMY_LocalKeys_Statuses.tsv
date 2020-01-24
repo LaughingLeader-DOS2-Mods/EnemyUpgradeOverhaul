@@ -1,3 +1,4 @@
+Key	Content
 LLENEMY_BONUS_TREASURE_ROLL_Description	Character rolled a <font color='#FF0000'>Critical Failure (0)</font>, and now has to give bonus treasure if killed before this status expires. Hurry!
 LLENEMY_BONUS_TREASURE_ROLL_DisplayName	Bonus Treasure
 LLENEMY_CHICKEN_OVERLORD_Description	Character is the Overlord for an armada of chickens. Beware! Bwark!
@@ -49,7 +50,25 @@ LLENEMY_TALENT_WEATHERPROOF_Description	Enemy is immune to enviromental effects.
 LLENEMY_TALENT_WEATHERPROOF_DisplayName	Talent: Weatherproof
 LLENEMY_TALENT_WHATARUSH_Description	Enemy has increased recovery and maximum Action Points when their health is below 50%.
 LLENEMY_TALENT_WHATARUSH_DisplayName	Talent: What a Rush
+LLENEMY_TALENT_SADIST_DisplayName	Talent: Sadist
+LLENEMY_TALENT_SADIST_Description	Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.
+LLENEMY_TALENT_HAYMAKER_DisplayName	Talent: Haymaker
+LLENEMY_TALENT_HAYMAKER_Description	Character's attacks never miss but they cannot deal critical strikes.
+LLENEMY_TALENT_GLADIATOR_DisplayName	Talent: Gladiator
+LLENEMY_TALENT_GLADIATOR_Description	Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.<br>Can happen only once per turn. 
+LLENEMY_TALENT_INDOMITABLE_DisplayName	Talent: Indomitable
+LLENEMY_TALENT_INDOMITABLE_Description	Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.<br>Can happen once every 3 turns.
+LLENEMY_TALENT_SOULCATCHER_DisplayName	Talent: Soulcatcher
+LLENEMY_TALENT_SOULCATCHER_Description	When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.
+LLENEMY_TALENT_MASTERTHIEF_DisplayName	Talent: Master Thief
+LLENEMY_TALENT_MASTERTHIEF_Description	Character has a chance to steal a consumable item on attack.<br>Can only happen once per turn.
+LLENEMY_TALENT_GREEDYVESSEL_DisplayName	Talent: Greedy Vessel
+LLENEMY_TALENT_GREEDYVESSEL_Description	Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.
+LLENEMY_TALENT_MAGICCYCLES_DisplayName	Talent: Magic Cycles
+LLENEMY_TALENT_MAGICCYCLES_Description	At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.
 LLENEMY_DOUBLE_DIP_DisplayName	Double Dip
 LLENEMY_DOUBLE_DIP_Description	Character is growing even more powerful through a second round of upgrades!
 LLENEMY_PERSEVERANCE_MASTERY_DisplayName	Perseverance Mastery
 LLENEMY_PERSEVERANCE_MASTERY_Description	Character is persevering through sheer force of will.
+LLENEMY_DUPLICANT_DisplayName	Shadow Duplicant
+LLENEMY_DUPLICANT_Description	Character is a living shadow of another character.
