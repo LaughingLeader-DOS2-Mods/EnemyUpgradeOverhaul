@@ -14,6 +14,44 @@ LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Granada", "LLENEMY_
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_ResistDead", "LLENEMY_ResistDead_Active", 0);
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_NaturalConductor", "LLENEMY_NaturalConductor_Active", 0);
 //END_REGION
+
+//REGION RETROACTIVE_TOGGLE
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,3,0,0)
+AND
+DB_CombatCharacters(_Char, _CombatID)
+AND
+NOT DB_IsPlayer(_Char)
+THEN
+LLENEMY_ToggleScripts_InternaL_RetroactiveEnabled(_Char);
+
+PROC
+LLENEMY_ToggleScripts_InternaL_RetroactiveEnabled((CHARACTERGUID)_Enemy)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_RESISTDEAD", _a)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_RESISTDEAD2", _b)
+AND
+IntegerMax(_a, _b, 1)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Enemy, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
+
+PROC
+LLENEMY_ToggleScripts_InternaL_RetroactiveEnabled((CHARACTERGUID)_Enemy)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_GRANADA", 1)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Enemy, "LLENEMY_Granada_Active", "EnemyUpgradeOverhaul");
+
+PROC
+LLENEMY_ToggleScripts_InternaL_RetroactiveEnabled((CHARACTERGUID)_Enemy)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_NATURALCONDUCTOR", 1)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Enemy, "LLENEMY_NaturalConductor_Active", "EnemyUpgradeOverhaul");
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
