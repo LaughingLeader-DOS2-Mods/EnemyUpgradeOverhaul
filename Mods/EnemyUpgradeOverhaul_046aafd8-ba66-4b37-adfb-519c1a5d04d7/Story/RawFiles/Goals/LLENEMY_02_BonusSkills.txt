@@ -11,36 +11,53 @@ LeaderLib_QRY_ExtenderIsActive()
 THEN
 LLENEMY_Upgrades_AddGroup("BonusSkills", "LLENEMY_BonusSkillsUpgradesDisabled", "LLENEMY_BonusSkillsRolled", "LLENEMY_BonusSkillsUpgradeAdded");
 
-LLENEMY_Upgrades_AddType("BonusSkills", "EliteSet", 1, 99, 18);
-LLENEMY_Upgrades_AddType("BonusSkills", "NormalSet", 100, 399, 10);
-LLENEMY_Upgrades_AddType("BonusSkills", "Single", 400, 999, 5);
-LLENEMY_Upgrades_AddType("BonusSkills", "Source", 90, 500, 8);
+LLENEMY_Upgrades_AddType("BonusSkills", "Normal", 1, 600, 2);
+LLENEMY_Upgrades_AddType("BonusSkills", "Elite", 800, 999, 4);
+LLENEMY_Upgrades_AddType("BonusSkills", "Source1", 100, 150, 4);
+LLENEMY_Upgrades_AddType("BonusSkills", "Source2", 850, 900, 4);
+
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE", 900, 2);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_NORMALSET", 99, 6);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 999, 4);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Source2", "LLENEMY_BONUSSKILLS_SOURCE", 999, 4);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_ELITESET", 900, 10);
+
+DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_SINGLE", 1, 0);
+DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_NORMALSET", 4, 0);
+DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_SOURCE", 1, 1);
+DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_ELITESET", 6, 2);
 //END_REGION
 
 //REGION ROLLING
 //Manually Roll
 PROC
 LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Enemy)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
+
+PROC
+LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
+AND
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type)
+THEN
 SetStoryEvent(_Enemy, "LeaderLog_Commands_SetSkillRequirement");
-LLENEMY_BonusSkills_AddToEnemy(_Enemy, _Type);
 
 /* [OSITOOLS_ONLY]
 PROC
-LLENEMY_BonusSkills_AddToEnemy((CHARACTERGUID)_Enemy, (STRING)_Type)
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
 String(_Enemy, _EnemyStr)
+AND
+DB_LLENEMY_BonusSkills_Settings(_Status, _AddSkills, _SourceAllowed)
+AND
+IntegertoString(_AddSkills, _AddSkillsStr)
+AND
+IntegertoString(_SourceAllowed, _SourceAllowedStr)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddBonusSkills", _EnemyStr, _Type);
+NRD_LuaCall("LLENEMY_Ext_AddBonusSkills", _EnemyStr, _AddSkillsStr, _SourceAllowedStr);
 */
-
-// [BEGIN_NO_OSITOOLS]
-PROC
-LLENEMY_BonusSkills_AddToEnemy((CHARACTERGUID)_Enemy, (STRING)_Type)
-THEN
-DB_NOOP(1);
-// [END_NO_OSITOOLS]
 //END_REGION
 EXITSECTION
 

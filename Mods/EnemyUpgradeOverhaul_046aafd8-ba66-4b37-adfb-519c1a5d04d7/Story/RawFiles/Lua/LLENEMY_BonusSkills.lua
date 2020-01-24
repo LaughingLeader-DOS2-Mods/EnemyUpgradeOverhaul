@@ -373,22 +373,7 @@ local function GetPreferredSkillGroup(ability,requirement)
 	return nil
 end
 
-function LLENEMY_Ext_AddBonusSkills(enemy,bonus_type)
-	local remaining = 1
-	local source_skill_allowed = 0
-	if bonus_type == "EliteSet" then
-		remaining = 6
-		source_skill_allowed = 2
-	end
-	if bonus_type == "NormalSet" then
-		remaining = 3
-		source_skill_allowed = 1
-	end
-	if bonus_type == "Source" then
-		remaining = 1
-		source_skill_allowed = 1
-	end
-
+function LLENEMY_Ext_AddBonusSkills(enemy,remaining,source_skills_remaining)
 	local preferred_ability = GetHighestAbility(enemy)
 	local preferred_requirement = GetWeaponRequirement(enemy)
 	local sp_max = CharacterGetMaxSourcePoints(enemy)
@@ -400,21 +385,20 @@ function LLENEMY_Ext_AddBonusSkills(enemy,bonus_type)
 		Ext.Print("[LLENEMY_BonusSkills.lua] -- Can't get a skillgroup for Enemy '" .. tostring(enemy) .. "'. Skipping.")
 		return false
 	end
-	local i = 0
 	local attempts = 0
-	while i < remaining do
+	while remaining > 0 do
 		local skill = skillgroup:GetRandom(enemy, preferred_requirement)
 		if skill ~= nil then
-			if skill.sp > 0 and source_skill_allowed > 0 then
-				source_skill_allowed = source_skill_allowed - 1
+			if skill.sp > 0 and source_skills_remaining > 0 then
 				Ext.Print("[LLENEMY_BonusSkills.lua] -- Adding *SOURCE* skill (".. tostring(skill.id) ..") to enemy '" .. tostring(enemy) .. "'.")
 				CharacterAddSkill(enemy, skill.id, 0)
-				i = i + 1
+				source_skills_remaining = source_skills_remaining - 1
+				remaining = remaining - 1
 			end
 			if skill.sp == 0 then
 				Ext.Print("[LLENEMY_BonusSkills.lua] -- Adding skill (".. tostring(skill.id) ..") to enemy '" .. tostring(enemy) .. "'.")
 				CharacterAddSkill(enemy, skill.id, 0)
-			i = i + 1
+				remaining = remaining - 1
 			else
 				Ext.Print("[LLENEMY_BonusSkills.lua] -- Skipping source skill for '" .. tostring(enemy) .. "'.")
 				attempts = attempts + 1
@@ -425,7 +409,7 @@ function LLENEMY_Ext_AddBonusSkills(enemy,bonus_type)
 		if attempts >= 30 then
 			Ext.Print("[LLENEMY_BonusSkills.lua] Enemy '" .. tostring(enemy) .. "' hit the maximum amount of random attempts when getting a skill from group ("..skillgroup.id..").")
 			attempts = 0
-			i = i + 1
+			remaining = 0
 		end
 	end
 end
