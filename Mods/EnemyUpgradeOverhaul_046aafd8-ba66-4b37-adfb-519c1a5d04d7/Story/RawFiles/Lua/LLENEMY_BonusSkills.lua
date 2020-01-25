@@ -74,29 +74,36 @@ end
 ---Get a random skill from a SkillGroup, matching the preferred requirement.
 ---@param requirement string
 ---@return SkillEntry
-function SkillGroup:GetRandomSkill(enemy, requirement, level)
+function SkillGroup:GetRandomSkill(enemy, requirement, level, sourceAllowed)
 	local available_skills = {}
 	
 	for _,skill in pairs(self.skills) do
 		if CharacterHasSkill(enemy, skill.id) ~= 1 and skill:WithinLevelRange(level) then
 			if IgnoreSkillRequirement(requirement) or IgnoreSkillRequirement(skill.requirement) then
-				available_skills[#available_skills+1] = skill
+				if (skill.sp == 0 or sourceAllowed > 0) then 
+					available_skills[#available_skills+1] = skill
+				end
 			else
 				if type(requirement) == "string" then
 					if requirement == skill.requirement then
-						available_skills[#available_skills+1] = skill
+						if (skill.sp == 0 or sourceAllowed > 0) then 
+							available_skills[#available_skills+1] = skill
+						end
 					end
 				elseif type(requirement) == "table" then
 					for _,v in pairs(requirement) do
 						if v == skill.requirement then
-							available_skills[#available_skills+1] = skill
+							if (skill.sp == 0 or sourceAllowed > 0) then 
+								available_skills[#available_skills+1] = skill
+							end
 						end
 					end
 				end
 			end
 		end
 	end
-	--Ext.Print("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- Getting random skill from table (".. tostring(#available_skills) ..") ("..tostring(LeaderLib.Common.Dump(available_skills))..").")
+	Ext.Print("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- Getting random skill from table count (".. tostring(#available_skills) ..").")
+	--Ext.Print("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- ("..tostring(LeaderLib.Common.Dump(available_skills))..").")
 	return LeaderLib.Common.GetRandomTableEntry(available_skills)
 end
 
@@ -323,6 +330,7 @@ function LLENEMY_Ext_BuildEnemySkills()
 				local ability = Ext.StatGetAttribute(skill, "Ability")
 				local requirement = Ext.StatGetAttribute(skill, "Requirement")
 				local sp = Ext.StatGetAttribute(skill, "Magic Cost")
+				if sp == nil then sp = 0 end
 				local tier = Ext.StatGetAttribute(skill, "Tier")
 				local skillgroup = GetSkillGroup(ability)
 				if skillgroup ~= nil then
@@ -457,19 +465,14 @@ function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingst
 	local attempts = 0
 	while remaining > 0 and attempts < ATTEMPTS_MAX do
 		local success = false
-		local skill = skillgroup:GetRandomSkill(enemy, preferred_requirement, level)
+		local skill = skillgroup:GetRandomSkill(enemy, preferred_requirement, level, source_skills_remaining)
 		if skill ~= nil then
-			if skill.sp > 0 and source_skills_remaining > 0 then
-				Ext.Print("[LLENEMY_BonusSkills.lua] -- Adding *SOURCE* skill (".. tostring(skill.id) ..") to enemy '" .. tostring(enemy) .. "'.")
-				CharacterAddSkill(enemy, skill.id, 0)
+			if skill.sp > 0 then
 				source_skills_remaining = source_skills_remaining - 1
-				success = true
 			end
-			if skill.sp == 0 then
-				Ext.Print("[LLENEMY_BonusSkills.lua] -- Adding skill (".. tostring(skill.id) ..") to enemy '" .. tostring(enemy) .. "'.")
-				CharacterAddSkill(enemy, skill.id, 0)
-				success = true
-			end
+			Ext.Print("[LLENEMY_BonusSkills.lua] -- Adding skill (".. tostring(skill.id) ..") to enemy '" .. tostring(enemy) .. "'.")
+			CharacterAddSkill(enemy, skill.id, 0)
+			success = true
 		end
 
 		if success == true then
