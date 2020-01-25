@@ -1,132 +1,5 @@
 local ATTEMPTS_MAX = 40
-
----@class SkillEntry
-local SkillEntry = {
-	id = "",
-	requirement = "None",
-	sp = 0,
-	tier = "None"
-}
-
-SkillEntry.__index = SkillEntry
-
-function SkillEntry:Create(id, requirement, sp, tier)
-    local this =
-    {
-		id = id,
-		requirement = requirement,
-		sp = sp,
-		tier = tier
-	}
-	setmetatable(this, self)
-    return this
-end
-
-function SkillEntry:WithinLevelRange(level)
-	local tier = self.tier
-	if tier == "Starter" or tier == "" or tier == "None" then
-		return true
-	elseif tier == "Novice" and level >= 4 then
-		return true
-	elseif tier == "Adept" and level >= 9 then
-		return true
-	elseif tier == "Master" and level >= 16 then
-		return true
-	end
-	return false
-end
-
----@class SkillGroup
-local SkillGroup = {
-	id = "None",
-	ability = "None",
-	skills = {}
-}
-
-SkillGroup.__index = SkillGroup
-
-function SkillGroup:Create(abilityname, skillability)
-    local this =
-    {
-		id = abilityname,
-		ability = skillability,
-		skills = {}
-	}
-	setmetatable(this, self)
-    return this
-end
-
-local function IgnoreSkillRequirement(requirement)
-	if type(requirement) == "string" then
-		if requirement == "" or requirement == "None" then
-			return true
-		end
-	elseif type(requirement) == "table" then
-		for _,v in pairs(requirement) do
-			if v == "" or v == "None" or v == nil then
-				return true
-			end
-		end
-	end
-	return requirement == nil
-end
-
----Get a random skill from a SkillGroup, matching the preferred requirement.
----@param requirement string
----@return SkillEntry
-function SkillGroup:GetRandomSkill(enemy, requirement, level, sourceAllowed)
-	local available_skills = {}
-	
-	for _,skill in pairs(self.skills) do
-		if CharacterHasSkill(enemy, skill.id) ~= 1 and skill:WithinLevelRange(level) then
-			if IgnoreSkillRequirement(requirement) or IgnoreSkillRequirement(skill.requirement) then
-				if (skill.sp == 0 or sourceAllowed > 0) then 
-					available_skills[#available_skills+1] = skill
-				end
-			else
-				if type(requirement) == "string" then
-					if requirement == skill.requirement then
-						if (skill.sp == 0 or sourceAllowed > 0) then 
-							available_skills[#available_skills+1] = skill
-						end
-					end
-				elseif type(requirement) == "table" then
-					for _,v in pairs(requirement) do
-						if v == skill.requirement then
-							if (skill.sp == 0 or sourceAllowed > 0) then 
-								available_skills[#available_skills+1] = skill
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-	Ext.Print("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- Getting random skill from table count (".. tostring(#available_skills) ..").")
-	--Ext.Print("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- ("..tostring(LeaderLib.Common.Dump(available_skills))..").")
-	return LeaderLib.Common.GetRandomTableEntry(available_skills)
-end
-
-local EnemySkills = {}
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("None", "None")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("WarriorLore", "Warrior")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("RangerLore", "Ranger")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("RogueLore", "Rogue")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("AirSpecialist", "Air")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("EarthSpecialist", "Earth")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("FireSpecialist", "Fire")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("WaterSpecialist", "Water")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("Necromancy", "Death")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("Polymorph", "Polymorph")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("Summoning", "Summoning")
-EnemySkills[#EnemySkills+1] = SkillGroup:Create("Sourcery", "Source")
-
-local function GetSkillGroup(ability)
-	for _,v in pairs(EnemySkills) do
-		if v.ability == ability then return v end
-	end
-	return nil
-end
+LLENEMY_EnemySkills = {}
 
 local ignored_skills = {
 	Jump_EnemyVoidGlide = true,
@@ -295,7 +168,7 @@ local ignored_skillwords = {
 	"Turret",
 	"_Adrama",
 	"_Alan",
-	"_Explosion",
+	"Explosion",
 	"_Item_",
 	"_Kraken_",
 	"_LLMIME_",
@@ -305,6 +178,129 @@ local ignored_skillwords = {
 	"_Puppet",
 	"_Status_",
 }
+
+---@class SkillEntry
+local SkillEntry = {
+	id = "",
+	requirement = "None",
+	sp = 0,
+	tier = "None"
+}
+
+SkillEntry.__index = SkillEntry
+
+function SkillEntry:Create(id, requirement, sp, tier)
+    local this =
+    {
+		id = id,
+		requirement = requirement,
+		sp = sp,
+		tier = tier
+	}
+	setmetatable(this, self)
+    return this
+end
+
+function SkillEntry:WithinLevelRange(level)
+	local tier = self.tier
+	if tier == "Starter" or tier == "" or tier == "None" then
+		return true
+	elseif tier == "Novice" and level >= 4 then
+		return true
+	elseif tier == "Adept" and level >= 9 then
+		return true
+	elseif tier == "Master" and level >= 16 then
+		return true
+	end
+	return false
+end
+
+local function IgnoreSkillRequirement(requirement)
+	if type(requirement) == "string" then
+		if requirement == "" or requirement == "None" then
+			return true
+		end
+	elseif type(requirement) == "table" then
+		for _,v in pairs(requirement) do
+			if v == "" or v == "None" or v == nil then
+				return true
+			end
+		end
+	end
+	return requirement == nil
+end
+
+---@class SkillGroup
+local SkillGroup = {
+	id = "None",
+	ability = "None",
+	skills = {}
+}
+
+SkillGroup.__index = SkillGroup
+
+function SkillGroup:Create(abilityname, skillability)
+    local this =
+    {
+		id = abilityname,
+		ability = skillability,
+		skills = {}
+	}
+	setmetatable(this, self)
+    return this
+end
+
+---@param skill SkillEntry
+---@return SkillGroup
+function SkillGroup:Add(skill)
+	self.skills[#self.skills+1] = skill
+	return self
+end
+
+---Get a random skill from a SkillGroup, matching the preferred requirement.
+---@param requirement string
+---@return SkillEntry
+function SkillGroup:GetRandomSkill(enemy, requirement, level, sourceAllowed)
+	local available_skills = {}
+	
+	for _,skill in pairs(self.skills) do
+		if CharacterHasSkill(enemy, skill.id) ~= 1 and skill:WithinLevelRange(level) then
+			if IgnoreSkillRequirement(requirement) or IgnoreSkillRequirement(skill.requirement) then
+				if (skill.sp == 0 or sourceAllowed > 0) then 
+					available_skills[#available_skills+1] = skill
+				end
+			else
+				if type(requirement) == "string" then
+					if requirement == skill.requirement then
+						if (skill.sp == 0 or sourceAllowed > 0) then 
+							available_skills[#available_skills+1] = skill
+						end
+					end
+				elseif type(requirement) == "table" then
+					for _,v in pairs(requirement) do
+						if v == skill.requirement then
+							if (skill.sp == 0 or sourceAllowed > 0) then 
+								available_skills[#available_skills+1] = skill
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	--Ext.Print("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- Getting random skill from table count (".. tostring(#available_skills) ..") self.skills("..tostring(#self.skills)..") self.id("..tostring(#self.id)..").")
+	--Ext.Print("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- ("..tostring(LeaderLib.Common.Dump(available_skills))..").")
+	return LeaderLib.Common.GetRandomTableEntry(available_skills)
+end
+
+---@param ability string
+---@return SkillGroup
+local function GetSkillGroup(self, ability)
+	for _,v in pairs(self) do
+		if v.ability == ability then return v end
+	end
+	return nil
+end
 
 local function IgnoreSkill(skill)
 	if ignored_skills[skill] == false then return false end
@@ -319,6 +315,20 @@ local function IgnoreSkill(skill)
 end
 
 function LLENEMY_Ext_BuildEnemySkills()
+	LLENEMY_EnemySkills = {
+		SkillGroup:Create("None", "None"),
+		SkillGroup:Create("WarriorLore", "Warrior"),
+		SkillGroup:Create("RangerLore", "Ranger"),
+		SkillGroup:Create("RogueLore", "Rogue"),
+		SkillGroup:Create("AirSpecialist", "Air"),
+		SkillGroup:Create("EarthSpecialist", "Earth"),
+		SkillGroup:Create("FireSpecialist", "Fire"),
+		SkillGroup:Create("WaterSpecialist", "Water"),
+		SkillGroup:Create("Necromancy", "Death"),
+		SkillGroup:Create("Polymorph", "Polymorph"),
+		SkillGroup:Create("Summoning", "Summoning"),
+		SkillGroup:Create("Sourcery", "Source"),
+	}
 	local skills = Ext.GetStatEntries("SkillData")
 	for k,skill in pairs(skills) do
 		local isenemy = Ext.StatGetAttribute(skill, "IsEnemySkill")
@@ -332,10 +342,10 @@ function LLENEMY_Ext_BuildEnemySkills()
 				local sp = Ext.StatGetAttribute(skill, "Magic Cost")
 				if sp == nil then sp = 0 end
 				local tier = Ext.StatGetAttribute(skill, "Tier")
-				local skillgroup = GetSkillGroup(ability)
+				local skillgroup = GetSkillGroup(LLENEMY_EnemySkills, ability)
 				if skillgroup ~= nil then
-					skillgroup.skills[#skillgroup.skills+1] = SkillEntry:Create(skill, requirement, sp, tier)
-					--Ext.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
+					skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
+					Ext.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
 					--Ext.Print(tostring(skill))
 				end
 			end
@@ -346,7 +356,7 @@ end
 local function GetHighestAbility(enemy)
 	local last_highest_ability = "None"
 	local last_highest_val = 0
-	for _,skillgroup in pairs(EnemySkills) do
+	for _,skillgroup in pairs(LLENEMY_EnemySkills) do
 		if skillgroup.id ~= "None" then
 			local ability_val = CharacterGetAbility(enemy, tostring(skillgroup.id))
 			---Ext.Print("[LLENEMY_BonusSkills.lua:GetHighestAbility] ---- Ability (" .. tostring(skillgroup.id) .. ") = ("..tostring(ability_val)..")")
@@ -415,27 +425,28 @@ local function GetWeaponRequirement(enemy)
 	return "None"
 end
 
-local function GetPreferredSkillGroup(ability,requirement)
-	if ability ~= "None" then
-		for k,v in pairs(EnemySkills) do
-			if v.id == ability then return v end
+local function GetPreferredSkillGroup(ability,requirement,lastgroup)
+	--Ext.Print("LLENEMY_EnemySkills count: " .. tostring(#LLENEMY_EnemySkills) .. " | Looking for " .. ability)
+	if ability ~= "None" and (lastgroup == nil or lastgroup ~= nil and lastgroup.id ~= ability) then
+		for k,v in pairs(LLENEMY_EnemySkills) do
+			if v.id == ability or v.ability == ability then return v end
 		end
 	else
 		local attempts = 0
 		while attempts < 20 do
-			local rantable = LeaderLib.Common.GetRandomTableEntry(EnemySkills)
+			local rantable = LeaderLib.Common.GetRandomTableEntry(LLENEMY_EnemySkills)
 			if rantable ~= nil then
 				local ranskill = LeaderLib.Common.GetRandomTableEntry(rantable.skills)
 				if ranskill.requirement == "None" then
 					return rantable
 				end
 				if type(requirement) == "string" and ranskill.requirement == requirement then
-					Ext.Print("[LLENEMY_BonusSkills.lua:GetPreferredSkillGroup] ---- Matched skill (" .. tostring(ranskill.id) .. ") to requirement ("..requirement..") for group ("..rantable.id..")")
+					--Ext.Print("[LLENEMY_BonusSkills.lua:GetPreferredSkillGroup] ---- Matched skill (" .. tostring(ranskill.id) .. ") to requirement ("..requirement..") for group ("..rantable.id..")")
 					return rantable
 				elseif type(requirement) == "table" then
 					for k,v in pairs(requirement) do
 						if v == ranskill.requirement then
-							Ext.Print("[LLENEMY_BonusSkills.lua:GetPreferredSkillGroup] ---- Matched skill (" .. tostring(ranskill.id) .. ") to requirement ("..v..") for group ("..rantable.id..")")
+							--Ext.Print("[LLENEMY_BonusSkills.lua:GetPreferredSkillGroup] ---- Matched skill (" .. tostring(ranskill.id) .. ") to requirement ("..v..") for group ("..rantable.id..")")
 							return rantable
 						end
 					end
@@ -457,7 +468,7 @@ function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingst
 
 	Ext.Print("[LLENEMY_BonusSkills.lua] Enemy '" .. tostring(enemy) .. "' preferred Ability (".. tostring(preferred_ability) ..") Requirement (".. tostring(LeaderLib.Common.Dump(preferred_requirement)) ..") Bonus Skills ("..tostring(remaining)..") Source Skills ("..tostring(source_skills_remaining)..").")
 
-	local skillgroup = GetPreferredSkillGroup(preferred_ability, preferred_requirement)
+	local skillgroup = GetPreferredSkillGroup(preferred_ability, preferred_requirement, nil)
 	if skillgroup == nil then
 		Ext.Print("[LLENEMY_BonusSkills.lua] -- Can't get a skillgroup for Enemy '" .. tostring(enemy) .. "'. Skipping.")
 		return false
@@ -478,8 +489,8 @@ function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingst
 		if success == true then
 			remaining = remaining - 1
 		--- Get another random skillgroup when no preference is set
-			if preferred_ability == "None" then
-				local nextskillgroup = GetPreferredSkillGroup(preferred_ability, preferred_requirement)
+			if remaining > 0 and preferred_ability == "None" then
+				local nextskillgroup = GetPreferredSkillGroup(preferred_ability, preferred_requirement, skillgroup)
 				if nextskillgroup ~= nil then
 					skillgroup = nextskillgroup
 				end
