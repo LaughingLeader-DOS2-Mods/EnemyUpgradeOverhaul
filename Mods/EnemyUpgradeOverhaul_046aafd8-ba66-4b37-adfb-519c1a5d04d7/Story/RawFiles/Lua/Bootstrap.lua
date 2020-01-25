@@ -94,11 +94,11 @@ Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEM
 local ModuleLoad = function ()
     Ext.Print("[LLENEMY:Bootstrap.lua] Module is loading.")
 	OverrideStats();
-	LLENEMY_Ext_BuildEnemySkills();
 end
 
 local function SessionLoading()
 	Ext.Print("[LLENEMY:Bootstrap.lua] Session is loading.")
+	LLENEMY_Ext_BuildEnemySkills();
 end
 
 --v36 and higher
