@@ -116,7 +116,7 @@
 	<content contentuid="h2e45720ag8842g4c73g917fg7e1d2044cb52" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_NORMAL_Description">Character has a set of new bonus skills.</content>
 	<content contentuid="h5aa2a41bgbaa4g46d0g9987ge5c19c4b4aa4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_NORMAL_DisplayName">Skilled: Exceptional</content>
 	<content contentuid="hbacea44ag4103g49ccgbd8fgb9f026bb437d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SINGLE_Description">Character has a new bonus skill.</content>
-	<content contentuid="he79478e5gfa95g4461gba2bg9122ba540b28" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SINGLE_DisplayName">Skilled: Basic</content>
+	<content contentuid="he79478e5gfa95g4461gba2bg9122ba540b28" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SINGLE_DisplayName">Skilled</content>
 	<content contentuid="h2b3daf7egef57g4286g9247gf5c0b9752757" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SOURCE_Description">Character has a new bonus source skill.</content>
 	<content contentuid="hd1a568b1g2c56g4343gb1fcg4ae8f47c28e4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SOURCE_DisplayName">Skilled: Sourcery</content>
 	<content contentuid="h35042572gd0f8g42f0gbc95g44d818841347" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_CHICKEN_OVERLORD_Description">Character is the Overlord for an armada of chickens. Beware! Bwark!</content>
