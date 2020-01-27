@@ -9,6 +9,11 @@ SysIsActive("CMP_Talents") // Divine Talents Gift Bag mod
 THEN
 LLENEMY_Talents_InitGiftBagTalents();
 GoalCompleted;
+
+IF
+GlobalFlagSet("LLENEMY_TalentUpgrades_DivineTalentsAdded")
+THEN
+GoalCompleted;
 EXITSECTION
 
 ENDEXITSECTION
