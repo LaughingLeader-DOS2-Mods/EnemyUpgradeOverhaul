@@ -6,26 +6,36 @@ KBSECTION
 
 //REGION ELITE_REGISTERING
 PROC
-LLENEMY_Elites_AddElite((STRING)_Level, (CHARACTERGUID)_Character)
+LLENEMY_Elites_AddUpgradeChance((STRING)_Level, (CHARACTERGUID)_Character)
 THEN
-LLENEMY_Elites_AddElite(_Level, _Character, "Buffs", "Elite", 1);
+LLENEMY_Elites_AddUpgradeChance(_Level, _Character, "Buffs", "Elite", 1);
 
 PROC
-LLENEMY_Elites_AddElite((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+LLENEMY_Elites_AddUpgradeChance((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
 THEN
-LLENEMY_Elites_AddElite(_Level, _Character, _Group, _Type, 1);
+LLENEMY_Elites_AddUpgradeChance(_Level, _Character, _Group, _Type, 1);
 
 PROC
-LLENEMY_Elites_AddElite((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_BonusUpgrades)
+LLENEMY_Elites_AddUpgradeChance((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_BonusUpgrades)
 AND
 DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _LastBonusUpgrades)
 THEN
 NOT DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _LastBonusUpgrades);
 
 PROC
-LLENEMY_Elites_AddElite((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_BonusUpgrades)
+LLENEMY_Elites_AddUpgradeChance((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_BonusUpgrades)
 THEN
 DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _BonusUpgrades);
+
+PROC
+LLENEMY_Elites_AddGuaranteedUpgrade((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_UpgradeStatus)
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade(_Level, _Character, _UpgradeStatus, -1.0);
+
+PROC
+LLENEMY_Elites_AddGuaranteedUpgrade((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_UpgradeStatus, (REAL)_Duration)
+THEN
+DB_LLENEMY_Elites_GuaranteedUpgrades(_Level, _Character, _UpgradeStatus, _Duration);
 
 IF
 GameStarted(_Level, _)
@@ -51,63 +61,74 @@ LLENEMY_Elites_InitLevel("_TMPL_Sandbox");
 PROC
 LLENEMY_Elites_InitLevel("_TMPL_Sandbox")
 THEN
-LLENEMY_Elites_AddElite("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Bar_Lizard_efa66ecd-286f-44df-ba96-ee1231f8e9bb, "Buffs", "Aura");
-LLENEMY_Elites_AddElite("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Market_Ernest_Herringway_da8d55ba-0855-4147-b706-46bbc67ec8b6, "Bonus", "Infusion_Elite");
-LLENEMY_Elites_AddElite("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Madam_Aya_cb60983d-5000-4ab6-a5f2-7aeacc7d4276, "Talents", "Elite");
-LLENEMY_Elites_AddElite("_TMPL_Sandbox", CHARACTERGUID_Dwarves_Male_Clothing_001_d8eee103-3af9-4627-8ea7-72e4e8df9aa5, "Bonus", "Infusion");
+LLENEMY_Elites_AddUpgradeChance("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Bar_Lizard_efa66ecd-286f-44df-ba96-ee1231f8e9bb, "Buffs", "Aura");
+LLENEMY_Elites_AddUpgradeChance("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Market_Ernest_Herringway_da8d55ba-0855-4147-b706-46bbc67ec8b6, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Madam_Aya_cb60983d-5000-4ab6-a5f2-7aeacc7d4276, "Talents", "Elite");
+LLENEMY_Elites_AddUpgradeChance("_TMPL_Sandbox", CHARACTERGUID_Dwarves_Male_Clothing_001_d8eee103-3af9-4627-8ea7-72e4e8df9aa5, "Bonus", "Infusion");
 
 PROC
 LLENEMY_Elites_InitLevel("FTJ_FortFoy")
 THEN
 //Migo
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_BeachGheist_47263b13-ace6-4950-99b6-4f2b6ae8cc6c);
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_BeachGheist_47263b13-ace6-4950-99b6-4f2b6ae8cc6c);
 // Silence
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_BruteAssassin_d2df547d-852e-4644-ac6c-db99dacc539b, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_BruteAssassin_d2df547d-852e-4644-ac6c-db99dacc539b, "Bonus", "Infusion_Elite");
 // Griff
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_RC_FTJ_GhettoBoss_84758f75-01a3-4cce-9922-f42ffc4afddd, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_RC_FTJ_GhettoBoss_84758f75-01a3-4cce-9922-f42ffc4afddd, "Bonus", "Infusion_Elite");
 
 //Red Prince's Assassin
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_RPAssassin_8d73b9c9-0d7e-4e5c-8cfb-6a13121cd440, "Talents", "Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_RPAssassin_8d73b9c9-0d7e-4e5c-8cfb-6a13121cd440, "Talents", "Elite");
 
 //Septa the Super Elite ;)
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_BeachCrab_ba6d2b58-c978-4ce9-a99b-3aef542dd2e7, "Buffs", "Elite", 2);
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_BeachCrab_ba6d2b58-c978-4ce9-a99b-3aef542dd2e7, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_BeachCrab_ba6d2b58-c978-4ce9-a99b-3aef542dd2e7, "Buffs", "Elite", 2);
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_BeachCrab_ba6d2b58-c978-4ce9-a99b-3aef542dd2e7, "Bonus", "Infusion_Elite");
 
 //Soul Jar Skeletons
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_RC_FTJ_SoulJarTrapSkeleton_003_5ef951b7-a893-4b48-9ee2-7e5d754c6a83);
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_RC_FTJ_SoulJarTrapSkeleton_006_20d96b30-c279-4f94-8815-8114e48f261e);
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_RC_FTJ_SoulJarTrapSkeleton_003_5ef951b7-a893-4b48-9ee2-7e5d754c6a83);
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_RC_FTJ_SoulJarTrapSkeleton_006_20d96b30-c279-4f94-8815-8114e48f261e);
 
 //Arena of the One
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_Arena_Gladiator_001_51a8d141-c7df-4d56-8d28-ca403033ca16, "Buffs", "Aura");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_Arena_Gladiator_002_31fcfd4c-1417-4ac8-8817-1dfb8a5b8e7b, "Bonus", "Infusion_Elite");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_Arena_Gladiator_003_b81cb546-05b1-404c-ae00-d76a0702bb86, "Talents", "Elite");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_Arena_Gladiator_004_d2a430fc-8f01-4962-b455-93f883c287d0, "Bonus", "Infusion");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_Arena_Gladiator_001_51a8d141-c7df-4d56-8d28-ca403033ca16, "Buffs", "Aura");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_Arena_Gladiator_002_31fcfd4c-1417-4ac8-8817-1dfb8a5b8e7b, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_Arena_Gladiator_003_b81cb546-05b1-404c-ae00-d76a0702bb86, "Talents", "Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_Arena_Gladiator_004_d2a430fc-8f01-4962-b455-93f883c287d0, "Bonus", "Infusion");
 
 //Kniles
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b, "Bonus", "Infusion_Elite");
 
 //Courtroom Magister Priest Guy
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_HighPriest_2a09f30c-0a3b-495f-8386-5390a6c4c08d, "Buffs", "Aura");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_HighPriest_2a09f30c-0a3b-495f-8386-5390a6c4c08d, "Buffs", "Aura");
 
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349, "Buffs", "Aura");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349, "Buffs", "Immunity");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, "Talents", "Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349, "Buffs", "Aura");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349, "Buffs", "Immunity");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, "Talents", "Elite");
 
 //Radeka
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_SW_Witch_4014aee0-56f1-47e0-a8eb-89c4b5a1da83, "Talents", "Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_SW_Witch_4014aee0-56f1-47e0-a8eb-89c4b5a1da83, "Talents", "Elite");
 
 //Trompdoy
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_SW_IllusionistFinal_1a3b44d4-0ba4-4289-b158-a54111b83e1d, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_SW_IllusionistFinal_1a3b44d4-0ba4-4289-b158-a54111b83e1d, "Bonus", "Infusion_Elite");
 
 //Slane
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_SW_PurgedDragon_c099caa6-1938-4b4f-9365-d0881c611e71, "Buffs", "Immunity");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_SW_PurgedDragon_c099caa6-1938-4b4f-9365-d0881c611e71, "Bonus", "Infusion_Elite");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_SW_PurgedDragon_c099caa6-1938-4b4f-9365-d0881c611e71, "Bonus", "Special");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_SW_PurgedDragon_c099caa6-1938-4b4f-9365-d0881c611e71, "Buffs", "Immunity");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_SW_PurgedDragon_c099caa6-1938-4b4f-9365-d0881c611e71, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_SW_PurgedDragon_c099caa6-1938-4b4f-9365-d0881c611e71, "Bonus", "Special");
 
 //Worm
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_FinalBattle_Voidwoken_7dcf3cc2-d015-4aff-9949-71fc539fcc73, "Buffs", "Immunity");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_FinalBattle_Voidwoken_7dcf3cc2-d015-4aff-9949-71fc539fcc73, "Bonus", "Infusion_Elite");
-LLENEMY_Elites_AddElite("FTJ_FortFoy", S_FTJ_FinalBattle_Voidwoken_7dcf3cc2-d015-4aff-9949-71fc539fcc73, "Bonus", "Special");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_FinalBattle_Voidwoken_7dcf3cc2-d015-4aff-9949-71fc539fcc73, "Buffs", "Immunity");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_FinalBattle_Voidwoken_7dcf3cc2-d015-4aff-9949-71fc539fcc73, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("FTJ_FortFoy", S_FTJ_FinalBattle_Voidwoken_7dcf3cc2-d015-4aff-9949-71fc539fcc73, "Bonus", "Special");
+
+PROC
+LLENEMY_Elites_InitLevel("FTJ_FortFoy")
+AND
+LeaderLib_QRY_ExtenderIsActive()
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade("FTJ_FortFoy", S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349, "LLENEMY_BONUSSKILLS_SET_NORMAL");
+LLENEMY_Elites_AddGuaranteedUpgrade("FTJ_FortFoy", S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, "LLENEMY_BONUSSKILLS_SET_ELITE");
+LLENEMY_Elites_AddGuaranteedUpgrade("FTJ_FortFoy", S_FTJ_SW_Witch_4014aee0-56f1-47e0-a8eb-89c4b5a1da83, "LLENEMY_BONUSSKILLS_SOURCE");
+LLENEMY_Elites_AddGuaranteedUpgrade("FTJ_FortFoy", S_FTJ_SW_IllusionistFinal_1a3b44d4-0ba4-4289-b158-a54111b83e1d, "LLENEMY_BONUSSKILLS_SOURCE");
+LLENEMY_Elites_AddGuaranteedUpgrade("FTJ_FortFoy", S_FTJ_BruteAssassin_d2df547d-852e-4644-ac6c-db99dacc539b, "LLENEMY_BONUSSKILLS_SET_NORMAL");
 
 IF
 RegionEnded(_Level)
@@ -641,6 +662,33 @@ IntegerSubtract(_Amount, 1, _NewAmount)
 THEN
 LLENEMY_Upgrades_Internal_ApplyEliteBonuses(_Character, _Group, _Type, _NewAmount);
 LLENEMY_Upgrades_Internal_OnEliteBonusRolled(_Character, _Group, _Type, _NewAmount);
+
+PROC
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character)
+AND
+CharacterGetDisplayName(_Character, _, _Name)
+AND
+DB_LLENEMY_Elites_GuaranteedUpgrades(_Level, _Character, _Status, _Duration)
+AND
+NOT LeaderLib_Helper_QRY_HasStatus(_Character, _Status)
+THEN
+LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus(_Character, _Status, _Duration, _Name);
+
+PROC
+LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (STRING)_Name)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _, _CP)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:OnRollingDone] Adding guaranteed elite bonus to [",_Name,"] - [",_Group,":",_Type,"] Status [",_Status,"].");
+LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _Status, _Duration, _CP);
+
+PROC
+LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (STRING)_Name)
+AND
+NOT DB_LLENEMY_Upgrades_Statuses(_, _, _Status, _, _, _, _)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:OnRollingDone] Adding non-registered, guaranteed elite bonus to Status [",_Status,"].");
+LLENEMY_Upgrades_ApplyUpgrade(_Character, "", "", _Status, _Duration, 2);
 //END_REGION
 EXITSECTION
 
