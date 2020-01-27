@@ -29,12 +29,22 @@ DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_SOURCE", 1, 1);
 //END_REGION
 
 //REGION ROLLING
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
+THEN
+// Disabled without the extender
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
 AND
 NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Enemy)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
+*/
 
 PROC
 LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
