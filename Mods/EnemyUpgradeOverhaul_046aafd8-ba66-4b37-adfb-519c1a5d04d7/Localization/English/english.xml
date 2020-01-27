@@ -4,6 +4,7 @@
 	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>
 	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
 	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
+	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_BonusSkills_Source">Skilled: Sourcery</content>
 	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_10">Armor Boost</content>
 	<content contentuid="h6f37a8adgd0e7g447fg816cg6248d5b69a10" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_15">Armor Boost</content>
 	<content contentuid="hf60945a4g7f7ag445cgacceg7f43da4a7f06" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_20">Armor Boost</content>
