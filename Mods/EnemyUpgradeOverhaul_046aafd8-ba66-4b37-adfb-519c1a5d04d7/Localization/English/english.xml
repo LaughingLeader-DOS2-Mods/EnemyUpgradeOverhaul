@@ -4,6 +4,32 @@
 	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>
 	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
 	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
+	<content contentuid="h6efe8867g66bbg4d4ag936bgbb477bc57265" Source="LLENEMY_Menu_Scaling.lsj">[Back]</content>
+	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14" Source="LLENEMY_Menu_Scaling.lsj">Enabling Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value.</content>
+	<content contentuid="hf652aa9fgeca8g4265ga6b2ge3d557dfb11c" Source="LLENEMY_Menu_Scaling.lsj">Disabling Enemy Level Scaling</content>
+	<content contentuid="hd80e21d0gc2ffg4df8gbc9fgcdd3f5248980" Source="LLENEMY_Menu_Scaling.lsj">Decrease Level Modifier -1</content>
+	<content contentuid="h6493380bgf46eg46fdga0f8g399ed299b249" Source="LLENEMY_Menu_Scaling.lsj">[DEBUG] Disable Enemy Level Limit - &lt;b&gt;WARNING&lt;/b&gt; - Enemy levels above 35 may crash the game. Uncap at your own risk!</content>
+	<content contentuid="h2e424a5ag2a45g4c6bg9ca3gd3302a0c31ed" Source="LLENEMY_Menu_Scaling.lsj">[DEBUG] Enable Enemy Level Limit [&lt;b&gt;Recommended&lt;/b&gt;] - Enemy levels above 35 may crash the game, so enable the limit to prevent leveling above 35.</content>
+	<content contentuid="h061dd3e2gfbc2g47afg860bg1a623122d95e" Source="LLENEMY_Menu_Scaling.lsj">Reset Level Modifier (0)</content>
+	<content contentuid="h9fc5d19eg4f21g4b1cg8c36g56370f2c5bb2" Source="LLENEMY_Menu_Scaling.lsj">Level Scaling Settings&lt;br&gt;Level Modifier: [LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f]&lt;br&gt;Scaled Enemy Level: [LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba]</content>
+	<content contentuid="h0f4b3d6bg416cg43b1g9ae2g879d929b4151" Source="LLENEMY_Menu_Scaling.lsj">Commit Level Modifier to the World - This will level up every non-player character in the world to the desired level modifier, including neutral or allied characters (non-recruited Origin companions are ignored).</content>
+	<content contentuid="ha5f6b750g5322g4043gac1dgfc82734fde21" Source="LLENEMY_Menu_Scaling.lsj">Updated settings.</content>
+	<content contentuid="h7b712de8ga474g487bgb2d8gd05c1e1d71c6" Source="LLENEMY_Menu_Scaling.lsj">Increase Level Modifier +1</content>
+	<content contentuid="h0c13903cgd246g4a35gbce9g19db61af1db9" Source="LLENEMY_Menu_Scaling.lsj">Disable Commit Level Modifier to the World - &lt;b&gt;*NOTE* &lt;/b&gt;This will not down-level enemies. Leveling only works one way!</content>
+	<content contentuid="hdb982497gc47dg4fd4gabdega3d6af9b0760" Source="LLENEMY_Menu_Upgrades.lsj">Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.</content>
+	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Menu_Upgrades.lsj">Settings updated.</content>
+	<content contentuid="he4a9526dg0dd1g4babg824eg01a0e9993e55" Source="LLENEMY_Menu_Upgrades.lsj">Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon.</content>
+	<content contentuid="h46cf8395ga421g4d8eg994cg9cc757c5b41d" Source="LLENEMY_Menu_Upgrades.lsj">Enable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns).</content>
+	<content contentuid="h369c8cf4g1083g4df3gbc79gac57bc3f6074" Source="LLENEMY_Menu_Upgrades.lsj">Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion.</content>
+	<content contentuid="hae44c262g8fffg4f1cg8740g4874c69c39e7" Source="LLENEMY_Menu_Upgrades.lsj">Enable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras.</content>
+	<content contentuid="h43542436ge2dcg49f8g9233g292e2f887bf6" Source="LLENEMY_Menu_Upgrades.lsj">Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon.</content>
+	<content contentuid="hb8e49700gfb78g4a25gb451g21026ea98f20" Source="LLENEMY_Menu_Upgrades.lsj">Enable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite.</content>
+	<content contentuid="hbe6a42a1g49e0g44e0g9546g4b45f038d6cb" Source="LLENEMY_Menu_Upgrades.lsj">Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras.</content>
+	<content contentuid="h5a190392g61c4g439dgbd08gc227c5e69923" Source="LLENEMY_Menu_Upgrades.lsj">Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns).</content>
+	<content contentuid="h451c2d3eg3c6eg4366g8a31ga9792596a488" Source="LLENEMY_Menu_Upgrades.lsj">Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion.</content>
+	<content contentuid="he98adb62g6a62g43abg9723g160e736ebd6d" Source="LLENEMY_Menu_Upgrades.lsj">Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite.</content>
+	<content contentuid="h506de539g84a3g464fgba77g2fe643c629d9" Source="LLENEMY_Menu_Upgrades.lsj">Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.</content>
+	<content contentuid="h830f867bgc14cg47c2gb90bg4988469422fc" Source="LLENEMY_Menu_Upgrades.lsj">Upgrade Settings</content>
 	<content contentuid="h034ae0a4g858eg4d30g82dege3c983c8b18a" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_TotalCharactersLeveled">&lt;font color=&apos;#BBFF00&apos; size=&apos;23&apos;&gt;*[1] beings gained a new level of power...*&lt;/font&gt;</content>
 	<content contentuid="hff477e91gde34g4795g863ag2c508293666d" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_MessageBox_ConfirmEnemyLevelingCommit">Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.&lt;br&gt;&lt;font color=&apos;#FF0000&apos; size=&apos;26&apos;&gt;This cannot be undone.&lt;/font&gt;</content>
 	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_BonusSkills_Source">Skilled: Sourcery</content>
@@ -78,37 +104,14 @@
 	<content contentuid="ha0ac17b6gee82g44d9g81b9g66c9a941e010" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Weatherproof">Talent: Weatherproof</content>
 	<content contentuid="h9c5daca5g3786g435agb9feg0ad41260a1bc" Source="LLENEMY_Settings.lsj">Enable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades.</content>
 	<content contentuid="hf13c9277g29bfg4baegbecega1e5cd8aef76" Source="LLENEMY_Settings.lsj">Enemy Scaling Settings</content>
-	<content contentuid="hb8e49700gfb78g4a25gb451g21026ea98f20" Source="LLENEMY_Settings.lsj">Enable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite.</content>
 	<content contentuid="h085c6ba2g63acg48f6g9c2ag677294738be0" Source="LLENEMY_Settings.lsj">Disable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades.</content>
-	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefd" Source="LLENEMY_Settings.lsj">[Exit]</content>
-	<content contentuid="hdb982497gc47dg4fd4gabdega3d6af9b0760" Source="LLENEMY_Settings.lsj">Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.</content>
-	<content contentuid="ha5f6b750g5322g4043gac1dgfc82734fde21" Source="LLENEMY_Settings.lsj">Updated settings.</content>
 	<content contentuid="h09982c04g289bg4d01gad23gaa88d6fc43fc" Source="LLENEMY_Settings.lsj">Only the host can edit these settings.</content>
-	<content contentuid="h6efe8867g66bbg4d4ag936bgbb477bc57265" Source="LLENEMY_Settings.lsj">[Back]</content>
-	<content contentuid="h6493380bgf46eg46fdga0f8g399ed299b249" Source="LLENEMY_Settings.lsj">[DEBUG] Disable Enemy Level Limit - &lt;b&gt;WARNING&lt;/b&gt; - Enemy levels above 35 may crash the game. Uncap at your own risk!</content>
-	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6" Source="LLENEMY_Settings.lsj">Upgrade Group Settings</content>
-	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Settings.lsj">Settings updated.</content>
-	<content contentuid="hbe6a42a1g49e0g44e0g9546g4b45f038d6cb" Source="LLENEMY_Settings.lsj">Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras.</content>
 	<content contentuid="h90795f7dg9422g4b51g9835g0449efe50b1b" Source="LLENEMY_Settings.lsj">Enemy Upgrade Overhaul Settings</content>
-	<content contentuid="h506de539g84a3g464fgba77g2fe643c629d9" Source="LLENEMY_Settings.lsj">Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.</content>
 	<content contentuid="h279bcad6g5064g45ccg8e09g870c92e0cf6e" Source="LLENEMY_Settings.lsj">[Host Required] Upgrade Group Settings</content>
-	<content contentuid="h451c2d3eg3c6eg4366g8a31ga9792596a488" Source="LLENEMY_Settings.lsj">Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion.</content>
-	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14" Source="LLENEMY_Settings.lsj">Enabling Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value.</content>
-	<content contentuid="hae44c262g8fffg4f1cg8740g4874c69c39e7" Source="LLENEMY_Settings.lsj">Enable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras.</content>
-	<content contentuid="hd80e21d0gc2ffg4df8gbc9fgcdd3f5248980" Source="LLENEMY_Settings.lsj">Decrease Level Modifier -1</content>
-	<content contentuid="h2e424a5ag2a45g4c6bg9ca3gd3302a0c31ed" Source="LLENEMY_Settings.lsj">[DEBUG] Enable Enemy Level Limit [&lt;b&gt;Recommended&lt;/b&gt;] - Enemy levels above 35 may crash the game, so enable the limit to prevent leveling above 35.</content>
-	<content contentuid="h7b712de8ga474g487bgb2d8gd05c1e1d71c6" Source="LLENEMY_Settings.lsj">Increase Level Modifier +1</content>
-	<content contentuid="he98adb62g6a62g43abg9723g160e736ebd6d" Source="LLENEMY_Settings.lsj">Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite.</content>
 	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19" Source="LLENEMY_Settings.lsj">Rewards Settings</content>
 	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefde089gb44bg48f7g94eega74d094062ae" Source="LLENEMY_Settings.lsj">[Exit]</content>
-	<content contentuid="h75f46066g5231g4e21g86dfg11366f459400" Source="LLENEMY_Settings.lsj">Enemy Scaling Settings&lt;br&gt;Level Modifier: [LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f]&lt;br&gt;Scaled Enemy Level: [LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba]</content>
-	<content contentuid="h369c8cf4g1083g4df3gbc79gac57bc3f6074" Source="LLENEMY_Settings.lsj">Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion.</content>
-	<content contentuid="h061dd3e2gfbc2g47afg860bg1a623122d95e" Source="LLENEMY_Settings.lsj">Reset Level Modifier (0)</content>
-	<content contentuid="hf652aa9fgeca8g4265ga6b2ge3d557dfb11c" Source="LLENEMY_Settings.lsj">Disabling Enemy Level Scaling</content>
-	<content contentuid="h43542436ge2dcg49f8g9233g292e2f887bf6" Source="LLENEMY_Settings.lsj">Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon.</content>
-	<content contentuid="h5a190392g61c4g439dgbd08gc227c5e69923" Source="LLENEMY_Settings.lsj">Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns).</content>
-	<content contentuid="h46cf8395ga421g4d8eg994cg9cc757c5b41d" Source="LLENEMY_Settings.lsj">Enable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns).</content>
-	<content contentuid="he4a9526dg0dd1g4babg824eg01a0e9993e55" Source="LLENEMY_Settings.lsj">Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon.</content>
+	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6" Source="LLENEMY_Settings.lsj">Upgrade Group Settings</content>
+	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefd" Source="LLENEMY_Settings.lsj">[Exit]</content>
 	<content contentuid="h1d2be7b0gea03g4bfagbeaag02c29c65b877" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_Description">Summons your glorious chicken armada to the battlefield. Bwak!</content>
 	<content contentuid="h2f3fff9cge409g42a9gb29fgff5fc6065221" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_DisplayName">Summon Chicken Armada</content>
 	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUS_TREASURE_ROLL_Description">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
