@@ -160,6 +160,48 @@ AND
 LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
 THEN
 LLENEMY_Scaling_LevelUpEnemy(_Character);
+
+//Committing
+IF
+ObjectFlagSet("LLENEMY_EnemyLeveling_Commit", (CHARACTERGUID)_Char, _)
+THEN
+ObjectClearFlag(_Char, "LLENEMY_EnemyLeveling_Commit", 0);
+OpenMessageBoxYesNo(_Char, "LLENEMY_MessageBox_ConfirmEnemyLevelingCommit");
+
+IF
+MessageBoxYesNoClosed(_Player, "LLENEMY_MessageBox_ConfirmEnemyLevelingCommit", 1)
+THEN
+DB_LLENEMY_Scaling_Temp_TotalScaled(_Player, 0);
+TimerLaunch("Timers_LLENEMY_Scaling_DisplayTotalLeveled", 250);
+CharacterLaunchOsirisOnlyIterator("Iterator_LLENEMY_EnemyLeveling_LevelUp");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "Iterator_LLENEMY_EnemyLeveling_LevelUp")
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
+THEN
+LLENEMY_Scaling_LevelUpEnemy(_Char);
+LLENEMY_Scaling_Internal_IncreaseCount();
+
+PROC
+LLENEMY_Scaling_Internal_IncreaseCount()
+AND
+DB_LLENEMY_Scaling_Temp_TotalScaled(_Player, _Total)
+AND
+IntegerSum(_Total, 1, _Next)
+THEN
+NOT DB_LLENEMY_Scaling_Temp_TotalScaled(_Player, _Total);
+DB_LLENEMY_Scaling_Temp_TotalScaled(_Player, _Next);
+TimerCancel("Timers_LLENEMY_Scaling_DisplayTotalLeveled");
+TimerLaunch("Timers_LLENEMY_Scaling_DisplayTotalLeveled", 250);
+
+IF
+TimerFinished("Timers_LLENEMY_Scaling_DisplayTotalLeveled")
+AND
+DB_LLENEMY_Scaling_Temp_TotalScaled(_Player, _Total)
+THEN
+NOT DB_LLENEMY_Scaling_Temp_TotalScaled(_Player, _Total);
+CharacterDisplayTextWithParam(_Player, "LLENEMY_DisplayText_TotalCharactersLeveled", _Total);
 //END_REGION
 
 EXITSECTION
