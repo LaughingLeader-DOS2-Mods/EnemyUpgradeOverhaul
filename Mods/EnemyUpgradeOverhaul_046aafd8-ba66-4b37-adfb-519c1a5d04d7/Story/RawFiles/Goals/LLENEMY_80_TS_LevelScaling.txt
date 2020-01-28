@@ -4,25 +4,111 @@ INITSECTION
 LLENEMY_Scaling_LevelAllInCombat();
 KBSECTION
 
+//New region leveling
+IF
+GameStarted(_Region,_)
+AND
+GlobalGetFlag("LLENEMY_Scaling_CommitToWorld_Enabled", 1)
+AND
+NOT DB_LLENEMY_Scaling_Temp_LeveledRegion(_Region)
+THEN
+DB_LLENEMY_Scaling_Temp_LeveledRegion(_Region);
+CharacterLaunchOsirisOnlyIterator("Iterator_LLENEMY_Scaling_LevelUp");
+
 //Stat resetting
 IF
-ObjectTransformed((CHARACTERGUID)_Enemy, _)
+ObjectTransformed(_Char, _)
 AND
-DB_CombatCharacters(_Enemy, _CombatID)
+ObjectIsCharacter((CHARACTERGUID)_Char, 1)
 AND
-LLENEMY_QRY_IsEnemyOfParty(_Enemy, _CombatID)
+NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
 THEN
-LLENEMY_Scaling_LevelUpEnemy(_Enemy);
+LLENEMY_Scaling_LevelUpCharacter(_Char);
 
 PROC
-LLENEMY_OnEnemyJoinedCombat((CHARACTERGUID)_Enemy, (INTEGER)_CombatID)
+LLENEMY_OnCharacterJoinedCombat((CHARACTERGUID)_Enemy, (INTEGER)_CombatID)
 THEN
-LLENEMY_Scaling_LevelUpEnemy(_Enemy);
+LLENEMY_Scaling_LevelUpCharacter(_Enemy);
 
 IF
-RegionEnded(_)
+RegionEnded(_Region)
 THEN
+NOT DB_LLENEMY_Scaling_Temp_LeveledRegion(_Region);
 SysClear("DB_LLENEMY_Scaling_Temp_WaitForCombat", 1);
+
+//REGION NEUTRAL_CRIMES
+// [BEGIN_NO_OSITOOLS]
+IF
+CharacterStartAttackObject((CHARACTERGUID)_Char, _PLayer, _)
+AND
+CharacterIsPlayer(_Player, 1)
+AND
+CharacterIsInCombat(_Char, 0)
+AND
+CharacterIsNeutral(_Char, _PLayer, 1)
+THEN
+LLENEMY_Scaling_LevelUpCharacter(_Char);
+
+IF
+AttackedByObject((CHARACTERGUID)_Char, _, (CHARACTERGUID)_Player, _, _)
+AND
+CharacterIsPlayer(_Player, 1)
+AND
+CharacterIsInCombat(_Char, 0)
+AND
+CharacterIsNeutral(_Char, _PLayer, 1)
+THEN
+LLENEMY_Scaling_LevelUpCharacter(_Char);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+IF
+NRD_OnPrepareHit((CHARACTERGUID)_Char, (CHARACTERGUID)_Player, _Damage, _)
+AND
+_Damage > 0
+AND
+CharacterIsPlayer(_Player, 1)
+AND
+CharacterIsInCombat(_Char, 0)
+AND
+CharacterIsNeutral(_Char, _PLayer, 1)
+THEN
+LLENEMY_Scaling_LevelUpCharacter(_Char);
+*/
+
+/*
+IF
+CharacterUsedSkillOnTarget(_Player, (CHARACTERGUID)_Char, _Skill, _, _)
+AND
+DB_IsPlayer(_PLayer)
+AND
+CharacterIsInCombat(_Char, 0)
+AND
+NRD_StatGetInt(_Skill, "Damage Multiplier", _DamageMult)
+AND
+_DamageMult > 0
+AND
+CharacterIsNeutral(_Char, _PLayer, 1)
+THEN
+LLENEMY_Scaling_LevelUpCharacter(_Char);
+
+IF
+CharacterUsedSkillOnZoneWithTarget(_Player, (CHARACTERGUID)_Char, _Skill, _, _)
+AND
+DB_IsPlayer(_PLayer)
+AND
+CharacterIsInCombat(_Char, 0)
+AND
+NRD_StatGetInt(_Skill, "Damage Multiplier", _DamageMult)
+AND
+_DamageMult > 0
+AND
+CharacterIsNeutral(_Char, _PLayer, 1)
+THEN
+LLENEMY_Scaling_LevelUpCharacter(_Char);
+*/
+
+//END_REGION
 
 EXITSECTION
 SysClear("DB_LLENEMY_Scaling_Temp_WaitForCombat", 1);
