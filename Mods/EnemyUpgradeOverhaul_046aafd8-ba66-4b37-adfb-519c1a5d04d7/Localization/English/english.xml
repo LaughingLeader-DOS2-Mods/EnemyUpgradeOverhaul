@@ -20,6 +20,7 @@
 	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Menu_Upgrades.lsj">Settings updated.</content>
 	<content contentuid="he4a9526dg0dd1g4babg824eg01a0e9993e55" Source="LLENEMY_Menu_Upgrades.lsj">Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon.</content>
 	<content contentuid="h46cf8395ga421g4d8eg994cg9cc757c5b41d" Source="LLENEMY_Menu_Upgrades.lsj">Enable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns).</content>
+	<content contentuid="hae3e586aga38eg4ee0g8728g5280e0d41165" Source="LLENEMY_Menu_Upgrades.lsj">Enable Bonus Skill Upgrades. These give enemies new skills using the Script Extender.</content>
 	<content contentuid="h369c8cf4g1083g4df3gbc79gac57bc3f6074" Source="LLENEMY_Menu_Upgrades.lsj">Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion.</content>
 	<content contentuid="hae44c262g8fffg4f1cg8740g4874c69c39e7" Source="LLENEMY_Menu_Upgrades.lsj">Enable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras.</content>
 	<content contentuid="h43542436ge2dcg49f8g9233g292e2f887bf6" Source="LLENEMY_Menu_Upgrades.lsj">Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon.</content>
@@ -28,7 +29,11 @@
 	<content contentuid="h5a190392g61c4g439dgbd08gc227c5e69923" Source="LLENEMY_Menu_Upgrades.lsj">Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns).</content>
 	<content contentuid="h451c2d3eg3c6eg4366g8a31ga9792596a488" Source="LLENEMY_Menu_Upgrades.lsj">Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion.</content>
 	<content contentuid="he98adb62g6a62g43abg9723g160e736ebd6d" Source="LLENEMY_Menu_Upgrades.lsj">Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite.</content>
+	<content contentuid="h0f2a61a6g5427g4e2bgbc76g986dc3e1fa79" Source="LLENEMY_Menu_Upgrades.lsj">Disable Bonus Skill Upgrades. These give enemies new skills using the Script Extender.</content>
+	<content contentuid="h3e93fbd4g6fe8g4f0bgae12g32a833f98bc0" Source="LLENEMY_Menu_Upgrades.lsj">Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Default: Enabled)</content>
+	<content contentuid="h5372c630g9c16g493fga294gde25ab176b6b" Source="LLENEMY_Menu_Upgrades.lsj">Disable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Default: Enabled)</content>
 	<content contentuid="h506de539g84a3g464fgba77g2fe643c629d9" Source="LLENEMY_Menu_Upgrades.lsj">Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.</content>
+	<content contentuid="h250561a9g4ce0g4989ga495g3150b4f80015" Source="LLENEMY_Menu_Upgrades.lsj">Disable Duplication Upgrades. This is a chance for clones of enemies to appear in battle.</content>
 	<content contentuid="h830f867bgc14cg47c2gb90bg4988469422fc" Source="LLENEMY_Menu_Upgrades.lsj">Upgrade Settings</content>
 	<content contentuid="h034ae0a4g858eg4d30g82dege3c983c8b18a" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_TotalCharactersLeveled">&lt;font color=&apos;#BBFF00&apos; size=&apos;23&apos;&gt;*[1] beings gained a new level of power...*&lt;/font&gt;</content>
 	<content contentuid="hff477e91gde34g4795g863ag2c508293666d" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_MessageBox_ConfirmEnemyLevelingCommit">Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.&lt;br&gt;&lt;font color=&apos;#FF0000&apos; size=&apos;26&apos;&gt;This cannot be undone.&lt;/font&gt;</content>
@@ -109,9 +114,8 @@
 	<content contentuid="h90795f7dg9422g4b51g9835g0449efe50b1b" Source="LLENEMY_Settings.lsj">Enemy Upgrade Overhaul Settings</content>
 	<content contentuid="h279bcad6g5064g45ccg8e09g870c92e0cf6e" Source="LLENEMY_Settings.lsj">[Host Required] Upgrade Group Settings</content>
 	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19" Source="LLENEMY_Settings.lsj">Rewards Settings</content>
-	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefde089gb44bg48f7g94eega74d094062ae" Source="LLENEMY_Settings.lsj">[Exit]</content>
-	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6" Source="LLENEMY_Settings.lsj">Upgrade Group Settings</content>
 	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefd" Source="LLENEMY_Settings.lsj">[Exit]</content>
+	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6" Source="LLENEMY_Settings.lsj">Upgrade Group Settings</content>
 	<content contentuid="h1d2be7b0gea03g4bfagbeaag02c29c65b877" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_Description">Summons your glorious chicken armada to the battlefield. Bwak!</content>
 	<content contentuid="h2f3fff9cge409g42a9gb29fgff5fc6065221" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_DisplayName">Summon Chicken Armada</content>
 	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUS_TREASURE_ROLL_Description">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
