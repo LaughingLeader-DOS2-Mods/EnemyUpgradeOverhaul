@@ -21,8 +21,24 @@ LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 
 //END_REGION
 
 //REGION Duplication
+QRY
+LLENEMY_Duplication_QRY_CanDuplicate((CHARACTERGUID)_Char, 1)
+AND
+GlobalGetFlag("LLENEMY_DuplicationUpgrades_BossesDisabled", 0)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Duplication_QRY_CanDuplicate((CHARACTERGUID)_Char, 0)
+THEN
+DB_NOOP(1);
+
 PROC
 LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Duplication", (STRING)_Type)
+AND
+IsBoss(_Enemy, _IsBoss)
+AND
+LLENEMY_Duplication_QRY_CanDuplicate(_Enemy, _IsBoss)
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
 THEN
