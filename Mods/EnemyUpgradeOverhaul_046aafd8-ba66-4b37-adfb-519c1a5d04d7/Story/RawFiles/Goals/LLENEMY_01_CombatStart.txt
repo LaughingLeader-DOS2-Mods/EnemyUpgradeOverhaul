@@ -86,6 +86,19 @@ NOT DB_StackInternalMember(_NewAmount, _TimerName, _Value);
 
 //REGION ADD_TO_QUEUE
 QRY
+LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Character)
+AND
+NOT DB_Origins(_Character) // Don't do anything for Origin characters, since they may be recruited again
+AND
+NOT DB_IsPlayer(_Character)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsEnemy(_Player, _Character, 1)
+THEN
+DB_NOOP(1);
+
+QRY
 LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Character, (INTEGER)_CombatID)
 AND
 NOT DB_Origins(_Character) // Don't do anything for Origin characters, since they may be recruited again
