@@ -151,6 +151,17 @@ THEN
 CharacterLevelUpTo(_Character, _TargetLevel);
 //END_REGION
 
+//REGION MASS_LEVELING
+PROC
+LLENEMY_Scaling_LevelAllInCombat()
+AND
+DB_CombatCharacters(_Character, _CombatID)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Character, _CombatID)
+THEN
+LLENEMY_Scaling_LevelUpEnemy(_Character);
+//END_REGION
+
 EXITSECTION
 
 ENDEXITSECTION
