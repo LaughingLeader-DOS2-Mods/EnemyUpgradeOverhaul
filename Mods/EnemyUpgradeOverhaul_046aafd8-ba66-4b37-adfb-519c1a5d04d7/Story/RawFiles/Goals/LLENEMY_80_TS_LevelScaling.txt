@@ -1,0 +1,30 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Scaling_LevelAllInCombat();
+KBSECTION
+
+//Stat resetting
+IF
+ObjectTransformed((CHARACTERGUID)_Enemy, _)
+AND
+DB_CombatCharacters(_Enemy, _CombatID)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Enemy, _CombatID)
+THEN
+LLENEMY_Scaling_LevelUpEnemy(_Enemy);
+
+PROC
+LLENEMY_OnEnemyJoinedCombat((CHARACTERGUID)_Enemy, (INTEGER)_CombatID)
+THEN
+LLENEMY_Scaling_LevelUpEnemy(_Enemy);
+
+IF
+RegionEnded(_)
+THEN
+SysClear("DB_LLENEMY_Scaling_Temp_WaitForCombat", 1);
+
+EXITSECTION
+SysClear("DB_LLENEMY_Scaling_Temp_WaitForCombat", 1);
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"
