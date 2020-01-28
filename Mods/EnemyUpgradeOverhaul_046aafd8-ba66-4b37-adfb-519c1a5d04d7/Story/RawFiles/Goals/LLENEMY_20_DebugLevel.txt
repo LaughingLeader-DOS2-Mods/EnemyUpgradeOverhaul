@@ -1,0 +1,20 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+GlobalClearFlag("LLENEMY_DuplicationUpgradesDisabled");
+KBSECTION
+
+IF
+RegionEnded("TestLevel_LL_LeaderLib")
+THEN
+GoalCompleted;
+
+IF
+RegionEnded("_TMPL_Sandbox")
+THEN
+GoalCompleted;
+
+EXITSECTION
+GlobalSetFlag("LLENEMY_DuplicationUpgradesDisabled");
+ENDEXITSECTION
+ParentTargetEdge "LeaderLib_20__Debug"
