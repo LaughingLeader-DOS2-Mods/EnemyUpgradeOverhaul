@@ -1,0 +1,107 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+QRY
+LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Enemy)
+AND
+NOT DB_Origins(_Enemy) // Don't do anything for Origin characters, since they may be recruited again
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsEnemy(_Player, _Enemy, 1)
+THEN
+DB_NOOP(1);
+DB_LLENEMY_System_Temp_IsEnemyOfPartyResolved(_Enemy);
+
+QRY
+LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Enemy)
+AND
+NOT DB_LLENEMY_System_Temp_IsEnemyOfPartyResolved(_Enemy)
+AND
+ObjectGetFlag(_Enemy, "LLENEMY_JustAttackedByPlayer", 1)
+THEN
+DB_LLENEMY_System_Temp_IsEnemyOfPartyResolved(_Enemy);
+
+QRY
+LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Enemy)
+AND
+DB_LLENEMY_System_Temp_IsEnemyOfPartyResolved(_Enemy)
+THEN
+NOT DB_LLENEMY_System_Temp_IsEnemyOfPartyResolved(_Enemy);
+
+QRY
+LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Enemy, (INTEGER)_CombatID)
+AND
+NOT DB_Origins(_Enemy) // Don't do anything for Origin characters, since they may be recruited again
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterIsPartyFollower(_Enemy, 0)
+AND
+CharacterIsSummon(_Enemy, 0)
+AND
+CombatGetInvolvedPlayer(_CombatID, 1, _Player)
+AND
+CharacterIsEnemy(_Enemy, _Player, 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_QRY_IsAllyOfParty((CHARACTERGUID)_Char)
+AND
+NOT DB_IsPlayer(_Char)
+AND
+DB_Origins(_Char)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_QRY_IsAllyOfParty((CHARACTERGUID)_Char)
+AND
+NOT DB_IsPlayer(_Char)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsAlly(_Player, _Char, 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_QRY_IsNeutralToParty((CHARACTERGUID)_Char)
+AND
+NOT DB_IsPlayer(_Char)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsNeutral(_Char, _Player, 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_QRY_CanScale((CHARACTERGUID)_Char)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Char)
+THEN
+DB_LLENEMY_System_Temp_CanScaleResolved(_Char);
+
+QRY
+LLENEMY_QRY_CanScale((CHARACTERGUID)_Char)
+AND
+NOT DB_LLENEMY_System_Temp_CanScaleResolved(_Char)
+AND
+LLENEMY_QRY_IsAllyOfParty(_Char)
+THEN
+DB_LLENEMY_System_Temp_CanScaleResolved(_Char);
+
+QRY
+LLENEMY_QRY_CanScale((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_System_Temp_CanScaleResolved(_Char)
+THEN
+NOT DB_LLENEMY_System_Temp_CanScaleResolved(_Char);
+EXITSECTION
+
+ENDEXITSECTION
