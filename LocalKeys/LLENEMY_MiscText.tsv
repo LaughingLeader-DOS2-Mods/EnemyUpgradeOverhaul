@@ -1,2 +1,3 @@
 Key	Content
 LLENEMY_MessageBox_ConfirmEnemyLevelingCommit	Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.<br><font color='#FF0000' size='26'>This cannot be undone.</font>
+LLENEMY_DisplayText_TotalCharactersLeveled	<font color='#BBFF00' size='23'>*[1] beings gained a new level of power...*</font>

@@ -4,6 +4,8 @@
 	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>
 	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
 	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
+	<content contentuid="h034ae0a4g858eg4d30g82dege3c983c8b18a" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_TotalCharactersLeveled">&lt;font color=&apos;#BBFF00&apos; size=&apos;23&apos;&gt;*[1] beings gained a new level of power...*&lt;/font&gt;</content>
+	<content contentuid="hff477e91gde34g4795g863ag2c508293666d" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_MessageBox_ConfirmEnemyLevelingCommit">Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.&lt;br&gt;&lt;font color=&apos;#FF0000&apos; size=&apos;26&apos;&gt;This cannot be undone.&lt;/font&gt;</content>
 	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_BonusSkills_Source">Skilled: Sourcery</content>
 	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_10">Armor Boost</content>
 	<content contentuid="h6f37a8adgd0e7g447fg816cg6248d5b69a10" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_15">Armor Boost</content>
