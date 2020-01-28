@@ -33,6 +33,7 @@ LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats)
 THEN
 LLENEMY_Duplication_CreateDuplicate(_Source, _Stats, 0, 0, 0);
 
+// [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_ChallengePoints)
 AND
@@ -52,6 +53,44 @@ SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
 CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_ChallengePoints)
+AND
+DB_CurrentLevel(_Region)
+AND
+CharacterCreateOutOfSightToObject("LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", _Source, _Source, 0, "", _Dupe)
+AND
+GetFaction(_Source, _Faction)
+THEN
+CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 1, 1, 1, 0, 0);
+CharacterTransformAppearanceTo(_Dupe, _Source, 0, 1);
+SetFaction(_Dupe, _Faction);
+ChangeAttitude(_Source, _Dupe, 200);
+ChangeAttitude(_Dupe, _Source, 200);
+SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
+SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
+DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
+LLENEMY_Duplication_ClearGain(_Dupe);
+
+PROC
+LLENEMY_Duplication_ClearGain((CHARACTERGUID)_Dupe)
+AND
+GetStatString(_Dupe, _Stats)
+AND
+NRD_StatGetInt(_Stats, "Gain", _Gain)
+AND
+IntegerProduct(_Gain, -1, _RemoveGain)
+THEN
+LeaderLog_LogInt("DEBUG", "[LLENEMY_02_DuplicationUpgrades:ClearGain] Removing ", _Gain, " from duplicant.");
+NRD_CharacterSetPermanentBoostInt(_Dupe, "Gain", _RemoveGain);
+NRD_CharacterSetPermanentBoostInt(_Dupe, "Gain", 1);
+CharacterAddAttribute(_Dupe, "Strength", 0);
+*/
 
 IF
 CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_StatsApplied")
