@@ -1083,7 +1083,7 @@
 																"TagText": {
 																	"type": 28,
 																	"value": "Enable Bonus Skill Upgrades. These give enemies new skills using the Script Extender.",
-																	"handle": "hdb982497gc47dg4fd4gabdega3d6af9b0760"
+																	"handle": "hae3e586aga38eg4ee0g8728g5280e0d41165"
 																},
 																"stub": {
 																	"type": 19,
@@ -3616,7 +3616,7 @@
 																"TagText": {
 																	"type": 28,
 																	"value": "Disable Bonus Skill Upgrades. These give enemies new skills using the Script Extender.",
-																	"handle": "hdb982497gc47dg4fd4gabdega3d6af9b0760"
+																	"handle": "h0f2a61a6g5427g4e2bgbc76g986dc3e1fa79"
 																},
 																"stub": {
 																	"type": 19,
@@ -3767,6 +3767,264 @@
 								},
 								"UUID": {
 									"type": 22,
+									"value": "bf85bc1f-6a6f-4e78-b3d1-244c7aac6be3"
+								},
+								"addressedspeaker": {
+									"type": 4,
+									"value": -1
+								},
+								"constructor": {
+									"type": 22,
+									"value": "TagQuestion"
+								},
+								"endnode": {
+									"type": 19,
+									"value": false
+								},
+								"exclusive": {
+									"type": 19,
+									"value": false
+								},
+								"optional": {
+									"type": 19,
+									"value": false
+								},
+								"speaker": {
+									"type": 4,
+									"value": 0
+								},
+								"stub": {
+									"type": 19,
+									"value": false
+								},
+								"transitionmode": {
+									"type": 1,
+									"value": 0
+								},
+								"waittime": {
+									"type": 6,
+									"value": -1.0
+								},
+								"GameData": [
+									{
+										"CameraTarget": {
+											"type": 4,
+											"value": -1
+										},
+										"CustomMovie": {
+											"type": 23,
+											"value": ""
+										},
+										"Emotion": {
+											"type": 23,
+											"value": "Default"
+										},
+										"ExtraWaitTime": {
+											"type": 4,
+											"value": 0
+										},
+										"SoundEvent": {
+											"type": 23,
+											"value": ""
+										},
+										"AiPersonalities": [
+											{}
+										],
+										"MusicInstrumentSounds": [
+											{}
+										],
+										"OriginSound": [
+											{}
+										]
+									}
+								],
+								"TaggedTexts": [
+									{
+										"TaggedText": [
+											{
+												"HasTagRule": {
+													"type": 19,
+													"value": true
+												},
+												"RuleGroup": [
+													{
+														"TagCombineOp": {
+															"type": 1,
+															"value": 0
+														},
+														"Rules": [
+															{}
+														]
+													}
+												],
+												"TagTexts": [
+													{
+														"TagText": [
+															{
+																"TagText": {
+																	"type": 28,
+																	"value": "Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Default: Enabled)",
+																	"handle": "h3e93fbd4g6fe8g4f0bgae12g32a833f98bc0"
+																},
+																"stub": {
+																	"type": 19,
+																	"value": true
+																}
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								],
+								"Tags": [
+									{}
+								],
+								"checkflags": [
+									{
+										"flaggroup": [
+											{
+												"type": {
+													"type": 22,
+													"value": "Global"
+												},
+												"flag": [
+													{
+														"name": {
+															"type": 22,
+															"value": "LLENEMY_DuplicationUpgradesDisabled"
+														},
+														"value": {
+															"type": 19,
+															"value": true
+														}
+													},
+													{
+														"name": {
+															"type": 22,
+															"value": "LLENEMY_DuplicationUpgrades_BossesDisabled"
+														},
+														"value": {
+															"type": 19,
+															"value": true
+														}
+													}
+												]
+											}
+										]
+									}
+								],
+								"children": [
+									{
+										"child": [
+											{
+												"UUID": {
+													"type": 22,
+													"value": "0e261318-0752-469e-93ab-6cb03a8d5ba7"
+												}
+											}
+										]
+									}
+								],
+								"editorData": [
+									{
+										"data": [
+											{
+												"key": {
+													"type": 22,
+													"value": "ID"
+												},
+												"val": {
+													"type": 23,
+													"value": "N92"
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "NodeContext"
+												},
+												"val": {
+													"type": 23,
+													"value": ""
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "collapsed"
+												},
+												"val": {
+													"type": 23,
+													"value": "False"
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "logicalname"
+												},
+												"val": {
+													"type": 23,
+													"value": "Question"
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "position"
+												},
+												"val": {
+													"type": 23,
+													"value": "655;3957"
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "sourcetemplate"
+												},
+												"val": {
+													"type": 23,
+													"value": ""
+												}
+											}
+										]
+									}
+								],
+								"setflags": [
+									{
+										"flaggroup": [
+											{
+												"type": {
+													"type": 22,
+													"value": "Global"
+												},
+												"flag": [
+													{
+														"name": {
+															"type": 22,
+															"value": "LLENEMY_DuplicationUpgrades_BossesDisabled"
+														},
+														"value": {
+															"type": 19,
+															"value": false
+														}
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"ShowOnce": {
+									"type": 19,
+									"value": false
+								},
+								"UUID": {
+									"type": 22,
 									"value": "c0eb5f24-519a-45e0-ba5f-96bc7e1fa89a"
 								},
 								"addressedspeaker": {
@@ -3863,8 +4121,8 @@
 															{
 																"TagText": {
 																	"type": 28,
-																	"value": "Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle.",
-																	"handle": "hdb982497gc47dg4fd4gabdega3d6af9b0760"
+																	"value": "Disable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Default: Enabled)",
+																	"handle": "h5372c630g9c16g493fga294gde25ab176b6b"
 																},
 																"stub": {
 																	"type": 19,
@@ -3898,6 +4156,16 @@
 														"value": {
 															"type": 19,
 															"value": true
+														}
+													},
+													{
+														"name": {
+															"type": 22,
+															"value": "LLENEMY_DuplicationUpgrades_BossesDisabled"
+														},
+														"value": {
+															"type": 19,
+															"value": false
 														}
 													}
 												]
@@ -3967,7 +4235,7 @@
 												},
 												"val": {
 													"type": 23,
-													"value": "655;3519"
+													"value": "655;3738"
 												}
 											},
 											{
@@ -3995,11 +4263,11 @@
 													{
 														"name": {
 															"type": 22,
-															"value": "LLENEMY_DuplicationUpgradesDisabled"
+															"value": "LLENEMY_DuplicationUpgrades_BossesDisabled"
 														},
 														"value": {
 															"type": 19,
-															"value": false
+															"value": true
 														}
 													}
 												]
@@ -4360,7 +4628,7 @@
 																"TagText": {
 																	"type": 28,
 																	"value": "Disable Duplication Upgrades. This is a chance for clones of enemies to appear in battle.",
-																	"handle": "hdb982497gc47dg4fd4gabdega3d6af9b0760"
+																	"handle": "h250561a9g4ce0g4989ga495g3150b4f80015"
 																},
 																"stub": {
 																	"type": 19,
@@ -4464,6 +4732,254 @@
 												"val": {
 													"type": 23,
 													"value": "655;3300"
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "sourcetemplate"
+												},
+												"val": {
+													"type": 23,
+													"value": ""
+												}
+											}
+										]
+									}
+								],
+								"setflags": [
+									{
+										"flaggroup": [
+											{
+												"type": {
+													"type": 22,
+													"value": "Global"
+												},
+												"flag": [
+													{
+														"name": {
+															"type": 22,
+															"value": "LLENEMY_DuplicationUpgradesDisabled"
+														},
+														"value": {
+															"type": 19,
+															"value": true
+														}
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"ShowOnce": {
+									"type": 19,
+									"value": false
+								},
+								"UUID": {
+									"type": 22,
+									"value": "fcb2f249-e3e4-41b4-8772-671635295355"
+								},
+								"addressedspeaker": {
+									"type": 4,
+									"value": -1
+								},
+								"constructor": {
+									"type": 22,
+									"value": "TagQuestion"
+								},
+								"endnode": {
+									"type": 19,
+									"value": false
+								},
+								"exclusive": {
+									"type": 19,
+									"value": false
+								},
+								"optional": {
+									"type": 19,
+									"value": false
+								},
+								"speaker": {
+									"type": 4,
+									"value": 0
+								},
+								"stub": {
+									"type": 19,
+									"value": false
+								},
+								"transitionmode": {
+									"type": 1,
+									"value": 0
+								},
+								"waittime": {
+									"type": 6,
+									"value": -1.0
+								},
+								"GameData": [
+									{
+										"CameraTarget": {
+											"type": 4,
+											"value": -1
+										},
+										"CustomMovie": {
+											"type": 23,
+											"value": ""
+										},
+										"Emotion": {
+											"type": 23,
+											"value": "Default"
+										},
+										"ExtraWaitTime": {
+											"type": 4,
+											"value": 0
+										},
+										"SoundEvent": {
+											"type": 23,
+											"value": ""
+										},
+										"AiPersonalities": [
+											{}
+										],
+										"MusicInstrumentSounds": [
+											{}
+										],
+										"OriginSound": [
+											{}
+										]
+									}
+								],
+								"TaggedTexts": [
+									{
+										"TaggedText": [
+											{
+												"HasTagRule": {
+													"type": 19,
+													"value": true
+												},
+												"RuleGroup": [
+													{
+														"TagCombineOp": {
+															"type": 1,
+															"value": 0
+														},
+														"Rules": [
+															{}
+														]
+													}
+												],
+												"TagTexts": [
+													{
+														"TagText": [
+															{
+																"TagText": {
+																	"type": 28,
+																	"value": "Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle.",
+																	"handle": "hdb982497gc47dg4fd4gabdega3d6af9b0760"
+																},
+																"stub": {
+																	"type": 19,
+																	"value": true
+																}
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								],
+								"Tags": [
+									{}
+								],
+								"checkflags": [
+									{
+										"flaggroup": [
+											{
+												"type": {
+													"type": 22,
+													"value": "Global"
+												},
+												"flag": [
+													{
+														"name": {
+															"type": 22,
+															"value": "LLENEMY_DuplicationUpgradesDisabled"
+														},
+														"value": {
+															"type": 19,
+															"value": false
+														}
+													}
+												]
+											}
+										]
+									}
+								],
+								"children": [
+									{
+										"child": [
+											{
+												"UUID": {
+													"type": 22,
+													"value": "0e261318-0752-469e-93ab-6cb03a8d5ba7"
+												}
+											}
+										]
+									}
+								],
+								"editorData": [
+									{
+										"data": [
+											{
+												"key": {
+													"type": 22,
+													"value": "ID"
+												},
+												"val": {
+													"type": 23,
+													"value": "N88"
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "NodeContext"
+												},
+												"val": {
+													"type": 23,
+													"value": ""
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "collapsed"
+												},
+												"val": {
+													"type": 23,
+													"value": "False"
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "logicalname"
+												},
+												"val": {
+													"type": 23,
+													"value": "Question"
+												}
+											},
+											{
+												"key": {
+													"type": 22,
+													"value": "position"
+												},
+												"val": {
+													"type": 23,
+													"value": "655;3519"
 												}
 											},
 											{
@@ -4730,7 +5246,19 @@
 											{
 												"UUID": {
 													"type": 22,
+													"value": "fcb2f249-e3e4-41b4-8772-671635295355"
+												}
+											},
+											{
+												"UUID": {
+													"type": 22,
 													"value": "c0eb5f24-519a-45e0-ba5f-96bc7e1fa89a"
+												}
+											},
+											{
+												"UUID": {
+													"type": 22,
+													"value": "bf85bc1f-6a6f-4e78-b3d1-244c7aac6be3"
 												}
 											}
 										]
@@ -4833,7 +5361,7 @@
 				},
 				"nextNodeId": {
 					"type": 5,
-					"value": 83
+					"value": 93
 				}
 			}
 		}
