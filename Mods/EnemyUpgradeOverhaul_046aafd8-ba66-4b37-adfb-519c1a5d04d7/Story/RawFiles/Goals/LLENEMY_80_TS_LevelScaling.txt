@@ -47,7 +47,7 @@ CharacterIsInCombat(_Char, 0)
 AND
 CharacterIsNeutral(_Char, _PLayer, 1)
 THEN
-LLENEMY_Scaling_LevelUpCharacter(_Char);
+LLENEMY_Scaling_LevelUpCharacter(_Char, 1);
 
 IF
 AttackedByObject((CHARACTERGUID)_Char, _, (CHARACTERGUID)_Player, _, _)
@@ -58,7 +58,7 @@ CharacterIsInCombat(_Char, 0)
 AND
 CharacterIsNeutral(_Char, _PLayer, 1)
 THEN
-LLENEMY_Scaling_LevelUpCharacter(_Char);
+LLENEMY_Scaling_LevelUpCharacter(_Char, 1);
 // [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]

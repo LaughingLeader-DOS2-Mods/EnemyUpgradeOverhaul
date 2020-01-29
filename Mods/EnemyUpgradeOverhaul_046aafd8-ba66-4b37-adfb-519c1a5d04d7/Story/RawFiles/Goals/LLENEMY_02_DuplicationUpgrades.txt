@@ -80,6 +80,8 @@ AND
 CharacterCreateOutOfSightToObject("LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", _Source, _Source, 0, "", _Dupe)
 AND
 GetFaction(_Source, _Faction)
+AND
+String(_Dupe, _DupeStr)
 THEN
 CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 1, 1, 1, 0, 0);
 CharacterTransformAppearanceTo(_Dupe, _Source, 0, 1);
@@ -91,21 +93,7 @@ SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
 CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
-LLENEMY_Duplication_ClearGain(_Dupe);
-
-PROC
-LLENEMY_Duplication_ClearGain((CHARACTERGUID)_Dupe)
-AND
-GetStatString(_Dupe, _Stats)
-AND
-NRD_StatGetInt(_Stats, "Gain", _Gain)
-AND
-IntegerProduct(_Gain, -1, _RemoveGain)
-THEN
-LeaderLog_LogInt("DEBUG", "[LLENEMY_02_DuplicationUpgrades:ClearGain] Removing ", _Gain, " from duplicant.");
-NRD_CharacterSetPermanentBoostInt(_Dupe, "Gain", _RemoveGain);
-NRD_CharacterSetPermanentBoostInt(_Dupe, "Gain", 1);
-CharacterAddAttribute(_Dupe, "Strength", 0);
+NRD_LuaCall("LLENEMY_Ext_ClearGain", _DupeStr);
 */
 
 IF

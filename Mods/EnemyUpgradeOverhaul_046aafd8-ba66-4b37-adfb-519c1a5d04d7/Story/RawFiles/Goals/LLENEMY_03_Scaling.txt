@@ -5,6 +5,11 @@ KBSECTION
 //REGION LEVELING
 PROC
 LLENEMY_Scaling_LevelUpCharacter((CHARACTERGUID)_Char)
+THEN
+LLENEMY_Scaling_LevelUpCharacter(_Char, 0);
+
+PROC
+LLENEMY_Scaling_LevelUpCharacter((CHARACTERGUID)_Char, (INTEGER)_Force)
 AND
 DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
 AND
@@ -18,21 +23,48 @@ DB_LLENEMY_LevelModifier(_Modifier)
 AND
 IntegerSum(_HostLevel, _Modifier, _TargetLevel)
 THEN
-LLENEMY_Scaling_Internal_EvaluateCharacter(_Char, _TargetLevel, _HostLevel);
+LLENEMY_Scaling_Internal_EvaluateCharacter(_Char, _TargetLevel, _HostLevel, _Force);
 
-//All neutrals and hostiles
 PROC
-LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel)
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, 1)
 AND
-//LLENEMY_QRY_IsEnemyOfParty(_Char)
+NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
+AND
 NOT LLENEMY_QRY_IsAllyOfParty(_Char)
+THEN
+DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
+LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel);
+
+//All hostiles
+PROC
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force)
+AND
+NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Char)
+//NOT LLENEMY_QRY_IsAllyOfParty(_Char)
+THEN
+DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
+LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel);
+
+//Neutrals in combat
+PROC
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force)
+AND
+NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
+AND
+LLENEMY_QRY_IsNeutralToParty(_Char)
+AND
+CharacterIsInCombat(_Char, 1)
 THEN
 DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
 LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel);
 
 //Allies get leveled up to the host's level
 PROC
-LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel)
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force)
 AND
 NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
 AND
@@ -42,7 +74,7 @@ DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
 LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _HostLevel);
 
 PROC
-LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel)
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force)
 AND
 DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
 THEN
