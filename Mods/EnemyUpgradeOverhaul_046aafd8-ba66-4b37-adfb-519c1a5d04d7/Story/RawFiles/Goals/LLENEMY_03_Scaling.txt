@@ -89,7 +89,9 @@ IntegerMin(_TargetLevel, 35, _CappedLevel)
 AND
 _CappedLevel > 1
 THEN
+LLENEMY_Scaling_Internal_StoreVitality(_Char);
 CharacterLevelUpTo(_Char, _CappedLevel);
+LLENEMY_Scaling_Internal_CheckVitality(_Char);
 
 //May crash if the target level is greater than 35
 PROC
@@ -99,7 +101,36 @@ DB_GlobalFlag("LLENEMY_Debug_LevelCapDisabled")
 AND
 _TargetLevel > 1
 THEN
+LLENEMY_Scaling_Internal_StoreVitality(_Char);
 CharacterLevelUpTo(_Char, _TargetLevel);
+LLENEMY_Scaling_Internal_CheckVitality(_Char);
+
+PROC
+LLENEMY_Scaling_Internal_StoreVitality((CHARACTERGUID)_Char)
+AND
+CharacterGetHitpointsPercentage(_Char, _Current)
+AND
+_Current >= 99.0
+THEN
+DB_LLENEMY_Scaling_Temp_LastVitalityPercentage(_Char, _Current);
+
+PROC
+LLENEMY_Scaling_Internal_CheckVitality((CHARACTERGUID)_Char)
+AND
+CharacterGetHitpointsPercentage(_Char, _Current)
+AND
+DB_LLENEMY_Scaling_Temp_LastVitalityPercentage(_Char, _Last)
+AND
+_Current < _Last
+THEN
+CharacterSetHitpointsPercentage(_Char, 100.0);
+
+PROC
+LLENEMY_Scaling_Internal_CheckVitality((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_Scaling_Temp_LastVitalityPercentage(_Char, _Last)
+THEN
+NOT DB_LLENEMY_Scaling_Temp_LastVitalityPercentage(_Char, _Last);
 //END_REGION
 
 //REGION MASS_LEVELING
