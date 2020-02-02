@@ -19,3 +19,25 @@ THEN
 	SetVar(_Char, "LLENEMY_Automaton_SummonPosition", _TargetPos)
 	CharacterEvent(_Char, "LLENEMY_Automaton_SummonPositionSet")
 ENDIF
+
+EVENT LLENEMY_ApplyStats
+VARS
+	FLOAT:_HpCurrent
+	FLOAT:_HpMax
+	CHARACTER:_Char
+	FIXEDSTRING:_Stats
+ON
+	OnCharacterEvent(_Char, "LLENEMY_ApplyStats")
+ACTIONS
+IF "c1"
+	GetVar(_Stats, _Char, "LLENEMY_ApplyStats_Stats")
+THEN
+	CharacterSetStats(_Char, _Stats, 0, 1, 1, _HpCurrent)
+	IF "c1&c2"
+		CharacterGetStat(_HpMax, _Char, VitalityMax)
+		IsLessThen(_HpCurrent, _HpMax)
+	THEN
+		SetHealth(_Char, 1.0)
+	ENDIF
+	CharacterEvent(_Char, "LLENEMY_ApplyStats_Done")
+ENDIF
