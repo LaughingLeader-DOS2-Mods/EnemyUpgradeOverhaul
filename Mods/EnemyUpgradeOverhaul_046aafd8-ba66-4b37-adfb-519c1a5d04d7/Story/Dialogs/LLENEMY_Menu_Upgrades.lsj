@@ -132,7 +132,7 @@
 															{
 																"TagText": {
 																	"type": 28,
-																	"value": "Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.",
+																	"value": "Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades.",
 																	"handle": "hdb982497gc47dg4fd4gabdega3d6af9b0760"
 																},
 																"stub": {
@@ -4379,7 +4379,7 @@
 															{
 																"TagText": {
 																	"type": 28,
-																	"value": "Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage type upgrades.",
+																	"value": "Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades.",
 																	"handle": "h506de539g84a3g464fgba77g2fe643c629d9"
 																},
 																"stub": {
@@ -4876,7 +4876,7 @@
 																"TagText": {
 																	"type": 28,
 																	"value": "Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle.",
-																	"handle": "hdb982497gc47dg4fd4gabdega3d6af9b0760"
+																	"handle": "h9978b702g8683g49bbga061g0c806d92f829"
 																},
 																"stub": {
 																	"type": 19,
@@ -5361,7 +5361,7 @@
 				},
 				"nextNodeId": {
 					"type": 5,
-					"value": 93
+					"value": 94
 				}
 			}
 		}
