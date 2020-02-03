@@ -1,9 +1,7 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-
 LLENEMY_ToggleScripts_RegisterScripts();
-
 KBSECTION
 
 //REGION SETTINGS
@@ -13,6 +11,7 @@ THEN
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Granada", "LLENEMY_Granada_Active", 0);
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_ResistDead", "LLENEMY_ResistDead_Active", 0);
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_NaturalConductor", "LLENEMY_NaturalConductor_Active", 0);
+LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Bully", "LLENEMY_Bully_Active", 0);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_LevelScaling", "LLENEMY_EnemyLevelingEnabled");
 //END_REGION
 
