@@ -21,37 +21,40 @@ LLENEMY_INF_NECROFIRE_DisplayName	Infernoblazer
 LLENEMY_INF_OIL_DisplayName	Oil Earthcracker
 LLENEMY_INF_POISON_DisplayName	Venomstriker
 LLENEMY_INF_WATER_DisplayName	Cascader
-LLENEMY_TALENT_BACKSTAB_Description	Enemy can backstab with non-dagger weapons.
+LLENEMY_TALENT_BACKSTAB_Description	Character can backstab with non-dagger weapons.
 LLENEMY_TALENT_BACKSTAB_DisplayName	Talent: Assassin
 LLENEMY_TALENT_BASE_DisplayName	Talent
-LLENEMY_TALENT_BULLY_Description	Enemy has 50% extra damage against opponents that are Slowed, Crippled or Knocked Down.
+LLENEMY_TALENT_BULLY_Description	Character deals 50% extra damage against opponents that are Slowed, Crippled or Knocked Down with basic attacks.
+LLENEMY_TALENT_BULLY_EXTENDER_Description	Character deals 50% extra damage against opponents that are Slowed, Crippled or Knocked Down with basic attacks and weapon skills.
 LLENEMY_TALENT_BULLY_DisplayName	Talent: Bully
-LLENEMY_TALENT_LEECH_Description	Enemy is healed when standing in blood.
+LLENEMY_TALENT_LEECH_Description	Character is healed when standing in blood.
 LLENEMY_TALENT_LEECH_DisplayName	Talent: Leech
-LLENEMY_TALENT_LIGHTNINGROD_Description	Enemy is immune to stun, and gains health when hit by <font color='#7d71d9'>Air Damage</font>.
+LLENEMY_TALENT_LIGHTNINGROD_Description	Character is immune to stun, and gains health when hit by <font color='#7d71d9'>Air Damage</font>.
 LLENEMY_TALENT_LIGHTNINGROD_DisplayName	Talent: Lightning Rod
-LLENEMY_TALENT_LONEWOLF_Description	Enemy has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.
+LLENEMY_TALENT_LONEWOLF_Description	Character has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.
 LLENEMY_TALENT_LONEWOLF_DisplayName	Talent: Lone Wolf
-LLENEMY_TALENT_NATURALCONDUCTOR_Description	Enemy gains <font color='#7d71d9'>Hasted</font> when standing on electric surfaces.
+LLENEMY_TALENT_NATURALCONDUCTOR_Description	Character gains <font color='#7d71d9'>Hasted</font> when standing on electric surfaces.
 LLENEMY_TALENT_NATURALCONDUCTOR_DisplayName	Talent: Natural Conductor
-LLENEMY_TALENT_QUICKSTEP_Description	Enemy gets 1 AP worth of free movement each turn.
+LLENEMY_TALENT_QUICKSTEP_Description	Character gets 1 AP worth of free movement each turn.
 LLENEMY_TALENT_QUICKSTEP_DisplayName	Talent: The Pawn
-LLENEMY_TALENT_RANGERRANGE_Description	Enemy has increased attack range of Bows and Crossbows by 2m.
+LLENEMY_TALENT_RANGERRANGE_Description	Character has increased attack range of Bows and Crossbows by 2m.
 LLENEMY_TALENT_RANGERRANGE_DisplayName	Talent: Quickdraw
-LLENEMY_TALENT_RESISTDEAD2_Description	Enemy will revive once when killed, coming back with full health.
+LLENEMY_TALENT_RESISTDEAD2_Description	Character will revive once when killed, coming back with full health.
 LLENEMY_TALENT_RESISTDEAD2_DisplayName	Talent: Elite Comeback Kid
-LLENEMY_TALENT_RESISTDEAD_Description	Enemy will revive once when killed, coming back with 30% health.
+LLENEMY_TALENT_RESISTDEAD_Description	Character will revive once when killed, coming back with 30% health.
 LLENEMY_TALENT_RESISTDEAD_DisplayName	Talent:  Comeback Kid
-LLENEMY_TALENT_TORTURER_Description	Enemy has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.
+LLENEMY_TALENT_TORTURER_Description	Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.
 LLENEMY_TALENT_TORTURER_DisplayName	Talent: Torturer
-LLENEMY_TALENT_UNSTABLE_Description	Enemy will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.
+LLENEMY_TALENT_UNSTABLE_Description	Character will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.
 LLENEMY_TALENT_UNSTABLE_DisplayName	Talent: Unstable
-LLENEMY_TALENT_WEATHERPROOF_Description	Enemy is immune to enviromental effects.
+LLENEMY_TALENT_WEATHERPROOF_Description	Character is immune to enviromental effects.
 LLENEMY_TALENT_WEATHERPROOF_DisplayName	Talent: Weatherproof
-LLENEMY_TALENT_WHATARUSH_Description	Enemy has increased recovery and maximum Action Points when their health is below 50%.
+LLENEMY_TALENT_WHATARUSH_Description	Character has increased recovery and maximum Action Points when their health is below 50%.
 LLENEMY_TALENT_WHATARUSH_DisplayName	Talent: What a Rush
 LLENEMY_TALENT_SADIST_DisplayName	Talent: Sadist
 LLENEMY_TALENT_SADIST_Description	Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.
+LLENEMY_TALENT_COUNTER_DisplayName	Talent: Counter
+LLENEMY_TALENT_COUNTER_Description	Character will attack each enemy that attacks them once. Resets when their next turn ends.
 LLENEMY_TALENT_HAYMAKER_DisplayName	Talent: Haymaker
 LLENEMY_TALENT_HAYMAKER_Description	Character's attacks never miss but they cannot deal critical strikes.
 LLENEMY_TALENT_GLADIATOR_DisplayName	Talent: Gladiator
