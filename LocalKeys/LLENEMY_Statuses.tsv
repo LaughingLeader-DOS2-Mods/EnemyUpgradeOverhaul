@@ -54,7 +54,8 @@ LLENEMY_TALENT_WHATARUSH_DisplayName	Talent: What a Rush
 LLENEMY_TALENT_SADIST_DisplayName	Talent: Sadist
 LLENEMY_TALENT_SADIST_Description	Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.
 LLENEMY_TALENT_COUNTER_DisplayName	Talent: Counter
-LLENEMY_TALENT_COUNTER_Description	Character will attack each enemy that attacks them once. Resets when their next turn ends.
+LLENEMY_TALENT_COUNTER_Description	Character has a chance to counter-attack when attacked within weapon range.
+LLENEMY_TALENT_COUNTER_EXTENDER_Description	Character has a [1] chance to counter-attack when attacked within weapon range.
 LLENEMY_TALENT_HAYMAKER_DisplayName	Talent: Haymaker
 LLENEMY_TALENT_HAYMAKER_Description	Character's attacks never miss but they cannot deal critical strikes.
 LLENEMY_TALENT_GLADIATOR_DisplayName	Talent: Gladiator
