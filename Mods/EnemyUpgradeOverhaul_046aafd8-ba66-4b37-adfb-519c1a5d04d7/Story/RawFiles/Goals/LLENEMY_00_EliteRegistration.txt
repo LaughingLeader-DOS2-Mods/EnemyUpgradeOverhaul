@@ -1,0 +1,114 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+
+//REGION ELITE_REGISTERING_PROCS
+PROC
+LLENEMY_Elites_AddUpgradeChance((STRING)_Level, (CHARACTERGUID)_Character)
+THEN
+LLENEMY_Elites_AddUpgradeChance(_Level, _Character, "Buffs", "Elite", 1);
+
+PROC
+LLENEMY_Elites_AddUpgradeChance((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+THEN
+LLENEMY_Elites_AddUpgradeChance(_Level, _Character, _Group, _Type, 1);
+
+PROC
+LLENEMY_Elites_AddUpgradeChance((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_BonusUpgrades)
+AND
+DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _LastBonusUpgrades)
+THEN
+NOT DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _LastBonusUpgrades);
+
+PROC
+LLENEMY_Elites_AddUpgradeChance((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_BonusUpgrades)
+THEN
+DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _BonusUpgrades);
+
+PROC
+LLENEMY_Elites_AddGuaranteedUpgrade((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_UpgradeStatus)
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade(_Level, _Character, _UpgradeStatus, -1.0);
+
+PROC
+LLENEMY_Elites_AddGuaranteedUpgrade((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_UpgradeStatus, (REAL)_Duration)
+THEN
+DB_LLENEMY_Elites_GuaranteedUpgrades(_Level, _Character, _UpgradeStatus, _Duration);
+//END_REGION
+
+//REGION CLEARING
+PROC
+LLENEMY_Elites_ClearUpgradesForLevel((STRING)_Level)
+AND
+DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _LastBonusUpgrades)
+THEN
+NOT DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _LastBonusUpgrades);
+//END_REGION
+
+//REGION ELITE_REGISTERING_START
+IF
+GameStarted(_Level, _)
+AND
+IsGameLevel(_Level, 1)
+AND
+NOT DB_LLENEMY_Elites_InitializedElitesForLevel(_Level)
+THEN
+DB_LLENEMY_Elites_InitializedElitesForLevel(_Level);
+LeaderLog_Log("DEBUG", "[LLENEMY:RegionStarted] Registering elites for level [",_Level,"]");
+LLENEMY_Elites_InitLevel(_Level);
+
+PROC
+LLENEMY_Elites_InitLevel((STRING)_Level)
+AND
+LeaderLib_QRY_ExtenderIsActive()
+THEN
+LLENEMY_Elites_RegisterExtenderUpgrades(_Level);
+
+//Guaranteed Divine Talents
+PROC
+LLENEMY_Elites_InitLevel((STRING)_Level)
+AND
+SysIsActive("CMP_Talents")
+THEN
+LLENEMY_Elites_RegisterDivineTalentUpgrades(_Level);
+
+IF
+GameStarted("_TMPL_Sandbox", 1)
+AND
+NOT DB_LLENEMY_Elites_InitializedElitesForLevel("_TMPL_Sandbox")
+THEN
+DB_LLENEMY_Elites_InitializedElitesForLevel("_TMPL_Sandbox");
+LeaderLog_Log("DEBUG", "[LLENEMY:RegionStarted] Registering elites for level [_TMPL_Sandbox]");
+LLENEMY_Elites_InitLevel("_TMPL_Sandbox");
+
+//Debug
+PROC
+LLENEMY_Elites_InitLevel("_TMPL_Sandbox")
+THEN
+LLENEMY_Elites_AddUpgradeChance("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Bar_Lizard_efa66ecd-286f-44df-ba96-ee1231f8e9bb, "Auras", "Auras_Main");
+LLENEMY_Elites_AddUpgradeChance("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Market_Ernest_Herringway_da8d55ba-0855-4147-b706-46bbc67ec8b6, "Bonus", "Infusion_Elite");
+LLENEMY_Elites_AddUpgradeChance("_TMPL_Sandbox", CHARACTERGUID_Sandbox_Madam_Aya_cb60983d-5000-4ab6-a5f2-7aeacc7d4276, "Talents", "Elite");
+LLENEMY_Elites_AddUpgradeChance("_TMPL_Sandbox", CHARACTERGUID_Dwarves_Male_Clothing_001_d8eee103-3af9-4627-8ea7-72e4e8df9aa5, "Bonus", "Infusion");
+
+IF
+RegionEnded(_Level)
+AND
+DB_LLENEMY_Elites_InitializedElitesForLevel(_Level)
+AND
+DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _BonusUpgrades)
+THEN
+NOT DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _BonusUpgrades);
+
+IF
+RegionEnded(_Level)
+AND
+DB_LLENEMY_Elites_InitializedElitesForLevel(_Level)
+THEN
+NOT DB_LLENEMY_Elites_InitializedElitesForLevel(_Level);
+LeaderLog_Log("DEBUG", "[LLENEMY:RegionEnded] Cleared elites for level [",_Level,"]");
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
