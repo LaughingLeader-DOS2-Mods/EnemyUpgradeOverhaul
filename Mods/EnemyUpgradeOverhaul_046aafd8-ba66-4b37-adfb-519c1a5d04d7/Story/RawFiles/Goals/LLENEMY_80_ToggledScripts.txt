@@ -12,6 +12,7 @@ LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Granada", "LLENEMY_
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_ResistDead", "LLENEMY_ResistDead_Active", 0);
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_NaturalConductor", "LLENEMY_NaturalConductor_Active", 0);
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Bully", "LLENEMY_Bully_Active", 0);
+LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Counter", "LLENEMY_Counter_Active", 0);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_LevelScaling", "LLENEMY_EnemyLevelingEnabled");
 //END_REGION
 

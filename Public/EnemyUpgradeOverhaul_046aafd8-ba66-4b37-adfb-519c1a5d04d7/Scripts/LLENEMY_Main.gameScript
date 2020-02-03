@@ -41,3 +41,16 @@ THEN
 	ENDIF
 	CharacterEvent(_Char, "LLENEMY_ApplyStats_Done")
 ENDIF
+
+EVENT LLENEMY_Counter_OnAttacked
+VARS
+	CHARACTER:_Char
+	CHARACTER:_Attacker
+ON
+	OnCharacterCharacterEvent(_Char, _Attacker, "LLENEMY_Counter_OnAttacked")
+ACTIONS
+IF "c1"
+	CharacterInWeaponRange(_Char, _Attacker)
+THEN
+	CharacterCharacterEvent(_Char, _Attacker, "LLENEMY_Counter_CanStarterCounter")
+ENDIF
