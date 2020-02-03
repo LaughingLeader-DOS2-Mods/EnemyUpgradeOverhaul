@@ -62,7 +62,6 @@ String(_Char, _CharStr)
 THEN
 NRD_LuaCall("LLENEMY_Ext_TraceCharacterStats", _CharStr);
 */
-
 EXITSECTION
 
 ENDEXITSECTION
