@@ -19,6 +19,7 @@ LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD2", 20,
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_TORTURER", 259, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_UNSTABLE", 70, 5);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_WHATARUSH", 240, 6);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_BULLY", 120, 6);
 
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_LEECH", 399, 2);
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_QUICKSTEP", 500, 4);
@@ -50,6 +51,19 @@ LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_MAGICCYCLES", 100
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_MASTERTHIEF", 90, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_GREEDYVESSEL", 90, 4);
 GlobalSetFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
+//END_REGION
+
+//REGION ALREADY_HAS_TALENT_BELT
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Talents", (STRING)_Type)
+AND
+CharacterGetEquippedItem(_Enemy, "Belt", _Belt)
+AND
+_Belt != NULL_00000000-0000-0000-0000-000000000000
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Talents", _Type);
+// [END_NO_OSITOOLS]
 //END_REGION
 
 //REGION MELEE_WEAPON_TALENT
@@ -194,6 +208,11 @@ IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD2", _)
 THEN
 LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_BULLY", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Bully_Active", "EnemyUpgradeOverhaul");
 //END_REGION
 
 //REGION LEVELING_TALENT_BELTS
@@ -289,6 +308,34 @@ AND
 StringContains(_Surface, "Electrified", 1)
 THEN
 DB_NOOP(1);
+//END_REGION
+
+//REGION BULLY
+QRY
+LLENEMY_Talents_QRY_BullyTarget((GUIDSTRING)_Target)
+AND
+HasActiveStatus(_Target, "KNOCKED_DOWN", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Talents_QRY_BullyTarget((GUIDSTRING)_Target)
+AND
+HasActiveStatus(_Target, "CRIPPLED", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Talents_QRY_BullyTarget((GUIDSTRING)_Target)
+AND
+HasActiveStatus(_Target, "SLOWED", 1)
+THEN
+DB_NOOP(1);
+
+IF
+StoryEvent((CHARACTERGUID)_Enemy, "LLENEMY_Bully_RemoveBonus")
+THEN
+RemoveStatus(_Enemy, "LLENEMY_TALENT_BULLY_DAMAGEBONUS");
 //END_REGION
 EXITSECTION
 
