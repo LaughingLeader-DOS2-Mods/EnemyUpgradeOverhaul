@@ -100,12 +100,27 @@ local function ModuleLoad()
     Ext.Print("[LLENEMY:Bootstrap.lua] Module is loading.")
 	OverrideStats()
 
-	Ext.StatAddCustomDescription("LLENEMY_TALENT_COUNTER", "CounterChance", "2000000%")
+	--Ext.StatAddCustomDescription("LLENEMY_TALENT_COUNTER", "CounterChance", "2000000%")
+end
+
+local COUNTER_MIN = 10
+local COUNTER_MAX = 75
+
+local StatusGetDescriptionParam = function (status, statusSource, character, param)
+    if status.Name == "LLENEMY_TALENT_COUNTER" and param == "CounterChance" then
+		--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
+		--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
+		local initiative = character.Initiative
+		local percent = (initiative - COUNTER_MIN) / (COUNTER_MAX - COUNTER_MIN)
+		local chance = percent * (COUNTER_MAX - COUNTER_MIN) + COUNTER_MIN
+		return tostring(chance) .. "%"
+    end
 end
 
 --v36 and higher
 if Ext.RegisterListener ~= nil then
-    Ext.RegisterListener("ModuleLoading", ModuleLoad)
+	Ext.RegisterListener("ModuleLoading", ModuleLoad)
+	Ext.RegisterListener("StatusGetDescriptionParam", StatusGetDescriptionParam)
 else
     Ext.Print("[LLENEMY:Bootstrap.lua] [*WARNING*] Extender version is less than v36! Stat overrides ain't happenin', chief.")
 end
