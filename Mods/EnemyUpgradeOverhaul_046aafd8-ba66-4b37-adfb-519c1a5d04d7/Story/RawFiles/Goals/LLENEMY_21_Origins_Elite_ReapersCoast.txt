@@ -1,0 +1,110 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+
+//REGION CUSTOM
+PROC
+LLENEMY_Elites_InitLevel("RC_Main")
+THEN
+// Natalie Bromhead	
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_PurgedDaughter_70f3182f-3c18-4504-9691-332d9dec7964);
+// Ryker	
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_Ryker_522b8095-b539-4a82-84f3-bf8e5a74dfe4);
+// Murga, The Shadowy One	
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_Tavern_ArenaChamp_aa7f67da-aece-4487-83cf-96f10a018ed1);
+// Djinn
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_WH_BottledWish_Djinn_838283f5-a45f-4892-a4ac-fae2f99d4de0);
+
+PROC
+LLENEMY_Elites_RegisterExtenderUpgrades("RC_Main")
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_DW_SourceLich_Stronger_2c8d84ef-bfd0-4ff7-93fe-b3728d05ee87, "LLENEMY_BONUSSKILLS_SET_ELITE");
+LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_DW_SourceLich_Stronger_2c8d84ef-bfd0-4ff7-93fe-b3728d05ee87, "LLENEMY_BONUSSKILLS_SOURCE");
+LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_WH_BottledWish_Djinn_838283f5-a45f-4892-a4ac-fae2f99d4de0, "LLENEMY_BONUSSKILLS_SOURCE");
+
+PROC
+LLENEMY_Elites_RegisterDivineTalentUpgrades("RC_Main")
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_DW_SourceLich_Stronger_2c8d84ef-bfd0-4ff7-93fe-b3728d05ee87, "LLENEMY_TALENT_GREEDYVESSEL");
+LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_WH_BottledWish_Djinn_838283f5-a45f-4892-a4ac-fae2f99d4de0, "LLENEMY_TALENT_MAGICCYCLES");
+//END_REGION
+
+//REGION AUTO_GENERATED
+PROC
+LLENEMY_Elites_InitLevel("RC_Main")
+THEN
+// Aileen | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_DwarvenScholar_01_2555841d-a987-4c92-b87e-93c829e8fed0);
+// Alchemist Looter | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_FL_ShatteredHouse_Alchemist_85327fc2-2e11-4bbc-89df-0fa931d7927a);
+// Boss: Alice Alisceon
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_PolyServants_BurningWitch_73ffd67d-1536-41eb-b96d-be3c03515913);
+// Chtylchia, Mistress of Agony | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_CampDemon_001_29ef3742-1c2f-4bff-8375-53f1c55bb7f2);
+// Crossbowman Looter | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_FL_ShatteredHouse_Archer_8a4080d6-5f92-4ec7-9bef-05ab4500b9ab);
+// Boss: Dessicated Undead
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_SourceLich_Stronger_2c8d84ef-bfd0-4ff7-93fe-b3728d05ee87, "Buffs", "Elite");
+// Boss: Dessicated Undead
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_SourceLich_adf5b715-1e96-4e48-88a7-d68a5b6d0351);
+// Earnan | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_DwarvenScholar_02_f2bd4946-8aba-42be-b70a-b8a6d48fce47);
+// Eirhern, the Saboteur | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_CampDemon_000_7458c767-b68a-490c-a840-23209a3f2b3e);
+// Feygr Bloodspawn | BLOODSPAWN
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_DemonSpot2_Demon_6_3bfacaa9-c9a8-4e5e-868c-d1115c0b47e7);
+// Boss: Ghalann, Scion of the Elves
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_VoidwokenAncestorTree_Boss_e3e5e53f-e167-4b35-bd53-d11b4332db76);
+// Glenna Graeme | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_Homeless_Dwarf_719eb2eb-5dc8-4ff4-92ea-b4f82587a8d8);
+// Gryst Bloodspawn | BLOODSPAWN
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_DemonSpot2_Demon_1_9a9e4795-2612-4190-8976-478c6a80240f);
+// Guardsman Mallic | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_MerchantGuard_001_e66da9c3-201a-4bd6-8a4d-bd478cbedad1);
+// Guardsman Stefano | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_MerchantGuard_002_7c681b24-6ba9-4bae-977c-4a3f28d0a0c4);
+// Jahan | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Jahan_4d222cfd-49c8-41d3-8cb7-2a2b56232633);
+// Boss: Lamenting Abomination
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Altar_Werewolf_000_8fe2d805-39b6-42ad-a5ef-bc0b9d647466);
+// Boss: Magister Reimond
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_WhiteMagister_b1bdd004-a286-4ad5-9826-a763d672b2a7);
+// Boss: Mor the Trenchmouthed
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_Vault_Demon_001_01c5d4d3-425f-42fd-8200-528b14aafec8);
+// Boss: Mordus'Akaim
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_WC_BossFight_GiantInsect_Boss_5362d05e-1cb2-451f-9f5a-69078100a01b);
+// Puxk Bloodspawn | BLOODSPAWN
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_DemonSpot2_Demon_2_80b8fc46-b0a3-44a2-8519-2371ea962b2b);
+// Boss: Roost Anlon
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_MIL_Roost_6fffadfe-b2a8-4e12-a664-ba84c0b0a3a3);
+// Boss: Sadha
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_RedPrincess_050fbbf9-3fc9-40cd-9cbb-43b4b3754a5e);
+// Boss: Spirit of Roost Anlon
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_MIL_Roost_Ghost_634eadd1-1fca-419f-8d37-2e5637cad2d3);
+// Boss: Spirit of Tovah
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Tovah_Ghost_807a60f7-3caa-4465-af6d-96ca6209c384);
+// Spirit of a Deer Hunter | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_DeerKiller_000_f22b676c-0921-4ae7-872e-20fdb5290457);
+// Boss: The Advocate
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Advocate_bfa3e903-78ab-46aa-9a95-54fb956eb2b3);
+// The Dead Ferryman | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703);
+// Boss: The Eternal Aetera
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_Tomb_Ataraxian_b844294c-62c2-4ff8-82f1-f874b9e4352d);
+// Boss: Tovah
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Tovah_69c31947-b004-44aa-b856-2a9a96ff218a);
+
+//REGION CUSTOM
+PROC
+LLENEMY_Elites_InitLevel("RC_Main")
+THEN
+//The Dead Ferryman
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "Immunities", "Immunity");
+LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "LLENEMY_TALENT_INDOMITABLE");
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_20_Origins__Start"

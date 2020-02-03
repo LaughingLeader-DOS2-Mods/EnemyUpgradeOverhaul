@@ -3,11 +3,12 @@ SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
 IF
-GameStarted(_,_)
+GameStarted(_Region,_)
 AND
 SysIsActive("CMP_Talents") // Divine Talents Gift Bag mod
 THEN
 LLENEMY_Talents_InitGiftBagTalents();
+LLENEMY_Elites_RegisterDivineTalentUpgrades(_Region);
 GoalCompleted;
 
 IF

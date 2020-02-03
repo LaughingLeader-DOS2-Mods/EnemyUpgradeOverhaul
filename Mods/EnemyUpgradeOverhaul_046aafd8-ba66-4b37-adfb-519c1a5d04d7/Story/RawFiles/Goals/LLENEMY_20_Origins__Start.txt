@@ -1,0 +1,21 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+PROC
+ProcSetCurrentGameMode("Campaign")
+AND
+SysIsCompleted("DOS2ModWrapper")
+THEN
+GoalCompleted;
+
+IF
+SavegameLoaded(_,_,_,_)
+AND
+SysIsCompleted("DOS2ModWrapper")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
