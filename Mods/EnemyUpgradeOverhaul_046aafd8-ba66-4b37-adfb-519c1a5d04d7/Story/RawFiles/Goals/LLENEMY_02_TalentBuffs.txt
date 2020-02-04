@@ -218,6 +218,11 @@ IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_COUNTER", _)
 THEN
 LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Counter_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_MASTERTHIEF", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_MasterThief_Active", "EnemyUpgradeOverhaul");
 //END_REGION
 
 //REGION LEVELING_TALENT_BELTS

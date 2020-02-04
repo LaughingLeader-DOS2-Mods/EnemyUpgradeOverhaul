@@ -1,0 +1,62 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// [BEGIN_NO_OSITOOLS]
+IF
+CharacterStartAttackObject((CHARACTERGUID)_Target, _, _Enemy)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF", 1)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 0)
+AND
+LeaderLib_Roll_QRY(300,999)
+THEN
+DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target);
+
+IF
+CharacterStatusApplied(_Target, "HIT", (CHARACTERGUID)_Enemy)
+AND
+DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target)
+THEN
+NOT DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target);
+LLENEMY_Talents_MugTarget(_Enemy, _Target);
+
+IF
+CharacterMissedBy(_Target, _, _Enemy)
+AND
+DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target)
+THEN
+NOT DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target);
+
+IF
+CharacterDied(_Enemy)
+AND
+DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target)
+THEN
+NOT DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+IF
+NRD_OnHit(_Target, _Attacker, _Damage, _Handle)
+AND
+HasActiveStatus(_Attacker, "LLENEMY_TALENT_MASTERTHIEF", 1)
+AND
+NRD_StatusGetInt(_Target, _Handle, "HitWithWeapon", 1)
+AND
+NRD_StatusGetInt(_Target, _Handle, "Dodged", 0)
+AND
+NRD_StatusGetInt(_Target, _Handle, "Missed", 0)
+AND
+NRD_StatusGetInt(_Target, _Handle, "Blocked", 0)
+AND
+LeaderLib_Roll_QRY(300,999)
+THEN
+LLENEMY_Talents_MugTarget(_Enemy, _Target);
+*/
+EXITSECTION
+SysClear("DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit", 2);
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"

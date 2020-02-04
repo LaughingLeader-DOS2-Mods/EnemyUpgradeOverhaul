@@ -1,0 +1,43 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//REGION TOGGLE_SCRIPT_TOGGLING
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD2", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_BULLY", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Bully_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_COUNTER", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Counter_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_MASTERTHIEF", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_MasterThief_Active", "EnemyUpgradeOverhaul");
+//END_REGION
+
+
+//REGION MASTER_THIEF_MUG
+PROC
+LLENEMY_Talents_MugTarget((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target)
+THEN
+ApplyStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 6.0, 0, _Enemy);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"
