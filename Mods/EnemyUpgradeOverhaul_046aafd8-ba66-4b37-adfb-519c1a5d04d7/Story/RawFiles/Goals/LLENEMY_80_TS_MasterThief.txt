@@ -5,7 +5,7 @@ INITSECTION
 KBSECTION
 // [BEGIN_NO_OSITOOLS]
 IF
-CharacterStartAttackObject((CHARACTERGUID)_Target, _, _Enemy)
+CharacterStartAttackObject((CHARACTERGUID)_Target, _, (CHARACTERGUID)_Enemy)
 AND
 HasActiveStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF", 1)
 AND
@@ -42,6 +42,10 @@ NOT DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target);
 IF
 NRD_OnHit(_Target, _Attacker, _Damage, _Handle)
 AND
+ObjectIsCharacter((CHARACTERGUID)_Attacker, 1)
+AND
+ObjectIsCharacter((CHARACTERGUID)_Target, 1)
+AND
 HasActiveStatus(_Attacker, "LLENEMY_TALENT_MASTERTHIEF", 1)
 AND
 NRD_StatusGetInt(_Target, _Handle, "HitWithWeapon", 1)
@@ -54,7 +58,7 @@ NRD_StatusGetInt(_Target, _Handle, "Blocked", 0)
 AND
 LeaderLib_Roll_QRY(300,999)
 THEN
-LLENEMY_Talents_MugTarget(_Enemy, _Target);
+LLENEMY_Talents_MugTarget(_Attacker, _Target);
 */
 EXITSECTION
 SysClear("DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit", 2);

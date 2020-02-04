@@ -198,32 +198,7 @@ THEN
 NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 //END_REGION
 
-//REGION TOGGLE_SCRIPT_TOGGLING
-IF
-CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD", _)
-THEN
-LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
 
-IF
-CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD2", _)
-THEN
-LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
-
-IF
-CharacterStatusApplied(_Char, "LLENEMY_TALENT_BULLY", _)
-THEN
-LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Bully_Active", "EnemyUpgradeOverhaul");
-
-IF
-CharacterStatusApplied(_Char, "LLENEMY_TALENT_COUNTER", _)
-THEN
-LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Counter_Active", "EnemyUpgradeOverhaul");
-
-IF
-CharacterStatusApplied(_Char, "LLENEMY_TALENT_MASTERTHIEF", _)
-THEN
-LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_MasterThief_Active", "EnemyUpgradeOverhaul");
-//END_REGION
 
 //REGION LEVELING_TALENT_BELTS
 PROC
