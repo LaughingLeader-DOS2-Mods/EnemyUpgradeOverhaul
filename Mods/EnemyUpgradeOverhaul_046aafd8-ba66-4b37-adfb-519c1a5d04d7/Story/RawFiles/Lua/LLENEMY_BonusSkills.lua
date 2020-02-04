@@ -314,6 +314,8 @@ local function IgnoreSkill(skill)
 	return false
 end
 
+local AIFLAG_CANNOT_USE = 140689826905584
+
 function LLENEMY_Ext_BuildEnemySkills()
 	LLENEMY_EnemySkills = {
 		SkillGroup:Create("None", "None"),
@@ -332,7 +334,8 @@ function LLENEMY_Ext_BuildEnemySkills()
 	local skills = Ext.GetStatEntries("SkillData")
 	for k,skill in pairs(skills) do
 		local isenemy = Ext.StatGetAttribute(skill, "IsEnemySkill")
-		if (isenemy == "Yes" and string.find(skill, "Enemy")) and not IgnoreSkill(skill) then
+		local aiflags = Ext.StatGetAttribute(skill, "AIFlags")
+		if aiflags ~= AIFLAG_CANNOT_USE and (isenemy == "Yes" and string.find(skill, "Enemy")) and not IgnoreSkill(skill) then
 			local ap = Ext.StatGetAttribute(skill, "ActionPoints")
 			local cd = Ext.StatGetAttribute(skill, "Cooldown")
 			
