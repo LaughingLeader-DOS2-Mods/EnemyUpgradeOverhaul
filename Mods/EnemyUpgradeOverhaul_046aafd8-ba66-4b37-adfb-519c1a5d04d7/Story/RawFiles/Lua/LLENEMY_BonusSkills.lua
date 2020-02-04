@@ -1,5 +1,4 @@
 local ATTEMPTS_MAX = 40
-LLENEMY_EnemySkills = {}
 
 local ignored_skills = {
 	Jump_EnemyVoidGlide = true,
@@ -179,6 +178,9 @@ local ignored_skillwords = {
 	"_Status_",
 }
 
+EnemyUpgradeOverhaul.IgnoredSkills = ignored_skills
+EnemyUpgradeOverhaul.IgnoredWords = ignored_skillwords
+
 ---@class SkillEntry
 local SkillEntry = {
 	id = "",
@@ -317,7 +319,7 @@ end
 local AIFLAG_CANNOT_USE = 140689826905584
 
 function LLENEMY_Ext_BuildEnemySkills()
-	LLENEMY_EnemySkills = {
+	EnemyUpgradeOverhaul.EnemySkills = {
 		SkillGroup:Create("None", "None"),
 		SkillGroup:Create("WarriorLore", "Warrior"),
 		SkillGroup:Create("RangerLore", "Ranger"),
@@ -345,7 +347,7 @@ function LLENEMY_Ext_BuildEnemySkills()
 				local sp = Ext.StatGetAttribute(skill, "Magic Cost")
 				if sp == nil then sp = 0 end
 				local tier = Ext.StatGetAttribute(skill, "Tier")
-				local skillgroup = GetSkillGroup(LLENEMY_EnemySkills, ability)
+				local skillgroup = GetSkillGroup(EnemyUpgradeOverhaul.EnemySkills, ability)
 				if skillgroup ~= nil then
 					skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
 					Ext.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
@@ -359,7 +361,7 @@ end
 local function GetHighestAbility(enemy)
 	local last_highest_ability = "None"
 	local last_highest_val = 0
-	for _,skillgroup in pairs(LLENEMY_EnemySkills) do
+	for _,skillgroup in pairs(EnemyUpgradeOverhaul.EnemySkills) do
 		if skillgroup.id ~= "None" then
 			local ability_val = CharacterGetAbility(enemy, tostring(skillgroup.id))
 			---Ext.Print("[LLENEMY_BonusSkills.lua:GetHighestAbility] ---- Ability (" .. tostring(skillgroup.id) .. ") = ("..tostring(ability_val)..")")
@@ -429,15 +431,15 @@ local function GetWeaponRequirement(enemy)
 end
 
 local function GetPreferredSkillGroup(ability,requirement,lastgroup)
-	--Ext.Print("LLENEMY_EnemySkills count: " .. tostring(#LLENEMY_EnemySkills) .. " | Looking for " .. ability)
+	--Ext.Print("EnemyUpgradeOverhaul.EnemySkills count: " .. tostring(#EnemyUpgradeOverhaul.EnemySkills) .. " | Looking for " .. ability)
 	if ability ~= "None" and (lastgroup == nil or lastgroup ~= nil and lastgroup.id ~= ability) then
-		for k,v in pairs(LLENEMY_EnemySkills) do
+		for k,v in pairs(EnemyUpgradeOverhaul.EnemySkills) do
 			if v.id == ability or v.ability == ability then return v end
 		end
 	else
 		local attempts = 0
 		while attempts < 20 do
-			local rantable = LeaderLib.Common.GetRandomTableEntry(LLENEMY_EnemySkills)
+			local rantable = LeaderLib.Common.GetRandomTableEntry(EnemyUpgradeOverhaul.EnemySkills)
 			if rantable ~= nil then
 				local ranskill = LeaderLib.Common.GetRandomTableEntry(rantable.skills)
 				if ranskill.requirement == "None" then
