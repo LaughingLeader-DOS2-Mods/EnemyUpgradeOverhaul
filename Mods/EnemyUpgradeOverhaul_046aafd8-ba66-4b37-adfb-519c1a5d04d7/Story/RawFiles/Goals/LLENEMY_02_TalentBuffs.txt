@@ -41,30 +41,62 @@ LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon")
 THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_RANGERRANGE", 500, 3);
 //LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_BACKSTAB", 499, 4);
-//END_REGION
 
-//REGION GIFTBAG_TALENTS
 PROC
-LLENEMY_Talents_InitSettings()
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Normal")
 AND
 SysIsActive("CMP_Talents")
 THEN
-LLENEMY_Talents_InitGiftBagTalents();
+LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_MASTERTHIEF", 90, 4);
+LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_GREEDYVESSEL", 90, 4);
 
 PROC
-LLENEMY_Talents_InitGiftBagTalents()
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite")
 AND
-GlobalGetFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded", 0)
+SysIsActive("CMP_Talents")
 THEN
-LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_SADIST", 50, 10);
-LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_GLADIATOR", 100, 6);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_HAYMAKER", 100, 8);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_INDOMITABLE", 50, 12);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_SOULCATCHER", 20, 12);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_MAGICCYCLES", 100, 6);
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_MASTERTHIEF", 90, 4);
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_GREEDYVESSEL", 90, 4);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon")
+AND
+SysIsActive("CMP_Talents")
+THEN
+LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_SADIST", 50, 10);
+LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_GLADIATOR", 100, 6);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", (STRING)_Type)
+AND
+SysIsActive("CMP_Talents")
+THEN
 GlobalSetFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
+//END_REGION
+
+//REGION GIFTBAG_TALENTS
+PROC
+LLENEMY_Talents_InitGiftBagTalents()
+AND
+GlobalGetFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded", 0)
+AND
+SysIsActive("CMP_Talents")
+THEN
+GlobalSetFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
+LLENEMY_Upgrades_Clear_UpgradesForType("Talents", "Normal");
+LLENEMY_Upgrades_Clear_UpgradesForType("Talents", "Elite");
+LLENEMY_Upgrades_Clear_UpgradesForType("Talents", "Weapon");
+
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Normal");
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite");
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon");
+
+//Re-register modded talents
+LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start("Talents", "Normal");
+LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start("Talents", "Elite");
+LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start("Talents", "Weapon");
 //END_REGION
 
 //REGION ALREADY_HAS_TALENT_BELT
@@ -277,17 +309,7 @@ NOT DB_LLENEMY_Talents_Temp_DeleteItem(_Enemy, _Item);
 */
 //END_REGION
 
-//REGION NATURAL_CONDUCTOR
-IF
-CharacterStatusRemoved(_Char, "LLENEMY_TALENT_NATURALCONDUCTOR", _)
-THEN
-LeaderLib_ToggleScripts_DisableScriptForObject(_Char, "LLENEMY_NaturalConductor_Active", "EnemyUpgradeOverhaul");
-
-IF
-CharacterStatusApplied(_Char, "LLENEMY_TALENT_NATURALCONDUCTOR", _)
-THEN
-LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_NaturalConductor_Active", "EnemyUpgradeOverhaul");
-
+//REGION NATURAL_CONDUCTOR_QRY
 QRY
 LLENEMY_QRY_IsInElectrifiedSurface((CHARACTERGUID)_Character)
 AND
@@ -307,7 +329,7 @@ THEN
 DB_NOOP(1);
 //END_REGION
 
-//REGION BULLY
+//REGION BULLY_QRY
 QRY
 LLENEMY_Talents_QRY_BullyTarget((GUIDSTRING)_Target)
 AND
@@ -333,6 +355,88 @@ IF
 StoryEvent((CHARACTERGUID)_Enemy, "LLENEMY_Bully_RemoveBonus")
 THEN
 RemoveStatus(_Enemy, "LLENEMY_TALENT_BULLY_DAMAGEBONUS");
+//END_REGION
+
+//REGION EXTENDER_TALENT_ADDING
+/* TODO: Waiting on extender update
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_LONEWOLF", _)
+THEN
+NRD_CharacterSetTalent(_Char, "LoneWolf");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_TORTURER", _)
+THEN
+NRD_CharacterSetTalent(_Char, "Torturer");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_UNSTABLE", _)
+THEN
+NRD_CharacterSetTalent(_Char, "Unstable");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_WHATARUSH", _)
+THEN
+NRD_CharacterSetTalent(_Char, "WhatARush");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_LEECH", _)
+THEN
+NRD_CharacterSetTalent(_Char, "Leech");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_QUICKSTEP", _)
+THEN
+NRD_CharacterSetTalent(_Char, "QuickStep");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_SADIST", _)
+THEN
+NRD_CharacterSetTalent(_Char, "Sadist");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_GLADIATOR", _)
+THEN
+NRD_CharacterSetTalent(_Char, "Gladiator");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_HAYMAKER", _)
+THEN
+NRD_CharacterSetTalent(_Char, "Haymaker");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_INDOMITABLE", _)
+THEN
+NRD_CharacterSetTalent(_Char, "Indomitable");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_SOULCATCHER", _)
+THEN
+NRD_CharacterSetTalent(_Char, "Soulcatcher");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_MAGICCYCLES", _)
+THEN
+NRD_CharacterSetTalent(_Char, "MagicCycles");
+CharacterAddAttribute(_Character, "Dummy", 0);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_GREEDYVESSEL", _)
+THEN
+NRD_CharacterSetTalent(_Char, "GreedyVessel");
+CharacterAddAttribute(_Character, "Dummy", 0);
+*/
 //END_REGION
 EXITSECTION
 
