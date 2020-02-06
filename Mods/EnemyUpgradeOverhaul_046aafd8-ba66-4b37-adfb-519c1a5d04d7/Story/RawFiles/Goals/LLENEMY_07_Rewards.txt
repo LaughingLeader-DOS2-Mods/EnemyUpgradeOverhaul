@@ -148,7 +148,7 @@ CharacterGetDisplayName(_Char, _, _Name)
 AND
 String(_Cause, _CauseStr)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterStatusApplied] [ERROR] [LLENEMY_BONUS_TREASURE_ROLL] was being applied to [",_Name,"] by [",_CauseStr,"] without any database entries!");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterStatusApplied] [ERROR] [LLENEMY_BONUS_TREASURE_ROLL] was being applied to [",_Name,"] by [",_CauseStr,"] without any database entries!");
 RemoveStatus(_Char, "LLENEMY_BONUS_TREASURE_ROLL");
 
 IF
@@ -240,7 +240,7 @@ AND
 CharacterGetDisplayName(_Char, _, _Name)
 THEN
 NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] will generate treasure [",_Treasure,"] when dead.");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] will generate treasure [",_Treasure,"] when dead.");
 DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure);
 ObjectSetFlag(_Char, "LLENEMY_GenerateRewards");
 
@@ -257,7 +257,7 @@ CharacterGetDisplayName(_Char, _, _Name)
 THEN
 NOT DB_LLENEMY_Rewards_Temp_BonusTreasure(_Char, _Current);
 DB_LLENEMY_Rewards_Temp_BonusTreasure(_Char, _Next);
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterPrecogDying] Adding bonus treasure to [",_Name,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterPrecogDying] Adding bonus treasure to [",_Name,"].");
 LLENEMY_Rewards_SetupTreasure(_Char);
 LLENEMY_Rewards_SetupBonusTreasure(_Char);
 
@@ -281,7 +281,7 @@ DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure)
 AND
 CharacterGetDisplayName(_Char, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] generated treasure [",_Treasure,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] generated treasure [",_Treasure,"].");
 CharacterGiveReward(_Char, _Treasure, 0);
 
 /*
@@ -302,7 +302,7 @@ DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure)
 AND
 CharacterGetDisplayName(_Char, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] generated treasure [",_Treasure,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] generated treasure [",_Treasure,"].");
 GenerateTreasure(_Backpack, _Treasure, _Level, _Char);
 MoveAllItemsTo(_Backpack, _Char);
 
@@ -339,7 +339,7 @@ DB_LLENEMY_Rewards_TreasureEffects(_Treasure, _Effect)
 AND
 CharacterGetDisplayName(_Char, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterDied] [",_Name,"] Played treasure effect [",_Effect,"] for treasure [",_Treasure,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterDied] [",_Name,"] Played treasure effect [",_Effect,"] for treasure [",_Treasure,"].");
 PlayEffectAtPosition(_Effect, _x, _y, _z);
 DB_LLENEMY_Rewards_Temp_PlayedEffect(_Char);
 //PlaySound(_Char, "UI_Game_PerceptionReveal_Puzzle");
@@ -374,7 +374,7 @@ CharacterGetDisplayName(_Char, _, _Name)
 AND
 IntegertoString(_CP, _CpStr)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:CharacterDied] [",_Name,"] Played treasure effect [",_Effect,"] for Challenge Points value [",_CpStr,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterDied] [",_Name,"] Played treasure effect [",_Effect,"] for Challenge Points value [",_CpStr,"].");
 PlayEffectAtPosition(_Effect, _x, _y, _z);
 //PlaySound(_Char, "UI_Game_PerceptionReveal_Puzzle");
 
@@ -417,7 +417,7 @@ DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure)
 AND
 CharacterGetDisplayName(_Dupe, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:LLENEMY_Dupe_DupeDied] [",_Name,"] generated treasure [",_Treasure,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:LLENEMY_Dupe_DupeDied] [",_Name,"] generated treasure [",_Treasure,"].");
 GenerateTreasure(_Container, _Treasure, _Level, _Dupe);
 NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure);
 LLENEMY_Rewards_OnCharacterDied(_Dupe, _Treasure);
@@ -446,7 +446,7 @@ IntegertoString(_ChallengePoints, _PointsStr)
 AND
 CharacterGetDisplayName(_Char, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Upgrades:OnRollingDone] Enemy [",_Name,"] Challenge Points value is [",_PointsStr,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Upgrades:OnRollingDone] Enemy [",_Name,"] Challenge Points value is [",_PointsStr,"].");
 
 IF
 CharacterDied(_Char)
@@ -459,7 +459,7 @@ IntegertoString(_ChallengePoints, _PointsStr)
 AND
 CharacterGetDisplayName(_Char, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Rewards:Debug] Enemy [",_Name,"] died. Challenge Points [",_PointsStr,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:Debug] Enemy [",_Name,"] died. Challenge Points [",_PointsStr,"].");
 //END_REGION
 EXITSECTION
 

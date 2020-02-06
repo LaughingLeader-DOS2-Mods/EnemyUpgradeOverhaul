@@ -26,7 +26,7 @@ GlobalClearFlag("LLENEMY_DuplicationUpgradesDisabled");
 IF
 TextEventSet("llenemy_applystats")
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_20_DebugLevel:llenemy_applystats] Testing stats applying.");
+LeaderLog_Log("TRACE", "[LLENEMY_20_DebugLevel:llenemy_applystats] Testing stats applying.");
 
 IF
 TextEventSet("llenemy_applystats")
