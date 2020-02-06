@@ -12,9 +12,15 @@ LLENEMY_Upgrades_AddGroup("Duplication", "LLENEMY_DuplicationUpgradesDisabled", 
 LLENEMY_Upgrades_AddType("Duplication", "Elite", 1, 99, 8);
 LLENEMY_Upgrades_AddType("Duplication", "Normal", 550, 798, 5);
 
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Elite")
+THEN
 LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 900, 11);
 LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_DOUBLE", 99, 11);
 
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Normal")
+THEN
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAKEST", 500, 2);
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAK", 300, 4);
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 199, 6);
