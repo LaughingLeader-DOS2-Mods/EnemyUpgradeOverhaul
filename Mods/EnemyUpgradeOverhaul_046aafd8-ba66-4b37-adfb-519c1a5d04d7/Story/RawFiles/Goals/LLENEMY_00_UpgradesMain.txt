@@ -11,6 +11,13 @@ DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuc
 
 PROC
 LLENEMY_Upgrades_AddType((STRING)_Group, (STRING)_Type, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints)
+AND
+NOT DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _, _)
+THEN
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, 1, 0);
+
+PROC
+LLENEMY_Upgrades_AddType((STRING)_Group, (STRING)_Type, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints)
 THEN
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints);
 LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type);
@@ -367,6 +374,8 @@ AND
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type)
 AND
 DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _StartInt, _RollMaxInt)
+AND
+_RollMaxInt > 0
 AND
 LeaderLib_Random_QRY(_RollMaxInt)
 AND
