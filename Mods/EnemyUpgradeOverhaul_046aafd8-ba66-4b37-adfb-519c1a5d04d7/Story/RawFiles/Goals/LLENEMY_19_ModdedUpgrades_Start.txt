@@ -22,10 +22,18 @@ AND
 NOT LeaderUpdater_QRY_ModIsActive_ByUUID(_UUID)
 THEN
 NOT DB_LLENEMY_Upgrades_Temp_ModUpgradesActive(_UUID, 1);
+DB_LLENEMY_Upgrades_Temp_RegisterNextType(_Group, _Type);
+
+IF
+SavegameLoaded(_,_,_,_)
+AND
+DB_LLENEMY_Upgrades_Temp_RegisterNextType(_Group, _Type)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_RegisterNextType(_Group, _Type);
+LeaderLog_Log("DEBUG", "[LLENEMY_19_ModdedUpgrades_Start:SavegameLoaded] Re-registering upgrades for group (",_Group,") and type (",_Type,").");
 LLENEMY_Upgrades_Clear_UpgradesForType(_Group, _Type);
-LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type);
-LLENEMY_Upgrades_Register_ModUpgrades(_UUID, _Group, _Type);
-LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades(_UUID, _Group, _Type);
+LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type); // Re-register defaults
+LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start(_Group, _Type);
 //END_REGION
 EXITSECTION
 
