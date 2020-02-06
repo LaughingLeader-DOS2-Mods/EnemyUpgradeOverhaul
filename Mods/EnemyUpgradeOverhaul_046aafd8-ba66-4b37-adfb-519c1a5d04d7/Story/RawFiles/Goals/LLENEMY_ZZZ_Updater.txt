@@ -46,13 +46,35 @@ LeaderLog_Log("DEBUG", "[DB_LLENEMY_Upgrades_TypeRollValues] Group(", _Group, ")
 PROC
 LLENEMY_Debug_PrintAllEntries()
 AND
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _, _RollMaxInt)
+AND
+Real(_RollMaxInt, _RollMax)
+AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _EndInt, _Duration, _ChallengePoints)
+AND
+IntegerSubtract(_StartInt, 1, _StartAdjusted)
+AND
+IntegerSum(_EndInt, 1, _EndAdjusted)
+AND
+Real(_StartAdjusted, _start)
+AND
+Real(_EndAdjusted, _end)
+AND
+RealSubtract(_end, _start, _b)
+AND
+RealDivide(_b, _RollMax, _d)
+AND
+RealProduct(_d, 100.0, _percentage)
+AND
+Integer(_percentage, _PercentageInt)
+AND
+IntegertoString(_PercentageInt, _PercentageIntStr)
 AND
 IntegertoString(_StartInt, _StartIntStr)
 AND
 IntegertoString(_EndInt, _EndIntStr)
 THEN
-LeaderLog_Log("DEBUG", "[DB_LLENEMY_Upgrades_Statuses] Group(", _Group, ") Type(", _Type, ") Status(",_Status,") Start(",_StartIntStr,") End(",_EndIntStr, ")");
+LeaderLog_Log("DEBUG", "[DB_LLENEMY_Upgrades_Statuses] Group(", _Group, ") Type(", _Type, ") Status(",_Status,") ",_StartIntStr,"-",_EndIntStr, " (", _PercentageIntStr, "%)");
 //END_REGION
 EXITSECTION
 
