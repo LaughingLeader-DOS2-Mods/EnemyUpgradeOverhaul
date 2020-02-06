@@ -1,0 +1,28 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_ClassUpgrades_InitSettings();
+KBSECTION
+//REGION SETTINGS
+PROC
+LLENEMY_Upgrades_ResetUpgradeData()
+THEN
+LLENEMY_ClassUpgrades_InitSettings();
+
+PROC
+LLENEMY_ClassUpgrades_InitSettings()
+THEN
+LLENEMY_Upgrades_AddGroup("Class", "LLENEMY_ClassUpgradesUpgradesDisabled", "LLENEMY_ClassUpgradesRolled", "LLENEMY_ClassUpgradesUpgradeAdded");
+
+LLENEMY_Upgrades_AddType("Class", "Default", 1, 499, 5);
+LLENEMY_Upgrades_AddType("Class", "Mods", 500, 999, 5);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Class", "Default")
+THEN
+LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_DEFAULT_PYRO", 999, 6);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
