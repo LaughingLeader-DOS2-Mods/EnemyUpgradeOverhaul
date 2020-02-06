@@ -35,17 +35,17 @@ LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SET_NOR
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Elite")
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 900, 10);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 899, 10);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source1")
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 999, 4);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 998, 4);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source2")
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Source2", "LLENEMY_BONUSSKILLS_SOURCE", 999, 4);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Source2", "LLENEMY_BONUSSKILLS_SOURCE", 998, 4);
 
 //END_REGION
 
