@@ -49,7 +49,7 @@ IntegertoString(_StartInt, _StartStr)
 AND
 IntegertoString(_EndInt, _EndStr)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_00_UpgradesMain:DB_LLENEMY_Upgrades_Statuses] Added (",_Group,":",_Type,":",_Status,") Start(",_StartStr,") End(",_EndStr,").");
+LeaderLog_Log("TRACE", "[LLENEMY_00_UpgradesMain:DB_LLENEMY_Upgrades_Statuses] Added (",_Group,":",_Type,":",_Status,") Start(",_StartStr,") End(",_EndStr,").");
 */
 
 PROC
@@ -74,6 +74,67 @@ NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt);
 DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _MaxRoll);
 //END_REGION
 
+//REGION MOD_REGISTERING
+PROC
+LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start((STRING)_Group, (STRING)_Type)
+THEN
+LLENEMY_Upgrades_Register_ModUpgrades(_Group, _Type);
+LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades(_Group, _Type);
+
+//This is called manually by EUO when mods should register upgrades for a specific group/type
+PROC
+LLENEMY_Upgrades_Register_ModUpgrades((STRING)_Group, (STRING)_Type)
+THEN
+DB_NOOP(1);
+
+PROC
+LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades((STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_ModApi_ModUpgrades((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Chance, (INTEGER)_ChallengePoints)
+THEN
+NOT DB_LLENEMY_ModApi_ModUpgrades(_Group, _Type, _Status, _Chance, _ChallengePoints);
+LLENEMY_Upgrades_AddStatus(_Group, _Type, _Status, _Chance, _ChallengePoints);
+
+PROC
+LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades((STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_ModApi_ModUpgrades((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Chance, (INTEGER)_ChallengePoints, (REAL)_Duration)
+THEN
+NOT DB_LLENEMY_ModApi_ModUpgrades(_Group, _Type, _Status, _Chance, _ChallengePoints, _Duration);
+LLENEMY_Upgrades_AddStatus(_Group, _Type, _Status, _Chance, _ChallengePoints, _Duration);
+//END_REGION
+
+//REGION CLEAR
+PROC
+LLENEMY_Upgrades_Clear_Group((STRING)_Group)
+AND
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
+THEN
+NOT DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag);
+
+PROC
+LLENEMY_Upgrades_Clear_Group((STRING)_Group)
+AND
+DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints)
+THEN
+NOT DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints);
+LLENEMY_Upgrades_Clear_UpgradesForType(_Group, _Type);
+
+PROC
+LLENEMY_Upgrades_Clear_UpgradesForType((STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _CappedEnd, _Duration, _ChallengePoints)
+THEN
+NOT DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _CappedEnd, _Duration, _ChallengePoints);
+
+PROC
+LLENEMY_Upgrades_Clear_UpgradesForType((STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _NextStartInt, _CappedEnd)
+THEN
+NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _NextStartInt, _CappedEnd);
+//END_REGION
+
 //REGION RESET_DATA
 PROC
 LLENEMY_Upgrades_ResetUpgradeData()
@@ -86,10 +147,6 @@ SysClear("DB_LLENEMY_LastGrenadeInt", 2);
 SysClear("DB_LLENEMY_GrenadeSkills", 3);
 
 GlobalClearFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
-
-LLENEMY_Buffs_InitSettings();
-LLENEMY_Talents_InitSettings();
-LLENEMY_Stats_InitSettings();
 //END_REGION
 
 //REGION UPDATES
@@ -119,7 +176,7 @@ LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldV
 AND
 LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 1, 2)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:UpgradesMain:LeaderUpdater_ModUpdated] Updating upgrade settings from version [",_OldVersion,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:UpgradesMain:LeaderUpdater_ModUpdated] Updating upgrade settings from version [",_OldVersion,"].");
 LLENEMY_Debug_RemovePermanentStatus("EVASION_AURA");
 LLENEMY_Debug_RemovePermanentStatus("EVASION");
 
@@ -174,11 +231,11 @@ AND
 IntegertoString(_Roll, _RollStr)
 THEN
 NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("DEBUG", "[LLENEMY_00_UpgradesMain:RollForUpgrades] (",_Name,") rolled (", _RollStr, ") for types.");
-LLENEMY_Upgrades_Internal_OnRoll(_Character, _Roll, _Name);
+LeaderLog_Log("TRACE", "[LLENEMY_00_UpgradesMain:RollForUpgrades] (",_Name,") rolled (", _RollStr, ") for types.");
+LLENEMY_Upgrades_Internal_OnRoll(_Character, _Roll);
 
 PROC
-LLENEMY_Upgrades_Internal_OnRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Name)
+LLENEMY_Upgrades_Internal_OnRoll((CHARACTERGUID)_Character, (INTEGER)_Roll)
 AND
 DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
 AND
@@ -186,14 +243,14 @@ NOT DB_GlobalFlag(_GlobalDisableFlag)
 AND
 LLENEMY_Upgrades_Internal_QRY_SetRolledFlag(_Character, _RolledForFlag)
 THEN
-LLENEMY_Upgrades_OnRollForGroup(_Character, _Roll, _Group, _GroupSuccessFlag, _Name);
+LLENEMY_Upgrades_OnRollForGroup(_Character, _Roll, _Group);
 
 PROC
-LLENEMY_Upgrades_Internal_OnRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Name)
+LLENEMY_Upgrades_Internal_OnRoll((CHARACTERGUID)_Character, (INTEGER)_Roll)
 AND
 _Roll == 0
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:OnRollForGroup] [",_Name,"] Rolled a 0! Critical failure!");
+LeaderLog_Log("TRACE", "[LLENEMY:Buffs:OnRollForGroup] Rolled a 0! Critical failure!");
 LLENEMY_Upgrades_OnCriticalFailure(_Character);
 
 PROC
@@ -231,7 +288,7 @@ THEN
 DB_NOOP(1);
 
 PROC
-LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group, (STRING)_GroupSuccessFlag, (STRING)_Name)
+LLENEMY_Upgrades_OnRollForGroup((CHARACTERGUID)_Character, (INTEGER)_Roll, (STRING)_Group)
 AND
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _CP)
 //AND
@@ -242,7 +299,7 @@ AND
 _Roll >= _MinRoll
 THEN
 LLENEMY_Upgrades_CanRollForGroupUpgrade(_Character, _Group, _Type);
-LLENEMY_Upgrades_RollForStatusUpgrade(_Character, _Group, _Type, _GroupSuccessFlag, _Name);
+LLENEMY_Upgrades_RollForStatusUpgrade(_Character, _Group, _Type);
 LLENEMY_Upgrades_CleanupBlockedUpgrades(_Character, _Group, _Type);
 
 QRY
@@ -256,7 +313,7 @@ IntegertoString(_MaxRoll, _MaxStr)
 AND
 CharacterGetDisplayName(_Character, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Upgrades:LogGroupRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
+LeaderLog_Log("TRACE", "[LLENEMY:Upgrades:LogGroupRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
 
 QRY
 LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status)
@@ -270,7 +327,7 @@ THEN
 DB_NOOP(1);
 
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_GroupSuccessFlag, (STRING)_Name)
+LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
 AND
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type)
 AND
@@ -291,9 +348,9 @@ AND
 _Roll >= _MinRoll
 THEN
 NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:RollForStatusUpgrade] [",_Name,"] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
+LeaderLog_Log("TRACE", "[LLENEMY:Buffs:RollForStatusUpgrade] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
 LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _Status, _Duration, _CP);
-LLENEMY_Upgrades_OnRollForGroupSucceeded(_Character, _Group, _Type, _GroupSuccessFlag);
+LLENEMY_Upgrades_OnRollForGroupSucceeded(_Character, _Group, _Type);
 
 QRY
 LLENEMY_Upgrades_QRY_Internal_LogTypeRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (STRING)_Group, (STRING)_Type)
@@ -306,7 +363,7 @@ IntegertoString(_MaxRoll, _MaxStr)
 AND
 CharacterGetDisplayName(_Character, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Upgrades:LogTypeRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
+LeaderLog_Log("TRACE", "[LLENEMY:Upgrades:LogTypeRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
 
 QRY
 LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_Roll)
@@ -320,7 +377,7 @@ _Roll == 0
 AND
 CharacterGetDisplayName(_Character, _, _Name)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:CheckForTypeCriticalFailure] [",_Name,"] Rolled a 0 for Group [",_Group,"] and Type [",_Type,"]! Critical failure!");
+LeaderLog_Log("TRACE", "[LLENEMY:Buffs:CheckForTypeCriticalFailure] [",_Name,"] Rolled a 0 for Group [",_Group,"] and Type [",_Type,"]! Critical failure!");
 LLENEMY_Upgrades_OnTypeCriticalFailure(_Character, _Group, _Type);
 
 PROC
@@ -329,11 +386,13 @@ THEN
 DB_NOOP(1);
 
 PROC
-LLENEMY_Upgrades_OnRollForGroupSucceeded((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_GroupSuccessFlag)
+LLENEMY_Upgrades_OnRollForGroupSucceeded((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
 AND
 _GroupSuccessFlag != ""
 THEN
-ObjectSetFlag(_Character, _GroupSuccessFlag);
+ObjectSetFlag(_Character, _GroupSuccessFlag, 0);
 
 PROC
 LLENEMY_Upgrades_CleanupBlockedUpgrades((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type)
@@ -432,7 +491,7 @@ AND
 _RollAmount <= 0
 THEN
 NOT DB_LLENEMY_Debug_TestRan(_Modulo, _RollAmount);
-LeaderLog_Log("DEBUG", "[LLENEMY:Debug:RandomTest] Rolling complete.");
+LeaderLog_Log("TRACE", "[LLENEMY:Debug:RandomTest] Rolling complete.");
 
 IF
 TextEventSet("llenemy_randefaulttest")
@@ -469,7 +528,7 @@ AND
 _RollAmount <= 0
 THEN
 NOT DB_LLENEMY_Debug_TestRanDefault(_Modulo, _RollAmount);
-LeaderLog_Log("DEBUG", "[LLENEMY:Debug:RandomTest] Rolling complete.");
+LeaderLog_Log("TRACE", "[LLENEMY:Debug:RandomTest] Rolling complete.");
 //END_REGION
 
 //REGION ELITES
@@ -501,7 +560,7 @@ AND
 CharacterGetDisplayName(_Character, _, _Name)
 THEN
 NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:ApplyEliteBonuses] Adding elite bonus to [",_Name,"] - [",_Group,":",_Type,"] Status [",_Status,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Buffs:ApplyEliteBonuses] Adding elite bonus to [",_Name,"] - [",_Group,":",_Type,"] Status [",_Status,"].");
 LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _Status, _Duration, _CP);
 
 PROC
@@ -523,22 +582,22 @@ DB_LLENEMY_Elites_GuaranteedUpgrades(_Level, _Character, _Status, _Duration)
 AND
 NOT LeaderLib_Helper_QRY_HasStatus(_Character, _Status)
 THEN
-LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus(_Character, _Status, _Duration, _Name);
+LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus(_Character, _Status, _Duration);
 
 PROC
-LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (STRING)_Name)
+LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _, _CP)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:OnRollingDone] Adding guaranteed elite bonus to [",_Name,"] - [",_Group,":",_Type,"] Status [",_Status,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Buffs:OnRollingDone] Adding guaranteed elite bonus - [",_Group,":",_Type,"] Status [",_Status,"].");
 LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _Status, _Duration, _CP);
 
 PROC
-LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration, (STRING)_Name)
+LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus((CHARACTERGUID)_Character, (STRING)_Status, (REAL)_Duration)
 AND
 NOT DB_LLENEMY_Upgrades_Statuses(_, _, _Status, _, _, _, _)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY:Buffs:OnRollingDone] Adding non-registered, guaranteed elite bonus to Status [",_Status,"].");
+LeaderLog_Log("TRACE", "[LLENEMY:Buffs:OnRollingDone] Adding non-registered, guaranteed elite bonus to Status [",_Status,"].");
 LLENEMY_Upgrades_ApplyUpgrade(_Character, "", "", _Status, _Duration, 2);
 //END_REGION
 EXITSECTION

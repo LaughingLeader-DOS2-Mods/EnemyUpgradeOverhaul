@@ -5,6 +5,11 @@ LLENEMY_BonusSkills_InitSettings();
 KBSECTION
 //REGION SETTINGS
 PROC
+LLENEMY_Upgrades_ResetUpgradeData()
+THEN
+LLENEMY_BonusSkills_InitSettings();
+
+PROC
 LLENEMY_BonusSkills_InitSettings()
 AND
 LeaderLib_QRY_ExtenderIsActive()

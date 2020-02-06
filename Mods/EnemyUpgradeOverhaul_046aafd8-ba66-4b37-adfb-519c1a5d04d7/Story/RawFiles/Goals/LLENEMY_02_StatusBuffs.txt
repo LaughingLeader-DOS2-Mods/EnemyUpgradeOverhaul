@@ -5,6 +5,11 @@ LLENEMY_Buffs_InitSettings();
 KBSECTION
 //REGION SETTINGS
 PROC
+LLENEMY_Upgrades_ResetUpgradeData()
+THEN
+LLENEMY_Buffs_InitSettings();
+
+PROC
 LLENEMY_Buffs_InitSettings()
 THEN
 LLENEMY_Upgrades_AddGroup("Buffs", "LLENEMY_BuffUpgradesDisabled", "LLENEMY_BuffRolled", "LLENEMY_BuffUpgradeAdded");

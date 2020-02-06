@@ -6,6 +6,11 @@ LLENEMY_Stats_InitSettings();
 KBSECTION
 //REGION SETTINGS
 PROC
+LLENEMY_Upgrades_ResetUpgradeData()
+THEN
+LLENEMY_Stats_InitSettings();
+
+PROC
 LLENEMY_Stats_InitSettings()
 THEN
 LLENEMY_Upgrades_AddGroup("Stats", "LLENEMY_StatUpgradesDisabled", "LLENEMY_StatsRolled", "LLENEMY_StatsUpgradeAdded");
