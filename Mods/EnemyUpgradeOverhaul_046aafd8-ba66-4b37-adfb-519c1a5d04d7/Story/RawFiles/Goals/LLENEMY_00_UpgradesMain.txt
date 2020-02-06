@@ -589,6 +589,13 @@ LLENEMY_Upgrades_Internal_OnEliteBonusRolled(_Character, _Group, _Type, _BonusUp
 PROC
 LLENEMY_Upgrades_Internal_ApplyEliteBonuses((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_Amount)
 AND
+IsTagged(_Character, "LLENEMY_Elite", 0)
+THEN
+SetTag(_Character, "LLENEMY_Elite");
+
+PROC
+LLENEMY_Upgrades_Internal_ApplyEliteBonuses((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_Amount)
+AND
 _Amount > 0
 AND
 LeaderLib_Random_QRY(999)

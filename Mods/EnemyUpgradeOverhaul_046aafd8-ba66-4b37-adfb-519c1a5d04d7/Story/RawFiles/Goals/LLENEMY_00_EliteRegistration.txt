@@ -35,6 +35,27 @@ PROC
 LLENEMY_Elites_AddGuaranteedUpgrade((STRING)_Level, (CHARACTERGUID)_Character, (STRING)_UpgradeStatus, (REAL)_Duration)
 THEN
 DB_LLENEMY_Elites_GuaranteedUpgrades(_Level, _Character, _UpgradeStatus, _Duration);
+
+QRY
+LLENEMY_Elites_QRY_IsElite((CHARACTERGUID)_Character)
+AND
+IsTagged(_Character, "LLENEMY_Elite", 1)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Elites_QRY_IsElite((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _LastBonusUpgrades)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Elites_QRY_IsElite((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_Elites_GuaranteedUpgrades(_Level, _Character, _UpgradeStatus, _Duration)
+THEN
+DB_NOOP(1);
 //END_REGION
 
 //REGION CLEARING
