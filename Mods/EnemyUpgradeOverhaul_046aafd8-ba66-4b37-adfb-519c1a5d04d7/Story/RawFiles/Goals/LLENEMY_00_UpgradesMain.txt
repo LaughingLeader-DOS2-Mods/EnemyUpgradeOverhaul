@@ -15,6 +15,18 @@ THEN
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints);
 LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type);
 
+/*
+PROC
+LLENEMY_Upgrades_AddType((STRING)_Group, (STRING)_Type, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints)
+AND
+DB_LLENEMY_Upgrades_GroupRollValues(_Group, _Type, _RollMaxInt)
+AND
+_MaxRoll > _RollMaxInt
+THEN
+NOT DB_LLENEMY_Upgrades_GroupRollValues(_Group, _Type, _RollMaxInt);
+DB_LLENEMY_Upgrades_GroupRollValues(_Group, _Type, _MaxRoll);
+*/
+
 PROC
 LLENEMY_Upgrades_AddStatus((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Range, (INTEGER)_ChallengePoints)
 THEN
@@ -23,24 +35,24 @@ LLENEMY_Upgrades_AddStatus(_Group, _Type, _Status, _Range, _ChallengePoints, -1.
 PROC
 LLENEMY_Upgrades_AddStatus((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Range, (INTEGER)_ChallengePoints, (REAL)_Duration)
 AND
-NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _,_)
+NOT DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _, _)
 THEN
-DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, 1, 1);
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, 1, 0);
 
 PROC
 LLENEMY_Upgrades_AddStatus((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Range, (INTEGER)_ChallengePoints, (REAL)_Duration)
 AND
-DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt)
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _StartInt, _RollMaxInt)
 AND
 IntegerSum(_StartInt, _Range, _EndInt)
 AND
 IntegerSum(_EndInt, 1, _NextStartInt)
 AND
-IntegerMin(_EndInt, 999, _CappedEnd)
+IntegerMax(_EndInt, 999, _MinEnd) // The max roll should be 999 or greater
 THEN
-NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt);
-DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _NextStartInt, _CappedEnd);
-DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _CappedEnd, _Duration, _ChallengePoints);
+NOT DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _StartInt, _RollMaxInt);
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _NextStartInt, _MinEnd);
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _EndInt, _Duration, _ChallengePoints);
 
 /*
 IF
@@ -67,12 +79,12 @@ DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Durati
 PROC
 LLENEMY_Upgrades_AddStatusToRange((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints, (REAL)_Duration)
 AND
-DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt)
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _StartInt, _RollMaxInt)
 AND
-_MaxRoll > _LastInt
+_MaxRoll > _RollMaxInt
 THEN
-NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt);
-DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _MaxRoll);
+NOT DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _StartInt, _RollMaxInt);
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _StartInt, _MaxRoll);
 //END_REGION
 
 //REGION MOD_SUPPORT
@@ -152,9 +164,9 @@ NOT DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _CappedEnd, 
 PROC
 LLENEMY_Upgrades_Clear_UpgradesForType((STRING)_Group, (STRING)_Type)
 AND
-DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _NextStartInt, _CappedEnd)
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _NextStartInt, _CappedEnd)
 THEN
-NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _NextStartInt, _CappedEnd);
+NOT DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _NextStartInt, _CappedEnd);
 //END_REGION
 
 //REGION RESET_DATA
@@ -164,7 +176,7 @@ THEN
 SysClear("DB_LLENEMY_Upgrades_Groups", 4);
 SysClear("DB_LLENEMY_Upgrades_Types", 5);
 SysClear("DB_LLENEMY_Upgrades_Statuses", 7);
-SysClear("DB_LLENEMY_Upgrades_LastTypeValues", 4);
+SysClear("DB_LLENEMY_Upgrades_TypeRollValues", 4);
 SysClear("DB_LLENEMY_LastGrenadeInt", 2);
 SysClear("DB_LLENEMY_GrenadeSkills", 3);
 GlobalClearFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
@@ -354,7 +366,9 @@ LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group,
 AND
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type)
 AND
-LeaderLib_Random_QRY(999)
+DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _StartInt, _RollMaxInt)
+AND
+LeaderLib_Random_QRY(_RollMaxInt)
 AND
 DB_LeaderLib_Random(_Roll)
 AND
