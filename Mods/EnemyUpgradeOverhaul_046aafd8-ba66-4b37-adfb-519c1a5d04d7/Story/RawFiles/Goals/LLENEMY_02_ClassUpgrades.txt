@@ -20,8 +20,22 @@ LLENEMY_Upgrades_AddType("Class", "Mods", 500, 999, 5);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Class", "Default")
 THEN
-LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_DEFAULT_PYRO", 999, 6);
+LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_DEFAULT_PYRO", 50, 6);
 //END_REGION
+
+//REGION MOD_REGISTRATION_EXAMPLE
+/*
+PROC
+MyMod_InitEnemyModSupport()
+THEN
+LLENEMY_Upgrades_Register_ModSupport(e4a5c8ca-7f04-23ab-8115-18161eb702bf, "OdinbladeSpectreClass", "Odinblade", "Class", "Mods", "OdinSPECTRE_DiscrepencyWarnings");
+
+// Odinblade's Spectre Class: Definitive Edition
+PROC
+LLENEMY_Upgrades_Register_ModUpgrades(e4a5c8ca-7f04-23ab-8115-18161eb702bf, "Class", "Mods")
+THEN
+LLENEMY_Upgrades_AddStatus("Class", "Mods", "MYMOD_EUO_UPGRADE_CLASS_SPECTRE", 75, 6);
+*/
 EXITSECTION
 
 ENDEXITSECTION
