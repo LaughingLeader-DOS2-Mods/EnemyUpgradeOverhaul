@@ -1,0 +1,33 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_ModdedUpgrades_StartRegistration();
+
+KBSECTION
+PROC
+LLENEMY_ModdedUpgrades_StartRegistration()
+AND
+DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints)
+THEN
+LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start(_Group, _Type);
+
+//REGION ACTIVE_MODS_CHANGED
+IF
+SavegameLoaded(_,_,_,_)
+AND
+DB_LLENEMY_Upgrades_ModSupport(_UUID, _Group, _Type)
+AND
+DB_LLENEMY_Upgrades_Temp_ModUpgradesActive(_UUID, 1)
+AND
+NOT LeaderUpdater_QRY_ModIsActive_ByUUID(_UUID)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_ModUpgradesActive(_UUID, 1);
+LLENEMY_Upgrades_Clear_UpgradesForType(_Group, _Type);
+LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type);
+LLENEMY_Upgrades_Register_ModUpgrades(_UUID, _Group, _Type);
+LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades(_UUID, _Group, _Type);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

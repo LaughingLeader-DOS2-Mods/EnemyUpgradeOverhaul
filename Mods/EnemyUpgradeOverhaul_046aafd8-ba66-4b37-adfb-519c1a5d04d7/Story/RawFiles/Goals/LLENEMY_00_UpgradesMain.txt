@@ -13,6 +13,7 @@ PROC
 LLENEMY_Upgrades_AddType((STRING)_Group, (STRING)_Type, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints)
 THEN
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints);
+LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type);
 
 PROC
 LLENEMY_Upgrades_AddStatus((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Range, (INTEGER)_ChallengePoints)
@@ -74,33 +75,54 @@ NOT DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _LastInt);
 DB_LLENEMY_Upgrades_LastTypeValues(_Group, _Type, _StartInt, _MaxRoll);
 //END_REGION
 
-//REGION MOD_REGISTERING
+//REGION MOD_SUPPORT
+// Register a UUID the system will check to see if a mod is active. UUIDs require the script extender.
+PROC
+LLENEMY_Upgrades_Register_ModSupport((GUIDSTRING)_UUID, (STRING)_ModID, (STRING)_Author, (STRING)_Group, (STRING)_Type, (STRING)_StoryScriptName)
+THEN
+LeaderUpdater_Register_UUID(_ModID, _Author, _UUID);
+DB_LLENEMY_Upgrades_ModSupport(_UUID, _Group, _Type);
+
+PROC
+LLENEMY_Upgrades_Register_ModSupport((GUIDSTRING)_UUID, (STRING)_ModID, (STRING)_Author, (STRING)_Group, (STRING)_Type, (STRING)_StoryScriptName)
+AND
+_StoryScriptName != ""
+THEN
+LeaderUpdater_Register_ActiveGoal(_ModID, _Author, _StoryScriptName);
+//END_REGION
+
+//REGION MODDED_UPGRADES_REGISTERING
 PROC
 LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start((STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_Upgrades_ModSupport(_UUID, _Group, _Type)
+AND
+LeaderUpdater_QRY_ModIsActive_ByUUID(_UUID)
 THEN
-LLENEMY_Upgrades_Register_ModUpgrades(_Group, _Type);
-LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades(_Group, _Type);
+DB_LLENEMY_Upgrades_Temp_ModUpgradesActive(_UUID, 1);
+LLENEMY_Upgrades_Register_ModUpgrades(_UUID, _Group, _Type);
+LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades(_UUID, _Group, _Type);
 
 //This is called manually by EUO when mods should register upgrades for a specific group/type
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades((STRING)_Group, (STRING)_Type)
+LLENEMY_Upgrades_Register_ModUpgrades((GUIDSTRING)_UUID, (STRING)_Group, (STRING)_Type)
 THEN
 DB_NOOP(1);
 
 PROC
-LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades((STRING)_Group, (STRING)_Type)
+LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades((GUIDSTRING)_UUID, (STRING)_Group, (STRING)_Type)
 AND
-DB_LLENEMY_ModApi_ModUpgrades((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Chance, (INTEGER)_ChallengePoints)
+DB_LLENEMY_ModApi_ModUpgrades((GUIDSTRING)_UUID, (STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Chance, (INTEGER)_ChallengePoints)
 THEN
-NOT DB_LLENEMY_ModApi_ModUpgrades(_Group, _Type, _Status, _Chance, _ChallengePoints);
+NOT DB_LLENEMY_ModApi_ModUpgrades(_UUID, _Group, _Type, _Status, _Chance, _ChallengePoints);
 LLENEMY_Upgrades_AddStatus(_Group, _Type, _Status, _Chance, _ChallengePoints);
 
 PROC
-LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades((STRING)_Group, (STRING)_Type)
+LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades((GUIDSTRING)_UUID, (STRING)_Group, (STRING)_Type)
 AND
-DB_LLENEMY_ModApi_ModUpgrades((STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Chance, (INTEGER)_ChallengePoints, (REAL)_Duration)
+DB_LLENEMY_ModApi_ModUpgrades((GUIDSTRING)_UUID, (STRING)_Group, (STRING)_Type, (STRING)_Status, (INTEGER)_Chance, (INTEGER)_ChallengePoints, (REAL)_Duration)
 THEN
-NOT DB_LLENEMY_ModApi_ModUpgrades(_Group, _Type, _Status, _Chance, _ChallengePoints, _Duration);
+NOT DB_LLENEMY_ModApi_ModUpgrades(_UUID, _Group, _Type, _Status, _Chance, _ChallengePoints, _Duration);
 LLENEMY_Upgrades_AddStatus(_Group, _Type, _Status, _Chance, _ChallengePoints, _Duration);
 //END_REGION
 
@@ -145,41 +167,10 @@ SysClear("DB_LLENEMY_Upgrades_Statuses", 7);
 SysClear("DB_LLENEMY_Upgrades_LastTypeValues", 4);
 SysClear("DB_LLENEMY_LastGrenadeInt", 2);
 SysClear("DB_LLENEMY_GrenadeSkills", 3);
-
 GlobalClearFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
 //END_REGION
 
-//REGION UPDATES
-PROC
-LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
-AND
-LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,5,0,0)
-THEN
-LLENEMY_Upgrades_ResetUpgradeData();
-
-PROC
-LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
-AND
-LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,2,1,0)
-THEN
-GlobalSetFlag("LLENEMY_DuplicationUpgradesDisabled");
-
-PROC
-LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
-AND
-LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 2, 0)
-THEN
-LLENEMY_Debug_RemoveStackedWeaponAuras("VENOM_AURA", "FIRE_BRAND_AURA");
-
-PROC
-LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
-AND
-LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 1, 2)
-THEN
-LeaderLog_Log("TRACE", "[LLENEMY:UpgradesMain:LeaderUpdater_ModUpdated] Updating upgrade settings from version [",_OldVersion,"].");
-LLENEMY_Debug_RemovePermanentStatus("EVASION_AURA");
-LLENEMY_Debug_RemovePermanentStatus("EVASION");
-
+//REGION UPDATE_STATUS_REMOVAL
 PROC
 LLENEMY_Debug_RemovePermanentStatus((STRING)_Status)
 AND
@@ -207,6 +198,38 @@ HasActiveStatus(_OtherEnemy, _Status2, 1)
 THEN
 RemoveStatus(_Enemy, _Status);
 //RemoveStatus(_OtherEnemy, _Status2);
+//END_REGION
+
+//REGION UPDATES
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 1, 2)
+THEN
+LeaderLog_Log("TRACE", "[LLENEMY:UpgradesMain:LeaderUpdater_ModUpdated] Updating upgrade settings from version [",_OldVersion,"].");
+LLENEMY_Debug_RemovePermanentStatus("EVASION_AURA");
+LLENEMY_Debug_RemovePermanentStatus("EVASION");
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1, 1, 2, 0)
+THEN
+LLENEMY_Debug_RemoveStackedWeaponAuras("VENOM_AURA", "FIRE_BRAND_AURA");
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,2,1,0)
+THEN
+GlobalSetFlag("LLENEMY_DuplicationUpgradesDisabled");
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion, 1,5,0,0)
+THEN
+LLENEMY_Upgrades_ResetUpgradeData();
 //END_REGION
 
 //REGION APPLYING
