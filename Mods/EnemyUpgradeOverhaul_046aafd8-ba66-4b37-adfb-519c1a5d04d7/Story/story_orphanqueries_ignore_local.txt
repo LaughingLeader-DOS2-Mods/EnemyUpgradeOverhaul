@@ -1,1 +1,3 @@
 DB_LLENEMY_BonusSkills_Settings 3
+DB_LLENEMY_ModApi_ModUpgrades 5
+DB_LLENEMY_ModApi_ModUpgrades 6
