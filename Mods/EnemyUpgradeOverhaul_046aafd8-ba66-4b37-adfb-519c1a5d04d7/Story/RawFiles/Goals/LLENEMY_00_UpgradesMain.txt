@@ -502,12 +502,28 @@ SetIsBoss(_Character, 1);
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
-HasActiveStatus(_Character, "LLENEMY_UPGRADE_INFO", 0)
+NOT LeaderLib_Helper_QRY_HasStatus(_Character, "LLENEMY_UPGRADE_INFO")
 AND
 GetUUID(_Character, _UUID)
 THEN
 ApplyStatus(_Character, "LLENEMY_UPGRADE_INFO", -1.0, 0, _Character);
 NRD_LuaCall("LLENEMY_EXT_StoreUpgradeInfo", _UUID, _Status);
+DB_LLENEMY_Upgrades_Temp_UpgradeInfo(_Character, _UUID, _Status);
+
+IF
+GameStarted(_,_)
+AND
+DB_LLENEMY_Upgrades_Temp_UpgradeInfo(_Character, _UUID, _Status)
+THEN
+NRD_LuaCall("LLENEMY_EXT_StoreUpgradeInfo", _UUID, _Status);
+
+IF
+CharacterDied(_Character)
+AND
+DB_LLENEMY_Upgrades_Temp_UpgradeInfo(_Character, _UUID, _Status)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_UpgradeInfo(_Character, _UUID, _Status);
+NRD_LuaCall("LLENEMY_EXT_RemoveUpgradeInfo", _UUID);
 //END_REGION
 
 //REGION DEBUG
