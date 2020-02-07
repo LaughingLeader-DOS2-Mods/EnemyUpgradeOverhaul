@@ -453,7 +453,9 @@ AND
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status)
 THEN
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
+//END_REGION
 
+//REGION APPLY_UPGRADE
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
@@ -496,6 +498,16 @@ AND
 _TotalPoints >= 20
 THEN
 SetIsBoss(_Character, 1);
+
+PROC
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+AND
+HasActiveStatus(_Character, "LLENEMY_UPGRADE_INFO", 0)
+AND
+GetUUID(_Character, _UUID)
+THEN
+ApplyStatus(_Character, "LLENEMY_UPGRADE_INFO", -1.0, 0, _Character);
+NRD_LuaCall("LLENEMY_EXT_StoreUpgradeInfo", _UUID, _Status);
 //END_REGION
 
 //REGION DEBUG
