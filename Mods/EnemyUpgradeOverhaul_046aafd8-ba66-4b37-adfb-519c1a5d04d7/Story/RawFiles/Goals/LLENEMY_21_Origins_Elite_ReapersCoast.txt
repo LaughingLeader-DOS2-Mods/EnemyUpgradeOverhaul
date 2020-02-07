@@ -90,20 +90,12 @@ LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_DeerKiller_000_f22b676c-0921-
 // Boss: The Advocate
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Advocate_bfa3e903-78ab-46aa-9a95-54fb956eb2b3);
 // The Dead Ferryman | NOT_MESSING_AROUND
-LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703);
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "Immunities", "Immunity");
+LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "LLENEMY_TALENT_INDOMITABLE");
 // Boss: The Eternal Aetera
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_Tomb_Ataraxian_b844294c-62c2-4ff8-82f1-f874b9e4352d);
 // Boss: Tovah
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Tovah_69c31947-b004-44aa-b856-2a9a96ff218a);
-
-//REGION CUSTOM
-PROC
-LLENEMY_Elites_InitLevel("RC_Main")
-THEN
-//The Dead Ferryman
-LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "Immunities", "Immunity");
-LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "LLENEMY_TALENT_INDOMITABLE");
-//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
