@@ -16,18 +16,13 @@ local function SessionLoading()
 	LLENEMY_Ext_BuildEnemySkills();
 end
 
---v36 and higher
-if Ext.RegisterListener ~= nil then
-    Ext.RegisterListener("SessionLoading", SessionLoading)
-else
-    Ext.Print("[LLENEMY:Bootstrap.lua] [*WARNING*] Extender version is less than v36! Stat overrides ain't happenin', chief.")
-end
+Ext.RegisterListener("SessionLoading", SessionLoading)
 
 function LLENEMY_Ext_ClearGain(char)
 	local stats = nil
-	if NRD_GetVersion() >= 39 then
-		stats = NRD_CharacterGetStatString(char)
-	end
+	-- if NRD_GetVersion() >= 39 then
+	-- 	stats = NRD_CharacterGetStatString(char)
+	-- end
 	if stats == nil then stats = GetStatString(char) end
 	if stats ~= nil then
 		local gain = NRD_StatGetInt(stats, "Gain")
