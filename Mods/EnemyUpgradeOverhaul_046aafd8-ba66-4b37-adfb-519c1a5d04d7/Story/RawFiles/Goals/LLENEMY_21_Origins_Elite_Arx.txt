@@ -3,7 +3,139 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
+//REGION CUSTOM
+PROC
+LLENEMY_Elites_InitLevel("Arx_Main")
+THEN
+// The Doctor / Adramahlihk | AI_PREFERRED_TARGET, ARX_DOCTOR, BADASSCIVILIAN, CIVILIAN, DEMON, HUMAN, HUMANS, IGNORE_UNDEAD_CRIME, MALE, TRADER
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DoctorsHouse_TheDoctor_83083470-c543-45b3-ac8a-108df0daca8d);
 
+PROC
+LLENEMY_Elites_RegisterExtenderUpgrades("Arx_Main")
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade("Arx_Main", S_ARX_DoctorsHouse_TheDoctor_83083470-c543-45b3-ac8a-108df0daca8d, "LLENEMY_BONUSSKILLS_SOURCE");
+LLENEMY_Elites_AddGuaranteedUpgrade("Arx_Main", S_ARX_DoctorsHouse_TheDoctor_83083470-c543-45b3-ac8a-108df0daca8d, "LLENEMY_BONUSSKILLS_SET_ELITE");
+//END_REGION
+
+//REGION AUTO_GENERATED
+PROC
+LLENEMY_Elites_InitLevel("Arx_Main")
+THEN
+// Boss: Bishop Alexandar
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Arena_Alexander_fc59c20c-cedd-45f3-8ac3-bbd5365977da);
+// Boss: Brahmos the Wanderer
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_GLO_Brahmos_d4064352-33f9-49df-b208-09fd822d2270);
+// Citizen | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DemonAmbush1_Spotter_cfd1a537-df32-46fc-9878-2c4181fd3c14);
+// Citizen | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DemonAmbush2_Spotter_3dad22a2-0c6f-4f34-bfeb-b83c64e23832);
+// Citizen | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DemonAmbush3_Spotter_a9cdf6c2-43f1-48eb-a976-9337f6bd36d2);
+// Cursed Revenant | INFERNAL_LIZARD
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_LizardConsualte_InfernalLizard_01_ade1bfee-f057-4b1f-8390-33ae025e9ea8);
+// Cursed Revenant | INFERNAL_LIZARD
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_LizardConsualte_InfernalLizard_02_c0f3c58e-8d05-4d64-9098-d2f7bb8669d0);
+// Cursed Revenant | INFERNAL_LIZARD
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_LizardConsualte_InfernalLizard_03_85bf82a9-de63-4982-8806-bbd1cee3ab37);
+// Cursed Revenant | INFERNAL_LIZARD
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_LizardConsualte_InfernalLizard_04_7161c772-d04d-4c6a-b5e4-46568fcbd612);
+// Cursed Revenant | INFERNAL_LIZARD
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_LizardConsualte_InfernalLizard_05_7c94819e-89d2-46cf-8ea4-0d0d7e317a75);
+// Debt Collector | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Neighborhood_TheFence_Demon_01_f7a9e3e9-1d24-41e2-9c7b-86feae69b012);
+// Debt Collector | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Neighborhood_TheFence_Demon_02_3d0566de-786e-4ff9-ab1a-5c7a279c1580);
+// Debt Collector | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Neighborhood_TheFence_Demon_03_0fc21242-8f25-4091-a42b-e7614199a243);
+// Earth-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Sunset_LizardDreamer_01_f60aae58-94f5-4668-8e1f-173970b68a60);
+// Earth-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_WarZone_LizardDreamer_2_cb0fd13b-6719-47ea-b660-8b858940eb1b);
+// Flame-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Sunset_LizardDreamer_02_9b8741fb-ee59-41e3-b68f-82c3bea760fe);
+// Flame-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_WarZone_LizardDreamer_4_d1aa71d7-4d75-4c47-baec-b7077426b627);
+// Hungry Flower | ARX_GARDENBOSS
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_RC_ARX_KemmMansion_Garden_Shambl_Caster_01_f971c19e-4fbb-45fb-a57e-2d7991aade88);
+// Hungry Flower | ARX_GARDENBOSS
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_RC_ARX_KemmMansion_Garden_Shambl_Caster_02_67ea8705-133f-42d6-b8fe-32065f6c45c2);
+// Hunter-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Sunset_HunterDreamer_01_68e15ffc-7fb1-4ea0-8d91-ede24744ea06);
+// Hunter-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Sunset_HunterDreamer_02_356d752f-03e4-48ee-88f3-3b72a8db6e2a);
+// Hunter-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Sunset_HunterDreamer_03_7321874f-8629-43de-985e-d51a721e5387);
+// Hunter-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Sunset_LizardDreamer_03_8360aa52-e8a9-4934-a6a9-31900ce93f54);
+// Boss: Isbeil | Isabella?
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_Q_52f20922-7b22-4d47-90f7-83172f21fe3b);
+// Justinia's Jackal | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_EliteImperialGuard_01_3b854d60-91ed-4ad4-8295-28ba34468e39);
+// Justinia's Jackal | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_EliteImperialGuard_03_b6d45e54-cee9-4e69-9a42-9e383ce803f4);
+// Justinia's Jackal | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_EliteImperialGuard_05_92e4175a-6419-4afb-86f0-88915c288e4b);
+// Latif | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_ThievesGuild_Troll_Fez_dd48adc6-8571-4b28-9f1d-6edcde889867);
+// Boss: Lord Arhu
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_KemmVault_Arhu_7befbac9-04f4-4861-81a9-8d2eeb21df5b);
+// Boss: Lord Linder Kemm
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Kemm_3e6ead7d-dd35-4f9d-985e-af2de0d76d28);
+// Loremaster Olyvie | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Prison_WindegoCell_Paladin_383eb4a6-4c76-4d97-82ea-089f96e5e366);
+// Boss: Mael'thaeras
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Outskirts_PossessedKid_Demon_4e0ae8f0-e5c2-425c-989e-0f0a450b62e3);
+// Boss: Malady
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Arena_Malady_9518c754-1654-4e30-bd32-83f04786f4dd);
+// Paladin Ewald | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Prison_WindegoCell_Paladin_Guard2_b2e2ebb4-5c01-410e-998a-9ddf00e69513);
+// Boss: Queen Justinia
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_TheEmpress_78c95ad2-2d1a-4358-9c9c-77ff9a5fc3c9);
+// Royal Protector | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_MerchantEstate_Guard_FrontDesk_01_09dd0472-b9fd-4a2b-86a4-f082a0b7f800);
+// Royal Protector | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_ImperialGuard_01_23f7110a-bbb0-44b0-a13c-a89295646b61);
+// Royal Protector | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_ImperialGuard_02_b1c2fb4c-ef6f-4805-a3a4-b60fc64e9ddd);
+// Boss: Sanguinia Tell
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Neighborhood_TheFence_973d85be-5756-4bf1-aae3-a2b06fcb2b31);
+// Spirit of Isbeil | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_Q_Unmasked_Ghost_a3580dd1-ed1f-413b-9044-69f4981e9078);
+// Boss: Spirit of Linder Kemm
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Kemm_Ghost_4dc40adc-fa79-4bc2-96f0-a9ce8fae8476);
+// Boss: Spirit of Lord Arhu
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_KemmVault_Arhu_Ghost_df7d4b26-51ab-4dd7-935f-66422f903e9b);
+// Spirit of Nurse Do | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DoctorsHouse_Nurse_01_Ghost_80005f91-9df5-4668-8034-fe750c064515);
+// Spirit of Nurse Fa | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DoctorsHouse_Nurse_02_Ghost_8c246268-aced-4818-8c62-e476fb815d72);
+// Spirit of Royal Protector | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_MerchantEstate_Guard_FrontDesk_01_Ghost_e8bbe846-02a9-466f-956c-9d238677fdc3);
+// Spirit of Sanguinia Tell | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Neighborhood_TheFence_Ghost_fe74095e-9031-4e45-8c87-aae921ac93ed);
+// Storm-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_WarZone_LizardDreamer_5_90e70559-d9de-465c-9a07-86009e6f6a21);
+// Targh | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_Sewers_ThievesGuild_Troll_Fire_f26db157-177c-4179-9b92-fef97781379e);
+// Boss: The Red Prince
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Arena_RedPrince_bf40bd4b-4a6e-4e75-adcf-e2caaeba5178);
+// Boss: Thorny Suncaller
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_RC_ARX_KemmMansion_Garden_Shambl_Tank_01_0b0b9920-64e4-4b29-b465-0c578916a099);
+// Boss: Toymaster Sanders
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_CreepyShop_CreepyCraftsman_63af3c4c-b4d6-4f97-9c49-50d80c41d394);
+// Unremarkable Citizen | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DemonAmbush4_55da9d21-9eaf-445b-82b0-aae2c85aac96);
+// Unremarkable Citizen | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DemonAmbush5_32432d65-85d3-4ad6-bfc7-7ce9ed1caa06);
+// Unremarkable Citizen | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DemonAmbush6_a25898de-df3b-46c7-94d7-8401ffd57f76);
+// Boss: Voidwoken Bloodfury
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_ClanWar_OffStageVoidwoken_Boss_df50b95d-807b-47e5-8854-c2f01ae4f74b);
+// Wave-dreamer | NOT_MESSING_AROUND
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_WarZone_LizardDreamer_3_cf0cf358-d803-44e0-a742-922152950472);
+// Boss: Windego
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_HorrorSleep_Arena_Windego_fcfcb4b0-b3fd-48e9-8616-9cdbe89df185);
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
