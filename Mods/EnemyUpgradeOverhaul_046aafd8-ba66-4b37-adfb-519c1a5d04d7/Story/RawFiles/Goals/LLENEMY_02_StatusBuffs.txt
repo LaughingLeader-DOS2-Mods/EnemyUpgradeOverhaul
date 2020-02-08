@@ -280,6 +280,7 @@ THEN
 StopLoopEffect(_Handle);
 NOT DB_LLENEMY_Summoning_Temp_CountdownFX(_Character, _SummonID, _Handle);
 
+// [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Summoning_OnSummoningReady((CHARACTERGUID)_Character, "LLENEMY_SUMMON_AUTOMATON")
 AND
@@ -288,6 +289,26 @@ THEN
 NOT DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", _Turns, _x, _y, _z);
 //LeaderLib_Skills_UseSkillAtPosition(_Character, _x, _y, _z, "ProjectileStrike_LLENEMY_SummonAutomaton", 0, 0);
 CharacterUseSkillAtPosition(_Character, "ProjectileStrike_LLENEMY_SummonAutomaton", _x, _y, _z, 0, 1);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Summoning_OnSummoningReady((CHARACTERGUID)_Character, "LLENEMY_SUMMON_AUTOMATON")
+AND
+CharacterGetLevel(_Character, _Level)
+AND
+DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", _Turns, _x, _y, _z)
+THEN
+NOT DB_LLENEMY_Summoning_Temp_Countdown(_Character, "LLENEMY_SUMMON_AUTOMATON", _Turns, _x, _y, _z);
+NRD_ProjectilePrepareLaunch();
+NRD_ProjectileSetString("SkillId", "ProjectileStrike_LLENEMY_SummonAutomaton");
+NRD_ProjectileSetInt("CasterLevel", _Level);
+NRD_ProjectileSetGuidString("SourcePosition", _Character);
+NRD_ProjectileSetGuidString("Source", _Character);
+NRD_ProjectileSetGuidString("Caster", _Character);
+NRD_ProjectileSetVector3("TargetPosition", _x, _y, _z);
+NRD_ProjectileLaunch();
+*/
 
 IF
 StoryEvent(_Automaton, "LLENEMY_Automaton_PlayActivateAnimation")
