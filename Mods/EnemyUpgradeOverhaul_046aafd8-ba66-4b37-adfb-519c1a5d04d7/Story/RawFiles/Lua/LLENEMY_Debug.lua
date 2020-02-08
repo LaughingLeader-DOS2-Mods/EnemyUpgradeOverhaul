@@ -51,8 +51,20 @@ local character_stats_computed = {
 	"ChanceToHitBoost"
 }
 
+function LLENEMY_Ext_TraceCharacterStats_Restricted(char)
+	Ext.Print("====== Stats: "..tostring(char).." ======")
+	Ext.Print("==== COMPUTED ====")
+	for _,stat in pairs(character_stats_computed) do
+		Ext.Print(stat..": "..tostring(char[stat]))
+	end
+	Ext.Print("==== REGULAR ====")
+	for _,stat in pairs(character_stats) do
+		Ext.Print(stat..": "..tostring(char[stat]))
+	end
+end
+
 function LLENEMY_Ext_TraceCharacterStats(char)
-	Ext.Print("====== Stats: "..char.." ======")
+	Ext.Print("====== Stats: "..tostring(char).." ======")
 	Ext.Print("==== COMPUTED ====")
 	for _,stat in pairs(character_stats_computed) do
 		local base = NRD_CharacterGetComputedStat(char, stat, 1)
