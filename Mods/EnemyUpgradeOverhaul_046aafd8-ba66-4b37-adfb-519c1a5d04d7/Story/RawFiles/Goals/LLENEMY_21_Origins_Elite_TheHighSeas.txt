@@ -1,0 +1,40 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+//REGION CUSTOM
+PROC
+LLENEMY_Elites_InitLevel("LV_HoE_Main")
+THEN
+// The Hammer's Pet
+LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_LV_SecretCabin_Gheist_01_fe577de0-0c2e-409e-b0fc-0361beb980b7);
+// The Hammer's Pet
+LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_LV_SecretCabin_Gheist_02_fb0cbbf3-0dbf-4d3d-b7d3-60e723701a49);
+
+PROC
+LLENEMY_Elites_RegisterExtenderUpgrades("LV_HoE_Main")
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-8263-87afe1a8d9b5, "LLENEMY_BONUSSKILLS_SET_ELITE");
+LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-8263-87afe1a8d9b5, "LLENEMY_BONUSSKILLS_SOURCE");
+LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, "LLENEMY_BONUSSKILLS_SOURCE");
+LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_LV_SecretCabin_Gheist_02_fb0cbbf3-0dbf-4d3d-b7d3-60e723701a49, "LLENEMY_TALENT_COUNTER");
+
+PROC
+LLENEMY_Elites_RegisterDivineTalentUpgrades("LV_HoE_Main")
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-8263-87afe1a8d9b5, "LLENEMY_TALENT_GREEDYVESSEL");
+LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_LV_SecretCabin_Gheist_01_fe577de0-0c2e-409e-b0fc-0361beb980b7, "LLENEMY_TALENT_INDOMITABLE");
+//END_REGION
+
+//REGION AUTO_GENERATED
+PROC
+LLENEMY_Elites_InitLevel("LV_HoE_Main")
+THEN
+// Boss: Cloaked Figure
+LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-8263-87afe1a8d9b5);
+// Tarquin | Tags: BADASSCIVILIAN
+LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_GLO_Tarquin_a3d0cdcc-d0b0-464d-9ad7-43b38baed620);
+//END_REGION
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_20_Origins__Start"
