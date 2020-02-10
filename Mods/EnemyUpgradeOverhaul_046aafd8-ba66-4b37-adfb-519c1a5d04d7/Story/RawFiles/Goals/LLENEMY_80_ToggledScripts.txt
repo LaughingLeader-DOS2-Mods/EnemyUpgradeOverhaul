@@ -15,6 +15,7 @@ LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Bully", "LLENEMY_Bu
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Counter", "LLENEMY_Counter_Active", 0);
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_MasterThief", "LLENEMY_MasterThief_Active", 0);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_LevelScaling", "LLENEMY_EnemyLevelingEnabled");
+LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_HardMode", "LLENEMY_HardModeEnabled");
 //END_REGION
 
 //REGION RETROACTIVE_TOGGLE
