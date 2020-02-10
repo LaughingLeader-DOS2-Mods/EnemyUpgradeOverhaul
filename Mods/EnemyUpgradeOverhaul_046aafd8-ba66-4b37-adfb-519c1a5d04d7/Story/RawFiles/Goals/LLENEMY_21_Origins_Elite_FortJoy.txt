@@ -37,6 +37,8 @@ LLENEMY_Elites_AddUpgradeChance("FJ_FortJoy_Main", S_GLO_Dallis_69b951dc-55a4-44
 LLENEMY_Elites_AddUpgradeChance("FJ_FortJoy_Main", S_FTJ_TunnelMonster_001_82175071-b3b2-4e7f-945e-f14413ba7d16);
 // Fire Slug | NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("FJ_FortJoy_Main", S_FTJ_TunnelMonster_003_bb9a44f9-7aa3-4bde-be62-9f721e94f500);
+// Gratiana | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("FJ_FortJoy_Main", S_FTJ_SW_ShelterUndead_f0602373-d2cb-4658-a91b-9d111c928152);
 // Boss: Kniles the Flenser
 LLENEMY_Elites_AddUpgradeChance("FJ_FortJoy_Main", S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b, "Bonus", "Infusion_Elite");
 // Lord Withermoore | NOT_MESSING_AROUND

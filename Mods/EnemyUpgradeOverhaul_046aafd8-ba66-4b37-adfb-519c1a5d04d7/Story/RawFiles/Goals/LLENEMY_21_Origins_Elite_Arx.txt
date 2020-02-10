@@ -9,6 +9,8 @@ LLENEMY_Elites_InitLevel("Arx_Main")
 THEN
 // The Doctor / Adramahlihk | AI_PREFERRED_TARGET, ARX_DOCTOR, BADASSCIVILIAN, CIVILIAN, DEMON, HUMAN, HUMANS, IGNORE_UNDEAD_CRIME, MALE, TRADER
 LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_DoctorsHouse_TheDoctor_83083470-c543-45b3-ac8a-108df0daca8d);
+// Dorian Gall | Treasure: TinyBoss | CIVILIAN, DWARF, MALE
+LLENEMY_Elites_AddUpgradeChance("Arx_Main", S_ARX_MerchantEstate_Groom_50b47558-7485-4f84-b530-f04fcf3018d1);
 
 PROC
 LLENEMY_Elites_RegisterExtenderUpgrades("Arx_Main")

@@ -3,7 +3,24 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
+PROC
+LLENEMY_Elites_InitLevel("Arx_Endgame")
+THEN
+LLENEMY_Elites_AddUpgradeChance("Arx_Endgame", S_ARX_EG_Lucian_62d0ca66-b6db-4a10-a457-effe0b64aca0);
 
+PROC
+LLENEMY_Elites_RegisterExtenderUpgrades("Arx_Endgame")
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade("Arx_Endgame", S_ARX_EG_Lucian_62d0ca66-b6db-4a10-a457-effe0b64aca0, "LLENEMY_BONUSSKILLS_SET_ELITE");
+LLENEMY_Elites_AddGuaranteedUpgrade("Arx_Endgame", S_ARX_EG_Lucian_62d0ca66-b6db-4a10-a457-effe0b64aca0, "LLENEMY_BONUSSKILLS_SOURCE");
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Elites_RegisterDivineTalentUpgrades("Arx_Endgame")
+THEN
+LLENEMY_Elites_AddGuaranteedUpgrade("Arx_Endgame", S_ARX_EG_Lucian_62d0ca66-b6db-4a10-a457-effe0b64aca0, "LLENEMY_TALENT_INDOMITABLE");
+LLENEMY_Elites_AddGuaranteedUpgrade("Arx_Endgame", S_ARX_EG_Lucian_62d0ca66-b6db-4a10-a457-effe0b64aca0, "LLENEMY_TALENT_GREEDYVESSEL");
+*/
 EXITSECTION
 
 ENDEXITSECTION
