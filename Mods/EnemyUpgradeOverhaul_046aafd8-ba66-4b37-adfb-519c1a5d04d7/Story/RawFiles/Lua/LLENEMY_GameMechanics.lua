@@ -27,3 +27,10 @@ local function StatDescription_Counter(character, param, statusSource)
 end
 
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_TALENT_COUNTER"] = StatDescription_Counter
+
+function LLENEMY_Ext_AddTalent(character,talent)
+	if Ext.Version() >= 40 then
+		NRD_CharacterSetPermanentBoostTalent(character, talent)
+		CharacterAddAttribute(character, "Dummy", 0)
+	end
+end
