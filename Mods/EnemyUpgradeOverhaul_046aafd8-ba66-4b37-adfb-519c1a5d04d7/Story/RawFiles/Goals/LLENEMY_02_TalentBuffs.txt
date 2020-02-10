@@ -358,84 +358,71 @@ RemoveStatus(_Enemy, "LLENEMY_TALENT_BULLY_DAMAGEBONUS");
 //END_REGION
 
 //REGION EXTENDER_TALENT_ADDING
-/*
+/* [OSITOOLS_ONLY]
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_LONEWOLF", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "LoneWolf");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "LoneWolf");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_TORTURER", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "Torturer");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Torturer");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_UNSTABLE", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "Unstable");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Unstable");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_WHATARUSH", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "WhatARush");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "WhatARush");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_LEECH", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "Leech");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Leech");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_QUICKSTEP", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "QuickStep");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "QuickStep");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_SADIST", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "Sadist");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Sadist");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_GLADIATOR", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "Gladiator");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Gladiator");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_HAYMAKER", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "Haymaker");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Haymaker");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_INDOMITABLE", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "Indomitable");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Indomitable");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_SOULCATCHER", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "Soulcatcher");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Soulcatcher");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_MAGICCYCLES", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "MagicCycles");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "MagicCycles");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_GREEDYVESSEL", _)
 THEN
-NRD_CharacterSetPermanentBoostTalent(_Char, "GreedyVessel");
-CharacterAddAttribute(_Character, "Dummy", 0);
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "GreedyVessel");
 */
 //END_REGION
 

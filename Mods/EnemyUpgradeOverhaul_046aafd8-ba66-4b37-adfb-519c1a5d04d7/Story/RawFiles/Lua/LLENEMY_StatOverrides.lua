@@ -71,6 +71,24 @@ local stat_overrides = {
 	}
 }
 
+-- v40 and up introduced a way to add talents to NPCs
+local talent_belt_overrides = {
+	LLENEMY_TALENT_LONEWOLF = { Items = ""},
+	LLENEMY_TALENT_TORTURER = { Items = ""},
+	LLENEMY_TALENT_UNSTABLE = { Items = ""},
+	LLENEMY_TALENT_WHATARUSH = { Items = ""},
+	LLENEMY_TALENT_LEECH = { Items = ""},
+	LLENEMY_TALENT_QUICKSTEP = { Items = ""},
+	LLENEMY_TALENT_SADIST = { Items = ""},
+	LLENEMY_TALENT_GLADIATOR = { Items = ""},
+	LLENEMY_TALENT_HAYMAKER = { Items = ""},
+	LLENEMY_TALENT_INDOMITABLE = { Items = ""},
+	LLENEMY_TALENT_SOULCATCHER = { Items = ""},
+	LLENEMY_TALENT_MAGICCYCLES = { Items = ""},
+	LLENEMY_TALENT_GREEDYVESSEL = { Items = ""},
+	LLENEMY_TALENT_BACKSTAB = { Items = ""},
+}
+
 local function OverrideStats()
     local total_changes = 0
     local total_stats = 0
@@ -91,6 +109,17 @@ local function OverrideStats()
             total_changes = total_changes + 1
         end
         total_stats = total_stats + 1
+	end
+
+	if Ext.Version() >= 40 then
+		for statname,overrides in pairs(talent_belt_overrides) do
+			for property,value in pairs(overrides) do
+				if debug_print then Ext.Print("[LLENEMY:Bootstrap.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+				Ext.StatSetAttribute(statname, property, value)
+				total_changes = total_changes + 1
+			end
+			total_stats = total_stats + 1
+		end
 	end
 	
     Ext.Print("[LLENEMY:Bootstrap.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
