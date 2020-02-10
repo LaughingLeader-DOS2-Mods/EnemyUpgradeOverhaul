@@ -545,7 +545,11 @@ LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING
 AND
 GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
 AND
-_TotalPoints >= 20
+CharacterGetLevel(_Character, _Level)
+AND
+IntegerSubtract(_TotalPoints, _Level, _UpgradeCP)
+AND
+_UpgradeCP >= 40
 THEN
 SetIsBoss(_Character, 1);
 
