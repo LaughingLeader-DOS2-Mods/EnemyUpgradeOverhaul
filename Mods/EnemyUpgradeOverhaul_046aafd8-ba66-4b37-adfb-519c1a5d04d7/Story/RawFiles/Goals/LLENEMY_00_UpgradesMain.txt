@@ -452,8 +452,10 @@ PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
 NOT GetVarInteger(_Character, "LLENEMY_ChallengePoints", _)
+AND
+CharacterGetLevel(_Character, _Level)
 THEN
-SetVarInteger(_Character, "LLENEMY_ChallengePoints", 0);
+SetVarInteger(_Character, "LLENEMY_ChallengePoints", _Level);
 
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)

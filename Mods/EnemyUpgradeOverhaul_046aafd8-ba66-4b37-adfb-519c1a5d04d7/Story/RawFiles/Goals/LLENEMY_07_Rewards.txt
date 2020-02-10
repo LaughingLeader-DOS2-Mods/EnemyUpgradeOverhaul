@@ -3,6 +3,17 @@ SubGoalCombiner SGC_AND
 INITSECTION
 LLENEMY_Rewards_InitSettings();
 KBSECTION
+//REGION UPDATES
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+AND
+LeaderLib_StringExt_QRY_VersionIsLessThan(_OldVersion,1,5,0,0)
+THEN
+LeaderLog_Log("TRACE", "[LLENEMY_07_Rewards:LeaderUpdater_ModUpdated] Updating upgrade settings from version [",_OldVersion,"].");
+LLENEMY_Rewards_Internal_ClearSettings();
+LLENEMY_Rewards_InitSettings();
+//END_REGION
+
 //REGION SETTINGS
 PROC
 LLENEMY_Rewards_InitSettings()
@@ -13,32 +24,41 @@ LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Hard", 17, 25);
 LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
 LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "RewardTiny", 50);
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "Luck1", 10);
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "RewardCombat", 4);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "LLENEMY_CP_Easy_Common", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "LLENEMY_CP_Easy_Uncommon", 10);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "LLENEMY_CP_Easy_Rare", 4);
 
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "RewardSmall", 50);
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "Luck2", 10);
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "RewardCombat", 1);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "LLENEMY_CP_Medium_Common", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "LLENEMY_CP_Medium_Uncommon", 10);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Medium", "LLENEMY_CP_Medium_Rare", 1);
 
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Hard", "RewardMedium", 50);
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Hard", "Luck3", 10);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Hard", "LLENEMY_CP_Hard_Common", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Hard", "LLENEMY_CP_Hard_Rare", 10);
 
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Insane", "RewardBig", 50);
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Insane", "Luck4", 10);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Insane", "LLENEMY_CP_Insane_Common", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Insane", "LLENEMY_CP_Insane_Rare", 10);
 
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Impossible", "RewardBig", 50);
-LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Impossible", "LuckTop", 35);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Impossible", "LLENEMY_CP_Impossible_Common", 50);
+LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Impossible", "LLENEMY_CP_Impossible_Rare", 10);
 
-LLENEMY_Rewards_AddTreasureEffect("Luck1", "LLENEMY_FX_Rewards_Lucky_01");
-LLENEMY_Rewards_AddTreasureEffect("Luck2", "LLENEMY_FX_Rewards_Lucky_02");
-LLENEMY_Rewards_AddTreasureEffect("Luck3", "LLENEMY_FX_Rewards_Lucky_03");
-LLENEMY_Rewards_AddTreasureEffect("Luck4", "LLENEMY_FX_Rewards_Lucky_04");
-LLENEMY_Rewards_AddTreasureEffect("LuckTop", "LLENEMY_FX_Rewards_Lucky_05");
+LLENEMY_Rewards_AddTreasureEffect("LLENEMY_CP_Easy_Rare", "LLENEMY_FX_Rewards_Lucky_01");
+LLENEMY_Rewards_AddTreasureEffect("LLENEMY_CP_Medium_Rare", "LLENEMY_FX_Rewards_Lucky_02");
+LLENEMY_Rewards_AddTreasureEffect("LLENEMY_CP_Hard_Common", "LLENEMY_FX_Rewards_Lucky_03");
+LLENEMY_Rewards_AddTreasureEffect("LLENEMY_CP_Hard_Rare", "LLENEMY_FX_Rewards_Lucky_04");
+LLENEMY_Rewards_AddTreasureEffect("LLENEMY_CP_Insane_Rare", "LLENEMY_FX_Rewards_Lucky_05");
+LLENEMY_Rewards_AddTreasureEffect("LLENEMY_CP_Impossible_Rare", "LLENEMY_FX_Rewards_Lucky_05");
 
 //Default if nothing else plays
 LLENEMY_Rewards_AddRewardEffect("LLENEMY_FX_Rewards_Generic_Weak_01", 1, 16);
 LLENEMY_Rewards_AddRewardEffect("LLENEMY_FX_Rewards_Generic_Strong_01", 17, 999);
+
+PROC
+LLENEMY_Rewards_Internal_ClearSettings()
+THEN
+SysClear("DB_LLENEMY_Rewards_TreasurePool", 3);
+SysClear("DB_LLENEMY_Rewards_PoolVariables", 3);
+SysClear("DB_LLENEMY_Rewards_CPEffects", 3);
+SysClear("DB_LLENEMY_Rewards_TreasureEffects", 2);
 
 PROC
 LLENEMY_Rewards_AddTreasurePool((STRING)_Name, (INTEGER)_MinAmount, (INTEGER)_MaxAmount)
