@@ -7,15 +7,11 @@ KBSECTION
 PROC
 LLENEMY_Elites_InitLevel("CoS_Main")
 THEN
-//MajesticNoodle suggestions
-// Forktongue | BADASSCIVILIAN, BLACK_RING, HUMAN, MALE
-LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Elf_BlackRing_002_4078d759-ed9d-4971-9f68-415cb9a71704);
+//MajesticNoodle suggestions;
 //Wordless | BADASSCIVILIAN, BLACK_RING, FEMALE, HUMAN
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_BlackRingHub_Captain_7d32e545-6c6c-4a95-90dd-3ed14d3a20de);
 //Spirit of Cursed Knight of Duna | DWARF, DWARVES, GHOST, MALE
 /*LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Dwarf_KnightOfDuna_Ghost_6de0b387-a8f5-471b-9906-12d91724770c);*/
-//Cursed Knight of Duna | DWARF, DWARVES, MALE
-LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Dwarf_KnightOfDuna_d1fafe6d-ccd5-4056-9294-db5fb89366a5);
 
 PROC
 LLENEMY_Elites_RegisterExtenderUpgrades("CoS_Main")
@@ -31,10 +27,12 @@ LLENEMY_Elites_AddGuaranteedUpgrade("CoS_Main", S_GLO_Academy_TempleAutomation_6
 PROC
 LLENEMY_Elites_InitLevel("CoS_Main")
 THEN
-// Black Ring Captain | NOT_MESSING_AROUND
+// Black Ring Captain | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Orc_CampBlackRing_Captain_1eceaf90-79a6-4d36-9360-975f1464b0e3, "Auras", "Auras_Main");
-// Black Ring Fearmaiden | NOT_MESSING_AROUND
+// Black Ring Fearmaiden | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_SallowManMinion_003_7c282499-a74d-4ae6-aee7-0e210a6695b4);
+// Cursed Knight of Duna | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Dwarf_KnightOfDuna_d1fafe6d-ccd5-4056-9294-db5fb89366a5);
 // Boss: Dryad of the Mother Tree
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Dryad_01_b53ed2b5-e7f9-4bcb-8795-700cd69648b5);
 // Boss: Dryad of the Mother Tree
@@ -43,33 +41,35 @@ LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Dryad_02_93c7ceb1-db06
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Dryad_03_31a04d96-375b-459f-9c97-87d5b3bf8eed);
 // Boss: Elven Scion
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Scion_f3afdcda-ea9b-40cd-b72c-2008528dec80);
-// Eternal Protector | AUTOMATON
+// Eternal Protector | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_BossAutomation_001_95e541c2-9b4f-49a9-91d7-2e6875a8721d);
-// Eternal Protector | AUTOMATON
+// Eternal Protector | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_BossAutomation_003_028a43db-1718-4125-b7c7-f05a517ed0d2);
-// Eternal Protector | AUTOMATON
+// Eternal Protector | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_ElfCave_Automaton_001_3242ab1a-db0d-4c3b-a7f1-68c8d62bc651);
-// Eternal Protector | AUTOMATON
+// Eternal Protector | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_ElfCave_Automaton_003_88f85544-1280-4b00-8beb-d05c6747afa4);
-// Eternal Sentinel | AUTOMATON
+// Eternal Sentinel | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_BossAutomation_002_79e728db-4a6c-4b4f-a39b-630c924ba5d9);
-// Eternal Sentinel | AUTOMATON
+// Eternal Sentinel | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_BossAutomation_004_3238298b-05d0-41e4-b368-82aeb643e832);
-// Eternal Sentinel | AUTOMATON
+// Eternal Sentinel | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_ElfCave_Automaton_002_444c20b4-8f62-4903-a0ff-de55707496e0);
-// Eternal Sentinel | AUTOMATON
+// Eternal Sentinel | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_ElfCave_Automaton_004_c35234bc-6172-4661-a766-7542b6df79e5);
-// Jawbone the Merchant | DEMON
+// Forktongue | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Elf_BlackRing_002_4078d759-ed9d-4971-9f68-415cb9a71704);
+// Jawbone the Merchant | Tags: DEMON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Elf_Merchant_002_3b0c1af8-cacb-424d-8e2a-3f51aa92bee6);
-// Krug the Troll | NOT_MESSING_AROUND
+// Krug the Troll | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_BlackRingHub_Troll_0c148028-84ff-4bdd-957b-5f093b4a7521);
-// Spirit of Knight of Vrogir | Orc
+// Spirit of Knight of Vrogir | Tags: Orc
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Orc_KnightOfVrogir_Ghost_a336e109-4ed4-4a08-8a9a-f66dc57605a6);
-// Spirit of an Orc Priest | Orc
+// Spirit of an Orc Priest | Tags: Orc
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Orc_OrcPriest_Ghost_002_32104ef4-3083-43af-b490-dd47f60de796);
-// Spirit of an Orc Priestess | Orc
+// Spirit of an Orc Priestess | Tags: Orc
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Orc_OrcPriest_Ghost_001_306dffe6-1fa4-4e0c-a095-db1dbc14bd26);
-// The Eternal Arbiter | AUTOMATON
+// The Eternal Arbiter | Tags: AUTOMATON
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_GLO_Academy_TempleAutomation_681a2c86-0ff0-4622-a6fc-1ee085d38178);
 // Boss: The Great Guardian
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_MonolithBoss_Char_c963ad5d-72f7-4c0e-8f08-910ffe11a0a3);
@@ -77,7 +77,7 @@ LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_MonolithBoss_Char_c963ad5d-72f
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_SallowMan_d07e0f6b-c473-47f2-9d1c-e1f6f0ef61af);
 // Boss: The Shadow Prince
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_SpyMaster_787c6c4a-6e5a-4044-9616-27e21e5a171e);
-// Voidwoken Delegate | NOT_MESSING_AROUND
+// Voidwoken Delegate | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Academy_SentientVoidwoken_001_1f1f40cc-4d58-4b0d-a359-4bd3d5c00a1a);
 //END_REGION
 
