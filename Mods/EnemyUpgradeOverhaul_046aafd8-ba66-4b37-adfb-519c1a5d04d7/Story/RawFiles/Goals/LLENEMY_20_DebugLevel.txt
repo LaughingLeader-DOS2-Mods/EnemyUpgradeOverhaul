@@ -62,6 +62,34 @@ String(_Char, _CharStr)
 THEN
 NRD_LuaCall("LLENEMY_Ext_TraceCharacterStats", _CharStr);
 */
+
+//REGION CP_DEBUG
+PROC
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char)
+AND
+GetVarInteger(_Char, "LLENEMY_ChallengePoints", _ChallengePoints)
+AND
+_ChallengePoints > 0
+AND
+IntegertoString(_ChallengePoints, _PointsStr)
+AND
+CharacterGetDisplayName(_Char, _, _Name)
+THEN
+LeaderLog_Log("TRACE", "[LLENEMY:Upgrades:OnRollingDone] Enemy [",_Name,"] Challenge Points value is [",_PointsStr,"].");
+
+IF
+CharacterDied(_Char)
+AND
+GetVarInteger(_Char, "LLENEMY_ChallengePoints", _ChallengePoints)
+AND
+_ChallengePoints > 0
+AND
+IntegertoString(_ChallengePoints, _PointsStr)
+AND
+CharacterGetDisplayName(_Char, _, _Name)
+THEN
+LeaderLog_Log("TRACE", "[LLENEMY:Rewards:Debug] Enemy [",_Name,"] died. Challenge Points [",_PointsStr,"].");
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
