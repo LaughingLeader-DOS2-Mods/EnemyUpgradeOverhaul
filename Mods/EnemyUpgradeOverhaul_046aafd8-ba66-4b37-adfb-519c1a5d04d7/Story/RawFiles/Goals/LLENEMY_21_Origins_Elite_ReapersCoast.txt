@@ -29,6 +29,7 @@ LLENEMY_Elites_RegisterDivineTalentUpgrades("RC_Main")
 THEN
 LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_DW_SourceLich_Stronger_2c8d84ef-bfd0-4ff7-93fe-b3728d05ee87, "LLENEMY_TALENT_GREEDYVESSEL");
 LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_WH_BottledWish_Djinn_838283f5-a45f-4892-a4ac-fae2f99d4de0, "LLENEMY_TALENT_MAGICCYCLES");
+LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "LLENEMY_TALENT_INDOMITABLE");
 //END_REGION
 
 //REGION AUTO_GENERATED
@@ -91,7 +92,6 @@ LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_DeerKiller_000_f22b676c-0921-
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Advocate_bfa3e903-78ab-46aa-9a95-54fb956eb2b3);
 // The Dead Ferryman | NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "Immunities", "Immunity");
-LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "LLENEMY_TALENT_INDOMITABLE");
 // Boss: The Eternal Aetera
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_Tomb_Ataraxian_b844294c-62c2-4ff8-82f1-f874b9e4352d);
 // Boss: Tovah
