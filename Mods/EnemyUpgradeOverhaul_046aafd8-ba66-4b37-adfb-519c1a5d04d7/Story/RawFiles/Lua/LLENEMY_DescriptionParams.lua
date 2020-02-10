@@ -12,7 +12,7 @@ function LLENEMY_EXT_RemoveUpgradeInfo(uuid)
 end
 
 local function StatusGetDescriptionParam(status, statusSource, character, param)
-	Ext.Print("[LLENEMY_DescriptionParams.lua] Getting params for (".. tostring(status) ..") param ("..tostring(param)..") InstanceId("..tostring(Ext.GetCharacter(character).Stats.InstanceId)..")")
+	Ext.Print("[LLENEMY_DescriptionParams.lua] Getting params for (".. tostring(status) ..") param ("..tostring(param)..") InstanceId("..tostring(character.Stats.InstanceId)..")")
 	--LLENEMY_Ext_TraceCharacterStats_Restricted(character)
 	--LLENEMY_Ext_TraceCharacterStats_Restricted(statusSource)
 
