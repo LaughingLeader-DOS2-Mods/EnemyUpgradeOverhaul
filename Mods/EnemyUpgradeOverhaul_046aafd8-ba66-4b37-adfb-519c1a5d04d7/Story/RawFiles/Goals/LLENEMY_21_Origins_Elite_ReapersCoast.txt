@@ -10,12 +10,8 @@ LLENEMY_Elites_InitLevel("RC_Main")
 THEN
 // Natalie Bromhead	
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_PurgedDaughter_70f3182f-3c18-4504-9691-332d9dec7964);
-// Ryker	
-LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_Ryker_522b8095-b539-4a82-84f3-bf8e5a74dfe4);
 // Murga, The Shadowy One	
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_Tavern_ArenaChamp_aa7f67da-aece-4487-83cf-96f10a018ed1);
-// Djinn
-LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_WH_BottledWish_Djinn_838283f5-a45f-4892-a4ac-fae2f99d4de0);
 
 PROC
 LLENEMY_Elites_RegisterExtenderUpgrades("RC_Main")
@@ -36,66 +32,105 @@ LLENEMY_Elites_AddGuaranteedUpgrade("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-46
 PROC
 LLENEMY_Elites_InitLevel("RC_Main")
 THEN
-// Aileen | NOT_MESSING_AROUND
+// Aileen | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_DwarvenScholar_01_2555841d-a987-4c92-b87e-93c829e8fed0);
-// Alchemist Looter | NOT_MESSING_AROUND
+// Alchemist Looter | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_FL_ShatteredHouse_Alchemist_85327fc2-2e11-4bbc-89df-0fa931d7927a);
 // Boss: Alice Alisceon
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_PolyServants_BurningWitch_73ffd67d-1536-41eb-b96d-be3c03515913);
-// Chtylchia, Mistress of Agony | NOT_MESSING_AROUND
+// Almira | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Almira_49b466a9-e67f-4e3c-8f66-3636ba7dd54f);
+// Chtylchia, Mistress of Agony | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_CampDemon_001_29ef3742-1c2f-4bff-8375-53f1c55bb7f2);
-// Crossbowman Looter | NOT_MESSING_AROUND
+// Crossbowman Looter | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_FL_ShatteredHouse_Archer_8a4080d6-5f92-4ec7-9bef-05ab4500b9ab);
-// Boss: Dessicated Undead
+// Boss: Desiccated Undead
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_SourceLich_Stronger_2c8d84ef-bfd0-4ff7-93fe-b3728d05ee87, "Immunities", "Immunity");
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_SourceLich_Stronger_2c8d84ef-bfd0-4ff7-93fe-b3728d05ee87, "Buffs", "Elite");
-// Boss: Dessicated Undead
+// Boss: Desiccated Undead
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_SourceLich_adf5b715-1e96-4e48-88a7-d68a5b6d0351);
-// Earnan | NOT_MESSING_AROUND
+// Djinn | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_WH_BottledWish_Djinn_838283f5-a45f-4892-a4ac-fae2f99d4de0);
+// Earnan | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_DwarvenScholar_02_f2bd4946-8aba-42be-b70a-b8a6d48fce47);
-// Eirhern, the Saboteur | NOT_MESSING_AROUND
+// Eyrhen of Havoc | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_CampDemon_000_7458c767-b68a-490c-a840-23209a3f2b3e);
-// Feygr Bloodspawn | BLOODSPAWN
+// Feygr Bloodspawn | Tags: BLOODSPAWN
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_DemonSpot2_Demon_6_3bfacaa9-c9a8-4e5e-868c-d1115c0b47e7);
 // Boss: Ghalann, Scion of the Elves
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_VoidwokenAncestorTree_Boss_e3e5e53f-e167-4b35-bd53-d11b4332db76);
-// Glenna Graeme | NOT_MESSING_AROUND
+// Glenna Graeme | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_Homeless_Dwarf_719eb2eb-5dc8-4ff4-92ea-b4f82587a8d8);
-// Gryst Bloodspawn | BLOODSPAWN
+// Gryst Bloodspawn | Tags: BLOODSPAWN
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_DemonSpot2_Demon_1_9a9e4795-2612-4190-8976-478c6a80240f);
-// Guardsman Mallic | NOT_MESSING_AROUND
+// Guardsman Mallic | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_MerchantGuard_001_e66da9c3-201a-4bd6-8a4d-bd478cbedad1);
-// Guardsman Stefano | NOT_MESSING_AROUND
+// Guardsman Stefano | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_MerchantGuard_002_7c681b24-6ba9-4bae-977c-4a3f28d0a0c4);
-// Jahan | NOT_MESSING_AROUND
+// Hannag Reborn | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_CorneredSourcerer_Sourcerer_Promised_48ee51f8-8691-4838-b1e6-ac7c1cec4aa4);
+// Harbinger of Doom | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_FL_AlanBoss_ef0adba7-2471-4972-9feb-ceb4c7547141);
+// Jahan | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Jahan_4d222cfd-49c8-41d3-8cb7-2a2b56232633);
 // Boss: Lamenting Abomination
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Altar_Werewolf_000_8fe2d805-39b6-42ad-a5ef-bc0b9d647466);
+// Lohar | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_UnderTavern_DwarfBoss_8e58abc6-1010-4e67-97b2-b9686586e784);
+// Magister Carver | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_Barracks_Magister_Officer_e8e89cb2-f4b7-4066-a3cb-e04422dcdfa4);
+// Magister Gremory | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_Cave_MagisterCombatLeader_e0c0e47e-84d1-4e71-8da4-9bae87c1f553);
+// Magister Knight | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_CorneredSourcerer_MagisterLead_0cbd14fe-ac44-414c-a7a9-89dfa2af71bf);
 // Boss: Magister Reimond
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_WhiteMagister_b1bdd004-a286-4ad5-9826-a763d672b2a7);
+// Magister Vorrh | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_Docks_WhiteMagister_01_f1e8c0fd-a1e8-4576-b3cf-59cfe01499f4);
 // Boss: Mor the Trenchmouthed
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_Vault_Demon_001_01c5d4d3-425f-42fd-8200-528b14aafec8);
 // Boss: Mordus'Akaim
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_WC_BossFight_GiantInsect_Boss_5362d05e-1cb2-451f-9f5a-69078100a01b);
-// Puxk Bloodspawn | BLOODSPAWN
+// Primordial Fire Voidling | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_VoidwokenAttack_VW_W3_FireBig_01_50d7ff90-8423-448c-a33b-4159eaccb693);
+// Primordial Fire Voidling | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_VoidwokenAttack_VW_W3_FireBig_02_22a1608a-3d5c-4eb6-b5c6-3d08d11a5522);
+// Puxk Bloodspawn | Tags: BLOODSPAWN
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_DemonSpot2_Demon_2_80b8fc46-b0a3-44a2-8519-2371ea962b2b);
+// Restless Scarecrow | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DF_Scarecrow_3bda7938-578f-49fc-a655-50b1b24db065);
 // Boss: Roost Anlon
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_MIL_Roost_6fffadfe-b2a8-4e12-a664-ba84c0b0a3a3);
+// Ryker | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_Ryker_522b8095-b539-4a82-84f3-bf8e5a74dfe4);
 // Boss: Sadha
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_RedPrincess_050fbbf9-3fc9-40cd-9cbb-43b4b3754a5e);
+// Spirit of Magister Knight | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_CorneredSourcerer_MagisterLead_Ghost_af60509d-c320-41a7-8841-4686add368ea);
 // Boss: Spirit of Roost Anlon
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_MIL_Roost_Ghost_634eadd1-1fca-419f-8d37-2e5637cad2d3);
 // Boss: Spirit of Tovah
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Tovah_Ghost_807a60f7-3caa-4465-af6d-96ca6209c384);
-// Spirit of a Deer Hunter | NOT_MESSING_AROUND
-LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_DeerKiller_000_f22b676c-0921-4ae7-872e-20fdb5290457);
+// Spirit of White Magister Jonathan | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_GarethFriend_Ghost_9166409f-fda0-459e-9c30-39ad01f829f8);
 // Boss: The Advocate
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Advocate_bfa3e903-78ab-46aa-9a95-54fb956eb2b3);
-// The Dead Ferryman | NOT_MESSING_AROUND
+// The Dead Ferryman | Tags: NOT_MESSING_AROUND
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BF_Ferryman_6d4270d3-2f01-4674-8668-396ac0a4c703, "Immunities", "Immunity");
 // Boss: The Eternal Aetera
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_Tomb_Ataraxian_b844294c-62c2-4ff8-82f1-f874b9e4352d);
+// The Weaver | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_GY_RykersSpider_bdc57d81-43fb-4592-8387-efd757a9b3be);
 // Boss: Tovah
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_Tovah_69c31947-b004-44aa-b856-2a9a96ff218a);
+// Voidwoken Deep-dweller | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_DW_RingVoidwoken_01_28cab511-8239-4d94-b0ec-84ad7ae3a46d);
+// White Magister Jonathan | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_GarethFriend_9372d7fb-dc95-4acf-b455-8a36d610e203);
+// White Magister Kari | Treasure: MiniBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_InnerField_Magister_5_a8ca9245-b132-4e9e-b73a-81b41a6a297b);
+// Zerachial the Accursed | Treasure: TinyBoss
+LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_DemonSpot1_Demon_001_839d90c0-9457-4d9d-a263-dd1c0cd71c8a);
 EXITSECTION
 
 ENDEXITSECTION
