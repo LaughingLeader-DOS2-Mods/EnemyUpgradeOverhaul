@@ -1,0 +1,133 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LeaderLib_SendEvent("LLENEMY_HardMode_TUT_TopDeckInit");
+KBSECTION
+//REGION TOPDECK_INIT
+IF
+StoryEvent(_, "LLENEMY_HardMode_TUT_TopDeckInit")
+THEN
+ProcSetInvulnerable(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, 1);
+ProcSetInvulnerable(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 1);
+CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, 1);
+CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 1);
+//CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, 1);
+//END_REGION
+
+//REGION KEEP_BOSS_ALIVE
+IF
+//SkillCast(S_TUT_TopDeck_Tentacle4_488645e1-3d74-4b3e-83fb-ab2dde52387b, "Zone_Quest_EnemyTentacleSweep", _, _)
+OnStageChanged(ITEMGUID_S_TUT_FireSurfaceHelper_77d9fcb1-c857-4db9-bd31-19b5cfa4af5a, 0)
+THEN
+ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 2500);
+ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 2500);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal")
+THEN
+ProcSetInvulnerable(_Char, 0);
+CharacterSetImmortal(_Char, 0);
+SetVarInteger(_Char, "FleeFromDangerousSurface", 0);
+ApplyStatus(_Char, "FLOATING", 48.0, 1, _Char);
+ProcCharacterMoveTo(_Char, TRIGGERGUID_S_TUT_StrikingTentacle_Trigger1_61d8d246-d5c0-4a26-b9fa-a12e3807ae40, 0, "LLENEMY_TopDeckMagister_Arrived");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_TopDeckMagister_Arrived")
+AND
+GetStatusTurns(_Char, "FLOATING", _Turns)
+AND
+_Turns > 0
+THEN
+RemoveStatus(_Char, "FLOATING");
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal")
+AND
+DB_IsPlayer((CHARACTERGUID)_Player)
+THEN
+ProcSetHostileToIndivPlayer(_Char,_Player);
+//END_REGION
+
+//REGION RESURRECT_TOPDECK_GRUNT
+IF
+CharacterKilledBy(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6, S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6)
+AND
+ObjectGetFlag(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "LLENEMY_TopMagister_Resurrected", 0)
+AND
+GetTemplate(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _MagisterTemplate)
+AND
+CharacterCreateOutOfSightToObject(_MagisterTemplate, S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6, 0, "", _Replacement)
+THEN
+ObjectSetFlag(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "LLENEMY_TopMagister_Resurrected", 0);
+SetOnStage(_Replacement, 0);
+CharacterTransformFromCharacter(_Replacement, S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, 0, 1, 1, 1, 1, 0, 0);
+SetStoryEvent(_Replacement, "GEN_FallAndLie");
+ObjectSetFlag(_Replacement, "LLENEMY_TopMagister_ResurrectedClone", 0);
+DB_LLENEMY_TUT_Temp_ReplacementMagister(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _Replacement);
+ProcObjectTimer(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupDying", 500);
+ProcObjectTimer(_Replacement, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupCombatTracker", 500);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupDying")
+AND
+DB_LLENEMY_TUT_Temp_ReplacementMagister(_Char, _Replacement)
+AND
+DB_IsPlayer((CHARACTERGUID)_Player)
+THEN
+ProcSetHostileToIndivPlayer(_Replacement,_Player);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupDying")
+AND
+DB_LLENEMY_TUT_Temp_ReplacementMagister(_Char, _Replacement)
+AND
+GetPosition(_Char, _x, _y, _z)
+THEN
+TeleportToPosition(_Replacement, _x, _y, _z, "", 0, 1);
+SetTag(_Replacement, "AI_IGNORED_TARGET");
+PlayAnimation(_Replacement, "knockdown_loop");
+CharacterSetHitpointsPercentage(_Replacement, 1.0);
+CharacterSetImmortal(_Replacement, 1);
+SetCanJoinCombat(_Replacement, 0);
+SetVarInteger(_Replacement, "bool_CanCower", 0);
+SetVarInteger(_Replacement, "bool_CanFleeWhileCowering", 0);
+SetVarInteger(_Replacement, "FleeFromDangerousSurface", 0);
+SetOnStage(_Char, 0);
+MoveAllItemsTo(_Char, _Replacement, 0, 0, 1);
+SetOnStage(_Replacement, 1);
+ApplyStatus(_Replacement, "LLENEMY_FAKE_DYING", -1.0, 1, _Replacement);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Replacement, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupCombatTracker")
+AND
+DB_CombatCharacters(S_TUT_TopDeckVoidling10_bd0123ae-26fd-4dad-8326-b6ae9a3fc1c5, _CombatID)
+THEN
+LeaderLib_Turns_TrackCombat(_CombatID, "LLENEMY_TopDeckLivingMagister_GetUp", 5);
+
+PROC
+LeaderLib_Turns_OnTurnCounterComplete_Combat((STRING)_ID, (INTEGER)_CombatID, "LLENEMY_TopDeckLivingMagister_GetUp")
+AND
+DB_LLENEMY_TUT_Temp_ReplacementMagister(_Char, _Replacement)
+THEN
+NOT DB_LLENEMY_TUT_Temp_ReplacementMagister(_Char, _Replacement);
+RemoveStatus(_Replacement, "LLENEMY_FAKE_DYING");
+CharacterSetAnimationOverride(_Replacement, "");
+PlayAnimation(_Replacement, "knockdown_getup", "LLENEMY_TopLivingMagister_StoodUp");
+CharacterSetHitpointsPercentage(_Replacement, 66.0);
+
+IF
+StoryEvent((CHARACTERGUID)_Replacement, "LLENEMY_TopLivingMagister_StoodUp")
+THEN
+CharacterSetImmortal(_Replacement, 0);
+SetCanJoinCombat(_Replacement, 1);
+//END_REGION
+
+IF
+RegionEnded("TUT_Tutorial_A")
+THEN
+GoalCompleted;
+
+EXITSECTION
+SysClear("DB_LLENEMY_TUT_Temp_ReplacementMagister", 2);
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_30_Origins_HardMode"

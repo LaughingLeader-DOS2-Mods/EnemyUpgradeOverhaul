@@ -1,0 +1,12 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+IF
+GameStarted("TUT_Tutorial_A", _)
+THEN
+SysActivateGoal("");
+
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_20_Origins__Start"

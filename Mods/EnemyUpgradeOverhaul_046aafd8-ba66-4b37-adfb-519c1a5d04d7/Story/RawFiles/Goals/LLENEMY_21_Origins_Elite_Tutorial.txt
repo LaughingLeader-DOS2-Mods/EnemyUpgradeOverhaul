@@ -8,23 +8,6 @@ LLENEMY_Elites_InitLevel("TUT_Tutorial_A")
 THEN
 // Boss: Captain Kalwyn
 LLENEMY_Elites_AddUpgradeChance("TUT_Tutorial_A", S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a);
-
-//REGION KEEP_BOSS_ALIVE
-IF
-AutomatedDialogStarted("TUT_TopDeckTentacle4_Appeared", _)
-THEN
-CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 1);
-
-IF
-AttackedByObject(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, _, CHARACTERGUID_S_TUT_TopDeck_Tentacle4_488645e1-3d74-4b3e-83fb-ab2dde52387b, _, _)
-THEN
-ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_MakeMortal", 999);
-
-PROC
-ProcObjectTimerFinished(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_MakeMortal")
-THEN
-CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 0);
-//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
