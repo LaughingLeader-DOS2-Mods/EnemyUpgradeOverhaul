@@ -124,9 +124,9 @@ local function StatusGetDescriptionParam(status, statusSource, character, param)
 					for k,v in pairs(upgrades) do
 						local color = upgrade_colors[v]
 						if color ~= nil then
-							output = output.."<font color='"..color.."' size='19'>"..v.."</font>"
+							output = output.."<font color='"..color.."' size='18'>"..v.."</font>"
 						else
-							output = output.."<font size='19'>"..v.."</font>"
+							output = output.."<font size='18'>"..v.."</font>"
 						end
 						if i < count - 1 then
 							output = output.."<br>"
