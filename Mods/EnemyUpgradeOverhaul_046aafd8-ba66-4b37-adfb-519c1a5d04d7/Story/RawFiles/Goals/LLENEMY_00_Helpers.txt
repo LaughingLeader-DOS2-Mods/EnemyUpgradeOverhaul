@@ -13,7 +13,6 @@ DB_IsPlayer(_Player)
 AND
 CharacterIsEnemy(_Player, _Enemy, 1)
 THEN
-DB_NOOP(1);
 DB_LLENEMY_System_Temp_IsEnemyOfPartyResolved(_Enemy);
 
 QRY
