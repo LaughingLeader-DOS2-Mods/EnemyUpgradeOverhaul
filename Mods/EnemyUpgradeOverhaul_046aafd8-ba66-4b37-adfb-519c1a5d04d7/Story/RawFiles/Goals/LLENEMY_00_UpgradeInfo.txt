@@ -12,53 +12,49 @@ DB_LLENEMY_UpgradeInfo_Info(_Upgrade, _DisplayName, _Description);
 PROC
 LLENEMY_UpgradeInfo_InitSettings()
 THEN
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_BACKSTAB", "Talent: Assassin", "Character can backstab with non-dagger weapons.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_BULLY", "Talent: Bully", "Character deals 50% extra damage against opponents that are Slowed, Crippled or Knocked Down with basic attacks.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_BULLY_DAMAGEBONUS", "Talent: Bully", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_LEECH", "Talent: Leech", "Character is healed when standing in blood.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_LIGHTNINGROD", "Talent: Lightning Rod", "Character is immune to stun, and gains health when hit by <font color='#7d71d9'>Air Damage</font>.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_LONEWOLF", "Talent: Lone Wolf", "Character has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_NATURALCONDUCTOR", "Talent: Natural Conductor", "Character gains <font color='#7d71d9'>Hasted</font> when standing on electric surfaces.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_QUICKSTEP", "Talent: The Pawn", "Character gets 1 AP worth of free movement each turn.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_RANGERRANGE", "Talent: Quickdraw", "Character has increased attack range of Bows and Crossbows by 2m.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_RESISTDEAD", "Talent:  Comeback Kid", "Character will revive once when killed, coming back with 30% health.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_RESISTDEAD2", "Talent: Elite Comeback Kid", "Character will revive once when killed, coming back with full health.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_UNSTABLE", "Talent: Unstable", "Character will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_WEATHERPROOF", "Talent: Weatherproof", "Character is immune to enviromental effects.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_WHATARUSH", "Talent: What a Rush", "Character has increased recovery and maximum Action Points when their health is below 50%.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_TORTURER", "Talent: Torturer", "Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_COUNTER", "Talent: Counter", "Character has a chance to counter-attack when attacked within weapon range.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_SADIST", "Talent: Sadist", "Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_HAYMAKER", "Talent: Haymaker", "Character's attacks never miss but they cannot deal critical strikes.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_GLADIATOR", "Talent: Gladiator", "Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.<br>Can happen only once per turn.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_INDOMITABLE", "Talent: Indomitable", "Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.<br>Can happen once every 3 turns.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_SOULCATCHER", "Talent: Soulcatcher", "When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_MASTERTHIEF", "Talent: Master Thief", "Character has a chance to steal a consumable item on attack.<br>Can only happen once per turn.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_GREEDYVESSEL", "Talent: Greedy Vessel", "Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_MAGICCYCLES", "Talent: Magic Cycles", "At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INFUSION_INFO", "Infused", "Character is infused with a mysterious power, granting a variety of bonuses and extra skills.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INFUSION_INFO_ELITE", "Super-Infused", "Character is infused with tremendous power, granting a variety of bonuses and extra skills.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_NECROFIRE", "Infernoblazer", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_WATER", "Cascader", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_BLESSED_ICE", "Heatsapper", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_POISON", "Venomstriker", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_ACID", "Melter", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_ELECTRIC", "Circuitbreaker", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_CURSED_ELECTRIC", "Teslacoil", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_BLOOD", "Bloodbender", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_OIL", "Oil Earthcracker", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_INF_FIRE", "Firestarter", "");
-LLENEMY_UpgradeInfo_Register("LLENEMY_GRANADA", "Grenade Enthusiast", "Character is obsessed with collecting grenades. One misstep and boom!");
-LLENEMY_UpgradeInfo_Register("LLENEMY_BONUS_TREASURE_ROLL", "Bonus Treasure", "Character rolled a <font color='#FF0000'>Critical Failure (0)</font>, and now has to give bonus treasure if killed before this status expires. Hurry!");
-LLENEMY_UpgradeInfo_Register("LLENEMY_IMMUNITY_LOSECONTROL", "Perfect Control", "Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_CHICKEN_OVERLORD", "Chicken Overlord", "Character is the Overlord for an armada of chickens. Beware! Bwark!");
-LLENEMY_UpgradeInfo_Register("LLENEMY_DOUBLE_DIP", "Double Dip", "Character is growing even more powerful through a second round of upgrades!");
-LLENEMY_UpgradeInfo_Register("LLENEMY_PERSEVERANCE_MASTERY", "Perseverance Mastery", "Character is persevering through sheer force of will.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_DUPLICANT", "Shadow Duplicant", "Character is a living shadow of another character.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SINGLE", "Skilled", "Character has a new bonus skill.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_NORMAL", "Skilled: Exceptional", "Character has a set of new bonus skills.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SOURCE", "Skilled: Sourcery", "Character has a new bonus source skill.");
-LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_ELITE", "Skilled: Elite", "Character has an elite set of new bonus skills.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_BACKSTAB", "<font color='#FFAB00'>Talent: Assassin</font>", "Character can backstab with non-dagger weapons.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_LEECH", "<font color='#C80030'>Talent: Leech</font>", "Character is healed when standing in blood.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_LONEWOLF", "<font color='#DC0015'>Talent: Lone Wolf</font>", "Character has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_QUICKSTEP", "<font color='#FFAB00'>Talent: The Pawn</font>", "Character gets 1 AP worth of free movement each turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_RANGERRANGE", "<font color='#FFAB00'>Talent: Quickdraw</font>", "Character has increased attack range of Bows and Crossbows by 2m.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_WHATARUSH", "<font color='#47e982'>Talent: What a Rush</font>", "Character has increased recovery and maximum Action Points when their health is below 50%.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_TORTURER", "<font color='#960000'>Talent: Torturer</font>", "Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_SADIST", "<font color='#ff5771'>Talent: Sadist</font>", "Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_HAYMAKER", "<font color='#b083ff'>Talent: Haymaker</font>", "Character's attacks never miss but they cannot deal critical strikes.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_GLADIATOR", "<font color='#f59b00'>Talent: Gladiator</font>", "Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.<br>Can happen only once per turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_INDOMITABLE", "<font color='#e94947'>Talent: Indomitable</font>", "Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.<br>Can happen once every 3 turns.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_SOULCATCHER", "<font color='#73F6FF'>Talent: Soulcatcher</font>", "When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_MASTERTHIEF", "<font color='#C9AA58'>Talent: Master Thief</font>", "Character has a chance to steal a consumable item on attack.<br>Can only happen once per turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_GREEDYVESSEL", "<font color='#e9d047'>Talent: Greedy Vessel</font>", "Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_MAGICCYCLES", "<font color='#22c3ff'>Talent: Magic Cycles</font>", "At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_NECROFIRE", "<font color='#7F00FF'>Infernoblazer</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_NECROFIRE_G", "<font color='#FE6E27'>Elite Infernoblazer</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_WATER", "<font color='#188EDE'>Cascader</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_WATER_G", "<font color='#FE6E27'>Elite Cascader</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_BLESSED_ICE", "<font color='#CFECFF'>Heatsapper</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_BLESSED_ICE_G", "<font color='#FE6E27'>Elite Heatsapper</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_POISON", "<font color='#65C900'>Venomstriker</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_POISON_G", "<font color='#FE6E27'>Elite Venomstriker</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_ACID", "<font color='#81AB00'>Melter</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_ACID_G", "<font color='#FE6E27'>Elite Melter</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_ELECTRIC", "<font color='#7D71D9'>Circuitbreaker</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_ELECTRIC_G", "<font color='#FE6E27'>Elite Circuitbreaker</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_CURSED_ELECTRIC", "<font color='#7F25D4'>Teslacoil</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_CURSED_ELECTRIC_G", "<font color='#FE6E27'>Elite Teslacoil</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_BLOOD", "<font color='#AA3938'>Bloodbender</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_BLOOD_G", "<font color='#FE6E27'>Elite Bloodbender</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_OIL", "<font color='#C7A758'>Earthcracker</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_OIL_G", "<font color='#FE6E27'>Elite Earthcracker</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_FIRE", "<font color='#FE6E27'>Firestarter</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_FIRE_G", "<font color='#FE6E27'>Elite Firestarter</font>", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUS_TREASURE_ROLL", "<font color='#D040D0'>Bonus Treasure</font>", "Character rolled a <font color='#FF0000'>Critical Failure (0)</font>, and now has to give bonus treasure if killed before this status expires. Hurry!");
+LLENEMY_UpgradeInfo_Register("LLENEMY_IMMUNITY_LOSECONTROL", "<font color='#FFAB00'>Perfect Control</font>", "Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_DOUBLE_DIP", "<font color='#7F00FF'>Double Dip</font>", "Character is growing even more powerful through a second round of upgrades!");
+LLENEMY_UpgradeInfo_Register("LLENEMY_PERSEVERANCE_MASTERY", "<font color='#E4CE93'>Perseverance Mastery</font>", "Character is persevering through sheer force of will.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SINGLE", "<font color='#F1D466'>Bonus Skill</font>", "Character has a new bonus skill.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_NORMAL", "<font color='#B823CB'>Bonus Skillset</font>", "Character has a set of new bonus skills.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SOURCE", "<font color='#46B195'>Bonus Source Skill</font>", "Character has a new bonus source skill.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_ELITE", "<font color='#73F6FF'>Elite Skillset</font>", "Character has an elite set of new bonus skills.");
 //END_REGION
 
 //REGION REGISTER_ID
@@ -122,11 +118,17 @@ AND
 LeaderLib_QRY_ExtenderIsActive()
 THEN
 LLENEMY_UpgradeInfo_Internal_Update(_Character, _Upgrade);
+LeaderLib_Timers_StartObjectTimer(_Character, 250, "Timers_LLENEMY_UpgradeInfo_SendInfo", "LLENEMY_UpgradeInfo_SendInfo");
 
-PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Upgrade, (REAL)_Duration, (INTEGER)_CP)
+IF
+StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SendInfo")
+THEN
+LLENEMY_UpgradeInfo_Internal_SendInfo(_Character);
+
+IF
+StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SendInfo")
 AND
-LeaderLib_QRY_ExtenderIsActive()
+LLENEMY_UpgradeInfo_QRY_HasInfo(_Character)
 AND
 NOT LeaderLib_Helper_QRY_HasStatus(_Character, "LLENEMY_UPGRADE_INFO")
 THEN
@@ -163,12 +165,12 @@ THEN
 NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Last);
 
 PROC
-LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Character)
 THEN
 DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, "");
 
 PROC
-LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Character)
 AND
 DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade)
 AND
@@ -176,7 +178,7 @@ DB_LLENEMY_UpgradeInfo_Info(_Upgrade, _DisplayName, _Description)
 AND
 DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Current)
 AND
-StringConcatenate(_Current, "<br>", _a)
+StringConcatenate(_Current, ";", _a)
 AND
 StringConcatenate(_a, _DisplayName, _Next)
 THEN
@@ -185,11 +187,13 @@ DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Next);
 
 /* [OSITOOLS_ONLY]
 PROC
-LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Character)
 AND
 GetUUID(_Character, _UUID)
 AND
 DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info)
+AND
+_Info != ""
 THEN
 NRD_LuaCall("LLENEMY_EXT_StoreUpgradeInfo", _UUID, _Info);
 */
