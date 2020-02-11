@@ -3,10 +3,11 @@ SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
 IF
-GameStarted("TUT_Tutorial_A", _)
+RegionStarted("TUT_Tutorial_A")
 THEN
-SysActivateGoal("");
+SysActivateGoal("LLENEMY_31_Origins_HM_Tutorial");
 
 EXITSECTION
+LLENEMY_HardMode_DisableScripts();
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_20_Origins__Start"

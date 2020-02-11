@@ -1,0 +1,59 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_HardMode_CheckForCampaign();
+KBSECTION
+
+//REGION ORIGINS_ENABLING
+PROC
+LLENEMY_HardMode_CheckForCampaign()
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", 1)
+AND
+SysStatus("DOS2ModWrapper", _Status)
+AND
+_Status > 1
+THEN
+SysActivateGoal("LLENEMY_30_Origins_HardMode");
+
+PROC
+Proc_GameModeStarted("Campaign", (INTEGER)_IsEditorMode)
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", 1)
+THEN
+SysActivateGoal("LLENEMY_30_Origins_HardMode");
+
+IF
+GlobalFlagSet("LLENEMY_HardModeEnabled")
+AND
+SysStatus("DOS2ModWrapper", _Status)
+AND
+_Status > 1
+THEN
+SysActivateGoal("LLENEMY_30_Origins_HardMode");
+
+IF
+GlobalFlagSet("LLENEMY_HardModeEnabled")
+AND
+DB_CurrentGameMode("Campaign")
+THEN
+SysActivateGoal("LLENEMY_30_Origins_HardMode");
+//END_REGION
+
+//REGION DISABLING
+IF
+GlobalFlagCleared("LLENEMY_HardModeEnabled")
+AND
+SysIsActive("LLENEMY_30_Origins_HardMode")
+THEN
+SysCompleteGoal("LLENEMY_30_Origins_HardMode");
+
+PROC
+LLENEMY_HardMode_DisableScripts()
+THEN
+DB_NOOP(1);
+//END_REGION
+
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

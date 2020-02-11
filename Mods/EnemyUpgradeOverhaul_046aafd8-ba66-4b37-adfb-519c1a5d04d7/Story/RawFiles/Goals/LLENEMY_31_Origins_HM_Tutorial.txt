@@ -1,11 +1,11 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-LeaderLib_SendEvent("LLENEMY_HardMode_TUT_TopDeckInit");
+LLENEMY_HardMode_InitLevel("TUT_Tutorial_A");
 KBSECTION
 //REGION TOPDECK_INIT
-IF
-StoryEvent(_, "LLENEMY_HardMode_TUT_TopDeckInit")
+PROC
+LLENEMY_HardMode_InitLevel("TUT_Tutorial_A")
 THEN
 ProcSetInvulnerable(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, 1);
 ProcSetInvulnerable(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 1);
@@ -124,6 +124,11 @@ SetCanJoinCombat(_Replacement, 1);
 
 IF
 RegionEnded("TUT_Tutorial_A")
+THEN
+GoalCompleted;
+
+PROC
+LLENEMY_HardMode_DisableScripts()
 THEN
 GoalCompleted;
 
