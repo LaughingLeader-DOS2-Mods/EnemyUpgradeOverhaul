@@ -65,7 +65,7 @@ NRD_LuaCall("LLENEMY_Ext_TraceCharacterStats", _CharStr);
 
 //REGION CP_DEBUG
 PROC
-LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char)
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Level)
 AND
 GetVarInteger(_Char, "LLENEMY_ChallengePoints", _ChallengePoints)
 AND

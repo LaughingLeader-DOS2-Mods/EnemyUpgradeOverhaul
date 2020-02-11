@@ -3,7 +3,7 @@ SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
 PROC
-LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character)
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character, (STRING)_Level)
 AND
 NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _, _)
 AND
@@ -14,7 +14,7 @@ THEN
 DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _BonusRolls, 0);
 
 PROC
-LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character)
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character, (STRING)_Level)
 AND
 DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _BonusRolls, _Current)
 AND
@@ -25,7 +25,7 @@ THEN
 NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _BonusRolls, _Current);
 DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _BonusRolls, _Next);
 LLENEMY_Upgrades_RollForUpgrades(_Character);
-LLENEMY_Upgrades_OnRollingDone(_Character);
+LLENEMY_Upgrades_OnRollingDone(_Character, _Level);
 
 /*
 LeaderLib_Timers_StartObjectTimer(_Character, 50, "Timers_LLENEMY_HardMode_RollAgain", "LLENEMY_HardMode_RollAgain");
