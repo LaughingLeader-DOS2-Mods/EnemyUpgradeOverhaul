@@ -210,6 +210,6 @@
 	<content contentuid="hdb001da6g340cg4f00g9190g13e8c1a96f90" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WEATHERPROOF_DisplayName">Talent: Weatherproof</content>
 	<content contentuid="he6532e10gc9d5g4923g9544g033fca885329" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_Description">Character has increased recovery and maximum Action Points when their health is below 50%.</content>
 	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_DisplayName">Talent: What a Rush</content>
-	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is enhanced.&lt;br&gt;[1]</content>
+	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is empowered.[1]</content>
 	<content contentuid="h84c27debgd38dg4844g84d4g75eb558eb5de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_DisplayName">Upgraded</content>
 </contentList>
