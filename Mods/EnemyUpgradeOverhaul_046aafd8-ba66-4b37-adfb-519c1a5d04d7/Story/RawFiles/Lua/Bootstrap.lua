@@ -27,7 +27,7 @@ function LLENEMY_Ext_ClearGain(char)
 	if stats ~= nil then
 		local gain = NRD_StatGetInt(stats, "Gain")
 		gain = gain - 1
-		Osi.LeaderLog_LogInt("DEBUG", "[LLENEMY:Bootstrap.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").");
+		Osi.LeaderLog_Log("DEBUG", "[LLENEMY:Bootstrap.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").");
 		NRD_CharacterSetPermanentBoostInt(char, "Gain", gain);
 		NRD_CharacterSetPermanentBoostInt(char, "Gain", 1);
 		CharacterAddAttribute(char, "Strength", 0);
