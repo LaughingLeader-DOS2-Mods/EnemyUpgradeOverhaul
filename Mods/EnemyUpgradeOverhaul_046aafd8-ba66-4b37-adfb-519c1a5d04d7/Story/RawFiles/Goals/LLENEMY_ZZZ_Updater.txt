@@ -5,7 +5,6 @@ LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 1,5,0,0);
 LeaderUpdater_Register_ActiveGoal("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_ZZZ_Updater");
 LeaderLib_Register_ModMenu("EnemyUpgradeOverhaul.Settings", "[Enemy Upgrade Overhaul] Settings", "LLENEMY_Settings", "EnemyUpgradeOverhaul", "LaughingLeader");
 GlobalSetFlag("LLENEMY_DuplicationUpgradesDisabled"); // Opt-in
-
 KBSECTION
 IF
 GameStarted(_Level, _)
