@@ -67,7 +67,7 @@ local function StatusGetDescriptionParam(status, statusSource, character, param)
 				local info_str = upgrade_info[uuid]
 				if info_str ~= nil then
 					local affixes = split(info_str, ";")
-					table.sort(affixes, function(a, b) return a:upper() < b:upper() end)
+					--table.sort(affixes, function(a, b) return a:upper() < b:upper() end)
 					local output = ""
 					for k,v in pairs(affixes) do
 						output = output .. v .. "<br>"
