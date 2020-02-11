@@ -513,15 +513,16 @@ ApplyStatus(_Character, _Status, _NewDuration, 1, _Character);
 PROC
 LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, 0)
 AND
-_Duration != -1.0
+_Duration > 0.0
 THEN
 ApplyStatus(_Character, _Status, _Duration, 1, _Character);
 
-// Permanent upgrades
 PROC
-LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, -1.0, (INTEGER)_IsHardMode)
+LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_IsHardMode)
+AND
+_Duration <= 0.0
 THEN
-ApplyStatus(_Character, _Status, -1.0, 1, _Character);
+ApplyStatus(_Character, _Status, _Duration, 1, _Character);
 
 /*
 PROC
