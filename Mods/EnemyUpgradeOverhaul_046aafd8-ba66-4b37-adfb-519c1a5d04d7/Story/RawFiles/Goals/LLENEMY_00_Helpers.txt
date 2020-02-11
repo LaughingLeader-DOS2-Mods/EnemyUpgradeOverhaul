@@ -105,3 +105,4 @@ NOT DB_LLENEMY_System_Temp_CanScaleResolved(_Char);
 EXITSECTION
 
 ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
