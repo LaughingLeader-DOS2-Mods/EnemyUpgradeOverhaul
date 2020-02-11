@@ -76,7 +76,9 @@
 	<content contentuid="h0982817bgf111g4dc3g811bga9fbd51ab0ca" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_5">Vitality Boost</content>
 	<content contentuid="h5b647354gce9dg4797gadc0g78ed927e407c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_50">Vitality Boost</content>
 	<content contentuid="h47cc8f43g77e0g4fafg908dg744a41931eec" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ChickenOverlord">Chicken Overlord</content>
+	<content contentuid="h84c9caecgf4f2g4e36ga17ag1ee9b85184a2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Class_Default_GeoPyro">Ignitionmancer</content>
 	<content contentuid="h1dec449dgfec9g48eaga922gbbf72721497e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Duplicant">Shadow Duplicant</content>
+	<content contentuid="h722182d2g6efbg4d7bgb38ag2cdfd476d61b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_FakeDying">Dead?</content>
 	<content contentuid="h0d2a065eg9cbag47fdgabe7gf919c9a87875" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Acid">Melter</content>
 	<content contentuid="h5c8f2c50g5a43g4a6agac29ge06c1f5ad378" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Acid_G">Elite Melter</content>
 	<content contentuid="h0ab60959ga9a0g49b3g9f1cgc98d30ea13f1" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blessed_Ice">Heatsapper</content>
@@ -137,6 +139,8 @@
 	<content contentuid="hf180561cge97ag426cg84ddg83dd257ce95d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_DisplayName">Double Dip</content>
 	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_Description">Character is a living shadow of another character.</content>
 	<content contentuid="hf91deedcga4c7g427eg8153g2e347c06d3e8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_DisplayName">Shadow Duplicant</content>
+	<content contentuid="h35f368f7g6d97g4adfgb26cgfcbf91e6a9fc" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_FAKE_DYING_Description">Character appears to be dead.</content>
+	<content contentuid="hdace76dag01cbg499dg9777geb2c80877c7c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_FAKE_DYING_DisplayName">Dead</content>
 	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_Description">Character is obsessed with collecting grenades. One misstep and boom!</content>
 	<content contentuid="h77532147gd01fg47efgb317gbf00813dbcb6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_DisplayName">Grenade Enthusiast</content>
 	<content contentuid="h626f03b5gb1a5g4e8eg94b3g1686a8687718" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_LOSECONTROL_Description">Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.</content>
@@ -206,4 +210,6 @@
 	<content contentuid="hdb001da6g340cg4f00g9190g13e8c1a96f90" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WEATHERPROOF_DisplayName">Talent: Weatherproof</content>
 	<content contentuid="he6532e10gc9d5g4923g9544g033fca885329" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_Description">Character has increased recovery and maximum Action Points when their health is below 50%.</content>
 	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_DisplayName">Talent: What a Rush</content>
+	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is enhanced.&lt;br&gt;[1]</content>
+	<content contentuid="h84c27debgd38dg4844g84d4g75eb558eb5de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_DisplayName">Upgraded</content>
 </contentList>
