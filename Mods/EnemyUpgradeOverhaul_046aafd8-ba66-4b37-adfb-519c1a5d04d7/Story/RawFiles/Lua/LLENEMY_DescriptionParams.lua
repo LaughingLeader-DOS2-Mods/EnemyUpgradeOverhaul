@@ -1,5 +1,25 @@
 
 local upgrade_info = {}
+local upgrade_ids = {}
+
+function LLENEMY_EXT_CreateUpgradeInfoID(character)
+	local hearing = NRD_CharacterGetComputedStat(character, "Hearing", 0)
+	local id = hearing
+	local hearingmult = 0
+	if upgrade_ids[id] ~= nil then
+		hearingmult = hearingmult + 1
+		id = hearing + hearingmult
+		while upgrade_ids[id] ~= nil do
+			hearingmult = hearingmult + 1
+			id = hearing + hearingmult
+		end
+		NRD_CharacterSetPermanentBoostInt(character, "Hearing", id)
+		CharacterAddAttribute(character, "Dummy", 0)
+	end
+	Osi.LLENEMY_UpgradeInfo_Internal_StoreUpgradeID(character, id)
+	upgrade_ids[id] = GetUUID(character)
+	Ext.Print("Stored upgrade_ids["..tostring(id).."] = " .. GetUUID(character))
+end
 
 function LLENEMY_EXT_StoreUpgradeInfo(uuid, str)
 	upgrade_info[uuid] = str
@@ -8,21 +28,37 @@ end
 
 function LLENEMY_EXT_RemoveUpgradeInfo(uuid)
 	upgrade_info[uuid] = nil;
+	for key,v in pairs(upgrade_ids) do
+		if v == uuid then
+			upgrade_ids[key] = nil
+			Ext.Print("Removed upgrade_ids hearing key for " .. uuid)
+		end
+	end
 	Ext.Print("Removed upgrade_info entry for " .. uuid)
 end
 
 local function StatusGetDescriptionParam(status, statusSource, character, param)
-	Ext.Print("[LLENEMY_DescriptionParams.lua] Getting params for (".. tostring(status) ..") param ("..tostring(param)..") InstanceId("..tostring(character.Stats.InstanceId)..")")
+	Ext.Print("[LLENEMY_DescriptionParams.lua] Getting params for (".. tostring(status.Name) ..") param ("..tostring(param)..")")
+	--LLENEMY_Ext_TraceCharacterStats_Restricted(character)
+	--Ext.Print(tostring(character.Experience))
+	--Ext.Print(tostring(LeaderLib.Common.Dump(character.Experience)))
 	--LLENEMY_Ext_TraceCharacterStats_Restricted(character)
 	--LLENEMY_Ext_TraceCharacterStats_Restricted(statusSource)
 
-	if status == "LLENEMY_UPGRADE_INFO" then
+	if status.Name == "LLENEMY_UPGRADE_INFO" then
 		if param == "UpgradeInfo" then
-			-- Ext.Print("Getting upgrade_info for " .. tostring(character.MyGuid))
-			-- local info_str = upgrade_info[character.MyGuid]
-			-- if info_str ~= nil then
-			-- 	return info_str
-			-- end
+			local hearing = character.Hearing
+			Ext.Print("Looking for ID for hearing(".. tostring(hearing)..")")
+			local uuid = upgrade_ids[hearing]
+			if uuid ~= nil then
+				Ext.Print("Getting upgrade_info for hearing(".. tostring(hearing)..") = uuid(".. tostring(uuid)..")")
+				local info_str = upgrade_info[uuid]
+				if info_str ~= nil then
+					Ext.Print("Upgrade info (".. tostring(info_str)..")")
+					return info_str
+				end
+			end
+			return ""
 		end
 	else
 		local func = EnemyUpgradeOverhaul.StatusDescriptionParams[status]

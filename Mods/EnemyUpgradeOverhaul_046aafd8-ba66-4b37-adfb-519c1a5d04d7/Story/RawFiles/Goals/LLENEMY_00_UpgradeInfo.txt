@@ -1,0 +1,246 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_UpgradeInfo_InitSettings();
+KBSECTION
+PROC
+LLENEMY_UpgradeInfo_Register((STRING)_Upgrade, (STRING)_DisplayName, (STRING)_Description)
+THEN
+DB_LLENEMY_UpgradeInfo_Info(_Upgrade, _DisplayName, _Description);
+
+//REGION DEFAULT_ENTRIES
+PROC
+LLENEMY_UpgradeInfo_InitSettings()
+THEN
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_BACKSTAB", "Talent: Assassin", "Character can backstab with non-dagger weapons.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_BULLY", "Talent: Bully", "Character deals 50% extra damage against opponents that are Slowed, Crippled or Knocked Down with basic attacks.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_BULLY_DAMAGEBONUS", "Talent: Bully", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_LEECH", "Talent: Leech", "Character is healed when standing in blood.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_LIGHTNINGROD", "Talent: Lightning Rod", "Character is immune to stun, and gains health when hit by <font color='#7d71d9'>Air Damage</font>.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_LONEWOLF", "Talent: Lone Wolf", "Character has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_NATURALCONDUCTOR", "Talent: Natural Conductor", "Character gains <font color='#7d71d9'>Hasted</font> when standing on electric surfaces.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_QUICKSTEP", "Talent: The Pawn", "Character gets 1 AP worth of free movement each turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_RANGERRANGE", "Talent: Quickdraw", "Character has increased attack range of Bows and Crossbows by 2m.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_RESISTDEAD", "Talent:  Comeback Kid", "Character will revive once when killed, coming back with 30% health.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_RESISTDEAD2", "Talent: Elite Comeback Kid", "Character will revive once when killed, coming back with full health.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_UNSTABLE", "Talent: Unstable", "Character will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_WEATHERPROOF", "Talent: Weatherproof", "Character is immune to enviromental effects.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_WHATARUSH", "Talent: What a Rush", "Character has increased recovery and maximum Action Points when their health is below 50%.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_TORTURER", "Talent: Torturer", "Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_COUNTER", "Talent: Counter", "Character has a chance to counter-attack when attacked within weapon range.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_SADIST", "Talent: Sadist", "Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_HAYMAKER", "Talent: Haymaker", "Character's attacks never miss but they cannot deal critical strikes.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_GLADIATOR", "Talent: Gladiator", "Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.<br>Can happen only once per turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_INDOMITABLE", "Talent: Indomitable", "Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.<br>Can happen once every 3 turns.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_SOULCATCHER", "Talent: Soulcatcher", "When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_MASTERTHIEF", "Talent: Master Thief", "Character has a chance to steal a consumable item on attack.<br>Can only happen once per turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_GREEDYVESSEL", "Talent: Greedy Vessel", "Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_TALENT_MAGICCYCLES", "Talent: Magic Cycles", "At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INFUSION_INFO", "Infused", "Character is infused with a mysterious power, granting a variety of bonuses and extra skills.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INFUSION_INFO_ELITE", "Super-Infused", "Character is infused with tremendous power, granting a variety of bonuses and extra skills.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_NECROFIRE", "Infernoblazer", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_WATER", "Cascader", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_BLESSED_ICE", "Heatsapper", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_POISON", "Venomstriker", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_ACID", "Melter", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_ELECTRIC", "Circuitbreaker", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_CURSED_ELECTRIC", "Teslacoil", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_BLOOD", "Bloodbender", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_OIL", "Oil Earthcracker", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_INF_FIRE", "Firestarter", "");
+LLENEMY_UpgradeInfo_Register("LLENEMY_GRANADA", "Grenade Enthusiast", "Character is obsessed with collecting grenades. One misstep and boom!");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUS_TREASURE_ROLL", "Bonus Treasure", "Character rolled a <font color='#FF0000'>Critical Failure (0)</font>, and now has to give bonus treasure if killed before this status expires. Hurry!");
+LLENEMY_UpgradeInfo_Register("LLENEMY_IMMUNITY_LOSECONTROL", "Perfect Control", "Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_CHICKEN_OVERLORD", "Chicken Overlord", "Character is the Overlord for an armada of chickens. Beware! Bwark!");
+LLENEMY_UpgradeInfo_Register("LLENEMY_DOUBLE_DIP", "Double Dip", "Character is growing even more powerful through a second round of upgrades!");
+LLENEMY_UpgradeInfo_Register("LLENEMY_PERSEVERANCE_MASTERY", "Perseverance Mastery", "Character is persevering through sheer force of will.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_DUPLICANT", "Shadow Duplicant", "Character is a living shadow of another character.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SINGLE", "Skilled", "Character has a new bonus skill.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_NORMAL", "Skilled: Exceptional", "Character has a set of new bonus skills.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SOURCE", "Skilled: Sourcery", "Character has a new bonus source skill.");
+LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_ELITE", "Skilled: Elite", "Character has an elite set of new bonus skills.");
+//END_REGION
+
+//REGION REGISTER_ID
+/*
+The character data in StatusGetDescriptionParam doesn't have a reference to the object's UUID, 
+so we use Hearing for the ID.
+ */
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+AND
+NOT DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_00_UpgradesMain:Update] Creating unique ID.");
+NRD_LuaCall("LLENEMY_EXT_CreateUpgradeInfoID", (STRING)_Character);
+*/
+
+PROC
+LLENEMY_UpgradeInfo_Internal_StoreUpgradeID((CHARACTERGUID)_Character, (INTEGER)_Hearing)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Last)
+THEN
+NOT DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Last);
+
+PROC
+LLENEMY_UpgradeInfo_Internal_StoreUpgradeID((CHARACTERGUID)_Character, (INTEGER)_Hearing)
+THEN
+DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Hearing);
+//END_REGION
+
+//REGION RESETTING
+/* Lua data isn't persistant, so it needs to be refreshed using databases. */
+IF
+TextEventSet("leaderlib_luareset")
+THEN
+TimerCancel("Timers_LLENEMY_ResetUpgradeInfo");
+TimerLaunch("Timers_LLENEMY_ResetUpgradeInfo", 50);
+
+IF
+TimerFinished("Timers_LLENEMY_ResetUpgradeInfo")
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _HearingID)
+THEN
+LLENEMY_UpgradeInfo_Internal_Update(_Character, "");
+
+/* [OSITOOLS_ONLY]
+IF
+GameStarted(_,_)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _HearingID)
+THEN
+LLENEMY_UpgradeInfo_Internal_Update(_Character, "");
+*/
+//END_REGION
+
+//REGION UPGRADE_INFO
+PROC
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Upgrade, (REAL)_Duration, (INTEGER)_CP)
+AND
+LeaderLib_QRY_ExtenderIsActive()
+THEN
+LLENEMY_UpgradeInfo_Internal_Update(_Character, _Upgrade);
+
+PROC
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Upgrade, (REAL)_Duration, (INTEGER)_CP)
+AND
+LeaderLib_QRY_ExtenderIsActive()
+AND
+NOT LeaderLib_Helper_QRY_HasStatus(_Character, "LLENEMY_UPGRADE_INFO")
+THEN
+ApplyStatus(_Character, "LLENEMY_UPGRADE_INFO", -1.0, 0, _Character);
+
+QRY
+LLENEMY_UpgradeInfo_QRY_HasInfo((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade)
+THEN
+DB_NOOP(1);
+
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+THEN
+DB_NOOP(1);
+// [END_NO_OSITOOLS]
+
+PROC
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+AND
+_Upgrade != ""
+AND
+DB_LLENEMY_UpgradeInfo_Info(_Upgrade, _DisplayName, _Description)
+THEN
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade);
+
+PROC
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Last)
+THEN
+NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Last);
+
+PROC
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+THEN
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, "");
+
+PROC
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade)
+AND
+DB_LLENEMY_UpgradeInfo_Info(_Upgrade, _DisplayName, _Description)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Current)
+AND
+StringConcatenate(_Current, "<br>", _a)
+AND
+StringConcatenate(_a, _DisplayName, _Next)
+THEN
+NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Current);
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Next);
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+AND
+GetUUID(_Character, _UUID)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info)
+THEN
+NRD_LuaCall("LLENEMY_EXT_StoreUpgradeInfo", _UUID, _Info);
+*/
+//END_REGION
+
+//REGION CLEARING
+PROC
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade)
+THEN
+NOT DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade);
+
+PROC
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Hearing)
+THEN
+NOT DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Hearing);
+
+PROC
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Character)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info)
+THEN
+NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info);
+
+IF
+CharacterDied(_Character)
+AND
+LLENEMY_UpgradeInfo_QRY_HasInfo(_Character)
+THEN
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject(_Character);
+
+IF
+RegionEnded(_)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Hearing)
+THEN
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject(_Character);
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Character)
+AND
+GetUUID(_Character, _UUID)
+THEN
+NRD_LuaCall("LLENEMY_EXT_RemoveUpgradeInfo", _UUID);
+*/
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

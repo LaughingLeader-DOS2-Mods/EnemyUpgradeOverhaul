@@ -89,6 +89,54 @@ local talent_belt_overrides = {
 	LLENEMY_TALENT_BACKSTAB = { Items = ""},
 }
 
+-- Statuses displayed in LLENEMY_UPGRADE_INFO
+local upgrade_info_statuses = {
+	"LLENEMY_TALENT_BACKSTAB",
+	"LLENEMY_TALENT_BULLY",
+	"LLENEMY_TALENT_BULLY_DAMAGEBONUS",
+	"LLENEMY_TALENT_LEECH",
+	"LLENEMY_TALENT_LIGHTNINGROD",
+	"LLENEMY_TALENT_LONEWOLF",
+	"LLENEMY_TALENT_NATURALCONDUCTOR",
+	"LLENEMY_TALENT_QUICKSTEP",
+	"LLENEMY_TALENT_RANGERRANGE",
+	"LLENEMY_TALENT_RESISTDEAD",
+	"LLENEMY_TALENT_RESISTDEAD2",
+	"LLENEMY_TALENT_UNSTABLE",
+	"LLENEMY_TALENT_WEATHERPROOF",
+	"LLENEMY_TALENT_WHATARUSH",
+	"LLENEMY_TALENT_TORTURER",
+	"LLENEMY_TALENT_COUNTER",
+	"LLENEMY_TALENT_SADIST",
+	"LLENEMY_TALENT_HAYMAKER",
+	"LLENEMY_TALENT_GLADIATOR",
+	"LLENEMY_TALENT_INDOMITABLE",
+	"LLENEMY_TALENT_SOULCATCHER",
+	"LLENEMY_TALENT_MASTERTHIEF",
+	"LLENEMY_TALENT_GREEDYVESSEL",
+	"LLENEMY_TALENT_MAGICCYCLES",
+	"LLENEMY_INF_NECROFIRE",
+	"LLENEMY_INF_WATER",
+	"LLENEMY_INF_BLESSED_ICE",
+	"LLENEMY_INF_POISON",
+	"LLENEMY_INF_ACID",
+	"LLENEMY_INF_ELECTRIC",
+	"LLENEMY_INF_CURSED_ELECTRIC",
+	"LLENEMY_INF_BLOOD",
+	"LLENEMY_INF_OIL",
+	"LLENEMY_INF_FIRE",
+	"LLENEMY_GRANADA",
+	"LLENEMY_BONUS_TREASURE_ROLL",
+	"LLENEMY_IMMUNITY_LOSECONTROL",
+	--"LLENEMY_CHICKEN_OVERLORD",
+	"LLENEMY_DOUBLE_DIP",
+	"LLENEMY_PERSEVERANCE_MASTERY",
+	"LLENEMY_BONUSSKILLS_SINGLE",
+	"LLENEMY_BONUSSKILLS_SET_NORMAL",
+	"LLENEMY_BONUSSKILLS_SOURCE",
+	"LLENEMY_BONUSSKILLS_SET_ELITE",
+}
+
 local function OverrideStats()
     local total_changes = 0
     local total_stats = 0
@@ -120,6 +168,13 @@ local function OverrideStats()
 			end
 			total_stats = total_stats + 1
 		end
+	end
+
+	for _,statname in pairs(upgrade_info_statuses) do
+		if debug_print then Ext.Print("[LLENEMY:Bootstrap.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+		Ext.StatSetAttribute(statname, "Icon", "")
+		total_changes = total_changes + 1
+		total_stats = total_stats + 1
 	end
 	
     Ext.Print("[LLENEMY:Bootstrap.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
