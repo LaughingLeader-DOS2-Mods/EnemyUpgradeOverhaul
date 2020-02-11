@@ -7,6 +7,8 @@ LLENEMY_GRANADA_Description	Character is obsessed with collecting grenades. One 
 LLENEMY_GRANADA_DisplayName	Grenade Enthusiast
 LLENEMY_IMMUNITY_LOSECONTROL_Description	Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.
 LLENEMY_IMMUNITY_LOSECONTROL_DisplayName	Perfect Control
+LLENEMY_IMMUNITY_PIERCING_DisplayName	Piercing Immunity
+LLENEMY_IMMUNITY_PIERCING_Description	Character is immune to <font color='#FF0000'>Piercing Damage</font>.
 LLENEMY_INFUSION_INFO_Description	Character is infused with a mysterious power, granting a variety of bonuses and extra skills.
 LLENEMY_INFUSION_INFO_DisplayName	Infused
 LLENEMY_INFUSION_INFO_ELITE_Description	Character is infused with tremendous power, granting a variety of bonuses and extra skills.

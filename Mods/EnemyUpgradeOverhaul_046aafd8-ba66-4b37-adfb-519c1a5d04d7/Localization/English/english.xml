@@ -105,6 +105,7 @@
 	<content contentuid="hdee6d2a6gee37g4892g84e8g83a79ebfd9ed" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Water_G">Elite Cascader</content>
 	<content contentuid="hd8e442d5ge3fag4dbfg87d1g7403c979c4f7" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_LoseControlImmunity">Perfect Control</content>
 	<content contentuid="h5bf766cag0d92g4374gac83g28032389d45b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_PerseveranceMastery">Perseverance Mastery</content>
+	<content contentuid="h0fac50d9g63c1g4dc1gb769g9fba10e602df" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_PiercingImmunity">Piercing Immunity</content>
 	<content contentuid="h5b62279dg9bebg46c7g83f6gd05c7a9c9310" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_RangerRange">Talent: Quickdraw</content>
 	<content contentuid="h24701ed8gaeeag41d9gb1d8g1ff3f96f2abc" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_BullyDamageBonus">Talent: Bully</content>
 	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LightningRod">Talent: Lightning Rod</content>
@@ -145,16 +146,28 @@
 	<content contentuid="h77532147gd01fg47efgb317gbf00813dbcb6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_DisplayName">Grenade Enthusiast</content>
 	<content contentuid="h626f03b5gb1a5g4e8eg94b3g1686a8687718" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_LOSECONTROL_Description">Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.</content>
 	<content contentuid="h8cfd1ba3gcfb3g4f0cga950gc29672af34c9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_LOSECONTROL_DisplayName">Perfect Control</content>
+	<content contentuid="hceb85350g54fdg4134gba42g9a0da585edb8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_PIERCING_Description">Character is immune to &lt;font color=&apos;#FF0000&apos;&gt;Piercing Damage&lt;/font&gt;.</content>
+	<content contentuid="h8074f9d7g5360g49fbgb949gce8a729c7755" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_PIERCING_DisplayName">Piercing Immunity</content>
 	<content contentuid="he9cb8fddg5db3g4d64ga27cgb93613250725" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ACID_DisplayName">Melter</content>
+	<content contentuid="h1049b802g537bg4815gb5b6g34c387f9aa9c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ACID_G_DisplayName">Elite Melter</content>
 	<content contentuid="h6e85fa28gc76eg423egaf24g5c0c278717bf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLESSED_ICE_DisplayName">Heatsapper</content>
+	<content contentuid="h9cf11b15g91d4g4d12gae38ga5a8f70272be" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLESSED_ICE_G_DisplayName">Elite Heatsapper</content>
 	<content contentuid="h0d2c2ac4g44e2g48dfg835dgcc860fcdd0d9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLOOD_DisplayName">Bloodbender</content>
+	<content contentuid="h31d032dcg2e05g4d91gb846g125bbed07f42" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLOOD_G_DisplayName">Elite Bloodbender</content>
 	<content contentuid="hd71fe8a1g0247g42c5g8bfcg2408029eca06" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_CURSED_ELECTRIC_DisplayName">Teslacoil</content>
+	<content contentuid="hdcdcd727gc9e6g4548g88dag25a265517c1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_CURSED_ELECTRIC_G_DisplayName">Elite Teslacoil</content>
 	<content contentuid="hd419ca09g8d69g4af6g840egdd4a81f7587f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ELECTRIC_DisplayName">Circuitbreaker</content>
+	<content contentuid="h24cc83b3g5ce3g44d2ga7fbg7c743030b0a2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ELECTRIC_G_DisplayName">Elite Circuitbreaker</content>
 	<content contentuid="hc3f8497bg97acg449ag910ag07b825f3b8bb" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_FIRE_DisplayName">Firestarter</content>
+	<content contentuid="hd880d646g45b4g4fa6ga6cbgd746dcd242bd" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_FIRE_G_DisplayName">Elite Firestarter</content>
 	<content contentuid="h8e75cbbdg06d7g4404gbfb2g92f6fd11147d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_NECROFIRE_DisplayName">Infernoblazer</content>
+	<content contentuid="had606e03g6713g4064g84c0gf28395d81019" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_NECROFIRE_G_DisplayName">Elite Infernoblazer</content>
 	<content contentuid="hba68eb52gbd87g443fga8acgb61922bf4211" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_OIL_DisplayName">Earthcracker</content>
+	<content contentuid="he7dfdae3gf1bbg47ecg84edg1a094e326d94" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_OIL_G_DisplayName">Elite Earthcracker</content>
 	<content contentuid="h78f9641bgaf92g4bc4gb27bg759d63a0353f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_POISON_DisplayName">Venomstriker</content>
+	<content contentuid="h0e137225ge71fg4b5dg9822g1f73a6646671" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_POISON_G_DisplayName">Elite Venomstriker</content>
 	<content contentuid="h645270dag6b15g47a8gad4bgfcc34034a77e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_WATER_DisplayName">Cascader</content>
+	<content contentuid="h70e74b6fg7c33g41e5g8bf4g6fe9a096a69d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_WATER_G_DisplayName">Elite Cascader</content>
 	<content contentuid="h04644a8dg313cg4d53gb2b4g1dc1a5fea103" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_Description">Character is infused with a mysterious power, granting a variety of bonuses and extra skills.</content>
 	<content contentuid="h77bbc2b5gb387g4ba2g97c6gbbc058bbb5c6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_DisplayName">Infused</content>
 	<content contentuid="hea2ac23fg62fag4befg9b85g1277c11011e6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_ELITE_Description">Character is infused with tremendous power, granting a variety of bonuses and extra skills.</content>

@@ -124,6 +124,7 @@ LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "POISON_SKIN", 110, 8, 12.0
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_BURNING", 120, 6, 18.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_ELECTRIFYING", 120, 6, 18.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_POISONING", 129, 6, 18.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "LLENEMY_IMMUNITY_PIERCING", 120, 8, 36.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "LLENEMY_IMMUNITY_LOSECONTROL", 360, 7);
 
 PROC
