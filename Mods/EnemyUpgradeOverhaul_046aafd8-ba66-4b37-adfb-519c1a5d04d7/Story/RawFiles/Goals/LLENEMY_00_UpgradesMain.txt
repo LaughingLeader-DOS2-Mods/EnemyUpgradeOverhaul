@@ -480,7 +480,7 @@ LLENEMY_Upgrades_ApplyStatus(_Character, _Group, _Type, _Status, _Duration, _Har
 PROC
 LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, 1)
 AND
-_Duration > -1.0
+_Duration > 0.0
 AND
 NRD_RandomReal(6.0, 18.0, _Ran)
 AND
@@ -496,7 +496,7 @@ ApplyStatus(_Character, _Status, _NewDuration, 1, _Character);
 PROC
 LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, 1)
 AND
-_Duration > -1.0
+_Duration > 0.0
 AND
 LeaderLib_Random_QRY(6,18)
 AND
@@ -513,9 +513,9 @@ ApplyStatus(_Character, _Status, _NewDuration, 1, _Character);
 PROC
 LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, 0)
 AND
-_Duration > -1.0
+_Duration != -1.0
 THEN
-ApplyStatus(_Character, _Status, -1.0, 1, _Character);
+ApplyStatus(_Character, _Status, _Duration, 1, _Character);
 
 // Permanent upgrades
 PROC
@@ -529,9 +529,13 @@ LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING
 AND
 GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
 AND
-_TotalPoints >= 15
+CharacterGetLevel(_Character, _Level)
 AND
-_TotalPoints < 20
+IntegerSubtract(_TotalPoints, _Level, _UpgradeCP)
+AND
+_UpgradeCP >= 25
+AND
+_UpgradeCP < 40
 AND
 CharacterGetDisplayName(_Character, _, _Name)
 AND
@@ -663,6 +667,13 @@ LeaderLog_Log("TRACE", "[LLENEMY:Debug:RandomTest] Rolling complete.");
 PROC
 LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character)
 AND
+DB_CurrentLevel(_Level)
+THEN
+LLENEMY_Upgrades_OnRollingDone(_Character, _Level);
+
+PROC
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character, (STRING)_Level)
+AND
 DB_LLENEMY_Elites(_Level, _Character, _Group, _Type, _BonusUpgrades)
 THEN
 LLENEMY_Upgrades_Internal_ApplyEliteBonuses(_Character, _Group, _Type, _BonusUpgrades);
@@ -709,9 +720,7 @@ LLENEMY_Upgrades_Internal_ApplyEliteBonuses(_Character, _Group, _Type, _NewAmoun
 LLENEMY_Upgrades_Internal_OnEliteBonusRolled(_Character, _Group, _Type, _NewAmount);
 
 PROC
-LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character)
-AND
-CharacterGetDisplayName(_Character, _, _Name)
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character, (STRING)_Level)
 AND
 DB_LLENEMY_Elites_GuaranteedUpgrades(_Level, _Character, _Status, _Duration)
 AND
