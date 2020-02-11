@@ -329,7 +329,7 @@
 															{
 																"TagText": {
 																	"type": 28,
-																	"value": "Enabling Enemy Level Scaling - Enemy will scale to the party's level + the current Level Modifier value.",
+																	"value": "Enable Enemy Level Scaling - Enemy will scale to the party's level + the current Level Modifier value.",
 																	"handle": "h34c37ad9g928bg4504g9e35g9e19f9698a14"
 																},
 																"stub": {

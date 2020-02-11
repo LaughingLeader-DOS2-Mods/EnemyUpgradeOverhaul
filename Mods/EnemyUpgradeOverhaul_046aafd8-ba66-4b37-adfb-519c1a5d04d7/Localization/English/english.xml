@@ -5,7 +5,7 @@
 	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
 	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
 	<content contentuid="h6efe8867g66bbg4d4ag936bgbb477bc57265" Source="LLENEMY_Menu_Scaling.lsj">[Back]</content>
-	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14" Source="LLENEMY_Menu_Scaling.lsj">Enabling Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value.</content>
+	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14" Source="LLENEMY_Menu_Scaling.lsj">Enable Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value.</content>
 	<content contentuid="hf652aa9fgeca8g4265ga6b2ge3d557dfb11c" Source="LLENEMY_Menu_Scaling.lsj">Disabling Enemy Level Scaling</content>
 	<content contentuid="hd80e21d0gc2ffg4df8gbc9fgcdd3f5248980" Source="LLENEMY_Menu_Scaling.lsj">Decrease Level Modifier -1</content>
 	<content contentuid="h6493380bgf46eg46fdga0f8g399ed299b249" Source="LLENEMY_Menu_Scaling.lsj">[DEBUG] Disable Enemy Level Limit - &lt;b&gt;WARNING&lt;/b&gt; - Enemy levels above 35 may crash the game. Uncap at your own risk!</content>
