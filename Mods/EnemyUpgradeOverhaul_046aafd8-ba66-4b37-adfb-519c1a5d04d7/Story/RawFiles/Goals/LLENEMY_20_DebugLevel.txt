@@ -90,6 +90,15 @@ CharacterGetDisplayName(_Char, _, _Name)
 THEN
 LeaderLog_Log("TRACE", "[LLENEMY:Rewards:Debug] Enemy [",_Name,"] died. Challenge Points [",_PointsStr,"].");
 //END_REGION
+
+IF
+GameStarted(_,_)
+AND
+ObjectExists(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, 1)
+THEN
+RemoveStatus(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, "LLENEMY_BONUSSKILLS_SINGLE");
+RemoveStatus(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, "LLENEMY_UPGRADE_INFO");
+LLENEMY_Upgrades_ApplyUpgrade(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, "BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE", -1.0, 2);
 EXITSECTION
 
 ENDEXITSECTION

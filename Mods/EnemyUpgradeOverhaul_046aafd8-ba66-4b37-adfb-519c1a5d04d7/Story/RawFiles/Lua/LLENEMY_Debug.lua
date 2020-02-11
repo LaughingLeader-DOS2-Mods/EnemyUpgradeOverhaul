@@ -55,11 +55,11 @@ function LLENEMY_Ext_TraceCharacterStats_Restricted(char)
 	Ext.Print("====== Stats: "..tostring(char).." ======")
 	Ext.Print("==== COMPUTED ====")
 	for _,stat in pairs(character_stats_computed) do
-		Ext.Print(stat..": "..tostring(char[stat]))
+		Ext.Print(stat..": "..tostring(LeaderLib.Common.Dump(char[stat])))
 	end
 	Ext.Print("==== REGULAR ====")
 	for _,stat in pairs(character_stats) do
-		Ext.Print(stat..": "..tostring(char[stat]))
+		Ext.Print(stat..": "..tostring(LeaderLib.Common.Dump(char[stat])))
 	end
 end
 
