@@ -49,6 +49,56 @@ local function split(s, sep)
     return fields
 end
 
+local upgrade_colors = {
+	["Talent: Assassin"] = "#AABB00",
+	["Talent: Leech"] = "#C80030",
+	["Talent: Lone Wolf"] = "#DC0015",
+	["Talent: The Pawn"] = "#AABB00",
+	["Talent: Quickdraw"] = "#AABB00",
+	["Talent: What a Rush"] = "#47e982",
+	["Talent: Torturer"] = "#960000",
+	["Talent: Sadist"] = "#ff5771",
+	["Talent: Haymaker"] = "#b083ff",
+	["Talent: Gladiator"] = "#f59b00",
+	["Talent: Indomitable"] = "#e94947",
+	["Talent: Soulcatcher"] = "#73F6FF",
+	["Talent: Master Thief"] = "#C9AA58",
+	["Talent: Greedy Vessel"] = "#e9d047",
+	["Talent: Magic Cycles"] = "#22c3ff",
+	["Infernoblazer"] = "#7F00FF",
+	["Elite Infernoblazer"] = "#FE6E27",
+	["Cascader"] = "#188EDE",
+	["Elite Cascader"] = "#FE6E27",
+	["Heatsapper"] = "#CFECFF",
+	["Elite Heatsapper"] = "#FE6E27",
+	["Venomstriker"] = "#65C900",
+	["Elite Venomstriker"] = "#FE6E27",
+	["Melter"] = "#81AB00",
+	["Elite Melter"] = "#FE6E27",
+	["Circuitbreaker"] = "#7D71D9",
+	["Elite Circuitbreaker"] = "#FE6E27",
+	["Teslacoil"] = "#7F25D4",
+	["Elite Teslacoil"] = "#FE6E27",
+	["Bloodbender"] = "#AA3938",
+	["Elite Bloodbender"] = "#FE6E27",
+	["Earthcracker"] = "#C7A758",
+	["Elite Earthcracker"] = "#FE6E27",
+	["Firestarter"] = "#FE6E27",
+	["Elite Firestarter"] = "#FE6E27",
+	["Bonus Treasure"] = "#D040D0",
+	["Perfect Control"] = "#FFAB00",
+	["Double Dip"] = "#7F00FF",
+	["Perseverance Mastery"] = "#E4CE93",
+	["Bonus Skill"] = "#F1D466",
+	["Bonus Skillset"] = "#B823CB",
+	["Bonus Source Skill"] = "#46B195",
+	["Elite Skillset"] = "#73F6FF",
+}
+
+local function sortupgrades(a,b)
+	return a:upper() < b:upper()
+end
+
 local function StatusGetDescriptionParam(status, statusSource, character, param)
 	--Ext.Print("[LLENEMY_DescriptionParams.lua] Getting params for (".. tostring(status.Name) ..") param ("..tostring(param)..")")
 	--LLENEMY_Ext_TraceCharacterStats_Restricted(character)
@@ -66,11 +116,22 @@ local function StatusGetDescriptionParam(status, statusSource, character, param)
 				--Ext.Print("Getting upgrade_info for hearing(".. tostring(hearing)..") = uuid(".. tostring(uuid)..")")
 				local info_str = upgrade_info[uuid]
 				if info_str ~= nil then
-					local affixes = split(info_str, ";")
-					--table.sort(affixes, function(a, b) return a:upper() < b:upper() end)
+					local upgrades = split(info_str, ";")
+					table.sort(upgrades, sortupgrades)
 					local output = ""
-					for k,v in pairs(affixes) do
-						output = output .. v .. "<br>"
+					local count = #upgrades
+					local i = 0
+					for k,v in pairs(upgrades) do
+						local color = upgrade_colors[v]
+						if color ~= nil then
+							output = output.."<font color='"..color.."' size='19'>"..v.."</font>"
+						else
+							output = output.."<font size='19'>"..v.."</font>"
+						end
+						if i < count - 1 then
+							output = output.."<br>"
+						end
+						i = i + 1
 					end
 					--Ext.Print("Upgrade info (".. tostring(info_str)..")")
 					return output
