@@ -68,6 +68,12 @@ local stat_overrides = {
 	LLENEMY_TALENT_COUNTER = {
 		Description = "LLENEMY_TALENT_COUNTER_EXTENDER_Description",
 		DescriptionParams = "CounterChance"
+	},
+	LLENEMY_ACTIVATE_FLAMING_TONGUES = {
+		LeaveAction = "" -- NRD_ApplyActiveDefense instead
+	},
+	LLENEMY_ACTIVATE_HEALING_TEARS = {
+		LeaveAction = "" -- NRD_ApplyActiveDefense instead
 	}
 }
 

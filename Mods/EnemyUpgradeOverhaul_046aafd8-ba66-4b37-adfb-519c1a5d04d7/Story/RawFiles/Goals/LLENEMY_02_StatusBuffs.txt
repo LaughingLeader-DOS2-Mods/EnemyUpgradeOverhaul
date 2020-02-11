@@ -59,7 +59,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 80, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_TONGUES", 160, 5);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_ACTIVATE_FLAMING_TONGUES", 160, 5, 0.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 20, 9);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 69, 7);
@@ -112,6 +112,7 @@ LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "VACUUM_AURA", 120, 5, 6.0);
 LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "VAMPIRISM_AURA", 160, 5);
 LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "VENOM_AURA", 29, 4);
 LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "WATER_IMMUNITY_AURA", 40, 7, 12.0);
+LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "LLENEMY_ACTIVATE_HEALING_TEARS", 40, 5, 0.0);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Immunities", "Immunity")
@@ -314,6 +315,24 @@ IF
 StoryEvent(_Automaton, "LLENEMY_Automaton_PlayActivateAnimation")
 THEN
 PlayAnimation(_Automaton, "Custom_Activate_01", "LLENEMY_Automaton_ClearInactive");
+//END_REGION
+
+//REGION ACTIVE_DEFENSE_TYPES
+/* [OSITOOLS_ONLY]
+IF
+CharacterStatusApplied(_Char, "LLENEMY_ACTIVATE_FLAMING_TONGUES", _Cause)
+AND
+NRD_ApplyActiveDefense(_Char, "FLAMING_TONGUES", -1.0, _Handle)
+THEN
+DB_NOOP(1);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_ACTIVATE_HEALING_TEARS", _Cause)
+AND
+NRD_ApplyActiveDefense(_Char, "HEALING_TEARS", -1.0, _Handle)
+THEN
+DB_NOOP(1);
+*/
 //END_REGION
 EXITSECTION
 

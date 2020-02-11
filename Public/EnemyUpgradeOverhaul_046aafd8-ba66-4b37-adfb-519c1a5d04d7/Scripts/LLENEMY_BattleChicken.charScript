@@ -25,7 +25,7 @@ THEN
 	//SetMaterial(__Me, "4602b609-c93f-4d45-a2cb-273462c0b54e", -1, 1, 0, 0, 0, 0, 0)
 	//LLENEMY_BattleChicken_Medic_PBR
 	SetMaterial(__Me, "bf1b4603-ed69-4599-bc97-158b9f671986", -1, 1, 0, 0, 0, 0, 0)
-	//CharacterApplyStatus(__Me, HEALING_TEARS, -1, 1, __Me)
+	CharacterApplyStatus(__Me, LLENEMY_ACTIVATE_HEALING_TEARS, 0, 1, __Me)
 ENDIF
 
 /*
