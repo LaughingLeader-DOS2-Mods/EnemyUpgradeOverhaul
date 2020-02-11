@@ -1,0 +1,23 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+PROC
+LeaderLib_GlobalSettings_InitModRegistration()
+THEN
+LeaderLib_GlobalSettings_Register_Flag("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_HardModeEnabled", 1);
+LeaderLib_GlobalSettings_Register_Flag("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_EnemyLevelingEnabled", 1);
+LeaderLib_GlobalSettings_Register_Flag("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_RewardsDisabled", 1);
+
+PROC
+LeaderLib_GlobalSettings_InitModRegistration()
+AND
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
+THEN
+LeaderLib_GlobalSettings_Register_Flag("EnemyUpgradeOverhaul", "LaughingLeader", _GlobalDisableFlag, 1);
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
