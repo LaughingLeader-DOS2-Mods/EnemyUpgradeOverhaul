@@ -30,7 +30,7 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_TALENT_COUNTER"] = StatDes
 
 function LLENEMY_Ext_AddTalent(character,talent)
 	if Ext.Version() >= 40 then
-		NRD_CharacterSetPermanentBoostTalent(character, talent)
+		Osi.NRD_CharacterSetPermanentBoostTalent(character, talent, 1)
 		CharacterAddAttribute(character, "Dummy", 0)
 	end
 end
