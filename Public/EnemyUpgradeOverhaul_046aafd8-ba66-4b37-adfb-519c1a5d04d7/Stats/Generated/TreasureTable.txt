@@ -137,6 +137,7 @@ object category "T_ST_Skillbook",1,0,0,0,0,0,0,0
 new subtable "0,10;2,1"
 object category "T_ST_RingAmuletBeltLegendary",1,0,0,0,0,0,0,0
 object category "T_EquipAllRarities",1,0,0,0,0,0,0,0
+new subtable "0,60;1,1"
 object category "T_TEST_Generation",1,0,0,0,0,0,0,0
 new subtable "0,4;2,1"
 object category "I_SCROLL_Resurrect",1,0,0,0,0,0,0,0
