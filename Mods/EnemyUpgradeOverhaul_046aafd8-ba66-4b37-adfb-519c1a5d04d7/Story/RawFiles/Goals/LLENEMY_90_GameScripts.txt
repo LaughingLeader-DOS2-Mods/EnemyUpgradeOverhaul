@@ -1,0 +1,14 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_GameScripts_InitSettings();
+KBSECTION
+PROC
+LLENEMY_GameScripts_InitSettings()
+THEN
+//LeaderLib_GameScripts_RegisterScript("EnemyUpgradeOverhaul", "LLENEMY_90_GS_ModdedUpgrades_Start");
+DB_NOOP(1);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
