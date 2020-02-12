@@ -74,4 +74,4 @@ ApplyStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 6.0, 0, _Enemy);
 EXITSECTION
 
 ENDEXITSECTION
-ParentTargetEdge "LLENEMY_80_ToggledScripts"
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
