@@ -2,7 +2,8 @@ EnemyUpgradeOverhaul = {
 	IgnoredSkills = {},
 	IgnoredWords = {},
 	EnemySkills = {},
-	StatusDescriptionParams = {}
+	StatusDescriptionParams = {},
+	SINGLEPLAYER = false
 }
 
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEMY_StatOverrides.lua")
@@ -13,6 +14,9 @@ Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEM
 
 local function SessionLoading()
 	Ext.Print("[LLENEMY:Bootstrap.lua] Session is loading.")
+	if Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
+		EnemyUpgradeOverhaul.SINGLEPLAYER = true
+	end
 	LLENEMY_Ext_BuildEnemySkills();
 end
 
@@ -31,6 +35,15 @@ function LLENEMY_Ext_ClearGain(char)
 		NRD_CharacterSetPermanentBoostInt(char, "Gain", gain);
 		NRD_CharacterSetPermanentBoostInt(char, "Gain", 1);
 		CharacterAddAttribute(char, "Strength", 0);
+	end
+end
+
+function LLENEMY_Ext_Init()
+	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
+	if NRD_IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
+		GlobalSetFlag("LLENEMY_SingleplayerModeEnabled")
+	else
+		GlobalClearFlag("LLENEMY_SingleplayerModeEnabled")
 	end
 end
 

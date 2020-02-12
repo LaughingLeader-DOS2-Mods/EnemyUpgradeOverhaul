@@ -157,7 +157,7 @@ local function OverrideStats()
 
     for statname,overrides in pairs(stat_overrides) do
         for property,value in pairs(overrides) do
-            if debug_print then Ext.Print("[LLENEMY:Bootstrap.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+            if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
             Ext.StatSetAttribute(statname, property, value)
             total_changes = total_changes + 1
         end
@@ -167,7 +167,7 @@ local function OverrideStats()
 	if Ext.Version() >= 40 then
 		for statname,overrides in pairs(talent_belt_overrides) do
 			for property,value in pairs(overrides) do
-				if debug_print then Ext.Print("[LLENEMY:Bootstrap.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+				if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
 				Ext.StatSetAttribute(statname, property, value)
 				total_changes = total_changes + 1
 			end
@@ -175,18 +175,22 @@ local function OverrideStats()
 		end
 	end
 
-	for _,statname in pairs(upgrade_info_statuses) do
-		if debug_print then Ext.Print("[LLENEMY:Bootstrap.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
-		Ext.StatSetAttribute(statname, "Icon", "")
-		total_changes = total_changes + 1
-		total_stats = total_stats + 1
+	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
+	if Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
+		Ext.Print("LLENEMY_StatOverrides.lua] Enabling singleplayer enhancements (Upgrade Info). Hiding statuses used for info.")
+		for _,statname in pairs(upgrade_info_statuses) do
+			if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+			Ext.StatSetAttribute(statname, "Icon", "")
+			total_changes = total_changes + 1
+			total_stats = total_stats + 1
+		end
 	end
 	
-    Ext.Print("[LLENEMY:Bootstrap.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
+    Ext.Print("LLENEMY_StatOverrides.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
 end
 
 local function ModuleLoad()
-    Ext.Print("[LLENEMY:Bootstrap.lua] Module is loading.")
+    Ext.Print("LLENEMY_StatOverrides.lua] Module is loading.")
 	OverrideStats()
 end
 --Ext.StatAddCustomDescription("LLENEMY_TALENT_COUNTER", "CounterChance", "2000000%")

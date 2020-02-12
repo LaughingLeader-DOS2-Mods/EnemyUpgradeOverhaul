@@ -112,15 +112,6 @@ LLENEMY_UpgradeInfo_Internal_Update(_Character, "");
 //END_REGION
 
 //REGION UPGRADE_INFO
-PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Upgrade, (REAL)_Duration, (INTEGER)_CP)
-AND
-LeaderLib_QRY_ExtenderIsActive()
-THEN
-LLENEMY_UpgradeInfo_Internal_Update(_Character, _Upgrade);
-//LeaderLib_Timers_StartObjectTimer(_Character, 50, "Timers_LLENEMY_UpgradeInfo_SortUpgrades", "LLENEMY_UpgradeInfo_SortUpgrades");
-LeaderLib_Timers_StartObjectTimer(_Character, 250, "Timers_LLENEMY_UpgradeInfo_SendInfo", "LLENEMY_UpgradeInfo_SendInfo");
-
 /*
 IF
 StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SortUpgrades")

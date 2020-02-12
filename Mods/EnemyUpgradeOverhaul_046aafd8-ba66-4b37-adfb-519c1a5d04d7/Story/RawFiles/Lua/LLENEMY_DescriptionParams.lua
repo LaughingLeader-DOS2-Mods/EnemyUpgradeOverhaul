@@ -99,15 +99,35 @@ local function sortupgrades(a,b)
 	return a:upper() < b:upper()
 end
 
-local function StatusGetDescriptionParam(status, statusSource, character, param)
-	--Ext.Print("[LLENEMY_DescriptionParams.lua] Getting params for (".. tostring(status.Name) ..") param ("..tostring(param)..")")
-	--LLENEMY_Ext_TraceCharacterStats_Restricted(character)
-	--Ext.Print(tostring(character.Experience))
-	--Ext.Print(tostring(LeaderLib.Common.Dump(character.Experience)))
-	--LLENEMY_Ext_TraceCharacterStats_Restricted(character)
-	--LLENEMY_Ext_TraceCharacterStats_Restricted(statusSource)
+local client_test = {}
+client_test[#client_test+1] = "TEST1"
 
+local function StatusGetDescriptionParamClientDebug(status, statusSource, character, param)
+	if LeaderLib.Common.TableHasEntry(client_test, status.Name) == false then
+		client_test[#client_test+1] = status.Name
+	end
 	if status.Name == "LLENEMY_UPGRADE_INFO" then
+		if param == "UpgradeInfo" then
+			--table.sort(client_test, sortupgrades)
+			local count = #client_test
+			local output = "<br>"
+			for i = 1, #client_test do
+				local v = client_test[i]
+				output = output.."<font size='18'>"..v.."</font>"
+				if i <= count then
+					output = output.."<br>"
+				end
+			end
+			Ext.Print("Upgrade info ("..output..")")
+			Ext.Print("client_test: ("..tostring(LeaderLib.Common.Dump(client_test))..")")
+			return output
+		end
+	end
+end
+--Ext.RegisterListener("StatusGetDescriptionParam", StatusGetDescriptionParamClientDebug)
+
+local function StatusGetDescriptionParam(status, statusSource, character, param)
+	if status.Name == "LLENEMY_UPGRADE_INFO" and EnemyUpgradeOverhaul.SINGLEPLAYER == true then
 		if param == "UpgradeInfo" then
 			local hearing = character.Hearing
 			--Ext.Print("Looking for ID for hearing(".. tostring(hearing)..")")
@@ -118,8 +138,8 @@ local function StatusGetDescriptionParam(status, statusSource, character, param)
 				if info_str ~= nil then
 					local upgrades = split(info_str, ";")
 					table.sort(upgrades, sortupgrades)
-					local output = ""
 					local count = #upgrades
+					local output = "<br>"
 					local i = 0
 					for k,v in pairs(upgrades) do
 						local color = upgrade_colors[v]
@@ -135,9 +155,8 @@ local function StatusGetDescriptionParam(status, statusSource, character, param)
 					end
 					--Ext.Print("Upgrade info (".. tostring(info_str)..")")
 					return output
-				end
+				end 
 			end
-			return ""
 		end
 	else
 		local func = EnemyUpgradeOverhaul.StatusDescriptionParams[status.Name]
@@ -147,7 +166,7 @@ local function StatusGetDescriptionParam(status, statusSource, character, param)
 		end
 	end
 end
-Ext.RegisterListener("StatusGetDescriptionParam", StatusGetDescriptionParam)
+--Ext.RegisterListener("StatusGetDescriptionParam", StatusGetDescriptionParam)
 Ext.Print("[LLENEMY_DescriptionParams.lua] Registered listener StatusGetDescriptionParam.")
 
 local function SkillGetDescriptionParam(skill, character, param)
