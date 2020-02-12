@@ -2,3 +2,4 @@ Key	Content
 LLENEMY_MessageBox_ConfirmEnemyLevelingCommit	Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.<br><font color='#FF0000' size='26'>This cannot be undone.</font>
 LLENEMY_DisplayText_TotalCharactersLeveled	<font color='#BBFF00' size='23'>*[1] beings gained a new level of power...*</font>
 LLENEMY_StatusText_CounterAttack	<font color='#FF3737' size='23'>Counter!</font>
+LLENEMY_MessageBox_SingleplayerUserWarning	<font color='#FF3737' size='23'>The EUO Singleplayer mod is active, yet the game is no longer singleplayer. Upgrade Info will not be synced for players.</font>
