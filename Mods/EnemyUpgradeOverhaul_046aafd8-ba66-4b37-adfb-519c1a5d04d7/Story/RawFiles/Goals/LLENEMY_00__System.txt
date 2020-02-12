@@ -1,0 +1,23 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+
+// Setting up some variables in the lua scripts that may change when mods change.
+// These may need Osiris functions, so this is called outside of SessionLoading.
+/* [OSITOOLS_ONLY]
+IF
+SavegameLoaded(_,_,_,_)
+THEN
+NRD_LuaCall("LLENEMY_Ext_Init");
+
+IF
+GameModeStarted(_,_)
+THEN
+NRD_LuaCall("LLENEMY_Ext_Init");
+*/
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
