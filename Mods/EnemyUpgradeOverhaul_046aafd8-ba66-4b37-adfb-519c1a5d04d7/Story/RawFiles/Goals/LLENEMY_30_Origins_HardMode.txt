@@ -7,6 +7,11 @@ RegionStarted("TUT_Tutorial_A")
 THEN
 SysActivateGoal("LLENEMY_31_Origins_HM_Tutorial");
 
+IF
+RegionStarted("FJ_FortJoy_Main")
+THEN
+SysActivateGoal("LLENEMY_31_Origins_HM_FortJoy");
+
 EXITSECTION
 LLENEMY_HardMode_DisableScripts();
 ENDEXITSECTION

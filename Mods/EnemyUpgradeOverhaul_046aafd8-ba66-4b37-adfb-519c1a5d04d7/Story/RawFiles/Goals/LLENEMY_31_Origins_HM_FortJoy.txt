@@ -1,0 +1,62 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+
+PROC
+Proc_SceneOver("FTJ_DallasStartScene")
+THEN
+TimerCancel("Timers_LLENEMY_HM_FTJ_StartAtusaBattle");
+TimerLaunch("Timers_LLENEMY_HM_FTJ_StartAtusaBattle", 3000);
+
+IF
+TimerFinished("Timers_LLENEMY_HM_FTJ_StartAtusaBattle")
+AND
+GetPosition(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _x, _y, _z)
+AND
+CharacterCreateAtPosition(_x, _y, _z, "0c6a905-74c3-4d89-9ffe-d3493a22cabd", 1, _AtusaBoss)
+AND
+CharacterGetDisplayName(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _Handle, _Reference)
+AND
+StringConcatenate(_Reference, "'s Corpse", _Name)
+THEN
+SetVarInteger(_AtusaBoss, "LLENEMY_ChallengePoints", 8);
+CharacterSetCustomName(_AtusaBoss, _Name);
+MoveAllItemsTo(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _AtusaBoss, 0, 0, 1);
+SetOnStage(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, 0);
+
+/*
+IF
+TimerFinished("Timers_LLENEMY_HM_FTJ_StartAtusaBattle")
+AND
+CharacterCreateOutOfSightToObject("LLENEMY_AtusaBoss_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, 0, "", _AtusaBoss)
+AND
+GetFaction(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _Faction)
+AND
+CharacterGetDisplayName(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _Handle, _Reference)
+AND
+StringConcatenate(_Reference, " (Specter)", _Name)
+THEN
+CharacterTransformFromCharacter(_AtusaBoss, CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, 0, 1, 1, 1, 1, 0, 0);
+CharacterTransformAppearanceTo(_AtusaBoss, CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, 0, 1);
+SetFaction(_AtusaBoss, _Faction);
+SetVarInteger(_AtusaBoss, "LLENEMY_ChallengePoints", 8);
+CharacterSetCustomName(_AtusaBoss, _Name);
+TeleportTo(_AtusaBoss, CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, "", 1, 1, 0);
+*/
+
+IF
+RegionEnded("FJ_FortJoy_Main")
+THEN
+GoalCompleted;
+
+PROC
+LLENEMY_HardMode_DisableScripts()
+THEN
+GoalCompleted;
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_30_Origins_HardMode"
