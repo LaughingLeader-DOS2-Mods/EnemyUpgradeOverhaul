@@ -109,6 +109,8 @@ LLENEMY_OnCharacterJoinedCombat(_Enemy, _CombatID);
 PROC
 LLENEMY_OnCharacterJoinedCombat((CHARACTERGUID)_Char, (INTEGER)_CombatID)
 AND
+NOT DB_LLENEMY_IgnoredCharacters(_Char)
+AND
 LLENEMY_QRY_IsEnemyOfParty(_Char, _CombatID)
 AND
 IsTagged(_Char, "LLENEMY_UpgradesDisabled", 0)

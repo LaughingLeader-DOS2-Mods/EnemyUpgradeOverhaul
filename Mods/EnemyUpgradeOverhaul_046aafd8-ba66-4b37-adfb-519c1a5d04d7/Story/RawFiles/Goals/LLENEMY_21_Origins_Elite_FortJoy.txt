@@ -14,6 +14,13 @@ THEN
 LLENEMY_Elites_ClearUpgradesForLevel("FJ_FortJoy");
 LLENEMY_Elites_InitLevel("FJ_FortJoy_Main");
 
+//REGION IGNORED
+PROC
+LLENEMY_Elites_InitLevel("FJ_FortJoy_Main")
+THEN
+// Magister Atusa - She ded
+DB_LLENEMY_IgnoredCharacters((CHARACTERGUID)S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338);
+
 //REGION CUSTOM
 //Extra non-bosses
 PROC
