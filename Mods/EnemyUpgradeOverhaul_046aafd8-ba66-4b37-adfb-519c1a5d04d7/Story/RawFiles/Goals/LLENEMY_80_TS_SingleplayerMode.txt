@@ -65,6 +65,23 @@ THEN
 LLENEMY_UpgradeInfo_Internal_Update(_Character, _Upgrade);
 //LeaderLib_Timers_StartObjectTimer(_Character, 50, "Timers_LLENEMY_UpgradeInfo_SortUpgrades", "LLENEMY_UpgradeInfo_SortUpgrades");
 LeaderLib_Timers_StartObjectTimer(_Character, 250, "Timers_LLENEMY_UpgradeInfo_SendInfo", "LLENEMY_UpgradeInfo_SendInfo");
+
+/* [OSITOOLS_ONLY]
+IF
+GameStarted(_,_)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _HearingID)
+THEN
+LLENEMY_UpgradeInfo_Internal_Update(_Character, "");
+
+PROC
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+AND
+NOT DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_00_UpgradesMain:Update] Creating unique ID.");
+NRD_LuaCall("LLENEMY_EXT_CreateUpgradeInfoID", (STRING)_Character);
+*/
 //END_REGION
 
 EXITSECTION

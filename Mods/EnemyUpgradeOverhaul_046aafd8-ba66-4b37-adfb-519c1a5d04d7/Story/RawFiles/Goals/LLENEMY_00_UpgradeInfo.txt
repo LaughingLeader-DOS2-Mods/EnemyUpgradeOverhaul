@@ -63,16 +63,6 @@ The character data in StatusGetDescriptionParam doesn't have a reference to the 
 so we use Hearing for the ID.
  */
 
-/* [OSITOOLS_ONLY]
-PROC
-LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
-AND
-NOT DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _)
-THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_00_UpgradesMain:Update] Creating unique ID.");
-NRD_LuaCall("LLENEMY_EXT_CreateUpgradeInfoID", (STRING)_Character);
-*/
-
 PROC
 LLENEMY_UpgradeInfo_Internal_StoreUpgradeID((CHARACTERGUID)_Character, (INTEGER)_Hearing)
 AND
@@ -100,86 +90,9 @@ AND
 DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _HearingID)
 THEN
 LLENEMY_UpgradeInfo_Internal_Update(_Character, "");
-
-/* [OSITOOLS_ONLY]
-IF
-GameStarted(_,_)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _HearingID)
-THEN
-LLENEMY_UpgradeInfo_Internal_Update(_Character, "");
-*/
 //END_REGION
 
 //REGION UPGRADE_INFO
-/*
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SortUpgrades")
-AND
-GetUUID(_Character, _UUID)
-AND
-StringConcatenate("LLENEMY_SortUpgrades_", _UUID, _ID)
-THEN
-DB_LLENEMY_UpgradeInfo_Temp_SortID(_Character, _ID);
-
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SortUpgrades")
-AND
-DB_LLENEMY_UpgradeInfo_Temp_SortID(_Character, _ID)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade)
-AND
-DB_LLENEMY_UpgradeInfo_Info(_Upgrade, _DisplayName, _Description)
-THEN
-//Sort by the status entry name instead of the display name (which has font tags)
-LeaderLib_DictionarySort_AddString(_ID, _DisplayName, _Upgrade);
-
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SortUpgrades")
-AND
-DB_LLENEMY_UpgradeInfo_Temp_SortID(_Character, _ID)
-THEN
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, "");
-LeaderLib_DictionarySort_AddTarget(_ID, (GUIDSTRING)_Character);
-LeaderLib_DictionarySort_StartSorting(_ID, 50, "LLENEMY_UpgradeInfo_SendInfo");
-
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SendInfo")
-AND
-DB_LLENEMY_UpgradeInfo_Temp_SortID(_Character, _ID)
-AND
-DB_LeaderLib_Dictionary_Data(_ID, _Index, _DisplayName, _Upgrade)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Current)
-AND
-StringConcatenate(_Current, ";", _a)
-AND
-StringConcatenate(_a, _DisplayName, _Next)
-THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Current);
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Next);
-
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SendInfo")
-AND
-DB_LLENEMY_UpgradeInfo_Temp_SortID(_Character, _ID)
-THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_SortID(_Character, _ID);
-LeaderLib_Array_ClearDictionary(_ID);
-LLENEMY_UpgradeInfo_Internal_SendInfo(_Character);
-
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SendInfo")
-AND
-NOT LeaderLib_Helper_QRY_HasStatus(_Character, "LLENEMY_UPGRADE_INFO")
-AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info)
-AND
-_Info != ""
-THEN
-ApplyStatus(_Character, "LLENEMY_UPGRADE_INFO", -1.0, 0, _Character);
-*/
-
 IF
 StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SendInfo")
 THEN
