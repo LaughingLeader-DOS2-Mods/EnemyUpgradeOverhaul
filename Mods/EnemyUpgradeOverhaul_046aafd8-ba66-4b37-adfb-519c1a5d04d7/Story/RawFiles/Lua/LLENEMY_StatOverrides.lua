@@ -189,10 +189,10 @@ local function OverrideStats()
     Ext.Print("LLENEMY_StatOverrides.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
 end
 
-local function ModuleLoad()
+local function ModuleLoading()
     Ext.Print("LLENEMY_StatOverrides.lua] Module is loading.")
 	OverrideStats()
 end
 --Ext.StatAddCustomDescription("LLENEMY_TALENT_COUNTER", "CounterChance", "2000000%")
 
-Ext.RegisterListener("ModuleLoading", ModuleLoad)
+Ext.RegisterListener("ModuleLoading", ModuleLoading)
