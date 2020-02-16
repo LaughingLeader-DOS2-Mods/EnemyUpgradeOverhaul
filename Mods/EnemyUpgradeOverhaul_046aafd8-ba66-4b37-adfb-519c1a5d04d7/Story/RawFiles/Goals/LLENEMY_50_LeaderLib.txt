@@ -9,6 +9,7 @@ THEN
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_HardModeEnabled", 1);
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_EnemyLevelingEnabled", 1);
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_RewardsDisabled", 1);
+LeaderLib_Register_ModMenu("046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEMY_Settings", "[Enemy Upgrade Overhaul] Settings");
 
 PROC
 LeaderLib_Mods_OnModRegistered(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_Version, (INTEGER)_Major, (INTEGER)_Minor, (INTEGER)_Revision, (INTEGER)_Build)
