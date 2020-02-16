@@ -1,11 +1,24 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+// [BEGIN_NO_OSITOOLS]
 LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 1,5,0,0);
 LeaderUpdater_Register_ActiveGoal("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_ZZZ_Updater");
 LeaderLib_Register_ModMenu("EnemyUpgradeOverhaul.Settings", "[Enemy Upgrade Overhaul] Settings", "LLENEMY_Settings", "EnemyUpgradeOverhaul", "LaughingLeader");
+// [END_NO_OSITOOLS]
 GlobalSetFlag("LLENEMY_DuplicationUpgradesDisabled"); // Opt-in
 KBSECTION
+// [BEGIN_NO_OSITOOLS]
+IF
+GlobalFlagCleared("LeaderLib_ExtenderIsActive")
+AND
+NOT DB_LLENEMY_Updater_RegisteredNonExtender(_)
+THEN
+DB_LLENEMY_Updater_RegisteredNonExtender(1);
+LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 1,5,0,0);
+LeaderUpdater_Register_ActiveGoal("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_ZZZ_Updater");
+LeaderLib_Register_ModMenu("EnemyUpgradeOverhaul.Settings", "[Enemy Upgrade Overhaul] Settings", "LLENEMY_Settings", "EnemyUpgradeOverhaul", "LaughingLeader");
+
 IF
 GameStarted(_Level, _)
 AND
@@ -14,6 +27,7 @@ AND
 LeaderUpdater_QRY_ModUpdateNeeded("EnemyUpgradeOverhaul", "LaughingLeader", 1,5,0,0)
 THEN
 LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 1,5,0,0);
+// [END_NO_OSITOOLS]
 
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
