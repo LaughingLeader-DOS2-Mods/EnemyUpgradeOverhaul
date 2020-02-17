@@ -31,37 +31,42 @@ LLENEMY_Scaling_ResetLevelModifier();
 
 IF
 DialogStarted("LLENEMY_Settings", _)
+AND
+GlobalGetFlag("LLENEMY_EnemyLevelingEnabled", _ScalingEnabled)
 THEN
-LLENEMY_Scaling_UpdateDialogVariables();
+LLENEMY_Scaling_UpdateDialogVariables(_ScalingEnabled);
 
 IF
-DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
+GlobalFlagSet("LLENEMY_EnemyLevelingEnabled")
 THEN
-LLENEMY_Scaling_UpdateDialogVariables();
+LLENEMY_Scaling_UpdateDialogVariables(1);
 
 IF
 GlobalFlagCleared("LLENEMY_EnemyLevelingEnabled")
 THEN
-LLENEMY_Scaling_UpdateDialogVariables();
+LLENEMY_Scaling_UpdateDialogVariables(0);
 
 PROC
 LLENEMY_Scaling_UpdateDialogVariables()
+AND
+GlobalGetFlag("LLENEMY_EnemyLevelingEnabled", _ScalingEnabled)
+THEN
+LLENEMY_Scaling_UpdateDialogVariables(_ScalingEnabled);
+
+PROC
+LLENEMY_Scaling_UpdateDialogVariables((INTEGER)_ScalingEnabled)
 AND
 DB_LLENEMY_LevelModifier(_Modifier)
 THEN
 DialogSetVariableInt("LLENEMY_Settings", "LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f", _Modifier);
 
 PROC
-LLENEMY_Scaling_UpdateDialogVariables()
-AND
-NOT DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
+LLENEMY_Scaling_UpdateDialogVariables(0)
 THEN
 DialogSetVariableString("LLENEMY_Settings", "LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba", "Disabled");
 
 PROC
-LLENEMY_Scaling_UpdateDialogVariables()
-AND
-DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
+LLENEMY_Scaling_UpdateDialogVariables(1)
 AND
 CharacterGetHostCharacter(_Host)
 AND
@@ -74,17 +79,6 @@ AND
 IntegertoString(_EnemyLevel, _EnemyLevelStr)
 THEN
 DialogSetVariableString("LLENEMY_Settings", "LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba", _EnemyLevelStr);
-
-/*
-IF
-DialogEnded("LLENEMY_Settings", _Instance)
-AND
-DialogGetInvolvedPlayer(_Instance, 1, _Speaker)
-THEN
-ObjectClearFlag(_Speaker, "LLENEMY_EnemyLeveling_Reset");
-ObjectClearFlag(_Speaker, "LLENEMY_EnemyLeveling_Increase1");
-ObjectClearFlag(_Speaker, "LLENEMY_EnemyLeveling_Decrease1");
-*/
 
 PROC
 LLENEMY_Scaling_AdjustLevelModifier((INTEGER)_ByAmount)
