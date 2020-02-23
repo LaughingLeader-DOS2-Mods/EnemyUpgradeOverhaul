@@ -11,7 +11,9 @@ LLENEMY_Scaling_LevelUpCharacter(_Char, 0);
 PROC
 LLENEMY_Scaling_LevelUpCharacter((CHARACTERGUID)_Char, (INTEGER)_Force)
 AND
-DB_GlobalFlag("LLENEMY_EnemyLevelingEnabled")
+GlobalGetFlag("LLENEMY_EnemyLevelingEnabled", 1)
+AND
+GlobalGetFlag("LLENEMY_Debug_LevelCapDisabled", _CapDisabled)
 AND
 NOT DB_Origins(_Char) // Don't do anything for Origin characters, since they may be recruited again
 AND
@@ -23,10 +25,10 @@ DB_LLENEMY_LevelModifier(_Modifier)
 AND
 IntegerSum(_HostLevel, _Modifier, _TargetLevel)
 THEN
-LLENEMY_Scaling_Internal_EvaluateCharacter(_Char, _TargetLevel, _HostLevel, _Force);
+LLENEMY_Scaling_Internal_EvaluateCharacter(_Char, _TargetLevel, _HostLevel, _Force, _CapDisabled);
 
 PROC
-LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, 1)
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, 1, (INTEGER)_CapDisabled)
 AND
 NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
 AND
@@ -35,11 +37,11 @@ AND
 NOT LLENEMY_QRY_IsAllyOfParty(_Char)
 THEN
 DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
-LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel);
+LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel, _CapDisabled);
 
 //All hostiles
 PROC
-LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force)
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force, (INTEGER)_CapDisabled)
 AND
 NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
 AND
@@ -47,11 +49,11 @@ LLENEMY_QRY_IsEnemyOfParty(_Char)
 //NOT LLENEMY_QRY_IsAllyOfParty(_Char)
 THEN
 DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
-LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel);
+LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel, _CapDisabled);
 
 //Neutrals in combat
 PROC
-LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force)
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force, (INTEGER)_CapDisabled)
 AND
 NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
 AND
@@ -60,30 +62,28 @@ AND
 CharacterIsInCombat(_Char, 1)
 THEN
 DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
-LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel);
+LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _TargetLevel, _CapDisabled);
 
 //Allies get leveled up to the host's level
 PROC
-LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force)
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force, (INTEGER)_CapDisabled)
 AND
 NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
 AND
 LLENEMY_QRY_IsAllyOfParty(_Char)
 THEN
 DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
-LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _HostLevel);
+LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(_Char, _HostLevel, _CapDisabled);
 
 PROC
-LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force)
+LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, (INTEGER)_Force, (INTEGER)_CapDisabled)
 AND
 DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char)
 THEN
 NOT DB_LLENEMY_Scaling_Temp_EvaluationResolved(_Char);
 
 PROC
-LLENEMY_Scaling_Internal_LevelUpCharacterWithCap((CHARACTERGUID)_Char, (INTEGER)_TargetLevel)
-AND
-NOT DB_GlobalFlag("LLENEMY_Debug_LevelCapDisabled")
+LLENEMY_Scaling_Internal_LevelUpCharacterWithCap((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, 0)
 AND
 IntegerMin(_TargetLevel, 35, _CappedLevel)
 AND
@@ -95,9 +95,7 @@ LLENEMY_Scaling_Internal_CheckVitality(_Char);
 
 //May crash if the target level is greater than 35
 PROC
-LLENEMY_Scaling_Internal_LevelUpCharacterWithCap((CHARACTERGUID)_Char, (INTEGER)_TargetLevel)
-AND
-DB_GlobalFlag("LLENEMY_Debug_LevelCapDisabled")
+LLENEMY_Scaling_Internal_LevelUpCharacterWithCap((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, 1)
 AND
 _TargetLevel > 1
 THEN
