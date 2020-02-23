@@ -5,7 +5,18 @@ INITSECTION
 KBSECTION
 
 PROC
-LeaderLib_Mods_OnModRegistered(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_Version, (INTEGER)_Major, (INTEGER)_Minor, (INTEGER)_Revision, (INTEGER)_Build)
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
+AND
+NOT DB_LLENEMY_LeaderLib_Registered(1)
+AND
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
+THEN
+LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, _GlobalDisableFlag, 1);
+
+PROC
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
+AND
+NOT DB_LLENEMY_LeaderLib_Registered(1)
 THEN
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_HardModeEnabled", 1);
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_EnemyLevelingEnabled", 1);
@@ -13,13 +24,7 @@ LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Debug_LevelCapDisabled");
 LeaderLib_GlobalSettings_Register_GlobalInteger(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Scaling_LevelModifier", 0);
 LeaderLib_Register_ModMenu("046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEMY_Settings", "[Enemy Upgrade Overhaul] Settings");
-
-PROC
-LeaderLib_Mods_OnModRegistered(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_Version, (INTEGER)_Major, (INTEGER)_Minor, (INTEGER)_Revision, (INTEGER)_Build)
-AND
-DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
-THEN
-LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, _GlobalDisableFlag, 1);
+DB_LLENEMY_LeaderLib_Registered(1);
 
 PROC
 LeaderLib_GlobalSettings_GetIntegerVariable(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Scaling_LevelModifier")
