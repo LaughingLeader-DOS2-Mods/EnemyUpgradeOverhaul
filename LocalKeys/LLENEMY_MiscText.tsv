@@ -3,3 +3,5 @@ LLENEMY_MessageBox_ConfirmEnemyLevelingCommit	Lock in the enemy scale? This will
 LLENEMY_DisplayText_TotalCharactersLeveled	<font color='#BBFF00' size='23'>*[1] beings gained a new level of power...*</font>
 LLENEMY_StatusText_CounterAttack	<font color='#FF3737' size='23'>Counter!</font>
 LLENEMY_MessageBox_SingleplayerUserWarning	<font color='#FF3737' size='23'>The EUO Singleplayer mod is active, yet the game is no longer singleplayer. Upgrade Info will not be synced for players.</font>
+LLENEMY_DisplayText_MuggedGold_Target	<font color='#FF3333' size='23'>*Lost </font><font color='#C7A758' size='26'>[1]</font> <font color='#FF3333' size='23'>Gold!*</font>
+LLENEMY_DisplayText_MuggedGold_Enemy	<font color='#33FF33' size='23'>*Stole </font><font color='#C7A758' size='26'>[1]</font> <font color='#33FF33' size='23'>Gold!*</font>
