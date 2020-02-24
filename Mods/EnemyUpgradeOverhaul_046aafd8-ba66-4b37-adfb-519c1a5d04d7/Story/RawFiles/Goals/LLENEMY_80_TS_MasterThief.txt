@@ -7,6 +7,8 @@ KBSECTION
 IF
 CharacterStartAttackObject((CHARACTERGUID)_Target, _, (CHARACTERGUID)_Enemy)
 AND
+CharacterIsEnemy(_Target, _Enemy, 1)
+AND
 HasActiveStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF", 1)
 AND
 HasActiveStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 0)
@@ -45,6 +47,8 @@ AND
 ObjectIsCharacter((CHARACTERGUID)_Attacker, 1)
 AND
 ObjectIsCharacter((CHARACTERGUID)_Target, 1)
+AND
+CharacterIsEnemy(_Target, _Attacker, 1)
 AND
 HasActiveStatus(_Attacker, "LLENEMY_TALENT_MASTERTHIEF", 1)
 AND
