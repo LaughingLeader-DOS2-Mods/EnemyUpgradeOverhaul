@@ -35,6 +35,7 @@ THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_LEECH", 399, 2);
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_QUICKSTEP", 500, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_NATURALCONDUCTOR", 99, 4);
+LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_MASTERTHIEF", 90, 4);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon")
@@ -47,7 +48,6 @@ LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Normal")
 AND
 SysIsActive("CMP_Talents")
 THEN
-LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_MASTERTHIEF", 90, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_GREEDYVESSEL", 90, 4);
 
 PROC
