@@ -8,6 +8,12 @@ LLENEMY_Elites_InitLevel("TUT_Tutorial_A")
 THEN
 // Boss: Captain Kalwyn
 LLENEMY_Elites_AddUpgradeChance("TUT_Tutorial_A", S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a);
+DB_LLENEMY_IgnoredCharacters(CHARACTERGUID_S_GLO_Windego_d783285f-d3be-4cba-8333-db8976cef182);
+
+IF
+RegionEnded("TUT_Tutorial_A")
+THEN
+NOT DB_LLENEMY_IgnoredCharacters(CHARACTERGUID_S_GLO_Windego_d783285f-d3be-4cba-8333-db8976cef182);
 EXITSECTION
 
 ENDEXITSECTION
