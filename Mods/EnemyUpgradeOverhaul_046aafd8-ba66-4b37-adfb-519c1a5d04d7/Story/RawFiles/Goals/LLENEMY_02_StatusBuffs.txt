@@ -189,6 +189,16 @@ NOT DB_LLENEMY_LastGrenadeInt(_StartInt, _LastInt);
 DB_LLENEMY_LastGrenadeInt(_NextStartInt, _EndInt);
 //END_REGION
 
+//REGION IMMERSION
+PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "BLESSED")
+AND
+IsTagged(_Character, "VOIDWOKEN", 1)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Blocked upgrade [BLESSED] from applying to a voidwoken.");
+LLENEMY_Upgrades_RedirectUpgrade(_Character, _Group, _Type, "BLESSED", "LLENEMY_VOID_EMPOWERED");
+//END_REGION
+
 //REGION GRENADE_ENTHUSIAST
 //Prevent weird things like voidlings from getting grenades
 PROC

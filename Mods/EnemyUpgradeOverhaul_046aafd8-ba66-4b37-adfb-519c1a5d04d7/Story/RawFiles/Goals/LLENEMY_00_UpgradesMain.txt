@@ -440,6 +440,39 @@ THEN
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
 //END_REGION
 
+//REGION REDIRECT_UPGRADE
+/* Redirect an upgrade. This is typically used in LLENEMY_Upgrades_CanRollForStatusUpgrade. */
+
+QRY
+LLENEMY_Upgrades_QRY_IsRegistered((STRING)_Status)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
+THEN
+DB_NOOP(1);
+
+// The target upgrade exists, so use its data.
+PROC
+LLENEMY_Upgrades_RedirectUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus)
+AND
+LLENEMY_Upgrades_QRY_IsRegistered(_NewStatus)
+AND
+DB_LLENEMY_Upgrades_Statuses(_NextGroup, _NextType, _NewStatus, _MinRoll, _MaxRoll, _Duration, _CP)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
+LLENEMY_Upgrades_ApplyUpgrade(_Character, _NextGroup, _NextType, _NewStatus, _Duration, _CP);
+
+// The target upgrade does not exist, so use the existing one.
+PROC
+LLENEMY_Upgrades_RedirectUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus)
+AND
+NOT LLENEMY_Upgrades_QRY_IsRegistered(_NewStatus)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
+LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _NewStatus, _Duration, _CP);
+//END_REGION
+
 //REGION APPLY_UPGRADE
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
