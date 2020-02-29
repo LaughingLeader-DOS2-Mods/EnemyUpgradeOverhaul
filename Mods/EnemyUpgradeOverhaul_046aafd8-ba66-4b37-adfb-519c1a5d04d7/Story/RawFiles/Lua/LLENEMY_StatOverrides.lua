@@ -142,6 +142,29 @@ local upgrade_info_statuses = {
 	"LLENEMY_BONUSSKILLS_SET_ELITE",
 }
 
+local ignore_skill_names = {
+	Enemy = true,
+	Quest = true,
+	QUEST = true,
+	_NPC = true
+}
+
+local function CanChangeSkillTier(stat, tier)
+	if tier == "" or tier == "Starter" then
+		return false
+	end
+	local isenemy = Ext.StatGetAttribute(stat, "IsEnemySkill")
+	if isenemy == "Yes" then
+		return false
+	end
+	for str,b in pairs(ignore_skill_names) do
+		if string.find(stat, str) then
+			return false
+		end
+	end
+	return true
+end
+
 local function OverrideStats()
     local total_changes = 0
     local total_stats = 0
@@ -177,13 +200,24 @@ local function OverrideStats()
 
 	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
 	if Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
-		Ext.Print("LLENEMY_StatOverrides.lua] Enabling singleplayer enhancements (Upgrade Info). Hiding statuses used for info.")
+		Ext.Print("LLENEMY_StatOverrides.lua] Enabling singleplayer enhancements.")
+		Ext.Print("==============================================================")
+		Ext.Print("LLENEMY_StatOverrides.lua] [SINGLEPLAYER] (Upgrade Info) enabled. Hiding statuses used for info.")
 		for _,statname in pairs(upgrade_info_statuses) do
-			if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+			if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Hiding icon for stat: " .. statname) end
 			Ext.StatSetAttribute(statname, "Icon", "")
 			total_changes = total_changes + 1
 			total_stats = total_stats + 1
 		end
+		Ext.Print("LLENEMY_StatOverrides.lua] [SINGLEPLAYER] Enabling skill Tier overrides.")
+		for _,stat in Ext.GetStatEntries("SkillData") do
+			local tier = Ext.StatGetAttribute(stat, "Tier")
+			if CanChangeSkillTier(stat, tier) then
+				Ext.StatSetAttribute(stat, "Tier", "Starter")
+				if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Change Tier for skill ("..tostring(stat)..") to Starter.") end
+			end
+		end
+		Ext.Print("==============================================================")
 	end
 	
     Ext.Print("LLENEMY_StatOverrides.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
