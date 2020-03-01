@@ -109,6 +109,11 @@
 	<content contentuid="hd8e442d5ge3fag4dbfg87d1g7403c979c4f7" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_LoseControlImmunity">Perfect Control</content>
 	<content contentuid="h5bf766cag0d92g4374gac83g28032389d45b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_PerseveranceMastery">Perseverance Mastery</content>
 	<content contentuid="h0fac50d9g63c1g4dc1gb769g9fba10e602df" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_PiercingImmunity">Piercing Immunity</content>
+	<content contentuid="he76b283bgc7a8g4d4eg9c2bg2398cbe51a9e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage">Rage</content>
+	<content contentuid="h83bb63c1g9d67g4c1dg94e4g04174fc2afad" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage2">Rage (II)</content>
+	<content contentuid="hfef82f38g204fg4ec0gbf1ag00b51c532e2c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage3">Rage (III)</content>
+	<content contentuid="h8c7cfc30gfa1ag46b8ga23bg524410b565c8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage4">Rage (IV)</content>
+	<content contentuid="h90ef8331gf15cg484egaefbgcbd1109a8698" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage5">Rage (V)</content>
 	<content contentuid="h5b62279dg9bebg46c7g83f6gd05c7a9c9310" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_RangerRange">Talent: Quickdraw</content>
 	<content contentuid="h24701ed8gaeeag41d9gb1d8g1ff3f96f2abc" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_BullyDamageBonus">Talent: Bully</content>
 	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LightningRod">Talent: Lightning Rod</content>
@@ -178,6 +183,12 @@
 	<content contentuid="hffc4903fg3cb8g48e0gb183g8e5d9eeaa066" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_ELITE_DisplayName">Super-Infused</content>
 	<content contentuid="h52cf2d76g890fg4255g913agaf040b1015cf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_PERSEVERANCE_MASTERY_Description">Character is persevering through sheer force of will.</content>
 	<content contentuid="hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_PERSEVERANCE_MASTERY_DisplayName">Perseverance Mastery</content>
+	<content contentuid="h68b2574cgb7d7g46d8g9c8bge4edff270a17" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE_Description">Damage taken increases Rage. At max Rage, character gains 100% Critical Chance and immunity to disabling statuses.</content>
+	<content contentuid="h51f428d7gd529g4b83gad1ag674a188d1492" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE_DisplayName">Rage</content>
+	<content contentuid="hdfeb0377gbab4g4fc6ga428g98aa0a12eb88" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE2_DisplayName">Rage (II)</content>
+	<content contentuid="h7987a4c4ge79ag4b93gbb98g63644b6ab4ef" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE3_DisplayName">Rage (III)</content>
+	<content contentuid="h752158cdg06beg4034gaddeg66921ff01d83" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE4_DisplayName">Rage (IV)</content>
+	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE5_DisplayName">Rage (V)</content>
 	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_Description">Character can backstab with non-dagger weapons.</content>
 	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_DisplayName">Talent: Assassin</content>
 	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BASE_DisplayName">Talent</content>

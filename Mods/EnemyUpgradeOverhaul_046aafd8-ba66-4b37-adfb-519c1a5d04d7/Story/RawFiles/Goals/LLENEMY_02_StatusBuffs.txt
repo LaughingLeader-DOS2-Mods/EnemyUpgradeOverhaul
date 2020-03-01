@@ -64,7 +64,8 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 20, 9);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 69, 7, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 220, 6);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 140, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 80, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_RAGE", 120, 7);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Normal")
@@ -80,6 +81,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_COURAGE", 60, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_FEROCITY", 70, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_GRANADA", 90, 6);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "SPARKING_SWINGS", 140, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_RAGE", 20, 7);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Weak")
