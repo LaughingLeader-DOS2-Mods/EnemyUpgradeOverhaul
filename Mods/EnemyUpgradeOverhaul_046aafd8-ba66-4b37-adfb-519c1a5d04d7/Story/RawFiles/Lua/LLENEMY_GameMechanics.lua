@@ -34,3 +34,16 @@ function LLENEMY_Ext_AddTalent(character,talent)
 		CharacterAddAttribute(character, "Dummy", 0)
 	end
 end
+
+---Increases rage
+---@param character string
+---@param damage integer
+---@param handle integer
+function LLENEMY_Ext_IncreaseRage(character, damage, handle)
+	--local hp = NRD_CharacterGetStatInt(character, "CurrentVitality")
+	local maxhp = NRD_CharacterGetStatInt(character, "MaxVitality")
+	local damage_ratio = math.max((damage / maxhp) * 88.88, 1.0)
+	local add_rage = math.ceil(damage_ratio)
+	Osi.LeaderLib_Variables_DB_ModifyVariableInt(character, "LLENEMY_Rage", add_rage, 999, 0);
+	Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_IncreaseRage] Added (",add_rage,") Rage to (",character,").")
+end

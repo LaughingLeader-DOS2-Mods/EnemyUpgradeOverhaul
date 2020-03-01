@@ -1,0 +1,43 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+/* [OSITOOLS_ONLY]
+IF
+NRD_OnHit((CHARACTERGUID)_Char, _Source, _Damage, _Handle)
+AND
+CharacterIsDead(_Char, 0)
+AND
+_Damage > 0
+AND
+ObjectGetFlag(_Char, "LLENEMY_Rage_Active", 1)
+AND
+NRD_StatusGetInt(_Char, _Handle, "Dodged", 0)
+AND
+NRD_StatusGetInt(_Char, _Handle, "Missed", 0)
+AND
+NRD_StatusGetInt(_Char, _Handle, "Blocked", 0)
+THEN
+NRD_LuaCall("LLENEMY_Ext_IncreaseRage", (STRING)_Char, (STRING)_Damage, (STRING)_Handle);
+*/
+
+// [BEGIN_NO_OSITOOLS]
+IF
+CharacterReceivedDamage(_Char, _Percentage, _Source)
+AND
+CharacterIsDead(_Char, 0)
+AND
+ObjectGetFlag(_Char, "LLENEMY_Rage_Active", 1)
+THEN
+LLENEMY_Mechanics_Statuses_IncreaseRage(_Char, _Percentage);
+// [END_NO_OSITOOLS]
+
+IF
+CharacterStatusApplied(_Char, "SLEEPING", _)
+AND
+ObjectGetFlag(_Char, "LLENEMY_Rage_Active", 1)
+THEN
+LLENEMY_Mechanics_Statuses_LowerRage(_Char);
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"

@@ -1,0 +1,86 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Mechanics_Statuses_InitSettings();
+
+KBSECTION
+//REGION SETTINGS
+PROC
+LLENEMY_Mechanics_Statuses_InitSettings()
+THEN
+DB_LLENEMY_Statuses_Rage(1, "LLENEMY_RAGE", 0, 20);
+DB_LLENEMY_Statuses_Rage(2, "LLENEMY_RAGE2", 20, 40);
+DB_LLENEMY_Statuses_Rage(3, "LLENEMY_RAGE3", 40, 60);
+DB_LLENEMY_Statuses_Rage(4, "LLENEMY_RAGE4", 60, 80);
+DB_LLENEMY_Statuses_Rage(5, "LLENEMY_RAGE5", 80, 999);
+//END_REGION
+
+//REGION INCREASE_RAGE
+PROC
+LLENEMY_Mechanics_Statuses_IncreaseRage((CHARACTERGUID)_Char, (INTEGER)_DamagePercentageInt)
+AND
+Real(_DamagePercentageInt, _DamagePercentage)
+AND
+RealProduct(_DamagePercentage, 0.8888, _RageR)
+AND
+RealMax(_RageR, 1.0, _ClampedRageR)
+AND
+Integer(_ClampedRageR, _AddRage)
+THEN
+LeaderLib_Variables_DB_ModifyVariableInt(_Char, "LLENEMY_Rage", _AddRage, 999, 0);
+
+PROC
+LeaderLib_Variables_OnVariableIntChanged((GUIDSTRING)_Char, "LLENEMY_Rage", (INTEGER)_LastValue, (INTEGER)_CurrentValue, (GUIDSTRING)_Source)
+AND
+DB_LLENEMY_Statuses_Rage(_Index, _Status, _Min, _Max)
+AND
+_CurrentValue >= _Min
+AND
+_CurrentValue < _Max
+AND
+NOT LeaderLib_Helper_QRY_HasStatus(_Char, _Status)
+THEN
+ApplyStatus(_Char, _Status, -1.0, 1, _Char);
+//END_REGION
+
+//REGION DECREASE_RAGE
+//From Sleeping
+PROC
+LLENEMY_Mechanics_Statuses_LowerRage((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_Statuses_Rage(_Index, _Status, _Min, _Max)
+AND
+NOT DB_LLENEMY_Mechanics_Statuses_RageLowered(_Char)
+AND
+HasActiveStatus(_Char, _Status, 1)
+AND
+IntegerSubtract(_Index, 1, _Previous)
+AND
+DB_LLENEMY_Statuses_Rage(_Previous, _NextStatus, _NextMin, _NextMax)
+THEN
+DB_LLENEMY_Mechanics_Statuses_RageLowered(_Char);
+LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", _NextMin);
+//ApplyStatus(_Char, _NextStatus, -1.0, 1, _Char);
+
+PROC
+LLENEMY_Mechanics_Statuses_LowerRage((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_Mechanics_Statuses_RageLowered(_Char)
+THEN
+NOT DB_LLENEMY_Mechanics_Statuses_RageLowered(_Char);
+//REGION RAGE_TS
+IF
+CharacterStatusApplied(_Char, "LLENEMY_RAGE", _)
+AND
+NOT LeaderLib_Variables_DB_QRY_IntegerVariableSet(_Char, "LLENEMY_Rage")
+THEN
+LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", 1);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_RAGE", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Rage_Active", "EnemyUpgradeOverhaul");
+//END_REGION
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

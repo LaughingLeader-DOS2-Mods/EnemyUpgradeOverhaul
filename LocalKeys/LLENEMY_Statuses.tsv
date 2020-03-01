@@ -103,7 +103,7 @@ LLENEMY_FAKE_DYING_Description	Character appears to be dead.
 LLENEMY_VOID_EMPOWERED_DisplayName	Void Empowered
 LLENEMY_VOID_EMPOWERED_Description	Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.
 LLENEMY_RAGE_DisplayName	Rage
-LLENEMY_RAGE_Description	Damage taken increases Rage. At max Rage, character gains 100% Critical Chance and immunity to disabling statuses.
+LLENEMY_RAGE_Description	Damage taken increases <font color='#FF3333' size='20'>Rage</font>.<br><font color='#DDCC22'>At max <font color='#FF3333' size='20'>Rage</font>, character gains 100% Critical Chance and Immunity to Disabling Statuses.</font><br><font color='#FF00CC'>Sleeping reduces Rage.</font>
 LLENEMY_RAGE2_DisplayName	Rage (II)
 LLENEMY_RAGE3_DisplayName	Rage (III)
 LLENEMY_RAGE4_DisplayName	Rage (IV)

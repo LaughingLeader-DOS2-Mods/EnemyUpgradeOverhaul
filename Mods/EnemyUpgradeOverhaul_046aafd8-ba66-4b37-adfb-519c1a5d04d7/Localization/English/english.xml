@@ -183,7 +183,7 @@
 	<content contentuid="hffc4903fg3cb8g48e0gb183g8e5d9eeaa066" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_ELITE_DisplayName">Super-Infused</content>
 	<content contentuid="h52cf2d76g890fg4255g913agaf040b1015cf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_PERSEVERANCE_MASTERY_Description">Character is persevering through sheer force of will.</content>
 	<content contentuid="hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_PERSEVERANCE_MASTERY_DisplayName">Perseverance Mastery</content>
-	<content contentuid="h68b2574cgb7d7g46d8g9c8bge4edff270a17" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE_Description">Damage taken increases Rage. At max Rage, character gains 100% Critical Chance and immunity to disabling statuses.</content>
+	<content contentuid="h68b2574cgb7d7g46d8g9c8bge4edff270a17" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE_Description">Damage taken increases &lt;font color=&apos;#FF3333&apos; size=&apos;20&apos;&gt;Rage&lt;/font&gt;.&lt;br&gt;&lt;font color=&apos;#DDCC22&apos;&gt;At max &lt;font color=&apos;#FF3333&apos; size=&apos;20&apos;&gt;Rage&lt;/font&gt;, character gains 100% Critical Chance and Immunity to Disabling Statuses.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Sleeping reduces Rage.&lt;/font&gt;</content>
 	<content contentuid="h51f428d7gd529g4b83gad1ag674a188d1492" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE_DisplayName">Rage</content>
 	<content contentuid="hdfeb0377gbab4g4fc6ga428g98aa0a12eb88" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE2_DisplayName">Rage (II)</content>
 	<content contentuid="h7987a4c4ge79ag4b93gbb98g63644b6ab4ef" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE3_DisplayName">Rage (III)</content>
