@@ -81,7 +81,9 @@
 	<content contentuid="h47cc8f43g77e0g4fafg908dg744a41931eec" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ChickenOverlord">Chicken Overlord</content>
 	<content contentuid="h84c9caecgf4f2g4e36ga17ag1ee9b85184a2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Class_Default_GeoPyro">Ignitionmancer</content>
 	<content contentuid="h1dec449dgfec9g48eaga922gbbf72721497e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Duplicant">Shadow Duplicant</content>
+	<content contentuid="hd041be63gbfdeg4355g84c1ge870d92387af" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Empowered">Empowered</content>
 	<content contentuid="h722182d2g6efbg4d7bgb38ag2cdfd476d61b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_FakeDying">Dead?</content>
+	<content contentuid="hda008820gb374g4cf8g87c3g294742c772d8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_GatheringPower">Gathering Power</content>
 	<content contentuid="h0d2a065eg9cbag47fdgabe7gf919c9a87875" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Acid">Melter</content>
 	<content contentuid="h5c8f2c50g5a43g4a6agac29ge06c1f5ad378" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Acid_G">Elite Melter</content>
 	<content contentuid="h0ab60959ga9a0g49b3g9f1cgc98d30ea13f1" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blessed_Ice">Heatsapper</content>
@@ -149,8 +151,12 @@
 	<content contentuid="hf180561cge97ag426cg84ddg83dd257ce95d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_DisplayName">Double Dip</content>
 	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_Description">Character is a living shadow of another character.</content>
 	<content contentuid="hf91deedcga4c7g427eg8153g2e347c06d3e8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_DisplayName">Shadow Duplicant</content>
+	<content contentuid="hba37a70cg63f9g491eg94f0gdf69970ff0e6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_EMPOWERED_Description">Character is fully powered up.</content>
+	<content contentuid="he2172050g115bg4345gae5eg4a45798086b4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_EMPOWERED_DisplayName">Empowered</content>
 	<content contentuid="h35f368f7g6d97g4adfgb26cgfcbf91e6a9fc" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_FAKE_DYING_Description">Character appears to be dead.</content>
 	<content contentuid="hdace76dag01cbg499dg9777geb2c80877c7c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_FAKE_DYING_DisplayName">Dead</content>
+	<content contentuid="h8f68810dg481ag4379gb223g0f03f78434f5" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GATHERING_POWER_Description">Character is preparing to unleash their full power when this status ends.</content>
+	<content contentuid="h18c28f76g6913g4685g81b9g6a6326ac81a3" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GATHERING_POWER_DisplayName">Gathering Power</content>
 	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_Description">Character is obsessed with collecting grenades. One misstep and boom!</content>
 	<content contentuid="h77532147gd01fg47efgb317gbf00813dbcb6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_DisplayName">Grenade Enthusiast</content>
 	<content contentuid="h626f03b5gb1a5g4e8eg94b3g1686a8687718" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_LOSECONTROL_Description">Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.</content>

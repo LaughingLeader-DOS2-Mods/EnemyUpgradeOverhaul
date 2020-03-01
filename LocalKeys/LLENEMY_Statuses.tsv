@@ -108,3 +108,7 @@ LLENEMY_RAGE2_DisplayName	Rage (II)
 LLENEMY_RAGE3_DisplayName	Rage (III)
 LLENEMY_RAGE4_DisplayName	Rage (IV)
 LLENEMY_RAGE5_DisplayName	Rage (V)
+LLENEMY_GATHERING_POWER_DisplayName	Gathering Power
+LLENEMY_GATHERING_POWER_Description	Character is preparing to unleash their full power when this status ends.
+LLENEMY_EMPOWERED_DisplayName	Empowered
+LLENEMY_EMPOWERED_Description	Character is fully powered up.
