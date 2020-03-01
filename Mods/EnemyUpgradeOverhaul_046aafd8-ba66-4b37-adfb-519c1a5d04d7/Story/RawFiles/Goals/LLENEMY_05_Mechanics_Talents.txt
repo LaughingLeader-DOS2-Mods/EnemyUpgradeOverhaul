@@ -78,10 +78,17 @@ LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_NaturalConductor_A
 //REGION MASTER_THIEF_MUG
 PROC
 LLENEMY_Talents_MugTarget((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target)
+AND
+NOT DB_LLENEMY_Talents_Temp_MasterThief_Iterating(_Enemy, _Target, _)
 THEN
 ApplyStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 6.0, 0, _Enemy);
 DB_LLENEMY_Talents_Temp_MasterThief_Iterating(_Enemy, _Target, 0);
 LLENEMY_Talents_Internal_Mug_StartIterator(_Target);
+LeaderLib_Timers_StartCharacterCharacterTimer(_Enemy, _Target, 50, "Timers_LLENEMY_MugTarget_Finish", "LLENEMY_MugTarget_Finish");
+
+IF
+CharacterCharacterEvent(_Enemy, _Target, "LLENEMY_MugTarget_Finish")
+THEN
 LLENEMY_Talents_Internal_Mug_PickItem(_Enemy, _Target);
 LLENEMY_Talents_Internal_Mug_ClearData(_Target);
 LLENEMY_Talents_Internal_Mug_StealRandomGold(_Enemy, _Target);

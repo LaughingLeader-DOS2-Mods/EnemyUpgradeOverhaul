@@ -42,23 +42,21 @@ NOT DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target);
 
 /* [OSITOOLS_ONLY]
 IF
-NRD_OnHit(_Target, _Attacker, _Damage, _Handle)
-AND
-ObjectIsCharacter((CHARACTERGUID)_Attacker, 1)
-AND
-ObjectIsCharacter((CHARACTERGUID)_Target, 1)
+NRD_OnHit((CHARACTERGUID)_Target, (CHARACTERGUID)_Attacker, _Damage, _Handle)
 AND
 CharacterIsEnemy(_Target, _Attacker, 1)
 AND
 HasActiveStatus(_Attacker, "LLENEMY_TALENT_MASTERTHIEF", 1)
 AND
-NRD_StatusGetInt(_Target, _Handle, "HitWithWeapon", 1)
+HasActiveStatus(_Attacker, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 0)
 AND
-NRD_StatusGetInt(_Target, _Handle, "Dodged", 0)
+NRD_HitGetInt(_Handle, "HitType", 0)
 AND
-NRD_StatusGetInt(_Target, _Handle, "Missed", 0)
+NRD_HitGetInt(_Handle, "Dodged", 0)
 AND
-NRD_StatusGetInt(_Target, _Handle, "Blocked", 0)
+NRD_HitGetInt(_Handle, "Missed", 0)
+AND
+NRD_HitGetInt(_Handle, "Blocked", 0)
 AND
 LeaderLib_Roll_QRY(300,999)
 THEN
