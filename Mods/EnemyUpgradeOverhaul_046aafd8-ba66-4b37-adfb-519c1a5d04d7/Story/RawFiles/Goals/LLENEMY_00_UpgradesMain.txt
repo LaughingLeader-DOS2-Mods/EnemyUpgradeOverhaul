@@ -470,12 +470,13 @@ AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
+LLENEMY_Upgrades_IncreaseChallengePoints(_Character, _CP);
 LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _NewStatus, _Duration, _CP);
 //END_REGION
 
-//REGION APPLY_UPGRADE
+//REGION CHALLENGE_POINTS
 PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+LLENEMY_Upgrades_IncreaseChallengePoints((CHARACTERGUID)_Character, (INTEGER)_CP)
 AND
 NOT GetVarInteger(_Character, "LLENEMY_ChallengePoints", _)
 AND
@@ -484,7 +485,7 @@ THEN
 SetVarInteger(_Character, "LLENEMY_ChallengePoints", _Level);
 
 PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
+LLENEMY_Upgrades_IncreaseChallengePoints((CHARACTERGUID)_Character, (INTEGER)_CP)
 AND
 GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
 AND
@@ -493,11 +494,36 @@ THEN
 SetVarInteger(_Character, "LLENEMY_ChallengePoints", _NextTotal);
 
 PROC
+LLENEMY_Upgrades_IncreaseChallengePoints((CHARACTERGUID)_Character, (INTEGER)_CP)
+AND
+GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
+AND
+CharacterGetLevel(_Character, _Level)
+AND
+IntegerSubtract(_TotalPoints, _Level, _UpgradeCP)
+AND
+_UpgradeCP >= 40
+THEN
+SetIsBoss(_Character, 1);
+//END_REGION
+
+//REGION APPLY_UPGRADE
+// This query allows overriding durations before the EUO does its thing.
+QRY
+LLENEMY_Upgrades_QRY_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_IsHardMode)
+AND
+1 == 0
+THEN
+DB_NOOP(1);
+
+PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 AND
 NOT GetStatusTurns(_Character, _Status, -1)
 AND
 GlobalGetFlag("LLENEMY_HardModeEnabled", _HardMode)
+AND
+NOT LLENEMY_Upgrades_QRY_ApplyStatus(_Character, _Group, _Type, _Status, _Duration, _HardMode)
 THEN
 LLENEMY_Upgrades_ApplyStatus(_Character, _Group, _Type, _Status, _Duration, _HardMode);
 
@@ -570,19 +596,6 @@ StringConcatenate(_Name, " (Elite)", _NewName)
 THEN
 CharacterSetCustomName(_Character, _NewName);
 */
-
-PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
-AND
-GetVarInteger(_Character, "LLENEMY_ChallengePoints", _TotalPoints)
-AND
-CharacterGetLevel(_Character, _Level)
-AND
-IntegerSubtract(_TotalPoints, _Level, _UpgradeCP)
-AND
-_UpgradeCP >= 40
-THEN
-SetIsBoss(_Character, 1);
 //END_REGION
 
 //REGION DEBUG
