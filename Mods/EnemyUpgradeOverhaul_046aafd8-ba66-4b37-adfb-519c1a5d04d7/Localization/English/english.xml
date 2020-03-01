@@ -36,8 +36,11 @@
 	<content contentuid="h250561a9g4ce0g4989ga495g3150b4f80015" Source="LLENEMY_Menu_Upgrades.lsj">Disable Duplication Upgrades. This is a chance for clones of enemies to appear in battle.</content>
 	<content contentuid="h9978b702g8683g49bbga061g0c806d92f829" Source="LLENEMY_Menu_Upgrades.lsj">Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle.</content>
 	<content contentuid="h830f867bgc14cg47c2gb90bg4988469422fc" Source="LLENEMY_Menu_Upgrades.lsj">Upgrade Settings</content>
+	<content contentuid="hb5ed98e3g8acbg404cgaab9gdf882ba463ce" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_MuggedGold_Enemy">&lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;*Stole &lt;/font&gt;&lt;font color=&apos;#C7A758&apos; size=&apos;26&apos;&gt;[1]&lt;/font&gt; &lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;Gold!*&lt;/font&gt;</content>
+	<content contentuid="h9b5ef2b3gc8c3g4a89g986egb3ac78cde891" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_MuggedGold_Target">&lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;*Lost &lt;/font&gt;&lt;font color=&apos;#C7A758&apos; size=&apos;26&apos;&gt;[1]&lt;/font&gt; &lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;Gold!*&lt;/font&gt;</content>
 	<content contentuid="h034ae0a4g858eg4d30g82dege3c983c8b18a" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_TotalCharactersLeveled">&lt;font color=&apos;#BBFF00&apos; size=&apos;23&apos;&gt;*[1] beings gained a new level of power...*&lt;/font&gt;</content>
 	<content contentuid="hff477e91gde34g4795g863ag2c508293666d" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_MessageBox_ConfirmEnemyLevelingCommit">Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.&lt;br&gt;&lt;font color=&apos;#FF0000&apos; size=&apos;26&apos;&gt;This cannot be undone.&lt;/font&gt;</content>
+	<content contentuid="h745855c9g9761g40fdg8929g1fbc5ff29cb2" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_MessageBox_SingleplayerUserWarning">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;The EUO Singleplayer mod is active, yet the game is no longer singleplayer. Upgrade Info will not be synced for players.&lt;/font&gt;</content>
 	<content contentuid="h51e25546g078ag4d32gbb99g3af66b2dc917" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_CounterAttack">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Counter!&lt;/font&gt;</content>
 	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_BonusSkills_Source">Skilled: Sourcery</content>
 	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_10">Armor Boost</content>
@@ -113,6 +116,7 @@
 	<content contentuid="hf3eea666ge611g406eg9838gcaf7b89b5c93" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Quickstep">Talent: The Pawn</content>
 	<content contentuid="hdf0ea9a2g01cbg481dg8107g6ee870f53548" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Unstable">Talent: Unstable</content>
 	<content contentuid="ha0ac17b6gee82g44d9g81b9g66c9a941e010" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Weatherproof">Talent: Weatherproof</content>
+	<content contentuid="h5073532ag87fag403fgaf2cgf4fc1febc983" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_VoidEmpowered">Void Empowered</content>
 	<content contentuid="h9c5daca5g3786g435agb9feg0ad41260a1bc" Source="LLENEMY_Settings.lsj">Enable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades.</content>
 	<content contentuid="hf13c9277g29bfg4baegbecega1e5cd8aef76" Source="LLENEMY_Settings.lsj">Enemy Scaling Settings</content>
 	<content contentuid="h085c6ba2g63acg48f6g9c2ag677294738be0" Source="LLENEMY_Settings.lsj">Disable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades.</content>
@@ -225,4 +229,6 @@
 	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_DisplayName">Talent: What a Rush</content>
 	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is empowered.[1]</content>
 	<content contentuid="h84c27debgd38dg4844g84d4g75eb558eb5de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_DisplayName">Upgraded</content>
+	<content contentuid="h1624d634gdfdcg4129g9624g9efe5660220b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_Description">Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.</content>
+	<content contentuid="h398b5931gfa52g4a26gadb9gf94bbb7d35e2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_DisplayName">Void Empowered</content>
 </contentList>
