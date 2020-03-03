@@ -17,7 +17,7 @@ DB_LLENEMY_Statuses_Rage(5, "LLENEMY_RAGE5", 80, 999);
 
 //REGION INCREASE_RAGE
 PROC
-LLENEMY_Mechanics_Statuses_IncreaseRage((CHARACTERGUID)_Char, (INTEGER)_DamagePercentageInt)
+LLENEMY_Mechanics_Statuses_IncreaseRage((CHARACTERGUID)_Char, (INTEGER)_DamagePercentageInt, (GUIDSTRING)_Source)
 AND
 Real(_DamagePercentageInt, _DamagePercentage)
 AND
@@ -27,26 +27,68 @@ RealMax(_RageR, 1.0, _ClampedRageR)
 AND
 Integer(_ClampedRageR, _AddRage)
 THEN
-LeaderLib_Variables_DB_ModifyVariableInt(_Char, "LLENEMY_Rage", _AddRage, 999, 0);
+LeaderLib_Variables_DB_ModifyVariableInt(_Char, "LLENEMY_Rage", _AddRage, 100, 0);
 
 PROC
 LeaderLib_Variables_OnVariableIntChanged((GUIDSTRING)_Char, "LLENEMY_Rage", (INTEGER)_LastValue, (INTEGER)_CurrentValue, (GUIDSTRING)_Source)
+THEN
+LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Rage_ApplyRageStatus", "LLENEMY_Rage_ApplyRageStatus");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Rage_ApplyRageStatus")
+THEN
+LLENEMY_Mechanics_Statuses_ApplyRageStatus(_Char);
+
+PROC
+LLENEMY_Mechanics_Statuses_ApplyRageStatus((CHARACTERGUID)_Char)
+AND
+DB_LeaderLib_Variables_Integer((GUIDSTRING)_Char, "LLENEMY_Rage", _CurrentValue, _LastSource)
 AND
 DB_LLENEMY_Statuses_Rage(_Index, _Status, _Min, _Max)
+AND
+NOT DB_LLENEMY_Mechanics_Statuses_AppliedRage((CHARACTERGUID)_Char)
 AND
 _CurrentValue >= _Min
 AND
 _CurrentValue < _Max
 AND
 NOT LeaderLib_Helper_QRY_HasStatus(_Char, _Status)
+AND
+HasActiveStatus(_Char, "SLEEPING", _IsSleeping)
 THEN
+DB_LLENEMY_Mechanics_Statuses_AppliedRage(_Char);
+LeaderLog_Log("DEBUG", "[LLENEMY_05_Mechanics_Statuses:LLENEMY_Rage] Applying rage status (",_Status,")");
 ApplyStatus(_Char, _Status, -1.0, 1, _Char);
+LLENEMY_Mechanics_Statuses_Internal_PlayRageEffect((CHARACTERGUID)_Char, _IsSleeping);
+
+PROC
+LLENEMY_Mechanics_Statuses_ApplyRageStatus((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_Mechanics_Statuses_AppliedRage(_Char)
+THEN
+NOT DB_LLENEMY_Mechanics_Statuses_AppliedRage(_Char);
+
+PROC
+LLENEMY_Mechanics_Statuses_Internal_PlayRageEffect((CHARACTERGUID)_Char, 0)
+AND
+LeaderLib_Helper_QRY_CharacterIsHumanoid(_Char)
+THEN
+PlayEffect(_Char, "LLENEMY_FX_Status_Rage_Applied_01", "Dummy_BodyFX");
+
+PROC
+LLENEMY_Mechanics_Statuses_Internal_PlayRageEffect((CHARACTERGUID)_Char, 0)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Char)
+THEN
+PlayEffect(_Char, "LLENEMY_FX_Status_Rage_Applied_01", "Dummy_OverheadFX");
 //END_REGION
 
 //REGION DECREASE_RAGE
 //From Sleeping
 PROC
-LLENEMY_Mechanics_Statuses_LowerRage((CHARACTERGUID)_Char)
+LLENEMY_Mechanics_Statuses_LowerRage((CHARACTERGUID)_Char, (GUIDSTRING)_Source)
+AND
+NOT LeaderLib_Variables_DB_QRY_IntegerVariableIsLessThanOrEqualTo(_Char, "LLENEMY_Rage", 0)
 AND
 DB_LLENEMY_Statuses_Rage(_Index, _Status, _Min, _Max)
 AND
@@ -59,15 +101,18 @@ AND
 DB_LLENEMY_Statuses_Rage(_Previous, _NextStatus, _NextMin, _NextMax)
 THEN
 DB_LLENEMY_Mechanics_Statuses_RageLowered(_Char);
-LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", _NextMin);
-//ApplyStatus(_Char, _NextStatus, -1.0, 1, _Char);
+LeaderLog_LogInt("DEBUG", "[LLENEMY_05_Mechanics_Statuses:LowerRage] Lowering rage to (",_NextMin,")");
+LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", _NextMin, _Source);
+CharacterStatusText(_Char, "LLENEMY_StatusText_RageReduced");
 
 PROC
-LLENEMY_Mechanics_Statuses_LowerRage((CHARACTERGUID)_Char)
+LLENEMY_Mechanics_Statuses_LowerRage((CHARACTERGUID)_Char, (GUIDSTRING)_Source)
 AND
 DB_LLENEMY_Mechanics_Statuses_RageLowered(_Char)
 THEN
 NOT DB_LLENEMY_Mechanics_Statuses_RageLowered(_Char);
+//END_REGION
+
 //REGION RAGE_TS
 IF
 CharacterStatusApplied(_Char, "LLENEMY_RAGE", _)
@@ -79,6 +124,46 @@ LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", 1);
 IF
 CharacterStatusApplied(_Char, "LLENEMY_RAGE", _)
 THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Rage_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_RAGE2", _)
+AND
+NOT LeaderLib_ToggleScripts_QRY_ScriptIsEnabled(_Char, "LLENEMY_Rage_Active")
+AND
+DB_LLENEMY_Statuses_Rage(_Index, "LLENEMY_RAGE2", _Min, _Max)
+THEN
+LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", _Min);
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Rage_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_RAGE3", _)
+AND
+NOT LeaderLib_ToggleScripts_QRY_ScriptIsEnabled(_Char, "LLENEMY_Rage_Active")
+AND
+DB_LLENEMY_Statuses_Rage(_Index, "LLENEMY_RAGE3", _Min, _Max)
+THEN
+LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", _Min);
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Rage_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_RAGE4", _)
+AND
+NOT LeaderLib_ToggleScripts_QRY_ScriptIsEnabled(_Char, "LLENEMY_Rage_Active")
+AND
+DB_LLENEMY_Statuses_Rage(_Index, "LLENEMY_RAGE4", _Min, _Max)
+THEN
+LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", _Min);
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Rage_Active", "EnemyUpgradeOverhaul");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_RAGE5", _)
+AND
+NOT LeaderLib_ToggleScripts_QRY_ScriptIsEnabled(_Char, "LLENEMY_Rage_Active")
+AND
+DB_LLENEMY_Statuses_Rage(_Index, "LLENEMY_RAGE5", _Min, _Max)
+THEN
+LeaderLib_Variables_DB_SetVariableInt(_Char, "LLENEMY_Rage", _Min);
 LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Rage_Active", "EnemyUpgradeOverhaul");
 //END_REGION
 
