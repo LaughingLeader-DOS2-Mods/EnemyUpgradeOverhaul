@@ -6,11 +6,13 @@ KBSECTION
 IF
 NRD_OnHit((CHARACTERGUID)_Char, _Source, _Damage, _Handle)
 AND
+ObjectGetFlag(_Char, "LLENEMY_Rage_Active", 1)
+AND
+HasActiveStatus(_Char, "SLEEPING", 0)
+AND
 CharacterIsDead(_Char, 0)
 AND
 _Damage > 0
-AND
-ObjectGetFlag(_Char, "LLENEMY_Rage_Active", 1)
 AND
 NRD_StatusGetInt(_Char, _Handle, "Dodged", 0)
 AND
@@ -18,7 +20,7 @@ NRD_StatusGetInt(_Char, _Handle, "Missed", 0)
 AND
 NRD_StatusGetInt(_Char, _Handle, "Blocked", 0)
 THEN
-NRD_LuaCall("LLENEMY_Ext_IncreaseRage", (STRING)_Char, (STRING)_Damage, (STRING)_Handle);
+NRD_LuaCall("LLENEMY_Ext_IncreaseRage", (STRING)_Char, (STRING)_Damage, (STRING)_Handle, (STRING)_Source);
 */
 
 // [BEGIN_NO_OSITOOLS]
@@ -29,15 +31,15 @@ CharacterIsDead(_Char, 0)
 AND
 ObjectGetFlag(_Char, "LLENEMY_Rage_Active", 1)
 THEN
-LLENEMY_Mechanics_Statuses_IncreaseRage(_Char, _Percentage);
+LLENEMY_Mechanics_Statuses_IncreaseRage(_Char, _Percentage, _Source);
 // [END_NO_OSITOOLS]
 
 IF
-CharacterStatusApplied(_Char, "SLEEPING", _)
+CharacterStatusApplied(_Char, "SLEEPING", _Source)
 AND
 ObjectGetFlag(_Char, "LLENEMY_Rage_Active", 1)
 THEN
-LLENEMY_Mechanics_Statuses_LowerRage(_Char);
+LLENEMY_Mechanics_Statuses_LowerRage(_Char, _Source);
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_80_ToggledScripts"
