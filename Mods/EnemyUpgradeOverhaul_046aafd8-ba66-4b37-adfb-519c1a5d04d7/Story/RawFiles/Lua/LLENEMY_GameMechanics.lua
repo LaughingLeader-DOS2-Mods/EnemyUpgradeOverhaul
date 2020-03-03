@@ -39,13 +39,14 @@ end
 ---@param character string
 ---@param damage integer
 ---@param handle integer
-function LLENEMY_Ext_IncreaseRage(character, damage, handle)
+function LLENEMY_Ext_IncreaseRage(character, damage, handle, source)
 	--local hp = NRD_CharacterGetStatInt(character, "CurrentVitality")
 	local maxhp = NRD_CharacterGetStatInt(character, "MaxVitality")
 	local damage_ratio = math.max((damage / maxhp) * 88.88, 1.0)
 	local add_rage = math.ceil(damage_ratio)
-	Osi.LeaderLib_Variables_DB_ModifyVariableInt(character, "LLENEMY_Rage", add_rage, 999, 0);
-	Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_IncreaseRage] Added (",add_rage,") Rage to (",character,").")
+	Osi.LeaderLib_Variables_DB_ModifyVariableInt(character, "LLENEMY_Rage", add_rage, 100, 0, source);
+	local rage_entry = Osi.DB_LeaderLib_Variables_Integer:Get(character, "LLENEMY_Rage", nil, nil)
+	Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_IncreaseRage] Added ("..tostring(add_rage)..") Rage to ("..tostring(character).."). Total: ("..tostring(rage_entry[1][3])..")")
 end
 
 function LLENEMY_Ext_MugTarget_Start(character, target, handle)
