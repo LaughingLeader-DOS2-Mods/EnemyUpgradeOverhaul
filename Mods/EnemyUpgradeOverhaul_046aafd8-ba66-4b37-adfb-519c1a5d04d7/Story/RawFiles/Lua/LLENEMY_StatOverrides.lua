@@ -79,20 +79,20 @@ local stat_overrides = {
 
 -- v40 and up introduced a way to add talents to NPCs
 local talent_belt_overrides = {
-	LLENEMY_TALENT_LONEWOLF = { Items = ""},
-	LLENEMY_TALENT_TORTURER = { Items = ""},
-	LLENEMY_TALENT_UNSTABLE = { Items = ""},
-	LLENEMY_TALENT_WHATARUSH = { Items = ""},
-	LLENEMY_TALENT_LEECH = { Items = ""},
-	LLENEMY_TALENT_QUICKSTEP = { Items = ""},
-	LLENEMY_TALENT_SADIST = { Items = ""},
-	LLENEMY_TALENT_GLADIATOR = { Items = ""},
-	LLENEMY_TALENT_HAYMAKER = { Items = ""},
-	LLENEMY_TALENT_INDOMITABLE = { Items = ""},
-	LLENEMY_TALENT_SOULCATCHER = { Items = ""},
-	LLENEMY_TALENT_MAGICCYCLES = { Items = ""},
-	LLENEMY_TALENT_GREEDYVESSEL = { Items = ""},
-	LLENEMY_TALENT_BACKSTAB = { Items = ""},
+	LLENEMY_TALENT_LONEWOLF = { Items = "", StackId = "Stack_LLENEMY_Talent_LoneWolf"},
+	LLENEMY_TALENT_TORTURER = { Items = "", StackId = "Stack_LLENEMY_Talent_Torturer"},
+	LLENEMY_TALENT_UNSTABLE = { Items = "", StackId = "Stack_LLENEMY_Talent_Unstable"},
+	LLENEMY_TALENT_WHATARUSH = { Items = "", StackId = "Stack_LLENEMY_Talent_WhatARush"},
+	LLENEMY_TALENT_LEECH = { Items = "", StackId = "Stack_LLENEMY_Talent_Leech"},
+	LLENEMY_TALENT_QUICKSTEP = { Items = "", StackId = "Stack_LLENEMY_Talent_Quickstep"},
+	LLENEMY_TALENT_SADIST = { Items = "", StackId = "Stack_LLENEMY_Talent_Sadist"},
+	LLENEMY_TALENT_GLADIATOR = { Items = "", StackId = "Stack_LLENEMY_Talent_Gladiator"},
+	LLENEMY_TALENT_HAYMAKER = { Items = "", StackId = "Stack_LLENEMY_Talent_Haymaker"},
+	LLENEMY_TALENT_INDOMITABLE = { Items = "", StackId = "Stack_LLENEMY_Talent_Indomitable"},
+	LLENEMY_TALENT_SOULCATCHER = { Items = "", StackId = "Stack_LLENEMY_Talent_SoulCatcher"},
+	LLENEMY_TALENT_MAGICCYCLES = { Items = "", StackId = "Stack_LLENEMY_Talent_MagicCycles"},
+	LLENEMY_TALENT_GREEDYVESSEL = { Items = "", StackId = "Stack_LLENEMY_Talent_GreedyVessel"},
+	LLENEMY_TALENT_BACKSTAB = { Items = "", StackId = "Stack_LLENEMY_Talent_Backstab"},
 }
 
 -- Statuses displayed in LLENEMY_UPGRADE_INFO
