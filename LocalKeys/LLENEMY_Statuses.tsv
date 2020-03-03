@@ -78,6 +78,8 @@ LLENEMY_TALENT_SOULCATCHER_DisplayName	Talent: Soulcatcher
 LLENEMY_TALENT_SOULCATCHER_Description	When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.
 LLENEMY_TALENT_MASTERTHIEF_DisplayName	Talent: Master Thief
 LLENEMY_TALENT_MASTERTHIEF_Description	Character has a chance to steal a consumable item on attack.<br>Can only happen once per turn.
+LLENEMY_TALENT_MASTERTHIEF_COOLDOWN_DisplayName	Cooldown (Master Thief)
+LLENEMY_TALENT_MASTERTHIEF_COOLDOWN_Description	Character must wait before they can mug again.
 LLENEMY_TALENT_GREEDYVESSEL_DisplayName	Talent: Greedy Vessel
 LLENEMY_TALENT_GREEDYVESSEL_Description	Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.
 LLENEMY_TALENT_MAGICCYCLES_DisplayName	Talent: Magic Cycles
