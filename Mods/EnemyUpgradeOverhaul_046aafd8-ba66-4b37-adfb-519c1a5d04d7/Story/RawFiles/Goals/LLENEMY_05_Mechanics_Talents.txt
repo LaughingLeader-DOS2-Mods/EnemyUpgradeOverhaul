@@ -8,10 +8,10 @@ PROC
 LLENEMY_Mechanics_Talents_InitSettings()
 THEN
 // Stored 2 per entry for faster iterators
-DB_LLENEMY_Talents_MasterThief_Tags("GRENADES", "");
-DB_LLENEMY_Talents_MasterThief_Tags("LLWEAPONEX_Throwing", "");
-DB_LLENEMY_Talents_MasterThief_Tags("Consumable", "");
-DB_LLENEMY_Talents_MasterThief_Tags("Potion", "");
+DB_LLENEMY_Talents_MasterThief_Tags("GRENADES");
+DB_LLENEMY_Talents_MasterThief_Tags("LLWEAPONEX_Throwing");
+DB_LLENEMY_Talents_MasterThief_Tags("Consumable");
+DB_LLENEMY_Talents_MasterThief_Tags("Potion");
 
 //REGION TOGGLE_SCRIPT_TOGGLING
 IF
@@ -81,9 +81,9 @@ LLENEMY_Talents_MugTarget((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target)
 AND
 NOT DB_LLENEMY_Talents_Temp_MasterThief_Iterating(_Enemy, _Target, _)
 THEN
-ApplyStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 6.0, 0, _Enemy);
 DB_LLENEMY_Talents_Temp_MasterThief_Iterating(_Enemy, _Target, 0);
-LLENEMY_Talents_Internal_Mug_StartIterator(_Target);
+ApplyStatus(_Enemy, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 6.0, 0, _Enemy);
+InventoryLaunchIterator(_Target, "Iterator_LLENEMY_MasterThief_FoundItem", "");
 LeaderLib_Timers_StartCharacterCharacterTimer(_Enemy, _Target, 50, "Timers_LLENEMY_MugTarget_Finish", "LLENEMY_MugTarget_Finish");
 
 IF
@@ -91,17 +91,23 @@ CharacterCharacterEvent(_Enemy, _Target, "LLENEMY_MugTarget_Finish")
 THEN
 LLENEMY_Talents_Internal_Mug_PickItem(_Enemy, _Target);
 LLENEMY_Talents_Internal_Mug_ClearData(_Target);
+// [BEGIN_NO_OSITOOLS]
 LLENEMY_Talents_Internal_Mug_StealRandomGold(_Enemy, _Target);
+// [END_NO_OSITOOLS]
 
-PROC
-LLENEMY_Talents_Internal_Mug_StartIterator((CHARACTERGUID)_Target)
+QRY
+LLENEMY_Talents_Mug_QRY_ItemHasTag((ITEMGUID)_Item)
 AND
-DB_LLENEMY_Talents_MasterThief_Tags(_TagA, _TagB)
+DB_LLENEMY_Talents_MasterThief_Tags(_Tag)
+AND
+IsTagged(_Item, _Tag, 1)
 THEN
-InventoryLaunchTagIterator(_Target, _TagA, _TagB, "Iterator_LLENEMY_MasterThief_FoundItem", "");
+DB_NOOP(1);
 
 IF
 StoryEvent((ITEMGUID)_Item, "Iterator_LLENEMY_MasterThief_FoundItem")
+AND
+LLENEMY_Talents_Mug_QRY_ItemHasTag(_Item)
 AND
 GetInventoryOwner(_Item, (CHARACTERGUID)_Target)
 AND
@@ -113,6 +119,7 @@ NOT DB_LLENEMY_Talents_Temp_MasterThief_Iterating(_Enemy, _Target, _Index);
 DB_LLENEMY_Talents_Temp_MasterThief_Iterating(_Enemy, _Target, _NextIndex);
 DB_LLENEMY_Talents_Temp_MasterThief_Items(_Target, _Index, _Item);
 
+// [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Talents_Internal_Mug_PickItem((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target)
 AND
@@ -125,21 +132,20 @@ AND
 DB_LeaderLib_Random(_Index)
 AND
 DB_LLENEMY_Talents_Temp_MasterThief_Items(_Target, _Index, _Item)
-AND
-ItemGetAmount(_Item, _Amount)
-AND
-IntegerDivide(_Amount, 2, _MaxAmount)
-AND
-IntegerMax(_MaxAmount, 1, _CappedAmount)
-AND
-LeaderLib_Random_QRY(1, _CappedAmount)
-AND
-DB_LeaderLib_Random(_StealAmount)
 THEN
-NOT DB_LeaderLib_Random(_StealAmount);
 NOT DB_LeaderLib_Random(_Index);
-ItemToInventory(_Item, _Enemy, _StealAmount, 0, 0);
-LLENEMY_Talents_OnTargetMugged(_Enemy, _Target, _Item, _StealAmount);
+ItemToInventory(_Item, _Enemy, 1, 0, 0);
+LLENEMY_Talents_OnTargetMugged(_Enemy, _Target, _Item, 1);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Talents_Internal_Mug_PickItem((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target)
+AND
+GetUUID(_Target, _UUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_MugTarget_End", (STRING)_Enemy, _UUID);
+*/
 
 PROC
 LLENEMY_Talents_Internal_Mug_ClearData((CHARACTERGUID)_Target)
@@ -175,52 +181,10 @@ CharacterDisplayTextWithParam(_Enemy, "LLENEMY_DisplayText_MuggedGold_Enemy", _C
 //END_REGION
 
 //REGION ON_MUGGED
-// [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Talents_OnTargetMugged((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target, (ITEMGUID)_Item, (INTEGER)_StolenAmount)
 THEN
 DB_NOOP(1);
-// [END_NO_OSITOOLS]
-
-/* [OSITOOLS_ONLY]
-PROC
-LLENEMY_Talents_OnTargetMugged((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target, (ITEMGUID)_Item, (INTEGER)_StolenAmount)
-AND
-_StolenAmount > 1
-AND
-GetTemplate(_Item, _TemplateStr)
-AND
-NRD_GuidString(_TemplateStr, _Template)
-AND
-ItemTemplateGetDisplayString(_Template, _Handle, _Name)
-AND
-IntegertoString(_StolenAmount, _AmountStr)
-AND
-StringConcatenate("<font color='#FF3333' size='23'>*", _AmountStr, _StrA)
-AND
-StringConcatenate(_StrA, "</font><font color='#FE6E27' size='26'>", _StrB)
-AND
-StringConcatenate(_StrB, _Name, _StrC)
-AND
-StringConcatenate(_StrC, "</font> <font color='#FF3333' size='23'>were stolen!*</font>", _Text)
-THEN
-CharacterStatusText(_Target, _Text);
-
-PROC
-LLENEMY_Talents_OnTargetMugged((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target, (ITEMGUID)_Item, 1)
-AND
-GetTemplate(_Item, _TemplateStr)
-AND
-NRD_GuidString(_TemplateStr, _Template)
-AND
-ItemTemplateGetDisplayString(_Template, _Handle, _Name)
-AND
-StringConcatenate("<font color='#FF3333' size='23'>*1 </font><font color='#FE6E27' size='26'>", _Name, _StrA)
-AND
-StringConcatenate(_StrA, "</font> <font color='#FF3333' size='23'>was stolen!*</font>", _Text)
-THEN
-CharacterStatusText(_Target, _Text);
-*/
 //END_REGION
 
 EXITSECTION
