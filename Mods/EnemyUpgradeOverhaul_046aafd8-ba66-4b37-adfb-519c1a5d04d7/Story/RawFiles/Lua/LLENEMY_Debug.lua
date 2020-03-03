@@ -77,3 +77,30 @@ function LLENEMY_Ext_TraceCharacterStats(char)
 		Ext.Print(stat..": "..tostring(val))
 	end
 end
+
+function LLENEMY_Ext_InitDebugLevel()
+	local char = "Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d"
+	ApplyStatus(char, "LLENEMY_RAGE", -1.0, 1, char)
+
+	local host = CharacterGetHostCharacter()
+	CharacterApplyPreset(host, "Rogue_Act2")
+	CharacterLevelUpTo(host, 10)
+	CharacterAddAttribute(host, "Memory", 20)
+	--CharacterTransformAppearanceToWithEquipmentSet(host, host, "ArenaRogue", 0)
+	for k,skill in pairs(Ext.GetSkillSet("ArenaRogue")) do
+		CharacterAddSkill(host, skill, 0)
+	end
+	
+	CharacterRemoveSkill(host, "Projectile_Chloroform")
+	CharacterAddSkill(host, "Projectile_Chloroform", 0)
+	NRD_SkillBarSetSkill(host, 0, "Projectile_Chloroform")
+
+	local slots = Osi.DB_LeaderLib_EquipmentSlots:Get(nil)
+	for k,v in pairs(slots) do
+		local slot = v[1]
+		local item = CharacterGetEquippedItem(host, slot)
+		if item ~= nil then
+			ItemLevelUpTo(host, 10)
+		end
+	end
+end
