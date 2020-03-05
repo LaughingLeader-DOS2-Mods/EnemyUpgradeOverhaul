@@ -52,7 +52,7 @@ end
 function LLENEMY_Ext_MugTarget_Start(character, target, handle)
 	local hit_type = NRD_StatusGetInt(target, handle, "HitReason")
 	Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Hit type: " .. tostring(hit_type))
-	if (hit_type == 0 or hit_type == 3) and LeaderLib.Game.HitSucceeded(handle, target) then
+	if (hit_type == 0 or hit_type == 3) and LeaderLib.Game.HitSucceeded(target, handle, 0) then
 		Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] ("..tostring(character)..") is mugging target: ", target)
 		Osi.LLENEMY_Talents_MugTarget(character, target)
 	else

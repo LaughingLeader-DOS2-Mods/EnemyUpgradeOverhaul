@@ -28,13 +28,11 @@ NRD_OnHit(_Target, _Attacker, _Damage, _Handle)
 AND
 HasActiveStatus(_Attacker, "LLENEMY_TALENT_BULLY", 1)
 AND
-NRD_StatusGetInt(_Target, _Handle, "HitWithWeapon", 1)
+_Damage > 0
 AND
-NRD_StatusGetInt(_Target, _Handle, "Dodged", 0)
+LeaderLib_Ext_QRY_HitSucceeded(_Target, _Handle, 0, 1)
 AND
-NRD_StatusGetInt(_Target, _Handle, "Missed", 0)
-AND
-NRD_StatusGetInt(_Target, _Handle, "Blocked", 0)
+LeaderLib_Ext_QRY_HitWithWeapon(_Target, _Handle, 0, 1)
 AND
 LLENEMY_Talents_QRY_BullyTarget(_Target)
 THEN
