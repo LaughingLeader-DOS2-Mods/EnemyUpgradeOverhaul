@@ -44,7 +44,8 @@ NOT DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, _Amount);
 LeaderLib_ToggleScripts_DisableScriptForObject(_Enemy, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
 LLENEMY_Upgrades_ClearFlags(_Enemy);
 LLENEMY_Upgrades_RollForUpgrades(_Enemy);
-EXITSECTION
 
+EXITSECTION
+SysClear("DB_LLENEMY_Talents_Temp_ReviveNext", 2);
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_80_ToggledScripts"
