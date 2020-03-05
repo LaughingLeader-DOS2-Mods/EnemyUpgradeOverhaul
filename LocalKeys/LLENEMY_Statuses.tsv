@@ -36,7 +36,7 @@ LLENEMY_INF_WATER_G_DisplayName	Elite Cascader
 LLENEMY_TALENT_BACKSTAB_Description	Character can backstab with non-dagger weapons.
 LLENEMY_TALENT_BACKSTAB_DisplayName	Talent: Assassin
 LLENEMY_TALENT_BASE_DisplayName	Talent
-LLENEMY_TALENT_BULLY_Description	Character deals 50% extra damage against opponents that are Slowed, Crippled or Knocked Down with basic attacks.
+LLENEMY_TALENT_BULLY_Description	Character deals 50% extra damage with basic attacks against opponents that are Slowed, Crippled or Knocked Down.
 LLENEMY_TALENT_BULLY_EXTENDER_Description	Character deals 50% extra damage against opponents that are Slowed, Crippled or Knocked Down with basic attacks and weapon skills.
 LLENEMY_TALENT_BULLY_DisplayName	Talent: Bully
 LLENEMY_TALENT_LEECH_Description	Character is healed when standing in blood.
