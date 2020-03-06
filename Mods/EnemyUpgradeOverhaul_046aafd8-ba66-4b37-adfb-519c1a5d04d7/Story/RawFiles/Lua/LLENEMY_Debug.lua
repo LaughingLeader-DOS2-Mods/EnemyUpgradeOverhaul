@@ -103,4 +103,6 @@ function LLENEMY_Ext_InitDebugLevel()
 			ItemLevelUpTo(host, 10)
 		end
 	end
+
+	ApplyStatus(host, "LLENEMY_TALENT_BULLY", -1.0, 1, host)
 end
