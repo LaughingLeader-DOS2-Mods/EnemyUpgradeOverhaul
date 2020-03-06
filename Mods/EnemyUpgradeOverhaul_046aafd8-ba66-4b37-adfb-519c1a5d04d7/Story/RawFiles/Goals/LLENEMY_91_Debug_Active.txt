@@ -104,6 +104,7 @@ GameStarted(_,1)
 THEN
 GlobalSetFlag("LeaderLog_DebugStatus_Enabled");
 GlobalSetFlag("LeaderLog_Debug_Enabled");
+GlobalSetFlag("LeaderLog_Trace_Enabled");
 
 IF
 GameStarted(_,1)

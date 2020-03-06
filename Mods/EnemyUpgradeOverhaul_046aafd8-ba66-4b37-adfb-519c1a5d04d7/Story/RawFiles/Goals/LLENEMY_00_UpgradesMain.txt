@@ -379,12 +379,14 @@ AND
 _Roll >= _MinRoll
 THEN
 NOT DB_LeaderLib_Random(_Roll);
-LeaderLog_Log("TRACE", "[LLENEMY:Buffs:RollForStatusUpgrade] Roll successful for [",_Group,":",_Type,"] Status [",_Status,"]. Applying.");
+LLENEMY_Upgrades_Internal_LogStatusRoll(_Character, _Roll, _MinRoll, _MaxRoll, _Group, _Type, _Status);
 LLENEMY_Upgrades_ApplyUpgrade(_Character, _Group, _Type, _Status, _Duration, _CP);
 LLENEMY_Upgrades_OnRollForGroupSucceeded(_Character, _Group, _Type);
 
-QRY
-LLENEMY_Upgrades_QRY_Internal_LogTypeRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (STRING)_Group, (STRING)_Type)
+PROC
+LLENEMY_Upgrades_Internal_LogStatusRoll((CHARACTERGUID)_Character, (INTEGER)_Roll, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (STRING)_Group, (STRING)_Type, (STRING)_Status)
+AND
+DB_GlobalFlag("LeaderLib_IsEditorMode")
 AND
 IntegertoString(_Roll, _RollStr)
 AND
@@ -394,7 +396,7 @@ IntegertoString(_MaxRoll, _MaxStr)
 AND
 CharacterGetDisplayName(_Character, _, _Name)
 THEN
-LeaderLog_Log("TRACE", "[LLENEMY:Upgrades:LogTypeRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
+LeaderLog_Log("DEBUG", "[LLENEMY_Upgrades_RollForStatusUpgrade] [",_Name,"] Roll Successful (",_Status,") [", _RollStr, "] Min[",_MinStr,"] Max[",_MaxStr,"] Group [",_Group,"] Type [",_Type,"]");
 
 QRY
 LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (INTEGER)_Roll)
