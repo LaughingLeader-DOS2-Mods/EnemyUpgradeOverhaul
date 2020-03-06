@@ -6,8 +6,7 @@ KBSECTION
 PROC
 LLENEMY_GameScripts_InitSettings()
 THEN
-//LeaderLib_GameScripts_RegisterScript("EnemyUpgradeOverhaul", "LLENEMY_90_GS_ModdedUpgrades_Start");
-DB_NOOP(1);
+LeaderLib_GameScripts_RegisterScript("EnemyUpgradeOverhaul", "LLENEMY_90_GS_StatusRemovals");
 EXITSECTION
 
 ENDEXITSECTION

@@ -1,0 +1,18 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_GATHERING_POWER", _)
+AND
+DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_GATHERING_POWER")
+THEN
+NOT DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_GATHERING_POWER");
+LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Statuses_ApplyEmpowered", "LLENEMY_Statuses_ApplyEmpowered");
+
+EXITSECTION
+SysClear("DB_LLENEMY_Statuses_Temp_WaitForRemoval", 2);
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_90_GameStarted_Init"
