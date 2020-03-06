@@ -1,0 +1,57 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+// [BEGIN_NO_OSITOOLS]
+IF
+AttackedByObject((CHARACTERGUID)_Goblin, _, (CHARACTERGUID)_Source, _, _DamageSource)
+AND
+DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin)
+AND
+LeaderLib_String_QRY_EqualsAny(_DamageSource, "Attack", "") // Ignore surfaces, statuses etc
+AND
+CharacterIsEnemy(_Goblin, _Source, 1)
+THEN
+LeaderLib_Variables_ModifyVariableInt(_Goblin, "LLENEMY_TreasureGoblin_TotalHits", 1);
+// [END_NO_OSITOOLS]
+
+IF
+NRD_OnHit((CHARACTERGUID)_Goblin, (CHARACTERGUID)_Source, _Damage, _Handle)
+AND
+_Damage > 0
+AND
+DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin)
+//IsTagged(_Goblin, "LLENEMY_TreasureGoblin", 1)
+AND
+CharacterIsEnemy(_Goblin, _Source, 1)
+AND
+LeaderLib_Hit_QRY_HitSucceeded(_Goblin, _Handle, 0)
+AND
+LeaderLib_Hit_QRY_HitDirectly(_Goblin, _Handle, 0)
+THEN
+LeaderLib_Variables_ModifyVariableInt(_Goblin, "LLENEMY_TreasureGoblin_TotalHits", 1);
+
+IF
+OnStageChanged((CHARACTERGUID)_Goblin, 0)
+AND
+DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin)
+THEN
+NOT DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin);
+RemoveTemporaryCharacter(_Goblin);
+
+PROC
+LLENEMY_Rewards_TreasureGoblin_ToggleScript(0)
+AND
+NOT DB_LLENEMY_TreasureGoblins_Temp_Active(_)
+THEN
+LeaderLib_ToggleScripts_DisableScript("LLENEMY_TreasureGoblin_Active", "EnemyUpgradeOverhaul");
+
+IF
+RegionEnded(_)
+THEN
+LeaderLib_ToggleScripts_DisableScript("LLENEMY_TreasureGoblin_Active", "EnemyUpgradeOverhaul");
+
+EXITSECTION
+SysClear("DB_LLENEMY_TreasureGoblins_Temp_Active", 1);
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"
