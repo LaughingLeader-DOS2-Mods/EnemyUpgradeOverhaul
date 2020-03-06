@@ -15,6 +15,11 @@ THEN
 GoalCompleted;
 
 IF
+GameStarted("TestLevel_LL_LeaderLib",1)
+THEN
+LeaderLib_Helper_MakeHostileToPlayers(CHARACTERGUID_LLENEMY_TreasureGoblin_A_001_150948ae-d736-4b10-a07d-a1b440bf8fa3);
+
+IF
 RegionStarted("TestLevel_LL_LeaderLib")
 THEN
 GlobalClearFlag("LLENEMY_DuplicationUpgradesDisabled");
