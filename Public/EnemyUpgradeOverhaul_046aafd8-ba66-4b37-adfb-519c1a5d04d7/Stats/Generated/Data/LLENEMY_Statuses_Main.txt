@@ -1458,6 +1458,7 @@ data "FormatColor" "White"
 data "StatsId" "Stats_LLENEMY_GatheringPower"
 data "StackId" "Stack_LLENEMY_GatheringPower"
 data "StackPriority" "0"
+data "ForceOverhead" "Yes"
 
 new entry "Stats_LLENEMY_GatheringPower"
 type "Potion"
