@@ -156,7 +156,7 @@
 	<content contentuid="he2172050g115bg4345gae5eg4a45798086b4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_EMPOWERED_DisplayName">Empowered</content>
 	<content contentuid="h35f368f7g6d97g4adfgb26cgfcbf91e6a9fc" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_FAKE_DYING_Description">Character appears to be dead.</content>
 	<content contentuid="hdace76dag01cbg499dg9777geb2c80877c7c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_FAKE_DYING_DisplayName">Dead</content>
-	<content contentuid="h8f68810dg481ag4379gb223g0f03f78434f5" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GATHERING_POWER_Description">Character is preparing to unleash their full power when this status ends.</content>
+	<content contentuid="h8f68810dg481ag4379gb223g0f03f78434f5" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GATHERING_POWER_Description">Character is preparing to unleash their full power.</content>
 	<content contentuid="h18c28f76g6913g4685g81b9g6a6326ac81a3" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GATHERING_POWER_DisplayName">Gathering Power</content>
 	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_Description">Character is obsessed with collecting grenades. One misstep and boom!</content>
 	<content contentuid="h77532147gd01fg47efgb317gbf00813dbcb6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_DisplayName">Grenade Enthusiast</content>
