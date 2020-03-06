@@ -1,0 +1,5 @@
+new itemgroup "WPN_LLENEMY_TreasureSack_A"
+
+add levelgroup 0,0,"All"
+add rootgroup "7d578427-4b95-429f-9f37-b09838c70a80",""
+add namegroup "WPN_LLENEMY_TreasureSack_A","",""

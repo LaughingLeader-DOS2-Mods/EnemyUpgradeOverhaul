@@ -1,0 +1,3 @@
+new namegroup "WPN_LLENEMY_TreasureSack_A"
+add name "Sack of Treasure",""
+add namecool "Overflowing Sack of Treasure",""

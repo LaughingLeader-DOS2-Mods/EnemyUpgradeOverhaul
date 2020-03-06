@@ -1,0 +1,42 @@
+INIT
+	CHARACTER:__Me
+	INT64:%OverlayEffect = null
+EVENTS
+
+EVENT LLENEMY_TreasureGoblin_Init
+ON
+	OnInit()
+ACTIONS
+	CharacterApplyStatus(__Me, UNSHEATHED, -1, 1, __Me)
+	CharacterSetFightMode(__Me, 1, 1)
+	CharacterSetCanSpotSneakers(__Me,1)
+	CharacterPlayLoopEffect(%OverlayEffect, __Me, "LLENEMY_FX_Status_TreasureGoblin_Overlay_01", "")
+	
+EVENT LLENEMY_TreasureGoblin_Shutdown
+ON
+	OnShutdown()
+ACTIONS
+	StopLoopEffect(%OverlayEffect, 1)
+	Set(%OverlayEffect, 0)
+	
+EVENT LLENEMY_TreasureGoblin_Disappear
+ON
+	OnLeftCombat(__Me, _)
+ACTIONS
+	SetPriority("LLENEMY_TreasureGoblin_Leave", 999999)
+
+BEHAVIOUR
+
+REACTION LLENEMY_TreasureGoblin_FearFlee, 999998
+USAGE COMBAT
+ACTIONS
+	CharacterFleeFrom(All,30)
+
+REACTION LLENEMY_TreasureGoblin_Leave, 0
+USAGE PEACE
+CHECK "!c1"
+	IsInCombat(__Me)
+ACTIONS
+	CharacterPlayAnimation("Dance_01", 1, 1, 1)
+	PlayEffectAt(__Me, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01")
+	CharacterSetOffStage()

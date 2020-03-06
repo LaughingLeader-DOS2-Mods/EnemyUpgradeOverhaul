@@ -27,3 +27,7 @@ add equipmentgroup
 add equipment entry "_LLENEMY_Demons_Fence_Daggers"
 add equipmentgroup
 add equipment entry "_LLENEMY_Demons_Fence_Daggers"
+
+new equipment "LLENEMY_TreasureGoblin_A"
+add equipmentgroup
+add equipment entry "_LLENEMY_Goblin_TreasureSack_A"
