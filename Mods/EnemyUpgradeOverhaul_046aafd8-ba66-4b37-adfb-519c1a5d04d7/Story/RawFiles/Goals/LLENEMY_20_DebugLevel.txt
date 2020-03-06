@@ -106,6 +106,9 @@ THEN
 RemoveStatus(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, "LLENEMY_BONUSSKILLS_SINGLE");
 RemoveStatus(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, "LLENEMY_UPGRADE_INFO");
 LLENEMY_Upgrades_ApplyUpgrade(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, "BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE", -1.0, 2);
+CharacterSetImmortal(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, 1);
+ApplyStatus(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, "KNOCKED_DOWN", -1.0, 1, CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0);
+SetCanJoinCombat(CHARACTERGUID_Trailer_Humans_Female_Lohse_000_145810cc-7e46-43e7-9fdf-ab9bb8ffcdc0, 0);
 EXITSECTION
 
 ENDEXITSECTION
