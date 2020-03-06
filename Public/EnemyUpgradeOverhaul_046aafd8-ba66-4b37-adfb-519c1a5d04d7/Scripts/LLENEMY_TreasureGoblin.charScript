@@ -37,46 +37,21 @@ ON
 ACTIONS
 	CharacterApplyStatus(__Me, HASTED, -1, 0, __Me)
 
-EVENT LLENEMY_TreasureGoblin_OnDamage
-VARS
-	CHARACTER:_Char
-	FLOAT:_Damage
-ON
-	OnDamage(_,_Damage,_Char,_)
-ACTIONS
-IF "c1"
-	CharacterIsEnemy(_Char, __Me)
-	//IsGreaterThen(_Damage, 0.0)
-THEN
-	StopTimer("Timers_LLENEMY_TreasureGoblin_CountHit")
-	StartTimer("Timers_LLENEMY_TreasureGoblin_CountHit", 0.40, 0)
-ENDIF
-
-EVENT LLENEMY_TreasureGoblin_CountHit
-VARS
-	CHARACTER:_Char
-ON
-	OnTimer("Timers_LLENEMY_TreasureGoblin_CountHit")
-ACTIONS
-	Add(%LLENEMY_TreasureGoblin_TotalHits, 1)
-
 EVENT LLENEMY_TreasureGoblin_VitChanged
 VARS
 	FLOAT:_Vit
 ON
 	OnCharacterVitalityChanged(__Me, _Vit)	
 ACTIONS
-IF "c1|c2"
+IF "(c1|c2|c3)&c4"
 	IsGreaterThen(%LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits)
-	IsLessThen(_Vit, 0.05)
+	IsLessThen(_Vit, 0.01)
+	IsEqual(_Vit, 0.01)
+	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 0)
 THEN
 	Set(%LLENEMY_TreasureGoblin_Defeated, 1)
 	CharacterEvent(__Me, "LLENEMY_TreasureGoblin_Defeated")
-	//SetCanJoinCombat(__Me, 0)
-	//LeaveCombat(__Me)
 	CallFunction("LLENEMY_TreasureGoblin_Leave")
-ELSE
-	CharacterEvent(__Me, "LLENEMY_TreasureGoblin_DropLoot")
 ENDIF
 
 EVENT LLENEMY_TreasureGoblin_Leave
