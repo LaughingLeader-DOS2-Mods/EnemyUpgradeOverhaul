@@ -28,6 +28,8 @@ LLENEMY_Upgrades_AddGroup("Bonus", "LLENEMY_BonusBuffUpgradesDisabled", "LLENEMY
 LLENEMY_Upgrades_AddType("Bonus", "Infusion_Elite", 20, 45, 10);
 LLENEMY_Upgrades_AddType("Bonus", "Infusion", 400, 460, 7);
 LLENEMY_Upgrades_AddType("Bonus", "Special", 650, 800, 2);
+ // For allowing nothing to be rolled, we set the MaxInt to 999.
+DB_LLENEMY_Upgrades_TypeRollValues("Bonus", "TimeDelayed", 1, 999);
 LLENEMY_Upgrades_AddType("Bonus", "TimeDelayed", 1, 999, 2);
 
 LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_ChemicalWarfare", 10);
