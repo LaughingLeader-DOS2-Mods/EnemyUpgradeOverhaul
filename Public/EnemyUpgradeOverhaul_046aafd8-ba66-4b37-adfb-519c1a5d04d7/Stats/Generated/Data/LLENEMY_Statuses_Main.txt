@@ -1477,6 +1477,8 @@ data "FormatColor" "Void"
 data "StatsId" "Stats_LLENEMY_Empowered"
 data "StackId" "Stack_LLENEMY_GatheringPower"
 data "StackPriority" "1"
+data "ApplyEffect" "LLENEMY_FX_Status_Empowered_Applied_Root_01,Detach:root;RS3_FX_Skills_Totem_Impact_Harmony_BodyFX_01:Dummy_BodyFX"
+data "ForceOverhead" "Yes"
 //data "ScaleWithVitality" "Yes"
 
 new entry "Stats_LLENEMY_Empowered"
