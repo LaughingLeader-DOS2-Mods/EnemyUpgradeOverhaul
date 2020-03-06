@@ -30,13 +30,15 @@ HasActiveStatus(_Attacker, "LLENEMY_TALENT_BULLY", 1)
 AND
 _Damage > 0
 AND
-LeaderLib_Ext_QRY_HitSucceeded(_Target, _Handle, 0, 1)
-AND
-LeaderLib_Ext_QRY_HitWithWeapon(_Target, _Handle, 0, 1)
+_Target != _Attacker
 AND
 LLENEMY_Talents_QRY_BullyTarget(_Target)
+AND
+LeaderLib_Hit_QRY_HitSucceeded(_Target, _Handle, 0)
+AND
+LeaderLib_Hit_QRY_HitDirectly(_Target, _Handle, 0)
 THEN
-NRD_LuaCall("LeaderLib_Ext_IncreaseDamage", (STRING)_Target, (STRING)_Attacker, (STRING)_Handle, "0.50");
+LeaderLib_Hit_IncreaseDamage(_Target, _Attacker, _Handle, 0.50, 0);
 */
 EXITSECTION
 
