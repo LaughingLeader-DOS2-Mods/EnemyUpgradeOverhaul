@@ -107,3 +107,31 @@ function LLENEMY_Ext_InitDebugLevel()
 	--ApplyStatus(host, "LLENEMY_TALENT_BULLY", -1.0, 1, host)
 	CharacterSetImmortal(host, 1)
 end
+
+local indexMap_DB_LLENEMY_Upgrades_TypeRollValues = {
+	"Group",
+	"Type",
+	"Start",
+	"MaxEnd"
+}
+
+local indexMap_DB_LLENEMY_Upgrades_Statuses = {
+	"Group", 
+	"Type", 
+	"Status", 
+	"MinRoll",
+	"MaxRoll",
+	"Duration",
+	"CP"
+}
+
+function LLENEMY_Ext_DumpUpgradeTables()
+--SysLog("DB_LLENEMY_Upgrades_TypeRollValues", 4);
+--SysLog("DB_LLENEMY_Upgrades_Statuses", 7);
+	local typeRolls = Osi.DB_LLENEMY_Upgrades_TypeRollValues:Get(nil,nil,nil,nil)
+	Ext.Print("DB_LLENEMY_Upgrades_TypeRollValues:\n" .. LeaderLib.Common.Dump(typeRolls, indexMap_DB_LLENEMY_Upgrades_TypeRollValues, true))
+
+	local upgrades = Osi.DB_LLENEMY_Upgrades_Statuses:Get(nil,nil,nil,nil,nil,nil,nil)
+	--DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _ChallengePoints);
+	Ext.Print("DB_LLENEMY_Upgrades_Statuses:\n" .. LeaderLib.Common.Dump(upgrades, indexMap_DB_LLENEMY_Upgrades_Statuses, true))
+end
