@@ -55,7 +55,6 @@ LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats)
 THEN
 LLENEMY_Duplication_CreateDuplicate(_Source, _Stats, 0, 0, 0);
 
-// [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_ChallengePoints)
 AND
@@ -66,7 +65,6 @@ AND
 GetFaction(_Source, _Faction)
 THEN
 CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 0, 1, 1, 0, 0);
-CharacterTransformAppearanceTo(_Dupe, _Source, 0, 1);
 SetFaction(_Dupe, _Faction);
 ChangeAttitude(_Source, _Dupe, 200);
 ChangeAttitude(_Dupe, _Source, 200);
@@ -74,32 +72,19 @@ SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
 SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 250, "Timers_LLENEMY_Duplicantion_CopyAppearance", "LLENEMY_Duplicantion_CopyAppearance");
+
+IF
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyAppearance")
+THEN
+CharacterTransformAppearanceTo(_Dupe, _Source, 0, 1);
 CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
-// [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]
-PROC
-LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_ChallengePoints)
-AND
-DB_CurrentLevel(_Region)
-AND
-CharacterCreateOutOfSightToObject("LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", _Source, _Source, 0, "", _Dupe)
-AND
-GetFaction(_Source, _Faction)
-AND
-String(_Dupe, _DupeStr)
+IF
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyAppearance")
 THEN
-CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 1, 1, 1, 0, 0);
-CharacterTransformAppearanceTo(_Dupe, _Source, 0, 1);
-SetFaction(_Dupe, _Faction);
-ChangeAttitude(_Source, _Dupe, 200);
-ChangeAttitude(_Dupe, _Source, 200);
-SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
-SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
-DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
-DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
-CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
-NRD_LuaCall("LLENEMY_Ext_ClearGain", _DupeStr);
+NRD_LuaCall("LLENEMY_Ext_ClearGain", (STRING)_Dupe);
 */
 
 IF
