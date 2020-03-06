@@ -3,39 +3,41 @@ SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
 PROC
-LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character, (STRING)_Level)
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Level)
 AND
-NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _, _)
+NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _, _)
 AND
 LeaderLib_Random_QRY(1,3)
 AND
 DB_LeaderLib_Random(_BonusRolls)
 THEN
-DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _BonusRolls, 0);
+NOT DB_LeaderLib_Random(_BonusRolls);
+DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, 0);
 
 PROC
-LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Character, (STRING)_Level)
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Level)
 AND
-DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _BonusRolls, _Current)
+DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Current)
+AND
+_Current < _BonusRolls
+THEN
+LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Upgrades_RollBonusRolls", "LLENEMY_Upgrades_RollBonusRolls");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Upgrades_RollBonusRolls")
+AND
+DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Current)
 AND
 _Current < _BonusRolls
 AND
 IntegerSum(_Current, 1, _Next)
+AND
+GetRegion(_Char, _Level)
 THEN
-NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _BonusRolls, _Current);
-DB_LLENEMY_HardMode_Temp_BonusRolls(_Character, _BonusRolls, _Next);
-LLENEMY_Upgrades_RollForUpgrades(_Character);
-LLENEMY_Upgrades_OnRollingDone(_Character, _Level);
-
-/*
-LeaderLib_Timers_StartObjectTimer(_Character, 50, "Timers_LLENEMY_HardMode_RollAgain", "LLENEMY_HardMode_RollAgain");
-
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_HardMode_RollAgain")
-THEN
-LLENEMY_Upgrades_RollForUpgrades(_Character);
-LLENEMY_Upgrades_OnRollingDone(_Character);
-*/
+NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Current);
+DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Next);
+LLENEMY_Upgrades_RollForUpgrades(_Char);
+LLENEMY_Upgrades_OnRollingDone(_Char, _Level);
 
 //Cleanup
 IF
