@@ -274,7 +274,7 @@ LLENEMY_Upgrades_Internal_OnRoll((CHARACTERGUID)_Character, (INTEGER)_Roll)
 AND
 DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
 AND
-NOT DB_GlobalFlag(_GlobalDisableFlag)
+GlobalGetFlag(_GlobalDisableFlag, 0)
 THEN
 LLENEMY_Upgrades_Internal_SetRolledFlag(_Character, _RolledForFlag);
 LLENEMY_Upgrades_OnRollForGroup(_Character, _Roll, _Group);
