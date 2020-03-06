@@ -199,9 +199,8 @@
 	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_Description">Character can backstab with non-dagger weapons.</content>
 	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_DisplayName">Talent: Assassin</content>
 	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BASE_DisplayName">Talent</content>
-	<content contentuid="h5ad0d829g7dd4g4a79gaa2cgd5d882d05390" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BULLY_Description">Character deals 50% extra damage with basic attacks against opponents that are Slowed, Crippled or Knocked Down.</content>
+	<content contentuid="h5ad0d829g7dd4g4a79gaa2cgd5d882d05390" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BULLY_Description">Character deals 50% extra damage with direct attacks against opponents that are Slowed, Crippled or Knocked Down.</content>
 	<content contentuid="hdd62da1agf6adg438dg811cg08c9e58e07c9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BULLY_DisplayName">Talent: Bully</content>
-	<content contentuid="h8bb622f6g6094g4ceag9ce3g844fa007e4bf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BULLY_EXTENDER_Description">Character deals 50% extra damage against opponents that are Slowed, Crippled or Knocked Down with basic attacks and weapon skills.</content>
 	<content contentuid="h5ff7ce69gb95ag417ag8a63g5fe67a7fb7f7" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_COUNTER_Description">Character has a chance to counter-attack when attacked within weapon range.</content>
 	<content contentuid="h3c47b59cgd1f6g49a4g9e6bg9624181d40d1" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_COUNTER_DisplayName">Talent: Counter</content>
 	<content contentuid="hfb82117ag09acg4668ga5ccg081651aff9a9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_COUNTER_EXTENDER_Description">Character has a [1] chance to counter-attack when attacked within weapon range.</content>

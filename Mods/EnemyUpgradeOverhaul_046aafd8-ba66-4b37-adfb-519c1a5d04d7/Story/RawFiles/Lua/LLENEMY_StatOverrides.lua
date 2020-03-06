@@ -62,9 +62,6 @@ local stat_overrides = {
 	_NpcWands_Poison = {
 		Talents = "ViolentMagic;Ambidextrous"
 	},
-	LLENEMY_TALENT_BULLY = {
-		Description = "LLENEMY_TALENT_BULLY_EXTENDER_Description"
-	},
 	LLENEMY_TALENT_COUNTER = {
 		Description = "LLENEMY_TALENT_COUNTER_EXTENDER_Description",
 		DescriptionParams = "CounterChance"
