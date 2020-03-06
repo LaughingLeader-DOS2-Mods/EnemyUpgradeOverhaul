@@ -104,5 +104,6 @@ function LLENEMY_Ext_InitDebugLevel()
 		end
 	end
 
-	ApplyStatus(host, "LLENEMY_TALENT_BULLY", -1.0, 1, host)
+	--ApplyStatus(host, "LLENEMY_TALENT_BULLY", -1.0, 1, host)
+	CharacterSetImmortal(host, 1)
 end
