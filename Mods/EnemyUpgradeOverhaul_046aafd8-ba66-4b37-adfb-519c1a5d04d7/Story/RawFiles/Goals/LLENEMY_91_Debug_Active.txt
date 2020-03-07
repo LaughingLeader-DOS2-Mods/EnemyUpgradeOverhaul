@@ -4,20 +4,21 @@ INITSECTION
 
 KBSECTION
 
+//REGION TREASURE_GOBLINS
 IF
-GameModeStarted(_,0)
+StoryEvent(_, "LeaderLib_Initialized")
 THEN
-GoalCompleted;
+LeaderLog_Log("DEBUG", "[LLENEMY_91_Debug_Active:LeaderLib_Initialized] LeaderLib_Initialized fired.");
+LLENEMY_TreasureGoblins_Internal_Spawn(12.0, 0.0, 18.0);
+//DB_LLENEMY_TreasureGoblins_Temp_Active(CHARACTERGUID_LLENEMY_TreasureGoblin_A_001_150948ae-d736-4b10-a07d-a1b440bf8fa3);
+//LeaderLib_ToggleScripts_EnableScript("LLENEMY_TreasureGoblins_Active", "EnemyUpgradeOverhaul");
+//LeaderLib_Helper_MakeHostileToPlayers(CHARACTERGUID_LLENEMY_TreasureGoblin_A_001_150948ae-d736-4b10-a07d-a1b440bf8fa3);
 
-IF
-GameStarted(_,0)
+PROC
+LeaderLib_Variables_OnVariableIntChanged((GUIDSTRING)_Goblin, "LLENEMY_TreasureGoblins_TotalHits", (INTEGER)_LastValue, (INTEGER)_CurrentValue)
 THEN
-GoalCompleted;
-
-IF
-GameStarted("TestLevel_LL_LeaderLib",1)
-THEN
-LeaderLib_Helper_MakeHostileToPlayers(CHARACTERGUID_LLENEMY_TreasureGoblin_A_001_150948ae-d736-4b10-a07d-a1b440bf8fa3);
+LeaderLog_LogInt("DEBUG", "[LLENEMY_91_Debug_Active:OnVariableIntChanged(LLENEMY_TreasureGoblins_TotalHits)] ", _LastValue, " => ", _CurrentValue, "");
+//END_REGION
 
 IF
 RegionStarted("TestLevel_LL_LeaderLib")

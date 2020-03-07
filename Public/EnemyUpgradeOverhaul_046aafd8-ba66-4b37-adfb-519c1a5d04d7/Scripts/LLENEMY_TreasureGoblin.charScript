@@ -35,7 +35,11 @@ EVENT LLENEMY_TreasureGoblin_TurnEnded
 ON
 	OnTurnEnded(__Me, _)
 ACTIONS
+IF "!c1"
+	CharacterHasStatus(__Me, HASTED)
+THEN
 	CharacterApplyStatus(__Me, HASTED, -1, 0, __Me)
+ENDIF
 
 EVENT LLENEMY_TreasureGoblin_VitChanged
 VARS
@@ -51,7 +55,7 @@ IF "(c1|c2|c3)&c4"
 THEN
 	Set(%LLENEMY_TreasureGoblin_Defeated, 1)
 	Set(%LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits)
-	CharacterEvent(__Me, "LLENEMY_TreasureGoblin_Defeated")
+	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Defeated")
 	CallFunction("LLENEMY_TreasureGoblin_Leave")
 ENDIF
 
@@ -84,11 +88,11 @@ IF "c1"
 	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 0)
 THEN
 	SetInvulnerable(__Me, 1)
-	CharacterPlayAnimation("Dance_01", 1, 1, 1)
 	PlaySound(__Me, "LLENEMY_VO_Goblin_Laugh_Random_01")
+	CharacterPlayAnimation("Dance_01", 1, 1, 1)
 ELSE
 	CharacterPlayAnimation("knockdown_fall", 1, 1, 1)
 ENDIF
 	PlayEffectAt(__Me, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01")
 	CharacterSetOffStage()
-	CharacterEvent(__Me, "LLENEMY_TreasureGoblin_Left")
+	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Left")
