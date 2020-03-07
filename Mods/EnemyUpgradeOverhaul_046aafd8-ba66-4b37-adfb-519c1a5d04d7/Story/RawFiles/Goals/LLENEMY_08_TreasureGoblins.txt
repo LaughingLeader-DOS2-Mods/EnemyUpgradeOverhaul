@@ -74,6 +74,7 @@ IntegerSum(_Last, 1, _Next)
 THEN
 NOT DB_LLENEMY_Temp_TreasureGoblinRollFailures(_Last);
 DB_LLENEMY_Temp_TreasureGoblinRollFailures(_Next);
+LeaderLog_LogInt("DEBUG", "[LLENEMY_08_TreasureGoblins:IncreaseFailures] Treasure Goblin roll attempts: (", _Last, " => ", _Next, ")");
 
 PROC
 LLENEMY_TreasureGoblins_Internal_IncreaseFailures((INTEGER)_CombatID)
