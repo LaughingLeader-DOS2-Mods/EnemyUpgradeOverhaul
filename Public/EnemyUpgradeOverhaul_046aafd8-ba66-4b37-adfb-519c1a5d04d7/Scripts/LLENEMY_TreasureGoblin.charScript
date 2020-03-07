@@ -54,7 +54,6 @@ IF "(c1|c2|c3)&c4"
 	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 0)
 THEN
 	Set(%LLENEMY_TreasureGoblin_Defeated, 1)
-	Set(%LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits)
 	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Defeated")
 	CallFunction("LLENEMY_TreasureGoblin_Leave")
 ENDIF
