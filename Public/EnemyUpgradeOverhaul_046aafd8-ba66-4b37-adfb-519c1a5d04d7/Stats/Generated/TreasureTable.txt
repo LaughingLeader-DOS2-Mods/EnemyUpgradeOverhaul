@@ -148,8 +148,10 @@ object category "T_RewardTiny",10,0,0,0,0,0,0,0
 object category "T_RewardCombat",10,0,0,0,0,0,0,0
 object category "T_RewardSmall",10,0,0,0,0,0,0,0
 object category "T_SmallGold",10,0,0,0,0,0,0,0
+object category "T_ST_AllPotions",8,0,0,0,0,0,0,0
 object category "T_RewardMedium",6,0,0,0,0,0,0,0
 object category "T_OnlyGold",6,0,0,0,0,0,0,0
 object category "T_ST_Neo_Gear_Normal",6,0,0,0,0,0,0,0
 object category "T_ST_Neo_Gear_Normal_Uncommon",4,0,0,0,0,0,0,0
 object category "T_ST_Legendary_2",1,0,0,0,0,0,0,0
+object category "Rune",4,0,0,0,0,0,0,0
