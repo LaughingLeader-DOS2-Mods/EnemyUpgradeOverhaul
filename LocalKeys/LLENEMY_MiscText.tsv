@@ -6,3 +6,4 @@ LLENEMY_MessageBox_SingleplayerUserWarning	<font color='#FF3737' size='23'>The E
 LLENEMY_DisplayText_MuggedGold_Target	<font color='#FF3333' size='23'>*Lost </font><font color='#C7A758' size='26'>[1]</font> <font color='#FF3333' size='23'>Gold!*</font>
 LLENEMY_DisplayText_MuggedGold_Enemy	<font color='#33FF33' size='23'>*Stole </font><font color='#C7A758' size='26'>[1]</font> <font color='#33FF33' size='23'>Gold!*</font>
 LLENEMY_StatusText_RageReduced	<font color='#FF3737' size='23'>Rage Reduced</font>
+LLENEMY_StatusText_ImmuneToDamageOnMove	<font color='#FF3737' size='18'>Immune to Movement-Based Damage Statuses</font>

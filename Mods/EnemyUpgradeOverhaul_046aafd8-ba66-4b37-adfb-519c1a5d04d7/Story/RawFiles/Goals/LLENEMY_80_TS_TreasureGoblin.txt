@@ -17,6 +17,16 @@ THEN
 DB_LLENEMY_TreasureGoblins_Temp_JustHit(_Goblin, _Source);
 LeaderLib_Variables_ModifyVariableInt(_Goblin, "LLENEMY_TreasureGoblin_TotalHits", 1);
 LeaderLib_Timers_StartCharacterCharacterTimer(_Goblin, _Source, 550, "Timers_LLENEMY_TreasureGoblins_ClearJustHit", "LLENEMY_TreasureGoblins_ClearJustHit");
+
+IF
+CharacterStatusApplied(_Goblin, _Status, _Source)
+AND
+IsTagged(_Goblin, "LLENEMY_TreasureGoblin", 1)
+AND
+GetStatusType(_Status, "DAMAGE_ON_MOVE")
+THEN
+RemoveStatus(_Goblin, _Status);
+CharacterStatusText(_Goblin, "LLENEMY_StatusText_ImmuneToDamageOnMove");
 // [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]
@@ -38,6 +48,16 @@ THEN
 DB_LLENEMY_TreasureGoblins_Temp_JustHit(_Goblin, _Source);
 LeaderLib_Variables_ModifyVariableInt(_Goblin, "LLENEMY_TreasureGoblin_TotalHits", 1);
 LeaderLib_Timers_StartCharacterCharacterTimer(_Goblin, _Source, 550, "Timers_LLENEMY_TreasureGoblins_ClearJustHit", "LLENEMY_TreasureGoblins_ClearJustHit");
+
+IF
+NRD_OnStatusAttempt((CHARACTERGUID)_Goblin, _Status, _Handle, _Source)
+AND
+IsTagged(_Goblin, "LLENEMY_TreasureGoblin", 1)
+AND
+GetStatusType(_Status, "DAMAGE_ON_MOVE")
+THEN
+NRD_StatusPreventApply(_Goblin, _Handle, 1);
+CharacterStatusText(_Goblin, "LLENEMY_StatusText_ImmuneToDamageOnMove");
 */
 
 IF
