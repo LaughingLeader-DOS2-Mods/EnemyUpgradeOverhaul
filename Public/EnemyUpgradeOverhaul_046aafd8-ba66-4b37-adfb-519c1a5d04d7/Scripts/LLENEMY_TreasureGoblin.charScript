@@ -85,6 +85,7 @@ IF "c1"
 THEN
 	SetInvulnerable(__Me, 1)
 	CharacterPlayAnimation("Dance_01", 1, 1, 1)
+	PlaySound(__Me, "LLENEMY_VO_Goblin_Laugh_Random_01")
 ELSE
 	CharacterPlayAnimation("knockdown_fall", 1, 1, 1)
 ENDIF
