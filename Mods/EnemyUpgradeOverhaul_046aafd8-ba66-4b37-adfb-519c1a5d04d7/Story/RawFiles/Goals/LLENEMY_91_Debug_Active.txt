@@ -21,6 +21,17 @@ LeaderLog_LogInt("DEBUG", "[LLENEMY_91_Debug_Active:OnVariableIntChanged(LLENEMY
 //END_REGION
 
 IF
+ObjectEnteredCombat(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f, _CombatID)
+THEN
+ApplyStatus(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f, "LLENEMY_GATHERING_POWER", 6.0, 1, CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f);
+
+IF
+ObjectLeftCombat(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f, _CombatID)
+THEN
+CharacterTransform(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f, "DW_Voidling_A_3325e440-7d5f-40c4-829b-eeee57e1064f", 1, 1, 1, 1, 1, 0, 0);
+Proc_CharacterFullRestore(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f);
+
+IF
 RegionStarted("TestLevel_LL_LeaderLib")
 THEN
 GlobalClearFlag("LLENEMY_DuplicationUpgradesDisabled");
