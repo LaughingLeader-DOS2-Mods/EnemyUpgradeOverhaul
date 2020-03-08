@@ -253,10 +253,15 @@ LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Statuses_PostTrans
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_PostTransformationEmpowered")
+AND
+CharacterHasSkill(_Char,  "Projectile_EnemyFlight", 1)
 THEN
 CharacterRemoveSkill(_Char, "Projectile_EnemyFlight");
+
 /* [OSITOOLS_ONLY]
-NRD_LuaCall("LLENEMY_Ext_Debug_TraceStats", (STRING)_Char);
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_PostTransformationEmpowered")
+THEN
 NRD_CharacterIterateSkills(_Char, "LLENEMY_Debug_PrintSkill");
 
 IF
