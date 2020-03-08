@@ -79,7 +79,7 @@ VARS
 	FLOAT:_dist
 CHECK "c1&(c2&c3&!c4)&c5&c6"
 	CharacterGetEnemy(_Enemy,__Me)
-	CharacterGetSkillRange(_,_maxRange,__Me,Projectile_EnemyDrillwormSpit)
+	CharacterGetSkillRange(_,_maxRange,__Me,Projectile_LLENEMY_EnemyDrillwormSpit)
 	GetDistance(_dist,__Me,_Enemy)
 	IsGreaterThen(_dist,_maxRange)
 	FindValidPosition(_pos,5,__Me)
