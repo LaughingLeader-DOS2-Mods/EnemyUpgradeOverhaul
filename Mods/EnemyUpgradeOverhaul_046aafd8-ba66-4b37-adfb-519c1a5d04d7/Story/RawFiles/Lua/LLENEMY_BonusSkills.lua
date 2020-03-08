@@ -178,6 +178,10 @@ local ignored_skillwords = {
 	"_Status_",
 }
 
+local redirected_skills = {
+	Rain_Oil = "Rain_LLENEMY_EnemyOil"
+}
+
 EnemyUpgradeOverhaul.IgnoredSkills = ignored_skills
 EnemyUpgradeOverhaul.IgnoredWords = ignored_skillwords
 
@@ -335,6 +339,11 @@ function LLENEMY_Ext_BuildEnemySkills()
 	}
 	local skills = Ext.GetStatEntries("SkillData")
 	for k,skill in pairs(skills) do
+		if redirected_skills[skill] ~= nil then
+			local swapped_skill = redirected_skills[skill]
+			Ext.Print("[LLENEMY_BonusSkills.lua] Swapping skill '" .. tostring(skill) .. "' for '"..swapped_skill .. "'")
+			skill = swapped_skill
+		end
 		local isenemy = Ext.StatGetAttribute(skill, "IsEnemySkill")
 		local aiflags = Ext.StatGetAttribute(skill, "AIFlags")
 		if aiflags ~= AIFLAG_CANNOT_USE and (isenemy == "Yes" and string.find(skill, "Enemy")) and not IgnoreSkill(skill) then
