@@ -27,6 +27,10 @@ function LLENEMY_Ext_ClearGain(char)
 	-- if NRD_GetVersion() >= 39 then
 	-- 	stats = NRD_CharacterGetStatString(char)
 	-- end
+	local character = Ext.GetCharacter(char)
+	if character ~= nil then
+		stats = character.Stats.Name
+	end
 	if stats == nil then stats = GetStatString(char) end
 	if stats ~= nil then
 		local gain = NRD_StatGetInt(stats, "Gain")
