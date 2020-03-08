@@ -44,6 +44,7 @@
 	<content contentuid="h51e25546g078ag4d32gbb99g3af66b2dc917" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_CounterAttack">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Counter!&lt;/font&gt;</content>
 	<content contentuid="ha0190ec0g350eg4c71g9456g078481ad4128" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_ImmuneToDamageOnMove">&lt;font color=&apos;#FF3737&apos; size=&apos;18&apos;&gt;Immune to Movement-Based Damage Statuses&lt;/font&gt;</content>
 	<content contentuid="h5f654029g8f4ag454egbbd9g42e75c7fdfc1" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_RageReduced">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Rage Reduced&lt;/font&gt;</content>
+	<content contentuid="h0c6fe9ccg70f0g434dgbe60gc2275abaa7d1" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_VoidlingTransformed">&lt;font color=&apos;#73F6FF&apos; size=&apos;26&apos;&gt;Empowered Evolution&lt;/font&gt;</content>
 	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_BonusSkills_Source">Skilled: Sourcery</content>
 	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_10">Armor Boost</content>
 	<content contentuid="h6f37a8adgd0e7g447fg816cg6248d5b69a10" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_15">Armor Boost</content>
