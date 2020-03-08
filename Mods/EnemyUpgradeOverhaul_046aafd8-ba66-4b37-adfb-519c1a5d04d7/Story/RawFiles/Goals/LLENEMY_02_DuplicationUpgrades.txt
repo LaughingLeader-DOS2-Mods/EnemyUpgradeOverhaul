@@ -67,6 +67,7 @@ THEN
 CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 0, 1, 1, 0, 0);
 /* [OSITOOLS_ONLY]
 SetTag(_Dupe, "LLENEMY_UpgradesDisabled");
+LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 1000, "Timers_LLENEMY_Duplicantion_CopyStatuses", "LLENEMY_Duplicantion_CopyStatuses");
 */
 // [BEGIN_NO_OSITOOLS]
 ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
@@ -100,8 +101,8 @@ CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyAppearance")
 THEN
 NRD_LuaCall("LLENEMY_Ext_ClearGain", (STRING)_Dupe);
 
-PROC
-LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities)
+IF
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyStatuses")
 THEN
 NRD_IterateStatuses(_Source, "LLENEMY_Dupe_CopyStatus");
 

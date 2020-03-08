@@ -132,6 +132,12 @@ THEN
 RemoveTemporaryCharacter(_Character);
 //END_REGION
 
+//REGION DRILLWORM
+IF
+CharacterUsedSkillAtPosition(_Worm, _X, _Y, _Z, "Jump_LLENEMY_EnemyDrillwormBurrow", _, _)
+THEN
+SetVarFloat3(_Worm, "SkillTargetPos_Jump_EnemyDrillwormBurrow", _X, _Y, _Z);
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION

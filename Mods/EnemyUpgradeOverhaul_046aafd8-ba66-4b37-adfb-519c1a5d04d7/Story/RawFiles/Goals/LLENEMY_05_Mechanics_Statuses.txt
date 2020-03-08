@@ -240,8 +240,10 @@ THEN
 DB_LLENEMY_Statuses_Temp_PostTransformation(_Char, _Level);
 SetVarFloat3(_Char, "SkillTargetPos_Jump_EnemyDrillwormBurrow", _x, _y, _z);
 CharacterTransform(_Char, _Template, 1, 1, 1, 1, 0, 0, 0);
-CharacterAddSkill(_Char, "Projectile_LLENEMY_EnemyDrillwormSpit", 0);
+//CharacterAddSkill(_Char, "Projectile_LLENEMY_EnemyDrillwormSpit", 0);
 CharacterAddSkill(_Char, "Jump_EnemyDrillwormBurrow", 0);
+//CharacterAddSkill(_Char, "Jump_LLENEMY_EnemyDrillwormBurrow", 0);
+CharacterRemoveSkill(_Char, "Projectile_EnemyFlight");
 PlayAnimation(_Char, "spawn");
 PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_FJ_Worm_Voidwoken_Spawning_01", _x, _y, _z);
 CharacterStatusText(_Char, "LLENEMY_StatusText_VoidlingTransformed");

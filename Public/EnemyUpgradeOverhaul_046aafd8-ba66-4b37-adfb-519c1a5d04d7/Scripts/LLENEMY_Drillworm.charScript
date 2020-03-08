@@ -38,6 +38,7 @@ VARS
 	INT64:_HandleToKill
 ON
 	OnSkillCast(__Me,Jump_EnemyDrillwormBurrow)
+	OnSkillCast(__Me,Jump_LLENEMY_EnemyDrillwormBurrow)
 	OnFunction("SetEffect")
 ACTIONS
 	IF "c1"
@@ -83,10 +84,10 @@ CHECK "c1&(c2&c3&!c4)&c5&c6"
 	GetDistance(_dist,__Me,_Enemy)
 	IsGreaterThen(_dist,_maxRange)
 	FindValidPosition(_pos,5,__Me)
-	CharacterCanCast(__Me,Jump_EnemyDrillwormBurrow)
+	CharacterCanCast(__Me,Jump_LLENEMY_EnemyDrillwormBurrow)
 ACTIONS
-	CharacterUseSkill(Jump_EnemyDrillwormBurrow,_pos)
-	EndTurn(__Me)
+	CharacterUseSkill(Jump_LLENEMY_EnemyDrillwormBurrow,_pos, FLOAT3:null, ITEM:null, 1)
+	//EndTurn(__Me)
 INTERRUPT
 ON
 	OnBetterReactionFound(_)
@@ -106,4 +107,4 @@ CHECK "c1&c2&c3"
 	IsGreaterThen(_dist,_maxRange)
 	FindValidPosition(_pos,5,__Me)
 ACTIONS
-	CharacterUseSkill(Jump_EnemyDrillwormBurrow,_pos)
+	CharacterUseSkill(Jump_LLENEMY_EnemyDrillwormBurrow,_pos, FLOAT3:null, ITEM:null, 1)
