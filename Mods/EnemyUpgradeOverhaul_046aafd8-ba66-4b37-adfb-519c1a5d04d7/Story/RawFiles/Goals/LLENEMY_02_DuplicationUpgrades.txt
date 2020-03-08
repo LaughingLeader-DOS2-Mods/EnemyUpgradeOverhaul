@@ -65,7 +65,12 @@ AND
 GetFaction(_Source, _Faction)
 THEN
 CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 0, 1, 1, 0, 0);
+/* [OSITOOLS_ONLY]
 SetTag(_Dupe, "LLENEMY_UpgradesDisabled");
+*/
+// [BEGIN_NO_OSITOOLS]
+ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
+// [END_NO_OSITOOLS]
 SetTag(_Dupe, "LLENEMY_Duplicant");
 SetFaction(_Dupe, _Faction);
 ChangeAttitude(_Source, _Dupe, 200);
