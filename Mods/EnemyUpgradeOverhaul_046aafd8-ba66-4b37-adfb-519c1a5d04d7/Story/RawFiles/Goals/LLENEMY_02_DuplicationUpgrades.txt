@@ -64,7 +64,7 @@ CharacterCreateOutOfSightToObject("LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da120
 AND
 GetFaction(_Source, _Faction)
 THEN
-CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 0, 1, 1, 0, 0);
+CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 0, 1, 1, 0, 0);
 /* [OSITOOLS_ONLY]
 SetTag(_Dupe, "LLENEMY_UpgradesDisabled");
 LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 1000, "Timers_LLENEMY_Duplicantion_CopyStatuses", "LLENEMY_Duplicantion_CopyStatuses");
@@ -118,8 +118,24 @@ NRD_StatusGetReal(_Source, _Handle, "CurrentLifeTime", _Duration)
 AND
 NRD_StatusGetGuidString(_Source, _Handle, "StatusSourceHandle", _StatusSource)
 THEN
-ApplyStatus(_Dupe, _Status, _Duration, 1, _StatusSource);
+LLENEMY_Duplication_CopyStatus(_Dupe, _Status, _Duration, _StatusSource);
 */
+
+PROC
+LLENEMY_Duplication_CopyStatus((CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration, (GUIDSTRING)_StatusSource)
+AND
+_Duration > 0.0
+AND
+RealSum(_Duration, 0.1, _ExtendedDuration)
+THEN
+ApplyStatus(_Dupe, _Status, _ExtendedDuration, 1, _StatusSource);
+
+PROC
+LLENEMY_Duplication_CopyStatus((CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration, (GUIDSTRING)_StatusSource)
+AND
+_Duration < 0.0
+THEN
+ApplyStatus(_Dupe, _Status, _Duration, 1, _StatusSource);
 
 IF
 CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_StatsApplied")
@@ -159,6 +175,16 @@ PROC
 LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities)
 THEN
 LeaderLib_Helper_CopyLevel(_Dupe, _Source);
+/* [OSITOOLS_ONLY]
+NRD_CharacterIterateSkills(_Source, "LLENEMY_Dupe_CopySkill");
+
+IF
+NRD_SkillIteratorEvent("LLENEMY_Dupe_CopySkill", _Source, _Skill, _IsLearned, _IsActivated)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+THEN
+CharacterAddSkill(_Dupe, _Skill, 0);
+*/
 //END_REGION
 
 //REGION DUPE_STATUS_APPLIED
