@@ -64,7 +64,9 @@ CharacterCreateOutOfSightToObject("LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da120
 AND
 GetFaction(_Source, _Faction)
 THEN
-CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 0, 1, 1, 0, 0);
+CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 0, 1, 1, 0, 0);
+SetTag(_Dupe, "LLENEMY_UpgradesDisabled");
+SetTag(_Dupe, "LLENEMY_Duplicant");
 SetFaction(_Dupe, _Faction);
 ChangeAttitude(_Source, _Dupe, 200);
 ChangeAttitude(_Dupe, _Source, 200);
@@ -77,14 +79,40 @@ LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 250, "Timers_LLENE
 IF
 CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyAppearance")
 THEN
-CharacterTransformAppearanceTo(_Dupe, _Source, 0, 1);
+CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
 CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
+
+QRY
+LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
+AND
+DB_LLENEMY_Upgrades_Statuses("Duplication", _Type, _Status, _Start, _End, _Duration, _CP)
+THEN
+DB_NOOP(1);
 
 /* [OSITOOLS_ONLY]
 IF
 CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyAppearance")
 THEN
 NRD_LuaCall("LLENEMY_Ext_ClearGain", (STRING)_Dupe);
+
+PROC
+LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities)
+THEN
+NRD_IterateStatuses(_Source, "LLENEMY_Dupe_CopyStatus");
+
+IF
+NRD_StatusIteratorEvent("LLENEMY_Dupe_CopyStatus", (CHARACTERGUID)_Source, _Status, _Handle)
+AND
+NOT LLENEMY_Duplication_QRY_IgnoreStatus(_Status)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+//NRD_StatusGetInt(_Source, _Handle, "ForceStatus", _Forced)
+AND
+NRD_StatusGetReal(_Source, _Handle, "CurrentLifeTime", _Duration)
+AND
+NRD_StatusGetGuidString(_Source, _Handle, "StatusSourceHandle", _StatusSource)
+THEN
+ApplyStatus(_Dupe, _Status, _Duration, 1, _StatusSource);
 */
 
 IF
