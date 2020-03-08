@@ -16,6 +16,8 @@ LLENEMY_Upgrades_AddGroup("Buffs", "LLENEMY_BuffUpgradesDisabled", "LLENEMY_Buff
 LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 99, 9);
 LLENEMY_Upgrades_AddType("Buffs", "Normal", 100, 699, 5);
 LLENEMY_Upgrades_AddType("Buffs", "Weak", 700, 999, 3);
+DB_LLENEMY_Upgrades_TypeRollValues("Buffs", "Polymorph", 1, 999);
+LLENEMY_Upgrades_AddType("Buffs", "Polymorph", 1, 999, 2);
 
 LLENEMY_Upgrades_AddGroup("Auras", "LLENEMY_AuraUpgradesDisabled", "LLENEMY_AuraUpgradeRolled", "LLENEMY_AuraUpgradeAdded");
 LLENEMY_Upgrades_AddType("Auras", "Auras_Main", 800, 898, 7);
@@ -65,9 +67,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_ACTIVATE_FLAMING_TONGUES", 160, 5, 0.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 20, 9);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "MEDUSA_HEAD", 69, 7, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 220, 6);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPIDER_LEGS", 80, 4);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Normal")
@@ -78,7 +78,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "ETHEREAL_SOLES", 90, 1, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "EVADING", 80, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FIREBLOOD", 60, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FORTIFIED", 130, 4, 24.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HASTED", 179, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "DEMONIC_HASTED", 179, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_COURAGE", 60, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "HERBMIX_FEROCITY", 70, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_GRANADA", 90, 6);
@@ -92,11 +92,17 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "DRUNK", 19, 0, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FARSIGHT", 50, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FORTIFIED", 100, 2, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HASTED", 120, 1, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HORNS", 50, 1);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "IMPROVED_INITIATIVE", 160, 1);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "MAGIC_SHELL", 100, 2, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "RESTED", 190, 2);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "WINGS", 30, 2);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Polymorph")
+THEN
+LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "MEDUSA_HEAD", 1, 23, 7, 24.0);
+LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "SPIDER_LEGS", 200, 259, 4);
+LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "WINGS", 550, 641, 2);
+LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "HORNS", 800, 999, 1);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Auras", "Auras_Main")
@@ -200,13 +206,23 @@ DB_LLENEMY_LastGrenadeInt(_NextStartInt, _EndInt);
 //END_REGION
 
 //REGION IMMERSION
-PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "BLESSED")
+QRY
+LLENEMY_Upgrades_QRY_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "BLESSED", (REAL)_Duration, (INTEGER)_IsHardMode)
 AND
 IsTagged(_Character, "VOIDWOKEN", 1)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Blocked upgrade [BLESSED] from applying to a voidwoken.");
-LLENEMY_Upgrades_RedirectUpgrade(_Character, _Group, _Type, "BLESSED", "LLENEMY_VOID_EMPOWERED");
+LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Redirected upgrade [BLESSED] on a Voidwoken to [LLENEMY_VOID_EMPOWERED].");
+LLENEMY_Upgrades_ApplyStatus(_Character, _Group, _Type, "LLENEMY_VOID_EMPOWERED", _Duration, _IsHardMode);
+
+PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, "Buffs", "Polymorph", (STRING)_Status)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Character)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Character, "Buffs", "Polymorph", _Status);
+//LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Blocked upgrade [",_Status,"] from applying to a non-humanoid character.");
+//LLENEMY_Upgrades_RedirectUpgrade(_Character, "Buffs", "Polymorph", _Status, "RESTED");
+//LLENEMY_Upgrades_RedirectUpgrade(_Character, "Buffs", "Polymorph", _Status, "CLEAR_MINDED");
 //END_REGION
 
 //REGION GRENADE_ENTHUSIAST
