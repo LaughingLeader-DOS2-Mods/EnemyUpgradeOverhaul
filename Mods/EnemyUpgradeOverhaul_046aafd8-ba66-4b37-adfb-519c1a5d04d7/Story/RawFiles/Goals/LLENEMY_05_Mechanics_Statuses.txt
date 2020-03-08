@@ -13,6 +13,17 @@ DB_LLENEMY_Statuses_Rage(2, "LLENEMY_RAGE2", 20, 40);
 DB_LLENEMY_Statuses_Rage(3, "LLENEMY_RAGE3", 40, 60);
 DB_LLENEMY_Statuses_Rage(4, "LLENEMY_RAGE4", 60, 80);
 DB_LLENEMY_Statuses_Rage(5, "LLENEMY_RAGE5", 80, 999);
+
+/*
+Creatures_Voidwoken_Drillworm_A_7b733431-c58f-4c85-a163-4cecfa374a19
+Creatures_Voidwoken_Drillworm_A_Hatchling_B_9b929973-72a8-4e06-9357-acfcf3278f5e
+Creatures_Voidwoken_Drillworm_B_c8b96409-5ce4-4f83-80f0-b83084efcd60
+LLENEMY_Creatures_Voidwoken_Drillworm_A_b24d5c4c-8a5a-4cd7-8518-f4684509be66
+LLENEMY_Creatures_Voidwoken_Drillworm_B_8713b59d-a564-4b90-910c-e5c6a384c0d9
+*/
+//LeaderLib_Array_AddToArray("LLENEMY_VoidlingTransformations", "Creatures_Voidwoken_Drillworm_A_Hatchling_B_9b929973-72a8-4e06-9357-acfcf3278f5e");
+LeaderLib_Array_AddToArray("LLENEMY_VoidlingTransformations", "LLENEMY_Creatures_Voidwoken_Drillworm_A_b24d5c4c-8a5a-4cd7-8518-f4684509be66");
+LeaderLib_Array_AddToArray("LLENEMY_VoidlingTransformations", "LLENEMY_Creatures_Voidwoken_Drillworm_B_8713b59d-a564-4b90-910c-e5c6a384c0d9");
 //END_REGION
 
 //REGION INCREASE_RAGE
@@ -202,9 +213,53 @@ IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_ApplyEmpowered")
 AND
 CharacterIsDead(_Char, 0)
+AND
+IsTagged(_Char, "VOIDLING", _IsVoidling)
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
+THEN
+LLENEMY_Mechanics_Statuses_ApplyEmpowered(_Char, _IsVoidling, _HardModeEnabled);
+
+PROC
+LLENEMY_Mechanics_Statuses_ApplyEmpowered((CHARACTERGUID)_Char, (INTEGER)_IsVoidling, 0)
 THEN
 ApplyStatus(_Char, "LLENEMY_EMPOWERED", -1.0, 1, _Char);
 LLENEMY_Upgrades_IncreaseChallengePoints(_Char, 10);
+
+PROC
+LLENEMY_Mechanics_Statuses_ApplyEmpowered((CHARACTERGUID)_Char, 1, 1)
+AND
+CharacterGetLevel(_Char, _Level)
+AND
+GetPosition(_Char, _x, _y, _z)
+AND
+LeaderLib_Array_QRY_Random("LLENEMY_VoidlingTransformations")
+AND
+DB_LeaderLib_Array_Temp_RandomResult("LLENEMY_VoidlingTransformations", _Index, _Template)
+THEN
+DB_LLENEMY_Statuses_Temp_PostTransformation(_Char, _Level);
+SetVarFloat3(_Char, "SkillTargetPos_Jump_EnemyDrillwormBurrow", _x, _y, _z);
+CharacterTransform(_Char, _Template, 1, 1, 1, 1, 0, 0, 0);
+CharacterAddSkill(_Char, "Projectile_EnemyDrillwormSpit", 0);
+CharacterAddSkill(_Char, "Jump_EnemyDrillwormBurrow", 0);
+PlayAnimation(_Char, "spawn");
+PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_FJ_Worm_Voidwoken_Spawning_01", _x, _y, _z);
+CharacterStatusText(_Char, "LLENEMY_StatusText_VoidlingTransformed");
+LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Statuses_PostTransformationEmpowered", "LLENEMY_Statuses_PostTransformationEmpowered");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_PostTransformationEmpowered")
+AND
+DB_LLENEMY_Statuses_Temp_PostTransformation(_Char, _Level)
+THEN
+NOT DB_LLENEMY_Statuses_Temp_PostTransformation(_Char, _Level);
+CharacterLevelUpTo(_Char, _Level);
+ApplyStatus(_Char, "LLENEMY_EMPOWERED", -1.0, 1, _Char);
+LLENEMY_Upgrades_IncreaseChallengePoints(_Char, 10);
+CharacterSetHitpointsPercentage(_Char,100.0);
+CharacterSetArmorPercentage(_Char,100.0);
+CharacterSetMagicArmorPercentage(_Char,100.0);
+CharacterResetCooldowns(_Char);
 //END_REGION
 EXITSECTION
 ENDEXITSECTION

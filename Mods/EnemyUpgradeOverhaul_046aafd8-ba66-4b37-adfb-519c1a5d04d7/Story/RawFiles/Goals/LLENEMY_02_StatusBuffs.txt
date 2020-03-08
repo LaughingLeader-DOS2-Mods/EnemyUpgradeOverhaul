@@ -175,8 +175,8 @@ LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_PERSEVERANCE_MASTERY", 1
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "TimeDelayed")
 THEN
-LLENEMY_Upgrades_AddStatusToRange("Bonus", "TimeDelayed", "LLENEMY_GATHERING_POWER", 1, 99, 2, 24.0);
-LLENEMY_Upgrades_AddStatusToRange("Bonus", "TimeDelayed", "LLENEMY_RAGE", 600, 720, 8);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "TimeDelayed", "LLENEMY_GATHERING_POWER", 1, 24, 2, 24.0);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "TimeDelayed", "LLENEMY_RAGE", 666, 720, 8);
 
 PROC
 LLENEMY_Buffs_AddGrenadeSkill((STRING)_Skill, (INTEGER)_Range)
