@@ -13,3 +13,11 @@ add skill "Projectile_EnemyChainHeal"
 add skill "Target_EnemyRestoration"
 add skill "Target_FirstAidEnemy"
 add skill "Shout_EnemyMendMetal"
+
+new skillset "LLENEMY_Drillworm_A"
+add skill "Projectile_LLENEMY_EnemyDrillwormSpit"
+add skill "Jump_EnemyDrillwormBurrow"
+
+new skillset "LLENEMY_Drillworm_B"
+add skill "Projectile_LLENEMY_EnemyDrillwormSpit_Ice"
+add skill "Jump_EnemyDrillwormBurrow"

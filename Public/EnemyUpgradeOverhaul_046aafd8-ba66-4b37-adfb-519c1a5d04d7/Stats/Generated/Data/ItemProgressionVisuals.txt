@@ -3,3 +3,9 @@ new itemgroup "WPN_LLENEMY_TreasureSack_A"
 add levelgroup 0,0,"All"
 add rootgroup "7d578427-4b95-429f-9f37-b09838c70a80",""
 add namegroup "WPN_LLENEMY_TreasureSack_A","",""
+
+new itemgroup "WPN_LLENEMY_Drillworm_A_Debug"
+
+add levelgroup 0,0,"All"
+add rootgroup "c5e9a07c-571c-4046-bd1e-a35fd9439a03",""
+add namegroup "EMPTY","",""

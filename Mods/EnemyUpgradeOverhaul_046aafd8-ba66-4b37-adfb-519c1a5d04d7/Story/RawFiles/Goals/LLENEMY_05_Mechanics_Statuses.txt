@@ -225,7 +225,9 @@ LLENEMY_Mechanics_Statuses_ApplyEmpowered((CHARACTERGUID)_Char, (INTEGER)_IsVoid
 THEN
 ApplyStatus(_Char, "LLENEMY_EMPOWERED", -1.0, 1, _Char);
 LLENEMY_Upgrades_IncreaseChallengePoints(_Char, 10);
+//END_REGION
 
+//REGION DRILLWORM_TRANSFORMATION
 PROC
 LLENEMY_Mechanics_Statuses_ApplyEmpowered((CHARACTERGUID)_Char, 1, 1)
 AND
@@ -239,15 +241,35 @@ DB_LeaderLib_Array_Temp_RandomResult("LLENEMY_VoidlingTransformations", _Index, 
 THEN
 DB_LLENEMY_Statuses_Temp_PostTransformation(_Char, _Level);
 SetVarFloat3(_Char, "SkillTargetPos_Jump_EnemyDrillwormBurrow", _x, _y, _z);
-CharacterTransform(_Char, _Template, 1, 1, 1, 1, 0, 0, 0);
+CharacterTransform(_Char, _Template, 1, 1, 1, 1, 1, 0, 0);
+//Transform(_Char, _Template, 1, 1, 1);
 //CharacterAddSkill(_Char, "Projectile_LLENEMY_EnemyDrillwormSpit", 0);
-CharacterAddSkill(_Char, "Jump_EnemyDrillwormBurrow", 0);
+//CharacterAddSkill(_Char, "Jump_EnemyDrillwormBurrow", 0);
 //CharacterAddSkill(_Char, "Jump_LLENEMY_EnemyDrillwormBurrow", 0);
-CharacterRemoveSkill(_Char, "Projectile_EnemyFlight");
 PlayAnimation(_Char, "spawn");
 PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_FJ_Worm_Voidwoken_Spawning_01", _x, _y, _z);
 CharacterStatusText(_Char, "LLENEMY_StatusText_VoidlingTransformed");
 LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Statuses_PostTransformationEmpowered", "LLENEMY_Statuses_PostTransformationEmpowered");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_PostTransformationEmpowered")
+THEN
+CharacterRemoveSkill(_Char, "Projectile_EnemyFlight");
+/* [OSITOOLS_ONLY]
+NRD_LuaCall("LLENEMY_Ext_Debug_TraceStats", (STRING)_Char);
+NRD_CharacterIterateSkills(_Char, "LLENEMY_Debug_PrintSkill");
+
+IF
+NRD_SkillIteratorEvent("LLENEMY_Debug_PrintSkill", _Char, _Skill, _IsLearned, _IsActive)
+AND
+String(_Char, _CharString)
+AND
+IntegertoString(_IsLearned, _IsLearnedStr)
+AND
+IntegertoString(_IsActive, _IsActiveStr)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_05_Mechanics_Statuses:LLENEMY_Debug_PrintSkill] (",_CharString,") has skill (",_Skill,") Learned(",_IsLearnedStr,") Active(",_IsActiveStr,")");
+*/
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_PostTransformationEmpowered")

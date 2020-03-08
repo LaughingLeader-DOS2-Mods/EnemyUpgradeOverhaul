@@ -69,6 +69,7 @@ ACTIONS
 		ENDIF
 	ENDIF
 
+/*
 BEHAVIOUR
 REACTION inCombat_burrowToCenter,7
 USAGE COMBAT
@@ -78,13 +79,14 @@ VARS
 	FLOAT3:_myPos
 	FLOAT:_maxRange
 	FLOAT:_dist
-CHECK "c1&(c2&c3&!c4)&c5&c6"
+CHECK "c1&!c2&(c3&c4&!c5)&c6&c7"
 	CharacterGetEnemy(_Enemy,__Me)
+	IsEqual(_Enemy,null)
 	CharacterGetSkillRange(_,_maxRange,__Me,Projectile_LLENEMY_EnemyDrillwormSpit)
 	GetDistance(_dist,__Me,_Enemy)
 	IsGreaterThen(_dist,_maxRange)
 	FindValidPosition(_pos,5,__Me)
-	CharacterCanCast(__Me,Jump_LLENEMY_EnemyDrillwormBurrow)
+	CharacterCanCast(__Me,Jump_LLENEMY_EnemyDrillwormBurrow, ITEM:null, 1)
 ACTIONS
 	CharacterUseSkill(Jump_LLENEMY_EnemyDrillwormBurrow,_pos, FLOAT3:null, ITEM:null, 1)
 	//EndTurn(__Me)
@@ -93,18 +95,20 @@ ON
 	OnBetterReactionFound(_)
 ACTIONS
 	Reset()
-
+*/
+/*
 REACTION inPeace_burrowToCenter,10
 USAGE PEACE
 VARS
-	CHARACTER:_Enemy
 	FLOAT3:_pos
 	FLOAT3:_myPos
 	FLOAT:_maxRange
 	FLOAT:_dist
-CHECK "c1&c2&c3"
+CHECK "!c1&c2&c3&c4"
+	IsEqual(%appearPos, null)
 	GetDistance(_dist,__Me,%appearPos)
 	IsGreaterThen(_dist,_maxRange)
 	FindValidPosition(_pos,5,__Me)
 ACTIONS
 	CharacterUseSkill(Jump_LLENEMY_EnemyDrillwormBurrow,_pos, FLOAT3:null, ITEM:null, 1)
+*/

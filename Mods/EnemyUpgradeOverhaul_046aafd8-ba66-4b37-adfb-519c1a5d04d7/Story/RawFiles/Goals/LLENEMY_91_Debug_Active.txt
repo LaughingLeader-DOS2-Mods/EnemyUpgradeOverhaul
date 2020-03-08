@@ -7,6 +7,8 @@ KBSECTION
 //REGION TREASURE_GOBLINS
 IF
 StoryEvent(_, "LeaderLib_Initialized")
+AND
+DB_CurrentLevel("TestLevel_LL_LeaderLib")
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY_91_Debug_Active:LeaderLib_Initialized] LeaderLib_Initialized fired.");
 LLENEMY_TreasureGoblins_Internal_Spawn(12.0, 0.0, 18.0);

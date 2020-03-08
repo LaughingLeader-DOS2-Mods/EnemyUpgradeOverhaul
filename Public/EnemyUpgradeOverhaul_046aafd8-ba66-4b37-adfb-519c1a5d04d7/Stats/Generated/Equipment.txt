@@ -32,14 +32,30 @@ new equipment "LLENEMY_TreasureGoblin_A"
 add equipmentgroup
 add equipment entry "_LLENEMY_Goblin_TreasureSack_A"
 
-new equipment "LLENEMY_Drillworm_A"
+new equipment "LLENEMY_Drillworm_A_Melee"
 add equipmentgroup
 add equipment entry "_LLENEMY_Drillworm_A"
 add equipmentgroup
 add equipment entry "NoShield"
 
-new equipment "LLENEMY_Drillworm_B"
+new equipment "LLENEMY_Drillworm_B_Melee"
 add equipmentgroup
-add equipment entry "_LLENEMY_Drillworm_B"
+add equipment entry "_LLENEMY_Drillworm_A_Melee"
 add equipmentgroup
 add equipment entry "NoShield"
+
+new equipment "LLENEMY_Drillworm_A_Ranged"
+add equipmentgroup
+add equipment entry "_LLENEMY_Drillworm_A_Ranged"
+add equipmentgroup
+add equipment entry "NoShield"
+
+new equipment "LLENEMY_Drillworm_B_Ranged"
+add equipmentgroup
+add equipment entry "_LLENEMY_Drillworm_B_Ranged"
+add equipmentgroup
+add equipment entry "NoShield"
+
+new equipment "LLENEMY_Drillworm_A_Debug"
+add equipmentgroup
+add equipment entry "WPN_LLENEMY_Drillworm_A_Debug"
