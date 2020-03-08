@@ -84,7 +84,8 @@ function LLENEMY_Ext_InitDebugLevel()
 
 	local host = CharacterGetHostCharacter()
 	CharacterApplyPreset(host, "Rogue_Act2")
-	CharacterLevelUpTo(host, 10)
+	--CharacterLevelUpTo(host, 10)
+	CharacterAddAbility(host, "Loremaster", 10)
 	CharacterAddAttribute(host, "Memory", 20)
 	--CharacterTransformAppearanceToWithEquipmentSet(host, host, "ArenaRogue", 0)
 	for k,skill in pairs(Ext.GetSkillSet("ArenaRogue")) do
@@ -134,4 +135,16 @@ function LLENEMY_Ext_DumpUpgradeTables()
 	local upgrades = Osi.DB_LLENEMY_Upgrades_Statuses:Get(nil,nil,nil,nil,nil,nil,nil)
 	--DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _ChallengePoints);
 	Ext.Print("DB_LLENEMY_Upgrades_Statuses:\n" .. LeaderLib.Common.Dump(upgrades, indexMap_DB_LLENEMY_Upgrades_Statuses, true))
+end
+
+function LLENEMY_Ext_Debug_TraceStats(char)
+	local stats = nil
+	local character = Ext.GetCharacter(char)
+	if character ~= nil then
+		stats = character.Stats.Name
+	end
+	if stats == nil then stats = GetStatString(char) end
+	if stats ~= nil then
+		Osi.LeaderLog_Log("DEBUG", "[LLENEMY_Debug.lua:LLENEMY_Ext_Debug_TraceStats] Character's instance stat ID is (",stats,")")
+	end
 end
