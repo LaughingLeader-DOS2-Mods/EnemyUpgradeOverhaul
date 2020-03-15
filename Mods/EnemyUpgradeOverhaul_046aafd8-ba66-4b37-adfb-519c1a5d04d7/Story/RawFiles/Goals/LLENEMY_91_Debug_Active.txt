@@ -186,10 +186,9 @@ NRD_LuaCall("LLENEMY_Ext_DumpUpgradeTables");
 */
 
 IF
-CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
+TextEventSet("llenemy_seekertest")
 THEN
-LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
-
+SetStoryEvent(CHARACTERGUID_Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d, "LLENEMY_Statuses_Seeker_PulseNow");
 EXITSECTION
 
 ENDEXITSECTION

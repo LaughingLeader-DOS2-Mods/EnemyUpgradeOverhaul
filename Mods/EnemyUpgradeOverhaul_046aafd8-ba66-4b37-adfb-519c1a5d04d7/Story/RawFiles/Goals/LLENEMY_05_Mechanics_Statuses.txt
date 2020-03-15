@@ -48,6 +48,29 @@ LLENEMY_Mechanics_Statuses_InitSettings();
 //END_REGION
 
 //REGION SEEKER
+QRY
+LLENEMY_Statuses_QRY_CanSeekerPulse((CHARACTERGUID)_Char)
+AND
+CharacterIsInCombat(_Char, _a)
+AND
+CharacterIsControlled(_Char, _b)
+AND
+GlobalGetFlag("LeaderLib_IsEditorMode", _c)
+AND
+LeaderLog_QRY_LogInt("DEBUG", "[LLENEMY_05_Mechanics_Statuses:] Is editor mode: ", _c, "")
+AND
+LeaderLib_Math_QRY_IsEqualToAny(1, _a, _b, _c)
+THEN
+DB_NOOP(1);
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_SEEKER", _)
+AND
+NOT LeaderLib_Helper_QRY_HasStatus(_Char, "LLENEMY_SEEKER_DISABLED")
+THEN
+LeaderLib_ToggleScripts_DisableScriptForObjectAfterDelay(_Char, "LLENEMY_SeekerEnabled", "EnemyUpgradeOverhaul", 1000);
+LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Statuses_Seeker_PulseNow");
+
 IF
 CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
 THEN
@@ -57,32 +80,40 @@ SetStoryEvent(_Char, "LLENEMY_Statuses_Seeker_PulseNow");
 IF
 CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
 AND
-CharacterIsInCombat(_Char, 1)
+LLENEMY_Statuses_QRY_CanSeekerPulse(_Char)
 THEN
 LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
 
 IF
-CharacterStatusRemoved(_Char, "LLENEMY_SEEKER", _)
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_Seeker_PulseNow")
+AND
+HasActiveStatus(_Char, "LLENEMY_SEEKER", 1)
+AND
+LLENEMY_Statuses_QRY_CanSeekerPulse(_Char)
 THEN
-LeaderLib_ToggleScripts_DisableScriptForObject(_Char, "LLENEMY_SeekerEnabled", "EnemyUpgradeOverhaul");
-LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Statuses_Seeker_PulseNow");
-//LeaderLib_Auras_RemoveTimerAura(_Char, "LLENEMY_Auras_Seeker");
+LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
 
 /* [OSITOOLS_ONLY]
 IF
-CharacterStatusApplied(_Char, "LLENEMY_SEEKER_CLEANSE_INVISIBLE", _)
+CharacterStatusApplied(_Char, "LLENEMY_SEEKER_CLEANSE_INVISIBLE", _Source)
 AND
 GetUUID(_Char, _UUID)
+AND
+GetUUID(_Source, _UUID2)
 THEN
-NRD_LuaCall("LLENEMY_Ext_RemoveInvisible", _UUID);
+NRD_LuaCall("LLENEMY_Ext_RemoveInvisible", _UUID, _UUID2);
 */
 
 // [BEGIN_NO_OSITOOLS]
 IF
-CharacterStatusApplied(_Char, "LLENEMY_SEEKER_CLEANSE_INVISIBLE", _)
+CharacterStatusApplied(_Char, "LLENEMY_SEEKER_CLEANSE_INVISIBLE", _Source)
+AND
+LeaderLib_Helper_QRY_HasAnyStatus(_Char, "INVISIBLE", "SNEAKING")
 THEN
 RemoveStatus(_Char, "INVISIBLE");
 RemoveStatus(_Char, "SNEAKING");
+PlayEffect(_Source, "RS3_FX_GP_Status_Warning_Red_01", "Dummy_OverheadFX");
+CharacterStatusText(_Char, "LLENEMY_StatusText_SeekerDiscoveredTarget");
 // [END_NO_OSITOOLS]
 //END_REGION
 
