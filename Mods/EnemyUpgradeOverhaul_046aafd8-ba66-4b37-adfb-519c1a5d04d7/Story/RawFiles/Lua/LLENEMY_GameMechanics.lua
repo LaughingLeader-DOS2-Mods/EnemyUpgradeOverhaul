@@ -104,7 +104,7 @@ function LLENEMY_Ext_MugTarget_DisplayText(character, target, item, amount)
 end
 --Ext.NewCall(LLENEMY_Ext_MugTarget_DisplayText, "LLENEMY_Ext_MugTarget_DisplayText", "(CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target, (ITEMGUID)_Item, (INTEGER)_Amount");
 
-function LLENEMY_Ext_RemoveInvisible(target)
+function LLENEMY_Ext_RemoveInvisible(target, source)
 	local detected = false
 	for status,b in pairs(EnemyUpgradeOverhaul.InvisibleStatuses) do
 		if b == true and HasActiveStatus(target, status) == 1 then
@@ -114,6 +114,7 @@ function LLENEMY_Ext_RemoveInvisible(target)
 	end
 	if detected then
 		CharacterStatusText(target, "LLENEMY_StatusText_SeekerDiscoveredTarget")
+		PlayEffect(source, "RS3_FX_GP_Status_Warning_Red_01", "Dummy_OverheadFX")
 	end
 	return detected
 end
