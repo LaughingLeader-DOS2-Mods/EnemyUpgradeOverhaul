@@ -7,6 +7,8 @@ KBSECTION
 //REGION SETTINGS
 PROC
 LLENEMY_Mechanics_Statuses_InitSettings()
+AND
+NOT DB_LLENEMY_Statuses_Rage(_,_,_,_)
 THEN
 DB_LLENEMY_Statuses_Rage(1, "LLENEMY_RAGE", 0, 20);
 DB_LLENEMY_Statuses_Rage(2, "LLENEMY_RAGE2", 20, 40);
@@ -21,9 +23,72 @@ Creatures_Voidwoken_Drillworm_B_c8b96409-5ce4-4f83-80f0-b83084efcd60
 LLENEMY_Creatures_Voidwoken_Drillworm_A_b24d5c4c-8a5a-4cd7-8518-f4684509be66
 LLENEMY_Creatures_Voidwoken_Drillworm_B_8713b59d-a564-4b90-910c-e5c6a384c0d9
 */
+
+PROC
+LLENEMY_Mechanics_Statuses_InitSettings()
+AND
+LeaderLib_Array_QRY_EmptyLength("LLENEMY_VoidlingTransformations")
+THEN
+//LeaderLib_Array_ClearArray("LLENEMY_VoidlingTransformations");
 //LeaderLib_Array_AddToArray("LLENEMY_VoidlingTransformations", "Creatures_Voidwoken_Drillworm_A_Hatchling_B_9b929973-72a8-4e06-9357-acfcf3278f5e");
 LeaderLib_Array_AddToArray("LLENEMY_VoidlingTransformations", "LLENEMY_Creatures_Voidwoken_Drillworm_A_b24d5c4c-8a5a-4cd7-8518-f4684509be66");
 LeaderLib_Array_AddToArray("LLENEMY_VoidlingTransformations", "LLENEMY_Creatures_Voidwoken_Drillworm_B_8713b59d-a564-4b90-910c-e5c6a384c0d9");
+
+/*
+PROC
+LLENEMY_Mechanics_Statuses_InitSettings()
+THEN
+LeaderLib_Auras_Register_TimerAura("LLENEMY_Auras_Seeker", 1000, 4.0, 1, 0);
+*/
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+THEN
+LLENEMY_Mechanics_Statuses_InitSettings();
+//END_REGION
+
+//REGION SEEKER
+IF
+CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
+THEN
+LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_SeekerEnabled", "EnemyUpgradeOverhaul");
+//LeaderLib_Auras_ApplyTimerAura(_Char, "LLENEMY_Auras_Seeker");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
+AND
+CharacterIsInCombat(_Char, 1)
+THEN
+LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Seeker_Pulse", "LLENEMY_Seeker_Pulse");
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_SEEKER", _)
+THEN
+LeaderLib_ToggleScripts_DisableScriptForObject(_Char, "LLENEMY_SeekerEnabled", "EnemyUpgradeOverhaul");
+LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Seeker_Pulse");
+//LeaderLib_Auras_RemoveTimerAura(_Char, "LLENEMY_Auras_Seeker");
+
+IF
+StoryEvent(_Char, "LLENEMY_Seeker_Pulse")
+THEN
+ApplyStatus(_Char, "LLENEMY_SEEKER_PULSE", 0.0, 0, _Char);
+
+/* [OSITOOLS_ONLY]
+IF
+CharacterStatusApplied(_Char, "LLENEMY_SEEKER_CLEANSE_INVISIBLE", _)
+AND
+GetUUID(_Char, _UUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_RemoveInvisible", _UUID);
+*/
+
+// [BEGIN_NO_OSITOOLS]
+IF
+CharacterStatusApplied(_Char, "LLENEMY_SEEKER_CLEANSE_INVISIBLE", _)
+THEN
+RemoveStatus(_Char, "INVISIBLE");
+RemoveStatus(_Char, "SNEAKING");
+// [END_NO_OSITOOLS]
 //END_REGION
 
 //REGION INCREASE_RAGE
