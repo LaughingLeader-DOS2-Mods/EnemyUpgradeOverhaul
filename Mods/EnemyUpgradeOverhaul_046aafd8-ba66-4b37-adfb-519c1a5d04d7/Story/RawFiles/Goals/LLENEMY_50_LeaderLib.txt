@@ -1,8 +1,19 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-
+LLENEMY_LeaderLib_EnableScripts();
 KBSECTION
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+THEN
+LLENEMY_LeaderLib_EnableScripts();
+
+PROC
+LLENEMY_LeaderLib_EnableScripts()
+THEN
+LeaderLib_ToggleScripts_EnableScript("LeaderLib_StatusEvents_DisableScriptEnabled", "EnemyUpgradeOverhaul");
+//LeaderLib_ToggleScripts_EnableScript("LeaderLib_ExplodeStatusListenerEnabled", "EnemyUpgradeOverhaul");
 
 PROC
 LLENEMY_LeaderLib_RegisterSettings()
