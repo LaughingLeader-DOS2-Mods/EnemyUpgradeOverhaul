@@ -12,21 +12,21 @@ HasActiveStatus(_Char, "DRUNK", 0)
 AND
 IsTagged(_Char, "LeaderLib_IsDisabled", 0)
 THEN
-LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Seeker_Pulse", "LLENEMY_Seeker_Pulse");
+LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
 
 IF
 ObjectLeftCombat((CHARACTERGUID)_Char, _)
 AND
 HasActiveStatus(_Char, "LLENEMY_SEEKER", 1)
 THEN
-LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Seeker_Pulse");
+LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Statuses_Seeker_PulseNow");
 
 IF
 CharacterStatusApplied(_Char, "DRUNK", _)
 AND
 HasActiveStatus(_Char, "LLENEMY_SEEKER", 1)
 THEN
-LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Seeker_Pulse");
+LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Statuses_Seeker_PulseNow");
 
 IF
 CharacterStatusRemoved(_Char, "DRUNK", _)
@@ -37,7 +37,7 @@ CharacterIsInCombat(_Char, 1)
 AND
 IsTagged(_Char, "LeaderLib_IsDisabled", 0)
 THEN
-LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Seeker_Pulse", "LLENEMY_Seeker_Pulse");
+LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
 
 IF
 ObjectLostTag((CHARACTERGUID)_Char, "LeaderLib_IsDisabled")
@@ -46,7 +46,7 @@ HasActiveStatus(_Char, "LLENEMY_SEEKER", 1)
 AND
 CharacterIsInCombat(_Char, 1)
 THEN
-LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Seeker_Pulse", "LLENEMY_Seeker_Pulse");
+LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
 
 EXITSECTION
 ENDEXITSECTION

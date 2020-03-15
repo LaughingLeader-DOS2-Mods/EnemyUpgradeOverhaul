@@ -23,6 +23,13 @@ LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_TreasureGoblin", "LLENEMY
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_SingleplayerMode", "LLENEMY_SingleplayerModeEnabled");
 //END_REGION
 
+//REGION UPDATES
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+THEN
+LLENEMY_ToggleScripts_RegisterScripts();
+//END_REGION
+
 //REGION RETROACTIVE_TOGGLE
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)

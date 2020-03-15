@@ -185,6 +185,11 @@ THEN
 NRD_LuaCall("LLENEMY_Ext_DumpUpgradeTables");
 */
 
+IF
+CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
+THEN
+LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
+
 EXITSECTION
 
 ENDEXITSECTION

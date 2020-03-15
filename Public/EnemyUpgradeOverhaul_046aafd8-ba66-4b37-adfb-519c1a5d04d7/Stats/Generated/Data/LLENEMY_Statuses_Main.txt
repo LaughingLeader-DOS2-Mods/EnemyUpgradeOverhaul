@@ -1533,12 +1533,6 @@ type "Potion"
 data "Act" "1"
 data "Act part" "0"
 
-new entry "LLENEMY_SEEKER_PULSE"
-type "StatusData"
-data "StatusType" "CONSUME"
-using "_LEADERLIB_HIDDEN_CONSUME_BASE"
-data "LeaveAction" "Projectile_LLENEMY_Status_SeekerPulse"
-
 new entry "LLENEMY_SEEKER_CLEANSE_INVISIBLE"
 type "StatusData"
 data "StatusType" "CONSUME"

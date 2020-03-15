@@ -52,26 +52,21 @@ IF
 CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
 THEN
 LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_SeekerEnabled", "EnemyUpgradeOverhaul");
-//LeaderLib_Auras_ApplyTimerAura(_Char, "LLENEMY_Auras_Seeker");
+SetStoryEvent(_Char, "LLENEMY_Statuses_Seeker_PulseNow");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
 AND
 CharacterIsInCombat(_Char, 1)
 THEN
-LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Seeker_Pulse", "LLENEMY_Seeker_Pulse");
+LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
 
 IF
 CharacterStatusRemoved(_Char, "LLENEMY_SEEKER", _)
 THEN
 LeaderLib_ToggleScripts_DisableScriptForObject(_Char, "LLENEMY_SeekerEnabled", "EnemyUpgradeOverhaul");
-LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Seeker_Pulse");
+LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Statuses_Seeker_PulseNow");
 //LeaderLib_Auras_RemoveTimerAura(_Char, "LLENEMY_Auras_Seeker");
-
-IF
-StoryEvent(_Char, "LLENEMY_Seeker_Pulse")
-THEN
-ApplyStatus(_Char, "LLENEMY_SEEKER_PULSE", 0.0, 0, _Char);
 
 /* [OSITOOLS_ONLY]
 IF

@@ -54,3 +54,11 @@ IF "c1"
 THEN
 	CharacterCharacterEvent(_Char, _Attacker, "LLENEMY_Counter_CanStarterCounter")
 ENDIF
+
+EVENT LLENEMY_Statuses_Seeker_PulseNow
+VARS
+	CHARACTER:_Char
+ON
+	OnCharacterEvent(_Char, "LLENEMY_Statuses_Seeker_PulseNow")
+ACTIONS
+	ExplodeAt(_Char, "Projectile_LLENEMY_Status_Seeker_Pulse", INT:1, _Char)
