@@ -17,6 +17,10 @@ ItemTemplateRemovedFromCharacter("LOOT_Bodyparts_Lizards_Leg_3ec6137e-c2a9-4b38-
 AND
 GlobalGetFlag("LLENEMY_HM_SpawnedAtusaBoss", 0)
 AND
+LeaderLib_Helper_QRY_GetHighestPlayerLevel()
+AND
+DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level)
+AND
 GetPosition(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _x, _y, _z)
 AND
 CharacterCreateAtPosition(_x, _y, _z, "LLENEMY_Creatures_Elemental_A_Ooze_Flesh_458bb12e-0c77-4689-8acb-6bdd776acb37", 1, _AtusaBoss)
@@ -28,6 +32,9 @@ THEN
 PlayEffectAtPosition("RS3_FX_GP_Impacts_Wand_Blood_01", _x, _y, _z);
 PlayEffectAtPosition("RS3_FX_Skills_Voodoo_Impact_Voodo_BloatedCorpse_01", _x, _y, _z);
 CharacterStatusText(_AtusaBoss, "LLENEMY_StatusText_AtusaBossActivated");
+SetTag(_AtusaBoss, "SHRIEKER"); // Immune to source vamp
+CharacterLevelUpTo(_AtusaBoss, _Level);
+LeaderLib_Helper_MakeHostileToPlayers(_AtusaBoss);
 GlobalSetFlag("LLENEMY_HM_SpawnedAtusaBoss");
 SetVarInteger(_AtusaBoss, "LLENEMY_ChallengePoints", 8);
 CharacterSetCustomName(_AtusaBoss, _Name);
