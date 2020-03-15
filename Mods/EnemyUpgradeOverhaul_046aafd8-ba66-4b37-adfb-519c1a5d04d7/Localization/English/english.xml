@@ -50,6 +50,7 @@
 	<content contentuid="h51e25546g078ag4d32gbb99g3af66b2dc917" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_CounterAttack">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Counter!&lt;/font&gt;</content>
 	<content contentuid="ha0190ec0g350eg4c71g9456g078481ad4128" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_ImmuneToDamageOnMove">&lt;font color=&apos;#FF3737&apos; size=&apos;18&apos;&gt;Immune to Movement-Based Damage Statuses&lt;/font&gt;</content>
 	<content contentuid="h5f654029g8f4ag454egbbd9g42e75c7fdfc1" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_RageReduced">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Rage Reduced&lt;/font&gt;</content>
+	<content contentuid="h483cc43ag6b13g4d05gaad9gb3c595847c6a" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_SeekerDiscoveredTarget">&lt;font color=&apos;#FF3737&apos; size=&apos;26&apos;&gt;*Revealed!*&lt;/font&gt;</content>
 	<content contentuid="h0c6fe9ccg70f0g434dgbe60gc2275abaa7d1" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_VoidlingTransformed">&lt;font color=&apos;#73F6FF&apos; size=&apos;26&apos;&gt;Empowered Evolution&lt;/font&gt;</content>
 	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_BonusSkills_Source">Skilled: Sourcery</content>
 	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_10">Armor Boost</content>
@@ -126,6 +127,7 @@
 	<content contentuid="h8c7cfc30gfa1ag46b8ga23bg524410b565c8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage4">Rage (IV)</content>
 	<content contentuid="h90ef8331gf15cg484egaefbgcbd1109a8698" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage5">Rage (V)</content>
 	<content contentuid="h5b62279dg9bebg46c7g83f6gd05c7a9c9310" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_RangerRange">Talent: Quickdraw</content>
+	<content contentuid="h5c8f7ecbg1aecg45f9g8be1gde4a3e95d448" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Seeker">Seeker</content>
 	<content contentuid="h24701ed8gaeeag41d9gb1d8g1ff3f96f2abc" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_BullyDamageBonus">Talent: Bully</content>
 	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LightningRod">Talent: Lightning Rod</content>
 	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_NaturalConductor">Talent: Natural Conductor</content>
@@ -204,6 +206,8 @@
 	<content contentuid="h7987a4c4ge79ag4b93gbb98g63644b6ab4ef" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE3_DisplayName">Rage (III)</content>
 	<content contentuid="h752158cdg06beg4034gaddeg66921ff01d83" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE4_DisplayName">Rage (IV)</content>
 	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE5_DisplayName">Rage (V)</content>
+	<content contentuid="hc505e9aagab98g49e8g8777g72eb60325a35" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_Description">Character will discover hidden enemies while in combat.&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Stealthed and Invisible enemies within 4m are revealed.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF3333&apos;&gt;Becoming Drunk or disabled temporarily disables a Seeker&apos;s detection.&lt;/font&gt;</content>
+	<content contentuid="h2a92d66eg220eg4196gb8dag81570a513978" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DisplayName">Seeker</content>
 	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_Description">Character can backstab with non-dagger weapons.</content>
 	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_DisplayName">Talent: Assassin</content>
 	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BASE_DisplayName">Talent</content>
