@@ -3,7 +3,11 @@ EnemyUpgradeOverhaul = {
 	IgnoredWords = {},
 	EnemySkills = {},
 	StatusDescriptionParams = {},
-	SINGLEPLAYER = false
+	SINGLEPLAYER = false,
+	InvisibleStatuses = {
+		["SNEAKING"] = true,
+		["INVISIBLE"] = true,
+	}
 }
 
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEMY_StatOverrides.lua")
@@ -18,6 +22,14 @@ local function LLENEMY_SessionLoading()
 		EnemyUpgradeOverhaul.SINGLEPLAYER = true
 	end
 	LLENEMY_Ext_BuildEnemySkills();
+
+	local statuses = Ext.GetStatEntries("StatusData")
+	for _,stat in pairs(statuses) do
+		local status_type = Ext.StatGetAttribute(stat, "StatusType")
+		if status_type == "INVISIBLE" and EnemyUpgradeOverhaul.InvisibleStatuses[stat] == nil then
+			EnemyUpgradeOverhaul.InvisibleStatuses[stat] = true
+		end
+	end
 end
 
 Ext.RegisterListener("SessionLoading", LLENEMY_SessionLoading)

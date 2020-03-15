@@ -91,9 +91,8 @@ end
 
 function LLENEMY_Ext_MugTarget_DisplayText(character, target, item, amount)
 	local lost_gold = LLENEMY_Ext_MugTarget_StealGold(character, target)
-	local template = GetTemplate(String(item))
-	local templateGUID = NRD_GuidString(template)
-	local handle,name = ItemTemplateGetDisplayString(templateGUID)
+	local template = GetTemplate(item)
+	local handle,name = ItemTemplateGetDisplayString(template)
 	local text = ""
 	if amount > 1 then
 		text = "<font color='#FF3333' size='23'><font color='#FE6E27' size='26'>"..tostring(name).."</font> x"..tostring(amount).." was stolen!</font>"
@@ -104,3 +103,17 @@ function LLENEMY_Ext_MugTarget_DisplayText(character, target, item, amount)
 	if lost_gold > 0 then CharacterStatusText(target, "<font color='#ffbd30' size='23'>Lost "..tostring(lost_gold).." Gold!</font>") end
 end
 --Ext.NewCall(LLENEMY_Ext_MugTarget_DisplayText, "LLENEMY_Ext_MugTarget_DisplayText", "(CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target, (ITEMGUID)_Item, (INTEGER)_Amount");
+
+function LLENEMY_Ext_RemoveInvisible(target)
+	local detected = false
+	for status,b in pairs(EnemyUpgradeOverhaul.InvisibleStatuses) do
+		if b == true and HasActiveStatus(target, status) == 1 then
+			RemoveStatus(target, status)
+			detected = true
+		end
+	end
+	if detected then
+		CharacterStatusText(target, "LLENEMY_StatusText_SeekerDiscoveredTarget")
+	end
+	return detected
+end
