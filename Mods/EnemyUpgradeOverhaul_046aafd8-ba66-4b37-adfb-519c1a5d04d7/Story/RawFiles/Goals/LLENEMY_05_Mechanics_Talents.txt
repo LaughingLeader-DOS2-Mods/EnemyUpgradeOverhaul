@@ -142,9 +142,11 @@ LLENEMY_Talents_OnTargetMugged(_Enemy, _Target, _Item, 1);
 PROC
 LLENEMY_Talents_Internal_Mug_PickItem((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target)
 AND
-GetUUID(_Target, _UUID)
+GetUUID(_Target, _TargetUUID)
+AND
+GetUUID(_Enemy, _EnemyUUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_MugTarget_End", (STRING)_Enemy, _UUID);
+NRD_LuaCall("LLENEMY_Ext_MugTarget_End", _EnemyUUID, _TargetUUID);
 */
 
 PROC
