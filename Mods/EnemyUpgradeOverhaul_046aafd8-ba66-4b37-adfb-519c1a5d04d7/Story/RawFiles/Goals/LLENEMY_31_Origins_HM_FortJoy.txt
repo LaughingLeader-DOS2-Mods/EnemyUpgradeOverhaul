@@ -36,7 +36,8 @@ SetTag(_AtusaBoss, "SHRIEKER"); // Immune to source vamp
 CharacterLevelUpTo(_AtusaBoss, _Level);
 LeaderLib_Helper_MakeHostileToPlayers(_AtusaBoss);
 GlobalSetFlag("LLENEMY_HM_SpawnedAtusaBoss");
-SetVarInteger(_AtusaBoss, "LLENEMY_ChallengePoints", 8);
+LLENEMY_Upgrades_ApplyByStatus(_AtusaBoss, "LLENEMY_SEEKER");
+LLENEMY_Upgrades_IncreaseChallengePoints(_AtusaBoss, 8);
 CharacterSetCustomName(_AtusaBoss, _Name);
 MoveAllItemsTo(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _AtusaBoss, 0, 0, 1);
 SetOnStage(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, 0);
