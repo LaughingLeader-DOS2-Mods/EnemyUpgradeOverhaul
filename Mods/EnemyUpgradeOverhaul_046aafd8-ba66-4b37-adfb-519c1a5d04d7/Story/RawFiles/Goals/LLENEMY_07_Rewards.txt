@@ -228,6 +228,8 @@ AND
 CharacterIsSummon(_Char, 0)
 AND
 HasActiveStatus(_Char, "LLENEMY_DUPLICANT", 0)
+AND
+IsTagged(_Char, "LLENEMY_Duplicant", 0)
 THEN
 LLENEMY_Rewards_SetupTreasure(_Char);
 LLENEMY_Rewards_SetupBonusTreasure(_Char);
