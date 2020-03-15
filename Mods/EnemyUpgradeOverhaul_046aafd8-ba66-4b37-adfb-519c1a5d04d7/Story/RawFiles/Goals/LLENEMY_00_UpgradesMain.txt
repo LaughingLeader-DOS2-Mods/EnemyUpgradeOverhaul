@@ -448,14 +448,30 @@ LLENEMY_Upgrades_ApplyByStatus((CHARACTERGUID)_Char, (STRING)_Status)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
 THEN
-LLENEMY_Upgrades_ApplyUpgrade(_Char, _Group, _Type, _Status, _Duration, _CP);
+LLENEMY_Upgrades_IncreaseChallengePoints(_Char, _CP);
+ApplyStatus(_Char, _Status, _Duration, 1, _Char);
 
 PROC
 LLENEMY_Upgrades_ApplyByStatus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_CustomDuration)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
 THEN
-LLENEMY_Upgrades_ApplyUpgrade(_Char, _Group, _Type, _Status, _CustomDuration, _CP);
+LLENEMY_Upgrades_IncreaseChallengePoints(_Char, _CP);
+ApplyStatus(_Char, _Status, _CustomDuration, 1, _Char);
+
+PROC
+LLENEMY_Upgrades_ApplyByStatus((CHARACTERGUID)_Char, (STRING)_Status)
+AND
+NOT LLENEMY_Upgrades_QRY_IsRegistered(_Status)
+THEN
+ApplyStatus(_Char, _Status, -1.0, 1, _Char);
+
+PROC
+LLENEMY_Upgrades_ApplyByStatus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_CustomDuration)
+AND
+NOT LLENEMY_Upgrades_QRY_IsRegistered(_Status)
+THEN
+ApplyStatus(_Char, _Status, _CustomDuration, 1, _Char);
 //END_REGION
 
 //REGION REDIRECT_UPGRADE
