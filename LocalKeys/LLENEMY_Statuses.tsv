@@ -117,3 +117,5 @@ LLENEMY_TREASURE_GOBLIN_DisplayName	Fleeing
 LLENEMY_TREASURE_GOBLIN_Description	The treasure goblin is fleeing! Quickly, strike it down for loot!
 LLENEMY_SEEKER_DisplayName	Seeker
 LLENEMY_SEEKER_Description	Character will discover hidden enemies while in combat.<br><font color='#FF00CC'>Stealthed and Invisible enemies within 4m are revealed.</font><br><font color='#FF3333'>Becoming Drunk or disabled temporarily disables a Seeker's detection.</font>
+LLENEMY_SEEKER_DISABLED_DisplayName	Seeker (Disabled)
+LLENEMY_SEEKER_DISABLED_Description	Character cannot discover hidden enemies while disabled/drunk.
