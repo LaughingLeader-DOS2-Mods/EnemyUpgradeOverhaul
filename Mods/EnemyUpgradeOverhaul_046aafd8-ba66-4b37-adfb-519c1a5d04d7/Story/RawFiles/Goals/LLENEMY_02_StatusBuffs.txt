@@ -176,6 +176,7 @@ THEN
 //Special
 LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_DOUBLE_DIP", 30, 4, 0.0);
 LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_PERSEVERANCE_MASTERY", 150, 6);
+LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_SEEKER", 35, 6);
 
 //Upgrades that don't give immediate bonuses.
 PROC
