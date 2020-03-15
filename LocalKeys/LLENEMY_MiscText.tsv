@@ -8,3 +8,4 @@ LLENEMY_DisplayText_MuggedGold_Enemy	<font color='#33FF33' size='23'>*Stole </fo
 LLENEMY_StatusText_RageReduced	<font color='#FF3737' size='23'>Rage Reduced</font>
 LLENEMY_StatusText_ImmuneToDamageOnMove	<font color='#FF3737' size='18'>Immune to Movement-Based Damage Statuses</font>
 LLENEMY_StatusText_VoidlingTransformed	<font color='#73F6FF' size='26'>Empowered Evolution</font>
+LLENEMY_StatusText_AtusaBossActivated	<font color='#FF3737' size='26'>*Atusa's corpse oozes to life!*</font>

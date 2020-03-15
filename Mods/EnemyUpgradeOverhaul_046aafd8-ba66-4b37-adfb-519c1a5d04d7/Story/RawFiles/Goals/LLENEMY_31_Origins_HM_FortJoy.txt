@@ -4,23 +4,31 @@ INITSECTION
 
 KBSECTION
 
+/*
 PROC
 Proc_SceneOver("FTJ_DallasStartScene")
 THEN
 TimerCancel("Timers_LLENEMY_HM_FTJ_StartAtusaBattle");
 TimerLaunch("Timers_LLENEMY_HM_FTJ_StartAtusaBattle", 3000);
+*/
 
 IF
-TimerFinished("Timers_LLENEMY_HM_FTJ_StartAtusaBattle")
+ItemTemplateRemovedFromCharacter("LOOT_Bodyparts_Lizards_Leg_3ec6137e-c2a9-4b38-b7dd-743724a43031", S_FTJ_FlorenceLeg_09d02979-2749-4f1d-b1b7-5d2ddcfd6aa9, S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338)
+AND
+GlobalGetFlag("LLENEMY_HM_SpawnedAtusaBoss", 0)
 AND
 GetPosition(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _x, _y, _z)
 AND
-CharacterCreateAtPosition(_x, _y, _z, "0c6a905-74c3-4d89-9ffe-d3493a22cabd", 1, _AtusaBoss)
+CharacterCreateAtPosition(_x, _y, _z, "LLENEMY_Creatures_Elemental_A_Ooze_Flesh_458bb12e-0c77-4689-8acb-6bdd776acb37", 1, _AtusaBoss)
 AND
 CharacterGetDisplayName(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _Handle, _Reference)
 AND
 StringConcatenate(_Reference, "'s Corpse", _Name)
 THEN
+PlayEffectAtPosition("RS3_FX_GP_Impacts_Wand_Blood_01", _x, _y, _z);
+PlayEffectAtPosition("RS3_FX_Skills_Voodoo_Impact_Voodo_BloatedCorpse_01", _x, _y, _z);
+CharacterStatusText(_AtusaBoss, "LLENEMY_StatusText_AtusaBossActivated");
+GlobalSetFlag("LLENEMY_HM_SpawnedAtusaBoss");
 SetVarInteger(_AtusaBoss, "LLENEMY_ChallengePoints", 8);
 CharacterSetCustomName(_AtusaBoss, _Name);
 MoveAllItemsTo(CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _AtusaBoss, 0, 0, 1);
