@@ -115,3 +115,5 @@ LLENEMY_EMPOWERED_DisplayName	Empowered
 LLENEMY_EMPOWERED_Description	Character is fully powered up.
 LLENEMY_TREASURE_GOBLIN_DisplayName	Fleeing
 LLENEMY_TREASURE_GOBLIN_Description	The treasure goblin is fleeing! Quickly, strike it down for loot!
+LLENEMY_SEEKER_DisplayName	Seeker
+LLENEMY_SEEKER_Description	Character can discover hidden enemies.<br><font color='#FF00CC'>Stealthed and Invisible enemies within 4m are revealed.</font><br><font color='#FF3333'>Becoming Drunk or disabled temporarily disables a Seeker's detection.</font>
