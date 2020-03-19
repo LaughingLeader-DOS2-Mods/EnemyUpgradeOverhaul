@@ -48,6 +48,68 @@ LeaderLib_Helper_QRY_HasStatus(_Char, "LLENEMY_SEEKER_DISABLED")
 THEN
 ApplyStatus(_Char, "LLENEMY_SEEKER", -1.0, 1, _Char);
 
+//REGION SEEKER_SNEAK_FX
+IF
+CharacterStatusApplied(_Player, "SNEAKING", _)
+AND
+LeaderLog_QRY_Log("DEBUG", "[LLENEMY_80_TS_Seeker:] Checking if player is controlled")
+AND
+CharacterIsControlled(_Player, 1)
+AND
+LeaderLog_QRY_Log("DEBUG", "[LLENEMY_80_TS_Seeker:] Getting seekers")
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char)
+AND
+LeaderLog_QRY_Log("DEBUG", "[LLENEMY_80_TS_Seeker:] Checking relation")
+AND
+CharacterIsEnemy(_Char, _Player, 1)
+AND
+HasActiveStatus(_Char, "LLENEMY_SEEKER_FX", 0)
+THEN
+ApplyStatus(_Char, "LLENEMY_SEEKER_FX", -1.0, 0, _Char);
+
+IF
+CharacterStatusRemoved(_Player, "SNEAKING", _)
+AND
+NOT LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char)
+AND
+HasActiveStatus(_Char, "LLENEMY_SEEKER_FX", 1)
+THEN
+RemoveStatus(_Char, "LLENEMY_SEEKER_FX");
+
+IF
+CharacterStatusApplied(_Player, _Status, _)
+AND
+GetStatusType(_Status, "INVISIBLE")
+AND
+CharacterIsControlled(_Player, 1)
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char)
+AND
+CharacterIsEnemy(_Char, _Player, 1)
+AND
+HasActiveStatus(_Char, "LLENEMY_SEEKER_FX", 0)
+THEN
+ApplyStatus(_Char, "LLENEMY_SEEKER_FX", -1.0, 0, _Char);
+
+IF
+CharacterStatusRemoved(_Player, _Status, _)
+AND
+GetStatusType(_Status, "INVISIBLE")
+AND
+CharacterIsPlayer(_Player, 1)
+AND
+NOT LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char)
+AND
+HasActiveStatus(_Char, "LLENEMY_SEEKER_FX", 1)
+THEN
+RemoveStatus(_Char, "LLENEMY_SEEKER_FX");
+//END_REGION
+
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_80_ToggledScripts"

@@ -118,3 +118,14 @@ function LLENEMY_Ext_RemoveInvisible(target, source)
 	end
 	return detected
 end
+
+function LLENEMY_Ext_CharacterIsHidden(target, source)
+	for status,b in pairs(EnemyUpgradeOverhaul.InvisibleStatuses) do
+		if b == true and HasActiveStatus(target, status) == 1 then
+			return 1
+		end
+	end
+	return 0
+end
+
+Ext.NewQuery(LLENEMY_Ext_CharacterIsHidden, "LLENEMY_Ext_QRY_CharacterIsHidden", "[in](CHARACTERGUID)_Character, [out](INTEGER)_IsHidden")

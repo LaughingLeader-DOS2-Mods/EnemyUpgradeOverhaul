@@ -63,6 +63,33 @@ LeaderLib_Math_QRY_IsEqualToAny(1, _a, _b, _c)
 THEN
 DB_NOOP(1);
 
+/* [OSITOOLS_ONLY]
+QRY
+LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
+AND
+DB_IsPlayer(_Player)
+AND
+LLENEMY_Ext_QRY_CharacterIsHidden(_Player, 1)
+THEN
+DB_NOOP(1);
+*/
+
+// [BEGIN_NO_OSITOOLS]
+QRY
+LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
+AND
+DB_IsPlayer(_PLayer)
+AND
+LeaderLib_Helper_QRY_HasAnyStatus(_PLayer, "INVISIBLE", "SNEAKING")
+THEN
+DB_NOOP(1);
+// [END_NO_OSITOOLS]
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_SEEKER", _)
+THEN
+DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char);
+
 IF
 CharacterStatusRemoved(_Char, "LLENEMY_SEEKER", _)
 AND
@@ -74,6 +101,7 @@ LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_Statuses_Seeker_PulseN
 IF
 CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
 THEN
+DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char);
 LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_SeekerEnabled", "EnemyUpgradeOverhaul");
 SetStoryEvent(_Char, "LLENEMY_Statuses_Seeker_PulseNow");
 

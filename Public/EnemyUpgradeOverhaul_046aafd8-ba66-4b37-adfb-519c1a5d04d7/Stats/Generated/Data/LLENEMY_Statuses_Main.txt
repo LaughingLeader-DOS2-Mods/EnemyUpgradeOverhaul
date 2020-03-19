@@ -1527,7 +1527,13 @@ data "FormatColor" "Red"
 data "StatsId" "Stats_LLENEMY_Seeker"
 data "StackId" "Stack_LLENEMY_Seeker"
 data "ForceOverhead" "Yes"
+
+new entry "LLENEMY_SEEKER_FX"
+type "StatusData"
+data "StatusType" "CONSUME"
+using "_LLENEMY_HIDDEN_CONSUME_BASE"
 data "StatusEffect" "LLENEMY_FX_Status_Seeker_Overhead_Loop_01:Dummy_OverheadFX;LLENEMY_FX_Status_Seeker_DetectionRadius_Loop_01:Dummy_Root"
+data "StackId" "Stack_LLENEMY_SeekerFX"
 
 new entry "Stats_LLENEMY_Seeker"
 type "Potion"
