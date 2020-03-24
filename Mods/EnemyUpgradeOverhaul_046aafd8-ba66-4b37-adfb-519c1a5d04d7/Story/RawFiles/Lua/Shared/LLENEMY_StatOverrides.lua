@@ -196,22 +196,25 @@ local function OverrideStats()
 	end
 
 	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
-	if Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
-		Ext.Print("LLENEMY_StatOverrides.lua] Enabling singleplayer enhancements.")
+	local enhancementsLoaded = Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9")
+	if Ext.Version() >= 42 or enhancementsLoaded then
+		Ext.Print("LLENEMY_StatOverrides.lua] Enabling v42+ enhancements.")
 		Ext.Print("==============================================================")
-		Ext.Print("LLENEMY_StatOverrides.lua] [SINGLEPLAYER] (Upgrade Info) enabled. Hiding statuses used for info.")
+		Ext.Print("LLENEMY_StatOverrides.lua] (Upgrade Info) enabled. Hiding statuses used for info.")
 		for _,statname in pairs(upgrade_info_statuses) do
 			if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Hiding icon for stat: " .. statname) end
 			Ext.StatSetAttribute(statname, "Icon", "")
 			total_changes = total_changes + 1
 			total_stats = total_stats + 1
 		end
-		Ext.Print("LLENEMY_StatOverrides.lua] [SINGLEPLAYER] Enabling skill Tier overrides.")
-		for _,stat in Ext.GetStatEntries("SkillData") do
-			local tier = Ext.StatGetAttribute(stat, "Tier")
-			if CanChangeSkillTier(stat, tier) then
-				Ext.StatSetAttribute(stat, "Tier", "Starter")
-				if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Change Tier for skill ("..tostring(stat)..") to Starter.") end
+		if enhancementsLoaded or Ext.IsDeveloperMode() == true then
+			Ext.Print("LLENEMY_StatOverrides.lua] Enabling skill Tier overrides.")
+			for _,stat in Ext.GetStatEntries("SkillData") do
+				local tier = Ext.StatGetAttribute(stat, "Tier")
+				if CanChangeSkillTier(stat, tier) then
+					Ext.StatSetAttribute(stat, "Tier", "Starter")
+					if debug_print then Ext.Print("LLENEMY_StatOverrides.lua] Change Tier for skill ("..tostring(stat)..") to Starter.") end
+				end
 			end
 		end
 		Ext.Print("==============================================================")
@@ -220,10 +223,4 @@ local function OverrideStats()
     Ext.Print("LLENEMY_StatOverrides.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
 end
 
-local function ModuleLoading()
-    Ext.Print("LLENEMY_StatOverrides.lua] Module is loading.")
-	OverrideStats()
-end
---Ext.StatAddCustomDescription("LLENEMY_TALENT_COUNTER", "CounterChance", "2000000%")
-
-Ext.RegisterListener("ModuleLoading", ModuleLoading)
+EnemyUpgradeOverhaul.OverrideStats = OverrideStats;

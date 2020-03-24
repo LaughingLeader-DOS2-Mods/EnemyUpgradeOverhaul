@@ -148,3 +148,14 @@ function LLENEMY_Ext_Debug_TraceStats(char)
 		Osi.LeaderLog_Log("DEBUG", "[LLENEMY_Debug.lua:LLENEMY_Ext_Debug_TraceStats] Character's instance stat ID is (",stats,")")
 	end
 end
+
+function LLENEMY_Ext_Debug_RerollLevel(char)
+	Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Leveling up (".. char ..").")
+	CharacterLevelUp(char)
+	Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Transforming (".. char ..").")
+	--CharacterTransformFromCharacter(char, char, 1, 1, 1, 1, 1, 1, 1)
+	Transform(char, "57b70554-36bf-4b86-b9aa-8f7cc3944153", 1, 1, 1)
+	Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Leveling up (".. char ..").")
+	--CharacterLevelUpTo(char, 3)
+	CharacterLevelUp(char)
+end

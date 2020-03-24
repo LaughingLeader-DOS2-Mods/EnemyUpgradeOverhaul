@@ -1,54 +1,3 @@
-
-local upgrade_info = {}
-local upgrade_ids = {}
-
-function LLENEMY_EXT_CreateUpgradeInfoID(character)
-	local hearing = NRD_CharacterGetComputedStat(character, "Hearing", 0)
-	local id = hearing
-	local hearingmult = 0
-	if upgrade_ids[id] ~= nil then
-		hearingmult = hearingmult + 1
-		id = hearing + hearingmult
-		while upgrade_ids[id] ~= nil do
-			hearingmult = hearingmult + 1
-			id = hearing + hearingmult
-		end
-		NRD_CharacterSetPermanentBoostInt(character, "Hearing", hearingmult)
-		CharacterAddAttribute(character, "Dummy", 0)
-	end
-	Osi.LLENEMY_UpgradeInfo_Internal_StoreUpgradeID(character, id)
-	upgrade_ids[id] = GetUUID(character)
-	Ext.Print("Stored upgrade_ids["..tostring(id).."] = " .. GetUUID(character))
-end
-
-function LLENEMY_EXT_StoreUpgradeInfo(uuid, str)
-	if str ~= nil and str ~= "" then
-		upgrade_info[uuid] = str
-		Ext.Print("Stored upgrade_info: " .. uuid .. " = " .. str)
-	end
-end
-
-function LLENEMY_EXT_RemoveUpgradeInfo(uuid)
-	upgrade_info[uuid] = nil;
-	for key,v in pairs(upgrade_ids) do
-		if v == uuid then
-			upgrade_ids[key] = nil
-			Ext.Print("Removed upgrade_ids hearing key for " .. uuid)
-		end
-	end
-	Ext.Print("Removed upgrade_info entry for " .. uuid)
-end
-
-local function split(s, sep)
-    local fields = {}
-
-    local sep = sep or " "
-    local pattern = string.format("([^%s]+)", sep)
-    string.gsub(s, pattern, function(c) fields[#fields + 1] = c end)
-
-    return fields
-end
-
 local upgrade_colors = {
 	["Talent: Assassin"] = "#AABB00",
 	["Talent: Leech"] = "#C80030",
@@ -126,27 +75,39 @@ local function StatusGetDescriptionParamClientDebug(status, statusSource, charac
 end
 --Ext.RegisterListener("StatusGetDescriptionParam", StatusGetDescriptionParamClientDebug)
 
-local function StatusGetDescriptionParam(status, statusSource, character, param)
-	if status.Name == "LLENEMY_UPGRADE_INFO" and EnemyUpgradeOverhaul.SINGLEPLAYER == true then
+local function LLENEMY_OnSendUpgradeInfo(channel, data)
+	if Ext.IsClient() then
+		EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
+	end
+	if Ext.IsDeveloperMode() then
+		Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received upgrade info:")
+		Ext.Print("======")
+		Ext.Print(data)
+		Ext.Print("======")
+	end
+end
+
+Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnSendUpgradeInfo)
+
+local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
+	if status.Name == "LLENEMY_UPGRADE_INFO" then
 		if param == "UpgradeInfo" then
-			local hearing = character.Hearing
-			--Ext.Print("Looking for ID for hearing(".. tostring(hearing)..")")
-			local uuid = upgrade_ids[hearing]
+			local uuid = character.MyGuid
 			if uuid ~= nil then
-				--Ext.Print("Getting upgrade_info for hearing(".. tostring(hearing)..") = uuid(".. tostring(uuid)..")")
-				local info_str = upgrade_info[uuid]
+				Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
+				local info_str = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
 				if info_str ~= nil then
-					local upgrades = split(info_str, ";")
+					local upgrades = LeaderLib.Common.Split(info_str, ";")
 					table.sort(upgrades, sortupgrades)
 					local count = #upgrades
-					local output = "<br>"
+					local output = "<br><img src='Icon_Line' width='350%'><br>"
 					local i = 0
 					for k,v in pairs(upgrades) do
 						local color = upgrade_colors[v]
 						if color ~= nil then
-							output = output.."<font color='"..color.."' size='18'>"..v.."</font>"
+							output = output.."<img src='Icon_BulletPoint'><font color='"..color.."' size='18'>"..v.."</font>"
 						else
-							output = output.."<font size='18'>"..v.."</font>"
+							output = output.."<img src='Icon_BulletPoint'><font size='18'>"..v.."</font>"
 						end
 						if i < count - 1 then
 							output = output.."<br>"
@@ -166,8 +127,8 @@ local function StatusGetDescriptionParam(status, statusSource, character, param)
 		end
 	end
 end
---Ext.RegisterListener("StatusGetDescriptionParam", StatusGetDescriptionParam)
-Ext.Print("[LLENEMY_DescriptionParams.lua] Registered listener StatusGetDescriptionParam.")
+Ext.RegisterListener("StatusGetDescriptionParam", LLENEMY_StatusGetDescriptionParam)
+Ext.Print("[LLENEMY_DescriptionParams.lua] Registered listener LLENEMY_StatusGetDescriptionParam.")
 
 local function SkillGetDescriptionParam(skill, character, param)
 
