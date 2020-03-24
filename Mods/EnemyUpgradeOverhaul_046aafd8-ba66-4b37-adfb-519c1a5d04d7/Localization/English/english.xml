@@ -128,6 +128,7 @@
 	<content contentuid="h90ef8331gf15cg484egaefbgcbd1109a8698" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage5">Rage (V)</content>
 	<content contentuid="h5b62279dg9bebg46c7g83f6gd05c7a9c9310" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_RangerRange">Talent: Quickdraw</content>
 	<content contentuid="h5c8f7ecbg1aecg45f9g8be1gde4a3e95d448" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Seeker">Seeker</content>
+	<content contentuid="ha01be380g46ddg41a4g8408g41eb724325d2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_SeekerDisabled">Seeker (Disabled)</content>
 	<content contentuid="h24701ed8gaeeag41d9gb1d8g1ff3f96f2abc" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_BullyDamageBonus">Talent: Bully</content>
 	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LightningRod">Talent: Lightning Rod</content>
 	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_NaturalConductor">Talent: Natural Conductor</content>
@@ -207,6 +208,8 @@
 	<content contentuid="h752158cdg06beg4034gaddeg66921ff01d83" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE4_DisplayName">Rage (IV)</content>
 	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE5_DisplayName">Rage (V)</content>
 	<content contentuid="hc505e9aagab98g49e8g8777g72eb60325a35" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_Description">Character will discover hidden enemies while in combat.&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Stealthed and Invisible enemies within 4m are revealed.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF3333&apos;&gt;Becoming Drunk or disabled temporarily disables a Seeker&apos;s detection.&lt;/font&gt;</content>
+	<content contentuid="hd8f04806g2228g4144g964eg5f6694865d41" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_Description">Character cannot discover hidden enemies while disabled/drunk.</content>
+	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_DisplayName">Seeker (Disabled)</content>
 	<content contentuid="h2a92d66eg220eg4196gb8dag81570a513978" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DisplayName">Seeker</content>
 	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_Description">Character can backstab with non-dagger weapons.</content>
 	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_DisplayName">Talent: Assassin</content>
@@ -258,9 +261,9 @@
 	<content contentuid="hdb001da6g340cg4f00g9190g13e8c1a96f90" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WEATHERPROOF_DisplayName">Talent: Weatherproof</content>
 	<content contentuid="he6532e10gc9d5g4923g9544g033fca885329" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_Description">Character has increased recovery and maximum Action Points when their health is below 50%.</content>
 	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_DisplayName">Talent: What a Rush</content>
-	<content contentuid="hbba08b72g0d5bg416eg9a46gb2150b29fb05" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TREASURE_GOBLIN_Description">The treasure goblin is fleeing! Quickly, strike it down for loot!</content>
+	<content contentuid="hbba08b72g0d5bg416eg9a46gb2150b29fb05" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TREASURE_GOBLIN_Description">The treasure goblin is fleeing!&lt;br&gt;&lt;font color=&apos;#FF00CC&apos; size=&apos;24&apos;&gt;Quickly, strike it down for &lt;font color=&apos;#C7A758&apos; size=&apos;24&apos; face=&apos;Copperplate Gothic Light&apos;&gt;LOOT&lt;/font&gt;!&lt;/font&gt;</content>
 	<content contentuid="h6ea17edfgea06g402eg9a78gc538e1959ead" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TREASURE_GOBLIN_DisplayName">Fleeing</content>
-	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is empowered.[1]</content>
+	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is empowered with random upgrades.[1]</content>
 	<content contentuid="h84c27debgd38dg4844g84d4g75eb558eb5de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_DisplayName">Upgraded</content>
 	<content contentuid="h1624d634gdfdcg4129g9624g9efe5660220b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_Description">Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.</content>
 	<content contentuid="h398b5931gfa52g4a26gadb9gf94bbb7d35e2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_DisplayName">Void Empowered</content>

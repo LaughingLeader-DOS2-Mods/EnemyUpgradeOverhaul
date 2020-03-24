@@ -98,7 +98,7 @@ LLENEMY_BONUSSKILLS_SOURCE_Description	Character has a new bonus source skill.
 LLENEMY_BONUSSKILLS_SET_ELITE_DisplayName	Elite Skillset
 LLENEMY_BONUSSKILLS_SET_ELITE_Description	Character has an elite set of new bonus skills.
 LLENEMY_UPGRADE_INFO_DisplayName	Upgraded
-LLENEMY_UPGRADE_INFO_Description	Character is empowered.[1]
+LLENEMY_UPGRADE_INFO_Description	Character is empowered with random upgrades.[1]
 LLENEMY_FAKE_DYING_DisplayName	Dead
 LLENEMY_FAKE_DYING_Description	Character appears to be dead.
 LLENEMY_VOID_EMPOWERED_DisplayName	Void Empowered
@@ -114,7 +114,7 @@ LLENEMY_GATHERING_POWER_Description	Character is preparing to unleash their full
 LLENEMY_EMPOWERED_DisplayName	Empowered
 LLENEMY_EMPOWERED_Description	Character is fully powered up.
 LLENEMY_TREASURE_GOBLIN_DisplayName	Fleeing
-LLENEMY_TREASURE_GOBLIN_Description	The treasure goblin is fleeing! Quickly, strike it down for loot!
+LLENEMY_TREASURE_GOBLIN_Description	The treasure goblin is fleeing!<br><font color='#FF00CC' size='24'>Quickly, strike it down for <font color='#C7A758' size='24' face='Copperplate Gothic Light'>LOOT</font>!</font>
 LLENEMY_SEEKER_DisplayName	Seeker
 LLENEMY_SEEKER_Description	Character will discover hidden enemies while in combat.<br><font color='#FF00CC'>Stealthed and Invisible enemies within 4m are revealed.</font><br><font color='#FF3333'>Becoming Drunk or disabled temporarily disables a Seeker's detection.</font>
 LLENEMY_SEEKER_DISABLED_DisplayName	Seeker (Disabled)
