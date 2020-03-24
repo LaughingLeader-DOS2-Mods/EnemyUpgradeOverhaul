@@ -57,25 +57,6 @@ LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SOURCE", "Bonus Source Skill",
 LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_ELITE", "Elite Skillset", "Character has an elite set of new bonus skills.");
 //END_REGION
 
-//REGION REGISTER_ID
-/*
-The character data in StatusGetDescriptionParam doesn't have a reference to the object's UUID, 
-so we use Hearing for the ID.
- */
-
-PROC
-LLENEMY_UpgradeInfo_Internal_StoreUpgradeID((CHARACTERGUID)_Character, (INTEGER)_Hearing)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Last)
-THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Last);
-
-PROC
-LLENEMY_UpgradeInfo_Internal_StoreUpgradeID((CHARACTERGUID)_Character, (INTEGER)_Hearing)
-THEN
-DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Hearing);
-//END_REGION
-
 //REGION RESETTING
 /* Lua data isn't persistant, so it needs to be refreshed using databases. */
 IF
@@ -86,140 +67,148 @@ TimerLaunch("Timers_LLENEMY_ResetUpgradeInfo", 50);
 
 IF
 TimerFinished("Timers_LLENEMY_ResetUpgradeInfo")
-AND
-DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _HearingID)
 THEN
-LLENEMY_UpgradeInfo_Internal_Update(_Character, "");
+CharacterLaunchOsirisOnlyIterator("LLENEMY_UpgradeInfo_Update");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_UpgradeInfo_Update")
+AND
+LLENEMY_UpgradeInfo_QRY_HasInfo(_Char)
+THEN
+LLENEMY_UpgradeInfo_Internal_Update(_Char, "");
+LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_UpgradeInfo_SendInfo", "LLENEMY_UpgradeInfo_SendInfo");
 //END_REGION
 
 //REGION UPGRADE_INFO
-IF
-StoryEvent((CHARACTERGUID)_Character, "LLENEMY_UpgradeInfo_SendInfo")
+PROC
+LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Upgrade, (REAL)_Duration, (INTEGER)_CP)
+AND
+LeaderLib_QRY_ExtenderIsActive()
 THEN
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, "");
-LLENEMY_UpgradeInfo_Internal_SendInfo(_Character);
+LLENEMY_UpgradeInfo_Internal_Update(_Char, _Upgrade);
+//LeaderLib_Timers_StartObjectTimer(_Char, 50, "Timers_LLENEMY_UpgradeInfo_SortUpgrades", "LLENEMY_UpgradeInfo_SortUpgrades");
+LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_UpgradeInfo_SendInfo", "LLENEMY_UpgradeInfo_SendInfo");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_UpgradeInfo_SendInfo")
+THEN
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, "");
+LLENEMY_UpgradeInfo_Internal_SendInfo(_Char);
 
 PROC
-LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Character)
+LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Char)
 AND
-DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade)
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Char, _Upgrade)
 AND
 DB_LLENEMY_UpgradeInfo_Info(_Upgrade, _DisplayName, _Description)
 AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Current)
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Current)
 AND
 StringConcatenate(_Current, ";", _a)
 AND
 StringConcatenate(_a, _DisplayName, _Next)
 THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Current);
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Next);
+NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Current);
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Next);
 
 PROC
-LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Character)
+LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Char)
 AND
-NOT LeaderLib_Helper_QRY_HasStatus(_Character, "LLENEMY_UPGRADE_INFO")
+NOT LeaderLib_Helper_QRY_HasStatus(_Char, "LLENEMY_UPGRADE_INFO")
 AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info)
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Info)
 AND
 _Info != ""
 THEN
-ApplyStatus(_Character, "LLENEMY_UPGRADE_INFO", -1.0, 0, _Character);
+ApplyStatus(_Char, "LLENEMY_UPGRADE_INFO", -1.0, 0, _Char);
 
 QRY
-LLENEMY_UpgradeInfo_QRY_HasInfo((CHARACTERGUID)_Character)
+LLENEMY_UpgradeInfo_QRY_HasInfo((CHARACTERGUID)_Char)
 AND
-DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade)
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Char, _Upgrade)
 THEN
 DB_NOOP(1);
 
 // [BEGIN_NO_OSITOOLS]
 PROC
-LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Char, (STRING)_Upgrade)
 THEN
 DB_NOOP(1);
 // [END_NO_OSITOOLS]
 
 PROC
-LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Char, (STRING)_Upgrade)
 AND
 _Upgrade != ""
 AND
 DB_LLENEMY_UpgradeInfo_Info(_Upgrade, _DisplayName, _Description)
 THEN
-DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade);
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Char, _Upgrade);
 
 PROC
-LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Character, (STRING)_Upgrade)
+LLENEMY_UpgradeInfo_Internal_Update((CHARACTERGUID)_Char, (STRING)_Upgrade)
 AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Last)
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Last)
 THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Last);
+NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Last);
 
 // [BEGIN_NO_OSITOOLS]
 PROC
-LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Character)
+LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Char)
 THEN
 DB_NOOP(1);
 // [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]
 PROC
-LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Character)
+LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Char)
 AND
-GetUUID(_Character, _UUID)
+GetUUID(_Char, _UUID)
 AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info)
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Info)
 AND
 _Info != ""
 THEN
-NRD_LuaCall("LLENEMY_EXT_StoreUpgradeInfo", _UUID, _Info);
+NRD_LuaCall("LLENEMY_Ext_StoreUpgradeInfo", _UUID, _Info);
 */
 //END_REGION
 
 //REGION CLEARING
 PROC
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Character)
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Char)
 AND
-DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade)
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Char, _Upgrade)
 THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Character, _Upgrade);
+NOT DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Char, _Upgrade);
 
 PROC
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Character)
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Char)
 AND
-DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Hearing)
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Info)
 THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Hearing);
-
-PROC
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Character)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info)
-THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Character, _Info);
+NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Info);
 
 IF
-CharacterDied(_Character)
+CharacterDied(_Char)
 AND
-LLENEMY_UpgradeInfo_QRY_HasInfo(_Character)
+LLENEMY_UpgradeInfo_QRY_HasInfo(_Char)
 THEN
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject(_Character);
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject(_Char);
 
 IF
 RegionEnded(_)
 AND
-DB_LLENEMY_UpgradeInfo_Temp_ID(_Character, _Hearing)
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Info)
 THEN
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject(_Character);
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject(_Char);
 
 /* [OSITOOLS_ONLY]
 PROC
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Character)
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Char)
 AND
-GetUUID(_Character, _UUID)
+GetUUID(_Char, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_EXT_RemoveUpgradeInfo", _UUID);
+NRD_LuaCall("LLENEMY_Ext_RemoveUpgradeInfo", _UUID);
 */
 //END_REGION
 EXITSECTION
