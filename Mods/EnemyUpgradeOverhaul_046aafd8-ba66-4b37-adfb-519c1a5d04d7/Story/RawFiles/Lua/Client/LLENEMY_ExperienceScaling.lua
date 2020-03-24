@@ -7,17 +7,11 @@ end
 
 Ext.RegisterNetListener("LLENEMY_SetPlayerLevel", LLENEMY_OnPlayerLevelSent)
 
-local function GetExtraData(key, fallback)
-	local val = Ext.ExtraData[key]
-	if val ~= nil then return val end
-	return fallback
-end
-
 function LLENEMY_Ext_ScaleExperience(gain, characterLevel)
 	local level = EnemyUpgradeOverhaul.PlayerLevel
-	local levelCap = math.floor(GetExtraData("LevelCap", 35))
+	local levelCap = math.floor(LLENEMY_Ext_GetExtraDataValue("LevelCap", 35))
 	if gain ~= nil and gain > 0 then
-		local expMod = GetExtraData("LLENEMY_ExperienceModifier", 0.5)
+		local expMod = LLENEMY_Ext_GetExtraDataValue("LLENEMY_ExperienceModifier", 0.5)
 		if expMod == nil then expMod = 0.5 end
 		Ext.Print("[LLENEMY_ExperienceScaling.lua:LLENEMY_ExperienceScale] gain(" .. tostring(gain) .. ") level(" .. tostring(level) .. "/".. tostring(levelCap) ..") expMod(".. tostring(expMod) ..")")
 		--local softLevelCap = Ext.ExtraData.SoftLevelCap
