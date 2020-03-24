@@ -35,10 +35,9 @@ function LLENEMY_Ext_Init()
 	end
 end
 
-function LLENEMY_Ext_SendPlayerLevel()
-	local host = CharacterGetHostCharacter()
-	local level = CharacterGetLevel(host)
-	EnemyUpgradeOverhaul.PlayerLevel = level
-	Ext.BroadcastMessage("LLENEMY_SetPlayerLevel", tostring(level), nil)
-	--Ext.BroadcastMessage("LLENEMY_SetPlayerLevel", tostring(CharacterGetLevel(host)), host)
+function LLENEMY_Ext_SendPlayerLevel(levelstr)
+	--local host = CharacterGetHostCharacter()
+	--local level = CharacterGetLevel(host)
+	--EnemyUpgradeOverhaul.PlayerLevel = math.tointeger(levelstr)
+	Ext.BroadcastMessage("LLENEMY_SetPlayerLevel", levelstr, nil)
 end

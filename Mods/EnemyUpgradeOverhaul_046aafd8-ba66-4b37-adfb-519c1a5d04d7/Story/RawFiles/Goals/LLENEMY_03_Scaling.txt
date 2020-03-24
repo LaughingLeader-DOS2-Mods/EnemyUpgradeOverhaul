@@ -202,6 +202,40 @@ NOT DB_LLENEMY_Scaling_Temp_TotalScaled(_Player, _Total);
 CharacterDisplayTextWithParam(_Player, "LLENEMY_DisplayText_TotalCharactersLeveled", _Total);
 //END_REGION
 
+//REGION EXPERIENCE_MODIFYING
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Scaling_SendHighestPlayerLevel()
+AND
+LeaderLib_Helper_QRY_GetHighestPlayerLevel()
+AND
+DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level)
+AND
+IntegertoString(_Level, _LevelStr)
+THEN
+NRD_LuaCall("LLENEMY_Ext_SendPlayerLevel", _LevelStr);
+
+IF
+CharacterLeveledUp(_Player)
+AND
+CharacterIsPlayer(_Player, 1)
+THEN
+TimerCancel("Timers_LLENEMY_Scaling_SendHighestPlayerLevel");
+TimerLaunch("Timers_LLENEMY_Scaling_SendHighestPlayerLevel", 500);
+
+IF
+TimerFinished("Timers_LLENEMY_Scaling_SendHighestPlayerLevel")
+THEN
+LLENEMY_Scaling_SendHighestPlayerLevel();
+
+IF
+GameStarted(_Region,_)
+AND
+IsGameLevel(_Region, 1)
+THEN
+LLENEMY_Scaling_SendHighestPlayerLevel();
+*/
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
