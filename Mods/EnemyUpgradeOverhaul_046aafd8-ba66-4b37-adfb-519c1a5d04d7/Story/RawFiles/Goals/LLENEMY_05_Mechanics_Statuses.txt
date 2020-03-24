@@ -78,7 +78,7 @@ LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
 AND
 DB_IsPlayer(_PLayer)
 AND
-LeaderLib_Helper_QRY_HasAnyStatus(_PLayer, "INVISIBLE", "SNEAKING")
+LeaderLib_Helper_QRY_HasAnyStatus((GUIDSTRING)_PLayer, "INVISIBLE", "SNEAKING")
 THEN
 DB_NOOP(1);
 // [END_NO_OSITOOLS]
@@ -134,12 +134,12 @@ NRD_LuaCall("LLENEMY_Ext_RemoveInvisible", _UUID, _UUID2);
 IF
 CharacterStatusApplied(_Char, "LLENEMY_SEEKER_CLEANSE_INVISIBLE", _Source)
 AND
-LeaderLib_Helper_QRY_HasAnyStatus(_Char, "INVISIBLE", "SNEAKING")
+LeaderLib_Helper_QRY_HasAnyStatus((GUIDSTRING)_Char, "INVISIBLE", "SNEAKING")
 THEN
 RemoveStatus(_Char, "INVISIBLE");
 RemoveStatus(_Char, "SNEAKING");
 PlayEffect(_Source, "RS3_FX_GP_Status_Warning_Red_01", "Dummy_OverheadFX");
-CharacterStatusText(_Char, "LLENEMY_StatusText_SeekerDiscoveredTarget");
+CharacterStatusText((CHARACTERGUID)_Char, "LLENEMY_StatusText_SeekerDiscoveredTarget");
 // [END_NO_OSITOOLS]
 //END_REGION
 
