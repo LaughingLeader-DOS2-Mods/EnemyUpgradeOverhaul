@@ -6,24 +6,6 @@ Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server/LLENEMY_GameMechanics.lua")
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server/LLENEMY_Debug.lua")
 
-local function LLENEMY_SessionLoading()
-	Ext.Print("[LLENEMY:Bootstrap.lua] Session is loading.")
-	if Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
-		EnemyUpgradeOverhaul.SINGLEPLAYER = true
-	end
-	LLENEMY_Ext_BuildEnemySkills();
-
-	local statuses = Ext.GetStatEntries("StatusData")
-	for _,stat in pairs(statuses) do
-		local status_type = Ext.StatGetAttribute(stat, "StatusType")
-		if status_type == "INVISIBLE" and EnemyUpgradeOverhaul.InvisibleStatuses[stat] == nil then
-			EnemyUpgradeOverhaul.InvisibleStatuses[stat] = true
-		end
-	end
-end
-
-Ext.RegisterListener("SessionLoading", LLENEMY_SessionLoading)
-
 function LLENEMY_Ext_Init()
 	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
 	if NRD_IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") == 1 then
@@ -41,3 +23,8 @@ function LLENEMY_Ext_SendPlayerLevel(levelstr)
 	--EnemyUpgradeOverhaul.PlayerLevel = math.tointeger(levelstr)
 	Ext.BroadcastMessage("LLENEMY_SetPlayerLevel", levelstr, nil)
 end
+
+local function LLENEMY_Server_ModuleLoading()
+	LLENEMY_Shared_InitModuleLoading()
+end
+Ext.RegisterListener("ModuleLoading", LLENEMY_Server_ModuleLoading)
