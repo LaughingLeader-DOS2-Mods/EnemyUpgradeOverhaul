@@ -1,0 +1,1 @@
+key "LLENEMY_Counter_MaxChance","75"
