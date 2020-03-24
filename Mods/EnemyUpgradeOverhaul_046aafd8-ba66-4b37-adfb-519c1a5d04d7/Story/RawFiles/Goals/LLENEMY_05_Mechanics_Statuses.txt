@@ -57,8 +57,6 @@ CharacterIsControlled(_Char, _b)
 AND
 GlobalGetFlag("LeaderLib_IsEditorMode", _c)
 AND
-LeaderLog_QRY_LogInt("DEBUG", "[LLENEMY_05_Mechanics_Statuses:] Is editor mode: ", _c, "")
-AND
 LeaderLib_Math_QRY_IsEqualToAny(1, _a, _b, _c)
 THEN
 DB_NOOP(1);
