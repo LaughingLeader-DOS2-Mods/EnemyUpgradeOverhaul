@@ -48,33 +48,6 @@ local function sortupgrades(a,b)
 	return a:upper() < b:upper()
 end
 
-local client_test = {}
-client_test[#client_test+1] = "TEST1"
-
-local function StatusGetDescriptionParamClientDebug(status, statusSource, character, param)
-	if LeaderLib.Common.TableHasEntry(client_test, status.Name) == false then
-		client_test[#client_test+1] = status.Name
-	end
-	if status.Name == "LLENEMY_UPGRADE_INFO" then
-		if param == "UpgradeInfo" then
-			--table.sort(client_test, sortupgrades)
-			local count = #client_test
-			local output = "<br>"
-			for i = 1, #client_test do
-				local v = client_test[i]
-				output = output.."<font size='18'>"..v.."</font>"
-				if i <= count then
-					output = output.."<br>"
-				end
-			end
-			Ext.Print("Upgrade info ("..output..")")
-			Ext.Print("client_test: ("..tostring(LeaderLib.Common.Dump(client_test))..")")
-			return output
-		end
-	end
-end
---Ext.RegisterListener("StatusGetDescriptionParam", StatusGetDescriptionParamClientDebug)
-
 local function LLENEMY_OnSendUpgradeInfo(channel, data)
 	if Ext.IsClient() then
 		EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
@@ -88,6 +61,21 @@ local function LLENEMY_OnSendUpgradeInfo(channel, data)
 end
 
 Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnSendUpgradeInfo)
+
+local function StatDescription_Counter(character, param, statusSource)
+	if param == "CounterChance" then
+		--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
+		--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
+		local initiative = character.Initiative
+		--local percent = (initiative - COUNTER_MIN) / (COUNTER_MAX - COUNTER_MIN)
+		local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
+		--Ext.Print("Chance: " .. tostring(chance))
+		--local chance = (math.log(initiative/COUNTER_MIN) / math.log(COUNTER_MAX/COUNTER_MIN)) * COUNTER_MAX
+		return "<font color='#D416FF'>" .. tostring(math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance)) .. "%</font>"
+	end
+end
+
+EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_TALENT_COUNTER"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
 	if status.Name == "LLENEMY_UPGRADE_INFO" then
