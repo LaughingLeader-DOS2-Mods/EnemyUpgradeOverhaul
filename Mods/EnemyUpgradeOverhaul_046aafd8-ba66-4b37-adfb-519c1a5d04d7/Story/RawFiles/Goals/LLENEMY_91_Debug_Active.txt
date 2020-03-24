@@ -23,6 +23,8 @@ THEN
 LeaderLog_LogInt("DEBUG", "[LLENEMY_91_Debug_Active:OnVariableIntChanged(LLENEMY_TreasureGoblins_TotalHits)] ", _LastValue, " => ", _CurrentValue, "");
 //END_REGION
 
+
+
 IF
 CharacterUsedSkillAtPosition(_Worm, _X, _Y, _Z, "Jump_EnemyDrillwormBurrow", _, _)
 THEN
@@ -37,6 +39,12 @@ IF
 ObjectLeftCombat(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f, _CombatID)
 THEN
 CharacterTransform(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f, "DW_Voidling_A_3325e440-7d5f-40c4-829b-eeee57e1064f", 1, 1, 1, 1, 1, 0, 0);
+
+IF
+ObjectLeftCombat(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f, _CombatID)
+AND
+CharacterIsDead(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f, 0)
+THEN
 Proc_CharacterFullRestore(CHARACTERGUID_DW_Voidling_A_000_53053f51-7d9f-4357-8de8-aa2a5732164f);
 
 IF
@@ -131,6 +139,22 @@ GlobalSetFlag("LeaderLog_DebugStatus_Enabled");
 GlobalSetFlag("LeaderLog_Debug_Enabled");
 GlobalSetFlag("LeaderLog_Trace_Enabled");
 
+/* [OSITOOLS_ONLY]
+IF
+TextEventSet("llenemy_sendmessage")
+AND
+GetTextEventParamString(1, _Channel)
+AND
+GetTextEventParamString(2, _Payload)
+THEN
+NRD_LuaCall("LLENEMY_Ext_TestNetMessage", _Channel, _Payload);
+
+IF
+TextEventSet("llenemy_luareset")
+THEN
+NRD_LuaReset(1,1,1);
+*/
+
 IF
 GameStarted(_,1)
 AND
@@ -190,6 +214,79 @@ IF
 TextEventSet("llenemy_seekertest")
 THEN
 SetStoryEvent(CHARACTERGUID_Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d, "LLENEMY_Statuses_Seeker_PulseNow");
+
+/* [OSITOOLS_ONLY]
+IF
+TextEventSet("llenemy_rescale")
+THEN
+NRD_DebugLog("[LLENEMY_ExperienceScaling:llenemy_rescale] Trying to reroll character level scaling.");
+NRD_LuaCall("LLENEMY_Ext_Debug_RerollLevel", "09478f32-8fbf-4502-a59d-011e4d1b3d4d");
+LeaderLib_Timers_StartObjectTimer(09478f32-8fbf-4502-a59d-011e4d1b3d4d, 1000, "Timers_LLENEMY_Debug_LevelUp", "LLENEMY_Debug_LevelUp");
+*/
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Debug_LevelUp")
+THEN
+CharacterLevelUp(_Char);
+
+//REGION SKILL_CHAIN_TEST
+IF
+CharacterUsedSkillOnTarget(_Char, _Target, "Target_SingleHandedAttack", _, _)
+THEN
+// Store the target of Sucker Punch for later use.
+DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, "Target_HeavyAttack");
+
+IF
+SkillCast(_Char, "Target_SingleHandedAttack", _, _)
+THEN
+// Delay the scripted skill cast by 0.75 seconds
+ProcObjectTimer(_Char, "Timers_MyMod_CastNextSkill", 750);
+
+IF
+CharacterUsedSkillOnTarget(_Char, _Target, "Target_HeavyAttack", _, _)
+THEN
+DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, "Target_EnemyCripplingBlow");
+
+IF
+SkillCast(_Char, "Target_HeavyAttack", _, _)
+THEN
+ProcObjectTimer(_Char, "Timers_MyMod_CastNextSkill", 750);
+
+IF
+CharacterUsedSkillOnTarget(_Char, _Target, "Target_EnemyCripplingBlow", _, _)
+THEN
+DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, "Shout_EnemyWhirlwind");
+
+IF
+SkillCast(_Char, "Target_EnemyCripplingBlow", _, _)
+THEN
+ProcObjectTimer(_Char, "Timers_MyMod_CastNextSkill", 750);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_MyMod_CastNextSkill")
+AND
+CharacterIsDead(_Char, 0)
+AND
+DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, _NextSkill)
+THEN
+NOT DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, _NextSkill);
+// Hacky action manager clearing START
+CharacterFlushQueue(_Char);
+CharacterMoveTo(_Char, _Char, 1, "", 1);
+CharacterSetStill(_Char);
+// Hacky action manager clearing END
+CharacterUseSkill(_Char, _NextSkill, _Target, 0, 1, 1);
+
+// Clear the stored target.
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_MyMod_CastNextSkill")
+AND
+CharacterIsDead(_Char, 1)
+AND
+DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, _NextSkill)
+THEN
+NOT DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, _NextSkill);
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
