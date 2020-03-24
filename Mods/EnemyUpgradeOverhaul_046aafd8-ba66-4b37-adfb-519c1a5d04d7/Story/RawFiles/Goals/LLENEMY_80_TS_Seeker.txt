@@ -11,7 +11,7 @@ THEN
 LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
 
 IF
-ObjectLeftCombat((CHARACTERGUID)_Char, _)
+ObjectLeftCombat(_Char, _)
 AND
 LeaderLib_Helper_QRY_HasAnyStatus(_Char, "LLENEMY_SEEKER", "LLENEMY_SEEKER_DISABLED")
 THEN
