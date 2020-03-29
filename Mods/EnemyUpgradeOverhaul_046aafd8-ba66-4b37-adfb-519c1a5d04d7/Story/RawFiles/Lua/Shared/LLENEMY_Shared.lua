@@ -12,6 +12,7 @@ EnemyUpgradeOverhaul = {
 	ExtraData = {
 		LLENEMY_Counter_MaxChance = 75,
 	},
+	ScaleExperience = false,
 	DeveloperMode = false
 }
 
@@ -21,7 +22,7 @@ function LLENEMY_Ext_GetExtraDataValue(key, fallback)
 	return fallback
 end
 
-Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Shared\\LLENEMY_StatOverrides.lua")
+Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Shared/LLENEMY_StatOverrides.lua")
 
 if Ext.Version() >= 42 then
 	EnemyUpgradeOverhaul.DeveloperMode = Ext.IsDeveloperMode() == true
