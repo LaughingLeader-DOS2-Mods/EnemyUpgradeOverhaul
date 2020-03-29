@@ -62,3 +62,16 @@ ON
 	OnCharacterEvent(_Char, "LLENEMY_Statuses_Seeker_PulseNow")
 ACTIONS
 	ExplodeAt(_Char, "Projectile_LLENEMY_Status_Seeker_Pulse", INT:1, _Char)
+	
+EVENT LLENEMY_Debug_SetStats
+VARS
+	CHARACTER:_Char
+	FIXEDSTRING:_Stats
+ON
+	OnCharacterEvent(_Char, "LLENEMY_Debug_SetStats")
+ACTIONS
+IF "c1"
+	GetVar(_Stats, _Char, "LLENEMY_Debug_Stats")
+THEN
+	CharacterSetStats(_Char, _Stats, 1, 1, 0, _)
+ENDIF

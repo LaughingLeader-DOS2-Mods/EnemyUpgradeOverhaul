@@ -150,12 +150,20 @@ function LLENEMY_Ext_Debug_TraceStats(char)
 end
 
 function LLENEMY_Ext_Debug_RerollLevel(char)
-	Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Leveling up (".. char ..").")
-	CharacterLevelUp(char)
-	Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Transforming (".. char ..").")
+	local character = Ext.GetCharacter(char)
+	if character ~= nil then
+		SetVarFixedString(char, "LLENEMY_Debug_Stats", character.Stats.Name)
+	end
+	SetStoryEvent(char, "LLENEMY_Debug_SetStats")
+	CharacterRemoveAttribute(char, "Dummy", 0)
+	CharacterAddAttribute(char, "Dummy", 0)
+	--CharacterAddExplorationExperience(char, 1, 1, 1)
+	--Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Leveling up (".. char ..").")
+	--CharacterLevelUp(char)
+	--Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Transforming (".. char ..").")
 	--CharacterTransformFromCharacter(char, char, 1, 1, 1, 1, 1, 1, 1)
-	Transform(char, "57b70554-36bf-4b86-b9aa-8f7cc3944153", 1, 1, 1)
-	Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Leveling up (".. char ..").")
+	--Transform(char, "57b70554-36bf-4b86-b9aa-8f7cc3944153", 1, 1, 1)
+	--Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Leveling up (".. char ..").")
 	--CharacterLevelUpTo(char, 3)
-	CharacterLevelUp(char)
+	--CharacterLevelUp(char)
 end

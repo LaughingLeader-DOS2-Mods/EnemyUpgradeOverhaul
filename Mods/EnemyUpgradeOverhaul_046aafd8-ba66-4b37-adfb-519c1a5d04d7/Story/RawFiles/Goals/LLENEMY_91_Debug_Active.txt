@@ -217,6 +217,11 @@ SetStoryEvent(CHARACTERGUID_Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d
 
 /* [OSITOOLS_ONLY]
 IF
+TextEventSet("llenemy_xptest")
+THEN
+NRD_LuaCall("LLENEMY_Ext_GrantExperience", "Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d");
+
+IF
 TextEventSet("llenemy_rescale")
 THEN
 NRD_DebugLog("[LLENEMY_ExperienceScaling:llenemy_rescale] Trying to reroll character level scaling.");
