@@ -43,7 +43,7 @@ LLENEMY_Debug_PrintAllEntries();
 PROC
 LLENEMY_Debug_PrintAllEntries()
 THEN
-NRD_DebugLog("[LLENEMY_00_UpgradesMain:] Printing all groups/types.");
+LeaderLog_Log("DEBUG", "[LLENEMY_00_UpgradesMain:] Printing all groups/types.");
 
 PROC
 LLENEMY_Debug_PrintAllEntries()
