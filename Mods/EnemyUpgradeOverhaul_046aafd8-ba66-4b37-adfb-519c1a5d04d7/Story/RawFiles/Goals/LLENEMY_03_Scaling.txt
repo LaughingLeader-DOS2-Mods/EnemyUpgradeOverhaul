@@ -202,8 +202,47 @@ NOT DB_LLENEMY_Scaling_Temp_TotalScaled(_Player, _Total);
 CharacterDisplayTextWithParam(_Player, "LLENEMY_DisplayText_TotalCharactersLeveled", _Total);
 //END_REGION
 
-//REGION EXPERIENCE_MODIFYING
+//REGION EXPERIENCE_SCALING
+PROC
+LLENEMY_Scaling_StoreCharacterDeath((CHARACTERGUID)_Char)
+AND
+DB_CurrentLevel(_Region)
+THEN
+DB_LLENEMY_Scaling_Temp_GrantedExperience(_Region, _Char);
+
+QRY
+LLENEMY_Scaling_QRY_CanGrantExperience((CHARACTERGUID)_Char)
+AND
+CharacterIsPlayer(_Char, 0)
+AND
+CharacterIsPartyFollower(_Char, 0)
+AND
+CharacterIsSummon(_Char, 0)
+AND
+NOT DB_LLENEMY_Scaling_Temp_GrantedExperience(_, _Char)
+THEN
+DB_NOOP(1);
+
+IF
+RegionEnded(_Region)
+AND
+DB_LLENEMY_Scaling_Temp_GrantedExperience(_Region, _Char)
+THEN
+NOT DB_LLENEMY_Scaling_Temp_GrantedExperience(_Region, _Char);
+
 /* [OSITOOLS_ONLY]
+IF
+GlobalFlagSet("LLENEMY_EnemyLeveling_BalanceExperience")
+THEN
+NRD_LuaCall("LLENEMY_Ext_SetExperienceScaling", "true");
+
+IF
+GlobalFlagCleared("LLENEMY_EnemyLeveling_BalanceExperience")
+THEN
+NRD_LuaCall("LLENEMY_Ext_SetExperienceScaling", "false");
+*/
+
+/*
 PROC
 LLENEMY_Scaling_SendHighestPlayerLevel()
 AND
@@ -235,6 +274,7 @@ IsGameLevel(_Region, 1)
 THEN
 LLENEMY_Scaling_SendHighestPlayerLevel();
 */
+
 //END_REGION
 EXITSECTION
 
