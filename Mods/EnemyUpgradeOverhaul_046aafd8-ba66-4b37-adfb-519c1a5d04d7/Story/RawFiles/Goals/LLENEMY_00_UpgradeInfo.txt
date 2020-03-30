@@ -170,6 +170,13 @@ AND
 _Info != ""
 THEN
 NRD_LuaCall("LLENEMY_Ext_StoreUpgradeInfo", _UUID, _Info);
+TimerCancel("Timers_LLENEMY_UpgradeInfo_SendInfo");
+TimerLaunch("Timers_LLENEMY_UpgradeInfo_SendInfo", 50);
+
+IF
+TimerFinished("Timers_LLENEMY_UpgradeInfo_SendInfo")
+THEN
+NRD_LuaCall("LLENEMY_Ext_SendUpgradeInfo");
 */
 //END_REGION
 
