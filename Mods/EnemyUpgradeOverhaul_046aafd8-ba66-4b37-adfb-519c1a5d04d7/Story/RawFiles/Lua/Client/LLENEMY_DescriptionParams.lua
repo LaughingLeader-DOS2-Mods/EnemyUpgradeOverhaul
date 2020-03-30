@@ -49,9 +49,7 @@ local function sortupgrades(a,b)
 end
 
 local function LLENEMY_OnSendUpgradeInfo(channel, data)
-	if Ext.IsClient() then
-		EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
-	end
+	EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
 	if Ext.IsDeveloperMode() then
 		Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received upgrade info:")
 		Ext.Print("======")
@@ -62,55 +60,55 @@ end
 
 Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnSendUpgradeInfo)
 
-local function StatDescription_Counter(character, param, statusSource)
-	if param == "CounterChance" then
-		--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
-		--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
-		local initiative = character.Initiative
-		--local percent = (initiative - COUNTER_MIN) / (COUNTER_MAX - COUNTER_MIN)
-		local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
-		--Ext.Print("Chance: " .. tostring(chance))
-		--local chance = (math.log(initiative/COUNTER_MIN) / math.log(COUNTER_MAX/COUNTER_MIN)) * COUNTER_MAX
-		return "<font color='#D416FF'>" .. tostring(math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance)) .. "%</font>"
+local function StatDescription_UpgradeInfo(character, param, statusSource)
+	local uuid = character.MyGuid
+	if uuid ~= nil then
+		Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
+		local info_str = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
+		if info_str ~= nil then
+			local upgrades = LeaderLib.Common.Split(info_str, ";")
+			table.sort(upgrades, sortupgrades)
+			local count = #upgrades
+			local output = "<br><img src='Icon_Line' width='350%'><br>"
+			local i = 0
+			for k,v in pairs(upgrades) do
+				local color = upgrade_colors[v]
+				if color ~= nil then
+					output = output.."<img src='Icon_BulletPoint'><font color='"..color.."' size='18'>"..v.."</font>"
+				else
+					output = output.."<img src='Icon_BulletPoint'><font size='18'>"..v.."</font>"
+				end
+				if i < count - 1 then
+					output = output.."<br>"
+				end
+				i = i + 1
+			end
+			--Ext.Print("Upgrade info (".. tostring(info_str)..")")
+			return output
+		end
 	end
+	return nil
+end
+EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescription_UpgradeInfo
+
+local function StatDescription_Counter(character, param, statusSource)
+	--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
+	--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
+	local initiative = character.Initiative
+	--local percent = (initiative - COUNTER_MIN) / (COUNTER_MAX - COUNTER_MIN)
+	local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
+	--Ext.Print("Chance: " .. tostring(chance))
+	--local chance = (math.log(initiative/COUNTER_MIN) / math.log(COUNTER_MAX/COUNTER_MIN)) * COUNTER_MAX
+	return "<font color='#D416FF'>" .. tostring(math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance)) .. "%</font>"
 end
 
-EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_TALENT_COUNTER"] = StatDescription_Counter
+EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
-	if status.Name == "LLENEMY_UPGRADE_INFO" then
-		if param == "UpgradeInfo" then
-			local uuid = character.MyGuid
-			if uuid ~= nil then
-				Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
-				local info_str = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
-				if info_str ~= nil then
-					local upgrades = LeaderLib.Common.Split(info_str, ";")
-					table.sort(upgrades, sortupgrades)
-					local count = #upgrades
-					local output = "<br><img src='Icon_Line' width='350%'><br>"
-					local i = 0
-					for k,v in pairs(upgrades) do
-						local color = upgrade_colors[v]
-						if color ~= nil then
-							output = output.."<img src='Icon_BulletPoint'><font color='"..color.."' size='18'>"..v.."</font>"
-						else
-							output = output.."<img src='Icon_BulletPoint'><font size='18'>"..v.."</font>"
-						end
-						if i < count - 1 then
-							output = output.."<br>"
-						end
-						i = i + 1
-					end
-					--Ext.Print("Upgrade info (".. tostring(info_str)..")")
-					return output
-				end 
-			end
-		end
-	else
-		local func = EnemyUpgradeOverhaul.StatusDescriptionParams[status.Name]
-		if func ~= nil then
-			local result = pcall(func, character, param, statusSource)
+	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
+	if func ~= nil then
+		local result = pcall(func, character, param, statusSource)
+		if result ~= nil then
 			return result
 		end
 	end
