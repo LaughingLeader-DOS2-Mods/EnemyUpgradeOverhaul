@@ -30,7 +30,7 @@ ObjectClearFlag(_Speaker, "LLENEMY_EnemyLeveling_Reset");
 LLENEMY_Scaling_ResetLevelModifier();
 
 IF
-DialogStarted("LLENEMY_Settings", _)
+DialogStarted("LLENEMY_Menu_Scaling", _)
 AND
 GlobalGetFlag("LLENEMY_EnemyLevelingEnabled", _ScalingEnabled)
 THEN
@@ -58,12 +58,12 @@ LLENEMY_Scaling_UpdateDialogVariables((INTEGER)_ScalingEnabled)
 AND
 DB_LLENEMY_LevelModifier(_Modifier)
 THEN
-DialogSetVariableInt("LLENEMY_Settings", "LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f", _Modifier);
+DialogSetVariableInt("LLENEMY_Menu_Scaling", "LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f", _Modifier);
 
 PROC
 LLENEMY_Scaling_UpdateDialogVariables(0)
 THEN
-DialogSetVariableString("LLENEMY_Settings", "LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba", "Disabled");
+DialogSetVariableString("LLENEMY_Menu_Scaling", "LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba", "Disabled");
 
 PROC
 LLENEMY_Scaling_UpdateDialogVariables(1)
@@ -78,7 +78,7 @@ IntegerSum(_Level, _Modifier, _EnemyLevel)
 AND
 IntegertoString(_EnemyLevel, _EnemyLevelStr)
 THEN
-DialogSetVariableString("LLENEMY_Settings", "LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba", _EnemyLevelStr);
+DialogSetVariableString("LLENEMY_Menu_Scaling", "LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba", _EnemyLevelStr);
 
 PROC
 LLENEMY_Scaling_AdjustLevelModifier((INTEGER)_ByAmount)
