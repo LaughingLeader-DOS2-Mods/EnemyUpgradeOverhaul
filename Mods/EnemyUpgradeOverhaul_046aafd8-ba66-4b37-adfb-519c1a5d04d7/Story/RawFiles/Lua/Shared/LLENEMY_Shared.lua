@@ -29,9 +29,7 @@ if Ext.Version() >= 42 then
 end
 
 function LLENEMY_Shared_InitModuleLoading()
-    Ext.Print("LLENEMY_Shared.lua] Module is loading.")
-	EnemyUpgradeOverhaul.OverrideStats()
-
+	Ext.Print("LLENEMY_Shared.lua] Module is loading.")
 	for key,fallback in pairs(EnemyUpgradeOverhaul.ExtraData) do
 		local value = LLENEMY_Ext_GetExtraDataValue(key, fallback)
 		EnemyUpgradeOverhaul.ExtraData[key] = value
