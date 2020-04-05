@@ -12,6 +12,20 @@ RegionStarted("FJ_FortJoy_Main")
 THEN
 SysActivateGoal("LLENEMY_31_Origins_HM_FortJoy");
 
+PROC
+LLENEMY_HardMode_SetupNPC((CHARACTERGUID)_Char, (STRING)_Region, (INTEGER)_Immortal)
+THEN
+//LeaderLib_Helper_MakeHostileToPlayers(_Char);
+SetVarInteger(_Char, "FleeFromDangerousSurface", 0);
+
+PROC
+LLENEMY_HardMode_SetupNPC((CHARACTERGUID)_Char, (STRING)_Region, 1)
+AND
+CharacterIsInCombat(_Char, 0)
+THEN
+ProcSetInvulnerable(_Char, 1);
+CharacterSetImmortal(_Char, 1);
+
 EXITSECTION
 LLENEMY_HardMode_DisableScripts();
 ENDEXITSECTION
