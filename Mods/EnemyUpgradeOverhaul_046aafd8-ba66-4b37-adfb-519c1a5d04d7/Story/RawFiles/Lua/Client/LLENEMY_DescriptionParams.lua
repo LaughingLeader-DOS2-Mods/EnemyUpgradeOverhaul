@@ -48,36 +48,25 @@ local function sortupgrades(a,b)
 	return a:upper() < b:upper()
 end
 
-local function LLENEMY_OnSendClientInfo(channel, data)
-	if channel == "LLENEMY_UpgradeInfo" then
-		EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
-		if Ext.IsDeveloperMode() then
-			Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received upgrade info:")
-			Ext.Print("======")
-			Ext.Print(data)
-			Ext.Print("======")
-		end
-	elseif channel == "LLENEMY_ChallengePoints" then
-		EnemyUpgradeOverhaul["ChallengePoints"] = Ext.JsonParse(data)
-		if Ext.IsDeveloperMode() then
-			Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received cp info:")
-			Ext.Print("======")
-			Ext.Print(data)
-			Ext.Print("======")
-		end
+local function LLENEMY_OnGetClientInfo(channel, data)
+	EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
+	if Ext.IsDeveloperMode() then
+		Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received upgrade info:")
+		Ext.Print("======")
+		Ext.Print(data)
+		Ext.Print("======")
 	end
 end
 
-Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnSendClientInfo)
-Ext.RegisterNetListener("LLENEMY_ChallengePoints", LLENEMY_OnSendClientInfo)
+Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnGetClientInfo)
 
 local function StatDescription_UpgradeInfo(character, param, statusSource)
 	local uuid = character.MyGuid
 	if uuid ~= nil then
 		--Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
-		local info_str = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
-		if info_str ~= nil then
-			local upgrades = LeaderLib.Common.Split(info_str, ";")
+		local data = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
+		if data ~= nil and data.upgrades ~= nil then
+			local upgrades = LeaderLib.Common.Split(data.upgrades, ";")
 			table.sort(upgrades, sortupgrades)
 			local count = #upgrades
 			local output = "<br><img src='Icon_Line' width='350%'><br>"
@@ -103,30 +92,48 @@ local function StatDescription_UpgradeInfo(character, param, statusSource)
 	return ""
 end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescription_UpgradeInfo
+
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Easy", 1, 10);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Medium", 11, 16);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Hard", 17, 25);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
+local cpNames = {
+	{Min = 1, Max = 10, Text = "<font color='#65C900'>Regular Bonus Loot</font>"},
+	{Min = 11, Max = 16, Text = "<font color='#4197E2'>Good Loot</font>"},
+	{Min = 17, Max = 25, Text = "<font color='#B823CB'>Great Loot</font>"},
+	{Min = 26, Max = 99, Text = "<font color='#F7BA14'>Insane Loot</font>"},
+	{Min = 100, Max = 999, Text = "<font color='#FF00CC'>Impossibly Amazing Loot</font>"},
+}
+
 local function StatDescription_ChallengePoints(character, param, statusSource)
 	local uuid = character.MyGuid
 	if uuid ~= nil then
-		local cpstr = EnemyUpgradeOverhaul.ChallengePoints[uuid]
-		if cpstr ~= nil then
-			local cp = math.tointeger(cpstr)
-			local output = "<br>"
+		local data = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
+		if data ~= nil and data.cp ~= nil then
+			local cp = math.tointeger(data.cp)
+			if cp ~= nil and cp > 0 then
+				local output = "<br>"
+				output = output .. "<p align='right'><font face='Copperplate Gothic Light' size='18'>"
 
-			if cp <= 10 then
-				output = output .. "LLENEMY_Tooltip_CP_Easy"
-			else
-				output = output .. "LLENEMY_Tooltip_CP_Test"
+				for k,tbl in pairs(cpNames) do
+					if cp >= tbl.Min and cp <= tbl.Max then
+						output = output .. tbl.Text
+					end
+				end
+
+				output = output .. "</font></p>"
+				
+				if Ext.IsDeveloperMode() then
+					Ext.Print("CP Tooltip(".. tostring(uuid)..") = ("..output..")")
+				end
+				return output
 			end
-
+		else
 			if Ext.IsDeveloperMode() then
-				Ext.Print("CP Tooltip(".. tostring(uuid)..") = ("..output..")")
+				Ext.Print("Character (".. tostring(uuid)..") has no stored CP on this client!")
 			end
-			return output
 		end
 	end
 	return ""
@@ -147,8 +154,11 @@ end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
+	--local params = LeaderLib.Common.FlattenTable{...}
+	--Ext.Print("[LLENEMY_StatusGetDescriptionParam] Params:\n" .. tostring(LeaderLib.Common.Dump(params)))
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
+		Ext.Print("[LLENEMY_StatusGetDescriptionParam] Calling func for param " .. param)
 		local b,result = pcall(func, character, param, statusSource)
 		if b and result ~= nil then
 			return result

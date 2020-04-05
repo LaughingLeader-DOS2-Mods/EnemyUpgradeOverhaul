@@ -22,6 +22,7 @@ AND
 _Current < _BonusRolls
 THEN
 LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Upgrades_RollBonusRolls", "LLENEMY_Upgrades_RollBonusRolls");
+LLENEMY_UpgradeInfo_RestartTimers(300);
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Upgrades_RollBonusRolls")

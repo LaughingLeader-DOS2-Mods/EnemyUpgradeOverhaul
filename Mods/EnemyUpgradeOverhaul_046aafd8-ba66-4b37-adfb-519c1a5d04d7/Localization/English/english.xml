@@ -263,7 +263,7 @@
 	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_DisplayName">Talent: What a Rush</content>
 	<content contentuid="hbba08b72g0d5bg416eg9a46gb2150b29fb05" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TREASURE_GOBLIN_Description">The treasure goblin is fleeing!&lt;br&gt;&lt;font color=&apos;#FF00CC&apos; size=&apos;24&apos;&gt;Quickly, strike it down for &lt;font color=&apos;#C7A758&apos; size=&apos;24&apos; face=&apos;Copperplate Gothic Light&apos;&gt;LOOT&lt;/font&gt;!&lt;/font&gt;</content>
 	<content contentuid="h6ea17edfgea06g402eg9a78gc538e1959ead" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TREASURE_GOBLIN_DisplayName">Fleeing</content>
-	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is empowered with random upgrades.[1]</content>
+	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is empowered with random upgrades.[1][2]</content>
 	<content contentuid="h84c27debgd38dg4844g84d4g75eb558eb5de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_DisplayName">Upgraded</content>
 	<content contentuid="h1624d634gdfdcg4129g9624g9efe5660220b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_Description">Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.</content>
 	<content contentuid="h398b5931gfa52g4a26gadb9gf94bbb7d35e2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_DisplayName">Void Empowered</content>
