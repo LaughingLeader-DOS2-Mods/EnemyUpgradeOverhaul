@@ -1,0 +1,17 @@
+new deltamod "LLENEMY_Boost_Weapon_Damage_Shadow_Small"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Weapon"
+new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Small",1
+
+new deltamod "LLENEMY_Boost_Weapon_Damage_Shadow_Medium"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Weapon"
+new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Medium",1
+
+new deltamod "LLENEMY_Boost_Weapon_Damage_Shadow_Large"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Weapon"
+new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Large",1

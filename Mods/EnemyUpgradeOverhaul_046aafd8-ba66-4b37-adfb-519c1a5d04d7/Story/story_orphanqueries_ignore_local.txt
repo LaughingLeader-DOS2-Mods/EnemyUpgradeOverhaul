@@ -2,3 +2,4 @@ DB_LLENEMY_BonusSkills_Settings 3
 DB_LLENEMY_ModApi_ModUpgrades 6
 DB_LLENEMY_ModApi_ModUpgrades 7
 DB_LLENEMY_Upgrades_Temp_UpgradeInfo 2
+DB_LLENEMY_UpgradeInfo_Temp_TimerStarted 1
