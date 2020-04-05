@@ -91,6 +91,8 @@ AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
 AND
 NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Char)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
 THEN
 LLENEMY_OnCharacterJoinedCombat(_Char, _CombatID);
 
@@ -99,6 +101,8 @@ PROC
 ProcMakeNPCHostile((CHARACTERGUID)_Player, (CHARACTERGUID)_Enemy)
 AND
 NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Enemy)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Enemy)
 AND
 CombatGetIDForCharacter(_Enemy, _CombatID)
 AND
