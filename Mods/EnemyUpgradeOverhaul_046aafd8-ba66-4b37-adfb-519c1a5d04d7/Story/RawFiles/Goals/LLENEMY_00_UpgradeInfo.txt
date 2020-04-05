@@ -185,6 +185,20 @@ IF
 TimerFinished("Timers_LLENEMY_UpgradeInfo_SendInfo")
 THEN
 NRD_LuaCall("LLENEMY_Ext_SendUpgradeInfo");
+
+PROC
+LLENEMY_Upgrades_IncreaseChallengePoints((CHARACTERGUID)_Char, (INTEGER)_CP)
+AND
+GetVarInteger(_Char, "LLENEMY_ChallengePoints", _TotalPoints)
+THEN
+NRD_LuaCall("LLENEMY_Ext_StoreChallengePoints", (STRING)_Char, (STRING)_TotalPoints);
+TimerCancel("Timers_LLENEMY_UpgradeInfo_SendChallengePoints");
+TimerLaunch("Timers_LLENEMY_UpgradeInfo_SendChallengePoints", 50);
+
+IF
+TimerFinished("Timers_LLENEMY_UpgradeInfo_SendChallengePoints")
+THEN
+NRD_LuaCall("LLENEMY_Ext_SendChallengePoints");
 */
 //END_REGION
 
@@ -224,6 +238,17 @@ AND
 GetUUID(_Char, _UUID)
 THEN
 NRD_LuaCall("LLENEMY_Ext_RemoveUpgradeInfo", _UUID);
+TimerCancel("Timers_LLENEMY_UpgradeInfo_SendInfo");
+TimerLaunch("Timers_LLENEMY_UpgradeInfo_SendInfo", 50);
+
+PROC
+LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Char)
+AND
+GetUUID(_Char, _UUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_RemoveChallengePoints", _UUID);
+TimerCancel("Timers_LLENEMY_UpgradeInfo_SendChallengePoints");
+TimerLaunch("Timers_LLENEMY_UpgradeInfo_SendChallengePoints", 50);
 */
 //END_REGION
 EXITSECTION

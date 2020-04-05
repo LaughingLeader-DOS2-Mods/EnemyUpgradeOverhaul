@@ -48,22 +48,33 @@ local function sortupgrades(a,b)
 	return a:upper() < b:upper()
 end
 
-local function LLENEMY_OnSendUpgradeInfo(channel, data)
-	EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
-	if Ext.IsDeveloperMode() then
-		Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received upgrade info:")
-		Ext.Print("======")
-		Ext.Print(data)
-		Ext.Print("======")
+local function LLENEMY_OnSendClientInfo(channel, data)
+	if channel == "LLENEMY_UpgradeInfo" then
+		EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
+		if Ext.IsDeveloperMode() then
+			Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received upgrade info:")
+			Ext.Print("======")
+			Ext.Print(data)
+			Ext.Print("======")
+		end
+	elseif channel == "LLENEMY_ChallengePoints" then
+		EnemyUpgradeOverhaul["ChallengePoints"] = Ext.JsonParse(data)
+		if Ext.IsDeveloperMode() then
+			Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received cp info:")
+			Ext.Print("======")
+			Ext.Print(data)
+			Ext.Print("======")
+		end
 	end
 end
 
-Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnSendUpgradeInfo)
+Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnSendClientInfo)
+Ext.RegisterNetListener("LLENEMY_ChallengePoints", LLENEMY_OnSendClientInfo)
 
 local function StatDescription_UpgradeInfo(character, param, statusSource)
 	local uuid = character.MyGuid
 	if uuid ~= nil then
-		Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
+		--Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
 		local info_str = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
 		if info_str ~= nil then
 			local upgrades = LeaderLib.Common.Split(info_str, ";")
@@ -83,13 +94,44 @@ local function StatDescription_UpgradeInfo(character, param, statusSource)
 				end
 				i = i + 1
 			end
-			--Ext.Print("Upgrade info (".. tostring(info_str)..")")
+			if Ext.IsDeveloperMode() then
+				Ext.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
+			end
 			return output
 		end
 	end
-	return nil
+	return ""
 end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescription_UpgradeInfo
+-- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Easy", 1, 10);
+-- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Medium", 11, 16);
+-- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Hard", 17, 25);
+-- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
+-- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
+
+local function StatDescription_ChallengePoints(character, param, statusSource)
+	local uuid = character.MyGuid
+	if uuid ~= nil then
+		local cpstr = EnemyUpgradeOverhaul.ChallengePoints[uuid]
+		if cpstr ~= nil then
+			local cp = math.tointeger(cpstr)
+			local output = "<br>"
+
+			if cp <= 10 then
+				output = output .. "LLENEMY_Tooltip_CP_Easy"
+			else
+				output = output .. "LLENEMY_Tooltip_CP_Test"
+			end
+
+			if Ext.IsDeveloperMode() then
+				Ext.Print("CP Tooltip(".. tostring(uuid)..") = ("..output..")")
+			end
+			return output
+		end
+	end
+	return ""
+end
+EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_ChallengePoints"] = StatDescription_ChallengePoints
 
 local function StatDescription_Counter(character, param, statusSource)
 	--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
@@ -107,11 +149,14 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = S
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
-		local result = pcall(func, character, param, statusSource)
-		if result ~= nil then
+		local b,result = pcall(func, character, param, statusSource)
+		if b and result ~= nil then
 			return result
+		else
+			return ""
 		end
 	end
+	return nil
 end
 Ext.RegisterListener("StatusGetDescriptionParam", LLENEMY_StatusGetDescriptionParam)
 Ext.Print("[LLENEMY_DescriptionParams.lua] Registered listener LLENEMY_StatusGetDescriptionParam.")

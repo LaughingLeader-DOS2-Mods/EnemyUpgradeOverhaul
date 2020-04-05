@@ -9,6 +9,7 @@ EnemyUpgradeOverhaul = {
 		["INVISIBLE"] = true,
 	},
 	UpgradeInfo = {},
+	ChallengePoints = {},
 	ExtraData = {
 		LLENEMY_Counter_MaxChance = 75,
 	},
