@@ -6,6 +6,8 @@ KBSECTION
 IF
 CombatStarted(_CombatID)
 AND
+NOT DB_CurrentLevel("TUT_Tutorial_A")
+AND
 LeaderLib_Combat_QRY_HasInvolvedPlayer(_CombatID)
 AND
 LLENEMY_TreasureGoblins_QRY_CanRoll()
