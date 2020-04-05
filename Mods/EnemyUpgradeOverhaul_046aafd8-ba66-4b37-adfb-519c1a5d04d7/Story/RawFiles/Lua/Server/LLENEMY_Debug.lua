@@ -182,15 +182,22 @@ function LLENEMY_Ext_CheckFactions()
 end
 
 local function LLENEMY_DebugInit()
+	Ext.Print("[LLENEMY:Debug.lua:LLENEMY_DebugInit] Running debug tests.")
 	local host = CharacterGetHostCharacter()
 	local level = GetRegion(host)
-	if level == "FJ_FortJoy_Main" then
+	if level == "TUT_Tutorial_A" then
+		debugCheckEnemies[#debugCheckEnemies+1] = "S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902"
+		debugCheckEnemies[#debugCheckEnemies+1] = "S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a"
+	elseif level == "FJ_FortJoy_Main" then
 		debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_01_584db8ce-8dcf-4906-bc6f-e51eb057de08"
 		debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_02_aff8be39-58b0-4bff-8fa6-7cf501b5060b"
 		debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_03_d32d32b2-c05b-4acd-944c-f2b802ec7234"
 		debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b"
-		LLENEMY_Ext_CheckFactions()
 	end
+	LLENEMY_Ext_CheckFactions()
+
+	local combat = Osi.DB_CombatCharacters:Get(nil,nil)
+	Ext.Print("[LLENEMY:Debug.lua] DB_CombatCharacters:\n[".. LeaderLib.Common.Dump(combat))
 
 	local x,y,z = GetPosition(host)
 	local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
@@ -198,12 +205,13 @@ local function LLENEMY_DebugInit()
 	ItemToInventory(shadowItem, host, 1, 1, 1)
 end
 
-local function LLENEMY_SessionLoaded()
-    LeaderLib_DebugInitCalls[#LeaderLib_DebugInitCalls+1] = LLENEMY_DebugInit
+local function LLENEMY_SessionLoading()
+	Ext.Print("[LLENEMY:Debug.lua] Registered debug init call to LeaderLib.")
+    LeaderLib_Ext_AddDebugInitCall(LLENEMY_DebugInit)
 end
 
-if Ext.IsDeveloperMode() and Ext.Version() >= 43 then
-	Ext.RegisterListener("SessionLoaded", LLENEMY_SessionLoaded)
+if Ext.IsDeveloperMode() then
+	Ext.RegisterListener("SessionLoading", LLENEMY_SessionLoading)
 end
 
 BuiltinColorCodes = {
