@@ -171,7 +171,7 @@ local ShadowItemNames = {
 	"Yigaagnu",
 }
 
-local ShadowItemDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadowy Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
+local ShadowItemDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
 
 local nameColors = {
 	"#2E0854",
@@ -259,6 +259,7 @@ local function GetClone(item,stat,statType)
 	local last_underscore = string.find(template, "_[^_]*$")
 	local stripped_template = string.sub(template, last_underscore+1)
 	NRD_ItemCloneBegin(item)
+	NRD_ItemCloneResetProgression()
 	NRD_ItemCloneSetString("RootTemplate", stripped_template)
 	NRD_ItemCloneSetString("OriginalRootTemplate", stripped_template)
 	if stat == nil or stat == "" then
@@ -270,13 +271,15 @@ local function GetClone(item,stat,statType)
 		NRD_ItemCloneSetInt("GenerationRandom", LEADERLIB_RAN_SEED)
 	end
 
-	-- Damage type fix
-	-- Deltamods with damage boosts may make the weapon's damage type be all of that type, so overwriting the statType
-	-- fixes this issue.
-	local damageTypeString = Ext.StatGetAttribute(stat, "Damage Type")
-	if damageTypeString == nil then damageTypeString = "Physical" end
-	local damageTypeEnum = LeaderLib.Data["DamageTypeEnums"][damageTypeString]
-	NRD_ItemCloneSetInt("DamageTypeOverwrite", damageTypeEnum)
+	if statType == "Weapon" then
+		-- Damage type fix
+		-- Deltamods with damage boosts may make the weapon's damage type be all of that type, so overwriting the statType
+		-- fixes this issue.
+		local damageTypeString = Ext.StatGetAttribute(stat, "Damage Type")
+		if damageTypeString == nil then damageTypeString = "Physical" end
+		local damageTypeEnum = LeaderLib.Data["DamageTypeEnums"][damageTypeString]
+		NRD_ItemCloneSetInt("DamageTypeOverwrite", damageTypeEnum)
+	end
 
 	NRD_ItemCloneSetString("GenerationStatsId", stat)
 	NRD_ItemCloneSetString("StatsEntryName", stat)
@@ -285,8 +288,8 @@ local function GetClone(item,stat,statType)
 	NRD_ItemCloneSetInt("HasGeneratedStats", 0)
 	NRD_ItemCloneSetInt("GenerationLevel", level)
 	NRD_ItemCloneSetInt("StatsLevel", level)
-	--NRD_ItemCloneSetInt("IsIdentified", 1)
-	NRD_ItemCloneSetInt("GMFolding", 0)
+	NRD_ItemCloneSetInt("IsIdentified", 1)
+	--NRD_ItemCloneSetInt("GMFolding", 0)
 	AddRandomBoosts(item,stat,statType,level)
 	SetRandomShadowName(item)
 	local cloned = NRD_ItemClone()
@@ -298,15 +301,17 @@ end
 function LLENEMY_Ext_ShadowCorruptItem(item)
 	local stat = NRD_ItemGetStatsId(item)
 	local statType = NRD_StatGetType(stat)
-	local cloned = GetClone(item, stat, statType)
-	NRD_ItemSetIdentified(cloned, 1)
-
-	local container = NRD_ItemGetParent(item)
-	if container ~= nil then
-		ItemToInventory(cloned, container, 1, 0, 0)
+	if BOOSTS[statType] ~= nil then
+		local cloned = GetClone(item, stat, statType)
+		local container = NRD_ItemGetParent(item)
+		if container ~= nil then
+			ItemToInventory(cloned, container, 1, 0, 0)
+		end
+		ItemRemove(item)
+		return cloned
+		--NRD_ItemSetIdentified(cloned, 1)
 	end
-	ItemRemove(item)
-	return cloned
+	return item
 end
 
 local function LLENEMY_ShadowCorruptItemFunc(item)
