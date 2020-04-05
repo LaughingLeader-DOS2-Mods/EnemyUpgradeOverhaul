@@ -110,6 +110,50 @@ THEN
 RemoveStatus(_Char, "LLENEMY_SEEKER_FX");
 //END_REGION
 
+IF
+ObjectTurnStarted((CHARACTERGUID)_Char)
+AND
+LeaderLib_Helper_QRY_HasStatus(_Char, "LLENEMY_SEEKER")
+THEN
+DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+
+IF
+CharacterUsedSkill(_Char,_,_,_)
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+THEN
+NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+
+IF
+CharacterStartAttackObject(_,_, _Char)
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+THEN
+NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+
+IF
+CharacterUsedItem(_Char, _)
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+THEN
+NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+
+IF
+CharacterDied(_Char)
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+THEN
+NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+
+IF
+ObjectTurnEnded((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+THEN
+NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+LLENEMY_Mechanics_Statuses_Internal_SeekerTakeAction(_Char);
+
 EXITSECTION
+SysClear("DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction", 1);
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_80_ToggledScripts"

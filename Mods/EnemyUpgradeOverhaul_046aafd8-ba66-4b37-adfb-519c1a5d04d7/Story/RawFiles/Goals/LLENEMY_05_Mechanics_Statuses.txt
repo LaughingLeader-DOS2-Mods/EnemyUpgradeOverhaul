@@ -141,6 +141,46 @@ RemoveStatus(_Char, "SNEAKING");
 PlayEffect(_Source, "RS3_FX_GP_Status_Warning_Red_01", "Dummy_OverheadFX");
 CharacterStatusText((CHARACTERGUID)_Char, "LLENEMY_StatusText_SeekerDiscoveredTarget");
 // [END_NO_OSITOOLS]
+
+PROC
+LLENEMY_Mechanics_Statuses_Internal_SeekerTakeAction((CHARACTERGUID)_Char)
+AND
+CharacterIsInCombat(_Char, 1)
+AND
+LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
+THEN
+LLENEMY_Mechanics_Statuses_SeekerTakeAction(_Char);
+
+PROC
+LLENEMY_Mechanics_Statuses_SeekerTakeAction((CHARACTERGUID)_Char)
+AND
+NOT DB_LLENEMY_Mechanics_Statuses_Temp_SeekerTookAction(_Char)
+AND
+CharacterHasSkill(_Char, "Rain_Water", 1)
+AND
+NRD_SkillGetCooldown(_Char, "Rain_Water", 0.0)
+THEN
+DB_LLENEMY_Mechanics_Statuses_Temp_SeekerTookAction(_Char);
+CharacterUseSkill(_Char, "Rain_Water", _Char, 1, 0, 0);
+
+PROC
+LLENEMY_Mechanics_Statuses_SeekerTakeAction((CHARACTERGUID)_Char)
+AND
+NOT DB_LLENEMY_Mechanics_Statuses_Temp_SeekerTookAction(_Char)
+AND
+CharacterHasSkill(_Char, "Rain_EnemyWater", 1)
+AND
+NRD_SkillGetCooldown(_Char, "Rain_EnemyWater", 0.0)
+THEN
+DB_LLENEMY_Mechanics_Statuses_Temp_SeekerTookAction(_Char);
+CharacterUseSkill(_Char, "Rain_EnemyWater", _Char, 1, 0, 0);
+
+PROC
+LLENEMY_Mechanics_Statuses_SeekerTakeAction((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_Mechanics_Statuses_Temp_SeekerTookAction(_Char)
+THEN
+NOT DB_LLENEMY_Mechanics_Statuses_Temp_SeekerTookAction(_Char);
 //END_REGION
 
 //REGION INCREASE_RAGE
