@@ -98,7 +98,7 @@ LLENEMY_BONUSSKILLS_SOURCE_Description	Character has a new bonus source skill.
 LLENEMY_BONUSSKILLS_SET_ELITE_DisplayName	Elite Skillset
 LLENEMY_BONUSSKILLS_SET_ELITE_Description	Character has an elite set of new bonus skills.
 LLENEMY_UPGRADE_INFO_DisplayName	Upgraded
-LLENEMY_UPGRADE_INFO_Description	Character is empowered with random upgrades.[1]
+LLENEMY_UPGRADE_INFO_Description	Character is empowered with random upgrades.[1][2]
 LLENEMY_FAKE_DYING_DisplayName	Dead
 LLENEMY_FAKE_DYING_Description	Character appears to be dead.
 LLENEMY_VOID_EMPOWERED_DisplayName	Void Empowered
