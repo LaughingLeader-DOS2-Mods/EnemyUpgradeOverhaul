@@ -20,8 +20,8 @@ LLENEMY_Rewards_InitSettings()
 THEN
 LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Easy", 1, 10);
 LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Medium", 11, 16);
-LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Hard", 17, 25);
-LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
+LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Hard", 17, 31);
+LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 32, 99);
 LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
 LLENEMY_Rewards_AddTreasure("LLENEMY.Rewards.Easy", "LLENEMY_CP_Easy_Common", 50);

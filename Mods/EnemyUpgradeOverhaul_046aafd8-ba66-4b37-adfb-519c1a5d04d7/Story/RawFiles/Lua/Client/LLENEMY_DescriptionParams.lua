@@ -105,8 +105,8 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescri
 local cpNames = {
 	{Min = 1, Max = 10, Text = "<font color='#FFFFFF' size='12'>Regular Bonus Loot</font>"},
 	{Min = 11, Max = 16, Text = "<font color='#4197E2' size='14'>Good Loot</font>"},
-	{Min = 17, Max = 25, Text = "<font color='#B823CB' size='16'>Great Loot</font>"},
-	{Min = 26, Max = 99, Text = "<font color='#F7BA14' size='18'>Insane Loot</font>"},
+	{Min = 17, Max = 31, Text = "<font color='#F7BA14' size='16'>Great Loot</font>"},
+	{Min = 32, Max = 99, Text = "<font color='#B823CB' size='18'>Insane Loot</font>"},
 	{Min = 100, Max = 999, Text = "<font color='#FF00CC' size='18'>Impossibly Amazing Loot</font>"},
 }
 
@@ -117,13 +117,13 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 		if data ~= nil and data.cp ~= nil then
 			local cp = math.tointeger(data.cp)
 			if cp ~= nil and cp > 0 then
-				local output = "<br><br>" --<font face='Copperplate Gothic Light'>
+				local output = "<br><img src='Icon_Line' width='350%'><br>" --<font face='Copperplate Gothic Light'>
 				--output = output .. "<img src='Icon_BulletPoint'>"
-				output = output .. "<font color='#65C900' size='14'>Will drop "
+				output = output .. "<font color='#078FC8' size='16'>Will drop "
 				
 				for k,tbl in pairs(cpNames) do
 					if cp >= tbl.Min and cp <= tbl.Max then
-						output = output .. tbl.Text
+						output = output .. "<textformat leftmargin='1' rightmargin='1'>" .. tbl.Text .. "</textformat>"
 					end
 				end
 				
