@@ -42,6 +42,8 @@ local upgrade_colors = {
 	["Bonus Skillset"] = "#B823CB",
 	["Bonus Source Skill"] = "#46B195",
 	["Elite Skillset"] = "#73F6FF",
+	["Ferocity"] = "#DBDBDB",
+	["Courage"] = "#DBDBDB",
 }
 
 local function sortupgrades(a,b)
@@ -100,11 +102,11 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescri
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
 local cpNames = {
-	{Min = 1, Max = 10, Text = "<font color='#65C900'>Regular Bonus Loot</font>"},
-	{Min = 11, Max = 16, Text = "<font color='#4197E2'>Good Loot</font>"},
-	{Min = 17, Max = 25, Text = "<font color='#B823CB'>Great Loot</font>"},
-	{Min = 26, Max = 99, Text = "<font color='#F7BA14'>Insane Loot</font>"},
-	{Min = 100, Max = 999, Text = "<font color='#FF00CC'>Impossibly Amazing Loot</font>"},
+	{Min = 1, Max = 10, Text = "<font color='#FFFFFF' size='12'>Regular Bonus Loot</font>"},
+	{Min = 11, Max = 16, Text = "<font color='#4197E2' size='14'>Good Loot</font>"},
+	{Min = 17, Max = 25, Text = "<font color='#B823CB' size='16'>Great Loot</font>"},
+	{Min = 26, Max = 99, Text = "<font color='#F7BA14' size='18'>Insane Loot</font>"},
+	{Min = 100, Max = 999, Text = "<font color='#FF00CC' size='18'>Impossibly Amazing Loot</font>"},
 }
 
 local function StatDescription_ChallengePoints(character, param, statusSource)
@@ -114,16 +116,17 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 		if data ~= nil and data.cp ~= nil then
 			local cp = math.tointeger(data.cp)
 			if cp ~= nil and cp > 0 then
-				local output = "<br>"
-				output = output .. "<p align='right'><font face='Copperplate Gothic Light' size='18'>"
-
+				local output = "<br>" --<font face='Copperplate Gothic Light'>
+				--output = output .. "<img src='Icon_BulletPoint'>"
+				output = output .. "<font color='#65C900'>Will drop "
+				
 				for k,tbl in pairs(cpNames) do
 					if cp >= tbl.Min and cp <= tbl.Max then
 						output = output .. tbl.Text
 					end
 				end
-
-				output = output .. "</font></p>"
+				
+				output = output .. "on death.</font>"
 				
 				if Ext.IsDeveloperMode() then
 					Ext.Print("CP Tooltip(".. tostring(uuid)..") = ("..output..")")

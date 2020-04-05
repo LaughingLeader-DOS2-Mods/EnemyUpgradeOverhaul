@@ -181,10 +181,16 @@ function LLENEMY_Ext_CheckFactions()
 end
 
 local function LLENEMY_DebugInit()
-	local level = GetRegion(CharacterGetHostCharacter())
+	local host = CharacterGetHostCharacter()
+	local level = GetRegion(host)
 	if level == "FJ_FortJoy_Main" then
 		LLENEMY_Ext_CheckFactions()
 	end
+
+	local x,y,z = GetPosition(host)
+	local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
+	local shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
+	ItemToInventory(shadowItem, host, 1, 1, 1)
 end
 
 local function LLENEMY_SessionLoaded()
@@ -194,3 +200,118 @@ end
 if Ext.IsDeveloperMode() and Ext.Version() >= 43 then
 	Ext.RegisterListener("SessionLoaded", LLENEMY_SessionLoaded)
 end
+
+BuiltinColorCodes = {
+    "#FFFFFF",
+    "#454545",
+    "#AE9F95",
+    "#DBDBDB",
+    "#CD1F1F",
+    "#188EDE",
+    "#078FC8",
+    "#CFECFF",
+    "#7DC807",
+    "#00AA00",
+    "#FCD203",
+    "#FF9600",
+    "#FFC3C3",
+    "#7F00FF",
+    "#B97A57",
+    "#C7A758",
+    "#000000",
+    "#FFFFFF",
+    "#D040D0",
+    "#797980",
+    "#65C900",
+    "#F7BA14",
+    "#7D71D9",
+    "#4197E2",
+    "#FE6E27",
+    "#46B195",
+    "#B823CB",
+    "#F7BA14",
+    "#81AB00",
+    "#639594",
+    "#B260FF",
+    "#73F6FF",
+    "#DA2512",
+    "#C9AA58",
+    "#97FBFF",
+    "#FFB8B8",
+    "#FFAB00",
+    "#7F00FF",
+    "#F10000",
+    "#00893A",
+    "#403625",
+    "#00547F",
+    "#FFFFFF",
+    "#9A6A46",
+    "#745035",
+    "#AA3938",
+    "#ED9D07",
+    "#FCD203",
+    "#88A25B",
+    "#34789C",
+    "#D66565",
+    "#D85B00",
+    "#E4CE93",
+    "#CD1F1F",
+    "#318666",
+    "#3C6983",
+    "#85662F",
+    "#87365C",
+    "#F1D466",
+    "#008858",
+    "#CD1F1F",
+    "#13D177",
+    "#FCD203",
+    "#188EDE",
+}
+
+local groupColours = {
+	"#FFFFFF",
+	"#FFCC00",
+	"#FF9600",
+	"#FF00CC",
+	"#FE6E27",
+	"#F7BA14",
+	"#CD1F1F",
+	"#C80030",
+	"#C7A758",
+	"#AE9F95",
+	"#A3894A",
+	"#A1D7BF",
+	"#97FBFF",
+	"#92755F",
+	"#7DC807",
+	"#7D71D9",
+	"#70B10E",
+	"#65C900",
+	"#564132",
+	"#4197E2",
+	"#078FC8",
+	"#078FC8"
+}
+
+local groupValueColours = {
+	"#FFFFFF",
+	"#FFCC00",
+	"#FF9600",
+	"#FF00CC",
+	"#FE6E27",
+	"#F7BA14",
+	"#CD1F1F",
+	"#C80030",
+	"#C7A758",
+	"#AE9F95",
+	"#A3894A",
+	"#A1D7BF",
+	"#92755F",
+	"#7DC807",
+	"#7D71D9",
+	"#70B10E",
+	"#65C900",
+	"#564132",
+	"#4197E2",
+	"#078FC8"
+}
