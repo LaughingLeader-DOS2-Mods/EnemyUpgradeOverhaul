@@ -59,6 +59,7 @@ LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_ELITE", "Elite Skillset", 
 // Hidden vanilla statuses
 LLENEMY_UpgradeInfo_Register("LLENEMY_HERBMIX_COURAGE", "Courage", "Your Constitution has increased!");
 LLENEMY_UpgradeInfo_Register("LLENEMY_HERBMIX_FEROCITY", "Ferocity", "You feel faster!");
+LLENEMY_UpgradeInfo_Register("LLENEMY_FARSIGHT", "Farsight", "Range of ranged weapons and skills is increased by 4m.");
 //END_REGION
 
 //REGION RESETTING

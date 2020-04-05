@@ -44,6 +44,7 @@ local upgrade_colors = {
 	["Elite Skillset"] = "#73F6FF",
 	["Ferocity"] = "#DBDBDB",
 	["Courage"] = "#DBDBDB",
+	["Farsight"] = "#88A25B",
 }
 
 local function sortupgrades(a,b)
@@ -116,9 +117,9 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 		if data ~= nil and data.cp ~= nil then
 			local cp = math.tointeger(data.cp)
 			if cp ~= nil and cp > 0 then
-				local output = "<br>" --<font face='Copperplate Gothic Light'>
+				local output = "<br><br>" --<font face='Copperplate Gothic Light'>
 				--output = output .. "<img src='Icon_BulletPoint'>"
-				output = output .. "<font color='#65C900'>Will drop "
+				output = output .. "<font color='#65C900' size='14'>Will drop "
 				
 				for k,tbl in pairs(cpNames) do
 					if cp >= tbl.Min and cp <= tbl.Max then
@@ -126,7 +127,7 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 					end
 				end
 				
-				output = output .. "on death.</font>"
+				output = output .. " on death.</font>"
 				
 				if Ext.IsDeveloperMode() then
 					Ext.Print("CP Tooltip(".. tostring(uuid)..") = ("..output..")")

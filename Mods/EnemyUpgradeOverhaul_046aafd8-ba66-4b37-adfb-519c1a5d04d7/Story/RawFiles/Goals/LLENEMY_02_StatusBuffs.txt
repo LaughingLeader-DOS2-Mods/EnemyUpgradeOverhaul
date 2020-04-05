@@ -89,7 +89,7 @@ LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Weak")
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "CLEAR_MINDED", 180, 1);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "DRUNK", 19, 0, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FARSIGHT", 50, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "LLENEMY_FARSIGHT", 50, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "FORTIFIED", 100, 2, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "HASTED", 120, 1, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "IMPROVED_INITIATIVE", 160, 1);
