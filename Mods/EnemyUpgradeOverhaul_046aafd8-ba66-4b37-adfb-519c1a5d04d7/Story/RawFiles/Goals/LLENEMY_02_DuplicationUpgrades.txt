@@ -26,7 +26,7 @@ LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAK", 
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 199, 6);
 //END_REGION
 
-//REGION Duplication
+//REGION DUPLICANTS
 QRY
 LLENEMY_Duplication_QRY_CanDuplicant((CHARACTERGUID)_Char, 1)
 AND
@@ -75,12 +75,13 @@ ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
 //SetTag(_Dupe, "LLENEMY_Duplicant");
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
 SetFaction(_Dupe, _Faction);
-ChangeAttitude(_Source, _Dupe, 200);
-ChangeAttitude(_Dupe, _Source, 200);
+//ChangeAttitude(_Source, _Dupe, 200);
+//ChangeAttitude(_Dupe, _Source, 200);
 SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
 SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+LLENEMY_Duplication_OnDuplicantCreated(_Source, _Dupe);
 LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 250, "Timers_LLENEMY_Duplication_CopyAppearance", "LLENEMY_Duplication_CopyAppearance");
 
 IF
@@ -231,6 +232,16 @@ AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_NORMAL_WEAKEST", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
 LLENEMY_Duplication_CreateDuplicant(_Char, "LLENEMY_Dupe_Normal_Weakest", 0, 1, _ChallengePoints);
+//END_REGION
+
+//REGION DUPE_ARENA
+PROC
+LLENEMY_Duplication_OnDuplicantCreated((CHARACTERGUID)_Source, (CHARACTERGUID)_Duplicant)
+AND
+//DB_ArenaPresets_Mobs(_Arena, _Source, _Trigger)
+DB_Arena_MobParticipants(_Inst, _Source, _Trig, _Team)
+THEN
+DB_Arena_MobParticipants(_Inst, _Duplicant, _Trig, _Team);
 //END_REGION
 
 //REGION CLEANUP
