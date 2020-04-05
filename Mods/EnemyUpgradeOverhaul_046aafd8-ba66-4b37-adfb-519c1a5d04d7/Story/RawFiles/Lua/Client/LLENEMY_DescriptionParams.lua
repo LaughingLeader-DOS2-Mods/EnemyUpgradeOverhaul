@@ -88,6 +88,7 @@ local function StatDescription_UpgradeInfo(character, param, statusSource)
 			end
 			if Ext.IsDeveloperMode() then
 				Ext.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
+				output = output .. "<br>" .. uuid
 			end
 			return output
 		end
@@ -171,11 +172,12 @@ end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
+	Ext.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.MyGuid).."] character("..tostring(character)..")["..tostring(character.MyGuid).."] param("..tostring(param)..")")
 	--local params = LeaderLib.Common.FlattenTable{...}
 	--Ext.Print("[LLENEMY_StatusGetDescriptionParam] Params:\n" .. tostring(LeaderLib.Common.Dump(params)))
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
-		Ext.Print("[LLENEMY_StatusGetDescriptionParam] Calling func for param " .. param)
+		--Ext.Print("[LLENEMY_StatusGetDescriptionParam] Calling func for param " .. param)
 		local b,result = pcall(func, character, param, statusSource)
 		if b and result ~= nil then
 			return result

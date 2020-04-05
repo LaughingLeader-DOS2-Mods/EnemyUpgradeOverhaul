@@ -88,7 +88,7 @@ LLENEMY_DOUBLE_DIP_Description	Character is growing even more powerful through a
 LLENEMY_PERSEVERANCE_MASTERY_DisplayName	Perseverance Mastery
 LLENEMY_PERSEVERANCE_MASTERY_Description	Character is persevering through sheer force of will.
 LLENEMY_DUPLICANT_DisplayName	Shadow Duplicant
-LLENEMY_DUPLICANT_Description	Character is a <font color='#9B30FF'>Shadow</font> of another character.<br><font color='#65C900' size='14'>Grants no experience, but drops guaranteed loot.</font>
+LLENEMY_DUPLICANT_Description	Character is a <font color='#9B30FF'>Shadow</font> of another character.<br><font color='#65C900' size='16'>Grants no experience, but drops guaranteed loot.</font>
 LLENEMY_BONUSSKILLS_SINGLE_DisplayName	Bonus Skill
 LLENEMY_BONUSSKILLS_SINGLE_Description	Character has a new bonus skill.
 LLENEMY_BONUSSKILLS_SET_NORMAL_DisplayName	Bonus Skillset
