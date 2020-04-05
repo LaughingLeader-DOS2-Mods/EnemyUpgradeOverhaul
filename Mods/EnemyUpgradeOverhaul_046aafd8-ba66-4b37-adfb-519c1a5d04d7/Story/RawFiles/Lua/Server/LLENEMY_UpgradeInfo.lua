@@ -5,7 +5,8 @@ function LLENEMY_Ext_StoreUpgradeInfo(uuid, str)
 		local cp = GetVarInteger(uuid, "LLENEMY_ChallengePoints")
 		EnemyUpgradeOverhaul.UpgradeInfo[uuid] = {
 			upgrades = str,
-			cp = cp
+			cp = cp,
+			isDuplicant = IsTagged(uuid, "LLENEMY_Duplicant") == 1
 		}
 		if Ext.IsDeveloperMode() then
 			Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_UpgradeInfo.lua] Stored upgrade info entry for (" .. uuid .. ")")

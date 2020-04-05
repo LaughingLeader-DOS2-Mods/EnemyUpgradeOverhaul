@@ -114,26 +114,39 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 	local uuid = character.MyGuid
 	if uuid ~= nil then
 		local data = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
-		if data ~= nil and data.cp ~= nil then
-			local cp = math.tointeger(data.cp)
-			if cp ~= nil and cp > 0 then
-				local output = "<br><img src='Icon_Line' width='350%'><br>" --<font face='Copperplate Gothic Light'>
-				--output = output .. "<img src='Icon_BulletPoint'>"
-				output = output .. "<font color='#078FC8' size='16'>Will drop "
-				
-				for k,tbl in pairs(cpNames) do
-					if cp >= tbl.Min and cp <= tbl.Max then
-						output = output .. "<textformat leftmargin='1' rightmargin='1'>" .. tbl.Text .. "</textformat>"
+		if data ~= nil then
+			local output = ""
+			if data.cp ~= nil then
+				local cp = math.tointeger(data.cp)
+				if cp ~= nil and cp > 0 then
+					output = "<br><img src='Icon_Line' width='350%'><br>" --<font face='Copperplate Gothic Light'>
+					--output = output .. "<img src='Icon_BulletPoint'>"
+					if data.isDuplicant ~= true then
+						output = output .. "<font color='#078FC8' size='16'>Will drop "
+					else
+						output = output .. "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ("
+					end
+					
+					for k,tbl in pairs(cpNames) do
+						if cp >= tbl.Min and cp <= tbl.Max then
+							output = output .. "<textformat leftmargin='1' rightmargin='1'>" .. tbl.Text .. "</textformat>"
+						end
+					end
+					
+					if data.isDuplicant ~= true then
+						output = output .. " on death.</font>"
+					else
+						output = output .. ") on death.</font>"
 					end
 				end
-				
-				output = output .. " on death.</font>"
-				
-				if Ext.IsDeveloperMode() then
-					Ext.Print("CP Tooltip(".. tostring(uuid)..") = ("..output..")")
-				end
-				return output
 			end
+			-- if data.isDuplicant == true then
+			-- 	output = output .. "<br><font color='#65C900' size='14'>Grants no experience, but drops guaranteed loot.</font>"
+			-- end
+			if Ext.IsDeveloperMode() then
+				Ext.Print("CP Tooltip(".. tostring(uuid)..") = ("..output..")")
+			end
+			return output
 		else
 			if Ext.IsDeveloperMode() then
 				Ext.Print("Character (".. tostring(uuid)..") has no stored CP on this client!")

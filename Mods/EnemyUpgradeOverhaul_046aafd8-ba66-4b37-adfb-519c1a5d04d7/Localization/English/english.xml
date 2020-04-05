@@ -161,7 +161,7 @@
 	<content contentuid="h9bc9d98ag9fa9g4d23g88c4ge55de8f8c73a" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_CHICKEN_OVERLORD_DisplayName">Chicken Overlord</content>
 	<content contentuid="hf6486123g0005g46c9g8a40ga098203e2ab6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_Description">Character is growing even more powerful through a second round of upgrades!</content>
 	<content contentuid="hf180561cge97ag426cg84ddg83dd257ce95d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_DisplayName">Double Dip</content>
-	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_Description">Character is a living shadow of another character.</content>
+	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_Description">Character is a &lt;font color=&apos;#9B30FF&apos;&gt;Shadow&lt;/font&gt; of another character.&lt;br&gt;&lt;font color=&apos;#65C900&apos; size=&apos;14&apos;&gt;Grants no experience, but drops guaranteed loot.&lt;/font&gt;</content>
 	<content contentuid="hf91deedcga4c7g427eg8153g2e347c06d3e8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_DisplayName">Shadow Duplicant</content>
 	<content contentuid="hba37a70cg63f9g491eg94f0gdf69970ff0e6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_EMPOWERED_Description">Character is fully powered up.</content>
 	<content contentuid="he2172050g115bg4345gae5eg4a45798086b4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_EMPOWERED_DisplayName">Empowered</content>
