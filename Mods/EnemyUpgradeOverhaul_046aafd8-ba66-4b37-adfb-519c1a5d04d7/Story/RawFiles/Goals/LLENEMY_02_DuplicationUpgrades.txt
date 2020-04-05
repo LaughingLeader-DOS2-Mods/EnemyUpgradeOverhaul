@@ -28,14 +28,14 @@ LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 
 
 //REGION Duplication
 QRY
-LLENEMY_Duplication_QRY_CanDuplicate((CHARACTERGUID)_Char, 1)
+LLENEMY_Duplication_QRY_CanDuplicant((CHARACTERGUID)_Char, 1)
 AND
 GlobalGetFlag("LLENEMY_DuplicationUpgrades_BossesDisabled", 0)
 THEN
 DB_NOOP(1);
 
 QRY
-LLENEMY_Duplication_QRY_CanDuplicate((CHARACTERGUID)_Char, 0)
+LLENEMY_Duplication_QRY_CanDuplicant((CHARACTERGUID)_Char, 0)
 THEN
 DB_NOOP(1);
 
@@ -44,19 +44,19 @@ LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Duplication", (S
 AND
 IsBoss(_Enemy, _IsBoss)
 AND
-LLENEMY_Duplication_QRY_CanDuplicate(_Enemy, _IsBoss)
+LLENEMY_Duplication_QRY_CanDuplicant(_Enemy, _IsBoss)
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Duplication", _Type);
 
 PROC
-LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats)
+LLENEMY_Duplication_CreateDuplicant((CHARACTERGUID)_Source, (STRING)_Stats)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Source, _Stats, 0, 0, 0);
+LLENEMY_Duplication_CreateDuplicant(_Source, _Stats, 0, 0, 0);
 
 PROC
-LLENEMY_Duplication_CreateDuplicate((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_ChallengePoints)
+LLENEMY_Duplication_CreateDuplicant((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_ChallengePoints)
 AND
 DB_CurrentLevel(_Region)
 AND
@@ -66,13 +66,14 @@ GetFaction(_Source, _Faction)
 THEN
 CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 0, 1, 1, 0, 0);
 /* [OSITOOLS_ONLY]
-SetTag(_Dupe, "LLENEMY_UpgradesDisabled");
+LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_UpgradesDisabled");
 LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 1000, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
 */
 // [BEGIN_NO_OSITOOLS]
 ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
 // [END_NO_OSITOOLS]
-SetTag(_Dupe, "LLENEMY_Duplicant");
+//SetTag(_Dupe, "LLENEMY_Duplicant");
+LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
 SetFaction(_Dupe, _Faction);
 ChangeAttitude(_Source, _Dupe, 200);
 ChangeAttitude(_Dupe, _Source, 200);
@@ -150,7 +151,7 @@ AND
 DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
-LLENEMY_Duplication_SetupDuplicate(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+LLENEMY_Duplication_SetupDuplicant(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
 
 IF
 CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_StatsApplied")
@@ -169,17 +170,17 @@ THEN
 CharacterSetCustomName(_Dupe, _DupeName);
 
 PROC
-LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, 1, (INTEGER)_CopyAbilities)
+LLENEMY_Duplication_SetupDuplicant((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, 1, (INTEGER)_CopyAbilities)
 THEN
 LeaderLib_Helper_CopyAttributes(_Dupe, _Source);
 
 PROC
-LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, 1)
+LLENEMY_Duplication_SetupDuplicant((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, 1)
 THEN
 LeaderLib_Helper_CopyAbilities(_Dupe, _Source);
 
 PROC
-LLENEMY_Duplication_SetupDuplicate((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities)
+LLENEMY_Duplication_SetupDuplicant((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities)
 THEN
 LeaderLib_Helper_CopyLevel(_Dupe, _Source);
 /* [OSITOOLS_ONLY]
@@ -200,36 +201,36 @@ CharacterStatusApplied(_Char, "LLENEMY_DUPE_ELITE_SINGLE", _)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_ELITE_SINGLE", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
+LLENEMY_Duplication_CreateDuplicant(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_ELITE_DOUBLE", _)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_ELITE_DOUBLE", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
+LLENEMY_Duplication_CreateDuplicant(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
+LLENEMY_Duplication_CreateDuplicant(_Char, "LLENEMY_Dupe_Elite_A", 1, 1, _ChallengePoints);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_SAME", _)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_NORMAL_SAME", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_A", 1, 1, _ChallengePoints);
+LLENEMY_Duplication_CreateDuplicant(_Char, "LLENEMY_Dupe_Normal_A", 1, 1, _ChallengePoints);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_WEAK", _)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_NORMAL_WEAK", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_Weak", 0, 1, _ChallengePoints);
+LLENEMY_Duplication_CreateDuplicant(_Char, "LLENEMY_Dupe_Normal_Weak", 0, 1, _ChallengePoints);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_DUPE_NORMAL_WEAKEST", _)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_DUPE_NORMAL_WEAKEST", _StartInt, _EndInt, _Duration, _ChallengePoints)
 THEN
-LLENEMY_Duplication_CreateDuplicate(_Char, "LLENEMY_Dupe_Normal_Weakest", 0, 1, _ChallengePoints);
+LLENEMY_Duplication_CreateDuplicant(_Char, "LLENEMY_Dupe_Normal_Weakest", 0, 1, _ChallengePoints);
 //END_REGION
 
 //REGION CLEANUP
@@ -239,6 +240,7 @@ AND
 DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region);
+LeaderLib_Tags_ClearAllPreservedTags(_Dupe);
 
 IF
 RegionEnded(_Region)
