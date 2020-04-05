@@ -67,7 +67,7 @@ THEN
 CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 0, 1, 1, 0, 0);
 /* [OSITOOLS_ONLY]
 SetTag(_Dupe, "LLENEMY_UpgradesDisabled");
-LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 1000, "Timers_LLENEMY_Duplicantion_CopyStatuses", "LLENEMY_Duplicantion_CopyStatuses");
+LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 1000, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
 */
 // [BEGIN_NO_OSITOOLS]
 ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
@@ -80,13 +80,20 @@ SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
 SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
-LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 250, "Timers_LLENEMY_Duplicantion_CopyAppearance", "LLENEMY_Duplicantion_CopyAppearance");
+LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 250, "Timers_LLENEMY_Duplication_CopyAppearance", "LLENEMY_Duplication_CopyAppearance");
 
 IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyAppearance")
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
 THEN
 CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
 CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
+
+IF
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Dupe_StatsApplied")
+AND
+CharacterGetLevel(_Source, _Level)
+THEN
+CharacterLevelUpTo(_Dupe, _Level);
 
 QRY
 LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
@@ -97,12 +104,12 @@ DB_NOOP(1);
 
 /* [OSITOOLS_ONLY]
 IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyAppearance")
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
 THEN
 NRD_LuaCall("LLENEMY_Ext_ClearGain", (STRING)_Dupe);
 
 IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplicantion_CopyStatuses")
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyStatuses")
 THEN
 NRD_IterateStatuses(_Source, "LLENEMY_Dupe_CopyStatus");
 
