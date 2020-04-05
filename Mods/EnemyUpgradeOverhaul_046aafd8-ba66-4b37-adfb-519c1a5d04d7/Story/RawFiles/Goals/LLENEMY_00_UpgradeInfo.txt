@@ -55,6 +55,10 @@ LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SINGLE", "Bonus Skill", "Chara
 LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_NORMAL", "Bonus Skillset", "Character has a set of new bonus skills.");
 LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SOURCE", "Bonus Source Skill", "Character has a new bonus source skill.");
 LLENEMY_UpgradeInfo_Register("LLENEMY_BONUSSKILLS_SET_ELITE", "Elite Skillset", "Character has an elite set of new bonus skills.");
+
+// Hidden vanilla statuses
+LLENEMY_UpgradeInfo_Register("LLENEMY_HERBMIX_COURAGE", "Courage", "Your Constitution has increased!");
+LLENEMY_UpgradeInfo_Register("LLENEMY_HERBMIX_FEROCITY", "Ferocity", "You feel faster!");
 //END_REGION
 
 //REGION RESETTING
