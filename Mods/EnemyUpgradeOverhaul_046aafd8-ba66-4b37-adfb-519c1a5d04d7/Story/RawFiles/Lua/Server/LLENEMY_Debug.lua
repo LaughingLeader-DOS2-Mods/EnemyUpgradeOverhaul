@@ -168,15 +168,16 @@ function LLENEMY_Ext_Debug_RerollLevel(char)
 	--CharacterLevelUp(char)
 end
 
-local debugCheckEnemies = {}
-debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_01_584db8ce-8dcf-4906-bc6f-e51eb057de08"
-debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_02_aff8be39-58b0-4bff-8fa6-7cf501b5060b"
-debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_03_d32d32b2-c05b-4acd-944c-f2b802ec7234"
-debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b"
+local debugCheckEnemies = {
+	"S_FTJ_SeekerCaptain_1329f018-23e4-4717-9bc8-074b28d04c54"
+}
 
 function LLENEMY_Ext_CheckFactions()
 	for i,uuid in pairs(debugCheckEnemies) do
-		Ext.Print("[LLENEMY_Ext_CheckFactions] ("..uuid..") faction ("..GetFaction(uuid)..")")
+		if ObjectExists(uuid) == 1 then
+			local name = CharacterGetDisplayName(uuid)
+			Ext.Print("[LLENEMY_Ext_CheckFactions] ["..uuid.."]("..name..") faction ("..GetFaction(uuid)..")")
+		end
 	end
 end
 
@@ -184,6 +185,10 @@ local function LLENEMY_DebugInit()
 	local host = CharacterGetHostCharacter()
 	local level = GetRegion(host)
 	if level == "FJ_FortJoy_Main" then
+		debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_01_584db8ce-8dcf-4906-bc6f-e51eb057de08"
+		debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_02_aff8be39-58b0-4bff-8fa6-7cf501b5060b"
+		debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_03_d32d32b2-c05b-4acd-944c-f2b802ec7234"
+		debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b"
 		LLENEMY_Ext_CheckFactions()
 	end
 
