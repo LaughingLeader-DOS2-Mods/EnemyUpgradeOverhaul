@@ -11,6 +11,10 @@ ProcSetInvulnerable(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5
 ProcSetInvulnerable(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 1);
 CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, 1);
 CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 1);
+SetFaction(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Evil NPC");
+SetFaction(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Evil NPC");
+SetVarInteger(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "FleeFromDangerousSurface", 0);
+SetVarInteger(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "FleeFromDangerousSurface", 0);
 //CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, 1);
 //END_REGION
 
@@ -37,29 +41,44 @@ LLENEMY_Scaling_Internal_LevelUpCharacterWithCap(S_TUT_TopDeck_Tentacle4_488645e
 
 //REGION KEEP_BOSS_ALIVE
 IF
+AutomatedDialogStarted("TUT_AD_TopDeckMagister2", _Instance)
+THEN
+ProcObjectTimerCancel(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal");
+LeaderLib_Helper_ClearActionQueue(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, 0);
+CharacterUseSkill(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Dome_LLENEMY_EnemyCircleOfProtection", CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 1, 1, 1);
+ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 1500);
+
+IF
 //SkillCast(S_TUT_TopDeck_Tentacle4_488645e1-3d74-4b3e-83fb-ab2dde52387b, "Zone_Quest_EnemyTentacleSweep", _, _)
 OnStageChanged(ITEMGUID_S_TUT_FireSurfaceHelper_77d9fcb1-c857-4db9-bd31-19b5cfa4af5a, 0)
 THEN
-ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 2500);
-ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 2500);
+SetVarInteger(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "FleeFromDangerousSurface", 0);
+SetVarInteger(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "FleeFromDangerousSurface", 0);
+ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 1000);
+ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 1000);
 
 PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal")
 THEN
 ProcSetInvulnerable(_Char, 0);
 CharacterSetImmortal(_Char, 0);
-SetVarInteger(_Char, "FleeFromDangerousSurface", 0);
-ApplyStatus(_Char, "FLOATING", 48.0, 1, _Char);
+ApplyStatus(_Char, "ETHEREAL_SOLES", 48.0, 1, _Char);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal")
+AND
+CharacterIsInCombat(_Char, 0)
+THEN
 ProcCharacterMoveTo(_Char, TRIGGERGUID_S_TUT_StrikingTentacle_Trigger1_61d8d246-d5c0-4a26-b9fa-a12e3807ae40, 0, "LLENEMY_TopDeckMagister_Arrived");
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_TopDeckMagister_Arrived")
 AND
-GetStatusTurns(_Char, "FLOATING", _Turns)
+GetStatusTurns(_Char, "ETHEREAL_SOLES", _Turns)
 AND
 _Turns > 0
 THEN
-RemoveStatus(_Char, "FLOATING");
+RemoveStatus(_Char, "ETHEREAL_SOLES");
 
 PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal")
@@ -144,6 +163,16 @@ StoryEvent((CHARACTERGUID)_Replacement, "LLENEMY_TopLivingMagister_StoodUp")
 THEN
 CharacterSetImmortal(_Replacement, 0);
 SetCanJoinCombat(_Replacement, 1);
+//END_REGION
+
+//REGION BLOCK_HATCH
+PROC
+ProcBlockUseOfItem((CHARACTERGUID)_Player, BLD_Ship_Exterior_Hatch_A_000_14ed9516-7dc8-4605-bb61-67ac109eca25)
+AND
+CharacterIsPlayer(_Player, 1)
+THEN
+DB_CustomUseItemResponse(_Player, BLD_Ship_Exterior_Hatch_A_000_14ed9516-7dc8-4605-bb61-67ac109eca25, 0);
+Proc_StartDialog(1, "LLENEMY_AD_Tut_DeckHatchJammed", _Player);
 //END_REGION
 
 IF
