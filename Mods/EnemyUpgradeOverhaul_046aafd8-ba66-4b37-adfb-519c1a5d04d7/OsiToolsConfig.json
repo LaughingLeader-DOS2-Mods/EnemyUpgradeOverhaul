@@ -3,7 +3,6 @@
     "FeatureFlags": [
         "OsirisExtensions",
         "Lua",
-        "Preprocessor",
-        "FormulaOverrides"
+        "Preprocessor"
     ]
 }
