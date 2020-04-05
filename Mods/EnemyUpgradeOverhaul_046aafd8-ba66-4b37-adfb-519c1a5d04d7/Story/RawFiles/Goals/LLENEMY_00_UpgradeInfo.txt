@@ -80,6 +80,13 @@ LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_UpgradeInfo_SendIn
 //END_REGION
 
 //REGION UPGRADE_INFO
+IF
+SavegameLoaded(_,_,_,_)
+AND
+DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Next)
+THEN
+LLENEMY_UpgradeInfo_Internal_SendInfo(_Char);
+
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Upgrade, (REAL)_Duration, (INTEGER)_CP)
 AND
@@ -93,10 +100,11 @@ IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_UpgradeInfo_SendInfo")
 THEN
 DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, "");
+LLENEMY_UpgradeInfo_Internal_PrepareInfo(_Char);
 LLENEMY_UpgradeInfo_Internal_SendInfo(_Char);
 
 PROC
-LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Char)
+LLENEMY_UpgradeInfo_Internal_PrepareInfo((CHARACTERGUID)_Char)
 AND
 DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(_Char, _Upgrade)
 AND
@@ -112,7 +120,7 @@ NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Current);
 DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Next);
 
 PROC
-LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Char)
+LLENEMY_UpgradeInfo_Internal_PrepareInfo((CHARACTERGUID)_Char)
 AND
 NOT LeaderLib_Helper_QRY_HasStatus(_Char, "LLENEMY_UPGRADE_INFO")
 AND
