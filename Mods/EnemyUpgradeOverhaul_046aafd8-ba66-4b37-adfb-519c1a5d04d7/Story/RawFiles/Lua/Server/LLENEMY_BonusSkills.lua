@@ -1,7 +1,6 @@
 local ATTEMPTS_MAX = 40
 
 local ignored_skills = {
-	Jump_EnemyVoidGlide = true,
 	Cone_EnemyCorrosiveSpray_Beetle = true,
 	Cone_EnemyFlamebreath_Salamander = true,
 	Cone_EnemyGroundSmash_Dragon = true,
@@ -11,6 +10,8 @@ local ignored_skills = {
 	Cone_EnemySilencingStare_LowVolume = true,
 	Cone_EnemySilencingStare_Wolf = true,
 	Cone_Enemy_WaterSpit_Troll = true,
+	Jump_EnemyVoidGlide = true,
+	Jump_EnemyCurseDive = true,
 	Jump_EnemyCurseDive_Braccus = true,
 	Jump_EnemyCurseDive_Kraken = true,
 	Jump_EnemyPhoenixDive_Shambling = true,
