@@ -181,11 +181,9 @@ local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character
 		local b,result = pcall(func, character, param, statusSource)
 		if b and result ~= nil then
 			return result
-		else
-			return ""
 		end
 	end
-	return nil
+	return ""
 end
 Ext.RegisterListener("StatusGetDescriptionParam", LLENEMY_StatusGetDescriptionParam)
 Ext.Print("[LLENEMY_DescriptionParams.lua] Registered listener LLENEMY_StatusGetDescriptionParam.")
