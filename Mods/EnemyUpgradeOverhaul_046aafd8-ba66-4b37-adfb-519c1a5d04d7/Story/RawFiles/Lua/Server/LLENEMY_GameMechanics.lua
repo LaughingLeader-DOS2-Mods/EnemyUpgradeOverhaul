@@ -113,21 +113,25 @@ end
 Ext.NewQuery(LLENEMY_Ext_CharacterIsHidden, "LLENEMY_Ext_QRY_CharacterIsHidden", "[in](CHARACTERGUID)_Character, [out](INTEGER)_IsHidden")
 
 function LLENEMY_Ext_ClearGain(char)
-	local stats = nil
-	-- if NRD_GetVersion() >= 39 then
-	-- 	stats = NRD_CharacterGetStatString(char)
-	-- end
-	local character = Ext.GetCharacter(char)
-	if character ~= nil then
-		stats = character.Stats.Name
-	end
-	if stats == nil then stats = GetStatString(char) end
-	if stats ~= nil then
-		local gain = NRD_StatGetInt(stats, "Gain")
-		gain = gain - 1
-		Osi.LeaderLog_Log("DEBUG", "[LLENEMY:Bootstrap.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").");
-		NRD_CharacterSetPermanentBoostInt(char, "Gain", gain);
-		NRD_CharacterSetPermanentBoostInt(char, "Gain", 1);
-		CharacterAddAttribute(char, "Strength", 0);
+	--ScaleExperienceByPlayerLevel_d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418
+	if Ext.IsModLoaded("d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418") then
+		SetTag(char, "LLXPSCALE_DisableDeathExperience")
+	else
+		local stats = nil
+		-- if NRD_GetVersion() >= 39 then
+		-- 	stats = NRD_CharacterGetStatString(char)
+		-- end
+		local character = Ext.GetCharacter(char)
+		if character ~= nil then
+			stats = character.Stats.Name
+		end
+		if stats == nil then stats = GetStatString(char) end
+		if stats ~= nil then
+			local gain = NRD_StatGetInt(stats, "Gain")
+			gain = gain - 1
+			Osi.LeaderLog_Log("DEBUG", "[LLENEMY:Bootstrap.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").");
+			NRD_CharacterSetPermanentBoostInt(char, "Gain", gain);
+			CharacterAddAttribute(char, "Strength", 0);
+		end
 	end
 end
