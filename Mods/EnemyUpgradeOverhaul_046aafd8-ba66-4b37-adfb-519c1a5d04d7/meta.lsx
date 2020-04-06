@@ -32,7 +32,7 @@
                     <attribute id="Tags" value="" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
                     <attribute id="UUID" value="046aafd8-ba66-4b37-adfb-519c1a5d04d7" type="22" />
-                    <attribute id="Version" value="536870914" type="4" />
+                    <attribute id="Version" value="536870915" type="4" />
                     <children>
                         <node id="PublishVersion">
                             <attribute id="Version" value="908857753" type="4" />
