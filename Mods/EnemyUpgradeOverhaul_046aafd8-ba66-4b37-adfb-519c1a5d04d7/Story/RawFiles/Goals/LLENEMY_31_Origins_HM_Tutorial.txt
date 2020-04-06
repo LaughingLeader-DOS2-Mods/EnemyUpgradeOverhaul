@@ -105,7 +105,7 @@ DB_LLENEMY_TUT_Temp_ReplacementMagister(S_TUT_TopDeck_LivingMagister1_b5e74192-4
 //ProcObjectTimer(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupDying", 500);
 ProcObjectTimerFinished(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupDying");
 ProcObjectTimer(_Replacement, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupCombatTracker", 500);
-LLENEMY_HardMode_SetupNPC(_Replacement, "TUT_Tutorial_A", 1);
+LLENEMY_HardMode_SetupNPC(_Replacement, "TUT_Tutorial_A", 0);
 
 PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupDying")
@@ -153,6 +153,8 @@ THEN
 CharacterSetImmortal(_Replacement, 0);
 SetCanJoinCombat(_Replacement, 1);
 SetFaction(_Replacement, "Evil NPC");
+ProcSetInvulnerable(_Replacement, 0);
+CharacterSetImmortal(_Replacement, 0);
 //LeaderLib_Helper_MakeHostileToPlayers(_Replacement);
 //END_REGION
 
