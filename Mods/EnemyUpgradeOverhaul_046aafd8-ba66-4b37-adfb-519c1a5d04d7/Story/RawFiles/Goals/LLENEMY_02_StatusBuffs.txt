@@ -78,7 +78,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "ETHEREAL_SOLES", 90, 1, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "EVADING", 80, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FIREBLOOD", 60, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FORTIFIED", 130, 4, 24.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "DEMONIC_HASTED", 179, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_DEMONIC_HASTED", 179, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_HERBMIX_COURAGE", 60, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_HERBMIX_FEROCITY", 70, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_GRANADA", 90, 6);
