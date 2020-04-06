@@ -1,0 +1,35 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterStatusApplied(_Char, "INSURFACE", _)
+AND
+HasActiveStatus(_Char, "LLENEMY_DEMONIC_HASTED", 1)
+AND
+NOT DB_LLENEMY_StatusLogic_Temp_DemonicHastedMoveCheck(_Char, _, _, _)
+AND
+HasActiveStatus(_Char, "KNOCKED_DOWN", 0)
+AND
+GetSurfaceGroundAt(_Char, _Surface)
+AND
+StringContains(_Surface, "Frozen", 1)
+AND
+GetPosition(_Char, _x, _y, _z)
+THEN
+DB_LLENEMY_StatusLogic_Temp_DemonicHastedMoveCheck(_Char, _x, _y, _z);
+LeaderLib_Timers_StartObjectTimer(_Char, 750, "Timers_LLENEMY_DemonicHasted_CheckForMovement", "LLENEMY_DemonicHasted_CheckForMovement");
+
+IF
+ObjectTurnEnded((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_StatusLogic_Temp_DemonicHastedMoveCheck(_Char, _x, _y, _z)
+THEN
+NOT DB_LLENEMY_StatusLogic_Temp_DemonicHastedMoveCheck(_Char, _x, _y, _z);
+LeaderLib_Timers_CancelObjectTimer(_Char, "Timers_LLENEMY_DemonicHasted_CheckForMovement");
+
+EXITSECTION
+SysClear("DB_LLENEMY_StatusLogic_Temp_DemonicHastedWeakness", 4);
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"
