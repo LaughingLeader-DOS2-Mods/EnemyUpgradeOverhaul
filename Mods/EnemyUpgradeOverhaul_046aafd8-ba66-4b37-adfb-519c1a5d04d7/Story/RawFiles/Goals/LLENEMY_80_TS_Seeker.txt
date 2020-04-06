@@ -58,7 +58,7 @@ CharacterIsControlled(_Player, 1)
 AND
 LeaderLog_QRY_Log("DEBUG", "[LLENEMY_80_TS_Seeker:] Getting seekers")
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char)
+DB_LLENEMY_StatusLogic_Temp_Seekers(_Char)
 AND
 LeaderLog_QRY_Log("DEBUG", "[LLENEMY_80_TS_Seeker:] Checking relation")
 AND
@@ -73,7 +73,7 @@ CharacterStatusRemoved(_Player, "SNEAKING", _)
 AND
 NOT LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char)
+DB_LLENEMY_StatusLogic_Temp_Seekers(_Char)
 AND
 HasActiveStatus(_Char, "LLENEMY_SEEKER_FX", 1)
 THEN
@@ -86,7 +86,7 @@ GetStatusType(_Status, "INVISIBLE")
 AND
 CharacterIsControlled(_Player, 1)
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char)
+DB_LLENEMY_StatusLogic_Temp_Seekers(_Char)
 AND
 CharacterIsEnemy(_Char, _Player, 1)
 AND
@@ -103,7 +103,7 @@ CharacterIsPlayer(_Player, 1)
 AND
 NOT LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_Seekers(_Char)
+DB_LLENEMY_StatusLogic_Temp_Seekers(_Char)
 AND
 HasActiveStatus(_Char, "LLENEMY_SEEKER_FX", 1)
 THEN
@@ -115,45 +115,45 @@ ObjectTurnStarted((CHARACTERGUID)_Char)
 AND
 LeaderLib_Helper_QRY_HasStatus(_Char, "LLENEMY_SEEKER")
 THEN
-DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char);
 
 IF
 CharacterUsedSkill(_Char,_,_,_)
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char)
 THEN
-NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+NOT DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char);
 
 IF
 CharacterStartAttackObject(_,_, _Char)
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char)
 THEN
-NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+NOT DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char);
 
 IF
 CharacterUsedItem(_Char, _)
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char)
 THEN
-NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+NOT DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char);
 
 IF
 CharacterDied(_Char)
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char)
 THEN
-NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+NOT DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char);
 
 IF
 ObjectTurnEnded((CHARACTERGUID)_Char)
 AND
-DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char)
+DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char)
 THEN
-NOT DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction(_Char);
+NOT DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction(_Char);
 LLENEMY_Mechanics_Statuses_Internal_SeekerTakeAction(_Char);
 
 EXITSECTION
-SysClear("DB_LLENEMY_Mechanics_Statuses_Temp_WaitForSeekerAction", 1);
+SysClear("DB_LLENEMY_StatusLogic_Temp_WaitForSeekerAction", 1);
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_80_ToggledScripts"
