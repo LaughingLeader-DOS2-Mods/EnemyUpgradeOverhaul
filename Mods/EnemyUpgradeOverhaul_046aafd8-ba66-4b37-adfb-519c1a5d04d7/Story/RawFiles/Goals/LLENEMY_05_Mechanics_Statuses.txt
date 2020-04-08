@@ -110,6 +110,22 @@ LLENEMY_Statuses_QRY_CanSeekerPulse(_Char)
 THEN
 LeaderLib_Timers_StartObjectTimer(_Char, 1000, "Timers_LLENEMY_Statuses_Seeker_PulseNow", "LLENEMY_Statuses_Seeker_PulseNow");
 
+/* [OSITOOLS_ONLY]
+IF
+CharacterStatusApplied(_Char, "LLENEMY_SEEKER", _)
+THEN
+NRD_CharacterSetPermanentBoostInt(_Char, "FOV", 360);
+NRD_CharacterSetPermanentBoostInt(_Char, "Sight", 2);
+CharacterAddAttribute(_Char, "Dummy", 0); // Force boost sync
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_SEEKER", _)
+THEN
+NRD_CharacterSetPermanentBoostInt(_Char, "FOV", 0);
+NRD_CharacterSetPermanentBoostInt(_Char, "Sight", 0);
+CharacterAddAttribute(_Char, "Dummy", 0); // Force boost sync
+*/
+
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_Seeker_PulseNow")
 AND
