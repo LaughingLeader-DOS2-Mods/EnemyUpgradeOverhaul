@@ -582,6 +582,7 @@ RealSum(_Duration, _RanRounded, _NewDuration)
 THEN
 ApplyStatus(_Char, _Status, _NewDuration, 1, _Char);
 */
+
 // [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, 1)

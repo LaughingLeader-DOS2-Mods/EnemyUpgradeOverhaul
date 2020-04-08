@@ -51,7 +51,7 @@ VARS
 ON
 	OnCharacterVitalityChanged(__Me, _Vit)	
 ACTIONS
-	Output("Total Hits: ([1]/[2]) Vitality([3])", %LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits, _Vit)
+	//Output("Total Hits: ([1]/[2]) Vitality([3])", %LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits, _Vit)
 IF "(c1|c2|c3)&c4"
 	IsGreaterThen(%LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits)
 	IsLessThen(_Vit, 0.01)

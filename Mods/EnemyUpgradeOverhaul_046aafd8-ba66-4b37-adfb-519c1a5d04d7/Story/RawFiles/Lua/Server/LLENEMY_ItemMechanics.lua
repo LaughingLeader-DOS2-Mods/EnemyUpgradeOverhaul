@@ -319,6 +319,14 @@ local function LLENEMY_ShadowCorruptItemFunc(item)
 end
 Ext.NewCall(LLENEMY_ShadowCorruptItemFunc, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
+local function ItemIsRare(item, itemType)
+	if itemType ~= "Common" and itemType ~= "" then
+		return true
+	elseif ItemGetGoldValue(item) >= 250 then
+		return true
+	end
+end
+
 function LLENEMY_Ext_ScatterInventory(char)
 	if Ext.Version() >= 43 then
 		local x,y,z = GetPosition(char)
@@ -334,6 +342,9 @@ function LLENEMY_Ext_ScatterInventory(char)
 			if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
 				ItemScatterAt(v, x,y,z)
 				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."]")
+				if not string.find(stat, "Gold") and (ItemIsRare(v, item.ItemType)) then
+					PlayEffect(v, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
+				end
 			else
 				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Item ("..tostring(stat)..")["..v.."] is equipped ("..tostring(equipped)..") or an NPC item. Skipping.")
 			end
@@ -354,19 +365,27 @@ function LLENEMY_Ext_TreasureGoblinDefeated(goblin)
 		for i=current,max,1 do
 			CharacterGiveReward(goblin, "LLENEMY_TreasureGoblin_A", 1)
 		end
-		local inventory = Ext.GetCharacter(goblin):GetInventoryItems()
-		for k,v in pairs(inventory) do
-			--LLENEMY_Ext_Debug_PrintItemProperties(v)
-			--LLENEMY_Ext_Debug_PrintFlags(v)
-			--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
-			local item = Ext.GetItem(v)
-			local stat = item.StatsId
-			local equipped = item.Slot <= 13
-			-- Stats that start with an underscore aren't meant for players
-			if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
-				ItemToInventory(v,lootSack,item.Amount,0,1)
-				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:TreasureGoblinDefeated] Added item ("..tostring(stat)..")["..v.."] to loot sack.")
+		if Ext.Version() >= 43 then
+			local inventory = Ext.GetCharacter(goblin):GetInventoryItems()
+			if inventory ~= nil then
+				for k,v in pairs(inventory) do
+					--LLENEMY_Ext_Debug_PrintItemProperties(v)
+					--LLENEMY_Ext_Debug_PrintFlags(v)
+					--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
+					local item = Ext.GetItem(v)
+					local stat = item.StatsId
+					local equipped = item.Slot <= 13
+					-- Stats that start with an underscore aren't meant for players
+					if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
+						ItemToInventory(v,lootSack,item.Amount,0,1)
+						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:TreasureGoblinDefeated] Added item ("..tostring(stat)..")["..v.."] to loot sack.")
+					end
+				end
+			else
+				MoveAllItemsTo(goblin, lootSack, 0, 0, 1)
 			end
+		else
+			MoveAllItemsTo(goblin, lootSack, 0, 0, 1)
 		end
 	end
 end
