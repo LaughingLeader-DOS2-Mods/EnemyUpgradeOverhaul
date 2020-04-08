@@ -63,8 +63,8 @@ Ext.RegisterListener("SessionLoading", LLENEMY_Shared_SessionLoading)
 local function RegisterVoiceMetaData()
 	for speaker,entries in pairs(EnemyUpgradeOverhaul.VoiceMetaData) do
 		for i,data in pairs(entries) do
-			Ext.AddVoiceMetaData(speaker, data.Handle, data.Source, data.Length, data.Priority)
 			Ext.Print("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Registered VoiceMetaData - Speaker[" .. speaker .. "] Handle(" .. tostring(data.Handle) .. ") Source(" .. tostring(data.Source) .. ") Length(" .. tostring(data.Length) .. ")")
+			Ext.AddVoiceMetaData(speaker, data.Handle, data.Source, data.Length, data.Priority)
 		end
 	end
 end

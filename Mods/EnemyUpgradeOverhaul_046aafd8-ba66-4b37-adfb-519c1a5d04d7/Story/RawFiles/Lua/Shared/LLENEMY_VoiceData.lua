@@ -1,6 +1,6 @@
 
 local soundsPath = "Mods/EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7/Localization/English/Soundbanks/"
-local DEFAULT_PRIORITY = "P1_StoryDialog"
+local DEFAULT_PRIORITY = 0--"P1_StoryDialog"
 
 EnemyUpgradeOverhaul.VoiceMetaData = {
 	--Narrator
