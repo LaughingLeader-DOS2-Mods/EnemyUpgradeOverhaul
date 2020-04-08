@@ -9,7 +9,9 @@
 	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Menu_GameSettings.lsj">Settings updated.</content>
 	<content contentuid="he15a3e15g141dg45e5g96edg8148c2106792" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Disable Hard Mode (Default - Disabled)</content>
 	<content contentuid="h4229d882g7235g4cf5gafe6g3ef702647b81" Source="LLENEMY_Menu_GameSettings.lsj">Game Settings</content>
+	<content contentuid="h48b2c770g394eg43abg8e87g170941d31051" Source="LLENEMY_Menu_GameSettings.lsj">There&apos;s a reason no one plays this mode, and you&apos;re about to find out.</content>
 	<content contentuid="h4075ecfag0da0g4c26gb858g06626a165ed9" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Default - Disabled)</content>
+	<content contentuid="h03823bf7g9de8g48eag9e05g44ffcddb1a73" Source="LLENEMY_Menu_GameSettings.lsj">Today, we&apos;ll be playing Easy Mode.</content>
 	<content contentuid="h6efe8867g66bbg4d4ag936bgbb477bc57265" Source="LLENEMY_Menu_GameSettings.lsj">[Back]</content>
 	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14" Source="LLENEMY_Menu_Scaling.lsj">Enable Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value.</content>
 	<content contentuid="hf652aa9fgeca8g4265ga6b2ge3d557dfb11c" Source="LLENEMY_Menu_Scaling.lsj">Disabling Enemy Level Scaling</content>
