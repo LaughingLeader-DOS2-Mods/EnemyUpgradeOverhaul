@@ -65,6 +65,9 @@ end
 
 Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnGetClientInfo)
 
+local upgradeInfoEntryColorText = TranslatedString:Create("ha4587526ge140g42f9g9a98gc92b537d4209", "<img src='Icon_BulletPoint'><font color='[2]' size='18'>[1]</font>")
+local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4cc2ga233g7c22612af67b", "<img src='Icon_BulletPoint'><font size='18'>[1]</font>")
+
 local function StatDescription_UpgradeInfo(character, param, statusSource)
 	local uuid = character.MyGuid
 	if uuid ~= nil then
@@ -79,9 +82,10 @@ local function StatDescription_UpgradeInfo(character, param, statusSource)
 			for k,v in pairs(upgrades) do
 				local color = upgrade_colors[v]
 				if color ~= nil then
-					output = output.."<img src='Icon_BulletPoint'><font color='"..color.."' size='18'>"..v.."</font>"
+					local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", v):gsub("%[2%]", color)
+					output = output..text
 				else
-					output = output.."<img src='Icon_BulletPoint'><font size='18'>"..v.."</font>"
+					output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", v)
 				end
 				if i < count - 1 then
 					output = output.."<br>"
@@ -129,9 +133,9 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 					for k,tbl in pairs(cpNames) do
 						if cp >= tbl.Min and cp <= tbl.Max then
 							if data.isDuplicant ~= true then
-								output = output .. string.gsub(dropText, "[1]", tbl.Text.Value)
+								output = output .. string.gsub(dropText.Value, "%[1%]", tbl.Text.Value)
 							else
-								output = output .. string.gsub(shadowDropText, "[1]", tbl.Text.Value)
+								output = output .. string.gsub(shadowDropText.Value, "%[1%]", tbl.Text.Value)
 							end
 						end
 					end
@@ -154,6 +158,8 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_ChallengePoints"] = StatDescription_ChallengePoints
 
+local counterParamText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#D416FF'>[1]%</font>")
+
 local function StatDescription_Counter(character, param, statusSource)
 	--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
 	--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
@@ -162,7 +168,7 @@ local function StatDescription_Counter(character, param, statusSource)
 	local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
 	--Ext.Print("Chance: " .. tostring(chance))
 	--local chance = (math.log(initiative/COUNTER_MIN) / math.log(COUNTER_MAX/COUNTER_MIN)) * COUNTER_MAX
-	return "<font color='#D416FF'>" .. tostring(math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance)) .. "%</font>"
+	return string.gsub(counterParamText.Value, "%[1%]", tostring(math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance)))
 end
 
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
