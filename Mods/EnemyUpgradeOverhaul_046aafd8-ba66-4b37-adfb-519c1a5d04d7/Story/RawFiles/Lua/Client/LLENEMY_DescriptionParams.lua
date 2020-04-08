@@ -47,6 +47,8 @@ local upgrade_colors = {
 	["Farsight"] = "#88A25B",
 }
 
+local TranslatedString = LeaderLib.Classes["TranslatedString"]
+
 local function sortupgrades(a,b)
 	return a:upper() < b:upper()
 end
@@ -103,12 +105,15 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescri
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
+local dropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#078FC8' size='16'>Will drop [1] on death.</font>")
+local shadowDropText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ([1]) on death.</font>")
+
 local cpNames = {
-	{Min = 1, Max = 10, Text = "<font color='#FFFFFF' size='12'>Regular Bonus Loot</font>"},
-	{Min = 11, Max = 16, Text = "<font color='#4197E2' size='14'>Good Loot</font>"},
-	{Min = 17, Max = 31, Text = "<font color='#F7BA14' size='16'>Great Loot</font>"},
-	{Min = 32, Max = 99, Text = "<font color='#B823CB' size='18'>Insane Loot</font>"},
-	{Min = 100, Max = 999, Text = "<font color='#FF00CC' size='18'>Impossibly Amazing Loot</font>"},
+	{Min = 1, Max = 10, Text = TranslatedString:Create("h5addfbc4gcac7g4935g8effg8096574b8913", "<font color='#FFFFFF' size='12'>Regular Bonus Loot</font>")},
+	{Min = 11, Max = 16, Text = TranslatedString:Create("h8a442345g8c3ag4161g8f45gd93745f99d3e", "<font color='#4197E2' size='14'>Good Loot</font>")},
+	{Min = 17, Max = 31, Text = TranslatedString:Create("hf03d120ag2329g476dg94dcg7df0d27c3e1e", "<font color='#F7BA14' size='16'>Great Loot</font>")},
+	{Min = 32, Max = 99, Text = TranslatedString:Create("h8886e1f1gb725g4e9fg8f5bg4ab1f7262f48", "<font color='#B823CB' size='18'>Insane Loot</font>")},
+	{Min = 100, Max = 999, Text = TranslatedString:Create("h99aba0bag7acbg4deagb9f3g0c52b807ce09", "<font color='#FF00CC' size='18'>Impossibly Amazing Loot</font>")},
 }
 
 local function StatDescription_ChallengePoints(character, param, statusSource)
@@ -120,24 +125,15 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 			if data.cp ~= nil then
 				local cp = math.tointeger(data.cp)
 				if cp ~= nil and cp > 0 then
-					output = "<br><img src='Icon_Line' width='350%'><br>" --<font face='Copperplate Gothic Light'>
-					--output = output .. "<img src='Icon_BulletPoint'>"
-					if data.isDuplicant ~= true then
-						output = output .. "<font color='#078FC8' size='16'>Will drop "
-					else
-						output = output .. "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ("
-					end
-					
+					output = "<br><img src='Icon_Line' width='350%'><br>"
 					for k,tbl in pairs(cpNames) do
 						if cp >= tbl.Min and cp <= tbl.Max then
-							output = output .. "<textformat leftmargin='1' rightmargin='1'>" .. tbl.Text .. "</textformat>"
+							if data.isDuplicant ~= true then
+								output = output .. string.gsub(dropText, "[1]", tbl.Text.Value)
+							else
+								output = output .. string.gsub(shadowDropText, "[1]", tbl.Text.Value)
+							end
 						end
-					end
-					
-					if data.isDuplicant ~= true then
-						output = output .. " on death.</font>"
-					else
-						output = output .. ") on death.</font>"
 					end
 				end
 			end

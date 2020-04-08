@@ -171,8 +171,6 @@ local ShadowItemNames = {
 	"Yigaagnu",
 }
 
-local ShadowItemDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
-
 local nameColors = {
 	"#2E0854",
 	"#4B0082",
@@ -199,6 +197,11 @@ local nameColors = {
 	"#BF3EFF",
 	"#BF5FFF",
 }
+
+local TranslatedString = LeaderLib.Classes["TranslatedString"]
+
+local ShadowItemFallbackDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
+local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083gb11964394dc4", ShadowItemFallbackDescription)
 
 local BOOSTS = {
 	Weapon = {
@@ -243,7 +246,7 @@ local function SetRandomShadowName(item)
 	if Ext.IsDeveloperMode() then
 		LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
 	end
-	NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription)
+	NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription.Value)
 end
 
 local function GetClone(item,stat,statType)

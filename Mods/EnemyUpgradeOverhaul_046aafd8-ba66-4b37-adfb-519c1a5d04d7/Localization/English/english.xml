@@ -1,9 +1,11 @@
 <contentList>
+	<content contentuid="h9729fa03g8b20g4eccgbde7gc08c1d8d8e73" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A">A sack of loot that was previously carried by a Treasure Goblin.</content>
+	<content contentuid="h9f11e267gfe5bg41c6gad9ag7315b3f9e57b" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A">Treasure Goblin&apos;s Hoard</content>
+	<content contentuid="h8311eb63g89cfg41c1g961cgde31f8d79927" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A"></content>
 	<content contentuid="h9bcf1767g7b81g4ae1gbf20ge19a6b4454ef" Source="CONT_LLENEMY_DuplicantTreasure">Shadow Treasure</content>
 	<content contentuid="ha3ccca0bg576dg4a64gb2edg8819d8f2cdc0" Source="LLENEMY_Animals_Chicken_BattleChicken_A">Chicken Infantry</content>
 	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>
 	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
-	<content contentuid="h8311eb63g89cfg41c1g961cgde31f8d79927" Source="LLENEMY_Creatures_Elemental_A_Ooze_Flesh"></content>
 	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
 	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9" Source="LLENEMY_Creatures_Voidwoken_Drillworm_A">Evolved Voidling</content>
 	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Menu_GameSettings.lsj">Settings updated.</content>
@@ -271,5 +273,13 @@
 	<content contentuid="h84c27debgd38dg4844g84d4g75eb558eb5de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_DisplayName">Upgraded</content>
 	<content contentuid="h1624d634gdfdcg4129g9624g9efe5660220b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_Description">Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.</content>
 	<content contentuid="h398b5931gfa52g4a26gadb9gf94bbb7d35e2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_DisplayName">Void Empowered</content>
+	<content contentuid="h5addfbc4gcac7g4935g8effg8096574b8913" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot01">&lt;font color=&apos;#FFFFFF&apos; size=&apos;12&apos;&gt;Regular Bonus Loot&lt;/font&gt;</content>
+	<content contentuid="h8a442345g8c3ag4161g8f45gd93745f99d3e" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot02">&lt;font color=&apos;#4197E2&apos; size=&apos;14&apos;&gt;Good Loot&lt;/font&gt;</content>
+	<content contentuid="hf03d120ag2329g476dg94dcg7df0d27c3e1e" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot03">&lt;font color=&apos;#F7BA14&apos; size=&apos;16&apos;&gt;Great Loot&lt;/font&gt;</content>
+	<content contentuid="h8886e1f1gb725g4e9fg8f5bg4ab1f7262f48" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot04">&lt;font color=&apos;#B823CB&apos; size=&apos;18&apos;&gt;Insane Loot&lt;/font&gt;</content>
+	<content contentuid="h99aba0bag7acbg4deagb9f3g0c52b807ce09" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot05">&lt;font color=&apos;#FF00CC&apos; size=&apos;18&apos;&gt;Impossibly Amazing Loot&lt;/font&gt;</content>
+	<content contentuid="h179efab0g7e6cg441ag8083gb11964394dc4" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ShadowItemDescriptionA">A &lt;i&gt;strange&lt;/i&gt; item retrieved from a &lt;font color=&apos;#9B30FF&apos; face=&apos;Copperplate Gothic Bold&apos;&gt;Shadow Orb&lt;/font&gt;.&lt;br&gt;&lt;font color=&apos;#BDA0CB&apos;&gt;Cold to the touch, when this item is held, your grip on reality may begin to slip.&lt;/font&gt;</content>
+	<content contentuid="h623a7ed0gaaacg4c3egacdfg56f3c23a1dec" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_DropText">&lt;font color=&apos;#078FC8&apos; size=&apos;16&apos;&gt;Will drop &lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt; on death.&lt;/font&gt;</content>
+	<content contentuid="h662390f7gfd9eg4a56g95e5g658283cc548a" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_ShadowDropText">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Grants Treasure of the Shadow Realm (&lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt;) on death.&lt;/font&gt;</content>
 	<content contentuid="h86cfb164g8505g4e4fg89degcb3c24372f3c" Source="LLENEMY_TreasureGoblin_A">Treasure Goblin</content>
 </contentList>
