@@ -61,17 +61,6 @@ SetVarInteger(_AtusaBoss, "LLENEMY_ChallengePoints", 8);
 CharacterSetCustomName(_AtusaBoss, _Name);
 TeleportTo(_AtusaBoss, CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, "", 1, 1, 0);
 */
-
-IF
-RegionEnded("FJ_FortJoy_Main")
-THEN
-GoalCompleted;
-
-PROC
-LLENEMY_HardMode_DisableScripts()
-THEN
-GoalCompleted;
-
 EXITSECTION
 
 ENDEXITSECTION

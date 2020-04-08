@@ -1,30 +1,49 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+LLENEMY_HardMode_Origins_InitScripts();
+LLENEMY_HardMode_Origins_EnableScriptsForCurrentLevel();
 KBSECTION
-IF
-RegionStarted("TUT_Tutorial_A")
-THEN
-SysActivateGoal("LLENEMY_31_Origins_HM_Tutorial");
 
-IF
-RegionStarted("FJ_FortJoy_Main")
-THEN
-SysActivateGoal("LLENEMY_31_Origins_HM_FortJoy");
-
+//REGION SCRIPT_SETTINGS
 PROC
-LLENEMY_HardMode_SetupNPC((CHARACTERGUID)_Char, (STRING)_Region, (INTEGER)_Immortal)
-THEN
-LeaderLib_Helper_MakeHostileToPlayers(_Char);
-SetVarInteger(_Char, "FleeFromDangerousSurface", 0);
-
-PROC
-LLENEMY_HardMode_SetupNPC((CHARACTERGUID)_Char, (STRING)_Region, 1)
+LLENEMY_HardMode_Origins_InitScripts()
 AND
-CharacterIsInCombat(_Char, 0)
+NOT DB_LLENEMY_HardMode_Origins_Scripts(_,_)
 THEN
-ProcSetInvulnerable(_Char, 1);
-CharacterSetImmortal(_Char, 1);
+DB_LLENEMY_HardMode_Origins_Scripts("TUT_Tutorial_A", "LLENEMY_31_Origins_HM_Tutorial");
+DB_LLENEMY_HardMode_Origins_Scripts("FJ_FortJoy_Main", "LLENEMY_31_Origins_HM_FortJoy");
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+THEN
+LLENEMY_HardMode_Origins_InitScripts();
+//END_REGION
+
+PROC
+LLENEMY_HardMode_Origins_EnableScriptsForCurrentLevel()
+AND
+DB_CurrentLevel(_Region)
+AND
+DB_LLENEMY_HardMode_Origins_Scripts(_Region, _Script)
+THEN
+SysActivateGoal(_Script);
+
+//REGION LEVEL_EVENTS
+IF
+RegionStarted(_Region)
+AND
+DB_LLENEMY_HardMode_Origins_Scripts(_Region, _Script)
+THEN
+SysActivateGoal(_Script);
+
+IF
+RegionEnded(_Region)
+AND
+DB_LLENEMY_HardMode_Origins_Scripts(_Region, _Script)
+THEN
+SysCompleteGoal(_Script);
+//END_REGION
 
 EXITSECTION
 LLENEMY_HardMode_DisableScripts();

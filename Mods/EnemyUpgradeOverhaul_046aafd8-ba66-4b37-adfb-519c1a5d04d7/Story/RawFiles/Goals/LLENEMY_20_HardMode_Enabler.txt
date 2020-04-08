@@ -50,10 +50,30 @@ SysCompleteGoal("LLENEMY_30_Origins_HardMode");
 
 PROC
 LLENEMY_HardMode_DisableScripts()
+AND
+DB_LLENEMY_HardMode_Origins_Scripts(_Region, _Script)
+AND
+SysIsActive(_Script)
 THEN
-DB_NOOP(1);
+SysCompleteGoal(_Script);
 //END_REGION
 
+//REGION NPC_SETUP
+
+PROC
+LLENEMY_HardMode_SetupNPC((CHARACTERGUID)_Char, (STRING)_Region, (INTEGER)_Immortal)
+THEN
+LeaderLib_Helper_MakeHostileToPlayers(_Char);
+SetVarInteger(_Char, "FleeFromDangerousSurface", 0);
+
+PROC
+LLENEMY_HardMode_SetupNPC((CHARACTERGUID)_Char, (STRING)_Region, 1)
+AND
+CharacterIsInCombat(_Char, 0)
+THEN
+ProcSetInvulnerable(_Char, 1);
+CharacterSetImmortal(_Char, 1);
+//END_REGION
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

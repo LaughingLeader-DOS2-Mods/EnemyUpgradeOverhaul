@@ -66,12 +66,24 @@ THEN
 ProcSetInvulnerable(_Char, 0);
 CharacterSetImmortal(_Char, 0);
 //SetFaction(_Char, "Evil NPC");
+LeaderLib_Helper_MakeHostileToPlayers(_Char);
 ApplyStatus(_Char, "ETHEREAL_SOLES", 48.0, 1, _Char);
 
 PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal")
 AND
 CharacterIsInCombat(_Char, 0)
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_S_TUT_StrikingTentacle_Trigger1_61d8d246-d5c0-4a26-b9fa-a12e3807ae40, _x, _y, _z)
+THEN
+ProcCharacterMoveToPosition(_Char, _x, _y, _z, 1, "LLENEMY_TopDeckMagister_Arrived");
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal")
+AND
+CharacterIsInCombat(_Char, 0)
+AND
+NOT DB_StoryMoving(_Char,1)
 THEN
 ProcCharacterMoveTo(_Char, TRIGGERGUID_S_TUT_StrikingTentacle_Trigger1_61d8d246-d5c0-4a26-b9fa-a12e3807ae40, 0, "LLENEMY_TopDeckMagister_Arrived");
 
@@ -165,18 +177,8 @@ AND
 CharacterIsPlayer(_Player, 1)
 THEN
 DB_CustomUseItemResponse(_Player, BLD_Ship_Exterior_Hatch_A_000_14ed9516-7dc8-4605-bb61-67ac109eca25, 0);
-//Proc_StartDialog(1, "LLENEMY_AD_Tut_DeckHatchJammed", _Player);
+Proc_StartDialog(1, "CMB_AD_PC_Locked", _Player);
 //END_REGION
-
-IF
-RegionEnded("TUT_Tutorial_A")
-THEN
-GoalCompleted;
-
-PROC
-LLENEMY_HardMode_DisableScripts()
-THEN
-GoalCompleted;
 
 EXITSECTION
 SysClear("DB_LLENEMY_TUT_Temp_ReplacementMagister", 2);
