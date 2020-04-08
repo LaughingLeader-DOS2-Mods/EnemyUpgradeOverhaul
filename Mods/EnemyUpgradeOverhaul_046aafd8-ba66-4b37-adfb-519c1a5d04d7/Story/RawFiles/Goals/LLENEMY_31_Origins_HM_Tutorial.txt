@@ -65,7 +65,7 @@ ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeck
 THEN
 ProcSetInvulnerable(_Char, 0);
 CharacterSetImmortal(_Char, 0);
-SetFaction(_Char, "Evil NPC");
+//SetFaction(_Char, "Evil NPC");
 ApplyStatus(_Char, "ETHEREAL_SOLES", 48.0, 1, _Char);
 
 PROC
@@ -152,10 +152,10 @@ StoryEvent((CHARACTERGUID)_Replacement, "LLENEMY_TopLivingMagister_StoodUp")
 THEN
 CharacterSetImmortal(_Replacement, 0);
 SetCanJoinCombat(_Replacement, 1);
-SetFaction(_Replacement, "Evil NPC");
+//SetFaction(_Replacement, "Evil NPC");
 ProcSetInvulnerable(_Replacement, 0);
 CharacterSetImmortal(_Replacement, 0);
-//LeaderLib_Helper_MakeHostileToPlayers(_Replacement);
+LeaderLib_Helper_MakeHostileToPlayers(_Replacement);
 //END_REGION
 
 //REGION BLOCK_HATCH
