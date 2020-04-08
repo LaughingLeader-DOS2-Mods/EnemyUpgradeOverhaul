@@ -126,6 +126,13 @@ local indexMap_DB_LLENEMY_Upgrades_Statuses = {
 	"CP"
 }
 
+function LLENEMY_Ext_Debug_TraceItemOwnership(item)
+	local inventoryOwner = GetInventoryOwner(item)
+	local inventoryOwnerOwner = GetInventoryOwner(inventoryOwner)
+	local goblinOwner = ItemGetOwner(item)
+	Ext.Print("[LLENEMY_Ext_Debug_TraceItemOwnership] item("..tostring(item)..") inventoryOwner("..tostring(inventoryOwner)..") inventoryOwnerOwner("..tostring(inventoryOwnerOwner)..") goblinOwner("..tostring(goblinOwner)..")")
+end
+
 function LLENEMY_Ext_DumpUpgradeTables()
 --SysLog("DB_LLENEMY_Upgrades_TypeRollValues", 4);
 --SysLog("DB_LLENEMY_Upgrades_Statuses", 7);
@@ -212,6 +219,62 @@ end
 
 if Ext.IsDeveloperMode() then
 	Ext.RegisterListener("SessionLoading", LLENEMY_SessionLoading)
+end
+
+function LLENEMY_Ext_Debug_PrintFlags(obj)
+	local stat = nil
+	if ObjectIsItem(obj) == 1 then
+		stat = NRD_ItemGetStatsId(v)
+	elseif ObjectIsCharacter(obj) then
+		stat = NRD_CharacterGetStatString(obj)
+	end
+	Ext.Print("[LLENEMY_Ext_Debug_PrintFlags] Object ("..tostring(stat)..")["..tostring(obj).."] Flags:")
+	Ext.Print("==========================")
+	for i=0,72,1 do
+		local flagVal = NRD_ObjectGetInternalFlag(v,i)
+		Ext.Print("["..tostring(i).."] = "..tostring(flagVal))
+	end
+	Ext.Print("==========================")
+end
+
+
+local ItemProperties = {
+	"MyGuid",
+	"WorldPos",
+	"CurrentLevel",
+	"Scale",
+	"CurrentTemplate",
+	"CustomDisplayName",
+	"CustomDescription",
+	"CustomBookContent",
+	"StatsId",
+	"InventoryHandle",
+	"ParentInventoryHandle",
+	"Slot",
+	"Amount",
+	"Vitality",
+	"Armor",
+	"InUseByCharacterHandle",
+	"Key",
+	"LockLevel",
+	"ComputedVitality",
+	"ItemType",
+	"GoldValueOverwrite",
+	"WeightValueOverwrite",
+	"TreasureLevel",
+	"LevelOverride",
+	"ForceSynch",
+}
+
+function LLENEMY_Ext_Debug_PrintItemProperties(obj)
+	local item = Ext.GetItem(obj)
+	local stat = NRD_ItemGetStatsId(obj)
+	Ext.Print("[LLENEMY_Ext_Debug_PrintItemProperties] Object ("..tostring(stat)..")["..tostring(obj).."] Properties:")
+	Ext.Print("==========================")
+	for i,prop in pairs(ItemProperties) do
+		Ext.Print("["..tostring(prop).."] = "..tostring(item[prop]))
+	end
+	Ext.Print("==========================")
 end
 
 BuiltinColorCodes = {
