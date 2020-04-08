@@ -1,6 +1,7 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+
 KBSECTION
 //REGION SPAWNING
 IF
@@ -104,6 +105,11 @@ LLENEMY_TreasureGoblins_Internal_Spawn(_x, _y, _z);
 
 PROC
 LLENEMY_TreasureGoblins_Internal_Spawn((REAL)_x, (REAL)_y, (REAL)_z)
+THEN
+LLENEMY_TreasureGoblins_Internal_Spawn(_x, _y, _z, -1);
+
+PROC
+LLENEMY_TreasureGoblins_Internal_Spawn((REAL)_x, (REAL)_y, (REAL)_z, (INTEGER)_CombatID)
 AND
 LeaderLib_Helper_QRY_GetHighestPlayerLevel()
 AND
@@ -115,12 +121,30 @@ NOT DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level);
 CharacterLevelUpTo(_Goblin, _Level);
 DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin);
 LeaderLib_Helper_MakeHostileToPlayers(_Goblin);
+LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned(_Goblin, _CombatID);
 LLENEMY_Rewards_TreasureGoblin_ToggleScript(1);
+
+PROC
+LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned((CHARACTERGUID)_Goblin, (INTEGER)_CombatID)
+AND
+CharacterIsInCombat(_Goblin, 0)
+AND
+_CombatID > -1
+AND
+DB_CombatCharacters(_Player, _CombatID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInCombat(_Goblin, 0)
+THEN
+EnterCombat(_Goblin, _Player);
 //END_REGION
 
 //REGION TREASURE_DROPPING
 PROC
 LeaderLib_Variables_OnVariableIntChanged((GUIDSTRING)_Goblin, "LLENEMY_TreasureGoblin_TotalHits", (INTEGER)_LastValue, (INTEGER)_CurrentValue)
+AND
+NOT GetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_Defeated", 1)
 AND
 _CurrentValue > _LastValue
 THEN
@@ -129,6 +153,8 @@ LeaderLib_Timers_StartObjectTimer(_Goblin, 250, "Timers_LLENEMY_TreasureGoblins_
 IF
 StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_SpawnLoot")
 AND
+NOT GetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_Defeated", 1)
+AND
 CharacterGetLevel(_Goblin, _Level)
 AND
 GetPosition(_Goblin, _x, _y, _z)
@@ -136,24 +162,70 @@ THEN
 LLENEMY_TreasureGoblins_SpawnLoot(_Goblin, _x, _y, _z, _Level);
 
 PROC
-LLENEMY_TreasureGoblins_SpawnLoot((CHARACTERGUID)_Source, (REAL)_x, (REAL)_y, (REAL)_z, (INTEGER)_Level)
+LLENEMY_TreasureGoblins_SpawnLoot((CHARACTERGUID)_Goblin, (REAL)_x, (REAL)_y, (REAL)_z, (INTEGER)_Level)
 AND
-CreateItemTemplateAtPosition("LOOT_LeaderLib_BackPack_Invisible_98fa7688-0810-4113-ba94-9a8c8463f830", _x, _y, _z, _Bag)
+GetUUID(_Goblin, _UUID)
 THEN
-//LeaderLog_LogInt("DEBUG", "[LLENEMY_08_TreasureGoblins:SpawnLoot] Spawning loot at Goblin position at level ", _Level, "");
-GenerateTreasure(_Bag, "LLENEMY_TreasureGoblin_A", _Level, _Source);
-ContainerIdentifyAll(_Bag);
-InventoryLaunchIterator(_Bag, "LLENEMY_TreasureGoblins_TreasureFound", "");
-LeaderLib_Timers_StartObjectTimer(_Bag, 250, "Timers_LeaderLib_Commands_RemoveItem", "LeaderLib_Commands_RemoveItem");
+LeaderLog_LogInt("DEBUG", "[LLENEMY_08_TreasureGoblins:SpawnLoot] Spawning loot at level ", _Level, "");
+//GenerateTreasure(_Bag, "LLENEMY_TreasureGoblin_A", _Level, _Host);
+CharacterGiveReward(_Goblin, "LLENEMY_TreasureGoblin_A", 1);
+// [BEGIN_NO_OSITOOLS]
+InventoryLaunchIterator(_Goblin, "LLENEMY_TreasureGoblins_TreasureFound", "");
+// [END_NO_OSITOOLS]
+/* [OSITOOLS_ONLY]
+NRD_LuaCall("LLENEMY_Ext_ScatterInventory", _UUID);
+*/
 
 IF
 StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
 AND
-GetInventoryOwner(_Item, _Bag)
-AND
-GetPosition(_Bag, _x, _y, _z)
+String(_Item, _ItemStr)
 THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] Found item: ", _ItemStr);
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
+AND
+GetInventoryOwner(_Item, (CHARACTERGUID)_Goblin)
+AND
+NOT LeaderLib_Helper_QRY_ItemIsEquipped(_Goblin, _Item)
+AND
+GetPosition(_Goblin, _x, _y, _z)
+AND
+String(_Item, _ItemStr)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] Scatter item at goblin position ", _ItemStr);
+ItemDrop(_Item);
 ItemScatterAt(_Item, _x, _y, _z);
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
+AND
+NOT GetInventoryOwner(_Item, _)
+AND
+String(_Item, _ItemStr)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] No inventory owner for item: ", _ItemStr);
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
+AND
+GetInventoryOwner(_Item, _Goblin)
+AND
+NOT GetPosition(_Goblin, _, _, _)
+AND
+String(_Item, _ItemStr)
+AND
+String(_Goblin, _GoblinStr)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] Get position failed for goblin owner ", _GoblinStr, " with item ", _ItemStr);
+
+/* [OSITOOLS_ONLY]
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
+THEN
+NRD_LuaCall("LLENEMY_Ext_Debug_TraceItemOwnership", (STRING)_Item);
+*/
 
 IF
 StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
@@ -170,6 +242,7 @@ PlayEffect(_Item, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
 //END_REGION
 
 //REGION DEFEATED
+// [BEGIN_NO_OSITOOLS]
 IF
 StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Defeated")
 AND
@@ -186,35 +259,44 @@ AND
 GetPosition(_Goblin, _x, _y, _z)
 AND
 CharacterGetLevel(_Goblin, _Level)
-THEN
-DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _x, _y, _z, _Level, _RemainingHits);
-LeaderLog_LogInt("DEBUG", "[LLENEMY_08_TreasureGoblins:Defeated] Goblin was defeated. Dumping loot for ", _RemainingHits, " hits.");
-ProcObjectTimer(_Goblin, "Timers_LLENEMY_TreasureGoblins_SpawnDefeatedLoot", 25);
-
-PROC
-ProcObjectTimerFinished((CHARACTERGUID)_Goblin, "Timers_LLENEMY_TreasureGoblins_SpawnDefeatedLoot")
 AND
-DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _x, _y, _z, _Level, _TotalHits)
+CreateItemTemplateAtPosition("CONT_LLENEMY_Bag_TreasureGoblinSack_A_2b7888b9-833c-4443-b4b5-cc372b95b459", _x, _y, _z, _Bag)
+THEN
+DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _RemainingHits);
+PlayEffect(_Bag,"RS3_FX_Skills_Void_Netherswap_Reappear_01");
+LeaderLog_LogInt("DEBUG", "[LLENEMY_08_TreasureGoblins:Defeated] Goblin was defeated. Dumping loot for ", _RemainingHits, " hits.");
+LeaderLib_Timers_StartObjectTimer(_Goblin, 25, "Timers_LLENEMY_TreasureGoblins_SpawnDefeatedLoot", "LLENEMY_TreasureGoblins_SpawnDefeatedLoot");
+
+IF
+StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_SpawnDefeatedLoot")
+AND
+DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _TotalHits)
 AND
 _TotalHits > 0
 AND
 IntegerSubtract(_TotalHits, 1, _Next)
-AND
-CharacterGetHostCharacter(_Host)
 THEN
-NOT DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _x, _y, _z, _Level, _TotalHits);
-DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _x, _y, _z, _Level, _Next);
-LLENEMY_TreasureGoblins_SpawnLoot(_Host, _x, _y, _z, _Level);
-ProcObjectTimer(_Goblin, "Timers_LLENEMY_TreasureGoblins_SpawnDefeatedLoot", 25);
+NOT DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _TotalHits);
+DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _Next);
+GenerateTreasure(_Bag, "LLENEMY_TreasureGoblin_A", _Level, _Goblin);
+LeaderLib_Timers_StartObjectTimer(_Goblin, 25, "Timers_LLENEMY_TreasureGoblins_SpawnDefeatedLoot", "LLENEMY_TreasureGoblins_SpawnDefeatedLoot");
 
-PROC
-ProcObjectTimerFinished((CHARACTERGUID)_Goblin, "Timers_LLENEMY_TreasureGoblins_SpawnDefeatedLoot")
+IF
+StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_SpawnDefeatedLoot")
 AND
-DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _x, _y, _z, _Level, _TotalHits)
+DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _TotalHits)
 AND
 _TotalHits <= 0
 THEN
-NOT DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _x, _y, _z, _Level, _TotalHits);
+NOT DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _TotalHits);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+IF
+StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Defeated")
+THEN
+NRD_LuaCall("LLENEMY_Ext_TreasureGoblinDefeated", (STRING)_Goblin);
+*/
 //END_REGION
 
 //REGION TOGGLING_SCRIPT
@@ -233,5 +315,6 @@ THEN
 LeaderLib_ToggleScripts_DisableScript("LLENEMY_TreasureGoblin_Active", "EnemyUpgradeOverhaul");
 //END_REGION
 EXITSECTION
+
 ENDEXITSECTION
 ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
