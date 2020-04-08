@@ -11,7 +11,7 @@ AND
 DB_CurrentLevel("TestLevel_LL_LeaderLib")
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY_91_Debug_Active:LeaderLib_Initialized] LeaderLib_Initialized fired.");
-LLENEMY_TreasureGoblins_Internal_Spawn(12.0, 0.0, 18.0);
+LLENEMY_TreasureGoblins_Internal_Spawn(10.412, 0.0, 25.64);
 ApplyStatus(CHARACTERGUID_Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d, "LLENEMY_SEEKER", -1.0, 1, CHARACTERGUID_Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d);
 //DB_LLENEMY_TreasureGoblins_Temp_Active(CHARACTERGUID_LLENEMY_TreasureGoblin_A_001_150948ae-d736-4b10-a07d-a1b440bf8fa3);
 //LeaderLib_ToggleScripts_EnableScript("LLENEMY_TreasureGoblins_Active", "EnemyUpgradeOverhaul");
@@ -22,8 +22,6 @@ LeaderLib_Variables_OnVariableIntChanged((GUIDSTRING)_Goblin, "LLENEMY_TreasureG
 THEN
 LeaderLog_LogInt("DEBUG", "[LLENEMY_91_Debug_Active:OnVariableIntChanged(LLENEMY_TreasureGoblins_TotalHits)] ", _LastValue, " => ", _CurrentValue, "");
 //END_REGION
-
-
 
 IF
 CharacterUsedSkillAtPosition(_Worm, _X, _Y, _Z, "Jump_EnemyDrillwormBurrow", _, _)
