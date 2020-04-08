@@ -228,7 +228,7 @@ local function AddRandomBoosts(item,stat,statType,level)
 		if deltaMod ~= nil then
 			NRD_ItemCloneAddBoost("DeltaMod", deltaMod)
 			if Ext.IsDeveloperMode() then
-				Ext.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:AddRandomBoosts] Adding deltamod ("..deltaMod..") to item ["..item.."]("..stat..") at level ("..tostring(level)..")")
+				LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:AddRandomBoosts] Adding deltamod ("..deltaMod..") to item ["..item.."]("..stat..") at level ("..tostring(level)..")")
 			end
 		end
 	end
@@ -241,7 +241,7 @@ local function SetRandomShadowName(item)
 	name = string.format("<font color='%s'>%s</font>", color, name)
 	NRD_ItemCloneSetString("CustomDisplayName", name)
 	if Ext.IsDeveloperMode() then
-		Ext.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
+		LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
 	end
 	NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription)
 end
@@ -318,3 +318,55 @@ local function LLENEMY_ShadowCorruptItemFunc(item)
 	LLENEMY_Ext_ShadowCorruptItem(item)
 end
 Ext.NewCall(LLENEMY_ShadowCorruptItemFunc, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
+
+function LLENEMY_Ext_ScatterInventory(char)
+	if Ext.Version() >= 43 then
+		local x,y,z = GetPosition(char)
+		local inventory = Ext.GetCharacter(char):GetInventoryItems()
+		for k,v in pairs(inventory) do
+			--LLENEMY_Ext_Debug_PrintItemProperties(v)
+			--LLENEMY_Ext_Debug_PrintFlags(v)
+			--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
+			local item = Ext.GetItem(v)
+			local stat = item.StatsId
+			local equipped = item.Slot <= 13
+			-- Stats that start with an underscore aren't meant for players
+			if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
+				ItemScatterAt(v, x,y,z)
+				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."]")
+			else
+				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Item ("..tostring(stat)..")["..v.."] is equipped ("..tostring(equipped)..") or an NPC item. Skipping.")
+			end
+		end
+	else
+		InventoryLaunchIterator(char, "LLENEMY_TreasureGoblins_TreasureFound", "");
+	end
+end
+
+function LLENEMY_Ext_TreasureGoblinDefeated(goblin)
+	local current = GetVarInteger(goblin, "LLENEMY_TreasureGoblin_TotalHits")
+	local max = GetVarInteger(goblin, "LLENEMY_TreasureGoblin_MaxTotalHits")
+	if current < max then
+		local x,y,z = GetPosition(goblin)
+		local lootSack = CreateItemTemplateAtPosition("CONT_LLENEMY_Bag_TreasureGoblinSack_A_2b7888b9-833c-4443-b4b5-cc372b95b459", x, y, z)
+		PlayEffect(lootSack,"RS3_FX_Skills_Void_Netherswap_Reappear_01")
+		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:TreasureGoblinDefeated] Dropping remaining items ("..tostring(current).."/"..tostring(max)..") for goblin ("..tostring(goblin)..")")
+		for i=current,max,1 do
+			CharacterGiveReward(goblin, "LLENEMY_TreasureGoblin_A", 1)
+		end
+		local inventory = Ext.GetCharacter(goblin):GetInventoryItems()
+		for k,v in pairs(inventory) do
+			--LLENEMY_Ext_Debug_PrintItemProperties(v)
+			--LLENEMY_Ext_Debug_PrintFlags(v)
+			--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
+			local item = Ext.GetItem(v)
+			local stat = item.StatsId
+			local equipped = item.Slot <= 13
+			-- Stats that start with an underscore aren't meant for players
+			if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
+				ItemToInventory(v,lootSack,item.Amount,0,1)
+				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:TreasureGoblinDefeated] Added item ("..tostring(stat)..")["..v.."] to loot sack.")
+			end
+		end
+	end
+end
