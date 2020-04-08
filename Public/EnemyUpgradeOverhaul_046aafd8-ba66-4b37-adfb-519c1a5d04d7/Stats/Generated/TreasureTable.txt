@@ -153,5 +153,14 @@ object category "T_RewardMedium",6,0,0,0,0,0,0,0
 object category "T_OnlyGold",6,0,0,0,0,0,0,0
 object category "T_ST_Neo_Gear_Normal",6,0,0,0,0,0,0,0
 object category "T_ST_Neo_Gear_Normal_Uncommon",4,0,0,0,0,0,0,0
-object category "T_ST_Legendary_2",1,0,0,0,0,0,0,0
 object category "Rune",4,0,0,0,0,0,0,0
+object category "T_ST_Legendary_2",1,0,0,0,0,0,0,0
+object category "T_ST_Legendary_3_Group_17",1,0,0,0,0,0,0,0
+new subtable "0,6;1,2"
+object category "T_ST_WeaponMagic",1,0,0,0,0,0,0,0
+object category "T_ST_ArmorMagic",1,0,0,0,0,0,0,0
+object category "T_ST_RingAmuletBeltMagic",1,0,0,0,0,0,0,0
+new subtable "0,8;1,2"
+object category "T_ST_WeaponRare",1,0,0,0,0,0,0,0
+object category "T_ST_ArmorRare",1,0,0,0,0,0,0,0
+object category "T_ST_RingAmuletBeltRare",1,0,0,0,0,0,0,0
