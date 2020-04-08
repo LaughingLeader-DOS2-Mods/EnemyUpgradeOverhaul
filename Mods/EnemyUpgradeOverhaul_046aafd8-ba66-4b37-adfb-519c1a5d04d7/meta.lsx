@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <save>
     <header version="2" />
-    <version major="3" minor="6" revision="4" build="1" />
+    <version major="3" minor="6" revision="6" build="0" />
     <region id="Config">
         <node id="root">
             <children>
@@ -12,7 +12,7 @@
                             <attribute id="MD5" value="" type="23" />
                             <attribute id="Name" value="LeaderLib - Definitive Edition" type="22" />
                             <attribute id="UUID" value="7e737d2f-31d2-4751-963f-be6ccc59cd0c" type="22" />
-                            <attribute id="Version" value="318898176" type="4" />
+                            <attribute id="Version" value="369557507" type="4" />
                         </node>
                     </children>
                 </node>
@@ -20,6 +20,8 @@
                     <attribute id="Author" value="LaughingLeader" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
                     <attribute id="Description" value="Upgrades enemies with a wide variety of buffs when they enter combat, and provides bonus treasure depending on the challenge they present." type="30" />
+                    <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
+                    <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="Folder" value="EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />
@@ -32,7 +34,7 @@
                     <attribute id="Tags" value="" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
                     <attribute id="UUID" value="046aafd8-ba66-4b37-adfb-519c1a5d04d7" type="22" />
-                    <attribute id="Version" value="536870915" type="4" />
+                    <attribute id="Version" value="536870916" type="4" />
                     <children>
                         <node id="PublishVersion">
                             <attribute id="Version" value="908857753" type="4" />
