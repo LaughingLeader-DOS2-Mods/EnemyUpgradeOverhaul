@@ -3,7 +3,7 @@ function LLENEMY_Ext_RollForCounterAttack(character,target)
 	local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
 	chance = math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance) * 10
 	local roll = LeaderLib.Common.GetRandom(999)
-	Ext.Print("Counter roll: " .. tostring(roll) .. " / " .. tostring(chance))
+	LeaderLib.Print("Counter roll: " .. tostring(roll) .. " / " .. tostring(chance))
 	if roll >= chance then
 		CharacterAttack(character, target)
 		CharacterStatusText(character, "LLENEMY_StatusText_CounterAttack")
@@ -28,23 +28,23 @@ function LLENEMY_Ext_IncreaseRage(character, damage, handle, source)
 	local add_rage = math.ceil(damage_ratio)
 	Osi.LeaderLib_Variables_DB_ModifyVariableInt(character, "LLENEMY_Rage", add_rage, 100, 0, source);
 	local rage_entry = Osi.DB_LeaderLib_Variables_Integer:Get(character, "LLENEMY_Rage", nil, nil)
-	Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_IncreaseRage] Added ("..tostring(add_rage)..") Rage to ("..tostring(character).."). Total: ("..tostring(rage_entry[1][3])..")")
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_IncreaseRage] Added ("..tostring(add_rage)..") Rage to ("..tostring(character).."). Total: ("..tostring(rage_entry[1][3])..")")
 end
 
 function LLENEMY_Ext_MugTarget_Start(character, target, handle)
 	local hit_type = NRD_StatusGetInt(target, handle, "HitReason")
-	Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Hit type: " .. tostring(hit_type))
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Hit type: " .. tostring(hit_type))
 	if (hit_type == 0 or hit_type == 3) and LeaderLib.Game.HitSucceeded(target, handle, 0) then
-		Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] ("..tostring(character)..") is mugging target: ", target)
+		LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] ("..tostring(character)..") is mugging target: ", target)
 		Osi.LLENEMY_Talents_MugTarget(character, target)
 	else
-		Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Dodged: ",NRD_StatusGetInt(target, handle, "Dodged")," | Missed: ", NRD_StatusGetInt(target, handle, "Missed")," | Blocked: ",NRD_StatusGetInt(target, handle, "Blocked"))
+		LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Dodged: ",NRD_StatusGetInt(target, handle, "Dodged")," | Missed: ", NRD_StatusGetInt(target, handle, "Missed")," | Blocked: ",NRD_StatusGetInt(target, handle, "Blocked"))
 	end
 end
 
 function LLENEMY_Ext_MugTarget_StealGold(character, target)
 	local gold = CharacterGetGold(target)
-	Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_StealGold] Target ("..tostring(target)..") has ("..tostring(gold)..") gold.")
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_StealGold] Target ("..tostring(target)..") has ("..tostring(gold)..") gold.")
 	if gold > 0 then
 		local add_gold = math.tointeger(math.max(math.ceil(gold / 8), 1))
 		local remove_gold = math.tointeger(add_gold * -1)
@@ -59,11 +59,11 @@ end
 
 function LLENEMY_Ext_MugTarget_End(character, target)
 	local items = Osi.DB_LLENEMY_Talents_Temp_MasterThief_Items:Get(target, nil, nil)
-	Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_End] Picking items from:\n",LeaderLib.Common.Dump(items))
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_End] Picking items from:\n",LeaderLib.Common.Dump(items))
 	local item_entry = LeaderLib.Common.GetRandomTableEntry(items)	
 	if item_entry ~= nil then
 		local item = item_entry[3]
-		Ext.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_End] Transfering (",item,") from (",target,") to (",character,").")
+		LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_End] Transfering (",item,") from (",target,") to (",character,").")
 		ItemToInventory(item, character, 1, CharacterIsPlayer(character), 0)
 		Osi.LLENEMY_Talents_OnTargetMugged(character, target, item, 1)
 		LLENEMY_Ext_MugTarget_DisplayText(character, target, item, 1)
@@ -129,9 +129,9 @@ function LLENEMY_Ext_ClearGain(char)
 		if stats ~= nil then
 			local gain = NRD_StatGetInt(stats, "Gain")
 			gain = gain - 1
-			Osi.LeaderLog_Log("DEBUG", "[LLENEMY:Bootstrap.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").");
-			NRD_CharacterSetPermanentBoostInt(char, "Gain", gain);
-			CharacterAddAttribute(char, "Strength", 0);
+			LeaderLib.Print("DEBUG", "[LLENEMY:Bootstrap.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").")
+			NRD_CharacterSetPermanentBoostInt(char, "Gain", gain)
+			CharacterAddAttribute(char, "Strength", 0)
 		end
 	end
 end
