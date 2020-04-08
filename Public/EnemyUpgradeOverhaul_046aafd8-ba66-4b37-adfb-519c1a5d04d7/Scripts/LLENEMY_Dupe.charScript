@@ -11,7 +11,7 @@ VARS
 ON
 	OnCharacterCharacterEvent(_Source, __Me, "LLENEMY_Dupe_ApplyStats")
 ACTIONS
-	CharacterSetStats(__Me, %LLENEMY_Dupe_Stats, 0, 1, 1, _HpCurrent)
+	//CharacterSetStats(__Me, %LLENEMY_Dupe_Stats, 0, 1, 1, _HpCurrent)
 	CharacterApplyStatus(__Me, LLENEMY_DUPLICANT, -1, 0, _Source)
 IF "c1&c2"
 	CharacterGetStat(_HpMax, __Me, VitalityMax)
