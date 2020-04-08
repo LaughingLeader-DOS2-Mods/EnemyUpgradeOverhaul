@@ -22,6 +22,7 @@ local ignored_skills = {
 	ProjectileStrike_EnemyMeteorShower_CombatMeteorScript = true,
 	ProjectileStrike_EnemyMeteorShower_Windego = true,
 	Projectile_ChainHeal_Horrorsleep = true,
+	Projectile_EnemyBeetleDart = true,
 	Projectile_EnemyBeetleDart_Poison = true,
 	Projectile_EnemyBloodSpit_Explo = true,
 	Projectile_EnemyBloodSpit_Heart = true,
