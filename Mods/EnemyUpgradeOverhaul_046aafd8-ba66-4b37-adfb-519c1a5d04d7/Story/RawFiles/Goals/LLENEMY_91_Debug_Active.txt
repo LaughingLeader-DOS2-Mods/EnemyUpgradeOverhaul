@@ -328,6 +328,25 @@ DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, _NextSkill)
 THEN
 NOT DB_MyMod_Skills_Temp_CastSkill(_Char, _Target, _NextSkill);
 //END_REGION
+
+IF
+TextEventSet("llenemy_voicetest")
+AND
+CharacterGetHostCharacter(_Host)
+THEN
+Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", CHARACTERGUID_Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d);
+
+IF
+AutomatedDialogEnded("CMB_AD_Comment_EvilLaugh", _)
+THEN
+LeaderLib_Timers_StartObjectTimer(CHARACTERGUID_Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d, 1500, "Timers_LLENEMY_Debug_VoiceTest", "LLENEMY_Debug_VoiceTest");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Debug_VoiceTest")
+AND
+CharacterGetHostCharacter(_Host)
+THEN
+Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", CHARACTERGUID_Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d);
 EXITSECTION
 
 ENDEXITSECTION

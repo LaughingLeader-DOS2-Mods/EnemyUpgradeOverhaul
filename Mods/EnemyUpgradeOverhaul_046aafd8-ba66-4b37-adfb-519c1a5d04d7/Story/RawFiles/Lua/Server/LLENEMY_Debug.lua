@@ -191,6 +191,7 @@ end
 local function LLENEMY_DebugInit()
 	Ext.Print("[LLENEMY:Debug.lua:LLENEMY_DebugInit] Running debug tests.")
 	local host = CharacterGetHostCharacter()
+	--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
 	local level = GetRegion(host)
 	if level == "TUT_Tutorial_A" then
 		debugCheckEnemies[#debugCheckEnemies+1] = "S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902"
