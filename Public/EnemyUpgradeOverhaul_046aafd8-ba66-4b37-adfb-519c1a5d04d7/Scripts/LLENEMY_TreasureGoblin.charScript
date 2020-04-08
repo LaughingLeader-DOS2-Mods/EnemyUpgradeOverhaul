@@ -4,20 +4,24 @@ INIT
 	INT:%LLENEMY_TreasureGoblin_MaxTotalHits = 8
 	INT:%LLENEMY_TreasureGoblin_Defeated = 0
 	FLOAT3:%LLENEMY_TreasureGoblin_StartPos = null
-	FLOAT:%LLENEMY_TreasureGoblin_MaxFleeDistance = 12.0
+	FLOAT:%LLENEMY_TreasureGoblin_MaxFleeDistance = 16.0
 EVENTS
 
 EVENT LLENEMY_TreasureGoblin_Init
 ON
 	OnInit()
 ACTIONS
+	//CharacterAddToInventory(__Me, "CONT_LLENEMY_TreasureGoblin_Bag", 1, 0)
 	GetPosition(__Me, %LLENEMY_TreasureGoblin_StartPos)
+	Set(%LLENEMY_TreasureGoblin_TotalHits, 0)
 	GetRandomBetween(%LLENEMY_TreasureGoblin_MaxTotalHits, 6, 12)
+	Set(%LLENEMY_TreasureGoblin_Defeated, 0)
 	CharacterApplyStatus(__Me, UNSHEATHED, -1, 1, __Me)
 	CharacterApplyStatus(__Me, LLENEMY_TREASURE_GOBLIN, -1, 1, __Me)
 	CharacterSetFightMode(__Me, 1, 1)
 	CharacterSetCanSpotSneakers(__Me,1)
-	
+	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_OnInit")
+
 EVENT LLENEMY_TreasureGoblin_Shutdown
 ON
 	OnShutdown()
@@ -47,6 +51,7 @@ VARS
 ON
 	OnCharacterVitalityChanged(__Me, _Vit)	
 ACTIONS
+	Output("Total Hits: ([1]/[2]) Vitality([3])", %LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits, _Vit)
 IF "(c1|c2|c3)&c4"
 	IsGreaterThen(%LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits)
 	IsLessThen(_Vit, 0.01)
