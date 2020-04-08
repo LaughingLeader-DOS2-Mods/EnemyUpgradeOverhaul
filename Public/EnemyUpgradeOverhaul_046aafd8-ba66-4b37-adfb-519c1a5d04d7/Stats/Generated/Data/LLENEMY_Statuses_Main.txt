@@ -1459,6 +1459,7 @@ data "StatsId" "Stats_LLENEMY_GatheringPower"
 data "StackId" "Stack_LLENEMY_GatheringPower"
 data "StackPriority" "0"
 data "ForceOverhead" "Yes"
+data "ApplyEffect" "LLENEMY_FX_Status_GatheringPower_Applied_01"
 
 new entry "Stats_LLENEMY_GatheringPower"
 type "Potion"
