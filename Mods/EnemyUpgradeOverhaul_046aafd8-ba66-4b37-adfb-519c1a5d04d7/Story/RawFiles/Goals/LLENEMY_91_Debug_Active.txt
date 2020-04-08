@@ -21,6 +21,44 @@ PROC
 LeaderLib_Variables_OnVariableIntChanged((GUIDSTRING)_Goblin, "LLENEMY_TreasureGoblins_TotalHits", (INTEGER)_LastValue, (INTEGER)_CurrentValue)
 THEN
 LeaderLog_LogInt("DEBUG", "[LLENEMY_91_Debug_Active:OnVariableIntChanged(LLENEMY_TreasureGoblins_TotalHits)] ", _LastValue, " => ", _CurrentValue, "");
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
+AND
+String(_Item, _ItemStr)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] Found item: ", _ItemStr);
+
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
+AND
+NOT GetInventoryOwner(_Item, _)
+AND
+String(_Item, _ItemStr)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] No inventory owner for item: ", _ItemStr);
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
+AND
+GetInventoryOwner(_Item, _Goblin)
+AND
+NOT GetPosition(_Goblin, _, _, _)
+AND
+String(_Item, _ItemStr)
+AND
+String(_Goblin, _GoblinStr)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] Get position failed for goblin owner ", _GoblinStr, " with item ", _ItemStr);
+
+/* [OSITOOLS_ONLY]
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
+THEN
+NRD_LuaCall("LLENEMY_Ext_Debug_TraceItemOwnership", (STRING)_Item);
+*/
+
 //END_REGION
 
 IF

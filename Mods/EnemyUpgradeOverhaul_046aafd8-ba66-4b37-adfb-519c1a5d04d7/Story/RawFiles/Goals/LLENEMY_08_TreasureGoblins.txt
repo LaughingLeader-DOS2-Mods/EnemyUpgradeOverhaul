@@ -179,53 +179,13 @@ NRD_LuaCall("LLENEMY_Ext_ScatterInventory", _UUID);
 IF
 StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
 AND
-String(_Item, _ItemStr)
-THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] Found item: ", _ItemStr);
-
-IF
-StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
-AND
 GetInventoryOwner(_Item, (CHARACTERGUID)_Goblin)
 AND
 NOT LeaderLib_Helper_QRY_ItemIsEquipped(_Goblin, _Item)
 AND
 GetPosition(_Goblin, _x, _y, _z)
-AND
-String(_Item, _ItemStr)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] Scatter item at goblin position ", _ItemStr);
-ItemDrop(_Item);
 ItemScatterAt(_Item, _x, _y, _z);
-
-IF
-StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
-AND
-NOT GetInventoryOwner(_Item, _)
-AND
-String(_Item, _ItemStr)
-THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] No inventory owner for item: ", _ItemStr);
-
-IF
-StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
-AND
-GetInventoryOwner(_Item, _Goblin)
-AND
-NOT GetPosition(_Goblin, _, _, _)
-AND
-String(_Item, _ItemStr)
-AND
-String(_Goblin, _GoblinStr)
-THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_08_TreasureGoblins:TreasureFound] Get position failed for goblin owner ", _GoblinStr, " with item ", _ItemStr);
-
-/* [OSITOOLS_ONLY]
-IF
-StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
-THEN
-NRD_LuaCall("LLENEMY_Ext_Debug_TraceItemOwnership", (STRING)_Item);
-*/
 
 IF
 StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_TreasureFound")
@@ -246,7 +206,7 @@ PlayEffect(_Item, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
 IF
 StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Defeated")
 AND
-NOT DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _, _, _, _, _)
+NOT DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _, _, _)
 AND
 GetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_MaxTotalHits", _MaxTotalHits)
 AND
