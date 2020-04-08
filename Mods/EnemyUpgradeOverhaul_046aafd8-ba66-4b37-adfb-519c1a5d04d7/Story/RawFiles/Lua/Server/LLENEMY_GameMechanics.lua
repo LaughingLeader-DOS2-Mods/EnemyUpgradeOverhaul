@@ -128,10 +128,11 @@ function LLENEMY_Ext_ClearGain(char)
 		if stats == nil then stats = GetStatString(char) end
 		if stats ~= nil then
 			local gain = NRD_StatGetInt(stats, "Gain")
-			gain = gain - 1
-			LeaderLib.Print("DEBUG", "[LLENEMY:Bootstrap.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").")
-			NRD_CharacterSetPermanentBoostInt(char, "Gain", gain)
-			CharacterAddAttribute(char, "Strength", 0)
+			if gain > 0 then
+				LeaderLib.Print("DEBUG", "[LLENEMY:Bootstrap.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").")
+				NRD_CharacterSetPermanentBoostInt(char, "Gain", 0)
+				CharacterAddAttribute(char, "Dummy", 0)
+			end
 		end
 	end
 end
