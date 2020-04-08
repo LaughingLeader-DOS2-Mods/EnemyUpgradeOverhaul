@@ -12,7 +12,8 @@ EnemyUpgradeOverhaul = {
 	ExtraData = {
 		LLENEMY_Counter_MaxChance = 75,
 	},
-	DeveloperMode = false
+	VoiceMetaData = {},
+	DeveloperMode = false,
 }
 
 function LLENEMY_Ext_GetExtraDataValue(key, fallback)
@@ -22,9 +23,19 @@ function LLENEMY_Ext_GetExtraDataValue(key, fallback)
 end
 
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Shared/LLENEMY_StatOverrides.lua")
+Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Shared/LLENEMY_VoiceData.lua")
 
 if Ext.Version() >= 42 then
 	EnemyUpgradeOverhaul.DeveloperMode = Ext.IsDeveloperMode() == true
+end
+
+local function RegisterVoiceMetaData()
+	for speaker,entries in pairs(EnemyUpgradeOverhaul.VoiceMetaData) do
+		for i,data in pairs(entries) do
+			Ext.AddVoiceMetaData(speaker, data.Handle, data.Source, data.Length)
+			Ext.Print("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Registered VoiceMetaData - Speaker[" .. speaker .. "] Handle(" .. tostring(data.Handle) .. ") Source(" .. tostring(data.Source) .. ") Length(" .. tostring(data.Length) .. ")")
+		end
+	end
 end
 
 function LLENEMY_Shared_InitModuleLoading()
@@ -38,7 +49,7 @@ function LLENEMY_Shared_InitModuleLoading()
 	end
 end
 
-local function LLENEMY_SessionLoading()
+local function LLENEMY_Shared_SessionLoading()
 	Ext.Print("[LLENEMY:Bootstrap.lua] Session is loading.")
 	if Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
 		EnemyUpgradeOverhaul.SINGLEPLAYER = true
@@ -55,4 +66,11 @@ local function LLENEMY_SessionLoading()
 		end
 	end
 end
-Ext.RegisterListener("SessionLoading", LLENEMY_SessionLoading)
+Ext.RegisterListener("SessionLoading", LLENEMY_Shared_SessionLoading)
+
+if Ext.Version() >= 43 then
+	local function LLENEMY_Shared_SessionLoaded()
+		RegisterVoiceMetaData()
+	end
+	Ext.RegisterListener("SessionLoaded", LLENEMY_Shared_SessionLoaded)
+end
