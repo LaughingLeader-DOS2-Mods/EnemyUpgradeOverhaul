@@ -218,8 +218,13 @@ local function LLENEMY_SessionLoading()
     LeaderLib_Ext_AddDebugInitCall(LLENEMY_DebugInit)
 end
 
+local function LLENEMY_Debug_SessionLoaded()
+	
+end
+
 if Ext.IsDeveloperMode() then
 	Ext.RegisterListener("SessionLoading", LLENEMY_SessionLoading)
+	Ext.RegisterListener("SessionLoaded", LLENEMY_Debug_SessionLoaded)
 end
 
 function LLENEMY_Ext_Debug_PrintFlags(obj)
