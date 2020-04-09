@@ -13,11 +13,11 @@ LLENEMY_Stats_InitSettings();
 PROC
 LLENEMY_Stats_InitSettings()
 THEN
-LLENEMY_Upgrades_AddGroup("Stats", "LLENEMY_StatUpgradesDisabled", "LLENEMY_StatsRolled", "LLENEMY_StatsUpgradeAdded");
-//999 max
-
-LLENEMY_Upgrades_AddType("Stats", "Vitality", 270, 800, 1);
-LLENEMY_Upgrades_AddType("Stats", "Damage", 1, 150, 4);
+/* Disabled for now, pending a rework. */
+//LLENEMY_Upgrades_AddGroup("Stats", "LLENEMY_StatUpgradesDisabled", "LLENEMY_StatsRolled", "LLENEMY_StatsUpgradeAdded");
+//LLENEMY_Upgrades_AddType("Stats", "Vitality", 270, 800, 1);
+//LLENEMY_Upgrades_AddType("Stats", "Damage", 1, 150, 4);
+DB_NOOP(1);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "Vitality")

@@ -10,6 +10,7 @@ local function GetUpgradeInfo(uuid)
 			cp = cp,
 			isDuplicant = IsTagged(uuid, "LLENEMY_Duplicant") == 1
 		}
+		EnemyUpgradeOverhaul.UpgradeInfo[uuid] = info
 	else
 		info.cp = cp
 	end
@@ -18,7 +19,7 @@ end
 
 function LLENEMY_Ext_UpgradeInfo_ResolveStatus(uuid, info)
 	if info == nil then
-		info = GetUpgradeInfo[uuid]
+		info = GetUpgradeInfo(uuid)
 	end
 	if info ~= nil and #info.upgrades > 0 then
 		if HasActiveStatus(uuid, "LLENEMY_UPGRADE_INFO") == 0 then
@@ -33,7 +34,7 @@ end
 function LLENEMY_Ext_UpgradeInfo_CreateInfoString(uuid, info)
 	Osi.DB_LLENEMY_UpgradeInfo_Temp_InfoString:Delete(uuid, nil)
 	if info == nil then
-		info = GetUpgradeInfo[uuid]
+		info = GetUpgradeInfo(uuid)
 	end
 	if info ~= nil and #info.upgrades > 0 then
 		local infoStr = LeaderLib.Common.StringJoin(";",info.upgrades)
@@ -45,7 +46,7 @@ function LLENEMY_Ext_UpgradeInfo_CreateInfoString(uuid, info)
 end
 
 function LLENEMY_Ext_UpgradeInfo_Build(uuid)
-	local info = GetUpgradeInfo[uuid]
+	local info = GetUpgradeInfo(uuid)
 	for key,group in pairs(EnemyUpgradeOverhaul.UpgradeData) do
 		for i,status in pairs(group) do
 			if HasActiveStatus(uuid, status) == 1 then
@@ -62,13 +63,13 @@ end
 
 function LLENEMY_Ext_OnUpgradeApplied(uuid, status)
 	local infoText = EnemyUpgradeOverhaul.UpgradeData.Statuses[status]
-	if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.ArmorBoostStatuses end
-	if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.MagicArmorBoostStatuses end
-	if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.DamageBoostStatuses end
-	if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.VitalityBoostStatuses end
+	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.ArmorBoostStatuses[status] end
+	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.MagicArmorBoostStatuses[status] end
+	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.DamageBoostStatuses[status] end
+	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.VitalityBoostStatuses[status] end
 	if infoText ~= nil then
 		--Osi.DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades(char, status)
-		local info = GetUpgradeInfo[uuid]
+		local info = GetUpgradeInfo(uuid)
 		info.upgrades[#info.upgrades+1] = status
 		LLENEMY_Ext_UpgradeInfo_CreateInfoString(uuid, info)
 		LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_UpgradeInfo.lua] Added upgrade ("..status..") to info for ("..uuid..").")
@@ -78,12 +79,9 @@ function LLENEMY_Ext_OnUpgradeApplied(uuid, status)
 end
 
 function LLENEMY_Ext_UpgradeInfo_Send()
-	if Ext.IsDeveloperMode() then
-		Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_UpgradeInfo.lua] Sending update info to clients.")
-	end
-	if Ext.Version() >= 42 then
-		Ext.BroadcastMessage("LLENEMY_UpgradeInfo", Ext.JsonStringify(EnemyUpgradeOverhaul.UpgradeInfo), nil)
-	end
+	local data = Ext.JsonStringify(EnemyUpgradeOverhaul.UpgradeInfo)
+	LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_UpgradeInfo.lua] Sending update info to clients:("..data..")")
+	Ext.BroadcastMessage("LLENEMY_UpgradeInfo", data, nil)
 end
 
 function LLENEMY_Ext_UpgradeInfo_Remove(uuid)
@@ -107,7 +105,7 @@ function LLENEMY_Ext_UpgradeInfo_LoadSavedInfo()
 			local uuid = entry[1]
 			local infoStr = entry[2]
 			if infoStr ~= nil and infoStr ~= "" then
-				local info = GetUpgradeInfo[uuid]
+				local info = GetUpgradeInfo(uuid)
 				local upgrades = LeaderLib.Common.StringSplit(";", infoStr)
 				if upgrades ~= nil and #upgrades > 0 then
 					info.upgrades = {}
