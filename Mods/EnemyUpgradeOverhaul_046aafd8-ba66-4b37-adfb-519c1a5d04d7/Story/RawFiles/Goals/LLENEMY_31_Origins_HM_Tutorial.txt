@@ -9,7 +9,7 @@ LLENEMY_HardMode_InitLevel("TUT_Tutorial_A")
 THEN
 LLENEMY_HardMode_SetupNPC(S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "TUT_Tutorial_A", 1);
 LLENEMY_HardMode_SetupNPC(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "TUT_Tutorial_A", 1);
-LLENEMY_HardMode_SetupNPC(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "TUT_Tutorial_A", 0);
+//LLENEMY_HardMode_SetupNPC(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "TUT_Tutorial_A", 0);
 //END_REGION
 
 //REGION LEVEL_UP_TENTACLES
