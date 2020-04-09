@@ -1,5 +1,6 @@
 
 
+---@class TranslatedString
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
 
 local function sortupgrades(a,b)
@@ -27,27 +28,34 @@ local function StatDescription_UpgradeInfo(character, param, statusSource)
 		--Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
 		local data = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
 		if data ~= nil and data.upgrades ~= nil then
-			local upgrades = LeaderLib.Common.Split(data.upgrades, ";")
+			local upgrades = data.upgrades
 			table.sort(upgrades, sortupgrades)
 			local count = #upgrades
 			local output = "<br><img src='Icon_Line' width='350%'><br>"
 			local i = 0
-			for k,v in pairs(upgrades) do
-				local color = upgrade_colors[v]
-				if color ~= nil then
-					local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", v):gsub("%[2%]", color)
-					output = output..text
-				else
-					output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", v)
-				end
-				if i < count - 1 then
-					output = output.."<br>"
+			for _,status in pairs(upgrades) do
+				local infoText = LLENEMY_Ext_UpgradeInfo_GetText(status)
+				if infoText ~= nil then
+					local color = infoText.Color
+					---@type TranslatedString
+					local translatedString = infoText.Name
+					if translatedString ~= nil then
+						if color ~= nil and color ~= "" then
+							local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", translatedString.Value):gsub("%[2%]", color)
+							output = output..text
+						else
+							output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", translatedString.Value)
+						end
+						if i < count - 1 then
+							output = output.."<br>"
+						end
+					end
 				end
 				i = i + 1
 			end
 			if Ext.IsDeveloperMode() then
 				Ext.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
-				output = output .. "<br>" .. uuid
+				--output = output .. "<br>" .. uuid
 			end
 			return output
 		end

@@ -100,3 +100,18 @@ EnemyUpgradeOverhaul.UpgradeData = {
 		["LLENEMY_BOOST_MAGICARMOR_50"] = MagicArmorBoostText,
 	},
 }
+
+---Get an upgrade's info text table.
+---@param status string
+---@return table
+function LLENEMY_Ext_UpgradeInfo_GetText(status)
+	local infoText = EnemyUpgradeOverhaul.UpgradeData.Statuses[status]
+	if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.ArmorBoostStatuses end
+	if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.MagicArmorBoostStatuses end
+	if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.DamageBoostStatuses end
+	if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.VitalityBoostStatuses end
+	if infoText ~= nil then
+		return infoText
+	end
+	return nil
+end
