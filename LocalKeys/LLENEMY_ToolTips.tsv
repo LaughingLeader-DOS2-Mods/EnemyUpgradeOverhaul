@@ -1,5 +1,5 @@
 Key	Content	Handle
-LLENEMY_ToolTip_UpgradeInfo_DropText	<font color='#078FC8' size='16'>Will drop <textformat leftmargin='1' rightmargin='1'>[1]</textformat> on death.</font>	h623a7ed0gaaacg4c3egacdfg56f3c23a1dec
+LLENEMY_ToolTip_UpgradeInfo_DropText	<font color='#00FFAA' size='16'>Will drop <textformat leftmargin='1' rightmargin='1'>[1]</textformat> on death.</font>	h623a7ed0gaaacg4c3egacdfg56f3c23a1dec
 LLENEMY_ToolTip_UpgradeInfo_Entry_WithColor	<img src='Icon_BulletPoint'><font color='[2]' size='18'>[1]</font>	ha4587526ge140g42f9g9a98gc92b537d4209
 LLENEMY_ToolTip_UpgradeInfo_Entry_NoColor	<img src='Icon_BulletPoint'><font size='18'>[1]</font>	h869a7616gfbb7g4cc2ga233g7c22612af67b
 LLENEMY_ToolTip_UpgradeInfo_ShadowDropText	<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm (<textformat leftmargin='1' rightmargin='1'>[1]</textformat>) on death.</font>	h662390f7gfd9eg4a56g95e5g658283cc548a

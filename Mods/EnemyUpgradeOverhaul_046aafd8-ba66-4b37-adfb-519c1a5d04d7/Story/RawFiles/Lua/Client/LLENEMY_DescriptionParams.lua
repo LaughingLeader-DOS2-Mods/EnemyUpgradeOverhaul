@@ -1,51 +1,4 @@
-local upgrade_colors = {
-	["Talent: Assassin"] = "#AABB00",
-	["Talent: Leech"] = "#C80030",
-	["Talent: Lone Wolf"] = "#DC0015",
-	["Talent: The Pawn"] = "#AABB00",
-	["Talent: Quickdraw"] = "#AABB00",
-	["Talent: What a Rush"] = "#47e982",
-	["Talent: Torturer"] = "#960000",
-	["Talent: Sadist"] = "#ff5771",
-	["Talent: Haymaker"] = "#b083ff",
-	["Talent: Gladiator"] = "#f59b00",
-	["Talent: Indomitable"] = "#e94947",
-	["Talent: Soulcatcher"] = "#73F6FF",
-	["Talent: Master Thief"] = "#C9AA58",
-	["Talent: Greedy Vessel"] = "#e9d047",
-	["Talent: Magic Cycles"] = "#22c3ff",
-	["Infernoblazer"] = "#7F00FF",
-	["Elite Infernoblazer"] = "#FE6E27",
-	["Cascader"] = "#188EDE",
-	["Elite Cascader"] = "#FE6E27",
-	["Heatsapper"] = "#CFECFF",
-	["Elite Heatsapper"] = "#FE6E27",
-	["Venomstriker"] = "#65C900",
-	["Elite Venomstriker"] = "#FE6E27",
-	["Melter"] = "#81AB00",
-	["Elite Melter"] = "#FE6E27",
-	["Circuitbreaker"] = "#7D71D9",
-	["Elite Circuitbreaker"] = "#FE6E27",
-	["Teslacoil"] = "#7F25D4",
-	["Elite Teslacoil"] = "#FE6E27",
-	["Bloodbender"] = "#AA3938",
-	["Elite Bloodbender"] = "#FE6E27",
-	["Earthcracker"] = "#C7A758",
-	["Elite Earthcracker"] = "#FE6E27",
-	["Firestarter"] = "#FE6E27",
-	["Elite Firestarter"] = "#FE6E27",
-	["Bonus Treasure"] = "#D040D0",
-	["Perfect Control"] = "#FFAB00",
-	["Double Dip"] = "#7F00FF",
-	["Perseverance Mastery"] = "#E4CE93",
-	["Bonus Skill"] = "#F1D466",
-	["Bonus Skillset"] = "#B823CB",
-	["Bonus Source Skill"] = "#46B195",
-	["Elite Skillset"] = "#73F6FF",
-	["Ferocity"] = "#DBDBDB",
-	["Courage"] = "#DBDBDB",
-	["Farsight"] = "#88A25B",
-}
+
 
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
 
@@ -109,7 +62,7 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescri
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
-local dropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#078FC8' size='16'>Will drop [1] on death.</font>")
+local dropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#00FFAA' size='16'>Will drop [1] on death.</font>")
 local shadowDropText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ([1]) on death.</font>")
 
 local cpNames = {
