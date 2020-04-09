@@ -12,6 +12,7 @@ new entry "Stats_LLENEMY_Boost_Armor_5"
 type "Potion"
 using "_LLENEMY_Boost_PotionBase"
 data "ArmorBoost" "5"
+data "Armor" "40"
 
 new entry "LLENEMY_BOOST_ARMOR_10"
 type "StatusData"
@@ -20,7 +21,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_10"
 
 new entry "Stats_LLENEMY_Boost_Armor_10"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "10"
 
 new entry "LLENEMY_BOOST_ARMOR_15"
@@ -30,7 +31,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_15"
 
 new entry "Stats_LLENEMY_Boost_Armor_15"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "15"
 
 new entry "LLENEMY_BOOST_ARMOR_20"
@@ -40,7 +41,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_20"
 
 new entry "Stats_LLENEMY_Boost_Armor_20"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "20"
 
 new entry "LLENEMY_BOOST_ARMOR_25"
@@ -50,7 +51,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_25"
 
 new entry "Stats_LLENEMY_Boost_Armor_25"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "25"
 
 new entry "LLENEMY_BOOST_ARMOR_30"
@@ -60,7 +61,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_30"
 
 new entry "Stats_LLENEMY_Boost_Armor_30"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "30"
 
 new entry "LLENEMY_BOOST_ARMOR_35"
@@ -70,7 +71,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_35"
 
 new entry "Stats_LLENEMY_Boost_Armor_35"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "35"
 
 new entry "LLENEMY_BOOST_ARMOR_40"
@@ -80,7 +81,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_40"
 
 new entry "Stats_LLENEMY_Boost_Armor_40"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "40"
 
 new entry "LLENEMY_BOOST_ARMOR_45"
@@ -90,7 +91,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_45"
 
 new entry "Stats_LLENEMY_Boost_Armor_45"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "45"
 
 new entry "LLENEMY_BOOST_ARMOR_50"
@@ -100,7 +101,7 @@ data "StatsId" "Stats_LLENEMY_Boost_Armor_50"
 
 new entry "Stats_LLENEMY_Boost_Armor_50"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_Armor_5"
 data "ArmorBoost" "50"
 
 new entry "LLENEMY_BOOST_DAMAGE_5"
@@ -161,6 +162,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_5"
 new entry "Stats_LLENEMY_Boost_MagicArmor_5"
 type "Potion"
 using "_LLENEMY_Boost_PotionBase"
+data "MagicArmor" "40"
 data "MagicArmorBoost" "5"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_10"
@@ -170,7 +172,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_10"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_10"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "10"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_15"
@@ -180,7 +182,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_15"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_15"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "15"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_20"
@@ -190,7 +192,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_20"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_20"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "20"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_25"
@@ -200,7 +202,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_25"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_25"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "25"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_30"
@@ -210,7 +212,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_30"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_30"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "30"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_35"
@@ -220,7 +222,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_35"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_35"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "35"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_40"
@@ -230,7 +232,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_40"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_40"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "40"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_45"
@@ -240,7 +242,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_45"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_45"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "45"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_50"
@@ -250,7 +252,7 @@ data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_50"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_50"
 type "Potion"
-using "_LLENEMY_Boost_PotionBase"
+using "Stats_LLENEMY_Boost_MagicArmor_5"
 data "MagicArmorBoost" "50"
 
 new entry "LLENEMY_BOOST_VITALITY_5"
