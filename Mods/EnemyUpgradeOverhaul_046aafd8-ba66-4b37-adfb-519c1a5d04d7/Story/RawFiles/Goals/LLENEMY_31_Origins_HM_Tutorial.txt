@@ -168,6 +168,16 @@ SetCanJoinCombat(_Replacement, 1);
 ProcSetInvulnerable(_Replacement, 0);
 CharacterSetImmortal(_Replacement, 0);
 LeaderLib_Helper_MakeHostileToPlayers(_Replacement);
+
+/* [OSITOOLS_ONLY]
+IF
+StoryEvent((CHARACTERGUID)_Replacement, "LLENEMY_TopLivingMagister_StoodUp")
+AND
+GetUUID(_Replacement, _UUID)
+THEN
+NRD_LuaCall("LeaderLib_Ext_SetCustomNameWithLocalization", _UUID, "h8350321agf54cg4528gb29egcb7dbb16cdc0", "Not Dead Magister Knight (Kraken'd)");
+*/
+
 //END_REGION
 
 //REGION BLOCK_HATCH
