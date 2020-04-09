@@ -150,6 +150,8 @@ local ignored_skills = {
 	Projectile_EnemyDragon_Air = true,
 	Shout_EnemyDragonWhirlwind = true,
 	Target_EnemyTerrify_Dragon = true,
+	Shout_EnemyVileBurst = true, -- Kills the caster. Bad!,
+	--Target_BanishSummon = true,
 }
 
 local ignored_skillwords = {
