@@ -1,0 +1,76 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Arena_InitSettings();
+KBSECTION
+PROC
+LLENEMY_Arena_InitSettings()
+THEN
+DB_LLENEMY_Arena_ChestPositions("FJ_FortJoy_Main", 54.996, 41.494, 598.699, 0.0, 42.998, 0.0);
+DB_LLENEMY_Arena_ChestPositions("RC_Main", 419.021, 7.58, 818.937, 0.0, 90.0, 0.0);
+
+QRY
+LLENEMY_Arena_QRY_GetLootChest()
+AND
+DB_CurrentLevel(_Region)
+AND
+NOT DB_LLENEMY_Arena_Temp_LootChest(_Region, _)
+AND
+DB_LLENEMY_Arena_ChestPositions(_Region, _x, _y, _z, _rx, _ry, _rz)
+AND
+RealProduct(_rx, 0.0174533, _Pitch)
+AND
+RealProduct(_ry, 0.0174533, _Yaw)
+AND
+RealProduct(_rz, 0.0174533, _Roll)
+AND
+CreateItemTemplateAtPosition("FUR_Rich_Chest_A_Steel_355e9c6c-0913-4c80-a50f-f894954a4e7b", _x, _y, _z, _Chest)
+THEN
+ItemToTransform(_Chest, _x, _y, _z, _Pitch, _Yaw, _Roll, 1, NULL_00000000-0000-0000-0000-000000000000);
+DB_LLENEMY_Arena_Temp_LootChest(_Region, _Chest);
+
+QRY
+LLENEMY_Arena_QRY_HasDeadMobs()
+AND
+DB_Arena_MobParticipants(_Inst, _Char, _Trig, _Team)
+AND
+CharacterIsDead(_Char, 1)
+THEN
+DB_NOOP(1);
+
+PROC
+Proc_Arena_Win((STRING)_Team)
+AND
+LLENEMY_Arena_QRY_HasDeadMobs()
+AND
+LLENEMY_Arena_QRY_GetLootChest()
+AND
+DB_LLENEMY_Arena_Temp_LootChest(_Region, _Chest)
+THEN
+LLENEMY_Arena_MoveLoot(_Chest);
+
+PROC
+LLENEMY_Arena_MoveLoot((ITEMGUID)_Chest)
+AND
+DB_Arena_MobParticipants(_Inst, _Char, _Trig, _Team)
+AND
+CharacterIsPlayer(_Char, 0)
+AND
+CharacterIsDead(_Char, 1)
+THEN
+MoveAllItemsTo(_Char, _Chest, 0, 0, 1);
+
+PROC
+LLENEMY_Arena_MoveLoot((ITEMGUID)_Chest)
+AND
+DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container)
+AND
+DB_Arena_MobParticipants(_Inst, _Dupe, _Trig, _Team)
+THEN
+NOT DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container);
+MoveAllItemsTo(_Container, _Chest, 0, 0, 1);
+ItemDestroy(_Container);
+
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

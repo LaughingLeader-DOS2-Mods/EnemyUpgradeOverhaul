@@ -441,9 +441,10 @@ CharacterGetDisplayName(_Dupe, _, _Name)
 THEN
 LeaderLog_Log("TRACE", "[LLENEMY:Rewards:LLENEMY_Dupe_DupeDied] [",_Name,"] generated treasure [",_Treasure,"].");
 GenerateTreasure(_Container, _Treasure, _Level, _Dupe);
-LLENEMY_Rewards_Internal_ShadowCorruptItems(_Container, _Level);
+LLENEMY_Rewards_Internal_ShadowCorruptItems(_Dupe, _Container, _Level);
 NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure);
 LLENEMY_Rewards_OnCharacterDied(_Dupe, _Treasure);
+DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container);
 
 IF
 StoryEvent((ITEMGUID)_Item, "LLENEMY_Container_OnClosed_CheckDestroy")
@@ -455,11 +456,25 @@ AND
 _Value == 0
 THEN
 ItemDestroy(_Item);
+
+IF
+StoryEvent((ITEMGUID)_Container, "LLENEMY_Container_OnClosed_CheckDestroy")
+AND
+DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container)
+THEN
+NOT DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container);
+
+IF
+RegionEnded(_)
+AND
+DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container)
+THEN
+NOT DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container);
 //END_REGION
 
 //REGION DUPLICANT_SHADOW_REWARDS
 PROC
-LLENEMY_Rewards_Internal_ShadowCorruptItems((ITEMGUID)_Container, (INTEGER)_Level)
+LLENEMY_Rewards_Internal_ShadowCorruptItems((CHARACTERGUID)_Dupe, (ITEMGUID)_Container, (INTEGER)_Level)
 THEN
 // [BEGIN_NO_OSITOOLS]
 DB_NOOP(1);
