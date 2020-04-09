@@ -71,6 +71,12 @@ local stat_overrides = {
 	},
 	LLENEMY_ACTIVATE_HEALING_TEARS = {
 		LeaveAction = "" -- NRD_ApplyActiveDefense instead
+	},
+	Stats_Herbmix_Courage = {
+		StatusIcon = ""--"Item_QUEST_Herbmix_Courage"
+	},
+	Stats_Herbmix_Ferocity = {
+		StatusIcon = ""--"Item_QUEST_Herbmix_Ferocity"
 	}
 }
 
