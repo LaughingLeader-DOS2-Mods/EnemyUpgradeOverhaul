@@ -79,10 +79,8 @@ PROC
 LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Enemy, (STRING)_Group, (STRING)_Type, "LLENEMY_BONUSSKILLS_SOURCE")
 AND
 IsTagged(_Enemy, "MAGISTER", 1)
-AND
-IsBoss(_Enemy, 0)
 THEN
-DB_LLENEMY_StatusUpgradeBlocked(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SOURCE");
+LLENEMY_Upgrades_RedirectUpgrade(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SOURCE", "LLENEMY_BONUSSKILLS_SINGLE");
 
 IF
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SOURCE")
