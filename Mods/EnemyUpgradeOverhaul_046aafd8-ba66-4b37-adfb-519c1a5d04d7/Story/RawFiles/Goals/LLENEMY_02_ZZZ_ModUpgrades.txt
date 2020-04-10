@@ -1,0 +1,22 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_ModSupport_InitSettings();
+KBSECTION
+//REGION REGISTERING
+PROC
+LLENEMY_Upgrades_RegisterModSupport((GUIDSTRING)_ModUUID, (STRING)_Group, (STRING)_Type)
+THEN
+DB_LLENEMY_Upgrades_ModSupport(_ModUUID, _Group, _Type);
+//END_REGION
+
+//REGION MOD_SUPPORT
+PROC
+LLENEMY_ModSupport_InitSettings()
+THEN
+//LLENEMY_Upgrades_RegisterModSupport(, "", "");
+DB_NOOP(1);
+//END_REGION
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
