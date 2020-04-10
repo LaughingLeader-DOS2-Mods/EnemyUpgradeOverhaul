@@ -60,14 +60,14 @@ LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Flashbang", 60);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Elite")
 THEN
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 80, 3, 6.0);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 40, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_ACTIVATE_FLAMING_TONGUES", 160, 5, 0.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 20, 9);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 220, 6);
+LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 260, 6);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Normal")
