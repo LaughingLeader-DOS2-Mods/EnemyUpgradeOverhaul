@@ -341,15 +341,39 @@ THEN
 LeaderLog_Log("TRACE", "[LLENEMY:Upgrades:LogGroupRoll] [",_Name,"] Roll [", _RollStr, "] Group [",_Group,"] Type [",_Type,"] Min[",_MinStr,"] Max[",_MaxStr,"]");
 
 QRY
-LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status)
+LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration)
 THEN
 LLENEMY_Upgrades_CanRollForStatusUpgrade(_Char, _Group, _Type, _Status);
+LLENEMY_Upgrades_CanRollForStatusUpgrade(_Char, _Group, _Type, _Status, _Duration);
+LLENEMY_Upgrades_Internal_CheckBlockedStatuses(_Char, _Group, _Type, _Status, _Duration);
 
 PROC
 LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status)
 THEN
 //DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status)
 DB_NOOP(1);
+
+/* Used to run additional logic after an upgrade may be blocked. */
+PROC
+LLENEMY_Upgrades_Internal_CheckBlockedStatuses((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration)
+THEN
+DB_NOOP(1);
+
+/* Skip applying upgrades if the status is already active, and has an equal or greater duration. */
+PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration)
+AND
+GetStatusTurns(_Char, _Status, _Turns)
+AND
+_Duration > 0.0
+AND
+Real(_Turns, _TurnsR)
+AND
+RealProduct(_TurnsR, 6.0, _CurrentDuration)
+AND
+_CurrentDuration >= _Duration
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status);
 
 PROC
 LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type)
@@ -368,7 +392,7 @@ LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure(_Char, _Group, _Type, 
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
 AND
-LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade(_Char, _Group, _Type, _Status)
+LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade(_Char, _Group, _Type, _Status, _Duration)
 AND
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status)
 AND
@@ -486,23 +510,58 @@ DB_NOOP(1);
 PROC
 LLENEMY_Upgrades_RedirectUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus)
 AND
-LLENEMY_Upgrades_QRY_IsRegistered(_NewStatus)
+HasActiveStatus(_Char, _NewStatus, _HasRedirectedStatus)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status);
+LLENEMY_Upgrades_Internal_ApplyRedirectedUpgrade(_Char, _Group, _Type, _Status, _NewStatus, _HasRedirectedStatus);
+
+PROC
+LLENEMY_Upgrades_Internal_ApplyRedirectedUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus, 0)
 AND
 DB_LLENEMY_Upgrades_Statuses(_NextGroup, _NextType, _NewStatus, _MinRoll, _MaxRoll, _Duration, _CP)
 THEN
-DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status);
+DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus);
 LLENEMY_Upgrades_ApplyUpgrade(_Char, _NextGroup, _NextType, _NewStatus, _Duration, _CP);
 
 // The target upgrade does not exist, so use the existing one.
 PROC
-LLENEMY_Upgrades_RedirectUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus)
+LLENEMY_Upgrades_Internal_ApplyRedirectedUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus, 0)
 AND
-NOT LLENEMY_Upgrades_QRY_IsRegistered(_NewStatus)
+NOT DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus)
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
 THEN
-DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status);
+DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus);
 LLENEMY_Upgrades_ApplyUpgrade(_Char, _Group, _Type, _NewStatus, _Duration, _CP);
+
+// If the character already has the redirected status, randomly extend the duration instead.
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Upgrades_Internal_ApplyRedirectedUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus, 1)
+AND
+NOT DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus)
+AND
+NRD_StatusGetHandle(_Char, _NewStatus, _Handle)
+AND
+NRD_StatusGetReal(_Char, _Handle, "CurrentLifeTime", _CurrentDuration)
+AND
+_CurrentDuration > 0.0
+AND
+NRD_RandomReal(6.0, 12.0, _AddDuration)
+AND
+RealSum(_CurrentDuration, _AddDuration, _NextDuration)
+THEN
+LLENEMY_Upgrades_IncreaseChallengePoints(_Char, 1);
+DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus);
+NRD_StatusSetReal(_Char, _Handle, "CurrentLifeTime", _NextDuration);
+*/
+
+PROC
+LLENEMY_Upgrades_Internal_ApplyRedirectedUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus, (INTEGER)_HasRedirectedStatus)
+AND
+DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus);
 //END_REGION
 
 //REGION CHALLENGE_POINTS
