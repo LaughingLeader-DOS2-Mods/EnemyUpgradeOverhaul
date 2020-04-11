@@ -14,6 +14,15 @@ EnemyUpgradeOverhaul = {
 	},
 	VoiceMetaData = {},
 	DeveloperMode = false,
+	GetInfoID = function(uuid)
+		if Ext.Version() >= 43 then
+			local character = Ext.GetCharacter(uuid)
+			if character.NetID ~= nil then
+				return character.NetID
+			end
+		end
+		return uuid
+	end
 }
 
 function LLENEMY_Ext_GetExtraDataValue(key, fallback)
