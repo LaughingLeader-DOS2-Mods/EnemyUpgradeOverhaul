@@ -87,17 +87,6 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescri
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
-local dropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#00FFAA' size='16'>Will drop [1] on death.</font>")
-local shadowDropText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ([1]) on death.</font>")
-
-local cpNames = {
-	{Min = 1, Max = 10, Text = TranslatedString:Create("h5addfbc4gcac7g4935g8effg8096574b8913", "<font color='#FFFFFF' size='12'>Regular Bonus Loot</font>")},
-	{Min = 11, Max = 16, Text = TranslatedString:Create("h8a442345g8c3ag4161g8f45gd93745f99d3e", "<font color='#4197E2' size='14'>Good Loot</font>")},
-	{Min = 17, Max = 31, Text = TranslatedString:Create("hf03d120ag2329g476dg94dcg7df0d27c3e1e", "<font color='#F7BA14' size='16'>Great Loot</font>")},
-	{Min = 32, Max = 99, Text = TranslatedString:Create("h8886e1f1gb725g4e9fg8f5bg4ab1f7262f48", "<font color='#B823CB' size='18'>Insane Loot</font>")},
-	{Min = 100, Max = 999, Text = TranslatedString:Create("h99aba0bag7acbg4deagb9f3g0c52b807ce09", "<font color='#FF00CC' size='18'>Impossibly Amazing Loot</font>")},
-}
-
 local function StatDescription_ChallengePoints(character, param, statusSource)
 	local uuid = nil
 	if character.NetID ~= nil then
@@ -113,12 +102,12 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 				local cp = math.tointeger(data.cp)
 				if cp ~= nil and cp > 0 then
 					output = "<br><img src='Icon_Line' width='350%'><br>"
-					for k,tbl in pairs(cpNames) do
+					for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 						if cp >= tbl.Min and cp <= tbl.Max then
 							if data.isDuplicant ~= true then
-								output = output .. string.gsub(dropText.Value, "%[1%]", tbl.Text.Value)
+								output = output .. string.gsub(EnemyUpgradeOverhaul.DropText.Value, "%[1%]", tbl.Text.Value)
 							else
-								output = output .. string.gsub(shadowDropText.Value, "%[1%]", tbl.Text.Value)
+								output = output .. string.gsub(EnemyUpgradeOverhaul.ShadowDropText.Value, "%[1%]", tbl.Text.Value)
 							end
 						end
 					end
