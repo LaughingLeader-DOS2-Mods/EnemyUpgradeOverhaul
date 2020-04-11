@@ -24,27 +24,43 @@ local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4c
 
 local function StatDescription_UpgradeInfo(character, param, statusSource)
 	local uuid = character.MyGuid
+	if Ext.Version() >= 43 and character.NetID ~= nil then
+		uuid = character.NetID
+	end
 	if uuid ~= nil then
 		--Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
 		local data = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
 		if data ~= nil and data.upgrades ~= nil then
 			local upgrades = data.upgrades
-			table.sort(upgrades, sortupgrades)
-			local count = #upgrades
+			local upgradeKeys = {}
+			for k in pairs(upgrades) do
+				if LeaderLib.Common.TableHasEntry(upgradeKeys, k) ~= true then
+					table.insert(upgradeKeys, k)
+				end
+			end
+			table.sort(upgradeKeys, sortupgrades)
+			local count = #upgradeKeys
+			--LeaderLib.Print("Upgrades (".. LeaderLib.Common.Dump(upgrades)..")")
+			--LeaderLib.Print("Upgrade Keys (".. LeaderLib.Common.Dump(upgradeKeys)..")")
 			local output = "<br><img src='Icon_Line' width='350%'><br>"
 			local i = 0
-			for _,status in pairs(upgrades) do
+			for _,status in ipairs(upgradeKeys) do
+				local statusCount = upgrades[status]
 				local infoText = LLENEMY_Ext_UpgradeInfo_GetText(status)
 				if infoText ~= nil then
+					local countText = ""
+					if statusCount ~= nil and statusCount > 1 then
+						countText = "x"..tostring(statusCount)
+					end
 					local color = infoText.Color
 					---@type TranslatedString
 					local translatedString = infoText.Name
 					if translatedString ~= nil then
 						if color ~= nil and color ~= "" then
-							local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", translatedString.Value):gsub("%[2%]", color)
+							local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", translatedString.Value .. countText):gsub("%[2%]", color)
 							output = output..text
 						else
-							output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", translatedString.Value)
+							output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", translatedString.Value .. countText)
 						end
 						if i < count - 1 then
 							output = output.."<br>"
@@ -53,10 +69,7 @@ local function StatDescription_UpgradeInfo(character, param, statusSource)
 				end
 				i = i + 1
 			end
-			if Ext.IsDeveloperMode() then
-				Ext.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
-				--output = output .. "<br>" .. uuid
-			end
+			--LeaderLib.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
 			return output
 		end
 	end
