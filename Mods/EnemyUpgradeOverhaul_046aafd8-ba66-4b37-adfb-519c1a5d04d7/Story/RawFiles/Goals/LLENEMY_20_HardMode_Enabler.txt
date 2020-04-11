@@ -63,7 +63,8 @@ SysCompleteGoal(_Script);
 PROC
 LLENEMY_HardMode_SetupNPC((CHARACTERGUID)_Char, (STRING)_Region, (INTEGER)_Immortal)
 THEN
-LeaderLib_Helper_MakeHostileToPlayers(_Char);
+//LeaderLib_Helper_MakeHostileToPlayers(_Char);
+SetFaction(_Char, "Evil NPC");
 SetVarInteger(_Char, "FleeFromDangerousSurface", 0);
 
 PROC
