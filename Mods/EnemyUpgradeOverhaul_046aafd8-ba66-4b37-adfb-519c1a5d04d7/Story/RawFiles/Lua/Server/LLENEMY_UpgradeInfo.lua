@@ -115,7 +115,7 @@ function LLENEMY_Ext_UpgradeInfo_LoadSavedInfo()
 			--LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_UpgradeInfo.lua] Saved info ("..LeaderLib.Common.Dump(entry)..").")
 			local uuid = entry[1]
 			local infoStr = entry[2]
-			if infoStr ~= nil and infoStr ~= "" then
+			if ObjectExists(uuid) == 1 and infoStr ~= nil and infoStr ~= "" then
 				local info = GetUpgradeInfo(uuid)
 				local upgrades = LeaderLib.Common.StringSplit(";", infoStr)
 				if upgrades ~= nil and #upgrades > 0 then
