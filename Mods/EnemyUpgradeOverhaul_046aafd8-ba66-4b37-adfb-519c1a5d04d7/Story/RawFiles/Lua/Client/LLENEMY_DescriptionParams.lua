@@ -23,12 +23,14 @@ local upgradeInfoEntryColorText = TranslatedString:Create("ha4587526ge140g42f9g9
 local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4cc2ga233g7c22612af67b", "<img src='Icon_BulletPoint'><font size='18'>[1]</font>")
 
 local function StatDescription_UpgradeInfo(character, param, statusSource)
-	local uuid = character.MyGuid
-	if Ext.Version() >= 43 and character.NetID ~= nil then
-		uuid = character.NetID
+	local uuid = nil
+	if character.NetID ~= nil then
+		uuid = tostring(character.NetID)
+	else
+		uuid = character.MyGuid
 	end
 	if uuid ~= nil then
-		--Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
+		LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
 		local data = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
 		if data ~= nil and data.upgrades ~= nil then
 			local upgrades = data.upgrades
@@ -71,6 +73,8 @@ local function StatDescription_UpgradeInfo(character, param, statusSource)
 			end
 			--LeaderLib.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
 			return output
+		else
+			LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Upgrade info for (" .. uuid .. ") is nil or empty ("..LeaderLib.Common.Dump(data)..")")
 		end
 	end
 	return ""
@@ -95,7 +99,12 @@ local cpNames = {
 }
 
 local function StatDescription_ChallengePoints(character, param, statusSource)
-	local uuid = character.MyGuid
+	local uuid = nil
+	if character.NetID ~= nil then
+		uuid = tostring(character.NetID)
+	else
+		uuid = character.MyGuid
+	end
 	if uuid ~= nil then
 		local data = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
 		if data ~= nil then

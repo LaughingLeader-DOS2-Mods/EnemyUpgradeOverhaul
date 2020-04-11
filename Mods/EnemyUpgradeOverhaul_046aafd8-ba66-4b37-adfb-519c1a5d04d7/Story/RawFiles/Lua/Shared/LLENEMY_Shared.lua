@@ -18,7 +18,7 @@ EnemyUpgradeOverhaul = {
 		if Ext.Version() >= 43 then
 			local character = Ext.GetCharacter(uuid)
 			if character.NetID ~= nil then
-				return character.NetID
+				return tostring(character.NetID)
 			end
 		end
 		return uuid
