@@ -2,20 +2,24 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
+// [BEGIN_NO_OSITOOLS]
 PROC
-LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Level)
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Region)
 AND
 NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _, _)
 AND
 LeaderLib_Random_QRY(1,3)
 AND
-DB_LeaderLib_Random(_BonusRolls)
+DB_LeaderLib_Random(_Ran)
+AND
+IntegerSum(_Ran, 1, _BonusRolls)
 THEN
-NOT DB_LeaderLib_Random(_BonusRolls);
+NOT DB_LeaderLib_Random(_Ran);
 DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, 0);
+LLENEMY_Upgrades_Internal_StartBonusTimer(_Char);
 
 PROC
-LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Level)
+LLENEMY_Upgrades_Internal_StartBonusTimer((CHARACTERGUID)_Char)
 AND
 DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Current)
 AND
@@ -32,13 +36,20 @@ AND
 _Current < _BonusRolls
 AND
 IntegerSum(_Current, 1, _Next)
-AND
-GetRegion(_Char, _Level)
 THEN
 NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Current);
 DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Next);
 LLENEMY_Upgrades_RollForUpgrades(_Char);
-LLENEMY_Upgrades_OnRollingDone(_Char, _Level);
+LLENEMY_Upgrades_Internal_StartBonusTimer(_Char);
+LLENEMY_UpgradeInfo_RestartTimers(300);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Region)
+THEN
+NRD_LuaCall("LLENEMY_Ext_HM_RollAdditionalUpgrades", (STRING)_Char);
+*/
 
 //Cleanup
 IF
