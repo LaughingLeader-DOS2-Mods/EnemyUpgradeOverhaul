@@ -1,0 +1,11 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+IF
+CombatStarted(_CombatID)
+THEN
+LLENEMY_TreasureGoblins_Spawn(_CombatID);
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_91_Debug__Start"

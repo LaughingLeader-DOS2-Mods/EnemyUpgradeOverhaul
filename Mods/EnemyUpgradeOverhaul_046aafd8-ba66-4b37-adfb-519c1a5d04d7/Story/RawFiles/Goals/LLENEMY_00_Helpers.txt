@@ -101,6 +101,13 @@ AND
 DB_LLENEMY_System_Temp_CanScaleResolved(_Char)
 THEN
 NOT DB_LLENEMY_System_Temp_CanScaleResolved(_Char);
+
+PROC
+LLENEMY_Debug_ActivateGoal((STRING)_Goal)
+AND
+SysStatus(_Goal, _)
+THEN
+SysActivateGoal(_Goal);
 EXITSECTION
 
 ENDEXITSECTION

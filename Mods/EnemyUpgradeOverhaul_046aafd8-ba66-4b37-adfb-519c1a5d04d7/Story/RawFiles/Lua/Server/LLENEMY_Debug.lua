@@ -204,13 +204,17 @@ local function LLENEMY_DebugInit()
 	end
 	LLENEMY_Ext_CheckFactions()
 
-	local combat = Osi.DB_CombatCharacters:Get(nil,nil)
-	Ext.Print("[LLENEMY:Debug.lua] DB_CombatCharacters:\n[".. LeaderLib.Common.Dump(combat))
-
-	local x,y,z = GetPosition(host)
-	local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
-	local shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
-	ItemToInventory(shadowItem, host, 1, 1, 1)
+	if Ext.IsDeveloperMode() then
+		local combat = Osi.DB_CombatCharacters:Get(nil,nil)
+		Ext.Print("[LLENEMY:Debug.lua] DB_CombatCharacters:\n[".. LeaderLib.Common.Dump(combat))
+	
+		local x,y,z = GetPosition(host)
+		local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
+		local shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
+		ItemToInventory(shadowItem, host, 1, 1, 1)
+		
+		Osi.LLENEMY_Debug_ActivateGoal("LLENEMY_91_Debug_DevMode")
+	end
 end
 
 local function LLENEMY_SessionLoading()
