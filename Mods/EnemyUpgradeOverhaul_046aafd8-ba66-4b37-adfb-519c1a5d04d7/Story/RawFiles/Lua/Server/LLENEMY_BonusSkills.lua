@@ -71,6 +71,7 @@ local ignored_skills = {
 	Shout_EnemyIgnition_Troll = true,
 	Shout_EnemyInspire = true,
 	Storm_EnemyLightning_MotherTree = true,
+	Summon_EnemyBoneTroll = true,
 	Summon_EnemyBoneTroll_Dog = true,
 	Summon_EnemyBoneTroll_Mini = true,
 	Summon_EnemyDemon_Doctor = true,
