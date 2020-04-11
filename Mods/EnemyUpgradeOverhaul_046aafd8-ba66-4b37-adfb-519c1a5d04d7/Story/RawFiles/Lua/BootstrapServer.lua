@@ -21,3 +21,16 @@ local function LLENEMY_Server_ModuleLoading()
 	LLENEMY_Shared_InitModuleLoading()
 end
 Ext.RegisterListener("ModuleLoading", LLENEMY_Server_ModuleLoading)
+
+local function LLENEMY_Server_SessionLoaded()
+	LLENEMY_Ext_BuildEnemySkills()
+end
+Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
+
+-- Ignored skills support example
+-- local function MyMod_Server_SessionLoading()
+-- 	if EnemyUpgradeOverhaul ~= nil and EnemyUpgradeOverhaul.IgnoredSkills ~= nil then
+-- 		EnemyUpgradeOverhaul.IgnoredSkills["MySkillEntry"] = true
+-- 	end
+-- end
+-- Ext.RegisterListener("SessionLoading", MyMod_Server_SessionLoading)

@@ -153,6 +153,12 @@ local ignored_skills = {
 	Target_EnemyTerrify_Dragon = true,
 	Shout_EnemyVileBurst = true, -- Kills the caster. Bad!,
 	--Target_BanishSummon = true,
+	-- Summoning Rework
+	Summon_EnemySoulWolf = true,
+	Summon_EnemyBear = true,
+	Summon_EnemyCrawlingTrunk_Melee = true,
+	Summon_EnemyBoneTroll_BoneWalker = true,
+	Summon_EnemyBoneHand__BoneWalker = true,
 }
 
 local ignored_skillwords = {

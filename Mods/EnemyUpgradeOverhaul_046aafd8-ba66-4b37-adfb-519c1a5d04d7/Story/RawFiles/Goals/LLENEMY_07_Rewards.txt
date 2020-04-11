@@ -440,10 +440,10 @@ DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure)
 AND
 CharacterGetDisplayName(_Dupe, _, _Name)
 THEN
+NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure);
 LeaderLog_Log("TRACE", "[LLENEMY:Rewards:LLENEMY_Dupe_DupeDied] [",_Name,"] generated treasure [",_Treasure,"].");
 GenerateTreasure(_Container, _Treasure, _Level, _Dupe);
 LLENEMY_Rewards_Internal_ShadowCorruptItems(_Dupe, _Container, _Level);
-NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure);
 LLENEMY_Rewards_OnCharacterDied(_Dupe, _Treasure);
 DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container);
 

@@ -101,7 +101,6 @@ EnemyUpgradeOverhaul.UpgradeData = {
 	},
 }
 
-
 EnemyUpgradeOverhaul.DropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#00FFAA' size='16'>Will drop [1] on death.</font>")
 EnemyUpgradeOverhaul.ShadowDropText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ([1]) on death.</font>")
 

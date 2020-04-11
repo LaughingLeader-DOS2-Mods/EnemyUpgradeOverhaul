@@ -55,9 +55,6 @@ local function LLENEMY_Shared_SessionLoading()
 	if Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
 		EnemyUpgradeOverhaul.SINGLEPLAYER = true
 	end
-	if Ext.IsServer() then
-		LLENEMY_Ext_BuildEnemySkills()
-	end
 
 	local statuses = Ext.GetStatEntries("StatusData")
 	for _,stat in pairs(statuses) do
