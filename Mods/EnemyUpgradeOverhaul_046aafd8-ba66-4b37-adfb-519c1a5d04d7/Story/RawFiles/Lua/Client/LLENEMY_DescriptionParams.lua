@@ -23,59 +23,40 @@ local upgradeInfoEntryColorText = TranslatedString:Create("ha4587526ge140g42f9g9
 local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4cc2ga233g7c22612af67b", "<img src='Icon_BulletPoint'><font size='18'>[1]</font>")
 
 local function StatDescription_UpgradeInfo(character, param, statusSource)
-	local uuid = nil
-	if character.NetID ~= nil then
-		uuid = tostring(character.NetID)
-	else
-		uuid = character.MyGuid
-	end
-	if uuid ~= nil then
-		LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Getting upgrade info for (" .. uuid .. ")")
-		local data = EnemyUpgradeOverhaul.UpgradeInfo[uuid]
-		if data ~= nil and data.upgrades ~= nil then
-			local upgrades = data.upgrades
-			local upgradeKeys = {}
-			for k in pairs(upgrades) do
-				if LeaderLib.Common.TableHasEntry(upgradeKeys, k) ~= true then
-					table.insert(upgradeKeys, k)
-				end
-			end
-			table.sort(upgradeKeys, sortupgrades)
-			local count = #upgradeKeys
-			--LeaderLib.Print("Upgrades (".. LeaderLib.Common.Dump(upgrades)..")")
-			--LeaderLib.Print("Upgrade Keys (".. LeaderLib.Common.Dump(upgradeKeys)..")")
-			local output = "<br><img src='Icon_Line' width='350%'><br>"
-			local i = 0
-			for _,status in ipairs(upgradeKeys) do
-				local statusCount = upgrades[status]
-				local infoText = LLENEMY_Ext_UpgradeInfo_GetText(status)
-				if infoText ~= nil then
-					local countText = ""
-					if statusCount ~= nil and statusCount > 1 then
-						countText = "x"..tostring(statusCount)
-					end
-					local color = infoText.Color
-					---@type TranslatedString
-					local translatedString = infoText.Name
-					if translatedString ~= nil then
-						if color ~= nil and color ~= "" then
-							local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", translatedString.Value .. countText):gsub("%[2%]", color)
-							output = output..text
-						else
-							output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", translatedString.Value .. countText)
-						end
-						if i < count - 1 then
-							output = output.."<br>"
-						end
-					end
-				end
-				i = i + 1
-			end
-			--LeaderLib.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
-			return output
-		else
-			LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Upgrade info for (" .. uuid .. ") is nil or empty ("..LeaderLib.Common.Dump(data)..")")
+	local upgradeKeys = {}
+	for status,data in pairs(EnemyUpgradeOverhaul.UpgradeData.Statuses) do
+		if character.Character:HasStatus(status) == 1 then
+			table.insert(upgradeKeys, status)
 		end
+	end
+	local count = #upgradeKeys
+	if count > 0 then
+		table.sort(upgradeKeys, sortupgrades)
+		local output = "<br><img src='Icon_Line' width='350%'><br>"
+		local i = 0
+		for _,status in ipairs(upgradeKeys) do
+			local infoText = LLENEMY_Ext_UpgradeInfo_GetText(status)
+			if infoText ~= nil then
+				local color = infoText.Color
+				---@type TranslatedString
+				local translatedString = infoText.Name
+				if translatedString ~= nil then
+					if color ~= nil and color ~= "" then
+						local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", translatedString.Value):gsub("%[2%]", color)
+						output = output..text
+					else
+						output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", translatedString.Value)
+					end
+					if i < count - 1 then
+						output = output.."<br>"
+					end
+				end
+			end
+			i = i + 1
+		end
+		--LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Upgrade info for (" .. uuid .. ") is nil or empty ("..LeaderLib.Common.Dump(data)..")")
+		--LeaderLib.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
+		return output
 	end
 	return ""
 end
