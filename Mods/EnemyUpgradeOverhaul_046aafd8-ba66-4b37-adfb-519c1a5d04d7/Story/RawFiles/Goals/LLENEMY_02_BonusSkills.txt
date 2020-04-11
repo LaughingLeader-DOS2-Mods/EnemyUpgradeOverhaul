@@ -82,15 +82,6 @@ IsTagged(_Enemy, "MAGISTER", 1)
 THEN
 LLENEMY_Upgrades_RedirectUpgrade(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SOURCE", "LLENEMY_BONUSSKILLS_SINGLE");
 
-IF
-DB_LLENEMY_StatusUpgradeBlocked(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SOURCE")
-AND
-DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_BONUSSKILLS_SINGLE", _MinRoll, _MaxRoll, _Duration, _CP)
-AND
-HasActiveStatus(_Enemy, "LLENEMY_BONUSSKILLS_SINGLE", 0)
-THEN
-LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SINGLE", _Duration, _CP);
-
 /* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
