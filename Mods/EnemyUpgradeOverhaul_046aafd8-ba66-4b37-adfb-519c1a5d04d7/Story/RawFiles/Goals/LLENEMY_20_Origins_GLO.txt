@@ -1,0 +1,66 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+
+//REGION DALLIS_ALEXANDER_FLEEING_LOOT
+IF
+DB_DallisDefeatedItemDrop((ITEMGUID)_DallisLoot)
+AND
+NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(CHARACTERGUID_S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, _)
+THEN
+LLENEMY_Rewards_SetupTreasure(CHARACTERGUID_S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572);
+LLENEMY_Rewards_SetupBonusTreasure(CHARACTERGUID_S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572);
+
+IF
+DB_DallisDefeatedItemDrop((ITEMGUID)_DallisLoot)
+AND
+DB_CurrentLevel("FJ_FortJoy_Main")
+AND
+NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349, _)
+THEN
+LLENEMY_Rewards_SetupTreasure(S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349);
+LLENEMY_Rewards_SetupBonusTreasure(S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349);
+
+IF
+DB_DallisDefeatedItemDrop((ITEMGUID)_DallisLoot)
+AND
+DB_CurrentLevel("FJ_FortJoy_Main")
+AND
+GetPosition(CHARACTERGUID_S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, _x, _y, _z)
+AND
+CreateItemTemplateAtPosition("FUR_Rich_Chest_A_Steel_355e9c6c-0913-4c80-a50f-f894954a4e7b", _x, _y, _z, _Container)
+THEN
+TeleportTo(_Container, CHARACTERGUID_S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572);
+LLENEMY_Origins_FTJ_GenDallisAlexanderLoot(_Container, S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572);
+LLENEMY_Origins_FTJ_GenDallisAlexanderLoot(_Container, S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349);
+
+IF
+DB_DallisDefeatedItemDrop((ITEMGUID)_DallisLoot)
+AND
+DB_CurrentLevel("LV_HoE_Main")
+AND
+GetPosition(TRIGGERGUID_S_LV_HoE_DallisItemDrop_Point_97ef63e5-2f0a-4c4a-aba6-438e2f092be6, _x, _y, _z)
+AND
+CreateItemTemplateAtPosition("FUR_Rich_Chest_A_Steel_355e9c6c-0913-4c80-a50f-f894954a4e7b", _x, _y, _z, _Container)
+THEN
+TeleportTo(_Container, TRIGGERGUID_S_LV_HoE_DallisItemDrop_Point_97ef63e5-2f0a-4c4a-aba6-438e2f092be6);
+LLENEMY_Origins_FTJ_GenDallisAlexanderLoot(_Container, S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572);
+LLENEMY_Origins_FTJ_GenDallisAlexanderLoot(_Container, S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349);
+
+PROC
+LLENEMY_Origins_FTJ_GenDallisAlexanderLoot((ITEMGUID)_Container, (CHARACTERGUID)_Char)
+AND
+CharacterIsDead(_Char, 0)
+AND
+CharacterGetLevel(_Char, _Level)
+AND
+DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure)
+THEN
+NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure);
+GenerateTreasure(_Container, _Treasure, _Level, _Char);
+//END_REGION
+
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_20_Origins__Start"

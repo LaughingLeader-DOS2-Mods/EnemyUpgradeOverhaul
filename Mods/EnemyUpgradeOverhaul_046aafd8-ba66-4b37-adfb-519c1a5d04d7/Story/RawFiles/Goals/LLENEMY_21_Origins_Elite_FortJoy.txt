@@ -149,44 +149,6 @@ LLENEMY_Elites_AddUpgradeChance("FJ_FortJoy_Main", S_GLO_Windego_d783285f-d3be-4
 // Zaleskar | Tags: BADASSCIVILIAN
 LLENEMY_Elites_AddUpgradeChance("FJ_FortJoy_Main", S_FTJ_IfanHandler_d0920841-a984-4ea4-92c6-31d236ee2540);
 //END_REGION
-
-PROC
-Proc_DallisTransformAndLeave()
-AND
-NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(CHARACTERGUID_S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, _)
-THEN
-LLENEMY_Rewards_SetupTreasure(CHARACTERGUID_S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572);
-LLENEMY_Rewards_SetupBonusTreasure(CHARACTERGUID_S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572);
-
-PROC
-Proc_DallisTransformAndLeave()
-AND
-NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349, _)
-THEN
-LLENEMY_Rewards_SetupTreasure(S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349);
-LLENEMY_Rewards_SetupBonusTreasure(S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349);
-
-PROC
-Proc_DallisTransformAndLeave()
-AND
-GetPosition(S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338, _x, _y, _z)
-AND
-CreateItemTemplateAtPosition("FUR_Rich_Chest_A_Steel_355e9c6c-0913-4c80-a50f-f894954a4e7b", _x, _y, _z, _Container)
-THEN
-TeleportTo(_Container, S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338);
-LLENEMY_Origins_FTJ_GenDallisAlexanderLoot(_Container, S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572);
-LLENEMY_Origins_FTJ_GenDallisAlexanderLoot(_Container, S_GLO_Alexandar_03e6345f-1bd3-403c-80e2-a443a74f6349);
-
-PROC
-LLENEMY_Origins_FTJ_GenDallisAlexanderLoot((ITEMGUID)_Container, (CHARACTERGUID)_Char)
-AND
-CharacterGetLevel(_Char, _Level)
-AND
-DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure)
-THEN
-NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure);
-GenerateTreasure(_Container, _Treasure, _Level, _Char);
-
 EXITSECTION
 
 ENDEXITSECTION
