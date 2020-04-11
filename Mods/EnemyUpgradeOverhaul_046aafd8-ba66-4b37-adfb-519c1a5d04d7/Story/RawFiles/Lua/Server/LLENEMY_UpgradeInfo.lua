@@ -19,6 +19,20 @@ local function GetUpgradeInfo(uuid)
 	return info
 end
 
+function LLENEMY_Ext_SetChallengePointsTag(uuid)
+	local cp = GetVarInteger(uuid, "LLENEMY_ChallengePoints")
+	if cp == nil or cp < 0 then cp = 0 end
+	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
+		if cp >= tbl.Min and cp <= tbl.Max then
+			SetTag(uuid, tbl.Tag)
+		else
+			if IsTagged(uuid, tbl.Tag) == 1 then
+				ClearTag(uuid, tbl.Tag)
+			end
+		end
+	end
+end
+
 function LLENEMY_Ext_UpgradeInfo_ResolveStatus(uuid, info)
 	if info == nil then
 		info = GetUpgradeInfo(uuid)
