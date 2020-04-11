@@ -294,16 +294,17 @@ NOT DB_LLENEMY_Rewards_Temp_BonusTreasure(_Char, _Current);
 
 IF
 CharacterPrecogDying(_Char)
+THEN
+LLENEMY_Rewards_GenerateTreasure(_Char);
+
+PROC
+LLENEMY_Rewards_GenerateTreasure((CHARACTERGUID)_Char)
 AND
 ObjectGetFlag(_Char, "LLENEMY_GenerateRewards", 1)
 AND
-GetPosition(_Char, _x, _y, _z)
-AND
 DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure)
-AND
-CharacterGetDisplayName(_Char, _, _Name)
 THEN
-LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] generated treasure [",_Treasure,"].");
+//LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] generated treasure [",_Treasure,"].");
 CharacterGiveReward(_Char, _Treasure, 0);
 
 /*
