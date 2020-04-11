@@ -57,7 +57,11 @@ NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_Build", _UUID);
 IF
 SavegameLoading(_,_,_,_)
 AND
-SysCount("DB_LLENEMY_UpgradeInfo_Temp_InfoString", 2, _Count)
+SysCount("DB_LLENEMY_UpgradeInfo_Temp_InfoString", 2, _a)
+AND
+SysCount("DB_CombatCharacters", 2, _b)
+AND
+IntegerSum(_a, _b, _Count)
 AND
 _Count > 0
 THEN
