@@ -26,9 +26,7 @@ function LLENEMY_Ext_SetChallengePointsTag(uuid)
 		if cp >= tbl.Min and cp <= tbl.Max then
 			SetTag(uuid, tbl.Tag)
 		else
-			if IsTagged(uuid, tbl.Tag) == 1 then
-				ClearTag(uuid, tbl.Tag)
-			end
+			ClearTag(uuid, tbl.Tag)
 		end
 	end
 end
