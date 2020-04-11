@@ -1,0 +1,13 @@
+new entry "LLENEMY_FIRE_BRAND_AURA"
+type "StatusData"
+data "StatusType" "CONSUME"
+using "FIRE_BRAND_AURA"
+data "StackId" "Stack_LLENEMY_FireBrandAura"
+data "AuraAllies" ""
+
+new entry "LLENEMY_VENOM_AURA"
+type "StatusData"
+data "StatusType" "CONSUME"
+using "VENOM_AURA"
+data "StackId" "Stack_LLENEMY_VenomAura"
+data "AuraAllies" ""

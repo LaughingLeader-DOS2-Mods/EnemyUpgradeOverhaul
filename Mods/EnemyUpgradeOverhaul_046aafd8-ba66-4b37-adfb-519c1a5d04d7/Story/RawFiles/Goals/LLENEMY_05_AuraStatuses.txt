@@ -1,0 +1,49 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+LLENEMY_Auras_InitSettings();
+KBSECTION
+
+PROC
+LLENEMY_Auras_InitSettings()
+THEN
+LeaderLib_Auras_Register_TurnAura("LLENEMY_FIRE_BRAND_AURA", 1, 8.0, 1, 1, 0, 0, 0);
+LeaderLib_Auras_Register_TurnAura("LLENEMY_VENOM_AURA", 1, 8.0, 1, 1, 0, 0, 0);
+
+//REGION STATUS_EVENTS
+IF
+CharacterStatusApplied(_Char, "LLENEMY_FIRE_BRAND_AURA", _Source)
+THEN
+LeaderLib_Auras_ApplyTurnAura(_Char, "LLENEMY_FIRE_BRAND_AURA");
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_FIRE_BRAND_AURA", _Source)
+THEN
+LeaderLib_Auras_RemoveTurnAura(_Char, "LLENEMY_FIRE_BRAND_AURA");
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_VENOM_AURA", _Source)
+THEN
+LeaderLib_Auras_ApplyTurnAura(_Char, "LLENEMY_VENOM_AURA");
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_VENOM_AURA", _Source)
+THEN
+LeaderLib_Auras_RemoveTurnAura(_Char, "LLENEMY_VENOM_AURA");
+//END_REGION
+
+//REGION PULSE_EVENTS
+PROC
+LeaderLib_Auras_OnTargetFound((GUIDSTRING)_Source, (GUIDSTRING)_Target, "LLENEMY_FIRE_BRAND_AURA")
+THEN
+ApplyStatus(_Target, "FIRE_BRAND", 12.0, 0, _Source);
+
+PROC
+LeaderLib_Auras_OnTargetFound((GUIDSTRING)_Source, (GUIDSTRING)_Target, "LLENEMY_VENOM_AURA")
+THEN
+ApplyStatus(_Target, "VENOM_COATING", 12.0, 0, _Source);
+//END_REGION
+
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
