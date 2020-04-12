@@ -195,6 +195,16 @@ local function LLENEMY_DebugInit()
 	local host = CharacterGetHostCharacter()
 	CharacterAddSkill(host, "Projectile_LLENEMY_Helaene_Mirage_ChaoticBarrage", 0)
 	NRD_SkillBarSetSkill(host, 6, "Projectile_LLENEMY_Helaene_Mirage_ChaoticBarrage")
+	if CharacterGetEquippedWeapon(host) == nil then
+		local inventory = Ext.GetCharacter(host):GetInventoryItems()
+		for k,v in pairs(inventory) do
+			local item = Ext.GetItem(v)
+			if NRD_ItemGetString(v, "WeaponType") ~= nil then
+				CharacterEquipItem(host, v)
+				break
+			end
+		end
+	end
 	--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
 	-- local level = GetRegion(host)
 	-- if level == "TUT_Tutorial_A" then
