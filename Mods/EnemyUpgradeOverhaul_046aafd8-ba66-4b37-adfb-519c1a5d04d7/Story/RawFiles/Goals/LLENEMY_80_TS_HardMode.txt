@@ -26,7 +26,6 @@ AND
 _Current < _BonusRolls
 THEN
 LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Upgrades_RollBonusRolls", "LLENEMY_Upgrades_RollBonusRolls");
-LLENEMY_UpgradeInfo_RestartTimers(300);
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Upgrades_RollBonusRolls")
@@ -41,7 +40,6 @@ NOT DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Current);
 DB_LLENEMY_HardMode_Temp_BonusRolls(_Char, _BonusRolls, _Next);
 LLENEMY_Upgrades_RollForUpgrades(_Char);
 LLENEMY_Upgrades_Internal_StartBonusTimer(_Char);
-LLENEMY_UpgradeInfo_RestartTimers(300);
 // [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]
