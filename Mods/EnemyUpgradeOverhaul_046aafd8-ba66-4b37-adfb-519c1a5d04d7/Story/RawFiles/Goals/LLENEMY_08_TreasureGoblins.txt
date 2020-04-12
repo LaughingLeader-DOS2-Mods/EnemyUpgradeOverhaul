@@ -177,7 +177,7 @@ CharacterGiveReward(_Goblin, "LLENEMY_TreasureGoblin_A", 1);
 InventoryLaunchIterator(_Goblin, "LLENEMY_TreasureGoblins_TreasureFound", "");
 // [END_NO_OSITOOLS]
 /* [OSITOOLS_ONLY]
-NRD_LuaCall("LLENEMY_Ext_ScatterInventory", _UUID);
+NRD_LuaCall("LLENEMY_Ext_TreasureGoblins_ScatterInventory", _UUID);
 */
 
 IF
@@ -258,8 +258,10 @@ NOT DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _TotalHits);
 /* [OSITOOLS_ONLY]
 IF
 StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Defeated")
+AND
+GetUUID(_Goblin, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_TreasureGoblinDefeated", (STRING)_Goblin);
+NRD_LuaCall("LLENEMY_Ext_TreasureGoblinDefeated", _UUID);
 */
 
 IF
@@ -282,6 +284,39 @@ AND
 NOT DB_LLENEMY_TreasureGoblins_Temp_Active(_)
 THEN
 LeaderLib_ToggleScripts_DisableScript("LLENEMY_TreasureGoblin_Active", "EnemyUpgradeOverhaul");
+//END_REGION
+
+//REGION ITEM_MOVING_TO_BAG
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_TreasureGoblins_AddItemToSack")
+AND
+DB_LLENEMY_TreasureGoblins_Temp_AddToSack((ITEMGUID)_Bag, _Item)
+AND
+ObjectExists(_Bag, 1)
+AND
+ItemGetAmount(_Item, _Amount)
+THEN
+NOT DB_LLENEMY_TreasureGoblins_Temp_AddToSack(_Bag, _Item);
+ItemToInventory(_Item, _Bag, _Amount);
+
+IF
+ItemAddedToCharacter(_Item, _Char)
+AND
+DB_LLENEMY_TreasureGoblins_Temp_AddToSack(_Bag, _Item)
+THEN
+NOT DB_LLENEMY_TreasureGoblins_Temp_AddToSack(_Bag, _Item);
+
+IF
+ItemAddedToContainer(_Item, _Container)
+AND
+DB_LLENEMY_TreasureGoblins_Temp_AddToSack(_Bag, _Item)
+THEN
+NOT DB_LLENEMY_TreasureGoblins_Temp_AddToSack(_Bag, _Item);
+
+IF
+RegionEnded(_)
+THEN
+SysClear("DB_LLENEMY_TreasureGoblins_Temp_AddToSack", 2);
 //END_REGION
 EXITSECTION
 

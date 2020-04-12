@@ -6,3 +6,4 @@ DB_LLENEMY_UpgradeInfo_Temp_TimerStarted 1
 DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades 2
 DB_LLENEMY_UpgradeInfo_Temp_InfoString 2
 DB_DallisDefeatedItemDrop 1
+DB_LLENEMY_TreasureGoblins_Temp_AddToSack 2
