@@ -25,7 +25,7 @@ local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4c
 local function StatDescription_UpgradeInfo(character, param, statusSource)
 	local upgradeKeys = {}
 	for status,data in pairs(EnemyUpgradeOverhaul.UpgradeData.Statuses) do
-		if character.Character:HasStatus(status) == 1 then
+		if character.Character:GetStatus(status) ~= nil then
 			table.insert(upgradeKeys, status)
 		end
 	end
