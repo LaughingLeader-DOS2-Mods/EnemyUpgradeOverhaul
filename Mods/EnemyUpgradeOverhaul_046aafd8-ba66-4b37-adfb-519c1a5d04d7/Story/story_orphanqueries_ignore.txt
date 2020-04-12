@@ -163,10 +163,6 @@ DB_LeaderLib_Treasure_TableWasGenerated 3
 DB_LeaderLog_Temp_RealString 3
 DB_LeaderLog_Temp_RealString 4
 DB_LLBARTER_DialogBlacklist 2
-DB_LLENEMY_BonusSkills_Settings 3
-DB_LLENEMY_ModApi_ModUpgrades 6
-DB_LLENEMY_ModApi_ModUpgrades 7
-DB_LLENEMY_Upgrades_Temp_UpgradeInfo 2
 DB_LoremasterTrader 2
 DB_MurderIgnoreFor 2
 DB_Mystery 1
@@ -246,4 +242,11 @@ DB_VBItem 2
 DB_WasInRegion 2
 DB_WaypointBlockUI 1
 DB_WaypointInfo 3
-DB_WaypointTuto 1
+DB_WaypointTuto 1DB_LLENEMY_BonusSkills_Settings 3
+DB_LLENEMY_ModApi_ModUpgrades 6
+DB_LLENEMY_ModApi_ModUpgrades 7
+DB_LLENEMY_Upgrades_Temp_UpgradeInfo 2
+DB_LLENEMY_UpgradeInfo_Temp_TimerStarted 1
+DB_LLENEMY_UpgradeInfo_Temp_ActiveUpgrades 2
+DB_LLENEMY_UpgradeInfo_Temp_InfoString 2
+DB_DallisDefeatedItemDrop 1

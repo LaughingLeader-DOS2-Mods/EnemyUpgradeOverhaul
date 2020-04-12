@@ -11,6 +11,11 @@ IF
 GameStarted(_,1)
 THEN
 GoalCompleted;
+
+IF
+GlobalFlagSet("LLENEMY_Ext_IsDeveloperMode")
+THEN
+SysActivateGoal("LLENEMY_91_Debug_DevMode");
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

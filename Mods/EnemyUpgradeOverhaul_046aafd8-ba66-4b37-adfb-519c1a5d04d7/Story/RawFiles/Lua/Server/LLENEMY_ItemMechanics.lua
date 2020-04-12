@@ -330,34 +330,55 @@ local function ItemIsRare(item, itemType)
 	end
 end
 
-function LLENEMY_Ext_ScatterInventory(char)
-	if Ext.Version() >= 43 then
-		local x,y,z = GetPosition(char)
-		local inventory = Ext.GetCharacter(char):GetInventoryItems()
-		for k,v in pairs(inventory) do
-			--LLENEMY_Ext_Debug_PrintItemProperties(v)
-			--LLENEMY_Ext_Debug_PrintFlags(v)
-			--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
-			local item = Ext.GetItem(v)
-			local stat = item.StatsId
-			local equipped = item.Slot <= 13
-			-- Stats that start with an underscore aren't meant for players
-			if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
-				ItemScatterAt(v, x,y,z)
-				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."]")
-				if not string.find(stat, "Gold") and (ItemIsRare(v, item.ItemType)) then
-					PlayEffect(v, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
+local function LLENEMY_TryScatterInventory(uuid)
+	local x,y,z = GetPosition(uuid)
+	local character = Ext.GetCharacter(uuid)
+	if character ~= nil then
+		local inventory = character:GetInventoryItems()
+		if inventory ~= nil or #inventory <= 0 then
+			for k,v in pairs(inventory) do
+				if ObjectExists(v) == 1 then
+					--LLENEMY_Ext_Debug_PrintItemProperties(v)
+					--LLENEMY_Ext_Debug_PrintFlags(v)
+					--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
+					local item = Ext.GetItem(v)
+					local stat = item.StatsId
+					local equipped = item.Slot <= 13
+					-- Stats that start with an underscore aren't meant for players
+					if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
+						ItemScatterAt(v, x,y,z)
+						ItemClearOwner(v)
+						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."]")
+						if not string.find(stat, "Gold") and (ItemIsRare(v, item.ItemType)) then
+							PlayEffect(v, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
+						end
+					else
+						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Item ("..tostring(stat)..")["..v.."] is equipped ("..tostring(equipped)..") or an NPC item. Skipping.")
+					end
 				end
-			else
-				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Item ("..tostring(stat)..")["..v.."] is equipped ("..tostring(equipped)..") or an NPC item. Skipping.")
 			end
+		else
+			error("Inventory from ("..uuid..") is empty or null!")
 		end
 	else
-		InventoryLaunchIterator(char, "LLENEMY_TreasureGoblins_TreasureFound", "");
+		error("Character from ("..uuid..") is null!")
+	end
+end
+
+function LLENEMY_Ext_ScatterInventory(char)
+	local success = pcall(LLENEMY_TryScatterInventory, char)
+	if not success then
+		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Failed to scatter items for ("..char..").")
 	end
 end
 
 function LLENEMY_Ext_TreasureGoblinDefeated(goblin)
+	if GetVarInteger(goblin, "LLENEMY_TreasureGoblin_PlayingAnim") ~= 1 then
+		SetVarInteger(goblin, "LLENEMY_TreasureGoblin_PlayingAnim", 1)
+		PlaySound(goblin, "LLENEMY_VO_Goblin_Death_Random_01")
+		PlayAnimation(goblin, "knockdown_fall", "LLENEMY_TreasureGoblins_Left")
+	end
+
 	local current = GetVarInteger(goblin, "LLENEMY_TreasureGoblin_TotalHits")
 	local max = GetVarInteger(goblin, "LLENEMY_TreasureGoblin_MaxTotalHits")
 	if current < max then

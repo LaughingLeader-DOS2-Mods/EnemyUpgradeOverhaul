@@ -34,7 +34,7 @@ PlayEffectAtPosition("RS3_FX_Skills_Voodoo_Impact_Voodo_BloatedCorpse_01", _x, _
 CharacterStatusText(_AtusaBoss, "LLENEMY_StatusText_AtusaBossActivated");
 SetTag(_AtusaBoss, "SHRIEKER"); // Immune to source vamp
 CharacterLevelUpTo(_AtusaBoss, _Level);
-LeaderLib_Helper_MakeHostileToPlayers(_AtusaBoss);
+LeaderLib_Helper_EnterCombatWithPlayers(_AtusaBoss);
 GlobalSetFlag("LLENEMY_HM_SpawnedAtusaBoss");
 LLENEMY_Upgrades_IncreaseChallengePoints(_AtusaBoss, 8);
 CharacterSetCustomName(_AtusaBoss, _Name);

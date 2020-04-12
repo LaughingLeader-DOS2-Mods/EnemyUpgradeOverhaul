@@ -2,10 +2,36 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
+
 IF
 CombatStarted(_CombatID)
+AND
+NOT DB_LLENEMY_TreasureGoblins_Temp_Active(_)
 THEN
 LLENEMY_TreasureGoblins_Spawn(_CombatID);
+
+/* [OSITOOLS_ONLY]
+IF
+GameStarted(_,_)
+THEN
+TimerCancel("Timers_LLENEMY_Debug_SpawnTreasureGoblin");
+TimerLaunch("Timers_LLENEMY_Debug_SpawnTreasureGoblin", 2500);
+
+IF
+TimerFinished("Timers_LLENEMY_Debug_SpawnTreasureGoblin")
+THEN
+NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
+
+IF
+TextEventSet("llenemy_goblintest")
+THEN
+NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
+*/
+
+IF
+GlobalFlagCleared("LLENEMY_Ext_IsDeveloperMode")
+THEN
+SysCompleteGoal("LLENEMY_91_Debug_DevMode");
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_91_Debug__Start"

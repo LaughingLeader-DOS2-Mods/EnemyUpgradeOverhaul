@@ -64,6 +64,7 @@ local ignored_skills = {
 	Rain_EnemyWater_Blessed = true,
 	Rush_EnemyBatteringRam_Demons = true,
 	Rush_EnemyTurtleBatteringRam = true,
+	Projectile_EnemyTurtleBubbles = true,
 	Shout_ChainPull = true,
 	Shout_EnemyBoneCage_Dog = true,
 	Shout_EnemyChameleonSkin_PurgedDaughter = true,

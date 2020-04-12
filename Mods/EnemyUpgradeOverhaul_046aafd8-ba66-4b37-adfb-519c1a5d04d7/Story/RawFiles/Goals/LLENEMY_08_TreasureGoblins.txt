@@ -111,18 +111,24 @@ LLENEMY_TreasureGoblins_Internal_Spawn(_x, _y, _z, -1);
 PROC
 LLENEMY_TreasureGoblins_Internal_Spawn((REAL)_x, (REAL)_y, (REAL)_z, (INTEGER)_CombatID)
 AND
-LeaderLib_Helper_QRY_GetHighestPlayerLevel()
+CharacterGetHostCharacter(_Host)
 AND
-DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level)
+CharacterGetLevel(_Host, _Level)
+//AND
+//LeaderLib_Helper_QRY_GetHighestPlayerLevel()
+//AND
+//DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level)
 AND
-TemporaryCharacterCreateAtPosition(_x, _y, _z, "LLENEMY_TreasureGoblin_A_444e50a0-e59b-4866-b548-49a0197a0de1", 1, _Goblin)
+TemporaryCharacterCreateAtPosition(_x, _y, _z, "444e50a0-e59b-4866-b548-49a0197a0de1", 1, _Goblin)
 THEN
 NOT DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level);
 CharacterLevelUpTo(_Goblin, _Level);
-DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin);
-LeaderLib_Helper_MakeHostileToPlayers(_Goblin);
 LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned(_Goblin, _CombatID);
 LLENEMY_Rewards_TreasureGoblin_ToggleScript(1);
+DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin);
+//LeaderLib_Helper_EnterCombatWithPlayers(_Goblin);
+LeaderLib_Helper_MakeHostileToPlayers(_Goblin);
+LeaderLib_Timers_StartObjectTimer(_Goblin, 1000, "Timers_LLENEMY_Goblin_EnterCombatWithPlayers", "LeaderLib_Commands_EnterCombatWithPlayers");
 
 PROC
 LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned((CHARACTERGUID)_Goblin, (INTEGER)_CombatID)
@@ -143,8 +149,6 @@ EnterCombat(_Goblin, _Player);
 //REGION TREASURE_DROPPING
 PROC
 LeaderLib_Variables_OnVariableIntChanged((GUIDSTRING)_Goblin, "LLENEMY_TreasureGoblin_TotalHits", (INTEGER)_LastValue, (INTEGER)_CurrentValue)
-AND
-NOT GetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_Defeated", 1)
 AND
 _CurrentValue > _LastValue
 THEN
@@ -257,6 +261,11 @@ StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Defeated")
 THEN
 NRD_LuaCall("LLENEMY_Ext_TreasureGoblinDefeated", (STRING)_Goblin);
 */
+
+IF
+StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Left")
+THEN
+Poof(_Goblin);
 //END_REGION
 
 //REGION TOGGLING_SCRIPT

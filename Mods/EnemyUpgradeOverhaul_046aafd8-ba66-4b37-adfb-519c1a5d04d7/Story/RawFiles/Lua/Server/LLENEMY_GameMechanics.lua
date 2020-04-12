@@ -145,3 +145,24 @@ function LLENEMY_Ext_HM_RollAdditionalUpgrades(char)
 	end
 	Osi.LLENEMY_UpgradeInfo_RestartTimers(300)
 end
+
+function LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,level,combatid)
+	local host = CharacterGetHostCharacter()
+	if level == nil then
+		level = CharacterGetLevel(host)
+	end
+	if x == nil or y == nil or z == nil then
+		x,y,z = GetPosition(host)
+	end
+	if combatid == nil then
+		combatid = 0
+	end
+	local goblin = TemporaryCharacterCreateAtPosition(x, y, z, "444e50a0-e59b-4866-b548-49a0197a0de1", 1)
+	CharacterLevelUpTo(goblin, level)
+	Osi.DB_LLENEMY_TreasureGoblins_Temp_Active(goblin)
+	--SetStoryEvent(goblin, "LeaderLib_Commands_EnterCombatWithPlayers")
+	Osi.LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned(goblin, combatid)
+	Osi.LLENEMY_Rewards_TreasureGoblin_ToggleScript(1)
+	Osi.LeaderLib_Helper_MakeHostileToPlayers(goblin)
+	Osi.LeaderLib_Timers_StartObjectTimer(goblin, 1000, "Timers_LLENEMY_Goblin_EnterCombatWithPlayers", "LeaderLib_Commands_EnterCombatWithPlayers")
+end
