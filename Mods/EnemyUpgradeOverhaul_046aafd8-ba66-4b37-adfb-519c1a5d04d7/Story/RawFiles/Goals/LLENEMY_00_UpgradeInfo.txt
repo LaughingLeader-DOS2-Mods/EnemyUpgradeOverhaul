@@ -7,164 +7,24 @@ KBSECTION
 PROC
 LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
 AND
-_LastVersion < 536870917
+_LastVersion < 536870921
 THEN
 SysClear("DB_LLENEMY_UpgradeInfo_Info", 3);
-
-PROC
-LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
-AND
-_LastVersion < 536870917
-AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Last)
-AND
-GetUUID(_Char, _UUID)
-THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Last);
-RemoveStatus(_Char, "LLENEMY_UPGRADE_INFO");
-/* [OSITOOLS_ONLY]
-NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_Build", _UUID);
-*/
+SysClear("DB_LLENEMY_UpgradeInfo_Info", 2);
+SysClear("DB_LLENEMY_UpgradeInfo_Temp_InfoString", 2);
 //END_REGION
 
-//REGION RESETTING
-/* Lua data isn't persistant, so it needs to be refreshed using databases. */
-IF
-TextEventSet("leaderlib_luareset")
-THEN
-TimerCancel("Timers_LLENEMY_ResetUpgradeInfo");
-TimerLaunch("Timers_LLENEMY_ResetUpgradeInfo", 50);
-
-IF
-TimerFinished("Timers_LLENEMY_ResetUpgradeInfo")
-THEN
-CharacterLaunchOsirisOnlyIterator("LLENEMY_UpgradeInfo_Update");
-
-/* [OSITOOLS_ONLY]
-IF
-StoryEvent((CHARACTERGUID)_Char, "LLENEMY_UpgradeInfo_Update")
-AND
-LLENEMY_UpgradeInfo_QRY_HasInfo(_Char)
-AND
-GetUUID(_Char, _UUID)
-THEN
-NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_Build", _UUID);
-*/
-//END_REGION
-
-//REGION UPGRADE_INFO
-/* [OSITOOLS_ONLY]
-IF
-SavegameLoading(_,_,_,_)
-AND
-SysCount("DB_LLENEMY_UpgradeInfo_Temp_InfoString", 2, _a)
-AND
-SysCount("DB_CombatCharacters", 2, _b)
-AND
-IntegerSum(_a, _b, _Count)
-AND
-_Count > 0
-THEN
-DB_LLENEMY_UpgradeInfo_Temp_LoadSavedData(1);
-
-IF
-GameStarted(_,_)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_LoadSavedData(1)
-THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_LoadSavedData(1);
-NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_LoadSavedInfo");
-
-PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Upgrade, (REAL)_Duration, (INTEGER)_CP)
-AND
-_Upgrade != ""
-AND
-GetUUID(_Char, _UUID)
-THEN
-NRD_LuaCall("LLENEMY_Ext_OnUpgradeApplied", _UUID, _Upgrade);
-*/
-
-QRY
-LLENEMY_UpgradeInfo_QRY_HasInfo((CHARACTERGUID)_Char)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString((CHARACTERGUID)_Char, (STRING)_Str)
-AND
-_Str != ""
-THEN
-DB_NOOP(1);
-//END_REGION
-
-//REGION SEND_INFO
-PROC
-LLENEMY_UpgradeInfo_Internal_SendInfo((CHARACTERGUID)_Char)
-THEN
-LLENEMY_UpgradeInfo_StartTimer("Timers_LLENEMY_UpgradeInfo_SendInfo", 50);
-
-/* [OSITOOLS_ONLY]
-IF
-TimerFinished("Timers_LLENEMY_UpgradeInfo_SendInfo")
-THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_TimerStarted("Timers_LLENEMY_UpgradeInfo_SendInfo");
-NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_Send");
-*/
-
-PROC
-LLENEMY_UpgradeInfo_StartTimer((STRING)_TimerName, (INTEGER)_Delay)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_TimerStarted(_TimerName)
-THEN
-TimerCancel(_TimerName);
-TimerLaunch(_TimerName, _Delay);
-
-PROC
-LLENEMY_UpgradeInfo_StartTimer((STRING)_TimerName, (INTEGER)_Delay)
-AND
-NOT DB_LLENEMY_UpgradeInfo_Temp_TimerStarted(_TimerName)
-THEN
-DB_LLENEMY_UpgradeInfo_Temp_TimerStarted(_TimerName);
-TimerLaunch(_TimerName, _Delay);
-
-PROC
-LLENEMY_UpgradeInfo_RestartTimers((INTEGER)_Delay)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_TimerStarted(_TimerName)
-THEN
-TimerCancel(_TimerName);
-TimerLaunch(_TimerName, _Delay);
-//END_REGION
-
-//REGION CLEARING
-PROC
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Char)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Info)
-THEN
-NOT DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Info);
-
-IF
-CharacterDied(_Char)
-AND
-LLENEMY_UpgradeInfo_QRY_HasInfo(_Char)
-THEN
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject(_Char);
-
-IF
-RegionEnded(_)
-AND
-DB_LLENEMY_UpgradeInfo_Temp_InfoString(_Char, _Info)
-THEN
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject(_Char);
-
+//REGION CP_TAGS
 /* [OSITOOLS_ONLY]
 PROC
-LLENEMY_UpgradeInfo_Internal_ClearDataForObject((CHARACTERGUID)_Char)
-AND
-GetUUID(_Char, _UUID)
+LLENEMY_Upgrades_IncreaseChallengePoints((CHARACTERGUID)_Char, (INTEGER)_CP)
 THEN
-NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_Remove", _UUID);
-TimerCancel("Timers_LLENEMY_UpgradeInfo_SendInfo");
-TimerLaunch("Timers_LLENEMY_UpgradeInfo_SendInfo", 50);
+LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_SetCPTag", "LLENEMY_SetCPTag");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_SetCPTag")
+THEN
+NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", (STRING)_Char);
 */
 //END_REGION
 EXITSECTION

@@ -7,18 +7,6 @@ local function sortupgrades(a,b)
 	return a:upper() < b:upper()
 end
 
-local function LLENEMY_OnGetClientInfo(channel, data)
-	EnemyUpgradeOverhaul["UpgradeInfo"] = Ext.JsonParse(data)
-	if Ext.IsDeveloperMode() then
-		Ext.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Received upgrade info:")
-		Ext.Print("======")
-		Ext.Print(data)
-		Ext.Print("======")
-	end
-end
-
-Ext.RegisterNetListener("LLENEMY_UpgradeInfo", LLENEMY_OnGetClientInfo)
-
 local upgradeInfoEntryColorText = TranslatedString:Create("ha4587526ge140g42f9g9a98gc92b537d4209", "<img src='Icon_BulletPoint'><font color='[2]' size='18'>[1]</font>")
 local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4cc2ga233g7c22612af67b", "<img src='Icon_BulletPoint'><font size='18'>[1]</font>")
 

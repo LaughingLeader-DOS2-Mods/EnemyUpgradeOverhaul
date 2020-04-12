@@ -8,7 +8,6 @@ EnemyUpgradeOverhaul = {
 		["SNEAKING"] = true,
 		["INVISIBLE"] = true,
 	},
-	UpgradeInfo = {},
 	ExtraData = {
 		LLENEMY_Counter_MaxChance = 75,
 	},
