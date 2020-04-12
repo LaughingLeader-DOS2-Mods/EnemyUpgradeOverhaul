@@ -18,6 +18,7 @@ local ignored_skills = {
 	Jump_EnemySpiderBurrow = true,
 	Jump_EnemyTacticalRetreat_Frog = true,
 	Jump_EnemyTacticalRetreat_Mordus = true,
+	Jump_EnemyBeetleJump = true,
 	MultiStrike_EnemyVault_ArenaChampion = true,
 	ProjectileStrike_EnemyMeteorShower_CombatMeteorScript = true,
 	ProjectileStrike_EnemyMeteorShower_Windego = true,
@@ -40,6 +41,7 @@ local ignored_skills = {
 	Projectile_EnemyFlight_Ooze_Poison = true,
 	Projectile_EnemyFlight_Wolf = true,
 	Projectile_EnemyFrog_Air = true,
+	Projectile_EnemyFrogPoisonBall = true,
 	Projectile_EnemyInfectiousBlood_Bat = true,
 	Projectile_EnemyLightningBolt_Frog = true,
 	Projectile_EnemyMessengerOwl = true,
@@ -340,6 +342,17 @@ end
 
 local AIFLAG_CANNOT_USE = 140689826905584
 
+local function LLENEMY_ParentSkillIsInvalid(skill)
+	local parent = Ext.StatGetAttribute(skill, "Using")
+	if parent ~= nil then
+		if Ext.StatGetAttribute(parent, "SkillType") == nil then
+			Ext.Print("[LLENEMY_BonusSkills.lua] [*ERROR*] Parent skill for '" .. tostring(skill) .. "' does not exist! Skipping!")
+			return true
+		end
+	end
+	return false
+end
+
 function LLENEMY_Ext_BuildEnemySkills()
 	EnemyUpgradeOverhaul.EnemySkills = {
 		SkillGroup:Create("None", "None"),
@@ -367,18 +380,23 @@ function LLENEMY_Ext_BuildEnemySkills()
 		if aiflags ~= AIFLAG_CANNOT_USE and (isenemy == "Yes" and string.find(skill, "Enemy")) and not IgnoreSkill(skill) then
 			local ap = Ext.StatGetAttribute(skill, "ActionPoints")
 			local cd = Ext.StatGetAttribute(skill, "Cooldown")
-			
 			if ap > 0 or cd > 0 then
-				local ability = Ext.StatGetAttribute(skill, "Ability")
-				local requirement = Ext.StatGetAttribute(skill, "Requirement")
-				local sp = Ext.StatGetAttribute(skill, "Magic Cost")
-				if sp == nil then sp = 0 end
-				local tier = Ext.StatGetAttribute(skill, "Tier")
-				local skillgroup = GetSkillGroup(EnemyUpgradeOverhaul.EnemySkills, ability)
-				if skillgroup ~= nil then
-					skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
-					LeaderLib.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
-					--LeaderLib.Print(tostring(skill))
+				local b,invalidSkill = pcall(LLENEMY_ParentSkillIsInvalid, skill)
+				if not b then invalidSkill = true end
+				if not invalidSkill then
+					local ability = Ext.StatGetAttribute(skill, "Ability")
+					local requirement = Ext.StatGetAttribute(skill, "Requirement")
+					local sp = Ext.StatGetAttribute(skill, "Magic Cost")
+					if sp == nil then sp = 0 end
+					local tier = Ext.StatGetAttribute(skill, "Tier")
+					local skillgroup = GetSkillGroup(EnemyUpgradeOverhaul.EnemySkills, ability)
+					if skillgroup ~= nil then
+						skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
+						LeaderLib.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
+						--LeaderLib.Print(tostring(skill))
+					end
+				else
+					LeaderLib.Print("[LLENEMY_BonusSkills.lua] Skill '" .. tostring(skill) .. "' is invalid? pcall (".. tostring(b) ..") invalidSkill(".. tostring(invalidSkill)..")")
 				end
 			end
 		end
