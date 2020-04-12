@@ -1,5 +1,5 @@
-Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Shared/LLENEMY_Shared.lua")
-Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Client/LLENEMY_DescriptionParams.lua")
+Ext.Require("Shared/LLENEMY_Shared.lua")
+Ext.Require("Client/LLENEMY_DescriptionParams.lua")
 
 local function LLENEMY_Client_ModuleLoading()
 	LLENEMY_Shared_InitModuleLoading()

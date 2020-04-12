@@ -30,9 +30,9 @@ function LLENEMY_Ext_GetExtraDataValue(key, fallback)
 	return fallback
 end
 
-Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Shared/LLENEMY_StatOverrides.lua")
-Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Shared/LLENEMY_VoiceData.lua")
-Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Shared/LLENEMY_SharedUpgradeInfo.lua")
+Ext.Require("Shared/LLENEMY_StatOverrides.lua")
+Ext.Require("Shared/LLENEMY_VoiceData.lua")
+Ext.Require("Shared/LLENEMY_SharedUpgradeInfo.lua")
 
 if Ext.Version() >= 42 then
 	EnemyUpgradeOverhaul.DeveloperMode = Ext.IsDeveloperMode() == true
@@ -79,6 +79,4 @@ local function LLENEMY_Shared_SessionLoaded()
 	RegisterVoiceMetaData()
 end
 
-if Ext.Version() >= 43 then
-	Ext.RegisterListener("SessionLoaded", LLENEMY_Shared_SessionLoaded)
-end
+Ext.RegisterListener("SessionLoaded", LLENEMY_Shared_SessionLoaded)
