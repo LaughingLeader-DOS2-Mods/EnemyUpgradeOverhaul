@@ -4,6 +4,7 @@ Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server/LLENEMY_BonusSkills.lua")
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server/LLENEMY_GameMechanics.lua")
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server/LLENEMY_ItemMechanics.lua")
+Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server/LLENEMY_TreasureGoblins.lua")
 Ext.Require("EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7", "Server/LLENEMY_Debug.lua")
 
 function LLENEMY_Ext_Init()
