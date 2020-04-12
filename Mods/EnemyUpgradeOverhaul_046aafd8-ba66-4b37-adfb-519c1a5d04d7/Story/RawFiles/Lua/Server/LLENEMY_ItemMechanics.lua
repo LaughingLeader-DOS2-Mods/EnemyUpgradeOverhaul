@@ -322,7 +322,7 @@ local function LLENEMY_ShadowCorruptItemFunc(item)
 end
 Ext.NewCall(LLENEMY_ShadowCorruptItemFunc, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
-local function ItemIsRare(item, itemType)
+function LLENEMY_ItemIsRare(item, itemType)
 	if itemType ~= "Common" and itemType ~= "" then
 		return true
 	elseif ItemGetGoldValue(item) >= 250 then
@@ -348,8 +348,9 @@ local function LLENEMY_TryScatterInventory(uuid)
 					if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
 						ItemScatterAt(v, x,y,z)
 						ItemClearOwner(v)
+						
 						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."]")
-						if not string.find(stat, "Gold") and (ItemIsRare(v, item.ItemType)) then
+						if not string.find(stat, "Gold") and (LLENEMY_ItemIsRare(v, item.ItemType)) then
 							PlayEffect(v, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
 						end
 					else
@@ -369,47 +370,5 @@ function LLENEMY_Ext_ScatterInventory(char)
 	local success = pcall(LLENEMY_TryScatterInventory, char)
 	if not success then
 		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Failed to scatter items for ("..char..").")
-	end
-end
-
-function LLENEMY_Ext_TreasureGoblinDefeated(goblin)
-	if GetVarInteger(goblin, "LLENEMY_TreasureGoblin_PlayingAnim") ~= 1 then
-		SetVarInteger(goblin, "LLENEMY_TreasureGoblin_PlayingAnim", 1)
-		PlaySound(goblin, "LLENEMY_VO_Goblin_Death_Random_01")
-		PlayAnimation(goblin, "knockdown_fall", "LLENEMY_TreasureGoblins_Left")
-	end
-
-	local current = GetVarInteger(goblin, "LLENEMY_TreasureGoblin_TotalHits")
-	local max = GetVarInteger(goblin, "LLENEMY_TreasureGoblin_MaxTotalHits")
-	if current < max then
-		local x,y,z = GetPosition(goblin)
-		local lootSack = CreateItemTemplateAtPosition("CONT_LLENEMY_Bag_TreasureGoblinSack_A_2b7888b9-833c-4443-b4b5-cc372b95b459", x, y, z)
-		PlayEffect(lootSack,"RS3_FX_Skills_Void_Netherswap_Reappear_01")
-		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:TreasureGoblinDefeated] Dropping remaining items ("..tostring(current).."/"..tostring(max)..") for goblin ("..tostring(goblin)..")")
-		for i=current,max,1 do
-			CharacterGiveReward(goblin, "LLENEMY_TreasureGoblin_A", 1)
-		end
-		if Ext.Version() >= 43 then
-			local inventory = Ext.GetCharacter(goblin):GetInventoryItems()
-			if inventory ~= nil then
-				for k,v in pairs(inventory) do
-					--LLENEMY_Ext_Debug_PrintItemProperties(v)
-					--LLENEMY_Ext_Debug_PrintFlags(v)
-					--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
-					local item = Ext.GetItem(v)
-					local stat = item.StatsId
-					local equipped = item.Slot <= 13
-					-- Stats that start with an underscore aren't meant for players
-					if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
-						ItemToInventory(v,lootSack,item.Amount,0,1)
-						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:TreasureGoblinDefeated] Added item ("..tostring(stat)..")["..v.."] to loot sack.")
-					end
-				end
-			else
-				MoveAllItemsTo(goblin, lootSack, 0, 0, 1)
-			end
-		else
-			MoveAllItemsTo(goblin, lootSack, 0, 0, 1)
-		end
 	end
 end
