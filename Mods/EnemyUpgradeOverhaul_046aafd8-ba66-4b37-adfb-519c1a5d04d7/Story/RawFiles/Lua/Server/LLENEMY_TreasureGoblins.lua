@@ -85,7 +85,6 @@ function LLENEMY_Ext_TreasureGoblins_ScatterInventory(char)
 end
 
 local function LLENEMY_TreasureGoblinDefeated_TrySpawnLoot(goblin)
-	SetInvulnerable_UseProcSetInvulnerable(goblin, 1)
 	if GetVarInteger(goblin, "LLENEMY_TreasureGoblin_PlayingAnim") ~= 1 then
 		SetVarInteger(goblin, "LLENEMY_TreasureGoblin_PlayingAnim", 1)
 		PlaySound(goblin, "LLENEMY_VO_Goblin_Death_Random_01")
@@ -132,5 +131,6 @@ local function LLENEMY_TreasureGoblinDefeated_TrySpawnLoot(goblin)
 end
 
 function LLENEMY_Ext_TreasureGoblinDefeated(goblin)
+	SetInvulnerable_UseProcSetInvulnerable(goblin, 1)
 	local b = pcall(LLENEMY_TreasureGoblinDefeated_TrySpawnLoot, goblin)
 end

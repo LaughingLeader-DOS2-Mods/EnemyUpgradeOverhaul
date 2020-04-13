@@ -70,11 +70,12 @@ ENDIF
 	//Output("Total Hits: ([1]/[2]) Vitality([3])", %LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits, _Vit)
 IF "(c1|c2|c3)&c4"
 	IsGreaterThen(%LLENEMY_TreasureGoblin_TotalHits, %LLENEMY_TreasureGoblin_MaxTotalHits)
-	IsLessThen(_Vit, 0.01)
-	IsEqual(_Vit, 0.01)
+	IsLessThen(_Vit, 0.05)
+	IsEqual(_Vit, 0.05)
 	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 0)
 THEN
 	Set(%LLENEMY_TreasureGoblin_Defeated, 1)
+	SetInvulnerable(__Me, 1)
 	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Defeated")
 	CallFunction("LLENEMY_TreasureGoblin_Leave")
 ENDIF
