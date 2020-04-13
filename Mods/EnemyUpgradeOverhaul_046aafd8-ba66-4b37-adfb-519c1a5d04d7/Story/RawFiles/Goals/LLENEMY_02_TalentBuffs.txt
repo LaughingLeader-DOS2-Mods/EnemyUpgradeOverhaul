@@ -362,6 +362,13 @@ RemoveStatus(_Enemy, "LLENEMY_TALENT_BULLY_DAMAGEBONUS");
 //END_REGION
 
 //REGION EXTENDER_TALENT_ADDING
+/*
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_UNSTABLE", _)
+THEN
+NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Unstable");
+*/
+
 /* [OSITOOLS_ONLY]
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_LONEWOLF", _)
@@ -372,11 +379,6 @@ IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_TORTURER", _)
 THEN
 NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Torturer");
-
-IF
-CharacterStatusApplied(_Char, "LLENEMY_TALENT_UNSTABLE", _)
-THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Unstable");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_WHATARUSH", _)
