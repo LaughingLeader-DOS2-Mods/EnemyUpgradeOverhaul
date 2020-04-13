@@ -472,6 +472,7 @@ AND
 CreateItemTemplateAtPosition("CONT_LLENEMY_DuplicantTreasure_b6773d33-18e4-4fa3-abe0-85d33c30df0a", _x, _y, _z, _Container)
 THEN
 DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container);
+PlayEffectAtPosition("LLENEMY_FX_ShadowOrb_Spawn_01", _x, _y, _z);
 
 PROC
 LLENEMY_Rewards_SpawnShadowOrb((CHARACTERGUID)_Dupe)
