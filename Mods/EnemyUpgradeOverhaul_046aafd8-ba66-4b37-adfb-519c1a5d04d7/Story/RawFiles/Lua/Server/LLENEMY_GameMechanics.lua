@@ -48,6 +48,8 @@ function LLENEMY_Ext_MugTarget_Start(attacker, target, damage, handle)
 			if skillIsMelee == "Yes" or requirement == "MeleeWeapon" or requirement == "DaggerWeapon" or requirement == "StaffWeapon" then
 				isMelee = true
 			end
+		elseif hitWithWeapon == 0 and CharacterGetEquippedWeapon(attacker) == nil then -- Unarmed attack?
+			isMelee = true
 		end
 		if isMelee then
 			--LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Hit type: " .. tostring(hit_type))
