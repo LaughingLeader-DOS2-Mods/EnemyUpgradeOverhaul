@@ -107,6 +107,17 @@ THEN
 		CallFunction("LLENEMY_TreasureGoblin_Leave")
 	ENDIF
 ENDIF
+INTERRUPT
+ON
+	OnMovementFailed(_)
+ACTIONS
+IF "c1"
+	IsInActiveTurn(__Me)
+THEN
+	EndTurn(__Me)
+ELSE
+	Reset()
+ENDIF
 
 REACTION LLENEMY_TreasureGoblin_Leaving, 0
 USAGE ALL
