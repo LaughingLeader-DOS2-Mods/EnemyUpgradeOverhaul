@@ -335,7 +335,7 @@ local function LLENEMY_TryScatterInventory(uuid)
 	local character = Ext.GetCharacter(uuid)
 	if character ~= nil then
 		local inventory = character:GetInventoryItems()
-		if inventory ~= nil or #inventory <= 0 then
+		if inventory ~= nil and #inventory > 0 then
 			for k,v in pairs(inventory) do
 				if ObjectExists(v) == 1 then
 					--LLENEMY_Ext_Debug_PrintItemProperties(v)
@@ -370,5 +370,13 @@ function LLENEMY_Ext_ScatterInventory(char)
 	local success = pcall(LLENEMY_TryScatterInventory, char)
 	if not success then
 		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Failed to scatter items for ("..char..").")
+	end
+end
+
+local function LLENEMY_Ext_DestroyEmptyContainer(uuid)
+	local item = Ext.GetItem(uuid)
+	local inventory = item:GetInventoryItems()
+	if inventory == nil or #inventory <= 0 then
+		ItemDestroy(uuid)
 	end
 end

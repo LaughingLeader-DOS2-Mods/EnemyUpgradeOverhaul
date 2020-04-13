@@ -478,6 +478,7 @@ ItemIsDestroyed(_Item, 1)
 THEN
 ItemRemove(_Item);
 
+// [BEGIN_NO_OSITOOLS]
 IF
 StoryEvent((ITEMGUID)_Item, "LLENEMY_Container_OnClosed_CheckDestroy")
 AND
@@ -485,9 +486,25 @@ ItemIsDestroyed(_Item, 0)
 AND
 ContainerGetGoldValue(_Item, _Value)
 AND
-_Value == 0
+ItemGetGoldValue(_Item, _ContainerValue)
+AND
+IntegerSubtract(_Value, _ContainerValue, _CheckValue)
+AND
+_CheckValue <= 0
 THEN
 ItemDestroy(_Item);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_Container_OnClosed_CheckDestroy")
+AND
+ItemIsDestroyed(_Item, 0)
+AND
+GetUUID(_Item, _UUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_DestroyEmptyContainer", _UUID);
+*/
 
 IF
 StoryEvent((ITEMGUID)_Container, "LLENEMY_Container_OnDestroyed")
