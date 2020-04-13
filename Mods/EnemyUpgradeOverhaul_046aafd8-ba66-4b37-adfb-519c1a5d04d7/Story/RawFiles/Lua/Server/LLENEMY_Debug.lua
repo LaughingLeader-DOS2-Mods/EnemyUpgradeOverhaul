@@ -217,6 +217,7 @@ local function LLENEMY_DebugInit()
 	local x,y,z = GetPosition(host)
 	NRD_Summon(host, "e63a712f-fc87-4469-8848-fd8941043afd", x, y, z, -1, 1, 1, 1)
 	NRD_Summon(host, "26f10a2d-910c-42ed-b629-9a3ce550c1f7", x, y, z, -1, 1, 1, 1)
+	CharacterSetImmortal(host, 1)
 	--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
 	-- local level = GetRegion(host)
 	-- if level == "TUT_Tutorial_A" then
