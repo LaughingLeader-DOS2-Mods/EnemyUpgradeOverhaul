@@ -411,13 +411,13 @@ LLENEMY_Upgrades_QRY_Internal_CheckForTypeCriticalFailure(_Char, _Group, _Type, 
 AND
 DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _MinRoll, _MaxRoll, _Duration, _CP)
 AND
-LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade(_Char, _Group, _Type, _Status, _Duration)
-AND
-NOT DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status)
-AND
 _Roll <= _MaxRoll
 AND
 _Roll >= _MinRoll
+AND
+LLENEMY_Upgrades_QRY_CanRollForStatusUpgrade(_Char, _Group, _Type, _Status, _Duration)
+AND
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status)
 THEN
 NOT DB_LeaderLib_Random(_Roll);
 LLENEMY_Upgrades_Internal_LogStatusRoll(_Char, _Roll, _MinRoll, _MaxRoll, _Group, _Type, _Status);
