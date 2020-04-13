@@ -341,7 +341,8 @@ function LLENEMY_Ext_ShadowCorruptItem(item, container)
 end
 
 function LLENEMY_Ext_ShadowCorruptItems(uuid)
-	local success = false
+	InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
+	--[[ local success = false
 	local item = Ext.GetItem(uuid)
 	if item ~= nil then
 		local inventory = item:GetInventoryItems()
@@ -353,8 +354,9 @@ function LLENEMY_Ext_ShadowCorruptItems(uuid)
 		end
 	end
 	if not success then
+		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_Ext_ShadowCorruptItems] Failed to get inventory for item ("..uuid..")")
 		InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
-	end
+	end ]]
 end
 
 local function LLENEMY_ShadowCorruptItemFunc(item)
