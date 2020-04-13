@@ -1,7 +1,9 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+
 KBSECTION
+//REGION BONUS_UPGRADE_ROLLING
 // [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Region)
@@ -54,7 +56,14 @@ IF
 RegionEnded(_)
 THEN
 SysClear("DB_LLENEMY_HardMode_Temp_BonusRolls", 3);
+//END_REGION
 
+//REGION SKILL_CASTING_LISTENER
+IF
+SkillCast(_Character, _Skill, _SkillType, _SkillElement)
+THEN
+LLENEMY_OnSkillCast(_Character, _Skill, _SkillType, _SkillElement);
+//END_REGION
 EXITSECTION
 SysClear("DB_LLENEMY_HardMode_Temp_BonusRolls", 3);
 ENDEXITSECTION
