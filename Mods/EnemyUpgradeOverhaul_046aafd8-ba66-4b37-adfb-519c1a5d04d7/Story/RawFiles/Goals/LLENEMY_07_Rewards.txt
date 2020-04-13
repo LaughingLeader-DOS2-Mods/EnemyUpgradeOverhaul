@@ -442,7 +442,9 @@ LLENEMY_Rewards_SpawnShadowOrb((CHARACTERGUID)_Dupe)
 AND
 NOT DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _)
 AND
-CreateItemTemplateAtPosition("CONT_LLENEMY_DuplicantTreasure_b6773d33-18e4-4fa3-abe0-85d33c30df0a", _X, _y, _z, _Container)
+GetPosition(_Dupe, _x, _y, _z)
+AND
+CreateItemTemplateAtPosition("CONT_LLENEMY_DuplicantTreasure_b6773d33-18e4-4fa3-abe0-85d33c30df0a", _x, _y, _z, _Container)
 THEN
 DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container);
 
@@ -450,8 +452,6 @@ PROC
 LLENEMY_Rewards_SpawnShadowOrb((CHARACTERGUID)_Dupe)
 AND
 DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container)
-AND
-GetPosition(_Dupe, _x, _y, _z)
 AND
 CharacterGetLevel(_Dupe, _Level)
 AND
@@ -472,6 +472,15 @@ ObjectClearFlag(_Dupe, "LLENEMY_GenerateRewards", 0);
 IF
 StoryEvent((ITEMGUID)_Item, "LLENEMY_Container_OnClosed_CheckDestroy")
 AND
+ObjectExists(_Item, 1)
+AND
+ItemIsDestroyed(_Item, 1)
+THEN
+ItemRemove(_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_Container_OnClosed_CheckDestroy")
+AND
 ItemIsDestroyed(_Item, 0)
 AND
 ContainerGetGoldValue(_Item, _Value)
@@ -481,7 +490,7 @@ THEN
 ItemDestroy(_Item);
 
 IF
-StoryEvent((ITEMGUID)_Container, "LLENEMY_Container_OnClosed_CheckDestroy")
+StoryEvent((ITEMGUID)_Container, "LLENEMY_Container_OnDestroyed")
 AND
 DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container)
 THEN
