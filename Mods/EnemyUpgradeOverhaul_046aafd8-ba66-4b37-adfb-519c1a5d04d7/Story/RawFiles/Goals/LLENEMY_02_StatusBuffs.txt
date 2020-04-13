@@ -236,6 +236,7 @@ THEN
 LeaderLib_ToggleScripts_EnableScriptForObject(_Enemy, "LLENEMY_Granada_Active", "EnemyUpgradeOverhaul");
 
 //Guaranteed talent status
+/*
 IF
 CharacterStatusApplied(_Enemy, "LLENEMY_GRANADA", _)
 AND
@@ -247,23 +248,16 @@ DB_LLENEMY_Upgrades_Statuses(_Group, _Type, "LLENEMY_TALENT_UNSTABLE", _MinRoll,
 THEN
 LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_TALENT_UNSTABLE", _Duration, _CP);
 ObjectSetFlag(_Enemy, "LLENEMY_TalentUpgradeAdded");
+*/
 
 IF
 CharacterStatusApplied(_Enemy, "LLENEMY_GRANADA", _)
 AND
 ObjectGetFlag(_Enemy, "LLENEMY_AddedGrenadeStash", 0)
-AND
-GetPosition(_Enemy, _x, _y, _z)
-AND
-CharacterGetLevel(_Enemy, _Level)
-AND
-CreateItemTemplateAtPosition("LOOT_LeaderLib_BackPack_Invisible_98fa7688-0810-4113-ba94-9a8c8463f830", _X, _y, _z, _Backpack)
 THEN
-GenerateTreasure(_Backpack, "LLENEMY_GranadaStatus_GrenadeStash", _Level, _Enemy);
-//GenerateTreasure(_Backpack, "CheatGrenades", _Level, _Enemy); // For crazy people
-MoveAllItemsTo(_Backpack, _Enemy);
-ItemRemove(_Backpack);
-ObjectSetFlag(_Enemy, "LLENEMY_AddedGrenadeStash");
+CharacterGiveReward(_Enemy, "LLENEMY_GranadaStatus_GrenadeStash", 1);
+//CharacterGiveReward(CharacterGiveReward, "CheatGrenades", 1); // For crazy people
+ObjectSetFlag(_Enemy, "LLENEMY_AddedGrenadeStash", 0);
 //END_REGION
 
 //REGION SPECIAL_UPGRADES
