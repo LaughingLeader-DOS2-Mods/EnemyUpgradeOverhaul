@@ -96,6 +96,31 @@ THEN
 DB_LLENEMY_Rewards_TreasureEffects(_Treasure, _Effect);
 //END_REGION
 
+//REGION GENERATE
+PROC
+LLENEMY_Rewards_GenerateTreasure((GUIDSTRING)_SendTo, (STRING)_Treasure)
+THEN
+LLENEMY_Rewards_GenerateTreasure(_SendTo, _Treasure, 1);
+
+PROC
+LLENEMY_Rewards_GenerateTreasure((GUIDSTRING)_SendTo, (STRING)_Treasure, 0)
+AND
+CharacterGetHostCharacter(_Host)
+THEN
+//CharacterGiveReward(_Char, _Treasure, 0);
+GenerateTreasure(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _Treasure, -1, _Host);
+MoveAllItemsTo(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _SendTo);
+
+PROC
+LLENEMY_Rewards_GenerateTreasure((GUIDSTRING)_SendTo, (STRING)_Treasure, 1)
+AND
+CharacterGetHostCharacter(_Host)
+THEN
+GenerateTreasure(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _Treasure, -1, _Host);
+ContainerIdentifyAll(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9);
+MoveAllItemsTo(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _SendTo);
+//END_REGION
+
 QRY
 LLENEMY_Rewards_QRY_HasTreasure((CHARACTERGUID)_Char)
 AND
@@ -302,17 +327,17 @@ NOT DB_LLENEMY_Rewards_Temp_BonusTreasure(_Char, _Current);
 IF
 CharacterPrecogDying(_Char)
 THEN
-LLENEMY_Rewards_GenerateTreasure(_Char);
+LLENEMY_Rewards_StartGeneration(_Char);
 
 PROC
-LLENEMY_Rewards_GenerateTreasure((CHARACTERGUID)_Char)
+LLENEMY_Rewards_StartGeneration((CHARACTERGUID)_Char)
 AND
 ObjectGetFlag(_Char, "LLENEMY_GenerateRewards", 1)
 AND
 DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure)
 THEN
 //LeaderLog_Log("TRACE", "[LLENEMY:Rewards:CharacterPrecogDying] [",_Name,"] generated treasure [",_Treasure,"].");
-CharacterGiveReward(_Char, _Treasure, 0);
+LLENEMY_Rewards_GenerateTreasure(_Char, _Treasure);
 
 /*
 IF

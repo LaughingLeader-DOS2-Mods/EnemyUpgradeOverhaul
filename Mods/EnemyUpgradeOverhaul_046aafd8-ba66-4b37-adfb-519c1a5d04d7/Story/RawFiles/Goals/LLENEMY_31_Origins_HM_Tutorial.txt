@@ -168,7 +168,7 @@ SetCanJoinCombat(_Replacement, 1);
 ProcSetInvulnerable(_Replacement, 0);
 CharacterSetImmortal(_Replacement, 0);
 LeaderLib_Helper_MakeHostileToPlayers(_Replacement);
-CharacterGiveReward(_Replacement, "ST_RingAmuletBeltRare", 1);
+LLENEMY_Rewards_GenerateTreasure(_Replacement, "ST_RingAmuletBeltRare", 1);
 
 /* [OSITOOLS_ONLY]
 IF
@@ -189,8 +189,8 @@ AND
 NRD_CharacterGetInt(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Resurrected", 0) // Never resurrected
 */
 THEN
-CharacterGiveReward(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "RewardBig", 1);
-CharacterGiveReward(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "ST_SkillbookPolymorph", 1);
+LLENEMY_Rewards_GenerateTreasure(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "RewardBig", 1);
+LLENEMY_Rewards_GenerateTreasure(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "ST_SkillbookPolymorph", 1);
 
 IF
 CharacterDied(S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902)
@@ -199,8 +199,8 @@ AND
 NRD_CharacterGetInt(S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Resurrected", 0) // Never resurrected
 */
 THEN
-CharacterGiveReward(S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "ST_SkillbookWarrior", 1);
-CharacterGiveReward(S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "ST_SkillbookStarter", 1);
+LLENEMY_Rewards_GenerateTreasure(S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "ST_SkillbookWarrior", 1);
+LLENEMY_Rewards_GenerateTreasure(S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "ST_SkillbookStarter", 1);
 //END_REGION
 
 //REGION BLOCK_HATCH
