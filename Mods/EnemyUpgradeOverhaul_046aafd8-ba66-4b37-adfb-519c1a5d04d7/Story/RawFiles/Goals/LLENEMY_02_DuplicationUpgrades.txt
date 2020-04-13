@@ -15,14 +15,20 @@ PROC
 LLENEMY_Upgrades_RegisterAll(1)
 THEN
 LLENEMY_Upgrades_AddGroup("Duplication", "LLENEMY_DuplicationUpgradesDisabled", "LLENEMY_DuplicationRolled", "LLENEMY_DuplicationUpgradeAdded");
-LLENEMY_Upgrades_AddType("Duplication", "Elite", 1, 240, 8);
-LLENEMY_Upgrades_AddType("Duplication", "Normal", 500, 800, 5);
+LLENEMY_Upgrades_AddType("Duplication", "Elite", 1, 120, 8);
+LLENEMY_Upgrades_AddType("Duplication", "Normal", 650, 850, 5);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Elite", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Elite", 0)
 THEN
-LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 949, 8);
-LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_DOUBLE", 49, 14);
+LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_DOUBLE", 10, 14);
+LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 989, 8);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Elite", 1)
+THEN
+LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_DOUBLE", 30, 14);
+LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 968, 8);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Normal", (INTEGER)_HardModeEnabled)
