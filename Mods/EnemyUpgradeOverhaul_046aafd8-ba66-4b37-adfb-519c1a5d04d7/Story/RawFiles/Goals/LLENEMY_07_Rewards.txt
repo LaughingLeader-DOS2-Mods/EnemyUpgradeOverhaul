@@ -533,8 +533,10 @@ LeaderLib_Timers_StartObjectTimer(_Container, 100, "Timers_LLENEMY_Duplication_C
 
 IF
 StoryEvent((ITEMGUID)_Container, "LLENEMY_Duplication_CorruptShadowRewards")
+AND
+GetUUID(_Container, _UUID)
 THEN
-InventoryLaunchIterator(_Container, "Iterators_LLENEMY_CorruptItem", "");
+NRD_LuaCall("LLENEMY_Ext_ShadowCorruptItems", _UUID);
 
 IF
 StoryEvent((ITEMGUID)_Item, "Iterators_LLENEMY_CorruptItem")

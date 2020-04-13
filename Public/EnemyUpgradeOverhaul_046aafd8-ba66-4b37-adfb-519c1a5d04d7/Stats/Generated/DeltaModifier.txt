@@ -15,3 +15,42 @@ param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Weapon"
 new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Large",1
+
+new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Shield"
+param "SlotType" "Shield"
+new boost "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage",1
+
+new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Shield"
+param "SlotType" "Shield"
+new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium",1
+
+new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Shield"
+param "SlotType" "Shield"
+new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large",1
+
+new deltamod "LLENEMY_Boost_Armor_Ability_Sneaking"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_Boost_Armor_Amulet_Ability_Sneaking",1
+
+new deltamod "LLENEMY_Boost_Armor_Ability_Sneaking_Medium"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_Boost_Armor_Amulet_Ability_Sneaking_Medium",1
+
+new deltamod "LLENEMY_Boost_Armor_Ability_Sneaking_Large"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_Boost_Armor_Amulet_Ability_Sneaking_Large",1

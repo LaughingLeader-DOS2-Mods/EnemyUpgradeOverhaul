@@ -208,6 +208,16 @@ local BOOSTS = {
 		{MinLevel = 0, Boost = "LLENEMY_Boost_Weapon_Damage_Shadow_Small"},
 		{MinLevel = 8, Boost = "LLENEMY_Boost_Weapon_Damage_Shadow_Medium"},
 		{MinLevel = 12, Boost = "LLENEMY_Boost_Weapon_Damage_Shadow_Large"},
+	},
+	Shield = {
+		{MinLevel = 0, Boost = "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage"},
+		{MinLevel = 8, Boost = "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium"},
+		{MinLevel = 12, Boost = "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large"},
+	},
+	Armor = {
+		{MinLevel = 0, Boost = "LLENEMY_Boost_Armor_Ability_Sneaking"},
+		{MinLevel = 8, Boost = "LLENEMY_Boost_Armor_Ability_Sneaking_Medium"},
+		{MinLevel = 12, Boost = "LLENEMY_Boost_Armor_Ability_Sneaking_Large"},
 	}
 }
 
@@ -237,16 +247,27 @@ local function AddRandomBoosts(item,stat,statType,level)
 	end
 end
 
-local function SetRandomShadowName(item)
-	--local handle,templateName = ItemTemplateGetDisplayString(item)
-	local name = LeaderLib.Common.GetRandomTableEntry(ShadowItemNames)
-	local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
-	name = string.format("<font color='%s'>%s</font>", color, name)
-	NRD_ItemCloneSetString("CustomDisplayName", name)
-	if Ext.IsDeveloperMode() then
-		LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
+local function SetRandomShadowName(item,statType)
+	if statType == "Weapon" then
+		local name = LeaderLib.Common.GetRandomTableEntry(ShadowItemNames)
+		local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
+		name = string.format("<font color='%s'>%s</font>", color, name)
+		NRD_ItemCloneSetString("CustomDisplayName", name)
+		if Ext.IsDeveloperMode() then
+			LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
+		end
+		NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription.Value)
+	else
+		-- Wrap original names in a purple color
+		local handle,templateName = ItemTemplateGetDisplayString(item)
+		local originalName = Ext.GetTranslatedString(handle, templateName)
+		local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
+		local name = string.format("<font color='%s'>%s</font>", color, originalName)
+		NRD_ItemCloneSetString("CustomDisplayName", name)
+		if Ext.IsDeveloperMode() then
+			LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
+		end
 	end
-	NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription.Value)
 end
 
 local function GetClone(item,stat,statType)
@@ -294,19 +315,21 @@ local function GetClone(item,stat,statType)
 	NRD_ItemCloneSetInt("IsIdentified", 1)
 	--NRD_ItemCloneSetInt("GMFolding", 0)
 	AddRandomBoosts(item,stat,statType,level)
-	SetRandomShadowName(item)
+	SetRandomShadowName(item, statType)
 	local cloned = NRD_ItemClone()
 	ItemRemove(item)
 	--ItemLevelUpTo(cloned,level)
 	return cloned
 end
 
-function LLENEMY_Ext_ShadowCorruptItem(item)
+function LLENEMY_Ext_ShadowCorruptItem(item, container)
 	local stat = NRD_ItemGetStatsId(item)
 	local statType = NRD_StatGetType(stat)
 	if BOOSTS[statType] ~= nil then
 		local cloned = GetClone(item, stat, statType)
-		local container = NRD_ItemGetParent(item)
+		if container == nil then
+			container = NRD_ItemGetParent(item)
+		end
 		if container ~= nil then
 			ItemToInventory(cloned, container, 1, 0, 0)
 		end
@@ -315,6 +338,23 @@ function LLENEMY_Ext_ShadowCorruptItem(item)
 		--NRD_ItemSetIdentified(cloned, 1)
 	end
 	return item
+end
+
+function LLENEMY_Ext_ShadowCorruptItems(uuid)
+	local success = false
+	local item = Ext.GetItem(uuid)
+	if item ~= nil then
+		local inventory = item:GetInventoryItems()
+		if inventory ~= nil and #inventory > 0 then
+			success = true
+			for k,v in pairs(inventory) do
+				LLENEMY_Ext_ShadowCorruptItem(v, uuid)
+			end
+		end
+	end
+	if not success then
+		InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
+	end
 end
 
 local function LLENEMY_ShadowCorruptItemFunc(item)
