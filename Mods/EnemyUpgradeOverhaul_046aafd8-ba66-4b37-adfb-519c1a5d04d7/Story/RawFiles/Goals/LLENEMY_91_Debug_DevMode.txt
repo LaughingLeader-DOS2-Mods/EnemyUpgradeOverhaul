@@ -32,6 +32,14 @@ IF
 GlobalFlagCleared("LLENEMY_Ext_IsDeveloperMode")
 THEN
 SysCompleteGoal("LLENEMY_91_Debug_DevMode");
+
+IF
+CharacterUsedSkill(_Player, _, _, _)
+AND
+CharacterIsPlayer(_Player, 1)
+THEN
+CharacterResetCooldowns(_Player);
+
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_91_Debug__Start"

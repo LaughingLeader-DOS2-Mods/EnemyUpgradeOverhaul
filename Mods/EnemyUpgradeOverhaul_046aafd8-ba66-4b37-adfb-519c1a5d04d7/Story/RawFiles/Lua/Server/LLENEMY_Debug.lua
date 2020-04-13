@@ -205,6 +205,18 @@ local function LLENEMY_DebugInit()
 			end
 		end
 	end
+	ObjectSetFlag(host, "FTJ_RemoveSourceCollar", 0)
+	CharacterOverrideMaxSourcePoints(host, 30)
+	CharacterAddSourcePoints(host, 30)
+	CharacterAddSkill(host, "Projectile_EnemyChainLightning", 0)
+	CharacterAddSkill(host, "Shout_EnemyElectricFence", 0)
+	CharacterAddSkill(host, "Shout_EnemyNecromancerTotems", 0)
+	CharacterAddSkill(host, "Storm_EnemyLightning", 0)
+	ApplyStatus(host, "LLENEMY_VENOM_AURA", -1.0, 1, host)
+	ApplyStatus(host, "LLENEMY_FIRE_BRAND_AURA", -1.0, 1, host)
+	local x,y,z = GetPosition(host)
+	NRD_Summon(host, "e63a712f-fc87-4469-8848-fd8941043afd", x, y, z, -1, 1, 1, 1)
+	NRD_Summon(host, "26f10a2d-910c-42ed-b629-9a3ce550c1f7", x, y, z, -1, 1, 1, 1)
 	--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
 	-- local level = GetRegion(host)
 	-- if level == "TUT_Tutorial_A" then
@@ -251,11 +263,14 @@ end
 
 local function LLENEMY_SessionLoading()
 	Ext.Print("[LLENEMY:Debug.lua] Registered debug init call to LeaderLib.")
-    LeaderLib_Ext_AddDebugInitCall(LLENEMY_DebugInit)
+	LeaderLib_Ext_AddDebugInitCall(LLENEMY_DebugInit)
 end
 
 local function LLENEMY_Debug_SessionLoaded()
-	
+	LeaderLib.Print("[LLENEMY:Debug.lua] VENOM_AURA | StackId("..Ext.StatGetAttribute("VENOM_AURA", "StackId")..")")
+	LeaderLib.Print("[LLENEMY:Debug.lua] VENOM_COATING | StackId("..Ext.StatGetAttribute("VENOM_COATING", "StackId")..")")
+	LeaderLib.Print("[LLENEMY:Debug.lua] FIRE_BRAND_AURA | StackId("..Ext.StatGetAttribute("FIRE_BRAND_AURA", "StackId")..")")
+	LeaderLib.Print("[LLENEMY:Debug.lua] FIRE_BRAND | StackId("..Ext.StatGetAttribute("FIRE_BRAND", "StackId")..")")
 end
 
 if Ext.IsDeveloperMode() then
@@ -266,14 +281,14 @@ end
 function LLENEMY_Ext_Debug_PrintFlags(obj)
 	local stat = nil
 	if ObjectIsItem(obj) == 1 then
-		stat = NRD_ItemGetStatsId(v)
+		stat = NRD_ItemGetStatsId(obj)
 	elseif ObjectIsCharacter(obj) then
 		stat = NRD_CharacterGetStatString(obj)
 	end
 	Ext.Print("[LLENEMY_Ext_Debug_PrintFlags] Object ("..tostring(stat)..")["..tostring(obj).."] Flags:")
 	Ext.Print("==========================")
 	for i=0,72,1 do
-		local flagVal = NRD_ObjectGetInternalFlag(v,i)
+		local flagVal = NRD_ObjectGetInternalFlag(obj,i)
 		Ext.Print("["..tostring(i).."] = "..tostring(flagVal))
 	end
 	Ext.Print("==========================")
