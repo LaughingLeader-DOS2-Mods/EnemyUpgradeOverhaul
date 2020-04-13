@@ -35,13 +35,39 @@ LeaderLib_Auras_RemoveTurnAura(_Char, "LLENEMY_VENOM_AURA");
 //REGION PULSE_EVENTS
 PROC
 LeaderLib_Auras_OnTargetFound((GUIDSTRING)_Source, (GUIDSTRING)_Target, "LLENEMY_FIRE_BRAND_AURA")
+AND
+CharacterIsAlly((CHARACTERGUID)_Source, (CHARACTERGUID)_Target, 1)
 THEN
-ApplyStatus(_Target, "FIRE_BRAND", 12.0, 0, _Source);
+LLENEMY_Auras_ApplyAuraStatus(_Source, _Target, "LLENEMY_FIRE_BRAND");
 
 PROC
 LeaderLib_Auras_OnTargetFound((GUIDSTRING)_Source, (GUIDSTRING)_Target, "LLENEMY_VENOM_AURA")
+AND
+CharacterIsAlly((CHARACTERGUID)_Source, (CHARACTERGUID)_Target, 1)
 THEN
-ApplyStatus(_Target, "VENOM_COATING", 12.0, 0, _Source);
+LLENEMY_Auras_ApplyAuraStatus(_Source, _Target, "LLENEMY_VENOM_COATING");
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Auras_ApplyAuraStatus((CHARACTERGUID)_Source, (CHARACTERGUID)_Ally, (STRING)_Status)
+AND
+HasActiveStatus(_Ally, _Status, 1)
+AND
+GetStatusTurns(_Ally, _Status, _Turns)
+AND
+_Turns < 2
+AND
+NRD_StatusGetHandle(_Ally, _Status, _Handle)
+THEN
+NRD_StatusSetReal(_Ally, _Handle, "CurrentLifeTime", 12.0);
+*/
+
+PROC
+LLENEMY_Auras_ApplyAuraStatus((CHARACTERGUID)_Source, (CHARACTERGUID)_Ally, (STRING)_Status)
+AND
+HasActiveStatus(_Ally, _Status, 0)
+THEN
+ApplyStatus(_Ally, _Status, 12.0, 0, _Source);
 //END_REGION
 
 EXITSECTION
