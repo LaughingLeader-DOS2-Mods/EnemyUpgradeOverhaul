@@ -157,3 +157,15 @@ new subtable "0,8;1,2"
 object category "T_ST_WeaponRare",1,0,0,0,0,0,0,0
 object category "T_ST_ArmorRare",1,0,0,0,0,0,0,0
 object category "T_ST_RingAmuletBeltRare",1,0,0,0,0,0,0,0
+
+new treasuretable "LLENEMY_ShadowOrbRewards"
+new subtable "1,1"
+object category "T_DeathKnight",1,0,0,0,0,0,0,0
+object category "T_Demon",6,0,0,0,0,0,0,0
+object category "T_DemonForceDrop",6,0,0,0,0,0,0,0
+object category "T_DemonForceDrop",6,0,0,0,0,0,0,0
+object category "T_ST_RareIngredient",6,0,0,0,0,0,0,0
+object category "T_ST_Neo_Gear_Normal",12,0,0,0,0,0,0,0
+new subtable "0,8;1,2"
+object category "T_ST_SkillbookSummoning",10,0,0,0,0,0,0,0
+object category "T_ST_SkillbookLate",1,0,0,0,0,0,0,0
