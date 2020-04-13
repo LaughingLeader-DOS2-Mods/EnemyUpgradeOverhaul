@@ -31,14 +31,30 @@ function LLENEMY_Ext_IncreaseRage(character, damage, handle, source)
 	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_IncreaseRage] Added ("..tostring(add_rage)..") Rage to ("..tostring(character).."). Total: ("..tostring(rage_entry[1][3])..")")
 end
 
-function LLENEMY_Ext_MugTarget_Start(character, target, handle)
+function LLENEMY_Ext_MugTarget_Start(attacker, target, damage, handle)
 	local hit_type = NRD_StatusGetInt(target, handle, "HitReason")
-	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Hit type: " .. tostring(hit_type))
 	if (hit_type == 0 or hit_type == 3) and LeaderLib.Game.HitSucceeded(target, handle, 0) then
-		LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] ("..tostring(character)..") is mugging target: ", target)
-		Osi.LLENEMY_Talents_MugTarget(character, target)
-	else
-		LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Dodged: ",NRD_StatusGetInt(target, handle, "Dodged")," | Missed: ", NRD_StatusGetInt(target, handle, "Missed")," | Blocked: ",NRD_StatusGetInt(target, handle, "Blocked"))
+		if Ext.IsDeveloperMode() then
+			pcall(LeaderLib_Ext_Debug_TraceOnHit,target,attacker,damage,handle)
+		end
+		local weaponHandle = NRD_StatusGetGuidString(target, handle, "WeaponHandle")
+		local hitWithWeapon = NRD_StatusGetInt(target, handle, "HitWithWeapon")
+		local isMelee = hitWithWeapon == 1 or (weaponHandle ~= "NULL_00000000-0000-0000-0000-000000000000" and weaponHandle ~= nil)
+		local skill = NRD_StatusGetString(target, handle, "SkillId")
+		if skill ~= nil and skill ~= "" then
+			skill = LeaderLib_Ext_GetSkillEntryName(skill) -- Actual skill name without the prototype level
+			local skillIsMelee = Ext.StatGetAttribute(skill, "IsMelee")
+			local requirement = Ext.StatGetAttribute(skill, "Requirement")
+			if skillIsMelee == "Yes" or requirement == "MeleeWeapon" or requirement == "DaggerWeapon" or requirement == "StaffWeapon" then
+				isMelee = true
+			end
+		end
+		if isMelee then
+			--LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Hit type: " .. tostring(hit_type))
+			LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] ("..tostring(attacker)..") is mugging target: ", target)
+			--LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Dodged: ",NRD_StatusGetInt(target, handle, "Dodged")," | Missed: ", NRD_StatusGetInt(target, handle, "Missed")," | Blocked: ",NRD_StatusGetInt(target, handle, "Blocked"))
+			Osi.LLENEMY_Talents_MugTarget(attacker, target)
+		end
 	end
 end
 
@@ -143,7 +159,6 @@ function LLENEMY_Ext_HM_RollAdditionalUpgrades(char)
 		Osi.LLENEMY_Upgrades_RollForUpgrades(char)
 		--Ext.Print("Rolling bonus roll: " .. tostring(i) .. " | " .. char)
 	end
-	Osi.LLENEMY_UpgradeInfo_RestartTimers(300)
 end
 
 function LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,level,combatid)

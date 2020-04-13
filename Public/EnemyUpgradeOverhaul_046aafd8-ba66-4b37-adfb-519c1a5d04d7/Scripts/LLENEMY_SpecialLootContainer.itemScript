@@ -5,8 +5,6 @@ INIT
 EVENTS
 
 EVENT LLENEMY_Container_Destroy
-VARS
-	ITEM:_Item
 ON
 	OnItemClosed(__Me)	
 ACTIONS
@@ -17,6 +15,12 @@ THEN
 ELSE
 	ItemEvent(__Me, "LLENEMY_Container_OnClosed")
 ENDIF
+
+EVENT LLENEMY_Container_Destroyed
+ON
+	OnItemDestroyed(__Me)	
+ACTIONS
+	ItemEvent(__Me, "LLENEMY_Container_OnDestroyed")
 /*
 IF "!c1&(!c2|(c2&c3))&!c4"
 	IsEqual(%LLENEMY_Container_DestroyWhenEmpty, 0)

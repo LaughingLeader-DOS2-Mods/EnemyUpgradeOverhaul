@@ -44,6 +44,8 @@ NOT DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit(_Enemy, _Target);
 IF
 NRD_OnHit((CHARACTERGUID)_Target, (CHARACTERGUID)_Attacker, _Damage, _Handle)
 AND
+_Damage > 0
+AND
 CharacterIsEnemy(_Target, _Attacker, 1)
 AND
 HasActiveStatus(_Attacker, "LLENEMY_TALENT_MASTERTHIEF", 1)
@@ -52,7 +54,7 @@ HasActiveStatus(_Attacker, "LLENEMY_TALENT_MASTERTHIEF_COOLDOWN", 0)
 AND
 LeaderLib_Roll_QRY(300,999)
 THEN
-NRD_LuaCall("LLENEMY_Ext_MugTarget_Start", (STRING)_Attacker, (STRING)_Target, (STRING)_Handle);
+NRD_LuaCall("LLENEMY_Ext_MugTarget_Start", (STRING)_Attacker, (STRING)_Target, (STRING)_Damage, (STRING)_Handle);
 */
 EXITSECTION
 SysClear("DB_LLENEMY_Talents_Temp_MasterThief_WaitForHit", 2);
