@@ -73,7 +73,7 @@ THEN
 CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 1, 1, 1, 0, 0);
 /* [OSITOOLS_ONLY]
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_UpgradesDisabled");
-LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 500, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
+LeaderLib_Timers_StartObjectTimer(_Source, 500, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
 LeaderLib_Timers_StartObjectTimer(_Dupe, 1000, "Timers_LLENEMY_Duplication_BuildUpgradeInfo", "LLENEMY_Duplication_BuildUpgradeInfo");
 */
 // [BEGIN_NO_OSITOOLS]
@@ -118,7 +118,7 @@ THEN
 NRD_LuaCall("LLENEMY_Ext_ClearGain", (STRING)_Dupe);
 
 IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyStatuses")
+StoryEvent(_Source, "LLENEMY_Duplication_CopyStatuses")
 THEN
 NRD_IterateStatuses(_Source, "LLENEMY_Dupe_CopyStatus");
 
@@ -135,7 +135,8 @@ AND
 NOT LLENEMY_Duplication_QRY_IgnoreStatus(_Status)
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
-//NRD_StatusGetInt(_Source, _Handle, "ForceStatus", _Forced)
+AND
+HasActiveStatus(_Dupe, _Status, 0)
 AND
 NRD_StatusGetReal(_Source, _Handle, "CurrentLifeTime", _Duration)
 AND
