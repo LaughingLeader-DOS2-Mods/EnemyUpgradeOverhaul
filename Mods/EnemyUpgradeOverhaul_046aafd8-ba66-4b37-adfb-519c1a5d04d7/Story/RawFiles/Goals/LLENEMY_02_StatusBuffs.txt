@@ -1,16 +1,10 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-LLENEMY_Buffs_InitSettings();
 KBSECTION
 //REGION SETTINGS
 PROC
-LLENEMY_Upgrades_ResetUpgradeData()
-THEN
-LLENEMY_Buffs_InitSettings();
-
-PROC
-LLENEMY_Buffs_InitSettings()
+LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddGroup("Buffs", "LLENEMY_BuffUpgradesDisabled", "LLENEMY_BuffRolled", "LLENEMY_BuffUpgradeAdded");
 LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 99, 9);
@@ -58,7 +52,7 @@ LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Molotov", 89);
 LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Flashbang", 60);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Elite")
+LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Elite", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 40, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8, 24.0);
@@ -70,7 +64,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 20, 9);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 260, 6);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Normal")
+LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Normal", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BLESSED", 60, 2, 18.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BREATHING_BUBBLE", 40, 3, 18.0);
@@ -85,7 +79,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "LLENEMY_GRANADA", 90, 6);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "SPARKING_SWINGS", 140, 4);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Weak")
+LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Weak", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "CLEAR_MINDED", 180, 1);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "DRUNK", 19, 0, 12.0);
@@ -97,7 +91,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "MAGIC_SHELL", 100, 2, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "RESTED", 190, 2);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Polymorph")
+LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Polymorph", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "MEDUSA_HEAD", 1, 23, 7, 24.0);
 LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "SPIDER_LEGS", 200, 259, 4);
@@ -105,7 +99,7 @@ LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "WINGS", 550, 641, 2);
 LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "HORNS", 800, 999, 1);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Auras", "Auras_Main")
+LLENEMY_Upgrades_Register_TypeUpgrades("Auras", "Auras_Main", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "AIR_IMMUNITY_AURA", 50, 7, 12.0);
 LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "EARTH_IMMUNITY_AURA", 40, 7, 12.0);
@@ -124,7 +118,7 @@ LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "WATER_IMMUNITY_AURA", 40, 7, 
 LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "LLENEMY_ACTIVATE_HEALING_TEARS", 60, 5, 0.0);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Immunities", "Immunity")
+LLENEMY_Upgrades_Register_TypeUpgrades("Immunities", "Immunity", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "ELECTRIC_SKIN", 60, 8, 12.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "FIRE_SKIN", 40, 8, 12.0);
@@ -137,7 +131,7 @@ LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "LLENEMY_IMMUNITY_PIERCING"
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "LLENEMY_IMMUNITY_LOSECONTROL", 360, 7);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "Infusion")
+LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "Infusion", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_ACID", 60, 4, 24.0);
 LLENEMY_Upgrades_AddStatus("Bonus", "Infusion", "LLENEMY_INF_BLESSED_ICE", 60, 5, 24.0);
@@ -154,7 +148,7 @@ LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_RANGED", 199
 LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion", "LLENEMY_INF_POWER", 799, 999, 4);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "Infusion_Elite")
+LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "Infusion_Elite", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_ACID_G", 60, 8, 36.0);
 LLENEMY_Upgrades_AddStatus("Bonus", "Infusion_Elite", "LLENEMY_INF_BLESSED_ICE_G", 60, 8, 36.0);
@@ -171,7 +165,7 @@ LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion_Eite", "LLENEMY_INF_SHADOW"
 LLENEMY_Upgrades_AddStatusToRange("Bonus", "Infusion_Eite", "LLENEMY_INF_WARP", 566, 666, 7);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "Special")
+LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "Special", (INTEGER)_HardModeEnabled)
 THEN
 //Special
 LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_DOUBLE_DIP", 30, 4, 0.0);
@@ -180,7 +174,7 @@ LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_SEEKER", 35, 6);
 
 //Upgrades that don't give immediate bonuses.
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "TimeDelayed")
+LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "TimeDelayed", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatusToRange("Bonus", "TimeDelayed", "LLENEMY_GATHERING_POWER", 1, 24, 2, 24.0);
 LLENEMY_Upgrades_AddStatusToRange("Bonus", "TimeDelayed", "LLENEMY_RAGE", 666, 720, 8);

@@ -4,6 +4,46 @@ INITSECTION
 LLENEMY_HardMode_CheckForCampaign();
 KBSECTION
 
+//REGION CALLBACKS
+PROC
+LLENEMY_HardMode_Enabled()
+THEN
+LLENEMY_Upgrades_ResetUpgradeData();
+
+PROC
+LLENEMY_HardMode_Disabled()
+THEN
+LLENEMY_Upgrades_ResetUpgradeData();
+//END_REGION
+
+//REGION GLOBAL_FLAG_EVENT
+IF
+GlobalFlagSet("LLENEMY_HardModeEnabled")
+THEN
+TimerCancel("Timers_LLENEMY_HardModeToggled");
+TimerLaunch("Timers_LLENEMY_HardModeToggled", 3000);
+
+IF
+GlobalFlagCleared("LLENEMY_HardModeEnabled")
+THEN
+TimerCancel("Timers_LLENEMY_HardModeToggled");
+TimerLaunch("Timers_LLENEMY_HardModeToggled", 3000);
+
+IF
+TimerFinished("Timers_LLENEMY_HardModeToggled")
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", 1)
+THEN
+LLENEMY_HardMode_Enabled();
+
+IF
+TimerFinished("Timers_LLENEMY_HardModeToggled")
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", 0)
+THEN
+LLENEMY_HardMode_Disabled();
+//END_REGION
+
 //REGION ORIGINS_ENABLING
 PROC
 LLENEMY_HardMode_CheckForCampaign()
@@ -23,26 +63,19 @@ GlobalGetFlag("LLENEMY_HardModeEnabled", 1)
 THEN
 SysActivateGoal("LLENEMY_30_Origins_HardMode");
 
-IF
-GlobalFlagSet("LLENEMY_HardModeEnabled")
+PROC
+LLENEMY_HardMode_Enabled()
 AND
 SysStatus("DOS2ModWrapper", _Status)
 AND
 _Status > 1
 THEN
 SysActivateGoal("LLENEMY_30_Origins_HardMode");
-
-IF
-GlobalFlagSet("LLENEMY_HardModeEnabled")
-AND
-DB_CurrentGameMode("Campaign")
-THEN
-SysActivateGoal("LLENEMY_30_Origins_HardMode");
 //END_REGION
 
 //REGION DISABLING
-IF
-GlobalFlagCleared("LLENEMY_HardModeEnabled")
+PROC
+LLENEMY_HardMode_Disabled()
 AND
 SysIsActive("LLENEMY_30_Origins_HardMode")
 THEN
@@ -59,7 +92,6 @@ SysCompleteGoal(_Script);
 //END_REGION
 
 //REGION NPC_SETUP
-
 PROC
 LLENEMY_HardMode_SetupNPC((CHARACTERGUID)_Char, (STRING)_Region, (INTEGER)_Immortal)
 THEN

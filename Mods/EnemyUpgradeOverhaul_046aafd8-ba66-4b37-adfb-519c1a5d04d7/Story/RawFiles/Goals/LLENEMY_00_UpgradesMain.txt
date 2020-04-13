@@ -3,6 +3,20 @@ SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
 
+//REGION REGISTER_START
+PROC
+LLENEMY_Upgrades_Internal_Register_Start()
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
+THEN
+LLENEMY_Upgrades_RegisterAll(_HardModeEnabled);
+
+PROC
+LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
+THEN
+DB_NOOP(1);
+//END_REGION
+
 //REGION REGISTERING
 PROC
 LLENEMY_Upgrades_AddGroup((STRING)_Group, (STRING)_GlobalDisableFlag, (STRING)_RolledForFlag, (STRING)_GroupSuccessFlag)
@@ -18,9 +32,11 @@ DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, 1, 0);
 
 PROC
 LLENEMY_Upgrades_AddType((STRING)_Group, (STRING)_Type, (INTEGER)_MinRoll, (INTEGER)_MaxRoll, (INTEGER)_ChallengePoints)
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
 THEN
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints);
-LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type);
+LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type, _HardModeEnabled);
 
 /*
 PROC
@@ -179,6 +195,8 @@ NOT DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _NextStartInt, _CappedEnd)
 //REGION RESET_DATA
 PROC
 LLENEMY_Upgrades_ResetUpgradeData()
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
 THEN
 SysClear("DB_LLENEMY_Upgrades_Groups", 4);
 SysClear("DB_LLENEMY_Upgrades_Types", 5);
@@ -187,6 +205,7 @@ SysClear("DB_LLENEMY_Upgrades_TypeRollValues", 4);
 SysClear("DB_LLENEMY_LastGrenadeInt", 2);
 SysClear("DB_LLENEMY_GrenadeSkills", 3);
 GlobalClearFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
+LLENEMY_Upgrades_RegisterAll(_HardModeEnabled);
 //END_REGION
 
 //REGION UPDATE_STATUS_REMOVAL

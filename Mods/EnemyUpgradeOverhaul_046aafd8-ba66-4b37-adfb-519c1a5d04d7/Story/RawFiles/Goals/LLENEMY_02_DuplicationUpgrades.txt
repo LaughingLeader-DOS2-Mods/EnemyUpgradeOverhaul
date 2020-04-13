@@ -1,25 +1,31 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-LLENEMY_Duplication_InitSettings();
 KBSECTION
 //REGION SETTINGS
 PROC
-LLENEMY_Duplication_InitSettings()
+LLENEMY_Upgrades_RegisterAll(0)
 THEN
 LLENEMY_Upgrades_AddGroup("Duplication", "LLENEMY_DuplicationUpgradesDisabled", "LLENEMY_DuplicationRolled", "LLENEMY_DuplicationUpgradeAdded");
-
 LLENEMY_Upgrades_AddType("Duplication", "Elite", 1, 30, 8);
 LLENEMY_Upgrades_AddType("Duplication", "Normal", 750, 800, 5);
 
+// Hard Mode
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Elite")
+LLENEMY_Upgrades_RegisterAll(1)
+THEN
+LLENEMY_Upgrades_AddGroup("Duplication", "LLENEMY_DuplicationUpgradesDisabled", "LLENEMY_DuplicationRolled", "LLENEMY_DuplicationUpgradeAdded");
+LLENEMY_Upgrades_AddType("Duplication", "Elite", 1, 240, 8);
+LLENEMY_Upgrades_AddType("Duplication", "Normal", 500, 800, 5);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Elite", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 949, 8);
 LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_DOUBLE", 49, 14);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Normal")
+LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Normal", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAKEST", 499, 2);
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAK", 299, 4);

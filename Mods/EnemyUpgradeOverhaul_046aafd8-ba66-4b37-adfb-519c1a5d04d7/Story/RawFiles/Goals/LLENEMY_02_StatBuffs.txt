@@ -1,17 +1,11 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-LLENEMY_Stats_InitSettings();
 
 KBSECTION
 //REGION SETTINGS
 PROC
-LLENEMY_Upgrades_ResetUpgradeData()
-THEN
-LLENEMY_Stats_InitSettings();
-
-PROC
-LLENEMY_Stats_InitSettings()
+LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
 THEN
 /* Disabled for now, pending a rework. */
 //LLENEMY_Upgrades_AddGroup("Stats", "LLENEMY_StatUpgradesDisabled", "LLENEMY_StatsRolled", "LLENEMY_StatsUpgradeAdded");
@@ -20,7 +14,7 @@ THEN
 DB_NOOP(1);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "Vitality")
+LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "Vitality", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_50", 5, 7);
 LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_45", 25, 6);
@@ -34,7 +28,7 @@ LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_10", 200
 LLENEMY_Upgrades_AddStatus("Stats", "Vitality", "LLENEMY_BOOST_VITALITY_5", 300, 1);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "Damage")
+LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "Damage", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_25", 10, 7);
 LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_20", 60, 6);
@@ -43,7 +37,7 @@ LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_10", 300, 4)
 LLENEMY_Upgrades_AddStatus("Stats", "Damage", "LLENEMY_BOOST_DAMAGE_5", 539, 3);
 
 PROC
-LLENEMY_Stats_InitSettings()
+LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
 AND
 LLENEMY_Stats_QRY_CanAddArmorUpgrades()
 THEN
@@ -51,7 +45,7 @@ LLENEMY_Upgrades_AddType("Stats", "Armor", 400, 700, 2);
 LLENEMY_Upgrades_AddType("Stats", "MagicArmor", 600, 900, 2);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "Armor")
+LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "Armor", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_50",  10, 5);
 LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_45",  30, 5);
@@ -65,7 +59,7 @@ LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_10",  200, 1);
 LLENEMY_Upgrades_AddStatus("Stats", "Armor", "LLENEMY_BOOST_ARMOR_5",   300, 1);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "MagicArmor")
+LLENEMY_Upgrades_Register_TypeUpgrades("Stats", "MagicArmor", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_50",  10, 5);
 LLENEMY_Upgrades_AddStatus("Stats", "MagicArmor", "LLENEMY_BOOST_MAGICARMOR_45",  30, 5);

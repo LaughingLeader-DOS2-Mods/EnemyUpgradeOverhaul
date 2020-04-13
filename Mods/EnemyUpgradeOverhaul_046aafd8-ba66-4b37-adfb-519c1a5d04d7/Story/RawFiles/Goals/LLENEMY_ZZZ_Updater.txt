@@ -7,6 +7,7 @@ LeaderUpdater_Register_ActiveGoal("EnemyUpgradeOverhaul", "LaughingLeader", "LLE
 LeaderLib_Register_ModMenu("EnemyUpgradeOverhaul.Settings", "[Enemy Upgrade Overhaul] Settings", "LLENEMY_Settings", "EnemyUpgradeOverhaul", "LaughingLeader");
 // [END_NO_OSITOOLS]
 GlobalSetFlag("LLENEMY_DuplicationUpgradesDisabled"); // Opt-in
+LLENEMY_Upgrades_Internal_Register_Start();
 KBSECTION
 // [BEGIN_NO_OSITOOLS]
 IF

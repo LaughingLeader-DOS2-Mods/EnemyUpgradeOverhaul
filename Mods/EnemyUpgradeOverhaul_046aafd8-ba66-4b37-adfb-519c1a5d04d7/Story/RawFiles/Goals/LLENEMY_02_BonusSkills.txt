@@ -1,16 +1,10 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-LLENEMY_BonusSkills_InitSettings();
 KBSECTION
 //REGION SETTINGS
 PROC
-LLENEMY_Upgrades_ResetUpgradeData()
-THEN
-LLENEMY_BonusSkills_InitSettings();
-
-PROC
-LLENEMY_BonusSkills_InitSettings()
+LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
 AND
 LeaderLib_QRY_ExtenderIsActive()
 THEN
@@ -27,23 +21,23 @@ DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_SET_ELITE", 5, 2);
 DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_SOURCE", 1, 1);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Normal")
+LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Normal", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE", 700, 2);
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SET_NORMAL", 299, 6);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Elite")
+LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Elite", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 899, 10);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source1")
+LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source1", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 998, 4);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source2")
+LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source2", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Source2", "LLENEMY_BONUSSKILLS_SOURCE", 998, 4);
 

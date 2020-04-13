@@ -1,16 +1,10 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-LLENEMY_Talents_InitSettings();
 KBSECTION
 //REGION SETTINGS
 PROC
-LLENEMY_Upgrades_ResetUpgradeData()
-THEN
-LLENEMY_Talents_InitSettings();
-
-PROC
-LLENEMY_Talents_InitSettings()
+LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddGroup("Talents", "LLENEMY_TalentUpgradesDisabled", "LLENEMY_TalentUpgradeRolled", "LLENEMY_TalentUpgradeAdded");
 LLENEMY_Upgrades_AddType("Talents", "Elite", 1, 99, 8);
@@ -18,7 +12,7 @@ LLENEMY_Upgrades_AddType("Talents", "Normal", 360, 499, 5);
 LLENEMY_Upgrades_AddType("Talents", "Weapon", 50, 600, 4);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite")
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LIGHTNINGROD", 260, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LONEWOLF", 100, 12);
@@ -30,7 +24,7 @@ LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_WHATARUSH", 240, 
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_BULLY", 120, 6);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Normal")
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Normal", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_LEECH", 399, 2);
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_QUICKSTEP", 500, 4);
@@ -38,20 +32,20 @@ LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_NATURALCONDUCTOR
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_MASTERTHIEF", 90, 4);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon")
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_RANGERRANGE", 500, 3);
 //LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_BACKSTAB", 499, 4);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Normal")
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Normal", (INTEGER)_HardModeEnabled)
 AND
 SysIsActive("CMP_Talents")
 THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Normal", "LLENEMY_TALENT_GREEDYVESSEL", 90, 4);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite")
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite", (INTEGER)_HardModeEnabled)
 AND
 SysIsActive("CMP_Talents")
 THEN
@@ -60,7 +54,7 @@ LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_SOULCATCHER", 20,
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_MAGICCYCLES", 100, 6);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite")
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite", (INTEGER)_HardModeEnabled)
 AND
 SysIsActive("CMP_Talents")
 AND
@@ -71,7 +65,7 @@ THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_INDOMITABLE", 50, 12);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon")
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon", (INTEGER)_HardModeEnabled)
 AND
 SysIsActive("CMP_Talents")
 THEN
