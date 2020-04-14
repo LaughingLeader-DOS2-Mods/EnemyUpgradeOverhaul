@@ -2,6 +2,7 @@
 	<content contentuid="h9729fa03g8b20g4eccgbde7gc08c1d8d8e73" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A">A sack of loot that was previously carried by a Treasure Goblin.</content>
 	<content contentuid="h9f11e267gfe5bg41c6gad9ag7315b3f9e57b" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A">&lt;font color=&apos;#e6bc53&apos;&gt;Treasure Goblin&apos;s Hoard&lt;/font&gt;</content>
 	<content contentuid="h8311eb63g89cfg41c1g961cgde31f8d79927" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A"></content>
+	<content contentuid="h07bf13ceg4493g4f9cg90a3gf2c65b452bfd" Source="CONT_LLENEMY_DuplicantTreasure">A shadowy orb, filled with  &lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Treasure of the Shadow Realm&lt;/font&gt;.</content>
 	<content contentuid="h9bcf1767g7b81g4ae1gbf20ge19a6b4454ef" Source="CONT_LLENEMY_DuplicantTreasure">&lt;font color=&apos;#AA00FF&apos;&gt;Shadow Treasure&lt;/font&gt;</content>
 	<content contentuid="ha3ccca0bg576dg4a64gb2edg8819d8f2cdc0" Source="LLENEMY_Animals_Chicken_BattleChicken_A">Chicken Infantry</content>
 	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>

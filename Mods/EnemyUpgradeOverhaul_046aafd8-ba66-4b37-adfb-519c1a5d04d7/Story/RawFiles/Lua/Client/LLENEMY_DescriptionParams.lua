@@ -98,7 +98,7 @@ end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
-	LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.MyGuid).."] character("..tostring(character)..")["..tostring(character.MyGuid).."] param("..tostring(param)..")")
+	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.MyGuid).."] character("..tostring(character)..")["..tostring(character.MyGuid).."] param("..tostring(param)..")")
 
 	if Ext.IsDeveloperMode() and Ext.Version() < 43 then
 		if character ~= nil then

@@ -44,6 +44,7 @@ CharacterResetCooldowns(_Player);
 CharacterAddActionPoints(_Player, 4);
 CharacterAddSourcePoints(_Player, 3);
 
+/*
 IF
 ObjectEnteredCombat((CHARACTERGUID)_Char, _CombatID)
 AND
@@ -52,6 +53,7 @@ AND
 CharacterIsPlayer(_Char, 0)
 THEN
 ApplyStatus(_Char, "LLENEMY_TALENT_MASTERTHIEF", -1.0, 0, _Char);
+*/
 
 EXITSECTION
 ENDEXITSECTION
