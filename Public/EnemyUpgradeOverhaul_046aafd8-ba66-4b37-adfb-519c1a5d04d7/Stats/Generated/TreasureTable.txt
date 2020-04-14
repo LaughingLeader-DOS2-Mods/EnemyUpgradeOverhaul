@@ -163,9 +163,16 @@ new subtable "1,1"
 object category "T_DeathKnight",1,0,0,0,0,0,0,0
 object category "T_Demon",6,0,0,0,0,0,0,0
 object category "T_DemonForceDrop",6,0,0,0,0,0,0,0
-object category "T_DemonForceDrop",6,0,0,0,0,0,0,0
 object category "T_ST_RareIngredient",6,0,0,0,0,0,0,0
 object category "T_ST_Neo_Gear_Normal",12,0,0,0,0,0,0,0
+new subtable "1,1"
+object category "T_ST_WeaponNormal",10,0,0,0,0,0,0,0
+new subtable "0,4,1,4"
+object category "T_ST_LightArmor",1,0,0,0,0,0,0,0
+object category "T_ST_ClothArmor",1,0,0,0,0,0,0,0
+object category "T_ST_HeavyArmor",1,0,0,0,0,0,0,0
+object category "T_ST_MageArmor",1,0,0,0,0,0,0,0
+object category "T_ST_RingAmuletBelt",1,0,0,0,0,0,0,0
 new subtable "0,8;1,2"
 object category "T_ST_SkillbookSummoning",10,0,0,0,0,0,0,0
 object category "T_ST_SkillbookLate",1,0,0,0,0,0,0,0
