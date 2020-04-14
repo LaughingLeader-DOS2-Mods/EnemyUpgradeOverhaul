@@ -5,6 +5,7 @@ Ext.Require("Server/LLENEMY_BonusSkills.lua")
 Ext.Require("Server/LLENEMY_GameMechanics.lua")
 Ext.Require("Server/LLENEMY_ItemMechanics.lua")
 Ext.Require("Server/LLENEMY_TreasureGoblins.lua")
+Ext.Require("Server/LLENEMY_VoidwokenSpawning.lua")
 Ext.Require("Server/LLENEMY_Debug.lua")
 
 function LLENEMY_Ext_Init()

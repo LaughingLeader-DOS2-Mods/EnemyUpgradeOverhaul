@@ -114,7 +114,7 @@ function LLENEMY_Ext_SpawnVoidwoken(source,testing)
 	end
 	local voidwokenTemplates = {}
 	for _,group in pairs(voidwokenGroups) do
-		if group.MinPoints >= totalPointsUsed then
+		if totalPointsUsed >= group.MinPoints then
 			for i=0,#group.Entries do
 				table.insert(voidwokenTemplates, group.Entries[i])
 			end
