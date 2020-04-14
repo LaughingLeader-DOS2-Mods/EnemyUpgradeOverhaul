@@ -260,6 +260,7 @@ local function SetRandomShadowName(item,statType)
 	else
 		-- Wrap original names in a purple color
 		local handle,templateName = ItemTemplateGetDisplayString(GetTemplate(item))
+		LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] ("..item..") handle("..handle..") templateName("..templateName..")")
 		local originalName = Ext.GetTranslatedString(handle, templateName)
 		local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
 		local name = string.format("<font color='%s'>%s</font>", color, originalName)
@@ -328,43 +329,43 @@ local ignoredSlots = {
 	Overhead = true,
 }
 
-local function ShadowCorruptItem(item, container)
-	if item ~= nil then
-		local itemObj = Ext.GetItem(item)
+local function ShadowCorruptItem(uuid, container)
+	if uuid ~= nil then
+		local item = Ext.GetItem(uuid)
 		local stat = item.StatsId
 		if ignoredSlots[item.Slot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
 			local statType = NRD_StatGetType(stat)
 			if BOOSTS[statType] ~= nil then
-				local cloned = GetClone(item, stat, statType)
-				if container == nil and ItemIsInInventory(item) then
-					container = GetInventoryOwner(item)
+				local cloned = GetClone(uuid, stat, statType)
+				if container == nil and ItemIsInInventory(uuid) then
+					container = GetInventoryOwner(uuid)
 					if container == nil then
-						container = NRD_ItemGetParent(item)
+						container = NRD_ItemGetParent(uuid)
 					end
 				end
 				if container ~= nil then
 					ItemToInventory(cloned, container, 1, 0, 0)
 				else
-					local x,y,z = GetPosition(item)
+					local x,y,z = GetPosition(uuid)
 					if x == nil or y == nil or z == nil then
 						x,y,z = GetPosition(CharacterGetHostCharacter())
 					end
 					TeleportToPosition(cloned, x,y,z, "", 0, 1)
 				end
-				ItemRemove(item)
+				ItemRemove(uuid)
 				return cloned
 				--NRD_ItemSetIdentified(cloned, 1)
 			end
 		else
 			-- Not equipped
 			if item.Slot > 13 then
-				ItemRemove(item)
+				ItemRemove(uuid)
 				return nil
 			end
 		end
-		return item
+		return uuid
 	else
-		error("Item ("..tostring(item)..") is nil!")
+		error("Item ("..tostring(uuid)..") is nil!")
 	end
 end
 
@@ -397,7 +398,9 @@ function LLENEMY_Ext_ShadowCorruptItem(item)
 	local b,result = xpcall(ShadowCorruptItem, LLENEMY_ShadowCorruptItem_Error, item, container)
 	if b then
 		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(result)..")")
+		return result
 	end
+	return nil
 end
 Ext.NewCall(LLENEMY_Ext_ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
@@ -456,7 +459,7 @@ function LLENEMY_Ext_DestroyEmptyContainer(uuid)
 	local containerGoldValue = ContainerGetGoldValue(uuid)
 	local containerValue = ItemGetGoldValue(uuid)
 	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_Ext_DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
-	if containerGoldValue <= 0 or containerGoldValue <= containerValue then
+	if containerGoldValue <= 1 then
 		ItemDestroy(uuid)
 	end
 end
