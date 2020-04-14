@@ -198,10 +198,9 @@ local function LLENEMY_DebugInit()
 	if CharacterGetEquippedWeapon(host) == nil then
 		local inventory = Ext.GetCharacter(host):GetInventoryItems()
 		for k,v in pairs(inventory) do
-			local item = Ext.GetItem(v)
-			if NRD_ItemGetString(v, "WeaponType") ~= nil then
+			local stat = NRD_ItemGetStatsId(v)
+			if NRD_StatGetType(stat) == "Weapon" then
 				CharacterEquipItem(host, v)
-				break
 			end
 		end
 	end

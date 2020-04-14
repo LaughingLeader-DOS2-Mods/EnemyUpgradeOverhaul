@@ -10,7 +10,7 @@ NOT DB_LLENEMY_TreasureGoblins_Temp_Active(_)
 THEN
 LLENEMY_TreasureGoblins_Spawn(_CombatID);
 
-/* [OSITOOLS_ONLY]
+/*
 IF
 GameStarted(_,_)
 THEN
@@ -21,7 +21,9 @@ IF
 TimerFinished("Timers_LLENEMY_Debug_SpawnTreasureGoblin")
 THEN
 NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
+*/
 
+/* [OSITOOLS_ONLY]
 IF
 TextEventSet("llenemy_goblintest")
 THEN
