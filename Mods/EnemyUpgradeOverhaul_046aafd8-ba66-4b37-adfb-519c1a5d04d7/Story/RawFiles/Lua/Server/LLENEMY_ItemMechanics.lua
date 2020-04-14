@@ -259,7 +259,7 @@ local function SetRandomShadowName(item,statType)
 		NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription.Value)
 	else
 		-- Wrap original names in a purple color
-		local handle,templateName = ItemTemplateGetDisplayString(item)
+		local handle,templateName = ItemTemplateGetDisplayString(GetTemplate(item))
 		local originalName = Ext.GetTranslatedString(handle, templateName)
 		local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
 		local name = string.format("<font color='%s'>%s</font>", color, originalName)
@@ -385,13 +385,13 @@ local function LLENEMY_TryScatterInventory(uuid)
 					--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
 					local item = Ext.GetItem(v)
 					local stat = item.StatsId
-					local equipped = item.Slot <= 13
+					local equipped = item.Slot <= 10 -- Equipped, not Horns, Wings, or Overhead
 					-- Stats that start with an underscore aren't meant for players
 					if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
 						ItemScatterAt(v, x,y,z)
 						ItemClearOwner(v)
 						
-						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."]")
+						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."] Slot("..tostring(item.Slot)..")")
 						if not string.find(stat, "Gold") and (LLENEMY_ItemIsRare(v, item.ItemType)) then
 							PlayEffect(v, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
 						end
@@ -416,9 +416,9 @@ function LLENEMY_Ext_ScatterInventory(char)
 end
 
 local function LLENEMY_Ext_DestroyEmptyContainer(uuid)
-	local item = Ext.GetItem(uuid)
-	local inventory = item:GetInventoryItems()
-	if inventory == nil or #inventory <= 0 then
+	local goldValue = ContainerGetGoldValue(uuid)
+	local containerValue = ItemGetGoldValue(uuid)
+	if goldValue <= 0 or goldValue <= containerValue then
 		ItemDestroy(uuid)
 	end
 end
