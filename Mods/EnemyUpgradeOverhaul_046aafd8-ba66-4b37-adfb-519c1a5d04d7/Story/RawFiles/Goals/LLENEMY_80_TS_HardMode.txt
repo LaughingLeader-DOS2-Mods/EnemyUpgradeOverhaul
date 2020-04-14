@@ -62,7 +62,7 @@ SysClear("DB_LLENEMY_HardMode_Temp_BonusRolls", 3);
 IF
 SkillCast(_Character, _Skill, _SkillType, _SkillElement)
 THEN
-LLENEMY_OnSkillCast(_Character, _Skill, _SkillType, _SkillElement);
+LLENEMY_OnSkillCast_TrySummonVoidwoken(_Character, _Skill, _SkillType, _SkillElement);
 //END_REGION
 EXITSECTION
 SysClear("DB_LLENEMY_HardMode_Temp_BonusRolls", 3);

@@ -183,29 +183,3 @@ function LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,level,combatid)
 	Osi.LeaderLib_Helper_MakeHostileToPlayers(goblin)
 	Osi.LeaderLib_Timers_StartObjectTimer(goblin, 1000, "Timers_LLENEMY_Goblin_EnterCombatWithPlayers", "LeaderLib_Commands_EnterCombatWithPlayers")
 end
-
--- 0: 95
--- 1: 90
--- 2: 78
--- 3: 44
---- Gets a chance threshold for spawning voidwoken, based on the source points cost of a skill.
----@param points integer
----@return integer
-local function GetVoidwokenSpawnChanceRollThreshold(points)
-	local mod = 10+math.ceil(math.exp(1 + points))
-	return math.ceil((100 - mod) + math.log(1+math.abs(mod * 100)))
-end
-
-local function LLENEMY_OnSkillCast(char, skill, skilltype, skillelement)
-	if IsSourceSkill(skill) == 1 then
-		local magicCost = Ext.StatGetAttribute(skill, "Magic Cost")
-		LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_OnSkillCast] Character ("..char..") cast a source skill ("..skill..")["..tostring(magicCost).."].")
-		local chance = GetVoidwokenSpawnChanceRollThreshold(magicCost)
-		local roll = Ext.Random(0,100)
-		LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_OnSkillCast] Roll: ["..tostring(roll).."/100 >= "..tostring(chance).."].")
-		if roll >= chance then
-
-		end
-	end
-end
-Ext.NewCall(LLENEMY_OnSkillCast, "LLENEMY_OnSkillCast", "(CHARACTERGUID)_Character, (STRING)_Skill, (STRING)_SkillType, (STRING)_SkillElement");
