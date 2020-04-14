@@ -138,7 +138,7 @@ DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
 AND
 _LastSP > 0
 AND
-LeaderLib_Random_QRY(2,10)
+LeaderLib_Random_QRY(2,8)
 AND
 DB_LeaderLib_Random(_Ran)
 AND
