@@ -2,25 +2,35 @@
 ---@class VoidwokenSpawn
 local VoidwokenSpawn = {
 	Template = "",
+	Templates = {},
 	Weight = 0,
 	DefaultWeight = 0
 }
 VoidwokenSpawn.__index = VoidwokenSpawn
 
 ---@param weight number
----@param template string
 ---@return VoidwokenSpawn
-function VoidwokenSpawn:Create(weight, template)
+function VoidwokenSpawn:Create(weight, ...)
     local this =
     {
-		Template = template,
+		Templates = {...},
 		Weight = weight,
 		DefaultWeight = weight
 	}
+	if #this.Templates > 0 then
+		this.Template = this.Templates[1]
+	end
 	setmetatable(this, self)
     return this
 end
 
+---@return string
+function VoidwokenSpawn:GetTemplate()
+    if #self.Templates > 1 then
+		return LeaderLib.Common.GetRandomTableEntry(self.Templates)
+	end
+    return self.Template
+end
 
 ---@class VoidwokenSpawnGroup
 local VoidwokenSpawnGroup = {
@@ -41,55 +51,108 @@ function VoidwokenSpawnGroup:Create(minPoints, ...)
     return this
 end
 
+--[[ 
+LLENEMY_Animals_Bear_A_Voidwoken_09b17320-6a1b-4807-bd30-fb2a6e053c5a
+LLENEMY_Animals_Beetle_A_Fire_891f32c0-bf75-4226-bf45-170ae71e8c00
+LLENEMY_Animals_Beetle_A_Green_7fd9eed0-e2c7-480b-9f0a-0a430c94b92f
+LLENEMY_Animals_Boar_A_Void_A_0ed3acfc-103d-4709-96b6-582e859910f1
+LLENEMY_Animals_Deer_A_Void_A_c82646f0-9275-4bba-8e9b-efa06cd8ee5f
+LLENEMY_Animals_Frog_Merman_A_f23a5de6-0169-42b2-84f8-8d87d39a6f3a
+LLENEMY_Animals_Frog_Merman_A_Giant_e110341a-14cd-4ade-a3e9-3ac25669637b
+LLENEMY_Animals_Salamander_A_Poison_6795cd59-bcc6-4a21-ab30-351ce5ab910b
+LLENEMY_Animals_Salamander_A_Voidwoken_0c5243c0-1ea3-47e0-abc1-6c511baa83f0
+LLENEMY_Animals_Turtle_A_Voidwoken_a0234f61-d011-42d6-a4ba-3b6010b87ccc
+LLENEMY_Creatures_GiantInsect_A_NoWings_e8508e93-22f1-435f-ac3a-a4262627e66f
+LLENEMY_Creatures_GiantInsect_A_Wings_502f6533-80b0-4369-ab63-67750f322d6d
+LLENEMY_Creatures_GiantInsect_B_NoWings_fe624b7f-5deb-4136-af2b-f4b68f2ad684
+LLENEMY_Creatures_GiantInsect_B_Wings_c9eb4ccf-0a0f-4304-a0b8-078873762538
+LLENEMY_Creatures_GiantInsect_C_NoWings_d32073f4-a6f7-4b42-a752-7fb632e8e5e0
+LLENEMY_Creatures_GiantInsect_C_Wings_8e6cc2c7-d7a9-4023-985d-da6ad032ea82
+LLENEMY_Creatures_Molespitter_A_25ce90bd-788d-4f1e-b1a0-6c0f7286a939
+LLENEMY_Creatures_Molespitter_B_c66817c1-1344-46d3-9e1d-03b10bf37038
+LLENEMY_Creatures_Molespitter_C_08e58643-5d12-4d16-9abb-59ae95ed4e14
+LLENEMY_Creatures_Nightmare_Werewolf_A_6d57af19-aebf-4893-b0c3-3d96f140ae2f
+LLENEMY_Creatures_Statue_A_Voidwoken_abd8c14d-599e-48e2-bc29-4a42c40a5940
+LLENEMY_Creatures_Statue_A_Voidwoken_B_02dc4dfd-7b8b-4fd3-82c7-90dcee5f833c
+LLENEMY_Creatures_VampireBat_A_83fc3623-0382-4550-8bd7-888a568dac22
+LLENEMY_Creatures_VampireBat_B_ceb0deeb-6313-4ccf-8fdb-ea80eab22066
+LLENEMY_Creatures_Voidwoken_Alan_A_Boss_d615894f-6cc1-4eae-9c6c-ffacf00f89bd
+LLENEMY_Creatures_Voidwoken_Caster_790ae435-697e-41d7-bcc4-efca7cc62371
+LLENEMY_Creatures_Voidwoken_Caster_Ice_62a548ef-b432-4e05-b23e-1ccc9aaa490d
+LLENEMY_Creatures_Voidwoken_Drillworm_A_Hatchling_ABC_c1a13a24-8b5c-408c-b2bf-18d965c166d0
+LLENEMY_Creatures_Voidwoken_Drillworm_A_Hatchling_B_2577ec50-887c-41de-b5bc-702207679fde
+LLENEMY_Creatures_Voidwoken_GiantInsect_Dominator_A_6c6e07e6-6455-4599-b33d-888ec8aafc12
+LLENEMY_Creatures_Voidwoken_Grunt_A_8a0003b6-9109-4ea1-afc4-3f130e8b1079
+LLENEMY_Creatures_Voidwoken_Grunt_A_Ice_e073b24e-041a-4166-950d-95a429ae3409
+LLENEMY_Creatures_Voidwoken_Merman_A_3b414508-4ce6-475b-94cd-b389fc7f3bc1
+LLENEMY_Creatures_Voidwoken_Spider_A_b20e320c-e2e3-40b0-8265-aff00e5ea7b1
+LLENEMY_Creatures_Voidwoken_Spider_A_Poison_b0dea499-ee1f-42dc-bef9-8590ec3b2385
+LLENEMY_Creatures_Voidwoken_Troll_A_a4b68f95-5d9f-4e25-95d9-6a957b2f8e37
+LLENEMY_Creatures_Voidwoken_Troll_A_Ice_cc49f9c2-a5b9-4282-9808-b749fd0aa874
+LLENEMY_Creatures_Demon_Hound_A_48351665-a3cf-4fea-a501-a14c15e6a46e
+LLENEMY_Creatures_Demons_Worm_A_eaea8ce8-b795-433e-93c4-92597bb3f10a
+LLENEMY_Quest_CoS_SeptaNemesis_Animals_Crab_A_Giant_cf3daf72-7f6c-49c4-bd4f-3459fd6c7c8b
+]]
+
 local voidwokenGroups = {
 	-- Easy
 	VoidwokenSpawnGroup:Create(0,
-		VoidwokenSpawn:Create(10, "Creatures_Voidwoken_Drillworm_A_Hatchling_ABC_1c1ca5fc-19c1-4a52-af88-8ee346d72cfe"),
-		VoidwokenSpawn:Create(10, "Creatures_Voidwoken_Drillworm_A_Hatchling_B_9b929973-72a8-4e06-9357-acfcf3278f5e")),
+		VoidwokenSpawn:Create(10, "LLENEMY_Creatures_Voidwoken_Drillworm_A_Hatchling_ABC_c1a13a24-8b5c-408c-b2bf-18d965c166d0", "LLENEMY_Creatures_Voidwoken_Drillworm_A_Hatchling_B_2577ec50-887c-41de-b5bc-702207679fde")),
 	-- Somewhat Easy
-	VoidwokenSpawnGroup:Create(4,
-		VoidwokenSpawn:Create(8, "Animals_Turtle_A_Voidwoken_df421d91-2be6-4388-b3d9-fa01d915f346")),
-	-- Other Animals
-	VoidwokenSpawnGroup:Create(7,
-		VoidwokenSpawn:Create(4, "Creatures_Demon_Hound_A_0b385807-7de8-42e9-bda2-c9a7e76da496"),
-		VoidwokenSpawn:Create(4, "Animals_Bear_A_Voidwoken_a0f68491-6af5-4190-9c45-c4559d29c08f")),
+	VoidwokenSpawnGroup:Create(8,
+		VoidwokenSpawn:Create(4, "LLENEMY_Animals_Turtle_A_Voidwoken_a0234f61-d011-42d6-a4ba-3b6010b87ccc"),
+		VoidwokenSpawn:Create(8, "LLENEMY_Animals_Boar_A_Void_A_0ed3acfc-103d-4709-96b6-582e859910f1"),
+		VoidwokenSpawn:Create(8, "LLENEMY_Animals_Deer_A_Void_A_c82646f0-9275-4bba-8e9b-efa06cd8ee5f")
+	),
+	-- Easy Bugs
+	VoidwokenSpawnGroup:Create(8,
+		VoidwokenSpawn:Create(8, "LLENEMY_Animals_Beetle_A_Fire_891f32c0-bf75-4226-bf45-170ae71e8c00", "LLENEMY_Animals_Beetle_A_Green_7fd9eed0-e2c7-480b-9f0a-0a430c94b92f"),
+		VoidwokenSpawn:Create(8, "LLENEMY_Animals_Boar_A_Void_A_0ed3acfc-103d-4709-96b6-582e859910f1")
+	),
 	-- Drillworms
-	VoidwokenSpawnGroup:Create(9,
-		VoidwokenSpawn:Create(3, "LLENEMY_Creatures_Voidwoken_Drillworm_A_b24d5c4c-8a5a-4cd7-8518-f4684509be66"),
-		VoidwokenSpawn:Create(3, "LLENEMY_Creatures_Voidwoken_Drillworm_B_8713b59d-a564-4b90-910c-e5c6a384c0d9")),
-	-- Bats
 	VoidwokenSpawnGroup:Create(14,
-		VoidwokenSpawn:Create(3, "Creatures_VampireBat_A_42b7dd91-52e2-40c9-97a7-e38410626d9f"),
-		VoidwokenSpawn:Create(3, "Creatures_VampireBat_B_0fae6595-88c3-4e62-9ace-fc011a9bdbce")),	
-	-- Giant Insects
-	VoidwokenSpawnGroup:Create(12,
-		VoidwokenSpawn:Create(7, "Creatures_GiantInsect_A_Wings_9f05d133-4220-4196-a337-80c1f444c6e7"),
-		VoidwokenSpawn:Create(7, "Creatures_GiantInsect_B_Wings_43d2c6db-2a93-4204-b0a0-ee19537fe14f"),
-		VoidwokenSpawn:Create(7, "Creatures_GiantInsect_C_Wings_5aa20d6e-e354-45c0-8433-a817674c7d98"),
-		VoidwokenSpawn:Create(6, "Creatures_Voidwoken_Spider_A_e1e91da4-e8f7-41dc-9c1f-9ea77c5e62d8"),
-		VoidwokenSpawn:Create(6, "Creatures_Voidwoken_Spider_A_Poison_2a6e2e75-004a-489e-8a25-7edab7a22603"),
-		VoidwokenSpawn:Create(1, "Creatures_Voidwoken_GiantInsect_Dominator_A_187c09ee-edeb-4246-89bf-89aae0d77244")),
-	-- Grunts etc
+		VoidwokenSpawn:Create(3, "LLENEMY_Creatures_Voidwoken_Drillworm_A_b24d5c4c-8a5a-4cd7-8518-f4684509be66", "LLENEMY_Creatures_Voidwoken_Drillworm_B_8713b59d-a564-4b90-910c-e5c6a384c0d9"),
+		VoidwokenSpawn:Create(8, "LLENEMY_Creatures_Demons_Worm_A_eaea8ce8-b795-433e-93c4-92597bb3f10a")),
+	-- Other Animals
 	VoidwokenSpawnGroup:Create(16,
-		VoidwokenSpawn:Create(4, "Creatures_Voidwoken_Caster_aa02c121-3200-44ce-a9e9-d22c46ac848e"),
-		VoidwokenSpawn:Create(4, "Creatures_Voidwoken_Caster_Ice_598c927b-7fb2-4244-a791-15668fefe715"),
-		VoidwokenSpawn:Create(4, "Creatures_Voidwoken_Grunt_A_5c702815-5a42-43fd-83f8-f6a321803ebe"),
-		VoidwokenSpawn:Create(4, "Creatures_Voidwoken_Grunt_A_Ice_6ce20f23-6b29-4f3e-9b10-81e1d0a1e799")),
+		VoidwokenSpawn:Create(4, "LLENEMY_Creatures_Demon_Hound_A_48351665-a3cf-4fea-a501-a14c15e6a46e"),
+		VoidwokenSpawn:Create(6, "LLENEMY_Creatures_Molespitter_A_25ce90bd-788d-4f1e-b1a0-6c0f7286a939", "LLENEMY_Creatures_Molespitter_B_c66817c1-1344-46d3-9e1d-03b10bf37038", "LLENEMY_Creatures_Molespitter_C_08e58643-5d12-4d16-9abb-59ae95ed4e14"),
+		VoidwokenSpawn:Create(6, "LLENEMY_Animals_Bear_A_Voidwoken_09b17320-6a1b-4807-bd30-fb2a6e053c5a"),
+		VoidwokenSpawn:Create(10, "LLENEMY_Animals_Frog_Merman_A_f23a5de6-0169-42b2-84f8-8d87d39a6f3a")),
+	-- Bats
 	VoidwokenSpawnGroup:Create(18,
-		VoidwokenSpawn:Create(4, "Animals_Salamander_A_Voidwoken_5c0f4a3b-1640-4925-8993-826452655435")),
-	-- Statues
+		VoidwokenSpawn:Create(3, "LLENEMY_Creatures_VampireBat_A_83fc3623-0382-4550-8bd7-888a568dac22", "LLENEMY_Creatures_VampireBat_B_ceb0deeb-6313-4ccf-8fdb-ea80eab22066")
+	),
+	-- Giant Insects
 	VoidwokenSpawnGroup:Create(20,
-		VoidwokenSpawn:Create(3, "Creatures_Statue_A_Voidwoken_9001799c-26c1-4551-8bf2-17df0ca9f6c3"),
-		VoidwokenSpawn:Create(3, "Creatures_Statue_A_Voidwoken_B_6e948a1d-e0e4-4dcb-bb61-0392d79b6a10")),
-	-- Tougher Enemies
+		VoidwokenSpawn:Create(7, "LLENEMY_Creatures_GiantInsect_A_NoWings_e8508e93-22f1-435f-ac3a-a4262627e66f", "LLENEMY_Creatures_GiantInsect_B_NoWings_fe624b7f-5deb-4136-af2b-f4b68f2ad684", "LLENEMY_Creatures_GiantInsect_C_NoWings_d32073f4-a6f7-4b42-a752-7fb632e8e5e0"),
+		VoidwokenSpawn:Create(3, "LLENEMY_Creatures_GiantInsect_A_Wings_502f6533-80b0-4369-ab63-67750f322d6d", "LLENEMY_Creatures_GiantInsect_B_Wings_c9eb4ccf-0a0f-4304-a0b8-078873762538", "LLENEMY_Creatures_GiantInsect_C_Wings_8e6cc2c7-d7a9-4023-985d-da6ad032ea82"),
+		VoidwokenSpawn:Create(6, "LLENEMY_Creatures_Voidwoken_Spider_A_b20e320c-e2e3-40b0-8265-aff00e5ea7b1", "LLENEMY_Creatures_Voidwoken_Spider_A_Poison_b0dea499-ee1f-42dc-bef9-8590ec3b2385")),
+	-- Grunts etc
 	VoidwokenSpawnGroup:Create(24,
-		VoidwokenSpawn:Create(1, "Creatures_Voidwoken_Merman_A_b84112a6-b3b7-476b-b5cc-1c9c5deb1ba1"),
-		VoidwokenSpawn:Create(2, "Creatures_Voidwoken_Troll_A_e3727ad8-152c-4d2a-8c71-8093a5e68839"),
-		VoidwokenSpawn:Create(2, "Creatures_Voidwoken_Troll_A_Ice_b7ebea68-d4bf-4b8b-bace-f400f2448c94")),
-	VoidwokenSpawnGroup:Create(30,
-		VoidwokenSpawn:Create(1, "Quest_CoS_SeptaNemesis_Animals_Crab_A_Giant_a360f2c5-92e4-426e-8856-d42d7ec6467f")),
+		VoidwokenSpawn:Create(2, "LLENEMY_Creatures_Voidwoken_Caster_790ae435-697e-41d7-bcc4-efca7cc62371", "LLENEMY_Creatures_Voidwoken_Caster_Ice_62a548ef-b432-4e05-b23e-1ccc9aaa490d"),
+		VoidwokenSpawn:Create(4, "LLENEMY_Creatures_Voidwoken_Grunt_A_8a0003b6-9109-4ea1-afc4-3f130e8b1079", "LLENEMY_Creatures_Voidwoken_Grunt_A_Ice_e073b24e-041a-4166-950d-95a429ae3409")
+	),
+	VoidwokenSpawnGroup:Create(28,
+		VoidwokenSpawn:Create(4, "LLENEMY_Animals_Salamander_A_Voidwoken_0c5243c0-1ea3-47e0-abc1-6c511baa83f0", "LLENEMY_Animals_Salamander_A_Poison_6795cd59-bcc6-4a21-ab30-351ce5ab910b"),
+		VoidwokenSpawn:Create(4, "LLENEMY_Animals_Frog_Merman_A_Giant_e110341a-14cd-4ade-a3e9-3ac25669637b")
+	),
+	-- Statues
+	VoidwokenSpawnGroup:Create(34,
+		VoidwokenSpawn:Create(1, "LLENEMY_Creatures_Voidwoken_GiantInsect_Dominator_A_6c6e07e6-6455-4599-b33d-888ec8aafc12"),
+		VoidwokenSpawn:Create(3, "LLENEMY_Creatures_Statue_A_Voidwoken_abd8c14d-599e-48e2-bc29-4a42c40a5940", "LLENEMY_Creatures_Statue_A_Voidwoken_B_02dc4dfd-7b8b-4fd3-82c7-90dcee5f833c")
+	),
+	-- Tougher Enemies
 	VoidwokenSpawnGroup:Create(40,
-		VoidwokenSpawn:Create(1, "Creatures_Voidwoken_Alan_A_Boss_8d10d59e-2060-43d9-8345-3222e3b3c424"))
+		VoidwokenSpawn:Create(1, "LLENEMY_Creatures_Voidwoken_Merman_A_3b414508-4ce6-475b-94cd-b389fc7f3bc1"),
+		VoidwokenSpawn:Create(2, "LLENEMY_Creatures_Voidwoken_Troll_A_a4b68f95-5d9f-4e25-95d9-6a957b2f8e37", "LLENEMY_Creatures_Voidwoken_Troll_A_Ice_cc49f9c2-a5b9-4282-9808-b749fd0aa874")
+	),
+	VoidwokenSpawnGroup:Create(50,
+		VoidwokenSpawn:Create(1, "LLENEMY_Quest_CoS_SeptaNemesis_Animals_Crab_A_Giant_cf3daf72-7f6c-49c4-bd4f-3459fd6c7c8b")),
+	VoidwokenSpawnGroup:Create(60,
+		VoidwokenSpawn:Create(1, "LLENEMY_Creatures_Voidwoken_Alan_A_Boss_d615894f-6cc1-4eae-9c6c-ffacf00f89bd")),
+	VoidwokenSpawnGroup:Create(70,
+		VoidwokenSpawn:Create(1, "LLENEMY_Creatures_Nightmare_Werewolf_A_6d57af19-aebf-4893-b0c3-3d96f140ae2f"))
 }
 
 EnemyUpgradeOverhaul.VoidwokenGroups = voidwokenGroups
@@ -153,7 +216,7 @@ function LLENEMY_Ext_SpawnVoidwoken(source,testing,totalPoints)
 			LeaderLib.Print("Picked random entry: " .. entry.Template .. " | " ..tostring(rand) .. " / " .. tostring(totalWeight))
 			if testing ~= true then
 				local x,y,z = GetPosition(source)
-				local voidwoken = CharacterCreateAtPosition(x, y, z, entry.Template, 1)
+				local voidwoken = CharacterCreateAtPosition(x, y, z, entry:GetTemplate(), 1)
 				SetFaction(voidwoken, "Evil NPC")
 				TeleportToRandomPosition(voidwoken, 16.0, "")
 				LLENEMY_Ext_ClearGain(voidwoken)
@@ -196,7 +259,7 @@ local function GetVoidwokenSpawnChanceRollThreshold(points, totalPointsUsed)
 	if points >= #magicPointsVoidwokenChances then
 		return 90
 	else
-		return math.max(90, math.ceil(magicPointsVoidwokenChances[points] * DetermineTotalSPModifier(totalPointsUsed)))
+		return math.min(90, math.ceil(magicPointsVoidwokenChances[points] * DetermineTotalSPModifier(totalPointsUsed)))
 	end
 end
 
@@ -212,7 +275,7 @@ local function TrySummonVoidwoken(char, skill, skilltype, skillelement)
 		LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Character ("..char..") cast a source skill ("..skill..")["..tostring(magicCost).."].")
 		local chance = GetVoidwokenSpawnChanceRollThreshold(magicCost, totalPointsUsed)
 		local roll = Ext.Random(0,100)
-		LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Roll: ["..tostring(roll).."/100 <= "..tostring(chance).."].")
+		LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Roll: ["..tostring(roll).."/100 <= "..tostring(chance).."] TotalSP ("..tostring(totalPointsUsed)..").")
 		if roll <= chance then
 			LLENEMY_Ext_SpawnVoidwoken(char)
 		end
