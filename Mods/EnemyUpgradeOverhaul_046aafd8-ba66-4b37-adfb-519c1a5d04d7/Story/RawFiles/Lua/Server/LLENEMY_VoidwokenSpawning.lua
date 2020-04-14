@@ -106,11 +106,15 @@ local function GetTotalPointsForRegion(source)
 	return 0
 end
 
-function LLENEMY_Ext_SpawnVoidwoken(source,testing)
+function LLENEMY_Ext_SpawnVoidwoken(source,testing,totalPoints)
 	local totalPointsUsed = 0
-	local b,p = pcall(GetTotalPointsForRegion, source)
-	if b then
-		totalPointsUsed = p
+	if totalPoints ~= nil then
+		totalPointsUsed = totalPoints
+	else
+		local b,p = pcall(GetTotalPointsForRegion, source)
+		if b then
+			totalPointsUsed = p
+		end
 	end
 	local voidwokenTemplates = {}
 	for _,group in pairs(voidwokenGroups) do
@@ -176,14 +180,23 @@ local magicPointsVoidwokenChances = {
 	[5] = 75,
 	[6] = 85,
 }
+
+local pointsModC = 0
+local pointsModD = 10.7
+local pointsModB = 3.4
+
+local function DetermineTotalSPModifier(total)
+	return 1 - (((pointsModB - total * pointsModD) / (pointsModC * total + pointsModB)) / 100)
+end
+
 --- Gets a chance threshold for spawning voidwoken, based on the source points cost of a skill.
 ---@param points integer
 ---@return integer
-local function GetVoidwokenSpawnChanceRollThreshold(points)
+local function GetVoidwokenSpawnChanceRollThreshold(points, totalPointsUsed)
 	if points >= #magicPointsVoidwokenChances then
 		return 90
 	else
-		return magicPointsVoidwokenChances[points]
+		return math.max(90, math.ceil(magicPointsVoidwokenChances[points] * DetermineTotalSPModifier(totalPointsUsed)))
 	end
 end
 
@@ -191,8 +204,13 @@ local function TrySummonVoidwoken(char, skill, skilltype, skillelement)
 	local magicCost = Ext.StatGetAttribute(skill, "Magic Cost")
 	if magicCost > 0 then
 		Osi.LLENEMY_HardMode_TrackTotalSourceUsed(magicCost)
+		local totalPointsUsed = 0
+		local b,p = pcall(GetTotalPointsForRegion, char)
+		if b then
+			totalPointsUsed = p
+		end
 		LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Character ("..char..") cast a source skill ("..skill..")["..tostring(magicCost).."].")
-		local chance = GetVoidwokenSpawnChanceRollThreshold(magicCost)
+		local chance = GetVoidwokenSpawnChanceRollThreshold(magicCost, totalPointsUsed)
 		local roll = Ext.Random(0,100)
 		LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Roll: ["..tostring(roll).."/100 <= "..tostring(chance).."].")
 		if roll <= chance then
