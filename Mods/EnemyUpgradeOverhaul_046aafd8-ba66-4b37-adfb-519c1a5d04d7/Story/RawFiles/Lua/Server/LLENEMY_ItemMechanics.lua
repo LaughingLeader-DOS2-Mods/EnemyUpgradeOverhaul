@@ -327,11 +327,17 @@ function LLENEMY_Ext_ShadowCorruptItem(item, container)
 	local statType = NRD_StatGetType(stat)
 	if BOOSTS[statType] ~= nil then
 		local cloned = GetClone(item, stat, statType)
-		if container == nil then
-			container = NRD_ItemGetParent(item)
+		if container == nil and ItemIsInInventory(item) then
+			container = GetInventoryOwner(item)
+			if container == nil then
+				container = NRD_ItemGetParent(item)
+			end
 		end
 		if container ~= nil then
 			ItemToInventory(cloned, container, 1, 0, 0)
+		else
+			local x,y,z = GetPosition(item)
+			TeleportToPosition(cloned, x,y,z, "", 0, 1)
 		end
 		ItemRemove(item)
 		return cloned
@@ -415,7 +421,7 @@ function LLENEMY_Ext_ScatterInventory(char)
 	end
 end
 
-local function LLENEMY_Ext_DestroyEmptyContainer(uuid)
+function LLENEMY_Ext_DestroyEmptyContainer(uuid)
 	local goldValue = ContainerGetGoldValue(uuid)
 	local containerValue = ItemGetGoldValue(uuid)
 	if goldValue <= 0 or goldValue <= containerValue then
