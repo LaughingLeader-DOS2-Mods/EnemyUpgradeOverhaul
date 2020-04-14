@@ -129,13 +129,6 @@ THEN
 NRD_IterateStatuses(_Source, "LLENEMY_Dupe_CopyStatus");
 
 IF
-StoryEvent(_Dupe, "LLENEMY_Duplication_BuildUpgradeInfo")
-AND
-GetUUID(_Dupe, _UUID)
-THEN
-NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_Build", _UUID);
-
-IF
 NRD_StatusIteratorEvent("LLENEMY_Dupe_CopyStatus", (CHARACTERGUID)_Source, _Status, _Handle)
 AND
 NOT LLENEMY_Duplication_QRY_IgnoreStatus(_Status)
