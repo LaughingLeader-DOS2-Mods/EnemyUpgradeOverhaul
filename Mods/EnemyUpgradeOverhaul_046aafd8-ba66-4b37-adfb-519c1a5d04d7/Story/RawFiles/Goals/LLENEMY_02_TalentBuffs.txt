@@ -73,7 +73,7 @@ LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_SADIST", 50, 10)
 LLENEMY_Upgrades_AddStatus("Talents", "Weapon", "LLENEMY_TALENT_GLADIATOR", 100, 6);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("Talents", (STRING)_Type)
+LLENEMY_Upgrades_Register_TypeUpgrades("Talents", (STRING)_Type, (INTEGER)_HardModeEnabled)
 AND
 SysIsActive("CMP_Talents")
 THEN
@@ -98,9 +98,9 @@ LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite");
 LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Weapon");
 
 //Re-register modded talents
-LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start("Talents", "Normal");
-LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start("Talents", "Elite");
-LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start("Talents", "Weapon");
+LLENEMY_Upgrades_Register_ModUpgradesForType("Talents", "Normal");
+LLENEMY_Upgrades_Register_ModUpgradesForType("Talents", "Elite");
+LLENEMY_Upgrades_Register_ModUpgradesForType("Talents", "Weapon");
 //END_REGION
 
 //REGION ALREADY_HAS_TALENT_BELT

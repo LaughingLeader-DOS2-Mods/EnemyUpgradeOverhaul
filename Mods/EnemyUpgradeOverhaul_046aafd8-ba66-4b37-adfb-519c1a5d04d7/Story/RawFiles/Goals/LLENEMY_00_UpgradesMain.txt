@@ -10,6 +10,7 @@ AND
 GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
 THEN
 LLENEMY_Upgrades_RegisterAll(_HardModeEnabled);
+LLENEMY_Upgrades_StartModRegistration();
 
 PROC
 LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
@@ -37,6 +38,18 @@ GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
 THEN
 DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints);
 LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type, _HardModeEnabled);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades((STRING)_Group, (STRING)_Type)
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
+THEN
+LLENEMY_Upgrades_Register_TypeUpgrades(_Group, _Type, _HardModeEnabled);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades((STRING)_Group, (STRING)_Type, (INTEGER)_HardModeEnabled)
+THEN
+DB_NOOP(1);
 
 /*
 PROC
@@ -113,34 +126,69 @@ DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _StartInt, _MaxRoll);
 //REGION MOD_SUPPORT
 // Register a UUID the system will check to see if a mod is active. UUIDs require the script extender.
 PROC
-LLENEMY_Upgrades_Register_ModSupport((GUIDSTRING)_UUID, (STRING)_ModID, (STRING)_Author, (STRING)_Group, (STRING)_Type, (STRING)_StoryScriptName)
+LLENEMY_Upgrades_Register_ModSupport((GUIDSTRING)_UUID, (STRING)_GoalName)
 THEN
-LeaderUpdater_Register_UUID(_ModID, _Author, _UUID);
-DB_LLENEMY_Upgrades_ModSupport(_UUID, _Group, _Type);
+DB_LLENEMY_Upgrades_ModSupport(_UUID, _GoalName);
+
+/* [OSITOOLS_ONLY]
+QRY
+LLENEMY_Upgrades_QRY_ModIsActive((GUIDSTRING)_UUID, (STRING)_GoalName)
+AND
+NRD_IsModLoaded(_UUID, 1)
+THEN
+DB_NOOP(1);
+*/
+
+// [BEGIN_NO_OSITOOLS]
+QRY
+LLENEMY_Upgrades_QRY_ModIsActive((GUIDSTRING)_UUID, (STRING)_GoalName)
+AND
+SysStatus(_GoalName, _Status) // Exists
+THEN
+DB_NOOP(1);
+// [END_NO_OSITOOLS]
 
 PROC
-LLENEMY_Upgrades_Register_ModSupport((GUIDSTRING)_UUID, (STRING)_ModID, (STRING)_Author, (STRING)_Group, (STRING)_Type, (STRING)_StoryScriptName)
-AND
-_StoryScriptName != ""
+LLENEMY_Upgrades_Register_TypeUpgradesForMod((GUIDSTRING)_UUID, (STRING)_Group, (STRING)_Type, (INTEGER)_HardModeEnabled)
 THEN
-LeaderUpdater_Register_ActiveGoal(_ModID, _Author, _StoryScriptName);
+DB_NOOP(1);
 //END_REGION
 
 //REGION MODDED_UPGRADES_REGISTERING
 PROC
-LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start((STRING)_Group, (STRING)_Type)
+LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start()
 AND
-DB_LLENEMY_Upgrades_ModSupport(_UUID, _Group, _Type)
+DB_LLENEMY_Upgrades_ModSupport(_UUID, _GoalName)
 AND
-LeaderUpdater_QRY_ModIsActive_ByUUID(_UUID)
+LLENEMY_Upgrades_QRY_ModIsActive(_UUID, _GoalName)
 THEN
-DB_LLENEMY_Upgrades_Temp_ModUpgradesActive(_UUID, 1);
-LLENEMY_Upgrades_Register_ModUpgrades(_UUID, _Group, _Type);
+DB_LLENEMY_Upgrades_Temp_ModUpgradesActive(_UUID, _GoalName, 1);
+
+PROC
+LLENEMY_Upgrades_Internal_RegisterModUpgrades_Start()
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
+AND
+DB_LLENEMY_Upgrades_Temp_ModUpgradesActive(_UUID, _GoalName, 1)
+AND
+DB_LLENEMY_Upgrades_Types(_Group, _Type, _MinRoll, _MaxRoll, _ChallengePoints)
+THEN
+LLENEMY_Upgrades_Register_ModUpgrades(_UUID, _Group, _Type, _HardModeEnabled);
+LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades(_UUID, _Group, _Type);
+
+PROC
+LLENEMY_Upgrades_Register_ModUpgradesForType((STRING)_Group, (STRING)_Type)
+AND
+GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
+AND
+DB_LLENEMY_Upgrades_Temp_ModUpgradesActive(_UUID, _GoalName, 1)
+THEN
+LLENEMY_Upgrades_Register_ModUpgrades(_UUID, _Group, _Type, _HardModeEnabled);
 LLENEMY_Upgrades_Internal_RegisterDatabaseModUpgrades(_UUID, _Group, _Type);
 
 //This is called manually by EUO when mods should register upgrades for a specific group/type
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades((GUIDSTRING)_UUID, (STRING)_Group, (STRING)_Type)
+LLENEMY_Upgrades_Register_ModUpgrades((GUIDSTRING)_UUID, (STRING)_Group, (STRING)_Type, (INTEGER)_HardModeEnabled)
 THEN
 DB_NOOP(1);
 
