@@ -222,6 +222,9 @@ function LLENEMY_Ext_SpawnVoidwoken(source,testing,totalPoints)
 				LLENEMY_Ext_ClearGain(voidwoken)
 				if ObjectExists(voidwoken) == 0 then
 					LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] Failed to spawn voidwoken at (",x,y,z,")")
+				else
+					x,y,z = GetPosition(voidwoken)
+					PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_FJ_Worm_Voidwoken_Spawning_01", x,y,z)
 				end
 			end
 		else
