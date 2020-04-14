@@ -10,6 +10,12 @@ AND
 DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_GATHERING_POWER")
 THEN
 NOT DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_GATHERING_POWER");
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_GATHERING_POWER", _)
+AND
+NOT DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_GATHERING_POWER")
+THEN
 LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Statuses_ApplyEmpowered", "LLENEMY_Statuses_ApplyEmpowered");
 
 EXITSECTION
