@@ -512,6 +512,17 @@ ItemIsDestroyed(_Item, 0)
 AND
 ContainerGetGoldValue(_Item, _Value)
 AND
+_Value <= 0
+THEN
+ItemDestroy(_Item);
+/*
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_Container_OnClosed_CheckDestroy")
+AND
+ItemIsDestroyed(_Item, 0)
+AND
+ContainerGetGoldValue(_Item, _Value)
+AND
 ItemGetGoldValue(_Item, _ContainerValue)
 AND
 IntegerSubtract(_Value, _ContainerValue, _CheckValue)
@@ -519,6 +530,7 @@ AND
 _CheckValue <= 0
 THEN
 ItemDestroy(_Item);
+*/
 // [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]

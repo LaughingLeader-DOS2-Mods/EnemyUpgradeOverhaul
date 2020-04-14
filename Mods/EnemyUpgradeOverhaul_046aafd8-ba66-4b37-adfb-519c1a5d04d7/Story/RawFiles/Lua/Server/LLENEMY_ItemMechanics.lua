@@ -172,16 +172,16 @@ local ShadowItemNames = {
 }
 
 local nameColors = {
-	"#2E0854",
-	"#4B0082",
-	"#551A8B",
-	"#5E2D79",
-	"#660198",
-	"#68228B",
-	"#694489",
-	"#6B238E",
-	"#71637D",
-	"#72587F",
+	--"#2E0854",
+	--"#4B0082",
+	--"#551A8B",
+	--"#5E2D79",
+	--"#660198",
+	--"#68228B",
+	--"#694489",
+	--"#6B238E",
+	--"#71637D",
+	--"#72587F",
 	"#7D26CD",
 	"#7F00FF",
 	"#8A2BE2",
@@ -322,28 +322,50 @@ local function GetClone(item,stat,statType)
 	return cloned
 end
 
-function LLENEMY_Ext_ShadowCorruptItem(item, container)
-	local stat = NRD_ItemGetStatsId(item)
-	local statType = NRD_StatGetType(stat)
-	if BOOSTS[statType] ~= nil then
-		local cloned = GetClone(item, stat, statType)
-		if container == nil and ItemIsInInventory(item) then
-			container = GetInventoryOwner(item)
-			if container == nil then
-				container = NRD_ItemGetParent(item)
+local ignoredSlots = {
+	Wings = true,
+	Horns = true,
+	Overhead = true,
+}
+
+local function ShadowCorruptItem(item, container)
+	if item ~= nil then
+		local itemObj = Ext.GetItem(item)
+		local stat = item.StatsId
+		if ignoredSlots[item.Slot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
+			local statType = NRD_StatGetType(stat)
+			if BOOSTS[statType] ~= nil then
+				local cloned = GetClone(item, stat, statType)
+				if container == nil and ItemIsInInventory(item) then
+					container = GetInventoryOwner(item)
+					if container == nil then
+						container = NRD_ItemGetParent(item)
+					end
+				end
+				if container ~= nil then
+					ItemToInventory(cloned, container, 1, 0, 0)
+				else
+					local x,y,z = GetPosition(item)
+					if x == nil or y == nil or z == nil then
+						x,y,z = GetPosition(CharacterGetHostCharacter())
+					end
+					TeleportToPosition(cloned, x,y,z, "", 0, 1)
+				end
+				ItemRemove(item)
+				return cloned
+				--NRD_ItemSetIdentified(cloned, 1)
+			end
+		else
+			-- Not equipped
+			if item.Slot > 13 then
+				ItemRemove(item)
+				return nil
 			end
 		end
-		if container ~= nil then
-			ItemToInventory(cloned, container, 1, 0, 0)
-		else
-			local x,y,z = GetPosition(item)
-			TeleportToPosition(cloned, x,y,z, "", 0, 1)
-		end
-		ItemRemove(item)
-		return cloned
-		--NRD_ItemSetIdentified(cloned, 1)
+		return item
+	else
+		error("Item ("..tostring(item)..") is nil!")
 	end
-	return item
 end
 
 function LLENEMY_Ext_ShadowCorruptItems(uuid)
@@ -365,10 +387,19 @@ function LLENEMY_Ext_ShadowCorruptItems(uuid)
 	end ]]
 end
 
-local function LLENEMY_ShadowCorruptItemFunc(item)
-	LLENEMY_Ext_ShadowCorruptItem(item)
+local function LLENEMY_ShadowCorruptItem_Error (x)
+	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(x))
+	return false
 end
-Ext.NewCall(LLENEMY_ShadowCorruptItemFunc, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
+
+function LLENEMY_Ext_ShadowCorruptItem(item)
+	local container = GetInventoryOwner(item)
+	local b,result = xpcall(ShadowCorruptItem, LLENEMY_ShadowCorruptItem_Error, item, container)
+	if b then
+		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(result)..")")
+	end
+end
+Ext.NewCall(LLENEMY_Ext_ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
 function LLENEMY_ItemIsRare(item, itemType)
 	if itemType ~= "Common" and itemType ~= "" then
@@ -391,9 +422,9 @@ local function LLENEMY_TryScatterInventory(uuid)
 					--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
 					local item = Ext.GetItem(v)
 					local stat = item.StatsId
-					local equipped = item.Slot <= 10 -- Equipped, not Horns, Wings, or Overhead
+					local equipped = item.Slot <= 13 -- Equipped
 					-- Stats that start with an underscore aren't meant for players
-					if equipped ~= true and string.sub(stat, 1, 1) ~= "_" then
+					if equipped == false and string.sub(stat, 1, 1) ~= "_" then
 						ItemScatterAt(v, x,y,z)
 						ItemClearOwner(v)
 						
@@ -422,9 +453,10 @@ function LLENEMY_Ext_ScatterInventory(char)
 end
 
 function LLENEMY_Ext_DestroyEmptyContainer(uuid)
-	local goldValue = ContainerGetGoldValue(uuid)
+	local containerGoldValue = ContainerGetGoldValue(uuid)
 	local containerValue = ItemGetGoldValue(uuid)
-	if goldValue <= 0 or goldValue <= containerValue then
+	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_Ext_DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
+	if containerGoldValue <= 0 or containerGoldValue <= containerValue then
 		ItemDestroy(uuid)
 	end
 end

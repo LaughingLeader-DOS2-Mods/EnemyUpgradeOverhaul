@@ -233,10 +233,10 @@ local function LLENEMY_DebugInit()
 
 	if Ext.IsDeveloperMode() then
 		GlobalSetFlag("LLENEMY_Ext_IsDeveloperMode")
-		--local x,y,z = GetPosition(host)
-		--local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
-		--local shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
-		--ItemToInventory(shadowItem, host, 1, 1, 1)
+		local x,y,z = GetPosition(host)
+		local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
+		local shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
+		ItemToInventory(shadowItem, host, 1, 1, 1)
 	else
 		GlobalClearFlag("LLENEMY_Ext_IsDeveloperMode")
 	end
