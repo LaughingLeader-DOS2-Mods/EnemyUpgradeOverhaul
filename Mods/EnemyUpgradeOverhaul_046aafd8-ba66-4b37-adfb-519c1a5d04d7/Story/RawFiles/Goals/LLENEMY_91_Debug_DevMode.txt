@@ -28,6 +28,11 @@ IF
 TextEventSet("llenemy_goblintest")
 THEN
 NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
+
+IF
+StoryEvent(_, "LeaderLib_Initialized")
+THEN
+NRD_LuaCall("LLENEMY_Ext_DumpUpgradeTables");
 */
 
 IF

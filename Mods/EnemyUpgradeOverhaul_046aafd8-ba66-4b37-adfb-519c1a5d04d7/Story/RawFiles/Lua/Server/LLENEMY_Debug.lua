@@ -242,6 +242,8 @@ local function LLENEMY_DebugInit()
 	else
 		GlobalClearFlag("LLENEMY_Ext_IsDeveloperMode")
 	end
+
+	EnemyUpgradeOverhaul.GetSourceDegredation(300000, 50)
 end
 
 function LLENEMY_Debug_SpawnTreasureGoblinTest()
