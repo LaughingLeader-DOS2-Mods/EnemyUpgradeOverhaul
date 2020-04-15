@@ -26,11 +26,13 @@ LeaderLib_Timers_StartObjectTimer(_Enemy, 250, "Timers_LLENEMY_Bully_RemoveBonus
 IF
 NRD_OnHit(_Target, _Attacker, _Damage, _Handle)
 AND
-HasActiveStatus(_Attacker, "LLENEMY_TALENT_BULLY", 1)
-AND
 _Damage > 0
 AND
 _Target != _Attacker
+AND
+_Attacker != NULL_00000000-0000-0000-0000-000000000000
+AND
+HasActiveStatus(_Attacker, "LLENEMY_TALENT_BULLY", 1)
 AND
 LLENEMY_Talents_QRY_BullyTarget(_Target)
 AND

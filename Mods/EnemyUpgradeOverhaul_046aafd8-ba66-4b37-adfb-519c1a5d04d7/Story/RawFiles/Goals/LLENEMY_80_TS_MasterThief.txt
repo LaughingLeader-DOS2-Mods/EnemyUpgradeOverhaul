@@ -46,6 +46,8 @@ NRD_OnHit((CHARACTERGUID)_Target, (CHARACTERGUID)_Attacker, _Damage, _Handle)
 AND
 _Damage > 0
 AND
+_Attacker != NULL_00000000-0000-0000-0000-000000000000
+AND
 CharacterIsEnemy(_Target, _Attacker, 1)
 AND
 HasActiveStatus(_Attacker, "LLENEMY_TALENT_MASTERTHIEF", 1)
