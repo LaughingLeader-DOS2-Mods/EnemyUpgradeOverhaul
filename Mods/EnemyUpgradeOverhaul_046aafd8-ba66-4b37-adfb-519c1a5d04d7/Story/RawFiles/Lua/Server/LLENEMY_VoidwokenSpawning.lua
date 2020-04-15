@@ -292,7 +292,7 @@ local function GetSourceDegredation(gameHourSpeed, totalPoints)
 	local min = math.max(1, math.floor(2 * mult))
 	local max = math.min(min * 4, (math.max(99, totalPoints / 2)))
 	local ran = Ext.Random(min, max)
-	LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:GetSourceDegredation] SP degredation speed ("..tostring(min).."-"..tostring(max)..") => ("..tostring(ran)..").")
+	LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:GetSourceDegredation] SP degredation speed ("..tostring(min).."-"..tostring(max)..") => ("..tostring(ran)..") TotalSP("..tostring(totalPoints)..") gameHourSpeed("..tostring(gameHourSpeed)..").")
 	return ran
 end
 
