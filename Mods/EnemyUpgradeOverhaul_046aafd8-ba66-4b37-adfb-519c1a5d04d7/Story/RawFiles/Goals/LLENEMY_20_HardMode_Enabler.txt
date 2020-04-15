@@ -137,6 +137,17 @@ DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
 THEN
 NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
 
+PROC
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NewVersion)
+AND
+_LastVersion < 536870925
+AND
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP)
+AND
+_TotalSP < 0
+THEN
+NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP);
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, 0);
 //END_REGION
 EXITSECTION
 ENDEXITSECTION
