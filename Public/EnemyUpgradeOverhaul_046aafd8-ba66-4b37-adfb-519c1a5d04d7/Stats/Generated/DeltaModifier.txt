@@ -21,7 +21,7 @@ param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Shield"
 param "SlotType" "Shield"
-new boost "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage",1
+new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage",1
 
 new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium"
 param "BoostType" "ItemCombo"
