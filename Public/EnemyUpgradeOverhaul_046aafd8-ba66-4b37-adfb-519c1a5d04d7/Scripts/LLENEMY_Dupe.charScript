@@ -1,5 +1,6 @@
 INIT
 	CHARACTER:__Me
+	CHARACTER:%LLENEMY_Duplicant_Owner = null
 	EXTERN FIXEDSTRING:%LLENEMY_Dupe_Stats = "LLENEMY_Dupe_Normal_A"
 EVENTS
 
@@ -24,6 +25,7 @@ ENDIF
 EVENT LLENEMY_Dupe_OnDupeEnteredCombat
 ON
 	OnEnteredCombat(__Me,_)
+	OnEnteredCombat(%LLENEMY_Duplicant_Owner,_)
 ACTIONS
 	CharacterEvent(__Me, "LLENEMY_Dupe_OnDupeEnteredCombat")
 

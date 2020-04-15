@@ -87,6 +87,7 @@ ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
 // [END_NO_OSITOOLS]
 //SetTag(_Dupe, "LLENEMY_Duplicant");
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
+SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
 SetFaction(_Dupe, _Faction);
 ChangeAttitude(_Source, _Dupe, 200);
 ChangeAttitude(_Dupe, _Source, 200);
@@ -266,25 +267,25 @@ CharacterIsInCombat(_Dupe, 0)
 AND
 CharacterIsInCombat(_Source, 0)
 THEN
-ApplyStatus(_Dupe, "LEADERLIB_NO_VISUAL", -1.0, 1, _Dupe);
+SetOnStage(_Dupe, 0);
 
 IF
 StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeEnteredCombat")
 AND
 CharacterIsDead(_Dupe, 0)
 AND
-HasActiveStatus(_Dupe, "LEADERLIB_NO_VISUAL", 1)
+ObjectIsOnStage(_Dupe, 0)
 THEN
-RemoveStatus(_Dupe, "LEADERLIB_NO_VISUAL");
+SetOnStage(_Dupe, 1);
 
 IF
 StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeLeftCombat")
 AND
 CharacterIsDead(_Dupe, 0)
 AND
-HasActiveStatus(_Dupe, "LEADERLIB_NO_VISUAL", 0)
+ObjectIsOnStage(_Dupe, 1)
 THEN
-ApplyStatus(_Dupe, "LEADERLIB_NO_VISUAL", -1.0, 1, _Dupe);
+SetOnStage(_Dupe, 0);
 //END_REGION
 
 //REGION CLEANUP
