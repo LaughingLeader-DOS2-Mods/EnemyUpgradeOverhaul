@@ -1,10 +1,31 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+LLENEMY_WorldUpgrades_Run();
 KBSECTION
 
 PROC
+LLENEMY_WorldUpgrades_Run()
+AND
+DB_LeaderLib_Initialized(1)
+THEN
+TimerCancel("Timers_LLENEMY_CheckCommitWorldUpgrades");
+TimerLaunch("Timers_LLENEMY_CheckCommitWorldUpgrades", 500);
+
+PROC
 LeaderLib_Initialized((STRING)_Region)
+AND
+NOT DB_LLENEMY_Upgrades_Temp_UpgradedRegion(_Region)
+THEN
+TimerCancel("Timers_LLENEMY_CheckCommitWorldUpgrades");
+TimerLaunch("Timers_LLENEMY_CheckCommitWorldUpgrades", 500);
+
+IF
+TimerFinished("Timers_LLENEMY_CheckCommitWorldUpgrades")
+AND
+DB_CurrentLevel(_Region)
+AND
+IsGameLevel(_Region, 1)
 AND
 NOT DB_LLENEMY_Upgrades_Temp_UpgradedRegion(_Region)
 THEN
