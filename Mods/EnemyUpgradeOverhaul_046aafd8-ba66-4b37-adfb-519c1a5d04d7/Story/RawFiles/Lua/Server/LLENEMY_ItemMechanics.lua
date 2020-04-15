@@ -365,6 +365,7 @@ local function ShadowCorruptItem(uuid, container)
 						TeleportToPosition(cloned, x,y,z, "", 0, 1)
 					end
 					ItemRemove(uuid)
+					LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(result)..")")
 					return cloned
 					--NRD_ItemSetIdentified(cloned, 1)
 				end
@@ -389,8 +390,7 @@ end
 function LLENEMY_Ext_ShadowCorruptItem(item)
 	local container = GetInventoryOwner(item)
 	local b,result = xpcall(ShadowCorruptItem, LLENEMY_ShadowCorruptItem_Error, item, container)
-	if b then
-		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(result)..")")
+	if b then	
 		return result
 	end
 	return nil
