@@ -319,6 +319,8 @@ CharacterLaunchOsirisOnlyIterator("LLENEMY_ApplyInfoStatus");
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_ApplyInfoStatus")
 AND
+CharacterIsDead(_Char, 0)
+AND
 GetUUID(_Char, _UUID)
 THEN
 NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus", _UUID);
@@ -998,6 +1000,8 @@ CharacterLaunchOsirisOnlyIterator("LLENEMY_Upgrades_UpgradeEnemy");
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Upgrades_UpgradeEnemy")
+AND
+CharacterIsDead(_Char, 0)
 AND
 NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Char)
 AND

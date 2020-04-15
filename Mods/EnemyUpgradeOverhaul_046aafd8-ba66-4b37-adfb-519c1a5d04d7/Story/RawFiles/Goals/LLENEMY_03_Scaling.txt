@@ -153,6 +153,8 @@ LLENEMY_Scaling_LevelUpCharacter(_Char);
 IF
 StoryEvent((CHARACTERGUID)_Char, "Iterator_LLENEMY_Scaling_LevelUp")
 AND
+CharacterIsDead(_Char, 0)
+AND
 NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
 THEN
 LLENEMY_Scaling_LevelUpCharacter(_Char);
