@@ -23,8 +23,10 @@ LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_SetCPTag", "LLENEM
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_SetCPTag")
+AND
+GetUUID(_Char, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", (STRING)_Char);
+NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", _UUID);
 */
 //END_REGION
 EXITSECTION

@@ -4,6 +4,7 @@ function LLENEMY_Ext_SetChallengePointsTag(uuid)
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 		if cp >= tbl.Min and cp <= tbl.Max then
 			SetTag(uuid, tbl.Tag)
+			LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid)
 		else
 			ClearTag(uuid, tbl.Tag)
 		end

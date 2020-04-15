@@ -305,6 +305,24 @@ PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
 THEN
 LLENEMY_Upgrades_ResetUpgradeData();
+
+/* [OSITOOLS_ONLY]
+PROC
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NewVersion)
+AND
+_LastVersion >= 536870923
+AND
+_LastVersion < 536870925
+THEN
+CharacterLaunchOsirisOnlyIterator("LLENEMY_ApplyInfoStatus");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_ApplyInfoStatus")
+AND
+GetUUID(_Char, _UUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus", _UUID);
+*/
 //END_REGION
 
 //REGION APPLYING
