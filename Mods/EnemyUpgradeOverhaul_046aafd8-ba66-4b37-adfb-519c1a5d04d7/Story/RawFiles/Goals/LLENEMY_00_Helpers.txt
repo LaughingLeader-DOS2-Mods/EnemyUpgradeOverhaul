@@ -39,6 +39,8 @@ LLENEMY_QRY_IsEnemyOrBadRelation((CHARACTERGUID)_NPC, (CHARACTERGUID)_Player)
 AND
 NOT DB_LLENEMY_System_Temp_IsEnemy(_NPC)
 AND
+CharacterIsAlly(_NPC, _Player, 0)
+AND
 DB_LLENEMY_EnemyTags(_Tag)
 AND
 IsTagged(_NPC, _Tag, 1)
