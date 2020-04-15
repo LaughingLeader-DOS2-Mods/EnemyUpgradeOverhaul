@@ -2,7 +2,6 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
-
 //REGION REGISTER_START
 PROC
 LLENEMY_Upgrades_Internal_Register_Start()
@@ -919,6 +918,41 @@ NOT DB_LLENEMY_Upgrades_Statuses(_, _, _Status, _, _, _, _)
 THEN
 LeaderLog_Log("TRACE", "[LLENEMY:Buffs:OnRollingDone] Adding non-registered, guaranteed elite bonus to Status [",_Status,"].");
 LLENEMY_Upgrades_ApplyUpgrade(_Char, "", "", _Status, _Duration, 2);
+//END_REGION
+
+//REGION UPGRADE_ALL_IN_REGION
+PROC
+LLENEMY_Upgrades_Internal_UpgradeRegion((STRING)_Region)
+THEN
+CharacterLaunchOsirisOnlyIterator("LLENEMY_Upgrades_UpgradeEnemy");
+
+QRY
+LLENEMY_Upgrades_QRY_IsEnemyAlignment((CHARACTERGUID)_Char)
+AND
+LLENEMY_QRY_IsEnemyOfParty(_Char)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Upgrades_QRY_IsEnemyAlignment((CHARACTERGUID)_Char)
+AND
+GetFaction(_Char, _Faction)
+AND
+DB_LLENEMY_EnemyAlignments(_Faction)
+THEN
+DB_NOOP(1);
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Upgrades_UpgradeEnemy")
+AND
+LLENEMY_Upgrades_QRY_CanAddUpgrades(_Char)
+AND
+LLENEMY_Upgrades_QRY_IsEnemyAlignment(_Char)
+AND
+GetRegion(_Char, _Region)
+THEN
+LLENEMY_Upgrades_Internal_StartRolling(_Char, _Region);
+ObjectSetFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0);
 //END_REGION
 EXITSECTION
 

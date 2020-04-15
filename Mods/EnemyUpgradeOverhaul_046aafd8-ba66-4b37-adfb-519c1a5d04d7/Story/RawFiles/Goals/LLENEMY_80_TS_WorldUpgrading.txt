@@ -1,0 +1,31 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+
+PROC
+LeaderLib_Initialized((STRING)_Region)
+AND
+NOT DB_LLENEMY_Upgrades_Temp_UpgradedRegion(_Region)
+THEN
+DB_LLENEMY_Upgrades_Temp_UpgradedRegion(_Region);
+LLENEMY_Upgrades_Internal_UpgradeRegion(_Region);
+
+IF
+CharacterRelationChangedTo(_Char1, _Char2, _Relation)
+AND
+_Relation <= 0
+THEN
+SetStoryEvent(_Char1, "LLENEMY_Upgrades_UpgradeEnemy");
+SetStoryEvent(_Char2, "LLENEMY_Upgrades_UpgradeEnemy");
+
+IF
+CharacterAttitudeTowardsPlayerChanged(_Char, _Player, (INTEGER)_NewAttitude)
+AND
+_NewAttitude <= 0
+THEN
+SetStoryEvent(_Char, "LLENEMY_Upgrades_UpgradeEnemy");
+
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"

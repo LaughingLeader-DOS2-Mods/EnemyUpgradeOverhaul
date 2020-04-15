@@ -84,11 +84,23 @@ THEN
 NOT DB_StackInternalMember(_NewAmount, _TimerName, _Value);
 //END_REGION
 
+//REGION ROLL_UPGRADES
+PROC
+LLENEMY_Upgrades_Internal_StartRolling((CHARACTERGUID)_Char, (STRING)_Level)
+AND
+LLENEMY_Upgrades_QRY_CanAddUpgrades(_Char)
+THEN
+LLENEMY_Upgrades_RollForUpgrades(_Char);
+LLENEMY_Upgrades_OnRollingDone(_Char, _Level);
+//END_REGION
+
 //REGION ADD_TO_QUEUE
 IF
 ObjectEnteredCombat((CHARACTERGUID)_Char, _CombatID)
 AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
+AND
+LLENEMY_Upgrades_QRY_CanAddUpgrades(_Char)
 AND
 NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Char)
 AND
@@ -104,6 +116,8 @@ NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Enemy)
 AND
 NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Enemy)
 AND
+LLENEMY_Upgrades_QRY_CanAddUpgrades(_Enemy)
+AND
 CombatGetIDForCharacter(_Enemy, _CombatID)
 AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
@@ -116,8 +130,6 @@ AND
 NOT DB_LLENEMY_IgnoredCharacters(_Char)
 AND
 LLENEMY_QRY_IsEnemyOfParty(_Char, _CombatID)
-AND
-IsTagged(_Char, "LLENEMY_UpgradesDisabled", 0)
 AND
 DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
 THEN
@@ -142,8 +154,7 @@ ObjectIsCharacter((CHARACTERGUID)_Enemy, 1)
 THEN
 NOT DB_Stack_UUID(_Enemy, _UUID);
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:DB_TopOfStack] Applying buffs to character in via combat queue [",_TimerName,"].");
-LLENEMY_Upgrades_RollForUpgrades(_Enemy);
-LLENEMY_Upgrades_OnRollingDone(_Enemy, _Level);
+LLENEMY_Upgrades_Internal_StartRolling(_Enemy, _Level);
 PopStack(_TimerName);
 
 IF
@@ -190,15 +201,12 @@ LLENEMY_OnCharacterJoinedCombat((CHARACTERGUID)_Enemy, (INTEGER)_CombatID)
 AND
 LLENEMY_QRY_IsEnemyOfParty(_Enemy, _CombatID)
 AND
-IsTagged(_Enemy, "LLENEMY_UpgradesDisabled", 0)
-AND
 NOT DB_LLENEMY_CombatQueue(_CombatID, _)
 AND
 DB_CurrentLevel(_Level)
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:OnCharacterJoinedCombat] Combat queue doesn't exist. Applying buffs instantly.");
-LLENEMY_Upgrades_RollForUpgrades(_Enemy);
-LLENEMY_Upgrades_OnRollingDone(_Enemy, _Level);
+LLENEMY_Upgrades_Internal_StartRolling(_Enemy, _Level);
 //END_REGION
 
 EXITSECTION
