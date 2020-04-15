@@ -174,7 +174,7 @@ function LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,level,combatid)
 	if combatid == nil then
 		combatid = 0
 	end
-	local goblin = TemporaryCharacterCreateAtPosition(x, y, z, "444e50a0-e59b-4866-b548-49a0197a0de1", 1)
+	local goblin = CharacterCreateAtPosition(x, y, z, "444e50a0-e59b-4866-b548-49a0197a0de1", 1)
 	CharacterLevelUpTo(goblin, level)
 	Osi.DB_LLENEMY_TreasureGoblins_Temp_Active(goblin)
 	--SetStoryEvent(goblin, "LeaderLib_Commands_EnterCombatWithPlayers")

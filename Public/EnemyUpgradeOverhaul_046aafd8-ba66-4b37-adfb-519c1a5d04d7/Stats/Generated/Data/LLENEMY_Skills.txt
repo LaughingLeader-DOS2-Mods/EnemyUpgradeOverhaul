@@ -331,7 +331,7 @@ type "SkillData"
 data "SkillType" "Projectile"
 using "_Projectile_LLENEMY_Status_ApplyBase"
 data "ExplodeRadius" "4"
-data "TargetConditions" "NonSelf;!Dead;!Ally"
+data "TargetConditions" "NonSelf;!Dead;!Ally;Character"
 data "SkillProperties" "LLENEMY_SEEKER_CLEANSE_INVISIBLE,100,0"
 
 new entry "Projectile_LLENEMY_EnemyDrillwormSpit"

@@ -138,11 +138,11 @@ ENDIF
 REACTION LLENEMY_TreasureGoblin_Leaving, 0
 USAGE ALL
 ACTIONS
-	//SetInvulnerable(__Me, 1)
 IF "c1&!c2"
 	IsEqual(%LLENEMY_TreasureGoblin_PlayingAnim, 0)
 	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 0)
 THEN
+	SetInvulnerable(__Me, 1)
 	Set(%LLENEMY_TreasureGoblin_PlayingAnim, 1)
 	PlaySound(__Me, "LLENEMY_VO_Goblin_Laugh_Random_01")
 	CharacterPlayAnimation("Dance_01", 1, 1, 1)
@@ -150,7 +150,6 @@ THEN
 ENDIF
 INTERRUPT
 ACTIONS
-SetInvulnerable(__Me, 1)
 IF "c1"
 	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 1)
 THEN
