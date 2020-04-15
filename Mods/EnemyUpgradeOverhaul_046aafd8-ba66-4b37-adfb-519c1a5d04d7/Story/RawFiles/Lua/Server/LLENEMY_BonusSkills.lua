@@ -164,8 +164,8 @@ local ignored_skills = {
 	Summon_EnemyCrawlingTrunk_Melee = true,
 	Summon_EnemyBoneTroll_BoneWalker = true,
 	Summon_EnemyBoneHand__BoneWalker = true,
-	ProjectileStrike_EnemyShatteredStone = true -- Stupid damage,
-
+	ProjectileStrike_EnemyShatteredStone = true, -- Stupid damage,
+	Projectile_EnemyFlight = true -- Granted by a status
 }
 
 local ignored_skillwords = {
@@ -187,6 +187,7 @@ local ignored_skillwords = {
 	"Dummy",
 	"EnemyStaffOfMagus",
 	"Explosion",
+	"Flight",
 	"Hound",
 	"Invulnerability",
 	"LLENEMY",
