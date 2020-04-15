@@ -19,68 +19,74 @@ OdinbladeSpectreClass_e4a5c8ca-7f04-23ab-8115-18161eb702bf
 PROC
 LLENEMY_ModSupport_InitSettings()
 THEN
-LLENEMY_Upgrades_Register_ModSupport(OdinbladeAerotheurgeOverhaul_961ae59d-2964-46dd-9762-073697915dc2, "OdinAERO_Core");
-LLENEMY_Upgrades_Register_ModSupport(OdinbladeGeomancerOverhaul_ffb501cc-ab6d-46de-be89-732c9e289f3e, "OdinGEO_Core");
-LLENEMY_Upgrades_Register_ModSupport(OdinbladeHydrosophist_02ca48b9-e4ef-a8e4-91d7-0b9df70bb595, "OdinHYDRO_OdinCORE_Calls");
-LLENEMY_Upgrades_Register_ModSupport(OdinbladePyromancer_aab53301-4f38-1d49-91f7-28dfa468084b, "OdinPYRO_OdinCORE_Calls");
-LLENEMY_Upgrades_Register_ModSupport(OdinbladeNecromancerOverhaul_8700ba4e-7d4b-40ca-a23f-b43816794957, "OdinNECRO_OdinCORE_Calls");
-LLENEMY_Upgrades_Register_ModSupport(OdinbladeHuntsmanOverhaul_7db12ae8-0e96-4050-adb2-06c906897b70, "OdinHUN_OdinCORE_Calls");
+LLENEMY_Upgrades_Register_ModSupport(961ae59d-2964-46dd-9762-073697915dc2, "OdinAERO_Core");
+LLENEMY_Upgrades_Register_ModSupport(ffb501cc-ab6d-46de-be89-732c9e289f3e, "OdinGEO_Core");
+LLENEMY_Upgrades_Register_ModSupport(02ca48b9-e4ef-a8e4-91d7-0b9df70bb595, "OdinHYDRO_OdinCORE_Calls");
+LLENEMY_Upgrades_Register_ModSupport(aab53301-4f38-1d49-91f7-28dfa468084b, "OdinPYRO_OdinCORE_Calls");
+LLENEMY_Upgrades_Register_ModSupport(8700ba4e-7d4b-40ca-a23f-b43816794957, "OdinNECRO_OdinCORE_Calls");
+LLENEMY_Upgrades_Register_ModSupport(7db12ae8-0e96-4050-adb2-06c906897b70, "OdinHUN_OdinCORE_Calls");
 
+// OdinbladeAerotheurgeOverhaul_961ae59d-2964-46dd-9762-073697915dc2
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeAerotheurgeOverhaul_961ae59d-2964-46dd-9762-073697915dc2, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(961ae59d-2964-46dd-9762-073697915dc2, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinAERO_THUNDERBRAND", 190, 2);
 
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeAerotheurgeOverhaul_961ae59d-2964-46dd-9762-073697915dc2, "Buffs", "Normal", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(961ae59d-2964-46dd-9762-073697915dc2, "Buffs", "Normal", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinAERO_VOLTSWINGS", 150, 4);
 
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeAerotheurgeOverhaul_961ae59d-2964-46dd-9762-073697915dc2, "Buffs", "Elite", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(961ae59d-2964-46dd-9762-073697915dc2, "Buffs", "Elite", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "OdinAERO_VOLTMASTER", 100, 8);
 
+// OdinbladePyromancer_aab53301-4f38-1d49-91f7-28dfa468084b
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladePyromancer_aab53301-4f38-1d49-91f7-28dfa468084b, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(aab53301-4f38-1d49-91f7-28dfa468084b, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinPyro_BLAZING", 150, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinPyro_FLAMEBELLY", 150, 2);
 
+// OdinbladeGeomancerOverhaul_ffb501cc-ab6d-46de-be89-732c9e289f3e
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeGeomancerOverhaul_ffb501cc-ab6d-46de-be89-732c9e289f3e, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(ffb501cc-ab6d-46de-be89-732c9e289f3e, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinGEO_Earthbrand", 150, 2);
 
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeGeomancerOverhaul_ffb501cc-ab6d-46de-be89-732c9e289f3e, "Buffs", "Elite", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(ffb501cc-ab6d-46de-be89-732c9e289f3e, "Buffs", "Elite", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "OdinGEO_Ironbark", 75, 8);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "OdinGEO_ParasiticAffliction", 125, 6);
 
+// OdinbladeHydrosophist_02ca48b9-e4ef-a8e4-91d7-0b9df70bb595
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeHydrosophist_02ca48b9-e4ef-a8e4-91d7-0b9df70bb595, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(02ca48b9-e4ef-a8e4-91d7-0b9df70bb595, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinWater_FROSTBLADE", 190, 2);
 
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeHydrosophist_02ca48b9-e4ef-a8e4-91d7-0b9df70bb595, "Buffs", "Elite", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(02ca48b9-e4ef-a8e4-91d7-0b9df70bb595, "Buffs", "Elite", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinWater_ICEARMOUR", 190, 6);
 
+// OdinbladeNecromancerOverhaul_8700ba4e-7d4b-40ca-a23f-b43816794957
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeNecromancerOverhaul_8700ba4e-7d4b-40ca-a23f-b43816794957, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(8700ba4e-7d4b-40ca-a23f-b43816794957, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinNECRO_TRANSFIXED_IMMUNITY", 50, 4);
 
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeNecromancerOverhaul_8700ba4e-7d4b-40ca-a23f-b43816794957, "Buffs", "Normal", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(8700ba4e-7d4b-40ca-a23f-b43816794957, "Buffs", "Normal", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinNECRO_REANIMATOR", 150, 4);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinNECRO_OATHOFDESECRATION", 30, 6);
 
+// OdinbladeHuntsmanOverhaul_7db12ae8-0e96-4050-adb2-06c906897b70
 PROC
-LLENEMY_Upgrades_Register_ModUpgrades(OdinbladeHuntsmanOverhaul_7db12ae8-0e96-4050-adb2-06c906897b70, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_ModUpgrades(7db12ae8-0e96-4050-adb2-06c906897b70, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinHUN_NIMBLE", 125, 2);
 //END_REGION
