@@ -306,7 +306,10 @@ AND
 CharacterIsDead(_Dupe, 0)
 AND
 ObjectIsOnStage(_Dupe, 0)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
+TeleportTo(_Dupe, _Source, "", 0, 1);
 SetOnStage(_Dupe, 1);
 
 IF
