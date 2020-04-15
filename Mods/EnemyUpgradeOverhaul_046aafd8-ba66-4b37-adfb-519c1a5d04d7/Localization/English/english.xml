@@ -7,13 +7,27 @@
 	<content contentuid="ha3ccca0bg576dg4a64gb2edg8819d8f2cdc0" Source="LLENEMY_Animals_Chicken_BattleChicken_A">Chicken Infantry</content>
 	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>
 	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
+	<content contentuid="h6fdad790gaa70g47f6g8cedgc23ec425b99d" Source="LLENEMY_Creatures_GiantInsect_A_Wings">Venom-wing Voidwoken</content>
+	<content contentuid="hea8180efg9c0eg4cdega019g233a720fc32c" Source="LLENEMY_Creatures_GiantInsect_C_Wings">Storm-wing Voidwoken</content>
 	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
 	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9" Source="LLENEMY_Creatures_Voidwoken_Drillworm_A">Evolved Voidling</content>
+	<content contentuid="h9713cc3dgea3ag4bf4gacb1g1428f7baa338" Source="LLENEMY_Creatures_Voidwoken_GiantInsect_Dominator_A">Dominator of the Void</content>
+	<content contentuid="hddb242e2gf4b1g4883gb65bg53a0976fbc2c" Source="LLENEMY_Creatures_Voidwoken_Troll_A">Voidwoken Troll</content>
+	<content contentuid="h52b8e7bbgea9fg4ddbgbc78g42479d9d082d" Source="LLENEMY_Menu_GameSettings.lsj">Voidwoken will no longer be lured into battle by source skills.</content>
+	<content contentuid="hd21c0029gc4b2g4810gbdb4gdff891204a8f" Source="LLENEMY_Menu_GameSettings.lsj">Cancel upgrading the world.</content>
 	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Menu_GameSettings.lsj">Settings updated.</content>
+	<content contentuid="h82758d47g38eeg4cafg9d24gf84edc578577" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Disable source spells having a change to lure Voidwoken into battle.</content>
 	<content contentuid="he15a3e15g141dg45e5g96edg8148c2106792" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Disable Hard Mode (Default - Disabled)</content>
+	<content contentuid="h06d5e2ebg8395g442ega8c8g011c5a25a2f4" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Disable automatic world upgrading (upgrading everything in the level automatically outside of combat).&lt;br&gt;&lt;br&gt;Note that this won&apos;t undo any current upgrades.</content>
 	<content contentuid="h4229d882g7235g4cf5gafe6g3ef702647b81" Source="LLENEMY_Menu_GameSettings.lsj">Game Settings</content>
+	<content contentuid="hbf07ab58g09aag415fg999eg4e4f1bc04f8e" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Enable source spells having a change to lure Voidwoken into battle.&lt;br&gt;&lt;br&gt;Total source points used in the level will be tracked, and will gradually increase the chance and difficulty of voidwoken spawned. Total SP degrades every 5 minutes of real time (default).&lt;br&gt;Higher cost source skills have a higher chance to lure hostile voidwoken.</content>
+	<content contentuid="h9622cd5bg735eg490egbbe1g5a4102ca7f29" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Make enemies in levels automatically gain upgrades without being in combat. This may happen once per level. Non-hostile characters that become hostile will gain upgrades like normal.&lt;br&gt;&lt;br&gt;*Note:* There may be a little bit of lag when upgrades are being applied initially, as this runs on every character in the level.</content>
 	<content contentuid="h48b2c770g394eg43abg8e87g170941d31051" Source="LLENEMY_Menu_GameSettings.lsj">There&apos;s a reason no one plays this mode, and you&apos;re about to find out.</content>
+	<content contentuid="h0a5513b9g841bg4565g8384g33d9251b832f" Source="LLENEMY_Menu_GameSettings.lsj">Upgrade the world. Unleash the power!</content>
 	<content contentuid="h4075ecfag0da0g4c26gb858g06626a165ed9" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Default - Disabled)</content>
+	<content contentuid="h00b8f45bg409bg4963gb505gc75fab2a5a01" Source="LLENEMY_Menu_GameSettings.lsj">Voidwoken now have a chance to appear when source skills are cast. Good luck!</content>
+	<content contentuid="he60340acg7e80g46b2g9449geba4ea159ab1" Source="LLENEMY_Menu_GameSettings.lsj">Really make characters in the level gain upgrades? This cannot be undone!</content>
+	<content contentuid="h02eee7f9g3786g4f33gad32gf34e10349c42" Source="LLENEMY_Menu_GameSettings.lsj">Upgrading world...</content>
 	<content contentuid="h03823bf7g9de8g48eag9e05g44ffcddb1a73" Source="LLENEMY_Menu_GameSettings.lsj">Today, we&apos;ll be playing Easy Mode.</content>
 	<content contentuid="h6efe8867g66bbg4d4ag936bgbb477bc57265" Source="LLENEMY_Menu_GameSettings.lsj">[Back]</content>
 	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14" Source="LLENEMY_Menu_Scaling.lsj">Enable Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value.</content>
@@ -287,4 +301,5 @@
 	<content contentuid="ha4587526ge140g42f9g9a98gc92b537d4209" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_Entry_WithColor">&lt;img src=&apos;Icon_BulletPoint&apos;&gt;&lt;font color=&apos;[2]&apos; size=&apos;18&apos;&gt;[1]&lt;/font&gt;</content>
 	<content contentuid="h662390f7gfd9eg4a56g95e5g658283cc548a" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_ShadowDropText">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Grants Treasure of the Shadow Realm (&lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt;) on death.&lt;/font&gt;</content>
 	<content contentuid="h86cfb164g8505g4e4fg89degcb3c24372f3c" Source="LLENEMY_TreasureGoblin_A">Treasure Goblin</content>
+	<content contentuid="h7c05fad0gf6f3g44c6g8a28g7eb8f9bc548c" Source="S_LLENEMY_LootGeneratorChest">Loot Generator</content>
 </contentList>
