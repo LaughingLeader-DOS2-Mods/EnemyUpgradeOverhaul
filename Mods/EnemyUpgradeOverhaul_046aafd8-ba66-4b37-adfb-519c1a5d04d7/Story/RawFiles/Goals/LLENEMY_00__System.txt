@@ -1,8 +1,19 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-
+LLENEMY_System_InitSettings();
 KBSECTION
+
+PROC
+LLENEMY_System_InitSettings()
+THEN
+DB_LLENEMY_EnemyAlignments("Evil");
+DB_LLENEMY_EnemyAlignments("Evil NPC");
+
+PROC
+LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+THEN
+LLENEMY_System_InitSettings();
 
 // Setting up some variables in the lua scripts that may change when mods change.
 // These may need Osiris functions, so this is called outside of SessionLoading.
@@ -37,6 +48,17 @@ THEN
 NOT DB_LLENEMY_Upgrades_Temp_ModsChanged(1);
 LeaderLog_Log("DEBUG", "[LLENEMY_19_ModdedUpgrades_Start:SavegameLoaded] Re-registering upgrades since active mods have changed.");
 LLENEMY_Upgrades_Internal_Register_Start();
+//END_REGION
+
+//REGION QUERIES
+QRY
+LLENEMY_Upgrades_QRY_CanAddUpgrades((CHARACTERGUID)_Char)
+AND
+IsTagged(_Char, "LLENEMY_UpgradesDisabled", 0)
+AND
+ObjectGetFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0)
+THEN
+DB_NOOP(1);
 //END_REGION
 EXITSECTION
 

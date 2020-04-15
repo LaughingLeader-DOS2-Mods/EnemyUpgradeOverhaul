@@ -2,6 +2,23 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
+
+QRY
+LLENEMY_QRY_IsEnemyOrBadRelation((CHARACTERGUID)_NPC, (CHARACTERGUID)_Player)
+AND
+CharacterGetRelationToCharacter(_NPC, _Player, _Relation)
+AND
+_Relation <= 0
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_QRY_IsEnemyOrBadRelation((CHARACTERGUID)_NPC, (CHARACTERGUID)_Player)
+AND
+CharacterIsEnemy(_Player, _NPC, 1)
+THEN
+DB_NOOP(1);
+
 QRY
 LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Enemy)
 AND
@@ -11,7 +28,7 @@ NOT DB_IsPlayer(_Enemy)
 AND
 DB_IsPlayer(_Player)
 AND
-CharacterIsEnemy(_Player, _Enemy, 1)
+LLENEMY_QRY_IsEnemyOrBadRelation(_Enemy, _Player)
 THEN
 DB_LLENEMY_System_Temp_IsEnemyOfPartyResolved(_Enemy);
 
