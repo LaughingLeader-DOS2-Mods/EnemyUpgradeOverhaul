@@ -702,7 +702,7 @@ NRD_Round(_RanMod, _RanRounded)
 AND
 RealSum(_Duration, _RanRounded, _NewDuration)
 THEN
-ApplyStatus(_Char, _Status, _NewDuration, 1, _Char);
+LLENEMY_Upgrades_Internal_FinallyApplyStatus(_Char, _Status, _NewDuration);
 */
 
 // [BEGIN_NO_OSITOOLS]
@@ -728,7 +728,7 @@ LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type
 AND
 _Duration > 0.0
 THEN
-ApplyStatus(_Char, _Status, _Duration, 1, _Char);
+LLENEMY_Upgrades_Internal_FinallyApplyStatus(_Char, _Status, _Duration);
 
 PROC
 LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_IsHardMode)
@@ -737,26 +737,71 @@ _Duration <= 0.0
 THEN
 ApplyStatus(_Char, _Status, _Duration, 1, _Char);
 
-/*
+// [BEGIN_NO_OSITOOLS]
 PROC
-LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
-AND
-GetVarInteger(_Char, "LLENEMY_ChallengePoints", _TotalPoints)
-AND
-CharacterGetLevel(_Char, _Level)
-AND
-IntegerSubtract(_TotalPoints, _Level, _UpgradeCP)
-AND
-_UpgradeCP >= 25
-AND
-_UpgradeCP < 40
-AND
-CharacterGetDisplayName(_Char, _, _Name)
-AND
-StringConcatenate(_Name, " (Elite)", _NewName)
+LLENEMY_Upgrades_Internal_FinallyApplyStatus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
 THEN
-CharacterSetCustomName(_Char, _NewName);
-*/
+ApplyStatus(_Char, _Status, _Duration, 1, _Char);
+// [END_NO_OSITOOLS]
+
+PROC
+LLENEMY_Upgrades_Internal_FinallyApplyStatus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
+AND
+CharacterIsInCombat(_Char, 1)
+THEN
+DB_LLENEMY_Upgrades_Temp_StatusApplied(_Char, _Status);
+ApplyStatus(_Char, _Status, _Duration, 1, _Char);
+
+PROC
+LLENEMY_Upgrades_Internal_FinallyApplyStatus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
+AND
+NOT DB_LLENEMY_Upgrades_Temp_StatusApplied(_Char, _Status)
+AND
+NOT DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_, _Char, _Status, _)
+AND
+CharacterIsInCombat(_Char, 0)
+AND
+GetRegion(_Char, _Region)
+THEN
+DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration);
+ApplyStatus(_Char, _Status, -1.0, 1, _Char);
+
+PROC
+LLENEMY_Upgrades_Internal_FinallyApplyStatus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
+AND
+DB_LLENEMY_Upgrades_Temp_StatusApplied(_Char, _Status)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_StatusApplied(_Char, _Status);
+
+IF
+ObjectEnteredCombat((CHARACTERGUID)_Char, _)
+AND
+DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration);
+LLENEMY_Upgrades_Internal_ChangeStatusDuration(_Char, _Status, _Duration);
+
+PROC
+LLENEMY_Upgrades_Internal_ChangeStatusDuration((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
+AND
+NRD_StatusGetHandle(_Char, _Status, _Handle)
+THEN
+NRD_StatusSetReal(_Char, _Handle, "CurrentLifeTime", _Duration);
+NRD_StatusSetReal(_Char, _Handle, "LifeTime", _Duration);
+
+PROC
+LLENEMY_Upgrades_Internal_ChangeStatusDuration((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
+AND
+HasActiveStatus(_Char, _Status, 0)
+THEN
+ApplyStatus(_Char, _Status, _Duration, 1, _Char);
+
+IF
+RegionEnded(_Region)
+AND
+DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration);
 //END_REGION
 
 //REGION DEBUG
@@ -926,22 +971,6 @@ LLENEMY_Upgrades_Internal_UpgradeRegion((STRING)_Region)
 THEN
 CharacterLaunchOsirisOnlyIterator("LLENEMY_Upgrades_UpgradeEnemy");
 
-QRY
-LLENEMY_Upgrades_QRY_IsEnemyAlignment((CHARACTERGUID)_Char)
-AND
-LLENEMY_QRY_IsEnemyOfParty(_Char)
-THEN
-DB_NOOP(1);
-
-QRY
-LLENEMY_Upgrades_QRY_IsEnemyAlignment((CHARACTERGUID)_Char)
-AND
-GetFaction(_Char, _Faction)
-AND
-DB_LLENEMY_EnemyAlignments(_Faction)
-THEN
-DB_NOOP(1);
-
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Upgrades_UpgradeEnemy")
 AND
@@ -951,7 +980,7 @@ NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
 AND
 LLENEMY_Upgrades_QRY_CanAddUpgrades(_Char)
 AND
-LLENEMY_Upgrades_QRY_IsEnemyAlignment(_Char)
+LLENEMY_QRY_IsEnemyOfParty(_Char)
 AND
 GetRegion(_Char, _Region)
 THEN
