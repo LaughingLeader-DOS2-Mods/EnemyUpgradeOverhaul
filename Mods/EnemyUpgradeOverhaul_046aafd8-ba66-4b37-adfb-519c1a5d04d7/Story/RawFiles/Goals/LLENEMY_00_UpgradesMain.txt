@@ -945,6 +945,10 @@ DB_NOOP(1);
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Upgrades_UpgradeEnemy")
 AND
+NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Char)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
+AND
 LLENEMY_Upgrades_QRY_CanAddUpgrades(_Char)
 AND
 LLENEMY_Upgrades_QRY_IsEnemyAlignment(_Char)

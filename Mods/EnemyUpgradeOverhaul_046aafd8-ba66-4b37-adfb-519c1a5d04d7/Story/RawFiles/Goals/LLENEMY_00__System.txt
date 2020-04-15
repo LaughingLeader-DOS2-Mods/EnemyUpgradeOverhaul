@@ -7,8 +7,29 @@ KBSECTION
 PROC
 LLENEMY_System_InitSettings()
 THEN
+SysClear("DB_LLENEMY_EnemyAlignments", 1);
+LLENEMY_System_RegisterAlignments();
+
+SysClear("DB_LLENEMY_EnemyTags", 1);
+LLENEMY_System_RegisterTags();
+
+/* Alignments that are checked to see if a character is an "Enemy", for the purpose of adding upgrades in world commitment mode. */
+PROC
+LLENEMY_System_RegisterAlignments()
+THEN
 DB_LLENEMY_EnemyAlignments("Evil");
 DB_LLENEMY_EnemyAlignments("Evil NPC");
+
+/* Tags that are checked to see if a character is an "Enemy", for the purpose of adding upgrades in world commitment mode. */
+PROC
+LLENEMY_System_RegisterTags()
+THEN
+DB_LLENEMY_EnemyTags("MAGISTER");
+DB_LLENEMY_EnemyTags("AGGRESSIVEANIMAL");
+DB_LLENEMY_EnemyTags("VOIDWOKEN");
+DB_LLENEMY_EnemyTags("MONSTROUS");
+DB_LLENEMY_EnemyTags("BADASSCIVILIAN");
+DB_LLENEMY_EnemyTags("AI_PREFERRED_TARGET");
 
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
@@ -58,7 +79,18 @@ IsTagged(_Char, "LLENEMY_UpgradesDisabled", 0)
 AND
 ObjectGetFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0)
 THEN
-DB_NOOP(1);
+DB_LLENEMY_Temp_CanUpgrade(_Char);
+
+QRY
+LLENEMY_Upgrades_QRY_CanAddUpgrades((CHARACTERGUID)_Char)
+AND
+NOT DB_LLENEMY_Temp_CanUpgrade(_Char)
+AND
+DB_LLENEMY_EnemyTags(_Tag)
+AND
+IsTagged(_Char, _Tag, 1)
+THEN
+DB_LLENEMY_Temp_CanUpgrade(_Char);
 //END_REGION
 EXITSECTION
 
