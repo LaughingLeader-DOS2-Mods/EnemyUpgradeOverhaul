@@ -79,18 +79,18 @@ IsTagged(_Char, "LLENEMY_UpgradesDisabled", 0)
 AND
 ObjectGetFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0)
 THEN
+DB_NOOP(1);
+
+/*
 DB_LLENEMY_Temp_CanUpgrade(_Char);
 
 QRY
 LLENEMY_Upgrades_QRY_CanAddUpgrades((CHARACTERGUID)_Char)
 AND
-NOT DB_LLENEMY_Temp_CanUpgrade(_Char)
-AND
-DB_LLENEMY_EnemyTags(_Tag)
-AND
-IsTagged(_Char, _Tag, 1)
+DB_LLENEMY_Temp_CanUpgrade(_Char)
 THEN
-DB_LLENEMY_Temp_CanUpgrade(_Char);
+NOT DB_LLENEMY_Temp_CanUpgrade(_Char);
+*/
 //END_REGION
 EXITSECTION
 

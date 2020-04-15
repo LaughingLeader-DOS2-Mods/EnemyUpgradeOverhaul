@@ -6,18 +6,51 @@ KBSECTION
 QRY
 LLENEMY_QRY_IsEnemyOrBadRelation((CHARACTERGUID)_NPC, (CHARACTERGUID)_Player)
 AND
+NOT DB_LLENEMY_System_Temp_IsEnemy(_NPC)
+AND
 CharacterGetRelationToCharacter(_NPC, _Player, _Relation)
 AND
 _Relation <= 0
 THEN
-DB_NOOP(1);
+DB_LLENEMY_System_Temp_IsEnemy(_NPC);
 
 QRY
 LLENEMY_QRY_IsEnemyOrBadRelation((CHARACTERGUID)_NPC, (CHARACTERGUID)_Player)
 AND
+NOT DB_LLENEMY_System_Temp_IsEnemy(_NPC)
+AND
 CharacterIsEnemy(_Player, _NPC, 1)
 THEN
-DB_NOOP(1);
+DB_LLENEMY_System_Temp_IsEnemy(_NPC);
+
+QRY
+LLENEMY_QRY_IsEnemyOrBadRelation((CHARACTERGUID)_NPC, (CHARACTERGUID)_Player)
+AND
+NOT DB_LLENEMY_System_Temp_IsEnemy(_NPC)
+AND
+GetFaction(_NPC, _Faction)
+AND
+DB_LLENEMY_EnemyAlignments(_Faction)
+THEN
+DB_LLENEMY_System_Temp_IsEnemy(_NPC);
+
+QRY
+LLENEMY_QRY_IsEnemyOrBadRelation((CHARACTERGUID)_NPC, (CHARACTERGUID)_Player)
+AND
+NOT DB_LLENEMY_System_Temp_IsEnemy(_NPC)
+AND
+DB_LLENEMY_EnemyTags(_Tag)
+AND
+IsTagged(_NPC, _Tag, 1)
+THEN
+DB_LLENEMY_System_Temp_IsEnemy(_NPC);
+
+QRY
+LLENEMY_QRY_IsEnemyOrBadRelation((CHARACTERGUID)_NPC, (CHARACTERGUID)_Player)
+AND
+DB_LLENEMY_System_Temp_IsEnemy(_NPC)
+THEN
+NOT DB_LLENEMY_System_Temp_IsEnemy(_NPC);
 
 QRY
 LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Enemy)
