@@ -98,16 +98,7 @@ end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
-	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.MyGuid).."] character("..tostring(character)..")["..tostring(character.MyGuid).."] param("..tostring(param)..")")
-
-	if Ext.IsDeveloperMode() and Ext.Version() < 43 then
-		if character ~= nil then
-			LeaderLib_Ext_Debug_TraceCharacter(character)
-		end
-		if statusSource ~= nil then
-			LeaderLib_Ext_Debug_TraceCharacter(statusSource)
-		end
-	end
+	LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.MyGuid).."] character("..tostring(character)..")["..tostring(character.MyGuid).."] param("..tostring(param)..")")
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
 		local b,result = pcall(func, character, param, statusSource)
@@ -115,7 +106,6 @@ local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character
 			return result
 		end
 	end
-	return ""
 end
 Ext.RegisterListener("StatusGetDescriptionParam", LLENEMY_StatusGetDescriptionParam)
 Ext.Print("[LLENEMY_DescriptionParams.lua] Registered listener LLENEMY_StatusGetDescriptionParam.")
