@@ -285,3 +285,17 @@ local function TrySummonVoidwoken(char, skill, skilltype, skillelement)
 	end
 end
 Ext.NewCall(TrySummonVoidwoken, "LLENEMY_OnSkillCast_TrySummonVoidwoken", "(CHARACTERGUID)_Character, (STRING)_Skill, (STRING)_SkillType, (STRING)_SkillElement");
+
+local function GetSourceDegredation(gameHourSpeed, totalPoints)
+	-- Speed is 300000 by default, i.e. 5 minutes
+	local mult = gameHourSpeed / 300000
+	local min = math.max(1, math.floor(2 * mult))
+	local max = math.min(min * 4, (math.max(99, totalPoints / 2)))
+	local ran = Ext.Random(min, max)
+	LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:GetSourceDegredation] SP degredation speed ("..tostring(min).."-"..tostring(max)..") => ("..tostring(ran)..").")
+	return ran
+end
+
+EnemyUpgradeOverhaul.GetSourceDegredation = GetSourceDegredation
+
+Ext.NewQuery(GetSourceDegredation, "LLENEMY_Ext_QRY_GetSourceDegredation", "[in](INTEGER)_GameHourSpeed, [in](INTEGER)_TotalPoints, [out](INTEGER)_DegredationAmount")

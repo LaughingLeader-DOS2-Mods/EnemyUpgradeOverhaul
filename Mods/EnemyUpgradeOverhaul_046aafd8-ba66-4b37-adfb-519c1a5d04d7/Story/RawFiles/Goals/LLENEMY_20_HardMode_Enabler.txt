@@ -130,33 +130,35 @@ THEN
 NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
 DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _Next);
 
-// Source accumulation degrades over time
-PROC
-UpdateTime((INTEGER)_Day,(INTEGER)_Hour)
-AND
-DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
-AND
-_LastSP > 0
-AND
-LeaderLib_Random_QRY(2,8)
-AND
-DB_LeaderLib_Random(_Ran)
-AND
-IntegerSubtract(_LastSP, _Ran, _Next)
-AND
-IntegerMin(_Next, 0, _CappedMin)
-THEN
-NOT DB_LeaderLib_Random(_Ran);
-NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
-LeaderLog_LogInt("DEBUG", "[LLENEMY_20_HardMode_Enabler:UpdateTimer] Source used degraded (", _LastSP, " => ", _CappedMin, ")");
-DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _CappedMin);
-
 IF
 RegionEnded(_Region)
 AND
 DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
 THEN
 NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
+
+/* [OSITOOLS_ONLY]
+// Source accumulation degrades over time.
+// By default, the in-game hour speed is 1 hour = 5 minutes of real time.
+PROC
+UpdateTime((INTEGER)_Day,(INTEGER)_Hour)
+AND
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP)
+AND
+_TotalSP > 0
+AND
+DB_GameHour(_GameHourSpeed)
+AND
+LLENEMY_Ext_QRY_GetSourceDegredation(_GameHourSpeed, _TotalSP, _Ran)
+AND
+IntegerSubtract(_TotalSP, _Ran, _Next)
+AND
+IntegerMin(_Next, 0, _CappedMin)
+THEN
+NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP);
+LeaderLog_LogInt("DEBUG", "[LLENEMY_20_HardMode_Enabler:UpdateTime] Source used degraded (", _TotalSP, " => ", _CappedMin, ")");
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _CappedMin);
+*/
 
 //END_REGION
 EXITSECTION
