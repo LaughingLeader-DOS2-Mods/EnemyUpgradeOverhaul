@@ -165,7 +165,10 @@ local ignored_skills = {
 	Summon_EnemyBoneTroll_BoneWalker = true,
 	Summon_EnemyBoneHand__BoneWalker = true,
 	ProjectileStrike_EnemyShatteredStone = true, -- Stupid damage,
-	Projectile_EnemyFlight = true -- Granted by a status
+	-- Base skills are granted by statuses
+	Projectile_EnemyFlight = true,
+	Projectile_EnemySpinWeb = true,
+	Projectile_EnemyInsectSpinWeb = true,
 }
 
 local ignored_skillwords = {
