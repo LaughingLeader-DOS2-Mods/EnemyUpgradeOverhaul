@@ -166,11 +166,11 @@ NRD_StatusGetReal(_Source, _Handle, "CurrentLifeTime", _Duration)
 AND
 NRD_StatusGetGuidString(_Source, _Handle, "StatusSourceHandle", _StatusSource)
 THEN
-LLENEMY_Duplication_CopyStatus(_Dupe, _Status, _Duration, _StatusSource);
+LLENEMY_Duplication_CopyStatus(_Source, _Dupe, _Status, _Duration, _StatusSource);
 */
 
 PROC
-LLENEMY_Duplication_CopyStatus((CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration, (GUIDSTRING)_StatusSource)
+LLENEMY_Duplication_CopyStatus((CHARACTERGUID)_DupeSource, (CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration, (GUIDSTRING)_StatusSource)
 AND
 _Duration > 0.0
 AND
@@ -179,11 +179,18 @@ THEN
 ApplyStatus(_Dupe, _Status, _ExtendedDuration, 1, _StatusSource);
 
 PROC
-LLENEMY_Duplication_CopyStatus((CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration, (GUIDSTRING)_StatusSource)
+LLENEMY_Duplication_CopyStatus((CHARACTERGUID)_DupeSource, (CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration, (GUIDSTRING)_StatusSource)
 AND
 _Duration < 0.0
 THEN
 ApplyStatus(_Dupe, _Status, _Duration, 1, _StatusSource);
+
+PROC
+LLENEMY_Duplication_CopyStatus((CHARACTERGUID)_DupeSource, (CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration, (GUIDSTRING)_StatusSource)
+AND
+DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _DupeOwner, _Status, _RealDuration)
+THEN
+DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Dupe, _Status, _RealDuration);
 
 IF
 CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_StatsApplied")

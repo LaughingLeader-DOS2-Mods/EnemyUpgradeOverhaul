@@ -802,6 +802,13 @@ AND
 DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration)
 THEN
 NOT DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration);
+
+IF
+CharacterDied(_Char)
+AND
+DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration);
 //END_REGION
 
 //REGION DEBUG
