@@ -190,6 +190,7 @@ local ignored_skillwords = {
 	"Hound",
 	"Invulnerability",
 	"LLENEMY",
+	"Molespitter",
 	"Projectile_Grenade_",
 	"Projectile_Incarnate",
 	"QUEST",
