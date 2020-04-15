@@ -27,8 +27,8 @@ LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Elite", 1)
 THEN
-LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_DOUBLE", 30, 14);
-LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 968, 8);
+LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_DOUBLE", 20, 14);
+LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 978, 8);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Normal", (INTEGER)_HardModeEnabled)
@@ -36,6 +36,21 @@ THEN
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAKEST", 499, 2);
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAK", 299, 4);
 LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 199, 6);
+//END_REGION
+
+//REGION SAVE_FIX
+// Duplicants revert to level 1 for some reason, upon loading a save
+IF
+GameStarted(_Region,_)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+AND
+ObjectExists(_Dupe, 1)
+AND
+CharacterGetLevel(_Source, _Level)
+THEN
+CharacterLevelUpTo(_Dupe, _Level);
+LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_Dupe_ReapplyStats");
 //END_REGION
 
 //REGION DUPLICANTS
@@ -72,7 +87,10 @@ LLENEMY_Duplication_CreateDuplicant((CHARACTERGUID)_Source, (STRING)_Stats, (INT
 AND
 DB_CurrentLevel(_Region)
 AND
-CharacterCreateOutOfSightToObject("LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", _Source, _Source, 0, "", _Dupe)
+GetTemplate(_Source, _Template)
+AND
+//"LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0"
+CharacterCreateOutOfSightToObject(_Template, _Source, _Source, 0, "", _Dupe)
 AND
 GetFaction(_Source, _Faction)
 THEN
@@ -85,7 +103,6 @@ LeaderLib_Timers_StartObjectTimer(_Dupe, 1000, "Timers_LLENEMY_Duplication_Build
 // [BEGIN_NO_OSITOOLS]
 ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
 // [END_NO_OSITOOLS]
-//SetTag(_Dupe, "LLENEMY_Duplicant");
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
 SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
 SetFaction(_Dupe, _Faction);
@@ -102,10 +119,29 @@ IF
 CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
 THEN
 CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
-CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
+SetTag(_Dupe, "LLFULOOT_LootDisabled");
+LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
+
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_Duplication_CopyStat((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (STRING)_Event)
+THEN
+SetStoryEvent(_Dupe, _Event);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Duplication_CopyStat((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (STRING)_Event)
+AND
+GetUUID(_Dupe, _DupeUUID)
+AND
+GetUUID(_Source, _SourceUUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_Duplication_CopySourceStat", _SourceUUID, _DupeUUID, _Event);
+*/
 
 IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Dupe_StatsApplied")
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
 AND
 CharacterGetLevel(_Source, _Level)
 THEN
