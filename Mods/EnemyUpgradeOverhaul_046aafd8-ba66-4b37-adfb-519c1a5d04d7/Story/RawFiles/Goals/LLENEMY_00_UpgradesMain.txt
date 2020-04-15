@@ -243,8 +243,6 @@ NOT DB_LLENEMY_Upgrades_TypeRollValues(_Group, _Type, _NextStartInt, _CappedEnd)
 //REGION RESET_DATA
 PROC
 LLENEMY_Upgrades_ResetUpgradeData()
-AND
-GlobalGetFlag("LLENEMY_HardModeEnabled", _HardModeEnabled)
 THEN
 SysClear("DB_LLENEMY_Upgrades_Groups", 4);
 SysClear("DB_LLENEMY_Upgrades_Types", 5);
@@ -254,7 +252,7 @@ SysClear("DB_LLENEMY_LastGrenadeInt", 2);
 SysClear("DB_LLENEMY_GrenadeSkills", 3);
 GlobalClearFlag("LLENEMY_TalentUpgrades_DivineTalentsAdded");
 LLENEMY_ModSupport_InitSettings();
-LLENEMY_Upgrades_RegisterAll(_HardModeEnabled);
+LLENEMY_Upgrades_Internal_Register_Start();
 //END_REGION
 
 //REGION UPDATE_STATUS_REMOVAL
