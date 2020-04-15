@@ -52,7 +52,7 @@ EnemyUpgradeOverhaul.UpgradeData = {
 		LLENEMY_BONUSSKILLS_SET_ELITE = {Name = TranslatedString:Create("h7040a2f0g29d3g43d6ga656gb5eb0aac1934", "Elite Skillset"), Color = "#73F6FF"},
 		-- Hidden vanilla statuses
 		LLENEMY_HERBMIX_COURAGE = {Name = TranslatedString:Create("h503bd9fag7526g41abgbe28g612e3bffe6a1","Courage"), Color = "#AAF0FF"},
-		LLENEMY_HERBMIX_FEROCITY = {Name = TranslatedString:Create("h6eb5da84g4569g4975g9b4dgbd3f7dffeb2a","Demonic Celerity"), Color = "#FF3322"},
+		LLENEMY_HERBMIX_FEROCITY = {Name = TranslatedString:Create("hefe488c0g2e40g4f25gb312g21899f4bbd90","Ferocity"), Color = "#FF3322"},
 		LLENEMY_FARSIGHT = {Name = TranslatedString:Create("hcfb65642g97f6g46b5g9d2bg359144ae1012","Farsight"), Color = "#88A25B"},
 	},
 	--Generated Boosts
