@@ -19,7 +19,7 @@ IF "c1&c2"
 THEN
 	SetHealth(__Me, 1.0)
 ENDIF
-	CharacterCharacterEvent(_Source, __Me, "LLENEMY_Dupe_StatsApplied")
+	CharacterCharacterEvent(%LLENEMY_Duplicant_Owner, __Me, "LLENEMY_Dupe_StatsApplied")
 
 EVENT LLENEMY_Dupe_ReapplyStats
 VARS
