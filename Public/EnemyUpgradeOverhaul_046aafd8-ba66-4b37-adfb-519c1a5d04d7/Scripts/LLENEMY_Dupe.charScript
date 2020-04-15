@@ -4,16 +4,15 @@ INIT
 	EXTERN FIXEDSTRING:%LLENEMY_Dupe_Stats = "LLENEMY_Dupe_Normal_A"
 EVENTS
 
-EVENT LLENEMY_Dupe_ApplyStats
+EVENT LLENEMY_Dupe_ApplyStats_ByEvent
 VARS
 	FLOAT:_HpCurrent
 	FLOAT:_HpMax
-	CHARACTER:_Source
 ON
-	OnCharacterCharacterEvent(_Source, __Me, "LLENEMY_Dupe_ApplyStats")
+	OnCharacterEvent(__Me, "LLENEMY_Dupe_ApplyStats")
 ACTIONS
-	//CharacterSetStats(__Me, %LLENEMY_Dupe_Stats, 0, 1, 1, _HpCurrent)
-	CharacterApplyStatus(__Me, LLENEMY_DUPLICANT, -1, 0, _Source)
+	CharacterSetStats(__Me, %LLENEMY_Dupe_Stats, 0, 1, 1, _HpCurrent)
+	CharacterApplyStatus(__Me, LLENEMY_DUPLICANT, -1, 0, %LLENEMY_Duplicant_Owner)
 IF "c1&c2"
 	CharacterGetStat(_HpMax, __Me, VitalityMax)
 	IsLessThen(_HpCurrent, _HpMax)
@@ -21,6 +20,26 @@ THEN
 	SetHealth(__Me, 1.0)
 ENDIF
 	CharacterCharacterEvent(_Source, __Me, "LLENEMY_Dupe_StatsApplied")
+
+EVENT LLENEMY_Dupe_ReapplyStats
+VARS
+	FLOAT:_HpOriginal
+	FLOAT:_HpCurrent
+	CHARACTER:_Source
+ON
+	OnCharacterEvent(__Me, "LLENEMY_Dupe_ReapplyStats")
+ACTIONS
+IF "!c1&c2"
+	IsEqual(%LLENEMY_Dupe_Stats, null)
+	CharacterGetStat(_HpOriginal, __Me, Vitality)
+THEN
+	CharacterSetStats(__Me, %LLENEMY_Dupe_Stats, 0, 1, 1, _HpCurrent)
+ENDIF
+IF "c1"
+	IsLessThen(_HpCurrent, _HpOriginal)
+THEN
+	SetHealth(__Me, 1.0)
+ENDIF
 
 EVENT LLENEMY_Dupe_OnDupeEnteredCombat
 ON
