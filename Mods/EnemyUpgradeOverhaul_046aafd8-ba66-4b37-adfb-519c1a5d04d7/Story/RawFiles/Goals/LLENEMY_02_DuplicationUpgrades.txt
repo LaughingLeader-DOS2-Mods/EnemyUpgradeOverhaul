@@ -114,9 +114,31 @@ CharacterLevelUpTo(_Dupe, _Level);
 QRY
 LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
 AND
+NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
+AND
 DB_LLENEMY_Upgrades_Statuses("Duplication", _Type, _Status, _Start, _End, _Duration, _CP)
 THEN
-DB_NOOP(1);
+DB_LLENEMY_Duplication_IgnoredStatus(_Status);
+
+QRY
+LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
+AND
+NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
+AND
+DB_LLENEMY_IgnoredDuplicantStatuses(_Status)
+THEN
+DB_LLENEMY_Duplication_IgnoredStatus(_Status);
+
+QRY
+LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
+AND
+NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
+AND
+GetStatusType(_Status, _StatusType)
+AND
+DB_LLENEMY_IgnoredDuplicantStatusTypes(_StatusType)
+THEN
+DB_LLENEMY_Duplication_IgnoredStatus(_Status);
 
 /* [OSITOOLS_ONLY]
 IF
@@ -131,6 +153,8 @@ NRD_IterateStatuses(_Source, "LLENEMY_Dupe_CopyStatus");
 
 IF
 NRD_StatusIteratorEvent("LLENEMY_Dupe_CopyStatus", (CHARACTERGUID)_Source, _Status, _Handle)
+AND
+NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
 AND
 NOT LLENEMY_Duplication_QRY_IgnoreStatus(_Status)
 AND

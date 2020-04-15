@@ -31,6 +31,19 @@ DB_LLENEMY_EnemyTags("MONSTROUS");
 DB_LLENEMY_EnemyTags("BADASSCIVILIAN");
 DB_LLENEMY_EnemyTags("AI_PREFERRED_TARGET");
 
+/* Statuses that shouldn't be copied by Shadow Duplicants. */
+PROC
+LLENEMY_System_RegisterIgnoredCopyStatuses()
+THEN
+DB_LLENEMY_IgnoredDuplicantStatuses("NULL");
+DB_LLENEMY_IgnoredDuplicantStatusTypes("BLIND");
+DB_LLENEMY_IgnoredDuplicantStatusTypes("CHARMED");
+DB_LLENEMY_IgnoredDuplicantStatusTypes("DAMAGE_ON_MOVE");
+DB_LLENEMY_IgnoredDuplicantStatusTypes("INCAPACITATED");
+DB_LLENEMY_IgnoredDuplicantStatusTypes("INVISIBLE");
+DB_LLENEMY_IgnoredDuplicantStatusTypes("KNOCKED_DOWN");
+DB_LLENEMY_IgnoredDuplicantStatusTypes("MUTED");
+
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
 THEN
