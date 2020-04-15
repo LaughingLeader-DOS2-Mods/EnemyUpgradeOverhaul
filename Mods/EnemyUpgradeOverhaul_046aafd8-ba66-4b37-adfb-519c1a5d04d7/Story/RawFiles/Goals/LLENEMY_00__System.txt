@@ -9,9 +9,13 @@ LLENEMY_System_InitSettings()
 THEN
 SysClear("DB_LLENEMY_EnemyAlignments", 1);
 LLENEMY_System_RegisterAlignments();
-
 SysClear("DB_LLENEMY_EnemyTags", 1);
 LLENEMY_System_RegisterTags();
+SysClear("DB_LLENEMY_IgnoredDuplicantStatuses", 1);
+SysClear("DB_LLENEMY_IgnoredDuplicantStatusTypes", 1);
+LLENEMY_System_RegisterIgnoredCopyStatuses();
+SysClear("DB_LLENEMY_IgnoredCharacters", 1);
+LLENEMY_System_RegisterIgnoredCharacters();
 
 /* Alignments that are checked to see if a character is an "Enemy", for the purpose of adding upgrades in world commitment mode. */
 PROC
@@ -43,6 +47,11 @@ DB_LLENEMY_IgnoredDuplicantStatusTypes("INCAPACITATED");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("INVISIBLE");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("KNOCKED_DOWN");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("MUTED");
+
+PROC
+LLENEMY_System_RegisterIgnoredCharacters()
+THEN
+DB_LLENEMY_IgnoredCharacters((CHARACTERGUID)CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338);
 
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
@@ -87,6 +96,8 @@ LLENEMY_Upgrades_Internal_Register_Start();
 //REGION QUERIES
 QRY
 LLENEMY_Upgrades_QRY_CanAddUpgrades((CHARACTERGUID)_Char)
+AND
+NOT DB_LLENEMY_IgnoredCharacters(_Char)
 AND
 IsTagged(_Char, "LLENEMY_UpgradesDisabled", 0)
 AND
