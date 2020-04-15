@@ -10,6 +10,8 @@ THEN
 LLENEMY_Elites_AddUpgradeChance("TUT_Tutorial_A", S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a);
 DB_LLENEMY_IgnoredCharacters(S_GLO_Windego_d783285f-d3be-4cba-8333-db8976cef182);
 DB_LLENEMY_IgnoredCharacters(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3);
+// Magister Rennart
+LLENEMY_Elites_AddUpgradeChance("TUT_Tutorial_A", TUT_CargoDeck_Humans_Male_Magister_Grunt_000_a06e61dd-58c6-4119-99be-716c3a4fc1ef);
 
 IF
 RegionEnded("TUT_Tutorial_A")
