@@ -93,10 +93,10 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "RESTED", 190, 2);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Polymorph", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "MEDUSA_HEAD", 1, 23, 7, 24.0);
-LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "SPIDER_LEGS", 200, 259, 4);
-LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "WINGS", 550, 641, 2);
-LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "HORNS", 800, 999, 1);
+LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "LLENEMY_SKILL_MEDUSA_HEAD", 1, 23, 7, 24.0);
+LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "LLENEMY_SKILL_SPIDER_LEGS", 200, 259, 4);
+LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "LLENEMY_SKILL_WINGS", 550, 641, 2);
+LLENEMY_Upgrades_AddStatusToRange("Buffs", "Polymorph", "LLENEMY_SKILL_HORNS", 800, 999, 1);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Auras", "Auras_Main", (INTEGER)_HardModeEnabled)
