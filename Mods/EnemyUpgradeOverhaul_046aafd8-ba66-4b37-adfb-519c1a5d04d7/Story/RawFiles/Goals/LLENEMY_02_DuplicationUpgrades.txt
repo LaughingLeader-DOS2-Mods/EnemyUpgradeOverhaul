@@ -258,6 +258,35 @@ THEN
 DB_Arena_MobParticipants(_Inst, _Duplicant, _Trig, _Team);
 //END_REGION
 
+//REGION DUPE_OUT_OF_COMBAT
+IF
+CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
+AND
+CharacterIsInCombat(_Dupe, 0)
+AND
+CharacterIsInCombat(_Source, 0)
+THEN
+ApplyStatus(_Dupe, "LEADERLIB_NO_VISUAL", -1.0, 1, _Dupe);
+
+IF
+StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeEnteredCombat")
+AND
+CharacterIsDead(_Dupe, 0)
+AND
+HasActiveStatus(_Dupe, "LEADERLIB_NO_VISUAL", 1)
+THEN
+RemoveStatus(_Dupe, "LEADERLIB_NO_VISUAL");
+
+IF
+StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeLeftCombat")
+AND
+CharacterIsDead(_Dupe, 0)
+AND
+HasActiveStatus(_Dupe, "LEADERLIB_NO_VISUAL", 0)
+THEN
+ApplyStatus(_Dupe, "LEADERLIB_NO_VISUAL", -1.0, 1, _Dupe);
+//END_REGION
+
 //REGION CLEANUP
 IF
 StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeDying")

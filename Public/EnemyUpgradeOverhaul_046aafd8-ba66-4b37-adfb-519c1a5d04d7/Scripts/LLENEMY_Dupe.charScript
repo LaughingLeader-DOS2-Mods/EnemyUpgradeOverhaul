@@ -21,6 +21,18 @@ THEN
 ENDIF
 	CharacterCharacterEvent(_Source, __Me, "LLENEMY_Dupe_StatsApplied")
 
+EVENT LLENEMY_Dupe_OnDupeEnteredCombat
+ON
+	OnEnteredCombat(__Me,_)
+ACTIONS
+	CharacterEvent(__Me, "LLENEMY_Dupe_OnDupeEnteredCombat")
+
+EVENT LLENEMY_Dupe_OnDupeLeftCombat
+ON
+	OnLeftCombat(__Me,_)
+ACTIONS
+	CharacterEvent(__Me, "LLENEMY_Dupe_OnDupeLeftCombat")
+
 EVENT LLENEMY_Dupe_Dying
 ON
 	OnCharacterStatusApplied(__Me, DYING)
