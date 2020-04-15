@@ -262,10 +262,11 @@ local function SetRandomShadowName(item,statType)
 		local handle,templateName = ItemTemplateGetDisplayString(GetTemplate(item))
 		LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] ("..item..") handle("..handle..") templateName("..templateName..")")
 		local originalName = Ext.GetTranslatedString(handle, templateName)
-		local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
-		local name = string.format("<font color='%s'>%s</font>", color, originalName)
-		NRD_ItemCloneSetString("CustomDisplayName", name)
-		if Ext.IsDeveloperMode() then
+		if originalName ~= NRD_ItemGetStatsId(item) and originalName ~= GetStatString(item) then
+			-- Name isn't a stat entry name.
+			local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
+			local name = string.format("<font color='%s'>%s</font>", color, originalName)
+			NRD_ItemCloneSetString("CustomDisplayName", name)
 			LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
 		end
 	end
@@ -279,12 +280,14 @@ local function GetClone(item,stat,statType)
 			level = CharacterGetLevel(CharacterGetHostCharacter())
 		end
 	end
-	if rarity == nil then rarity = "Rare" end
+	if rarity == nil or rarity == "Common" then
+		rarity = "Uncommon"
+	end
     local template = GetTemplate(item)
 	local last_underscore = string.find(template, "_[^_]*$")
 	local stripped_template = string.sub(template, last_underscore+1)
 	NRD_ItemCloneBegin(item)
-	NRD_ItemCloneResetProgression()
+	--NRD_ItemCloneResetProgression()
 	NRD_ItemCloneSetString("RootTemplate", stripped_template)
 	NRD_ItemCloneSetString("OriginalRootTemplate", stripped_template)
 	if stat == nil or stat == "" then
@@ -302,7 +305,7 @@ local function GetClone(item,stat,statType)
 		-- fixes this issue.
 		local damageTypeString = Ext.StatGetAttribute(stat, "Damage Type")
 		if damageTypeString == nil then damageTypeString = "Physical" end
-		local damageTypeEnum = LeaderLib.Data["DamageTypeEnums"][damageTypeString]
+		local damageTypeEnum = LeaderLib.Data.DamageTypeEnums[damageTypeString]
 		NRD_ItemCloneSetInt("DamageTypeOverwrite", damageTypeEnum)
 	end
 
@@ -329,36 +332,44 @@ local ignoredSlots = {
 	Overhead = true,
 }
 
+local corruptableTypes = {
+	Weapon = true,
+	Shield = true,
+	Armor = true,
+}
+
 local function ShadowCorruptItem(uuid, container)
 	if uuid ~= nil then
 		local item = Ext.GetItem(uuid)
 		local stat = item.StatsId
-		if ignoredSlots[item.Slot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
-			local statType = NRD_StatGetType(stat)
-			if BOOSTS[statType] ~= nil then
-				local cloned = GetClone(uuid, stat, statType)
-				if container == nil and ItemIsInInventory(uuid) then
-					container = GetInventoryOwner(uuid)
-					if container == nil then
-						container = NRD_ItemGetParent(uuid)
+		local statType = NRD_StatGetType(stat)
+		if statType == "Weapon" or statType == "Armor" then
+			local equippedSlot = Ext.StatGetAttribute(stat, "Slot")
+			LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
+			if ignoredSlots[equippedSlot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
+				if item.Slot > 13 and BOOSTS[statType] ~= nil then
+					local cloned = GetClone(uuid, stat, statType)
+					if container == nil and ItemIsInInventory(uuid) then
+						container = GetInventoryOwner(uuid)
+						if container == nil then
+							container = NRD_ItemGetParent(uuid)
+						end
 					end
-				end
-				if container ~= nil then
-					ItemToInventory(cloned, container, 1, 0, 0)
-				else
-					local x,y,z = GetPosition(uuid)
-					if x == nil or y == nil or z == nil then
-						x,y,z = GetPosition(CharacterGetHostCharacter())
+					if container ~= nil then
+						ItemToInventory(cloned, container, 1, 0, 0)
+					else
+						local x,y,z = GetPosition(uuid)
+						if x == nil or y == nil or z == nil then
+							x,y,z = GetPosition(CharacterGetHostCharacter())
+						end
+						TeleportToPosition(cloned, x,y,z, "", 0, 1)
 					end
-					TeleportToPosition(cloned, x,y,z, "", 0, 1)
+					ItemRemove(uuid)
+					return cloned
+					--NRD_ItemSetIdentified(cloned, 1)
 				end
-				ItemRemove(uuid)
-				return cloned
-				--NRD_ItemSetIdentified(cloned, 1)
-			end
-		else
-			-- Not equipped
-			if item.Slot > 13 then
+			elseif item.Slot > 13 then -- Not equipped
+				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] Deleting ("..uuid..") Stat("..tostring(stat)..") since it's an item that shouldn't be given to players.")
 				ItemRemove(uuid)
 				return nil
 			end
@@ -366,8 +377,25 @@ local function ShadowCorruptItem(uuid, container)
 		return uuid
 	else
 		error("Item ("..tostring(uuid)..") is nil!")
+		return nil
 	end
 end
+
+local function LLENEMY_ShadowCorruptItem_Error (x)
+	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(x))
+	return false
+end
+
+function LLENEMY_Ext_ShadowCorruptItem(item)
+	local container = GetInventoryOwner(item)
+	local b,result = xpcall(ShadowCorruptItem, LLENEMY_ShadowCorruptItem_Error, item, container)
+	if b then
+		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(result)..")")
+		return result
+	end
+	return nil
+end
+Ext.NewCall(LLENEMY_Ext_ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
 function LLENEMY_Ext_ShadowCorruptItems(uuid)
 	InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
@@ -387,22 +415,6 @@ function LLENEMY_Ext_ShadowCorruptItems(uuid)
 		InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
 	end ]]
 end
-
-local function LLENEMY_ShadowCorruptItem_Error (x)
-	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(x))
-	return false
-end
-
-function LLENEMY_Ext_ShadowCorruptItem(item)
-	local container = GetInventoryOwner(item)
-	local b,result = xpcall(ShadowCorruptItem, LLENEMY_ShadowCorruptItem_Error, item, container)
-	if b then
-		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(result)..")")
-		return result
-	end
-	return nil
-end
-Ext.NewCall(LLENEMY_Ext_ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
 function LLENEMY_ItemIsRare(item, itemType)
 	if itemType ~= "Common" and itemType ~= "" then
