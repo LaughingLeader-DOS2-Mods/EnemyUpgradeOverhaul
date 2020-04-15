@@ -98,7 +98,7 @@ end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
-	LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.MyGuid).."] character("..tostring(character)..")["..tostring(character.MyGuid).."] param("..tostring(param)..")")
+	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.MyGuid).."] character("..tostring(character)..")["..tostring(character.MyGuid).."] param("..tostring(param)..")")
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
 		local b,result = pcall(func, character, param, statusSource)
