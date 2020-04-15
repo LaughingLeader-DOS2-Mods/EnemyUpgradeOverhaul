@@ -131,6 +131,6 @@ local function LLENEMY_TreasureGoblinDefeated_TrySpawnLoot(goblin)
 end
 
 function LLENEMY_Ext_TreasureGoblinDefeated(goblin)
-	SetInvulnerable_UseProcSetInvulnerable(goblin, 1)
+	--SetInvulnerable_UseProcSetInvulnerable(goblin, 1)
 	local b = pcall(LLENEMY_TreasureGoblinDefeated_TrySpawnLoot, goblin)
 end

@@ -119,7 +119,7 @@ CharacterGetLevel(_Host, _Level)
 //AND
 //DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level)
 AND
-TemporaryCharacterCreateAtPosition(_x, _y, _z, "444e50a0-e59b-4866-b548-49a0197a0de1", 1, _Goblin)
+CharacterCreateAtPosition(_x, _y, _z, "444e50a0-e59b-4866-b548-49a0197a0de1", 1, _Goblin)
 THEN
 NOT DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level);
 CharacterLevelUpTo(_Goblin, _Level);
@@ -267,6 +267,7 @@ NRD_LuaCall("LLENEMY_Ext_TreasureGoblinDefeated", _UUID);
 IF
 StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Left")
 THEN
+RemoveHarmfulStatuses(_Goblin);
 Poof(_Goblin);
 //END_REGION
 

@@ -6,12 +6,17 @@ INIT
 	INT:%LLENEMY_TreasureGoblin_PlayingAnim = 0
 	FLOAT3:%LLENEMY_TreasureGoblin_StartPos = null
 	FLOAT:%LLENEMY_TreasureGoblin_MaxFleeDistance = 16.0
+	INT:%LLENEMY_TreasureGoblin_Initialized = 0
 EVENTS
 
 EVENT LLENEMY_TreasureGoblin_Init
 ON
 	OnInit()
+	OnActivate()
 ACTIONS
+IF "c1"
+	IsEqual(%LLENEMY_TreasureGoblin_Initialized, 0)
+THEN
 	//CharacterAddToInventory(__Me, "CONT_LLENEMY_TreasureGoblin_Bag", 1, 0)
 	GetPosition(__Me, %LLENEMY_TreasureGoblin_StartPos)
 	Set(%LLENEMY_TreasureGoblin_TotalHits, 0)
@@ -19,9 +24,12 @@ ACTIONS
 	Set(%LLENEMY_TreasureGoblin_Defeated, 0)
 	CharacterApplyStatus(__Me, UNSHEATHED, -1, 1, __Me)
 	CharacterApplyStatus(__Me, LLENEMY_TREASURE_GOBLIN, -1, 1, __Me)
+	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_OnInit")
+	Set(%LLENEMY_TreasureGoblin_Initialized, 1)
+ENDIF
 	CharacterSetFightMode(__Me, 1, 1)
 	CharacterSetCanSpotSneakers(__Me,1)
-	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_OnInit")
+	//CharacterSetImmortal(__Me, 1)
 
 EVENT LLENEMY_TreasureGoblin_Shutdown
 ON
@@ -75,7 +83,8 @@ IF "(c1|c2|c3)&c4"
 	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 0)
 THEN
 	Set(%LLENEMY_TreasureGoblin_Defeated, 1)
-	SetInvulnerable(__Me, 1)
+	//SetInvulnerable(__Me, 1)
+	//CharacterSetFightMode(__Me, 0, 0)
 	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Defeated")
 	CallFunction("LLENEMY_TreasureGoblin_Leave")
 ENDIF
@@ -87,6 +96,12 @@ ACTIONS
 	SetPriority("LLENEMY_TreasureGoblin_FearFlee", 0)
 	SetPriority("LLENEMY_TreasureGoblin_Leaving", 999999)
 
+EVENT LLENEMY_TreasureGoblin_Died
+ON
+	OnDie(__Me, _, _, _)
+ACTIONS
+	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Left")
+
 BEHAVIOUR
 
 REACTION LLENEMY_TreasureGoblin_FearFlee, 999998
@@ -94,8 +109,9 @@ USAGE COMBAT
 VARS
 	FLOAT:_Dist
 ACTIONS
-IF "c1"
+IF "c1&!c2"
 	IsInActiveTurn(__Me)
+	CharacterIsDead(__Me)
 THEN
 	CharacterFleeFrom(All,30)
 	Sleep(1.0)
@@ -122,18 +138,19 @@ ENDIF
 REACTION LLENEMY_TreasureGoblin_Leaving, 0
 USAGE ALL
 ACTIONS
+	//SetInvulnerable(__Me, 1)
 IF "c1&!c2"
 	IsEqual(%LLENEMY_TreasureGoblin_PlayingAnim, 0)
 	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 0)
 THEN
 	Set(%LLENEMY_TreasureGoblin_PlayingAnim, 1)
-	SetInvulnerable(__Me, 1)
 	PlaySound(__Me, "LLENEMY_VO_Goblin_Laugh_Random_01")
 	CharacterPlayAnimation("Dance_01", 1, 1, 1)
 	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Left")
 ENDIF
 INTERRUPT
 ACTIONS
+SetInvulnerable(__Me, 1)
 IF "c1"
 	IsEqual(%LLENEMY_TreasureGoblin_Defeated, 1)
 THEN

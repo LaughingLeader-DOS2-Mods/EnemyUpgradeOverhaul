@@ -1512,7 +1512,6 @@ data "StackId" "Stack_LLENEMY_TreasureGoblin"
 data "StackPriority" "1"
 data "StatusEffect" "LLENEMY_FX_Status_TreasureGoblin_Overlay_01"
 data "ForceOverhead" "Yes"
-data "IsResistingDeath" "Yes"
 
 new entry "LLENEMY_SEEKER"
 type "StatusData"
