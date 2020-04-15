@@ -147,7 +147,7 @@ function LLENEMY_Ext_ClearGain(char)
 		if stats ~= nil then
 			local gain = NRD_StatGetInt(stats, "Gain")
 			if gain > 0 then
-				LeaderLib.Print("[LLENEMY:LLENEMY_GameMechanics.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").")
+				LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").")
 				NRD_CharacterSetPermanentBoostInt(char, "Gain", 0)
 				CharacterAddAttribute(char, "Dummy", 0)
 			end
@@ -182,4 +182,14 @@ function LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,level,combatid)
 	Osi.LLENEMY_Rewards_TreasureGoblin_ToggleScript(1)
 	Osi.LeaderLib_Helper_MakeHostileToPlayers(goblin)
 	Osi.LeaderLib_Timers_StartObjectTimer(goblin, 1000, "Timers_LLENEMY_Goblin_EnterCombatWithPlayers", "LeaderLib_Commands_EnterCombatWithPlayers")
+end
+
+function LLENEMY_Ext_Duplication_CopySourceStat(source,dupe,applyevent)
+	local sourceCharStat = Ext.GetCharacter(source).Stats.Name
+	SetVarFixedString(dupe, "LLENEMY_Dupe_Stats", sourceCharStat)
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_Duplication_CopySourceStat] Copying stat " .. tostring(sourceCharStat) .." to dupe ("..dupe..").")
+	CharacterCharacterSetEvent(source, dupe, applyevent)
+	NRD_CharacterSetPermanentBoostInt(dupe, "Gain", 0)
+	CharacterAddAttribute(dupe, "Dummy", 0)
+	CharacterSetHitpointsPercentage(dupe, 100.0)
 end
