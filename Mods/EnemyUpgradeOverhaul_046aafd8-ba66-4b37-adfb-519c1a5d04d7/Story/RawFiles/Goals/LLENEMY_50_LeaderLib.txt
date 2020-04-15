@@ -30,6 +30,7 @@ LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_RewardsDisabled", 1);
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Debug_LevelCapDisabled");
 LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_WorldUpgradesEnabled", 1);
+LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_VoidwokenSourceSpawningEnabled", 1);
 LeaderLib_GlobalSettings_Register_GlobalInteger(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Scaling_LevelModifier", 0);
 LeaderLib_Register_ModMenu("046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEMY_Settings", "[Enemy Upgrade Overhaul] Settings");
 

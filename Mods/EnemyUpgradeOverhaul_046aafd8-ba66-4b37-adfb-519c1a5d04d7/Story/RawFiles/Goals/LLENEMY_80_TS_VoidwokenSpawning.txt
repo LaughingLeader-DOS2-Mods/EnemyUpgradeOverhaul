@@ -1,0 +1,13 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+//REGION SKILL_CASTING_LISTENER
+IF
+SkillCast(_Character, _Skill, _SkillType, _SkillElement)
+THEN
+LLENEMY_OnSkillCast_TrySummonVoidwoken(_Character, _Skill, _SkillType, _SkillElement);
+//END_REGION
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"

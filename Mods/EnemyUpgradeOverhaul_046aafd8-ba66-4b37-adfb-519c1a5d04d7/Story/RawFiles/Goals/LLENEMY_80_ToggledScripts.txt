@@ -26,6 +26,9 @@ LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_HardMode", "LLENEMY_HardM
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_TreasureGoblin", "LLENEMY_TreasureGoblin_Active");
 LeaderLib_GameScripts_RegisterToggleScript("LLENEMY_80_TS_TreasureGoblin", "LLENEMY_TreasureGoblin_Active");
 
+LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_VoidwokenSpawning", "LLENEMY_VoidwokenSourceSpawningEnabled");
+LeaderLib_GameScripts_RegisterToggleScript("LLENEMY_80_TS_VoidwokenSpawning", "LLENEMY_VoidwokenSourceSpawningEnabled");
+
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_WorldUpgrading", "LLENEMY_WorldUpgradesEnabled");
 LeaderLib_GameScripts_RegisterToggleScript("LLENEMY_80_TS_WorldUpgrading", "LLENEMY_WorldUpgradesEnabled");
 

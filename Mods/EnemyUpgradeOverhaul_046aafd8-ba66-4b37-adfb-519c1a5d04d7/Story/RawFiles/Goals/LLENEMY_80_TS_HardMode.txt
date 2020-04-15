@@ -57,13 +57,6 @@ RegionEnded(_)
 THEN
 SysClear("DB_LLENEMY_HardMode_Temp_BonusRolls", 3);
 //END_REGION
-
-//REGION SKILL_CASTING_LISTENER
-IF
-SkillCast(_Character, _Skill, _SkillType, _SkillElement)
-THEN
-LLENEMY_OnSkillCast_TrySummonVoidwoken(_Character, _Skill, _SkillType, _SkillElement);
-//END_REGION
 EXITSECTION
 SysClear("DB_LLENEMY_HardMode_Temp_BonusRolls", 3);
 ENDEXITSECTION
