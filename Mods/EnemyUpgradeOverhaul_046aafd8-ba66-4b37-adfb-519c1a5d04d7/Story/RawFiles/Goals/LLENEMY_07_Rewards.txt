@@ -485,6 +485,7 @@ DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure)
 THEN
 NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure);
 GenerateTreasure(_Container, _Treasure, _Level, _Dupe);
+ContainerIdentifyAll(_Container);
 
 PROC
 LLENEMY_Rewards_SpawnShadowOrb((CHARACTERGUID)_Dupe)
