@@ -62,7 +62,30 @@ AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
+LLENEMY_Duplication_Internal_ResetDupe(_Source, _Dupe);
+
+PROC
+LLENEMY_Duplication_Internal_ResetDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+GetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _CP)
+THEN
+DB_LLENEMY_Duplication_Temp_Reset(_Dupe, _CP);
 LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
+
+PROC
+LLENEMY_Duplication_Internal_ResetDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+NOT DB_LLENEMY_Duplication_Temp_Reset(_Dupe, _)
+THEN
+LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
+
+PROC
+LLENEMY_Duplication_Internal_ResetDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+DB_LLENEMY_Duplication_Temp_Reset(_Dupe, _CP)
+THEN
+NOT DB_LLENEMY_Duplication_Temp_Reset(_Dupe, _CP);
+SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _CP);
 //END_REGION
 
 //REGION CREATE
