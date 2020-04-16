@@ -42,7 +42,7 @@ EVENT LLENEMY_TreasureGoblin_LeftCombat
 ON
 	OnLeftCombat(__Me, _)
 ACTIONS
-	CallFunction("LLENEMY_TreasureGoblin_Leave")	
+	CallFunction("LLENEMY_TreasureGoblin_Leave")
 	
 EVENT LLENEMY_TreasureGoblin_TurnEnded
 ON
@@ -86,15 +86,25 @@ THEN
 	//SetInvulnerable(__Me, 1)
 	//CharacterSetFightMode(__Me, 0, 0)
 	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Defeated")
-	CallFunction("LLENEMY_TreasureGoblin_Leave")
+	CallFunction("LLENEMY_TreasureGoblin_StartLeaving")
 ENDIF
+
+EVENT LLENEMY_TreasureGoblin_Leave
+ON
+	OnFunction("LLENEMY_TreasureGoblin_StartLeaving")
+ACTIONS
+	SetPriority("LLENEMY_TreasureGoblin_FearFlee", 0)
+	SetPriority("LLENEMY_TreasureGoblin_Leaving", 999999)
 
 EVENT LLENEMY_TreasureGoblin_Leave
 ON
 	OnFunction("LLENEMY_TreasureGoblin_Leave")
 ACTIONS
-	SetPriority("LLENEMY_TreasureGoblin_FearFlee", 0)
-	SetPriority("LLENEMY_TreasureGoblin_Leaving", 999999)
+	SetInvulnerable(__Me, 1)
+	Set(%LLENEMY_TreasureGoblin_PlayingAnim, 1)
+	PlaySound(__Me, "LLENEMY_VO_Goblin_Laugh_Random_01")
+	CharacterPlayAnimation("Dance_01", 1, 1, 1)
+	CharacterEvent(__Me, "LLENEMY_TreasureGoblins_Left")
 
 EVENT LLENEMY_TreasureGoblin_Died
 ON
@@ -120,7 +130,7 @@ THEN
 		GetDistance(_Dist, %LLENEMY_TreasureGoblin_StartPos, __Me)
 		IsGreaterThen(_Dist, %LLENEMY_TreasureGoblin_MaxFleeDistance)
 	THEN
-		CallFunction("LLENEMY_TreasureGoblin_Leave")
+		CallFunction("LLENEMY_TreasureGoblin_StartLeaving")
 	ENDIF
 ENDIF
 INTERRUPT
