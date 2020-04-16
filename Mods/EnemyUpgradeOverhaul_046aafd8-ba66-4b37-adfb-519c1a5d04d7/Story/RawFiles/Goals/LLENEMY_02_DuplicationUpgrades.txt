@@ -50,7 +50,7 @@ AND
 CharacterGetLevel(_Source, _Level)
 THEN
 CharacterLevelUpTo(_Dupe, _Level);
-LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_Dupe_ReapplyStats");
+LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_ApplyStats");
 //END_REGION
 
 //REGION UPDATES
@@ -60,24 +60,21 @@ AND
 _LastVersion < 536870929
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
-AND
-GetUUID(_Dupe, _UUID)
 THEN
-//CharacterCharacterSetEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance");
-CharacterTransform(_Dupe, "LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", 1, 1, 1, 1, 1, 0, 0);
+NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
 //END_REGION
 
-//REGION DUPLICANTS
+//REGION CREATE
 QRY
-LLENEMY_Duplication_QRY_CanDuplicant((CHARACTERGUID)_Char, 1)
+LLENEMY_Duplication_QRY_CanSpawnDuplicant((CHARACTERGUID)_Char, 1)
 AND
 GlobalGetFlag("LLENEMY_DuplicationUpgrades_BossesDisabled", 0)
 THEN
 DB_NOOP(1);
 
 QRY
-LLENEMY_Duplication_QRY_CanDuplicant((CHARACTERGUID)_Char, 0)
+LLENEMY_Duplication_QRY_CanSpawnDuplicant((CHARACTERGUID)_Char, 0)
 THEN
 DB_NOOP(1);
 
@@ -86,9 +83,9 @@ LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Duplication", (S
 AND
 IsBoss(_Enemy, _IsBoss)
 AND
-LLENEMY_Duplication_QRY_CanDuplicant(_Enemy, _IsBoss)
+LLENEMY_Duplication_QRY_CanSpawnDuplicant(_Enemy, _IsBoss)
 AND
-DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Duplication", _Type);
 
@@ -102,9 +99,11 @@ LLENEMY_Duplication_CreateDuplicant((CHARACTERGUID)_Source, (STRING)_Stats, (INT
 AND
 GetPosition(_Source, _x, _y, _z)
 AND
+GetTemplate(_Source, _Template)
+AND
 //"LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0"
 //CharacterCreateOutOfSightToObject(_Template, _Source, _Source, 0, "", _Dupe)
-CharacterCreateAtPosition(_x, _y, _z, "LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", 0, _Dupe)
+CharacterCreateAtPosition(_x, _y, _z, _Template, 0, _Dupe)
 THEN
 SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
 DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
@@ -118,23 +117,22 @@ GetRegion(_Source, _Region)
 AND
 GetFaction(_Source, _Faction)
 THEN
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 CharacterSetDetached(_Dupe, 1);
-CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 1, 1, 1, 0, 0);
-ApplyStatus(_Dupe, "LLENEMY_DUPLICANT", -1.0, 0, _Source);
-LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
 SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
+ApplyStatus(_Dupe, "LLENEMY_DUPLICANT", -1.0, 0, _Source);
+CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 1, 1, 1, 1, 0);
+CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
 SetFaction(_Dupe, _Faction);
 //ChangeAttitude(_Source, _Dupe, 200);
 //ChangeAttitude(_Dupe, _Source, 200);
-DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
-LLENEMY_Duplication_OnDuplicantCreated(_Source, _Dupe);
-LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 250, "Timers_LLENEMY_Duplication_CopyAppearance", "LLENEMY_Duplication_CopyAppearance");
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo(_Source, _Dupe);
 
 // [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyStatuses)
 THEN
-ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
+LeaderLib_Tags_ClearPreservedTag(_Dupe, "LLENEMY_UpgradesDisabled");
 // [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]
@@ -145,15 +143,6 @@ LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_UpgradesDisabled");
 LeaderLib_Timers_StartObjectTimer(_Source, 500, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
 LeaderLib_Timers_StartObjectTimer(_Dupe, 1000, "Timers_LLENEMY_Duplication_BuildUpgradeInfo", "LLENEMY_Duplication_BuildUpgradeInfo");
 */
-
-IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
-THEN
-CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
-LeaderLib_Tags_PreserveTag(_Dupe, "LLFULOOT_LootDisabled");
-LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
-LLENEMY_Duplication_CopyName(_Source, _Dupe);
-LLENEMY_Duplication_Internal_SetupDupe_StageTwo(_Source, _Dupe);
 
 // [BEGIN_NO_OSITOOLS]
 PROC
@@ -255,6 +244,20 @@ DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Dupe, _Status, _RealDu
 //REGION STAGE_TWO_SETUP
 PROC
 LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+THEN
+LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
+LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_ApplyStats");
+LLENEMY_Duplication_CopyName(_Source, _Dupe);
+
+PROC
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+SysStatus("LaughingLeader_FullLoot", _)
+THEN
+LeaderLib_Tags_PreserveTag(_Dupe, "LLFULOOT_LootDisabled");
+
+PROC
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
 AND
 CharacterGetLevel(_Source, _Level)
 THEN
@@ -267,6 +270,7 @@ AND
 GetUUID(_Dupe, _UUID)
 THEN
 NRD_LuaCall("LLENEMY_Ext_ClearGain", _UUID);
+NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", _UUID);
 */
 
 PROC
@@ -287,11 +291,10 @@ LLENEMY_Duplication_SetupDuplicant((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe,
 THEN
 LeaderLib_Helper_CopyAbilities(_Dupe, _Source);
 
+/* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Duplication_SetupDuplicant((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities)
 THEN
-LeaderLib_Helper_CopyLevel(_Dupe, _Source);
-/* [OSITOOLS_ONLY]
 NRD_CharacterIterateSkills(_Source, "LLENEMY_Dupe_CopySkill");
 
 IF
@@ -374,17 +377,19 @@ LLENEMY_Duplication_CreateDuplicant(_Char, "LLENEMY_Dupe_Normal_Weakest", 0, 1, 
 
 //REGION DUPE_ARENA
 PROC
-LLENEMY_Duplication_OnDuplicantCreated((CHARACTERGUID)_Source, (CHARACTERGUID)_Duplicant)
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
 AND
 //DB_ArenaPresets_Mobs(_Arena, _Source, _Trigger)
 DB_Arena_MobParticipants(_Inst, _Source, _Trig, _Team)
 THEN
-DB_Arena_MobParticipants(_Inst, _Duplicant, _Trig, _Team);
+DB_Arena_MobParticipants(_Inst, _Dupe, _Trig, _Team);
 //END_REGION
 
-//REGION DUPE_OUT_OF_COMBAT
+//REGION COMBAT_HANDLING
 IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
+StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_DupeCharacterTeleported")
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
 CharacterIsInCombat(_Dupe, 0)
 AND
@@ -393,7 +398,9 @@ THEN
 SetOnStage(_Dupe, 0);
 
 IF
-StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeEnteredCombat")
+ObjectEnteredCombat((CHARACTERGUID)_Source, _CombatID)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
 CharacterIsDead(_Dupe, 0)
 AND
@@ -401,11 +408,17 @@ ObjectIsOnStage(_Dupe, 0)
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
-TeleportTo(_Dupe, _Source, "", 0, 1);
+TeleportTo(_Dupe, _Source, "LLENEMY_Dupe_OnDupeJoinedCombat", 0, 1);
+
+IF
+StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeJoinedCombat")
+THEN
 SetOnStage(_Dupe, 1);
 
 IF
-StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeLeftCombat")
+ObjectLeftCombat((CHARACTERGUID)_Source, _CombatID)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
 CharacterIsDead(_Dupe, 0)
 AND
@@ -414,21 +427,22 @@ THEN
 SetOnStage(_Dupe, 0);
 //END_REGION
 
-//REGION CLEANUP
+//REGION DEATH_CLEANUP
 IF
-StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeDying")
+CharacterDied(_Dupe)
 AND
-DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
-NOT DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region);
+NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 LeaderLib_Tags_ClearAllPreservedTags(_Dupe);
+SetOnStage(_Dupe, 0);
 
 IF
 RegionEnded(_Region)
 AND
-DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
-NOT DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region);
+NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 LeaderLib_Tags_ClearAllPreservedTags(_Dupe);
 //END_REGION
 EXITSECTION

@@ -12,7 +12,6 @@ ON
 	OnCharacterEvent(__Me, "LLENEMY_Dupe_ApplyStats")
 ACTIONS
 	CharacterSetStats(__Me, %LLENEMY_Dupe_Stats, 0, 1, 1, _HpCurrent)
-	CharacterApplyStatus(__Me, LLENEMY_DUPLICANT, -1, 0, %LLENEMY_Duplicant_Owner)
 IF "c1&c2"
 	CharacterGetStat(_HpMax, __Me, VitalityMax)
 	IsLessThen(_HpCurrent, _HpMax)
@@ -65,6 +64,6 @@ ON
 	OnDie(__Me, _, _, _)
 ACTIONS
 	CharacterSetOffStage()
-	PlayEffectAt(__Me, "RS3_FX_GP_Impacts_Weapon_Shadow_01")
-	PlayEffectAt(__Me, "RS3_FX_Skills_Totem_Impact_Target_Root_Shadow_01")
+	//PlayEffectAt(__Me, "RS3_FX_GP_Impacts_Weapon_Shadow_01")
+	//PlayEffectAt(__Me, "RS3_FX_Skills_Totem_Impact_Target_Root_Shadow_01")
 	CharacterEvent(__Me, "LLENEMY_Dupe_DupeDied")
