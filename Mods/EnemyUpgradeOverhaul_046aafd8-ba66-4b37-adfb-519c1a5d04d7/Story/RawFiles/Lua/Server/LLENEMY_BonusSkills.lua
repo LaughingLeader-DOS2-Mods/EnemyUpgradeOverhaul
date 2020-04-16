@@ -169,6 +169,8 @@ local ignored_skills = {
 	Projectile_EnemyFlight = true,
 	Projectile_EnemySpinWeb = true,
 	Projectile_EnemyInsectSpinWeb = true,
+	Shout_EnemyFear = true,
+	Shout_EnemyCauseMadness = true,
 }
 
 local ignored_skillwords = {
