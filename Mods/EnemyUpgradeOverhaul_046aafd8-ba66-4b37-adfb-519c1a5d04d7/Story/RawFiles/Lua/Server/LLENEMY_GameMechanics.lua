@@ -193,3 +193,11 @@ function LLENEMY_Ext_Duplication_CopySourceStat(source,dupe,applyevent)
 	CharacterAddAttribute(dupe, "Dummy", 0)
 	CharacterSetHitpointsPercentage(dupe, 100.0)
 end
+
+function LLENEMY_Ext_Duplication_CopyName(source,dupe)
+	local handle,refStr = CharacterGetDisplayName(source)
+	local characterName = Ext.GetTranslatedString(handle, refStr)
+	local dupeNameBase = Ext.GetTranslatedString("h02023d82gc736g447fgaea3g327be0956688", "<font color='#B23AEE'>[1] (Shadow)</font>")
+	dupeNameBase:gsub("%[1%]", characterName)
+	CharacterSetCustomName(dupe, dupeNameBase)
+end
