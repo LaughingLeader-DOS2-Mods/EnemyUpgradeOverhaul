@@ -5,7 +5,7 @@ local function LLENEMY_Debug_PrintTags(call, datastr)
 		local netid = entry[1]
 		local character = Ext.GetCharacter(netid)
 		if character ~= nil then
-			Ext.Print("[LLENEMY_ClientDebug.lua:PrintTags] Tags for Name("..character.Name..") NetID("..tostring(character.NetID).."):")
+			Ext.Print("[LLENEMY_ClientDebug.lua:PrintTags] Tags for NetID("..tostring(netid)..") character.Stats.NetID("..tostring(character.Stats.NetID)..")")
 			Ext.Print("==========================")
 			Ext.Print(LeaderLib.Common.Dump(character:GetTags()))
 			Ext.Print("==========================")

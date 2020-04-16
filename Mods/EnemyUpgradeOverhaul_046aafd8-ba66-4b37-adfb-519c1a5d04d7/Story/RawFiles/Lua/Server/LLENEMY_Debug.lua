@@ -310,7 +310,7 @@ function LLENEMY_Ext_Debug_PrintTags(uuid)
 	local character = Ext.GetCharacter(uuid)
 	if character ~= nil then
 		Osi.LLENEMY_Debug_SaveNetID(character.NetID)
-		Ext.Print("[LLENEMY_Debug.lua:PrintTags] Tags for ("..tostring(uuid)..") Name("..NRD_CharacterGetStatString(uuid, "Name")..") NetID("..tostring(character.NetID).."):")
+		Ext.Print("[LLENEMY_Debug.lua:PrintTags] Tags for ("..tostring(uuid)..") Name("..NRD_CharacterGetStatString(uuid, "Name")..") NetID("..tostring(character.NetID)..") character.Stats.NetID("..tostring(character.Stats.NetID).."):")
 		Ext.Print("==========================")
 		Ext.Print(LeaderLib.Common.Dump(character:GetTags()))
 		Ext.Print("==========================")

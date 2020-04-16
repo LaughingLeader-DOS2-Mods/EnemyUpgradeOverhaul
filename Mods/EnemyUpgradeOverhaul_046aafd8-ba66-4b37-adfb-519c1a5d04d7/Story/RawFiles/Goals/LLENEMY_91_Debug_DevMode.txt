@@ -14,7 +14,7 @@ IF
 GameStarted(_,_)
 THEN
 TimerCancel("Timers_LLENEMY_Debug_PrintServerTags");
-TimerLaunch("Timers_LLENEMY_Debug_PrintServerTags", 5000);
+//TimerLaunch("Timers_LLENEMY_Debug_PrintServerTags", 5000);
 
 PROC
 LLENEMY_Debug_SaveNetID((INTEGER)_NetID)
@@ -51,6 +51,22 @@ AND
 GetUUID(_Dupe, _UUID)
 THEN
 NRD_LuaCall("LLENEMY_Ext_Debug_PrintTags", _UUID);
+
+IF
+TimerFinished("Timers_LLENEMY_Debug_PrintServerTags")
+AND
+DB_CombatCharacters(_Source, _CombatID)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+AND
+CharacterIsDead(_Source, 0)
+AND
+GetUUID(_Source, _SourceUUID)
+THEN
+LeaderLog_Log("DEBUG", "[LLENEMY_91_Debug_DevMode:] Killing dupe source ", _SourceUUID);
+NRD_LuaCall("LLENEMY_Ext_Debug_PrintTags", _SourceUUID);
+SetTag(_Source, "SOURCE_OF_DUPE_HI_NORBYTE");
+//CharacterDieImmediate(_Source, 0, "", _Source);
 
 IF
 TimerFinished("Timers_LLENEMY_Debug_PrintClientTags")
