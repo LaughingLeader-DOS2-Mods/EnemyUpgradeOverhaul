@@ -92,6 +92,12 @@ LLENEMY_Upgrades_QRY_CanAddUpgrades(_Char)
 THEN
 LLENEMY_Upgrades_RollForUpgrades(_Char);
 LLENEMY_Upgrades_OnRollingDone(_Char, _Level);
+
+IF
+ObjectTransformed((CHARACTERGUID)_Char, _)
+THEN
+ObjectClearFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0);
+LLENEMY_Upgrades_UpgradeEnemy(_Char);
 //END_REGION
 
 //REGION ADD_TO_QUEUE
@@ -144,17 +150,17 @@ DB_LLENEMY_CombatQueue(_CombatID, _TimerName)
 AND
 NOT DB_LLENEMY_SkipCombat(_CombatID)
 AND
-DB_CurrentLevel(_Level)
-AND
 DB_TopOfStackObject(_TimerName, _Enemy)
 AND
 DB_Stack_UUID(_Enemy, _UUID)
 AND
 ObjectIsCharacter((CHARACTERGUID)_Enemy, 1)
+AND
+GetRegion(_Enemy, _Region)
 THEN
 NOT DB_Stack_UUID(_Enemy, _UUID);
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:DB_TopOfStack] Applying buffs to character in via combat queue [",_TimerName,"].");
-LLENEMY_Upgrades_Internal_StartRolling(_Enemy, _Level);
+LLENEMY_Upgrades_Internal_StartRolling(_Enemy, _Region);
 PopStack(_TimerName);
 
 IF
@@ -203,10 +209,10 @@ LLENEMY_QRY_IsEnemyOfParty(_Enemy, _CombatID)
 AND
 NOT DB_LLENEMY_CombatQueue(_CombatID, _)
 AND
-DB_CurrentLevel(_Level)
+GetRegion(_Enemy, _Region)
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:OnCharacterJoinedCombat] Combat queue doesn't exist. Applying buffs instantly.");
-LLENEMY_Upgrades_Internal_StartRolling(_Enemy, _Level);
+LLENEMY_Upgrades_Internal_StartRolling(_Enemy, _Region);
 //END_REGION
 
 EXITSECTION

@@ -1000,8 +1000,15 @@ CharacterLaunchOsirisOnlyIterator("LLENEMY_Upgrades_UpgradeEnemy");
 
 IF
 StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Upgrades_UpgradeEnemy")
+THEN
+LLENEMY_Upgrades_UpgradeEnemy(_Char);
+
+PROC
+LLENEMY_Upgrades_UpgradeEnemy((CHARACTERGUID)_Char)
 AND
 CharacterIsDead(_Char, 0)
+AND
+ObjectIsOnStage(_Char, 1)
 AND
 NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Char)
 AND
