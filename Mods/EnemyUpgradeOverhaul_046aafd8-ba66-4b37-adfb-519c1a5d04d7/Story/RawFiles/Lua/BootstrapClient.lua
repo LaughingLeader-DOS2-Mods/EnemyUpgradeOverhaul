@@ -1,5 +1,6 @@
 Ext.Require("Shared/LLENEMY_Shared.lua")
 Ext.Require("Client/LLENEMY_DescriptionParams.lua")
+Ext.Require("Client/LLENEMY_ClientDebug.lua")
 
 local function LLENEMY_Client_ModuleLoading()
 	LLENEMY_Shared_InitModuleLoading()

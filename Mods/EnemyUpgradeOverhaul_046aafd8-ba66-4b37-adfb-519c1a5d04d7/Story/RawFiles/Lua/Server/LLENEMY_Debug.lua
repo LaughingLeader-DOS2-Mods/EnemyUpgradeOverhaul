@@ -306,13 +306,21 @@ function LLENEMY_Ext_Debug_PrintFlags(obj)
 end
 
 function LLENEMY_Ext_Debug_PrintTags(uuid)
+	SetTag(uuid, "DEBUGGING")
 	local character = Ext.GetCharacter(uuid)
 	if character ~= nil then
+		Osi.LLENEMY_Debug_SaveNetID(character.NetID)
 		Ext.Print("[LLENEMY_Debug.lua:PrintTags] Tags for ("..tostring(uuid)..") Name("..NRD_CharacterGetStatString(uuid, "Name")..") NetID("..tostring(character.NetID).."):")
 		Ext.Print("==========================")
 		Ext.Print(LeaderLib.Common.Dump(character:GetTags()))
 		Ext.Print("==========================")
 	end
+end
+
+function LLENEMY_Ext_Debug_PrintTagsOnClient()
+	local data = Ext.JsonStringify(Osi.DB_LLENEMY_Debug_PrintTags:Get(nil))
+	Ext.Print("[LLENEMY_Debug.lua:PrintTagsOnClient] Broadcasting data to clients ("..data..")")
+	Ext.BroadcastMessage("LLENEMY_Debug_PrintTags", data, nil)
 end
 
 local ItemProperties = {

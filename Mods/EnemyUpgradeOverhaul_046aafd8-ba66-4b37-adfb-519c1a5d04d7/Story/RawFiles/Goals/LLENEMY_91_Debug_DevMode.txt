@@ -13,8 +13,27 @@ LLENEMY_TreasureGoblins_Spawn(_CombatID);
 IF
 GameStarted(_,_)
 THEN
-TimerCancel("Timers_LLENEMY_Debug_SpawnTreasureGoblin");
-TimerLaunch("Timers_LLENEMY_Debug_SpawnTreasureGoblin", 5000);
+TimerCancel("Timers_LLENEMY_Debug_PrintServerTags");
+TimerLaunch("Timers_LLENEMY_Debug_PrintServerTags", 5000);
+
+PROC
+LLENEMY_Debug_SaveNetID((INTEGER)_NetID)
+THEN
+DB_LLENEMY_Debug_PrintTags(_NetID);
+
+PROC
+LLENEMY_Debug_ClearNetIDs()
+AND
+DB_LLENEMY_Debug_PrintTags(_NetID)
+THEN
+NOT DB_LLENEMY_Debug_PrintTags(_NetID);
+
+IF
+TimerFinished("Timers_LLENEMY_Debug_PrintServerTags")
+THEN
+TimerLaunch("Timers_LLENEMY_Debug_PrintClientTags", 1500);
+//NRD_LuaCall("LLENEMY_Ext_DumpUpgradeTables");
+//NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
 
 /* [OSITOOLS_ONLY]
 IF
@@ -23,23 +42,20 @@ THEN
 NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
 
 IF
-TimerFinished("Timers_LLENEMY_Debug_SpawnTreasureGoblin")
-THEN
-NRD_LuaCall("LLENEMY_Ext_DumpUpgradeTables");
-//NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
-*/
-
-/*
-IF
-TimerFinished("Timers_LLENEMY_Debug_SpawnTreasureGoblin")
-//AND
-//DB_CombatCharacters(_Dupe, _CombatID)
+TimerFinished("Timers_LLENEMY_Debug_PrintServerTags")
+AND
+DB_CombatCharacters(_Dupe, _CombatID)
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
 GetUUID(_Dupe, _UUID)
 THEN
 NRD_LuaCall("LLENEMY_Ext_Debug_PrintTags", _UUID);
+
+IF
+TimerFinished("Timers_LLENEMY_Debug_PrintClientTags")
+THEN
+NRD_LuaCall("LLENEMY_Ext_Debug_PrintTagsOnClient");
 */
 
 IF
