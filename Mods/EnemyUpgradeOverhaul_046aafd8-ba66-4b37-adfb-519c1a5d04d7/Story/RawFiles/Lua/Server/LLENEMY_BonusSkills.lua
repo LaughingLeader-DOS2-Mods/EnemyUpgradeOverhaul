@@ -402,7 +402,7 @@ function LLENEMY_Ext_BuildEnemySkills()
 					local skillgroup = GetSkillGroup(EnemyUpgradeOverhaul.EnemySkills, ability)
 					if skillgroup ~= nil then
 						skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
-						LeaderLib.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
+						--LeaderLib.Print("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
 						--LeaderLib.Print(tostring(skill))
 					end
 				else

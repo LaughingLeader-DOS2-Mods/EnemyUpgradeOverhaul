@@ -61,7 +61,7 @@ local function StatDescription_ChallengePoints(status, character, param, statusS
 	local isTagged = false
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 		if character.Character:HasTag(tbl.Tag) then
-			if character.Character:GetStatus("LLENEMY_DUPLICANT") ~= nil then
+			if character.Character:GetStatus("LLENEMY_DUPLICANT") == nil then
 				output = output .. string.gsub(EnemyUpgradeOverhaul.DropText.Value, "%[1%]", tbl.Text.Value)
 			else
 				output = output .. string.gsub(EnemyUpgradeOverhaul.ShadowDropText.Value, "%[1%]", tbl.Text.Value)
@@ -69,7 +69,7 @@ local function StatDescription_ChallengePoints(status, character, param, statusS
 			isTagged = true
 		end
 	end
-	LeaderLib.Print("CP Tooltip Name("..tostring(character.Name)..") NetID(".. tostring(character.NetID)..") = ("..output..")")
+	LeaderLib.Print("CP Tooltip | Name("..tostring(character.Name)..") NetID(".. tostring(character.NetID)..")")
 	LeaderLib.Print("Tags: " .. LeaderLib.Common.Dump(character.Character:GetTags()))
 	-- if data.isDuplicant == true then
 	-- 	output = output .. "<br><font color='#65C900' size='14'>Grants no experience, but drops guaranteed loot.</font>"

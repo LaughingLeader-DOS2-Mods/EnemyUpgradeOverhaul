@@ -365,7 +365,7 @@ local function ShadowCorruptItem(uuid, container)
 						TeleportToPosition(cloned, x,y,z, "", 0, 1)
 					end
 					ItemRemove(uuid)
-					LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(result)..")")
+					LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(cloned)..")")
 					return cloned
 					--NRD_ItemSetIdentified(cloned, 1)
 				end

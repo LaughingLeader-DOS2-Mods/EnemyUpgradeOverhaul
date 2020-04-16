@@ -207,9 +207,9 @@ local function OverrideStats()
 	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
 	local enhancementsLoaded = Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9")
 	if Ext.Version() >= 42 or enhancementsLoaded then
-		LeaderLib.Print("LLENEMY_StatOverrides.lua] Enabling v42+ enhancements.")
-		LeaderLib.Print("==============================================================")
-		LeaderLib.Print("LLENEMY_StatOverrides.lua] (Upgrade Info) enabled. Hiding statuses used for info.")
+		--LeaderLib.Print("LLENEMY_StatOverrides.lua] Enabling v42+ enhancements.")
+		--LeaderLib.Print("==============================================================")
+		--LeaderLib.Print("LLENEMY_StatOverrides.lua] (Upgrade Info) enabled. Hiding statuses used for info.")
 		for _,statname in pairs(upgrade_info_statuses) do
 			LeaderLib.Print("LLENEMY_StatOverrides.lua] Hiding icon for stat: " .. statname)
 			Ext.StatSetAttribute(statname, "Icon", "")
@@ -222,11 +222,11 @@ local function OverrideStats()
 				local tier = Ext.StatGetAttribute(stat, "Tier")
 				if CanChangeSkillTier(stat, tier) then
 					Ext.StatSetAttribute(stat, "Tier", "Starter")
-					LeaderLib.Print("LLENEMY_StatOverrides.lua] Change Tier for skill ("..stat..") "..tier.." => Starter.")
+					--LeaderLib.Print("LLENEMY_StatOverrides.lua] Change Tier for skill ("..stat..") "..tier.." => Starter.")
 				end
 			end
 		end
-		LeaderLib.Print("==============================================================")
+		--LeaderLib.Print("==============================================================")
 	end
 	LeaderLib.Print("LLENEMY_StatOverrides.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
 end
