@@ -305,6 +305,15 @@ function LLENEMY_Ext_Debug_PrintFlags(obj)
 	Ext.Print("==========================")
 end
 
+function LLENEMY_Ext_Debug_PrintTags(uuid)
+	local character = Ext.GetCharacter(uuid)
+	if character ~= nil then
+		Ext.Print("[LLENEMY_Debug.lua:PrintTags] Tags for ("..tostring(uuid)..") Name("..NRD_CharacterGetStatString(uuid, "Name")..") NetID("..tostring(character.NetID).."):")
+		Ext.Print("==========================")
+		Ext.Print(LeaderLib.Common.Dump(character:GetTags()))
+		Ext.Print("==========================")
+	end
+end
 
 local ItemProperties = {
 	"MyGuid",

@@ -29,6 +29,19 @@ NRD_LuaCall("LLENEMY_Ext_DumpUpgradeTables");
 //NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
 */
 
+/*
+IF
+TimerFinished("Timers_LLENEMY_Debug_SpawnTreasureGoblin")
+//AND
+//DB_CombatCharacters(_Dupe, _CombatID)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+AND
+GetUUID(_Dupe, _UUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_Debug_PrintTags", _UUID);
+*/
+
 IF
 GlobalFlagCleared("LLENEMY_Ext_IsDeveloperMode")
 THEN

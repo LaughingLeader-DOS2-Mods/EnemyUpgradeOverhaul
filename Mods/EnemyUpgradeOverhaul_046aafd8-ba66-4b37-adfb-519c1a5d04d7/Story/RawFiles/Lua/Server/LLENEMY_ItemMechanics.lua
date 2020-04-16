@@ -390,7 +390,7 @@ end
 function LLENEMY_Ext_ShadowCorruptItem(item)
 	local container = GetInventoryOwner(item)
 	local b,result = xpcall(ShadowCorruptItem, LLENEMY_ShadowCorruptItem_Error, item, container)
-	if b then	
+	if b then
 		return result
 	end
 	return nil

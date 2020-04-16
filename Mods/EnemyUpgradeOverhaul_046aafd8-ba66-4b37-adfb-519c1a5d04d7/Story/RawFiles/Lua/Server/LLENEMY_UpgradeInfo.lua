@@ -1,6 +1,7 @@
 function LLENEMY_Ext_SetChallengePointsTag(uuid)
 	local cp = GetVarInteger(uuid, "LLENEMY_ChallengePoints")
 	if cp == nil or cp < 0 then cp = 0 end
+	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:LLENEMY_Ext_SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 		if cp >= tbl.Min and cp <= tbl.Max then
 			SetTag(uuid, tbl.Tag)
