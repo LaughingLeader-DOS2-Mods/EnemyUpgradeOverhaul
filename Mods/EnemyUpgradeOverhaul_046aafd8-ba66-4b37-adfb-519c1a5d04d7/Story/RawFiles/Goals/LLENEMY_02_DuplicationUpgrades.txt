@@ -40,6 +40,7 @@ LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 
 
 //REGION SAVE_FIX
 // Duplicants revert to level 1 for some reason, upon loading a save
+/*
 IF
 GameStarted(_Region,_)
 AND
@@ -51,6 +52,7 @@ CharacterGetLevel(_Source, _Level)
 THEN
 CharacterLevelUpTo(_Dupe, _Level);
 LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_ApplyStats");
+*/
 //END_REGION
 
 //REGION UPDATES
@@ -62,30 +64,7 @@ AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
-LLENEMY_Duplication_Internal_ResetDupe(_Source, _Dupe);
-
-PROC
-LLENEMY_Duplication_Internal_ResetDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-AND
-GetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _CP)
-THEN
-DB_LLENEMY_Duplication_Temp_Reset(_Dupe, _CP);
 LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
-
-PROC
-LLENEMY_Duplication_Internal_ResetDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-AND
-NOT DB_LLENEMY_Duplication_Temp_Reset(_Dupe, _)
-THEN
-LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
-
-PROC
-LLENEMY_Duplication_Internal_ResetDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-AND
-DB_LLENEMY_Duplication_Temp_Reset(_Dupe, _CP)
-THEN
-NOT DB_LLENEMY_Duplication_Temp_Reset(_Dupe, _CP);
-SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _CP);
 //END_REGION
 
 //REGION CREATE
@@ -129,60 +108,48 @@ AND
 CharacterCreateAtPosition(_x, _y, _z, _Template, 0, _Dupe)
 THEN
 SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
-DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
 SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _CP);
+// [BEGIN_NO_OSITOOLS]
+DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+// [END_NO_OSITOOLS]
 LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 1);
 
+/* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyStatuses)
 AND
 GetRegion(_Source, _Region)
 AND
 GetFaction(_Source, _Faction)
+AND
+GetUUID(_Source, _SourceUUID)
+AND
+GetUUID(_Dupe, _DupeUUID)
 THEN
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 CharacterSetDetached(_Dupe, 1);
 SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
 ApplyStatus(_Dupe, "LLENEMY_DUPLICANT", -1.0, 0, _Source);
-CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 1, 1, 1, 1, 0);
+//CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 1, 1, 1, 1, 0);
 CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
 SetFaction(_Dupe, _Faction);
 //ChangeAttitude(_Source, _Dupe, 200);
 //ChangeAttitude(_Dupe, _Source, 200);
-LLENEMY_Duplication_Internal_SetupDupe_StageTwo(_Source, _Dupe);
+NRD_LuaCall("LLENEMY_Ext_Duplication_CopySource", _SourceUUID, _DupeUUID);
 
-// [BEGIN_NO_OSITOOLS]
-PROC
-LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyStatuses)
-THEN
-LeaderLib_Tags_ClearPreservedTag(_Dupe, "LLENEMY_UpgradesDisabled");
-// [END_NO_OSITOOLS]
-
-/* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, 1)
 THEN
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_UpgradesDisabled");
-LeaderLib_Timers_StartObjectTimer(_Source, 500, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
-LeaderLib_Timers_StartObjectTimer(_Dupe, 1000, "Timers_LLENEMY_Duplication_BuildUpgradeInfo", "LLENEMY_Duplication_BuildUpgradeInfo");
-*/
+LeaderLib_Timers_StartObjectTimer(_Source, 250, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
+LeaderLib_Timers_StartObjectTimer(_Source, 750, "Timers_LLENEMY_Duplication_SetCPTag", "LLENEMY_Duplication_SetCPTag");
 
-// [BEGIN_NO_OSITOOLS]
-PROC
-LLENEMY_Duplication_CopyStat((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (STRING)_Event)
-THEN
-SetStoryEvent(_Dupe, _Event);
-// [END_NO_OSITOOLS]
-
-/* [OSITOOLS_ONLY]
-PROC
-LLENEMY_Duplication_CopyStat((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (STRING)_Event)
+IF
+StoryEvent(_Dupe, "LLENEMY_Duplication_SetCPTag")
 AND
-GetUUID(_Dupe, _DupeUUID)
-AND
-GetUUID(_Source, _SourceUUID)
+GetUUID(_Dupe, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_Duplication_CopySourceStat", _SourceUUID, _DupeUUID, _Event);
+NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", _UUID);
 */
 //END_REGION
 
@@ -229,15 +196,13 @@ NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
 AND
 NOT LLENEMY_Duplication_QRY_IgnoreStatus(_Status)
 AND
+GetUUID(_Source, _SourceUUID)
+AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
-HasActiveStatus(_Dupe, _Status, 0)
-AND
-NRD_StatusGetReal(_Source, _Handle, "CurrentLifeTime", _Duration)
-AND
-NRD_StatusGetGuidString(_Source, _Handle, "StatusSourceHandle", _StatusSource)
+GetUUID(_Dupe, _DupeUUID)
 THEN
-LLENEMY_Duplication_CopyStatus(_Source, _Dupe, _Status, _Duration, _StatusSource);
+NRD_LuaCall("LLENEMY_Duplication_CopyStatus", _SourceUUID, _DupeUUID, _Status, (STRING)_Handle);
 */
 
 PROC
@@ -269,7 +234,6 @@ PROC
 LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
 THEN
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
-LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_ApplyStats");
 LLENEMY_Duplication_CopyName(_Source, _Dupe);
 
 PROC
@@ -279,22 +243,55 @@ SysStatus("LaughingLeader_FullLoot", _)
 THEN
 LeaderLib_Tags_PreserveTag(_Dupe, "LLFULOOT_LootDisabled");
 
+/* [OSITOOLS_ONLY]
+IF
+NRD_SkillIteratorEvent("LLENEMY_Dupe_CopySkill", _Source, _Skill, _IsLearned, _IsActivated)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+THEN
+CharacterAddSkill(_Dupe, _Skill, 0);
+*/
+
+PROC
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+THEN
+CharacterSetDetached(_Dupe, 0);
+TeleportTo(_Dupe, _Source, "LLENEMY_DupeCharacterTeleported", 1, 1, 0);
+CharacterSetFollowCharacter(_Dupe, _Source);
+PlayEffect(_Dupe, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01");
+//END_REGION
+
+//REGION DUPLICANT_NON_EXTENDER
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyStatuses)
+THEN
+LeaderLib_Tags_ClearPreservedTag(_Dupe, "LLENEMY_UpgradesDisabled");
+
+PROC
+LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyStatuses)
+AND
+GetRegion(_Source, _Region)
+AND
+GetFaction(_Source, _Faction)
+THEN
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
+CharacterSetDetached(_Dupe, 1);
+SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
+ApplyStatus(_Dupe, "LLENEMY_DUPLICANT", -1.0, 0, _Source);
+CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 1, 1, 1, 1, 0);
+CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
+SetFaction(_Dupe, _Faction);
+//ChangeAttitude(_Source, _Dupe, 200);
+//ChangeAttitude(_Dupe, _Source, 200);
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo(_Source, _Dupe);
+
 PROC
 LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
 AND
 CharacterGetLevel(_Source, _Level)
 THEN
 CharacterLevelUpTo(_Dupe, _Level);
-
-/* [OSITOOLS_ONLY]
-PROC
-LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-AND
-GetUUID(_Dupe, _UUID)
-THEN
-NRD_LuaCall("LLENEMY_Ext_ClearGain", _UUID);
-NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", _UUID);
-*/
 
 PROC
 LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
@@ -314,31 +311,6 @@ LLENEMY_Duplication_SetupDuplicant((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe,
 THEN
 LeaderLib_Helper_CopyAbilities(_Dupe, _Source);
 
-/* [OSITOOLS_ONLY]
-PROC
-LLENEMY_Duplication_SetupDuplicant((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities)
-THEN
-NRD_CharacterIterateSkills(_Source, "LLENEMY_Dupe_CopySkill");
-
-IF
-NRD_SkillIteratorEvent("LLENEMY_Dupe_CopySkill", _Source, _Skill, _IsLearned, _IsActivated)
-AND
-DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
-THEN
-CharacterAddSkill(_Dupe, _Skill, 0);
-*/
-
-PROC
-LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-THEN
-CharacterSetDetached(_Dupe, 0);
-TeleportTo(_Dupe, _Source, "LLENEMY_DupeCharacterTeleported", 1, 1, 0);
-CharacterSetFollowCharacter(_Dupe, _Source);
-PlayEffect(_Dupe, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01");
-//END_REGION
-
-//REGION COPY_NAME
-// [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Duplication_CopyName((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
 AND
@@ -348,6 +320,9 @@ StringConcatenate(_Name, " (Shadow)", _DupeName)
 THEN
 CharacterSetCustomName(_Dupe, _DupeName);
 // [END_NO_OSITOOLS]
+//END_REGION
+
+//REGION COPY_NAME
 /* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Duplication_CopyName((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
@@ -442,6 +417,8 @@ IF
 ObjectLeftCombat((CHARACTERGUID)_Source, _CombatID)
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+AND
+CharacterIsDead(_Source, 0)
 AND
 CharacterIsDead(_Dupe, 0)
 AND

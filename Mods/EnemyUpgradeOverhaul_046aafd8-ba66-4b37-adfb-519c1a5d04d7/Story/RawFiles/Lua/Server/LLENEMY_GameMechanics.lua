@@ -134,25 +134,9 @@ function LLENEMY_Ext_ClearGain(char)
 	--ScaleExperienceByPlayerLevel_d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418
 	if Ext.IsModLoaded("d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418") then
 		SetTag(char, "LLXPSCALE_DisableDeathExperience")
-	else
-		local stats = nil
-		-- if NRD_GetVersion() >= 39 then
-		-- 	stats = NRD_CharacterGetStatString(char)
-		-- end
-		local character = Ext.GetCharacter(char)
-		if character ~= nil then
-			stats = character.Stats.Name
-		end
-		if stats == nil then stats = GetStatString(char) end
-		if stats ~= nil then
-			local gain = NRD_StatGetInt(stats, "Gain")
-			if gain > 0 then
-				LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_ClearGain] Removing " .. tostring(gain) .." from ("..tostring(char)..").")
-				NRD_CharacterSetPermanentBoostInt(char, "Gain", 0)
-				CharacterAddAttribute(char, "Dummy", 0)
-			end
-		end
 	end
+	NRD_CharacterSetPermanentBoostInt(char, "Gain", 0)
+	CharacterAddAttribute(char, "Dummy", 0)
 end
 
 function LLENEMY_Ext_HM_RollAdditionalUpgrades(char)
@@ -184,6 +168,32 @@ function LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,level,combatid)
 	Osi.LeaderLib_Timers_StartObjectTimer(goblin, 1000, "Timers_LLENEMY_Goblin_EnterCombatWithPlayers", "LeaderLib_Commands_EnterCombatWithPlayers")
 end
 
+function LLENEMY_Ext_Duplication_CopySource(source,dupe)
+	local sourceCharacter = Ext.GetCharacter(source)
+	for i,slot in pairs(LeaderLib.Data.VisibleEquipmentSlots) do
+		local item = CharacterGetEquippedItem(source, slot)
+		if item ~= nil then
+			NRD_ItemCloneBegin(item)
+			local clone = NRD_ItemClone()
+			CharacterEquipItem(dupe, clone)
+		end
+	end
+	local level = CharacterGetLevel(source)
+	CharacterLevelUpTo(dupe, level)
+	LLENEMY_Ext_Duplication_CopySourceStat(source, dupe, "LLENEMY_ApplyStats")
+	LLENEMY_Ext_Duplication_CopyName(source, dupe)
+	LLENEMY_Ext_Duplication_CopyCP(source, dupe)
+	LLENEMY_Ext_ClearGain(dupe)
+	NRD_CharacterIterateSkills(source, "LLENEMY_Dupe_CopySkill")
+	Osi.LLENEMY_Duplication_Internal_SetupDupe_StageTwo(source, dupe)
+end
+
+function LLENEMY_Ext_Duplication_CopyCP(source,dupe)
+	local cp = GetVarInteger(source, "LLENEMY_ChallengePoints")
+	SetVarInteger(dupe, "LLENEMY_ChallengePoints", cp)
+	LLENEMY_Ext_SetChallengePointsTag(dupe)
+end
+
 function LLENEMY_Ext_Duplication_CopySourceStat(source,dupe,applyevent)
 	local sourceCharStat = Ext.GetCharacter(source).Stats.Name
 	SetVarFixedString(dupe, "LLENEMY_Dupe_Stats", sourceCharStat)
@@ -200,4 +210,17 @@ function LLENEMY_Ext_Duplication_CopyName(source,dupe)
 	local dupeNameBase = Ext.GetTranslatedString("h02023d82gc736g447fgaea3g327be0956688", "<font color='#BF5FFF'>[1] (Shadow)</font>")
 	local dupeName = dupeNameBase:gsub("%[1%]", characterName)
 	CharacterSetCustomName(dupe, dupeName)
+end
+
+function LLENEMY_Duplication_CopyStatus(source,dupe,status,handlestr)
+	local handle = math.tointeger(handlestr)
+	local auraRadius = Ext.StatGetAttribute(status, "AuraRadius")
+	if auraRadius == nil or auraRadius == "" and HasActiveStatus(dupe, status, 0) then
+		local duration = NRD_StatusGetReal(source, handle, "CurrentLifeTime")
+		local statusSourceHandle = NRD_StatusGetGuidString(source, handle, "StatusSourceHandle")
+		if statusSourceHandle == nil or statusSourceHandle == source then 
+			statusSourceHandle = dupe
+		end
+		Osi.LLENEMY_Duplication_CopyStatus(source, dupe, status, duration, statusSourceHandle)
+	end
 end
