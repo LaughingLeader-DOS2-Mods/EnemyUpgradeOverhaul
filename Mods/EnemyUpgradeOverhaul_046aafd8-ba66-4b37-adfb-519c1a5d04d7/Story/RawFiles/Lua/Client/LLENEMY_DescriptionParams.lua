@@ -10,7 +10,7 @@ end
 local upgradeInfoEntryColorText = TranslatedString:Create("ha4587526ge140g42f9g9a98gc92b537d4209", "<img src='Icon_BulletPoint'><font color='[2]' size='18'>[1]</font>")
 local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4cc2ga233g7c22612af67b", "<img src='Icon_BulletPoint'><font size='18'>[1]</font>")
 
-local function StatDescription_UpgradeInfo(character, param, statusSource)
+local function StatDescription_UpgradeInfo(status, character, param, statusSource)
 	local upgradeKeys = {}
 	for status,data in pairs(EnemyUpgradeOverhaul.UpgradeData.Statuses) do
 		if character.Character:GetStatus(status) ~= nil then
@@ -56,12 +56,12 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescri
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
-local function StatDescription_ChallengePoints(character, param, statusSource)
+local function StatDescription_ChallengePoints(status, character, param, statusSource)
 	local output = "<br><img src='Icon_Line' width='350%'><br>"
 	local isTagged = false
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 		if character.Character:HasTag(tbl.Tag) then
-			if character.Character:HasTag("LLENEMY_Duplicant") ~= 1 then
+			if character.Character:GetStatus("LLENEMY_DUPLICANT") ~= nil then
 				output = output .. string.gsub(EnemyUpgradeOverhaul.DropText.Value, "%[1%]", tbl.Text.Value)
 			else
 				output = output .. string.gsub(EnemyUpgradeOverhaul.ShadowDropText.Value, "%[1%]", tbl.Text.Value)
@@ -69,9 +69,8 @@ local function StatDescription_ChallengePoints(character, param, statusSource)
 			isTagged = true
 		end
 	end
-	if Ext.IsDeveloperMode() then
-		Ext.Print("CP Tooltip(".. tostring(character.NetID)..") = ("..output..")")
-	end
+	LeaderLib.Print("CP Tooltip Name("..tostring(character.Name)..") NetID(".. tostring(character.NetID)..") = ("..output..")")
+	LeaderLib.Print("Tags: " .. LeaderLib.Common.Dump(character.Character:GetTags()))
 	-- if data.isDuplicant == true then
 	-- 	output = output .. "<br><font color='#65C900' size='14'>Grants no experience, but drops guaranteed loot.</font>"
 	-- end
@@ -84,7 +83,7 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_ChallengePoints"] = StatDe
 
 local counterParamText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#D416FF'>[1]%</font>")
 
-local function StatDescription_Counter(character, param, statusSource)
+local function StatDescription_Counter(status, character, param, statusSource)
 	--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
 	--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
 	local initiative = character.Initiative
@@ -98,10 +97,13 @@ end
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
-	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.MyGuid).."] character("..tostring(character)..")["..tostring(character.MyGuid).."] param("..tostring(param)..")")
+	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.NetID).."] character("..tostring(character)..")["..tostring(character.NetID).."] param("..tostring(param)..")")
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
-		local b,result = pcall(func, character, param, statusSource)
+		local b,result = xpcall(func, function(err)
+			Ext.Print("[LLENEMY_StatusGetDescriptionParam] Error getting status param | status("..tostring(status.Name)..") param("..tostring(param)..")")
+			Ext.Print(tostring(err))
+		end, status, character, param, statusSource)
 		if b and result ~= nil then
 			return result
 		end
