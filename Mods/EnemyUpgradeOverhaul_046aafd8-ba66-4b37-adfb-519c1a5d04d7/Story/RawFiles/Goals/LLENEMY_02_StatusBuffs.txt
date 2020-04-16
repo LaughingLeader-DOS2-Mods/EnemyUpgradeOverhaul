@@ -169,9 +169,9 @@ PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "Special", (INTEGER)_HardModeEnabled)
 THEN
 //Special
-LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_DOUBLE_DIP", 30, 4, 0.0);
-LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_PERSEVERANCE_MASTERY", 150, 6);
-LLENEMY_Upgrades_AddStatus("Bonus", "Special", "LLENEMY_SEEKER", 35, 6);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "Special", "LLENEMY_DOUBLE_DIP", 1, 30, 4, 0.0);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "Special", "LLENEMY_PERSEVERANCE_MASTERY", 300, 375, 6);
+LLENEMY_Upgrades_AddStatusToRange("Bonus", "Special", "LLENEMY_SEEKER", 800, 835, 6);
 
 //Upgrades that don't give immediate bonuses.
 PROC
