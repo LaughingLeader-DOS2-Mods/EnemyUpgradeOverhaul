@@ -104,17 +104,6 @@ AND
 ObjectGetFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0)
 THEN
 DB_NOOP(1);
-
-/*
-DB_LLENEMY_Temp_CanUpgrade(_Char);
-
-QRY
-LLENEMY_Upgrades_QRY_CanAddUpgrades((CHARACTERGUID)_Char)
-AND
-DB_LLENEMY_Temp_CanUpgrade(_Char)
-THEN
-NOT DB_LLENEMY_Temp_CanUpgrade(_Char);
-*/
 //END_REGION
 EXITSECTION
 
