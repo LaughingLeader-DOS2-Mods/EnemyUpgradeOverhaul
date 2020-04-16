@@ -10,10 +10,10 @@ end
 local upgradeInfoEntryColorText = TranslatedString:Create("ha4587526ge140g42f9g9a98gc92b537d4209", "<img src='Icon_BulletPoint'><font color='[2]' size='18'>[1]</font>")
 local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4cc2ga233g7c22612af67b", "<img src='Icon_BulletPoint'><font size='18'>[1]</font>")
 
-local function StatDescription_UpgradeInfo(status, character, param, statusSource)
+local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 	local upgradeKeys = {}
 	for status,data in pairs(EnemyUpgradeOverhaul.UpgradeData.Statuses) do
-		if character.Character:GetStatus(status) ~= nil then
+		if target.Character:GetStatus(status) ~= nil then
 			table.insert(upgradeKeys, status)
 		end
 	end
@@ -56,12 +56,12 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescri
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Insane", 26, 99);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Impossible", 100, 999);
 
-local function StatDescription_ChallengePoints(status, character, param, statusSource)
+local function StatDescription_ChallengePoints(status, target, param, statusSource)
 	local output = "<br><img src='Icon_Line' width='350%'><br>"
 	local isTagged = false
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
-		if character.Character:HasTag(tbl.Tag) then
-			if character.Character:GetStatus("LLENEMY_DUPLICANT") == nil then
+		if target.Character:HasTag(tbl.Tag) then
+			if target.Character:GetStatus("LLENEMY_DUPLICANT") == nil then
 				output = output .. string.gsub(EnemyUpgradeOverhaul.DropText.Value, "%[1%]", tbl.Text.Value)
 			else
 				output = output .. string.gsub(EnemyUpgradeOverhaul.ShadowDropText.Value, "%[1%]", tbl.Text.Value)
@@ -69,8 +69,12 @@ local function StatDescription_ChallengePoints(status, character, param, statusS
 			isTagged = true
 		end
 	end
-	LeaderLib.Print("CP Tooltip | Name("..tostring(character.Name)..") NetID(".. tostring(character.NetID)..")")
-	LeaderLib.Print("Tags: " .. LeaderLib.Common.Dump(character.Character:GetTags()))
+	--LeaderLib.Print("CP Tooltip | Name("..tostring(character.Name)..") NetID(".. tostring(character.NetID)..") character.Stats.NetID("..tostring(Ext.GetCharacter(character.NetID).Stats.NetID)..")")
+	--LeaderLib.Print("Tags: " .. LeaderLib.Common.Dump(character.Character:GetTags()))
+	-- if statusSource ~= nil then
+	-- 	LeaderLib.Print("CP Tooltip | Source Name("..tostring(statusSource.Name)..") NetID(".. tostring(statusSource.NetID)..") character.Stats.NetID("..tostring(Ext.GetCharacter(statusSource.NetID).Stats.NetID)..")")
+	-- 	LeaderLib.Print("Tags: " .. LeaderLib.Common.Dump(statusSource.Character:GetTags()))
+	-- end
 	-- if data.isDuplicant == true then
 	-- 	output = output .. "<br><font color='#65C900' size='14'>Grants no experience, but drops guaranteed loot.</font>"
 	-- end
@@ -83,10 +87,10 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_ChallengePoints"] = StatDe
 
 local counterParamText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#D416FF'>[1]%</font>")
 
-local function StatDescription_Counter(status, character, param, statusSource)
+local function StatDescription_Counter(status, target, param, statusSource)
 	--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
 	--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
-	local initiative = character.Initiative
+	local initiative = target.Initiative
 	--local percent = (initiative - COUNTER_MIN) / (COUNTER_MAX - COUNTER_MIN)
 	local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
 	--Ext.Print("Chance: " .. tostring(chance))
@@ -96,16 +100,24 @@ end
 
 EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
-local function LLENEMY_StatusGetDescriptionParam(status, statusSource, character, param)
-	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.NetID).."] character("..tostring(character)..")["..tostring(character.NetID).."] param("..tostring(param)..")")
-	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
-	if func ~= nil then
-		local b,result = xpcall(func, function(err)
-			Ext.Print("[LLENEMY_StatusGetDescriptionParam] Error getting status param | status("..tostring(status.Name)..") param("..tostring(param)..")")
-			Ext.Print(tostring(err))
-		end, status, character, param, statusSource)
-		if b and result ~= nil then
-			return result
+local function LLENEMY_StatusGetDescriptionParam(status, obj1, obj2, param)
+	local target = obj2
+	local statusSource = obj1
+	if Ext.Version() <= 43 then
+		target = obj1
+		statusSource = obj2
+	end
+	if target.Character ~= nil then
+		--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.NetID).."] character("..tostring(character)..")["..tostring(character.NetID).."] param("..tostring(param)..")")
+		local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
+		if func ~= nil then
+			local b,result = xpcall(func, function(err)
+				Ext.Print("[LLENEMY_StatusGetDescriptionParam] Error getting status param | status("..tostring(status.Name)..") param("..tostring(param)..")")
+				Ext.Print(tostring(err))
+			end, status, target, param, statusSource)
+			if b and result ~= nil then
+				return result
+			end
 		end
 	end
 end

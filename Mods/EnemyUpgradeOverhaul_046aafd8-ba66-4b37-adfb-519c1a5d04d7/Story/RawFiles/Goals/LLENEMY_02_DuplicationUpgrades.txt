@@ -232,6 +232,13 @@ DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Dupe, _Status, _RealDu
 //REGION STAGE_TWO_SETUP
 PROC
 LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+CharacterGetLevel(_Source, _Level)
+THEN
+CharacterLevelUpTo(_Dupe, _Level);
+
+PROC
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
 THEN
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
 LLENEMY_Duplication_CopyName(_Source, _Dupe);
@@ -259,6 +266,9 @@ CharacterSetDetached(_Dupe, 0);
 TeleportTo(_Dupe, _Source, "LLENEMY_DupeCharacterTeleported", 1, 1, 0);
 CharacterSetFollowCharacter(_Dupe, _Source);
 PlayEffect(_Dupe, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01");
+CharacterSetHitpointsPercentage(_Dupe, 100.0);
+CharacterSetArmorPercentage(_Dupe,100.0);
+CharacterSetMagicArmorPercentage(_Dupe,100.0);
 //END_REGION
 
 //REGION DUPLICANT_NON_EXTENDER
@@ -286,12 +296,10 @@ SetFaction(_Dupe, _Faction);
 //ChangeAttitude(_Dupe, _Source, 200);
 LLENEMY_Duplication_Internal_SetupDupe_StageTwo(_Source, _Dupe);
 
-PROC
-LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-AND
-CharacterGetLevel(_Source, _Level)
+IF
+CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Duplication_SetupStageTwo")
 THEN
-CharacterLevelUpTo(_Dupe, _Level);
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo(_Source, _Dupe);
 
 PROC
 LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
