@@ -201,7 +201,6 @@ function LLENEMY_Ext_Duplication_CopySourceStat(source,dupe,applyevent)
 	SetStoryEvent(dupe, applyevent)
 	NRD_CharacterSetPermanentBoostInt(dupe, "Gain", 0)
 	CharacterAddAttribute(dupe, "Dummy", 0)
-	CharacterSetHitpointsPercentage(dupe, 100.0)
 end
 
 function LLENEMY_Ext_Duplication_CopyName(source,dupe)
