@@ -10,4 +10,4 @@ LLENEMY_StatusText_ImmuneToDamageOnMove	<font color='#FF3737' size='18'>Immune t
 LLENEMY_StatusText_VoidlingTransformed	<font color='#73F6FF' size='26'>Empowered Evolution</font>
 LLENEMY_StatusText_AtusaBossActivated	<font color='#FF3737' size='26'>*Atusa's corpse oozes to life!*</font>
 LLENEMY_StatusText_SeekerDiscoveredTarget	<font color='#FF3737' size='26'>*Revealed!*</font>
-LLENEMY_ShadowDuplicationName	<font color='#B23AEE'>[1] (Shadow)</font>
+LLENEMY_ShadowDuplicationName	<font color='#BF5FFF'>[1] (Shadow)</font>
