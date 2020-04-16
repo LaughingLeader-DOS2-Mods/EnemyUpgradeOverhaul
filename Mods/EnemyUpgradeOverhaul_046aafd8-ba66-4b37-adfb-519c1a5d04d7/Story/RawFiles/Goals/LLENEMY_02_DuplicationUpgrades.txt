@@ -60,14 +60,12 @@ AND
 _LastVersion < 536870929
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+AND
+GetUUID(_Dupe, _UUID)
 THEN
 //CharacterCharacterSetEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance");
-CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_TeleportToSource");
-LLENEMY_Duplication_CopyName(_Source, _Dupe);
-LLENEMY_Duplication_SetupDuplicant(_Source, _Dupe, 1, 1);
-/* [OSITOOLS_ONLY]
-NRD_LuaCall("LLENEMY_Ext_ClearGain", (STRING)_Dupe);
-*/
+CharacterTransform(_Dupe, "LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", 1, 1, 1, 1, 1, 0, 0);
+LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
 //END_REGION
 
 //REGION DUPLICANTS
@@ -100,56 +98,68 @@ THEN
 LLENEMY_Duplication_CreateDuplicant(_Source, _Stats, 0, 0, 0);
 
 PROC
-LLENEMY_Duplication_CreateDuplicant((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_ChallengePoints)
-AND
-DB_CurrentLevel(_Region)
-AND
-GetTemplate(_Source, _Template)
+LLENEMY_Duplication_CreateDuplicant((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_CP)
 AND
 GetPosition(_Source, _x, _y, _z)
 AND
 //"LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0"
 //CharacterCreateOutOfSightToObject(_Template, _Source, _Source, 0, "", _Dupe)
-CharacterCreateAtPosition(_x, _y, _z, _Template, 0, _Dupe)
+CharacterCreateAtPosition(_x, _y, _z, "LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", 0, _Dupe)
+THEN
+SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
+DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
+SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _CP);
+LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 1);
+
+PROC
+LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyStatuses)
+AND
+GetRegion(_Source, _Region)
 AND
 GetFaction(_Source, _Faction)
 THEN
 CharacterSetDetached(_Dupe, 1);
 CharacterTransformFromCharacter(_Dupe, _Source, 0, 1, 1, 1, 1, 0, 0);
+ApplyStatus(_Dupe, "LLENEMY_DUPLICANT", -1.0, 0, _Source);
+LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
+SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
+SetFaction(_Dupe, _Faction);
+//ChangeAttitude(_Source, _Dupe, 200);
+//ChangeAttitude(_Dupe, _Source, 200);
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
+LLENEMY_Duplication_OnDuplicantCreated(_Source, _Dupe);
+LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 250, "Timers_LLENEMY_Duplication_CopyAppearance", "LLENEMY_Duplication_CopyAppearance");
+
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (INTEGER)_CopyStatuses)
+THEN
+ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
+// [END_NO_OSITOOLS]
+
 /* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, 1)
+THEN
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_UpgradesDisabled");
 LeaderLib_Timers_StartObjectTimer(_Source, 500, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
 LeaderLib_Timers_StartObjectTimer(_Dupe, 1000, "Timers_LLENEMY_Duplication_BuildUpgradeInfo", "LLENEMY_Duplication_BuildUpgradeInfo");
 */
-// [BEGIN_NO_OSITOOLS]
-ClearTag(_Dupe, "LLENEMY_UpgradesDisabled");
-// [END_NO_OSITOOLS]
-LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_Duplicant");
-SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
-SetFaction(_Dupe, _Faction);
-ChangeAttitude(_Source, _Dupe, 200);
-ChangeAttitude(_Dupe, _Source, 200);
-SetVarFixedString(_Dupe, "LLENEMY_Dupe_Stats", _Stats);
-SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _ChallengePoints);
-DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
-DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
-LLENEMY_Duplication_OnDuplicantCreated(_Source, _Dupe);
-LeaderLib_Timers_StartCharacterCharacterTimer(_Dupe, _Source, 250, "Timers_LLENEMY_Duplication_CopyAppearance", "LLENEMY_Duplication_CopyAppearance");
 
 IF
 CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
 THEN
 CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
-SetTag(_Dupe, "LLFULOOT_LootDisabled");
+LeaderLib_Tags_PreserveTag(_Dupe, "LLFULOOT_LootDisabled");
 LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_Dupe_ApplyStats");
 LLENEMY_Duplication_CopyName(_Source, _Dupe);
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo(_Source, _Dupe);
 
 // [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Duplication_CopyStat((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, (STRING)_Event)
 THEN
 SetStoryEvent(_Dupe, _Event);
-CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_TeleportToSource");
 // [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]
@@ -161,16 +171,10 @@ AND
 GetUUID(_Source, _SourceUUID)
 THEN
 NRD_LuaCall("LLENEMY_Ext_Duplication_CopySourceStat", _SourceUUID, _DupeUUID, _Event);
-CharacterCharacterSetEvent(_Source, _Dupe, "LLENEMY_Dupe_TeleportToSource");
 */
+//END_REGION
 
-IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
-AND
-CharacterGetLevel(_Source, _Level)
-THEN
-CharacterLevelUpTo(_Dupe, _Level);
-
+//REGION COPY_STATUSES
 QRY
 LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
 AND
@@ -201,11 +205,6 @@ THEN
 DB_LLENEMY_Duplication_IgnoredStatus(_Status);
 
 /* [OSITOOLS_ONLY]
-IF
-CharacterCharacterEvent(_Dupe, _Source, "LLENEMY_Duplication_CopyAppearance")
-THEN
-NRD_LuaCall("LLENEMY_Ext_ClearGain", (STRING)_Dupe);
-
 IF
 StoryEvent(_Source, "LLENEMY_Duplication_CopyStatuses")
 THEN
@@ -251,43 +250,32 @@ AND
 DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _DupeOwner, _Status, _RealDuration)
 THEN
 DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Dupe, _Status, _RealDuration);
+//END_REGION
 
-IF
-CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_TeleportToSource")
+//REGION STAGE_TWO_SETUP
+PROC
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+CharacterGetLevel(_Source, _Level)
+THEN
+CharacterLevelUpTo(_Dupe, _Level);
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+GetUUID(_Dupe, _UUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_ClearGain", _UUID);
+*/
+
+PROC
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
 AND
 DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_CopySettings(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
 LLENEMY_Duplication_SetupDuplicant(_Source, _Dupe, _CopyAttributes, _CopyAbilities);
-
-IF
-CharacterCharacterEvent(_Source, _Dupe, "LLENEMY_Dupe_TeleportToSource")
-THEN
-CharacterSetDetached(_Dupe, 0);
-TeleportTo(_Dupe, _Source, "LLENEMY_DupeCharacterTeleported", 1, 1, 0);
-CharacterSetFollowCharacter(_Dupe, _Source);
-PlayEffect(_Dupe, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01");
-
-// [BEGIN_NO_OSITOOLS]
-PROC
-LLENEMY_Duplication_CopyName((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-AND
-CharacterGetDisplayName(_Source, _, _Name)
-AND
-StringConcatenate(_Name, " (Shadow)", _DupeName)
-THEN
-CharacterSetCustomName(_Dupe, _DupeName);
-// [END_NO_OSITOOLS]
-/* [OSITOOLS_ONLY]
-PROC
-LLENEMY_Duplication_CopyName((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-AND
-GetUUID(_Dupe, _DupeUUID)
-AND
-GetUUID(_Source, _SourceUUID)
-THEN
-NRD_LuaCall("LLENEMY_Ext_Duplication_CopyName", _SourceUUID, _DupeUUID);
-*/
 
 PROC
 LLENEMY_Duplication_SetupDuplicant((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, 1, (INTEGER)_CopyAbilities)
@@ -312,6 +300,37 @@ AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 CharacterAddSkill(_Dupe, _Skill, 0);
+*/
+
+PROC
+LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+THEN
+CharacterSetDetached(_Dupe, 0);
+TeleportTo(_Dupe, _Source, "LLENEMY_DupeCharacterTeleported", 1, 1, 0);
+CharacterSetFollowCharacter(_Dupe, _Source);
+PlayEffect(_Dupe, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01");
+//END_REGION
+
+//REGION COPY_NAME
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_Duplication_CopyName((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+CharacterGetDisplayName(_Source, _, _Name)
+AND
+StringConcatenate(_Name, " (Shadow)", _DupeName)
+THEN
+CharacterSetCustomName(_Dupe, _DupeName);
+// [END_NO_OSITOOLS]
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Duplication_CopyName((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
+AND
+GetUUID(_Dupe, _DupeUUID)
+AND
+GetUUID(_Source, _SourceUUID)
+THEN
+NRD_LuaCall("LLENEMY_Ext_Duplication_CopyName", _SourceUUID, _DupeUUID);
 */
 //END_REGION
 
@@ -410,6 +429,7 @@ AND
 DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region);
+LeaderLib_Tags_ClearAllPreservedTags(_Dupe);
 //END_REGION
 EXITSECTION
 
