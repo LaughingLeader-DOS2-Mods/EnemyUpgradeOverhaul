@@ -107,10 +107,10 @@ local function LLENEMY_StatusGetDescriptionParam(status, obj1, obj2, param)
 		target = obj1
 		statusSource = obj2
 	end
-	if target.Character ~= nil then
-		--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.NetID).."] character("..tostring(character)..")["..tostring(character.NetID).."] param("..tostring(param)..")")
-		local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
-		if func ~= nil then
+	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.NetID).."] character("..tostring(character)..")["..tostring(character.NetID).."] param("..tostring(param)..")")
+	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
+	if func ~= nil then
+		if target.Character ~= nil then
 			local b,result = xpcall(func, function(err)
 				Ext.Print("[LLENEMY_StatusGetDescriptionParam] Error getting status param | status("..tostring(status.Name)..") param("..tostring(param)..")")
 				Ext.Print(tostring(err))
@@ -118,6 +118,9 @@ local function LLENEMY_StatusGetDescriptionParam(status, obj1, obj2, param)
 			if b and result ~= nil then
 				return result
 			end
+		else
+			Ext.Print("[LLENEMY_StatusGetDescriptionParam] Error: target.Character is nil?")
+			return ""
 		end
 	end
 end
