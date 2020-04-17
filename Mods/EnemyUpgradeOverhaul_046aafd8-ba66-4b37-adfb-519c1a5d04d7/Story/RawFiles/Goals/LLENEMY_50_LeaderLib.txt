@@ -59,6 +59,20 @@ IntegerMin(_ClampedValue1, 20, _ClampedValue2)
 THEN
 SysClear("DB_LLENEMY_LevelModifier", 1);
 DB_LLENEMY_LevelModifier(_ClampedValue2);
+
+//REGION EXTENDER_SUPPORT
+/*
+PROC
+LeaderLib_Extender_Enabled(1)
+THEN
+LeaderLib_ToggleScripts_EnableScript("LeaderLib_LuaEventListeners_Enabled", "EnemyUpgradeOverhaul");
+
+PROC
+LeaderLib_Extender_Disabled(0)
+THEN
+LeaderLib_ToggleScripts_DisableScript("LeaderLib_LuaEventListeners_Enabled", "EnemyUpgradeOverhaul");
+*/
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
