@@ -211,10 +211,14 @@ function LLENEMY_Ext_Duplication_CopyName(source,dupe)
 	CharacterSetCustomName(dupe, dupeName)
 end
 
-function LLENEMY_Duplication_CopyStatus(source,dupe,status,handlestr)
-	local handle = math.tointeger(handlestr)
+local function StatusHasAura(status)
 	local auraRadius = Ext.StatGetAttribute(status, "AuraRadius")
-	if auraRadius == nil or auraRadius == "" or auraRadius == 0 and HasActiveStatus(dupe, status) == 0 then
+	return auraRadius ~= nil and auraRadius > 0
+end
+
+function LLENEMY_Duplication_CopyStatus(source,dupe,status,handlestr)
+	if not StatusHasAura(status) and HasActiveStatus(dupe, status) == 0 then
+		local handle = math.tointeger(handlestr)
 		local duration = NRD_StatusGetReal(source, handle, "CurrentLifeTime")
 		local statusSourceHandle = NRD_StatusGetGuidString(source, handle, "StatusSourceHandle")
 		if statusSourceHandle == nil or statusSourceHandle == source then 
