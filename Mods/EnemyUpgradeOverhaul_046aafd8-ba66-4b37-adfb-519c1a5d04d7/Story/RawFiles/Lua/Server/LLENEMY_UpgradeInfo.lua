@@ -64,15 +64,13 @@ LeaderLib.RegisterListener("TimerFinished", TimerFinished)
 local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
 	local nextHighest = EnemyUpgradeOverhaul.HighestLoremaster
 	if player ~= nil then
-		if stat == "Loremaster" then
-			if nextVal >= nextHighest then
-				local lore = CharacterGetAbility(player, "Loremaster")
-				if lore >= EnemyUpgradeOverhaul.HighestLoremaster then
-					nextHighest = lore
-				end
-			elseif nextVal < lastVal then
-				nextHighest = CheckPartyLoremaster()
+		if nextVal >= nextHighest then
+			local lore = CharacterGetAbility(player, "Loremaster")
+			if lore >= EnemyUpgradeOverhaul.HighestLoremaster then
+				nextHighest = lore
 			end
+		elseif nextVal < lastVal then
+			nextHighest = CheckPartyLoremaster()
 		end
 	else
 		nextHighest = CheckPartyLoremaster()
@@ -82,7 +80,13 @@ local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
 		LLENEMY_Ext_StoreHighestLoremaster(nextHighest)
 	end
 end
-LeaderLib.RegisterListener("CharacterBasePointsChanged", SaveHighestLoremaster)
+
+local function CharacterBasePointsChanged(player, stat, lastVal, nextVal)
+	if stat == "Loremaster" then
+		SaveHighestLoremaster(player, stat, lastVal, nextVal)
+	end
+end
+LeaderLib.RegisterListener("CharacterBasePointsChanged", CharacterBasePointsChanged)
 
 function LLENEMY_Ext_StoreHighestLoremaster(nextHighest)
 	EnemyUpgradeOverhaul.HighestLoremaster = nextHighest
