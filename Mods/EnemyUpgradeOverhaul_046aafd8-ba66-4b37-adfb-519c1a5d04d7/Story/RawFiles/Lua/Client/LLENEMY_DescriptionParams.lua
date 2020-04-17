@@ -26,18 +26,32 @@ local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 			local infoText = LLENEMY_Ext_UpgradeInfo_GetText(status)
 			if infoText ~= nil then
 				local color = infoText.Color
-				---@type TranslatedString
-				local translatedString = infoText.Name
-				if translatedString ~= nil then
+				Ext.Print("Highest Loremaster:" .. tostring(EnemyUpgradeOverhaul.HighestLoremaster))
+				if EnemyUpgradeOverhaul.HighestLoremaster > 0 then
+					---@type TranslatedString
+					local translatedString = infoText.Name
+					if translatedString ~= nil then
+						local nameText = translatedString.Value
+						if infoText.Lore > 0 and EnemyUpgradeOverhaul.HighestLoremaster < infoText.Lore then
+							nameText = "???"
+						end
+						if color ~= nil and color ~= "" then
+							local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", nameText):gsub("%[2%]", color)
+							output = output..text
+						else
+							output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", nameText)
+						end
+					end
+				else
 					if color ~= nil and color ~= "" then
-						local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", translatedString.Value):gsub("%[2%]", color)
+						local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", "???"):gsub("%[2%]", color)
 						output = output..text
 					else
-						output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", translatedString.Value)
+						output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", "???")
 					end
-					if i < count - 1 then
-						output = output.."<br>"
-					end
+				end
+				if i < count - 1 then
+					output = output.."<br>"
 				end
 			end
 			i = i + 1
@@ -61,10 +75,18 @@ local function StatDescription_ChallengePoints(status, target, param, statusSour
 	local isTagged = false
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 		if target.Character:HasTag(tbl.Tag) then
-			if target.Character:GetStatus("LLENEMY_DUPLICANT") == nil then
-				output = output .. string.gsub(EnemyUpgradeOverhaul.DropText.Value, "%[1%]", tbl.Text.Value)
+			if EnemyUpgradeOverhaul.HighestLoremaster >= 2 then
+				if target.Character:GetStatus("LLENEMY_DUPLICANT") == nil then
+					output = output .. string.gsub(EnemyUpgradeOverhaul.DropText.Value, "%[1%]", tbl.Text.Value)
+				else
+					output = output .. string.gsub(EnemyUpgradeOverhaul.ShadowDropText.Value, "%[1%]", tbl.Text.Value)
+				end
 			else
-				output = output .. string.gsub(EnemyUpgradeOverhaul.ShadowDropText.Value, "%[1%]", tbl.Text.Value)
+				if target.Character:GetStatus("LLENEMY_DUPLICANT") == nil then
+					output = output .. EnemyUpgradeOverhaul.HiddenDropText.Value
+				else
+					output = output .. EnemyUpgradeOverhaul.HiddenShadowDropText.Value
+				end
 			end
 			isTagged = true
 		end
@@ -107,7 +129,7 @@ local function LLENEMY_StatusGetDescriptionParam(status, obj1, obj2, param)
 		target = obj1
 		statusSource = obj2
 	end
-	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource)..")["..tostring(statusSource.NetID).."] character("..tostring(character)..")["..tostring(character.NetID).."] param("..tostring(param)..")")
+	LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource.Name)..")["..tostring(statusSource.NetID).."] character("..tostring(target.Name)..")["..tostring(target.NetID).."] param("..tostring(param)..")")
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
 		if target.Character ~= nil then
@@ -131,3 +153,8 @@ local function SkillGetDescriptionParam(skill, character, param)
 
 end
 --Ext.RegisterListener("SkillGetDescriptionParam", SkillGetDescriptionParam)
+
+Ext.RegisterNetListener("LLENEMY_SetHighestLoremaster", function(call, valStr)
+	LeaderLib.Print("[LLENEMY_Shared.lua:LLENEMY_SetHighestLoremaster] Set highest loremaster value to ("..valStr..") on client.")
+	EnemyUpgradeOverhaul.HighestLoremaster = math.tointeger(valStr)
+end)
