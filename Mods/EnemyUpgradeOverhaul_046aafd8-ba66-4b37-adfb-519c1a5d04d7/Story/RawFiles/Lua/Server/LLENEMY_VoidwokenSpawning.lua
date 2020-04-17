@@ -218,8 +218,8 @@ function LLENEMY_Ext_SpawnVoidwoken(source,testing,totalPoints)
 				local x,y,z = GetPosition(source)
 				local voidwoken = CharacterCreateAtPosition(x, y, z, entry:GetTemplate(), 1)
 				SetFaction(voidwoken, "Evil NPC")
-				TeleportToRandomPosition(voidwoken, 16.0, "")
 				LLENEMY_Ext_ClearGain(voidwoken)
+				TeleportToRandomPosition(voidwoken, 12.0, "")
 				if ObjectExists(voidwoken) == 0 then
 					LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] Failed to spawn voidwoken at (",x,y,z,")")
 				else
