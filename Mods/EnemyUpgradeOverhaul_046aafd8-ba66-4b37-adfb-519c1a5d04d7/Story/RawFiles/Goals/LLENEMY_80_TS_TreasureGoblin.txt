@@ -86,12 +86,14 @@ NOT DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin);
 //RemoveTemporaryCharacter(_Goblin);
 LLENEMY_Rewards_TreasureGoblin_ToggleScript(0);
 
+/*
 IF
 ObjectEnteredCombat((CHARACTERGUID)_Goblin, _)
 AND
 DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin)
 THEN
 JumpToTurn(_Goblin);
+*/
 
 IF
 RegionEnded(_)
