@@ -158,6 +158,14 @@ object category "T_ST_WeaponRare",1,0,0,0,0,0,0,0
 object category "T_ST_ArmorRare",1,0,0,0,0,0,0,0
 object category "T_ST_RingAmuletBeltRare",1,0,0,0,0,0,0,0
 
+new treasuretable "ST_LLENEMY_ShadowOrbArmor"
+new subtable "1,1"
+object category "T_ST_LightArmor",1,0,0,0,0,0,0,0
+object category "T_ST_ClothArmor",1,0,0,0,0,0,0,0
+object category "T_ST_HeavyArmor",1,0,0,0,0,0,0,0
+object category "T_ST_MageArmor",1,0,0,0,0,0,0,0
+object category "T_ST_RingAmuletBelt",1,0,0,0,0,0,0,0
+
 new treasuretable "LLENEMY_ShadowOrbRewards"
 new subtable "1,1"
 StartLevel "1"
@@ -177,11 +185,20 @@ object category "T_ST_WeaponLegendary",1,0,0,0,0,0,0,0
 new subtable "0,1;1,1"
 object category "T_ST_Neo_Gear_Normal",12,0,0,0,0,0,0,0
 new subtable "0,4;1,4"
-object category "T_ST_LightArmor",1,0,0,0,0,0,0,0
-object category "T_ST_ClothArmor",1,0,0,0,0,0,0,0
-object category "T_ST_HeavyArmor",1,0,0,0,0,0,0,0
-object category "T_ST_MageArmor",1,0,0,0,0,0,0,0
-object category "T_ST_RingAmuletBelt",1,0,0,0,0,0,0,0
+StartLevel "1"
+EndLevel "8"
+object category "T_ST_LLENEMY_ShadowOrbArmor",1,0,1,0,0,0,0,0
+new subtable "1,1"
+StartLevel "9"
+EndLevel "12"
+object category "T_ST_LLENEMY_ShadowOrbArmor",1,0,0,1,0,0,0,0
+new subtable "1,1"
+StartLevel "13"
+EndLevel "15"
+object category "T_ST_LLENEMY_ShadowOrbArmor",1,0,0,0,1,0,0,0
+new subtable "1,1"
+StartLevel "16"
+object category "T_ST_LLENEMY_ShadowOrbArmor",1,0,0,0,0,1,0,0
 new subtable "0,8;1,2"
 object category "T_ST_SkillbookSummoning",10,0,0,0,0,0,0,0
 object category "T_ST_SkillbookLate",1,0,0,0,0,0,0,0
