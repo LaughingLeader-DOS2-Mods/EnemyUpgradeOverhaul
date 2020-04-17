@@ -9,6 +9,7 @@ THEN
 LLENEMY_Upgrades_AddGroup("Duplication", "LLENEMY_DuplicationUpgradesDisabled", "LLENEMY_DuplicationRolled", "LLENEMY_DuplicationUpgradeAdded");
 LLENEMY_Upgrades_AddType("Duplication", "Elite", 1, 30, 8);
 LLENEMY_Upgrades_AddType("Duplication", "Normal", 750, 800, 5);
+LLENEMY_Upgrades_AddType("Duplication", "Weak", 950, 999, 3);
 
 // Hard Mode
 PROC
@@ -16,7 +17,8 @@ LLENEMY_Upgrades_RegisterAll(1)
 THEN
 LLENEMY_Upgrades_AddGroup("Duplication", "LLENEMY_DuplicationUpgradesDisabled", "LLENEMY_DuplicationRolled", "LLENEMY_DuplicationUpgradeAdded");
 LLENEMY_Upgrades_AddType("Duplication", "Elite", 1, 120, 8);
-LLENEMY_Upgrades_AddType("Duplication", "Normal", 650, 850, 5);
+LLENEMY_Upgrades_AddType("Duplication", "Normal", 400, 520, 5);
+LLENEMY_Upgrades_AddType("Duplication", "Weak", 750, 850, 3);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Elite", 0)
@@ -33,9 +35,13 @@ LLENEMY_Upgrades_AddStatus("Duplication", "Elite", "LLENEMY_DUPE_ELITE_SINGLE", 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Normal", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAKEST", 499, 2);
-LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAK", 299, 4);
-LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 199, 6);
+LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_SAME", 999, 6);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Duplication", "Weak", (INTEGER)_HardModeEnabled)
+THEN
+LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAKEST", 399, 2);
+LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAK", 599, 4);
 //END_REGION
 
 //REGION SAVE_FIX
@@ -85,9 +91,7 @@ LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Duplication", (S
 AND
 IsBoss(_Enemy, _IsBoss)
 AND
-LLENEMY_Duplication_QRY_CanSpawnDuplicant(_Enemy, _IsBoss)
-AND
-DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+NOT LLENEMY_Duplication_QRY_CanSpawnDuplicant(_Enemy, _IsBoss)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Duplication", _Type);
 
@@ -191,6 +195,8 @@ NRD_IterateStatuses(_Source, "LLENEMY_Dupe_CopyStatus");
 
 IF
 NRD_StatusIteratorEvent("LLENEMY_Dupe_CopyStatus", (CHARACTERGUID)_Source, _Status, _Handle)
+AND
+NOT DB_LeaderLib_EngineStatus(_Status)
 AND
 NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
 AND
