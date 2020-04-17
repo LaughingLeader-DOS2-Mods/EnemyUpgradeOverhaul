@@ -217,7 +217,7 @@ function LLENEMY_Ext_SpawnVoidwoken(source,testing,totalPoints)
 			if testing ~= true then
 				local x,y,z = GetPosition(source)
 				local voidwoken = CharacterCreateAtPosition(x, y, z, entry:GetTemplate(), 1)
-				SetFaction(voidwoken, "Evil NPC")
+				SetFaction(voidwoken, "RC_Voidwoken")
 				LLENEMY_Ext_ClearGain(voidwoken)
 				TeleportToRandomPosition(voidwoken, 12.0, "")
 				if ObjectExists(voidwoken) == 0 then
