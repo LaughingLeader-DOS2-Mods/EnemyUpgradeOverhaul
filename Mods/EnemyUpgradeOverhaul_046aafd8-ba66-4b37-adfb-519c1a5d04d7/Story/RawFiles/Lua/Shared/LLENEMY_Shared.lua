@@ -4,6 +4,7 @@ EnemyUpgradeOverhaul = {
 	EnemySkills = {},
 	StatusDescriptionParams = {},
 	SINGLEPLAYER = false,
+	HighestLoremaster = 0,
 	InvisibleStatuses = {
 		["SNEAKING"] = true,
 		["INVISIBLE"] = true,
@@ -11,7 +12,10 @@ EnemyUpgradeOverhaul = {
 	ExtraData = {
 		LLENEMY_Counter_MaxChance = 75,
 	},
-	VoiceMetaData = {}
+	VoiceMetaData = {},
+	Commands = {
+		CHECKLOREMASTER = "CheckLoremaster"
+	}
 }
 
 

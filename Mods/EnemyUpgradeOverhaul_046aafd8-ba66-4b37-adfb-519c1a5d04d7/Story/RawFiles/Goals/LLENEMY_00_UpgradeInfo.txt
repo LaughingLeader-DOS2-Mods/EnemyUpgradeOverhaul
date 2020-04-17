@@ -29,6 +29,34 @@ THEN
 NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", _UUID);
 */
 //END_REGION
+
+//REGION LOREMASTER
+PROC
+LLENEMY_UpgradeInfo_StoreLoremaster((INTEGER)_Lore)
+THEN
+SysClear("DB_LLENEMY_HighestLoremaster", 1);
+DB_LLENEMY_HighestLoremaster(_Lore);
+
+PROC
+LLENEMY_UpgradeInfo_ClearLoremaster()
+AND
+DB_LLENEMY_HighestLoremaster(_Lore)
+THEN
+NOT DB_LLENEMY_HighestLoremaster(_Lore);
+
+/* [OSITOOLS_ONLY]
+IF
+SavegameLoaded(_,_,_,_)
+AND
+DB_LLENEMY_HighestLoremaster(_Lore)
+AND
+_Lore > 0
+AND
+IntegertoString(_Lore, _Highest)
+THEN
+NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster", _Highest);
+*/
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION
