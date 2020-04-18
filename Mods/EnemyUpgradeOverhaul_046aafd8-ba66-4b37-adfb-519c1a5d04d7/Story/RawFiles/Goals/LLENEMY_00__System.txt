@@ -7,20 +7,16 @@ KBSECTION
 PROC
 LLENEMY_System_InitSettings()
 THEN
-SysClear("DB_LLENEMY_EnemyAlignments", 1);
 LLENEMY_System_RegisterAlignments();
-SysClear("DB_LLENEMY_EnemyTags", 1);
 LLENEMY_System_RegisterTags();
-SysClear("DB_LLENEMY_IgnoredDuplicantStatuses", 1);
-SysClear("DB_LLENEMY_IgnoredDuplicantStatusTypes", 1);
 LLENEMY_System_RegisterIgnoredCopyStatuses();
-SysClear("DB_LLENEMY_IgnoredCharacters", 1);
 LLENEMY_System_RegisterIgnoredCharacters();
 
 /* Alignments that are checked to see if a character is an "Enemy", for the purpose of adding upgrades in world commitment mode. */
 PROC
 LLENEMY_System_RegisterAlignments()
 THEN
+SysClear("DB_LLENEMY_EnemyAlignments", 1);
 DB_LLENEMY_EnemyAlignments("Evil");
 DB_LLENEMY_EnemyAlignments("Evil NPC");
 
@@ -28,6 +24,7 @@ DB_LLENEMY_EnemyAlignments("Evil NPC");
 PROC
 LLENEMY_System_RegisterTags()
 THEN
+SysClear("DB_LLENEMY_EnemyTags", 1);
 DB_LLENEMY_EnemyTags("MAGISTER");
 DB_LLENEMY_EnemyTags("AGGRESSIVEANIMAL");
 DB_LLENEMY_EnemyTags("VOIDWOKEN");
@@ -39,6 +36,8 @@ DB_LLENEMY_EnemyTags("AI_PREFERRED_TARGET");
 PROC
 LLENEMY_System_RegisterIgnoredCopyStatuses()
 THEN
+SysClear("DB_LLENEMY_IgnoredDuplicantStatuses", 1);
+SysClear("DB_LLENEMY_IgnoredDuplicantStatusTypes", 1);
 DB_LLENEMY_IgnoredDuplicantStatuses("NULL");
 DB_LLENEMY_IgnoredDuplicantStatuses("LLENEMY_UPGRADE_INFO");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("BLIND");
@@ -52,6 +51,7 @@ DB_LLENEMY_IgnoredDuplicantStatusTypes("MUTED");
 PROC
 LLENEMY_System_RegisterIgnoredCharacters()
 THEN
+SysClear("DB_LLENEMY_IgnoredCharacters", 1);
 DB_LLENEMY_IgnoredCharacters((CHARACTERGUID)CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551ef45d338);
 
 PROC
