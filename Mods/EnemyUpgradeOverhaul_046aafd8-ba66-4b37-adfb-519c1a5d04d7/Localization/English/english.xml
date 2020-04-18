@@ -149,6 +149,9 @@
 	<content contentuid="h8c7cfc30gfa1ag46b8ga23bg524410b565c8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage4">Rage (IV)</content>
 	<content contentuid="h90ef8331gf15cg484egaefbgcbd1109a8698" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage5">Rage (V)</content>
 	<content contentuid="h5b62279dg9bebg46c7g83f6gd05c7a9c9310" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_RangerRange">Talent: Quickdraw</content>
+	<content contentuid="h87d1a253g6ec1g4352g96ffg856537b4759c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ReflectShadowLarge">Shadow Reflection</content>
+	<content contentuid="h235cb048g7496g49acg9f6fg141610416505" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ReflectShadowMedium">Shadow Reflection</content>
+	<content contentuid="h4c9f3466gccd0g48bfg9e37gc1c23bacb69a" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ReflectShadowSmall">Shadow Reflection</content>
 	<content contentuid="h5c8f7ecbg1aecg45f9g8be1gde4a3e95d448" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Seeker">Seeker</content>
 	<content contentuid="ha01be380g46ddg41a4g8408g41eb724325d2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_SeekerDisabled">Seeker (Disabled)</content>
 	<content contentuid="h24701ed8gaeeag41d9gb1d8g1ff3f96f2abc" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_BullyDamageBonus">Talent: Bully</content>
@@ -230,6 +233,9 @@
 	<content contentuid="h7987a4c4ge79ag4b93gbb98g63644b6ab4ef" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE3_DisplayName">Rage (III)</content>
 	<content contentuid="h752158cdg06beg4034gaddeg66921ff01d83" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE4_DisplayName">Rage (IV)</content>
 	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE5_DisplayName">Rage (V)</content>
+	<content contentuid="h24c8d0feg3b3dg40fcgb813g4f28db83b05b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_LARGE_DisplayName">Reflect 30% of Melee Damage as Shadow Damage</content>
+	<content contentuid="h5ec49a5ag418ag4d15ga917g2a406406060f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_MEDIUM_DisplayName">Reflect 20% of Melee Damage as Shadow Damage</content>
+	<content contentuid="hff952d5dgebedg4f53ga10fg1bd872871cee" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_SMALL_DisplayName">Reflect 10% of Melee Damage as Shadow Damage</content>
 	<content contentuid="hc505e9aagab98g49e8g8777g72eb60325a35" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_Description">Character will discover hidden enemies while in combat.&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Stealthed and Invisible enemies within 4m are revealed.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF3333&apos;&gt;Becoming Drunk or disabled temporarily disables a Seeker&apos;s detection.&lt;/font&gt;</content>
 	<content contentuid="hd8f04806g2228g4144g964eg5f6694865d41" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_Description">Character cannot discover hidden enemies while disabled/drunk.</content>
 	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_DisplayName">Seeker (Disabled)</content>
@@ -305,4 +311,10 @@
 	<content contentuid="h662390f7gfd9eg4a56g95e5g658283cc548a" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_ShadowDropText">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Grants Treasure of the Shadow Realm (&lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt;) on death.&lt;/font&gt;</content>
 	<content contentuid="h86cfb164g8505g4e4fg89degcb3c24372f3c" Source="LLENEMY_TreasureGoblin_A">Treasure Goblin</content>
 	<content contentuid="h7c05fad0gf6f3g44c6g8a28g7eb8f9bc548c" Source="S_LLENEMY_LootGeneratorChest">Loot Generator</content>
+	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee" OT="[1] on applying [2]"></content>
+	<content contentuid="h54e0b91cg48a7g4d5agaedcgbde756a109ea" OT="[1]% chance to succeed.">([1]% Chance)</content>
+	<content contentuid="h233bf83cg2204g4f14gb46agad27f95deb43" OT="Set [1].[2][3]">[1][2][3]</content>
+	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135" OT="rot damage">Shadow Damage</content>
+	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8" OT="rot">Shadow</content>
+	<content contentuid="hf4632a8fg42a7g4d53gbe26gd203f28e3d5e" OT="Rot">Shadow</content>
 </contentList>

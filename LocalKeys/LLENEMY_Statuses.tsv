@@ -120,3 +120,6 @@ LLENEMY_SEEKER_Description	Character will discover hidden enemies while in comba
 LLENEMY_SEEKER_DISABLED_DisplayName	Seeker (Disabled)
 LLENEMY_SEEKER_DISABLED_Description	Character cannot discover hidden enemies while disabled/drunk.
 LLENEMY_DEMONIC_HASTED_Description	Character is as quick as a demon.<br><font color='#CD1F1F'>With how fast this character can move, they're almost guaranteed to slip on ice.</font>
+LLENEMY_REFLECT_SHADOW_SMALL_DisplayName	Reflect 10% of Melee Damage as Shadow Damage
+LLENEMY_REFLECT_SHADOW_MEDIUM_DisplayName	Reflect 20% of Melee Damage as Shadow Damage
+LLENEMY_REFLECT_SHADOW_LARGE_DisplayName	Reflect 30% of Melee Damage as Shadow Damage
