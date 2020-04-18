@@ -199,6 +199,8 @@ local nameColors = {
 }
 
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
+local ItemBoost = LeaderLib.Classes["ItemBoost"]
+local ItemBoostGroup = LeaderLib.Classes["ItemBoostGroup"]
 
 local ShadowItemFallbackDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
 local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083gb11964394dc4", ShadowItemFallbackDescription)
@@ -216,14 +218,25 @@ local function RollForBoost(entry)
 	return false
 end
 
-
 local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	local boosts = {}
 	for i,entry in pairs(boostTable) do
-		if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
-			boosts[#boosts+1] = entry
-		elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
-			boosts[#boosts+1] = entry
+		--Ext.Print(tostring(i)..": "..LeaderLib.Common.Dump(entry))
+		if entry["Entries"] ~= nil then
+			Ext.Print("Value is an ItemBoostGroup.")
+			local ranEntry = entry:GetRandomEntry()
+			if ranEntry.MinLevel <= 0 and ranEntry.MaxLevel <= 0 then
+				boosts[#boosts+1] = ranEntry
+			elseif level >= ranEntry.MinLevel and (level <= ranEntry.MaxLevel or ranEntry.MaxLevel <= 0) then
+				boosts[#boosts+1] = ranEntry
+			end
+		else
+			Ext.Print("Value is an ItemBoost.")
+			if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
+				boosts[#boosts+1] = entry
+			elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
+				boosts[#boosts+1] = entry
+			end
 		end
 	end
 	LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Boosts:\n" .. LeaderLib.Common.Dump(boosts))
@@ -251,8 +264,11 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 		local entry = LeaderLib.Common.GetRandomTableEntry(boosts)
 		if entry ~= nil then
 			NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
-			LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+			LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding fallback deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 		end
+	end
+	if statType == "Shield" then
+		NRD_ItemCloneAddBoost("DeltaMod", "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage")
 	end
 end
 
@@ -360,31 +376,35 @@ local function ShadowCorruptItem(uuid, container)
 		local item = Ext.GetItem(uuid)
 		local stat = item.StatsId
 		local statType = NRD_StatGetType(stat)
-		if statType == "Weapon" or statType == "Armor" then
+		if statType == "Weapon" or statType == "Armor" or statType == "Shield" then
 			local equippedSlot = Ext.StatGetAttribute(stat, "Slot")
 			LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
 			if ignoredSlots[equippedSlot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
-				if item.Slot > 13 and EnemyUpgradeOverhaul.CorruptionBoosts[statType] ~= nil then
-					local cloned = GetClone(uuid, stat, statType)
-					if container == nil and ItemIsInInventory(uuid) then
-						container = GetInventoryOwner(uuid)
-						if container == nil then
-							container = NRD_ItemGetParent(uuid)
+				if item.Slot > 13 then
+					if EnemyUpgradeOverhaul.CorruptionBoosts[statType] ~= nil then
+						local cloned = GetClone(uuid, stat, statType)
+						if container == nil and ItemIsInInventory(uuid) then
+							container = GetInventoryOwner(uuid)
+							if container == nil then
+								container = NRD_ItemGetParent(uuid)
+							end
 						end
-					end
-					if container ~= nil then
-						ItemToInventory(cloned, container, 1, 0, 0)
+						if container ~= nil then
+							ItemToInventory(cloned, container, 1, 0, 0)
+						else
+							local x,y,z = GetPosition(uuid)
+							if x == nil or y == nil or z == nil then
+								x,y,z = GetPosition(CharacterGetHostCharacter())
+							end
+							TeleportToPosition(cloned, x,y,z, "", 0, 1)
+						end
+						ItemRemove(uuid)
+						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(cloned)..")")
+						return cloned
+						--NRD_ItemSetIdentified(cloned, 1)
 					else
-						local x,y,z = GetPosition(uuid)
-						if x == nil or y == nil or z == nil then
-							x,y,z = GetPosition(CharacterGetHostCharacter())
-						end
-						TeleportToPosition(cloned, x,y,z, "", 0, 1)
+						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] No boosts table for type ("..tostring(statType)..")")
 					end
-					ItemRemove(uuid)
-					LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(cloned)..")")
-					return cloned
-					--NRD_ItemSetIdentified(cloned, 1)
 				end
 			elseif item.Slot > 13 then -- Not equipped
 				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] Deleting ("..uuid..") Stat("..tostring(stat)..") since it's an item that shouldn't be given to players.")
