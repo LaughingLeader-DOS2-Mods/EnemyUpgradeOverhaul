@@ -95,6 +95,7 @@ ON
 ACTIONS
 	Interrupt("LLENEMY_TreasureGoblin_FearFlee")
 	SetPriority("LLENEMY_TreasureGoblin_FearFlee", 0)
+	EndTurn(__Me)
 	SetPriority("LLENEMY_TreasureGoblin_Leaving", 99998)
 
 EVENT LLENEMY_TreasureGoblin_Leave
@@ -103,7 +104,9 @@ ON
 ACTIONS
 	SetInvulnerable(__Me, 1)
 	Set(%LLENEMY_TreasureGoblin_PlayingAnim, 1)
+	Interrupt("LLENEMY_TreasureGoblin_FearFlee")
 	SetPriority("LLENEMY_TreasureGoblin_FearFlee", 0)
+	EndTurn(__Me)
 	SetPriority("LLENEMY_TreasureGoblin_Leaving", 0)
 	SetPriority("LLENEMY_TreasureGoblin_Dance", 99999)
 
@@ -145,26 +148,21 @@ REACTION LLENEMY_TreasureGoblin_FearFlee, 99997
 USAGE COMBAT
 
 ACTIONS
+CharacterFleeFrom(All,30)
 IF "c1&!c2"
 	IsInActiveTurn(__Me)
 	CharacterIsDead(__Me)
 THEN
-	CharacterFleeFrom(All,30)
 	EndTurn(__Me)
 ENDIF
 INTERRUPT
-ON
-	OnMovementFailed(_)
-	OnBetterReactionFound(_)
-	OnManualInterrupt(_)
 ACTIONS
 IF "c1"
 	IsInActiveTurn(__Me)
 THEN
 	EndTurn(__Me)
-ELSE
-	Reset()
 ENDIF
+	Reset()
 
 REACTION LLENEMY_TreasureGoblin_Leaving, 0
 USAGE ALL
