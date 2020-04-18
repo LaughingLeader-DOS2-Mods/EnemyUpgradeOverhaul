@@ -54,3 +54,39 @@ param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Armor"
 new boost "_Boost_Armor_Amulet_Ability_Sneaking_Large",1
+
+new deltamod "LLENEMY_Boost_Armor_Ability_Lockpicking"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_Boost_Armor_Amulet_Ability_Lockpicking",1
+
+new deltamod "LLENEMY_Boost_Armor_Ability_Lockpicking_Medium"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_Boost_Armor_Amulet_Ability_Lockpicking_Medium",1
+
+new deltamod "LLENEMY_Boost_Armor_Ability_Lockpicking_Large"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_Boost_Armor_Amulet_Ability_Lockpicking_Large",1
+
+new deltamod "LLENEMY_Boost_Armor_PhysicalResistance"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_LLENEMY_Boost_Armor_PhysicalResistance",1
+
+new deltamod "LLENEMY_Boost_Armor_PhysicalResistance_Medium"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_LLENEMY_Boost_Armor_PhysicalResistance_Medium",1
+
+new deltamod "LLENEMY_Boost_Armor_PhysicalResistance_Large"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_LLENEMY_Boost_Armor_PhysicalResistance_Large",1

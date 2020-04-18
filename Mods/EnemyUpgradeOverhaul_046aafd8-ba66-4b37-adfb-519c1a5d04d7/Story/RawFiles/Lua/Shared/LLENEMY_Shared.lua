@@ -15,7 +15,8 @@ EnemyUpgradeOverhaul = {
 	VoiceMetaData = {},
 	Commands = {
 		CHECKLOREMASTER = "CheckLoremaster"
-	}
+	},
+	CorruptionBoosts = { All = {}, Weapon = {}, Armor = {}, Shield = {}}
 }
 
 

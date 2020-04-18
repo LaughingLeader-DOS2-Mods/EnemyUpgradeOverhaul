@@ -199,76 +199,69 @@ local nameColors = {
 }
 
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
-local ItemBoost = LeaderLib.Classes["ItemBoost"]
 
 local ShadowItemFallbackDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
 local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083gb11964394dc4", ShadowItemFallbackDescription)
 
+local function RollForBoost(entry)
+	if entry.Chance < 100 and entry.Chance > 0 then
+		local roll = Ext.Random(1,100)
+		LeaderLib.Print("[LLENEMY_ItemCorruption.lua:RollForBoost] Roll for ("..entry.Boost.."): ".. tostring(roll).."/"..tostring(entry.Chance))
+		if roll <= entry.Chance then
+			return true
+		end
+	else
+		return true
+	end
+	return false
+end
 
-local BOOSTS = {
-	Weapon = {
-		ItemBoost:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Small", "DeltaMod", 0),
-		ItemBoost:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Medium", "DeltaMod", 8),
-		ItemBoost:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Large", "DeltaMod", 12)
-	},
-	Shield = {
-		ItemBoost:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage", "DeltaMod", 0),
-		ItemBoost:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium", "DeltaMod", 8),
-		ItemBoost:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large", "DeltaMod", 12)
-	},
-	Armor = {
-
-		ItemBoost:Create("LLENEMY_Boost_Armor_Ability_Sneaking", "DeltaMod", 0),
-		ItemBoost:Create("LLENEMY_Boost_Armor_Ability_Sneaking_Medium", "DeltaMod", 8),
-		ItemBoost:Create("LLENEMY_Boost_Armor_Ability_Sneaking_Large", "DeltaMod", 12)
-	},
-	All = {
-		ItemBoost:Create("Small", "Generation"),
-		ItemBoost:Create("Normal", "Generation"),
-		ItemBoost:Create("Large", "Generation"),
-		ItemBoost:Create("Base", "Generation"),
-		ItemBoost:Create("BaseUncommon", "Generation"),
-		ItemBoost:Create("RuneEmpty", "Generation", 4),
-		ItemBoost:Create("BaseRare", "Generation", 6),
-		ItemBoost:Create("Primary", "Generation", 8),
-		ItemBoost:Create("Legendary", "Generation", 16),
-	}
-}
 
 local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	local boosts = {}
 	for i,entry in pairs(boostTable) do
 		if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
-			boosts[#boosts+1] = entry.Boost
+			boosts[#boosts+1] = entry
 		elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
-			boosts[#boosts+1] = entry.Boost
+			boosts[#boosts+1] = entry
 		end
 	end
+	LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Boosts:\n" .. LeaderLib.Common.Dump(boosts))
 	local boostCount = #boosts
-	local deltaMod = nil
+	local boostAdded = false
 	if boostCount == 1 then
-		deltaMod = boosts[1]
-	elseif boostCount > 0 then
-		for i=0,boostCount,1 do
-			if Ext.Random(1,100) <= 75 then
-				deltaMod = LeaderLib.Common.PopRandomTableEntry(boosts)
-				if deltaMod ~= nil then
-					NRD_ItemCloneAddBoost(deltaMod.Type, deltaMod.Boost)
-					if Ext.IsDeveloperMode() then
-						LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:AddRandomBoosts] Adding deltamod ("..deltaMod.Type,deltaMod.Boost..") to item ["..item.."]("..stat..") at level ("..tostring(level)..")")
-					end
-				end
+		local entry = boosts[1]
+		if entry ~= nil then
+			if RollForBoost(entry) then
+				NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+				boostAdded = true
 			end
+		end
+	elseif boostCount > 0 then
+		for i,entry in pairs(boosts) do
+			if RollForBoost(entry) then
+				NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+				boostAdded = true
+			end
+		end
+	end
+	if not boostAdded then
+		local entry = LeaderLib.Common.GetRandomTableEntry(boosts)
+		if entry ~= nil then
+			NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+			LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 		end
 	end
 end
 
 local function AddRandomBoosts(item,stat,statType,level)
-	local boostTable = BOOSTS[statType]
+	local boostTable = EnemyUpgradeOverhaul.CorruptionBoosts[statType]
 	if boostTable ~= nil then
 		AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	end
-	AddRandomBoostsFromTable(item,stat,statType,level,BOOSTS.All)
+	--AddRandomBoostsFromTable(item,stat,statType,level,EnemyUpgradeOverhaul.CorruptionBoosts.All)
 end
 
 local function SetRandomShadowName(item,statType)
@@ -371,7 +364,7 @@ local function ShadowCorruptItem(uuid, container)
 			local equippedSlot = Ext.StatGetAttribute(stat, "Slot")
 			LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
 			if ignoredSlots[equippedSlot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
-				if item.Slot > 13 and BOOSTS[statType] ~= nil then
+				if item.Slot > 13 and EnemyUpgradeOverhaul.CorruptionBoosts[statType] ~= nil then
 					local cloned = GetClone(uuid, stat, statType)
 					if container == nil and ItemIsInInventory(uuid) then
 						container = GetInventoryOwner(uuid)

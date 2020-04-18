@@ -32,9 +32,57 @@ end
 Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
 
 -- Ignored skills support example
--- local function MyMod_Server_SessionLoading()
--- 	if EnemyUpgradeOverhaul ~= nil and EnemyUpgradeOverhaul.IgnoredSkills ~= nil then
--- 		EnemyUpgradeOverhaul.IgnoredSkills["MySkillEntry"] = true
--- 	end
--- end
--- Ext.RegisterListener("SessionLoading", MyMod_Server_SessionLoading)
+local function LLENEMY_Server_SessionLoading()
+	local ItemBoost = LeaderLib.Classes["ItemBoost"]
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create{"LLENEMY_Boost_Weapon_Damage_Shadow_Small"})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create{"LLENEMY_Boost_Weapon_Damage_Shadow_Medium", MinLevel=8})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create{"LLENEMY_Boost_Weapon_Damage_Shadow_Large", MinLevel=12})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create{"Boost_Weapon_Secondary_Vitality_Small", Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create{"Boost_Weapon_Secondary_Vitality_Normal", MinLevel=6, Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create{"Boost_Weapon_Status_Set_Suffocating", MinLevel=13, Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create{"Boost_Weapon_LifeSteal", Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create{"Boost_Weapon_LifeSteal_Large", MinLevel=12, Chance=50})
+
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage"})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium", MinLevel=8})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large", MinLevel=12})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"Boost_Shield_Secondary_ChillContact", Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"Boost_Shield_Secondary_PoisonContact", Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"Boost_Shield_Secondary_BurnContact", Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"Boost_Shield_Secondary_PainReflection", Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"Boost_Shield_Special_Block_Shield", Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"Boost_Shield_Special_Block_Shield_Medium", MinLevel=8, Chance=20})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Shield, ItemBoost:Create{"Boost_Shield_Special_Block_Shield_Large", MinLevel=12, Chance=15})
+
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_Ability_Sneaking", Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_Ability_Sneaking_Medium", MinLevel=8, Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_Ability_Sneaking_Large", MinLevel=12, Chance=25})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_Ability_Lockpicking", Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_Ability_Lockpicking_Medium", MinLevel=8, Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_Ability_Lockpicking_Large", MinLevel=12, Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_PhysicalResistance", Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_PhysicalResistance_Medium", MinLevel=8, Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"LLENEMY_Boost_Armor_PhysicalResistance_Large", MinLevel=12, Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"Boost_Armor_Pants_Ability_Death", Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"Boost_Armor_Pants_Ability_Death_Medium", MinLevel=8, Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"Boost_Armor_Pants_Ability_Death_Large", MinLevel=12, Chance=50})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"Boost_Armor_Pants_Skill_BloodBubble", Chance=20})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"Boost_Armor_Pants_Immunity_Frozen_And_Chilled", Chance=5})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"Boost_Armor_Pants_Immunity_KnockedDown_And_Crippled", Chance=5})
+	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Armor, ItemBoost:Create{"Boost_Armor_Pants_Crafting_Special_Ataraxian", MinLevel=16, Chance=10})
+
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"Small"})
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"Normal"})
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"Large"})
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"Base"})
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"BaseUncommon"})
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"RuneEmpty", MinLevel=4})
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"BaseRare", MinLevel=6})
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"Primary", MinLevel=8})
+	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create{"Legendary", MinLevel=16})
+
+	LeaderLib.Print("[LLENEMY_ItemCorruption.lua] Boosts:\n" .. LeaderLib.Common.Dump(EnemyUpgradeOverhaul.CorruptionBoosts))
+
+end
+Ext.RegisterListener("SessionLoading", LLENEMY_Server_SessionLoading)
+Ext.RegisterListener("SessionLoaded", function() Ext.GenerateIdeHelpers(); end)
