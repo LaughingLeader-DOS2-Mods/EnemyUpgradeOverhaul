@@ -419,16 +419,13 @@ local function ShadowCorruptItem(uuid, container)
 	end
 end
 
-local function LLENEMY_ShadowCorruptItem_Error (x)
-	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(x))
-	return false
-end
-
 function LLENEMY_Ext_ShadowCorruptItem(item)
 	local container = GetInventoryOwner(item)
-	local b,result = xpcall(ShadowCorruptItem, LLENEMY_ShadowCorruptItem_Error, item, container)
+	local b,result = xpcall(ShadowCorruptItem, debug.traceback, item, container)
 	if b then
 		return result
+	else
+		LeaderLib.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
 	end
 	return nil
 end
