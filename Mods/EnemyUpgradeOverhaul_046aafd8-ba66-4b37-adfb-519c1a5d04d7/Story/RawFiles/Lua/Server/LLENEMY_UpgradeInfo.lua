@@ -25,11 +25,27 @@ end
 
 function LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid)
 	if HasUpgrades(uuid) then
-		if HasActiveStatus(uuid, "LLENEMY_UPGRADE_INFO") == 0 then
-			ApplyStatus(uuid, "LLENEMY_UPGRADE_INFO", -1.0, 0, uuid);
-		end
+		ApplyStatus(uuid, "LLENEMY_UPGRADE_INFO", -1.0, 1, uuid)
 	else
 		RemoveStatus(uuid, "LLENEMY_UPGRADE_INFO");
+	end
+end
+
+function LLENEMY_Ext_UpgradeInfo_RefreshInfoStatuses()
+	local combatCharacters = Osi.DB_CombatCharacters:Get(nil,nil)
+	if #combatCharacters > 0 then
+		for i,entry in pairs(combatCharacters) do
+			local uuid = entry[1]
+			if HasActiveStatus(uuid, "LLENEMY_UPGRADE_INFO") == 1 then
+				--local handle = NRD_StatusGetHandle(uuid, "LLENEMY_UPGRADE_INFO")
+				--NRD_StatusSetReal(uuid, handle, "LifeTime", 24.0)
+				--NRD_StatusSetReal(uuid, handle, "CurrentLifeTime", 24.0)
+				--NRD_StatusSetReal(uuid, handle, "LifeTime", -1.0)
+				--NRD_StatusSetReal(uuid, handle, "CurrentLifeTime", -1.0)
+				ApplyStatus(uuid, "LLENEMY_UPGRADE_INFO", -1.0, 1, uuid)
+			end
+		end
+		LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:RefreshInfoStatuses] Refreshed upgrade info on characters in combat.")
 	end
 end
 
@@ -51,6 +67,7 @@ function LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster(highest)
 	local highestStr = tostring(highest)
 	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", highestStr, nil)
 	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highestStr..")")
+	LLENEMY_Ext_UpgradeInfo_RefreshInfoStatuses()
 end
 
 local function TimerFinished(event, ...)
