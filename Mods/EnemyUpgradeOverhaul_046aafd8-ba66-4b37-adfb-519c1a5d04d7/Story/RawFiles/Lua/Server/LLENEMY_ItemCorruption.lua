@@ -199,52 +199,76 @@ local nameColors = {
 }
 
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
+local ItemBoost = LeaderLib.Classes["ItemBoost"]
 
 local ShadowItemFallbackDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
 local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083gb11964394dc4", ShadowItemFallbackDescription)
 
+
 local BOOSTS = {
 	Weapon = {
-		{MinLevel = 0, Boost = "LLENEMY_Boost_Weapon_Damage_Shadow_Small"},
-		{MinLevel = 8, Boost = "LLENEMY_Boost_Weapon_Damage_Shadow_Medium"},
-		{MinLevel = 12, Boost = "LLENEMY_Boost_Weapon_Damage_Shadow_Large"},
+		ItemBoost:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Small", "DeltaMod", 0),
+		ItemBoost:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Medium", "DeltaMod", 8),
+		ItemBoost:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Large", "DeltaMod", 12)
 	},
 	Shield = {
-		{MinLevel = 0, Boost = "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage"},
-		{MinLevel = 8, Boost = "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium"},
-		{MinLevel = 12, Boost = "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large"},
+		ItemBoost:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage", "DeltaMod", 0),
+		ItemBoost:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium", "DeltaMod", 8),
+		ItemBoost:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large", "DeltaMod", 12)
 	},
 	Armor = {
-		{MinLevel = 0, Boost = "LLENEMY_Boost_Armor_Ability_Sneaking"},
-		{MinLevel = 8, Boost = "LLENEMY_Boost_Armor_Ability_Sneaking_Medium"},
-		{MinLevel = 12, Boost = "LLENEMY_Boost_Armor_Ability_Sneaking_Large"},
+
+		ItemBoost:Create("LLENEMY_Boost_Armor_Ability_Sneaking", "DeltaMod", 0),
+		ItemBoost:Create("LLENEMY_Boost_Armor_Ability_Sneaking_Medium", "DeltaMod", 8),
+		ItemBoost:Create("LLENEMY_Boost_Armor_Ability_Sneaking_Large", "DeltaMod", 12)
+	},
+	All = {
+		ItemBoost:Create("Small", "Generation"),
+		ItemBoost:Create("Normal", "Generation"),
+		ItemBoost:Create("Large", "Generation"),
+		ItemBoost:Create("Base", "Generation"),
+		ItemBoost:Create("BaseUncommon", "Generation"),
+		ItemBoost:Create("RuneEmpty", "Generation", 4),
+		ItemBoost:Create("BaseRare", "Generation", 6),
+		ItemBoost:Create("Primary", "Generation", 8),
+		ItemBoost:Create("Legendary", "Generation", 16),
 	}
 }
+
+local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
+	local boosts = {}
+	for i,entry in pairs(boostTable) do
+		if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
+			boosts[#boosts+1] = entry.Boost
+		elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
+			boosts[#boosts+1] = entry.Boost
+		end
+	end
+	local boostCount = #boosts
+	local deltaMod = nil
+	if boostCount == 1 then
+		deltaMod = boosts[1]
+	elseif boostCount > 0 then
+		for i=0,boostCount,1 do
+			if Ext.Random(1,100) <= 75 then
+				deltaMod = LeaderLib.Common.PopRandomTableEntry(boosts)
+				if deltaMod ~= nil then
+					NRD_ItemCloneAddBoost(deltaMod.Type, deltaMod.Boost)
+					if Ext.IsDeveloperMode() then
+						LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:AddRandomBoosts] Adding deltamod ("..deltaMod.Type,deltaMod.Boost..") to item ["..item.."]("..stat..") at level ("..tostring(level)..")")
+					end
+				end
+			end
+		end
+	end
+end
 
 local function AddRandomBoosts(item,stat,statType,level)
 	local boostTable = BOOSTS[statType]
 	if boostTable ~= nil then
-		local boosts = {}
-		for i,entry in pairs(boostTable) do
-			if entry.MinLevel >= level then
-				boosts[#boosts+1] = entry.Boost
-			end
-		end
-		local boostCount = #boosts
-		local deltaMod = nil
-		if boostCount == 1 then
-			deltaMod = boosts[1]
-		elseif boostCount > 0 then
-			deltaMod = LeaderLib.Common.GetRandomTableEntry(boosts)
-		end
-
-		if deltaMod ~= nil then
-			NRD_ItemCloneAddBoost("DeltaMod", deltaMod)
-			if Ext.IsDeveloperMode() then
-				LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:AddRandomBoosts] Adding deltamod ("..deltaMod..") to item ["..item.."]("..stat..") at level ("..tostring(level)..")")
-			end
-		end
+		AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	end
+	AddRandomBoostsFromTable(item,stat,statType,level,BOOSTS.All)
 end
 
 local function SetRandomShadowName(item,statType)
