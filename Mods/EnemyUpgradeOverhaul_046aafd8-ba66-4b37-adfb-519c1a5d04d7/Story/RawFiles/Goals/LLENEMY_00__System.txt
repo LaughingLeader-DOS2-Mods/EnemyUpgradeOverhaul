@@ -40,6 +40,7 @@ PROC
 LLENEMY_System_RegisterIgnoredCopyStatuses()
 THEN
 DB_LLENEMY_IgnoredDuplicantStatuses("NULL");
+DB_LLENEMY_IgnoredDuplicantStatuses("LLENEMY_UPGRADE_INFO");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("BLIND");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("CHARMED");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("DAMAGE_ON_MOVE");
