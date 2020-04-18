@@ -236,8 +236,21 @@ local function LLENEMY_DebugInit()
 		-- end
 		-- LLENEMY_Ext_CheckFactions()
 		local x,y,z = GetPosition(host)
+		-- Weapon
 		local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
 		local shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
+		if shadowItem ~= nil then
+			ItemToInventory(shadowItem, host, 1, 1, 1)
+		end
+		-- Helmet
+		item = CreateItemTemplateAtPosition("fa3f2b84-46da-43b7-afb3-0a4481290dab", x, y, z)
+		shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
+		if shadowItem ~= nil then
+			ItemToInventory(shadowItem, host, 1, 1, 1)
+		end
+		-- Shield
+		item = CreateItemTemplateAtPosition("08854157-2996-449a-bde0-083277ca1119", x, y, z)
+		shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
 		if shadowItem ~= nil then
 			ItemToInventory(shadowItem, host, 1, 1, 1)
 		end
