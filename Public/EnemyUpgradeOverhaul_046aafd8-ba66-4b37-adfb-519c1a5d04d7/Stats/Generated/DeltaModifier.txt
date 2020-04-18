@@ -20,21 +20,18 @@ new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Shield"
-param "SlotType" "Shield"
 new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage",1
 
 new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Shield"
-param "SlotType" "Shield"
 new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium",1
 
 new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Shield"
-param "SlotType" "Shield"
 new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large",1
 
 new deltamod "LLENEMY_Boost_Armor_Ability_Sneaking"
