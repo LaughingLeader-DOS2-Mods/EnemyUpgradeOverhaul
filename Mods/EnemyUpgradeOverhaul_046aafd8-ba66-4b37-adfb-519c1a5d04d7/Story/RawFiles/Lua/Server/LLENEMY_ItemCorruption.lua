@@ -218,22 +218,49 @@ local function RollForBoost(entry)
 	return false
 end
 
+local function CanAddBoost(entry, stat, statType)
+	if statType == "Weapon" then
+		local weaponType = Ext.StatGetAttribute(stat, "WeaponType")
+		if Ext.IsDeveloperMode() and Ext.Version() >= 44 and Ext.GetDeltaMod ~= nil then
+			local dm = Ext.GetDeltaMod(entry.Boost, statType)
+			if dm ~= nil then
+				if dm.WeaponType == "Sentinel" or dm.WeaponType == weaponType then
+					return true
+				else
+					return false
+				end
+			else
+				return true
+			end
+		end
+	end
+	return true
+end
+
 local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	local totalBoosts = 0
 	local boosts = {}
 	for i,entry in pairs(boostTable) do
 		if entry["Entries"] ~= nil then
-			local ranEntry = entry:GetRandomEntry()
-			if ranEntry.MinLevel <= 0 and ranEntry.MaxLevel <= 0 then
-				boosts[#boosts+1] = ranEntry
-			elseif level >= ranEntry.MinLevel and (level <= ranEntry.MaxLevel or ranEntry.MaxLevel <= 0) then
-				boosts[#boosts+1] = ranEntry
+			-- Keep trying to get random entries until we find at least one that's valid
+			for k=0,#entry.Entries do
+				local ranEntry = entry:GetRandomEntry()
+				if CanAddBoost(ranEntry, stat, statType) then
+					if ranEntry.MinLevel <= 0 and ranEntry.MaxLevel <= 0 then
+						boosts[#boosts+1] = ranEntry
+					elseif level >= ranEntry.MinLevel and (level <= ranEntry.MaxLevel or ranEntry.MaxLevel <= 0) then
+						boosts[#boosts+1] = ranEntry
+					end
+					break
+				end
 			end
 		else
-			if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
-				boosts[#boosts+1] = entry
-			elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
-				boosts[#boosts+1] = entry
+			if CanAddBoost(entry, stat, statType) then
+				if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
+					boosts[#boosts+1] = entry
+				elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
+					boosts[#boosts+1] = entry
+				end
 			end
 		end
 	end
