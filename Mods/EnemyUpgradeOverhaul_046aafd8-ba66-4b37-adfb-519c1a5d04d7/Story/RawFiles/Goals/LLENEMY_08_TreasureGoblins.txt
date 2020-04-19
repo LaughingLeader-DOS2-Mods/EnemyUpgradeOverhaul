@@ -202,7 +202,7 @@ ItemGetGoldValue(_Item, _Value)
 AND
 _Value >= 250
 THEN
-PlayEffect(_Item, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
+PlayEffect(_Item, "LLENEMY_FX_TreasureGoblin_Loot_Dropped_01");
 //END_REGION
 
 //REGION DEFEATED
@@ -265,6 +265,11 @@ NRD_LuaCall("LLENEMY_Ext_TreasureGoblinDefeated", _UUID);
 */
 
 IF
+StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Defeated")
+THEN
+LeaderLib_Timers_StartObjectTimer(_Goblin, 250, "Timers_LLENEMY_TreasureGoblins_Left", "LLENEMY_TreasureGoblins_Left");
+
+IF
 StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Left")
 THEN
 RemoveHarmfulStatuses(_Goblin);
@@ -318,6 +323,24 @@ IF
 RegionEnded(_)
 THEN
 SysClear("DB_LLENEMY_TreasureGoblins_Temp_AddToSack", 2);
+//END_REGION
+
+//REGION INIT
+IF
+StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_OnInit")
+AND
+LeaderLib_Random_QRY(6,12)
+AND
+DB_LeaderLib_Random(_MaxHits)
+AND
+GetPosition(_Goblin, _x, _y, _z)
+THEN
+NOT DB_LeaderLib_Random(_MaxHits);
+SetVarFloat3(_Goblin, "LLENEMY_TreasureGoblin_StartPos", _x, _y, _z);
+SetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_PlayingAnim", 0);
+SetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_Defeated", 0);
+SetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_TotalHits", 0);
+SetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_MaxTotalHits", _MaxHits);
 //END_REGION
 EXITSECTION
 
