@@ -79,10 +79,20 @@ local ModBoosts = {
 			})
 		},
 		Shield = {
-			ItemBoost:Create("WeaponBoost_Bash", {Chance=2}),
-			ItemBoost:Create("WeaponBoost_EqualizeAllies", {Chance=2}),
-			ItemBoost:Create("MendingShield", {Chance=2}),
-			ItemBoost:Create("ShacklingShield", {Chance=2}),
+			ItemBoostGroup:Create({
+				ItemBoost:Create("WeaponBoost_Bash", {Chance=6}),
+				ItemBoost:Create("WeaponBoost_Defend", {Chance=6}),
+				ItemBoost:Create("WeaponBoost_DefensiveRush", {Chance=6}),
+				ItemBoost:Create("WeaponBoost_AllySwap", {Chance=6}),
+				ItemBoost:Create("WeaponBoost_EqualizeAllies", {Chance=3}),
+				ItemBoost:Create("WeaponBoost_BatteringRam", {Chance=10}),
+			}),
+			ItemBoostGroup:Create({
+				ItemBoost:Create("MendingShield", {Chance=1}),
+				ItemBoost:Create("ShacklingShield", {Chance=1}),
+				ItemBoost:Create("GuardianShield", {Chance=1}),
+				ItemBoost:Create("SoulmateShield", {Chance=1}),
+			})
 		}
 	},
 	--Crafting Overhaul
@@ -144,6 +154,11 @@ local ModBoosts = {
 	}
 }
 
+local function GetDefaultDeltamods()
+	local deltamods = Ext.GetStatEntries("DeltaModifier")
+	Ext.Print("Deltamods:\n" .. LeaderLib.Common.Dump(deltamods))
+end
+
 function LLENEMY_Server_RegisterCorruptionBoosts()
 	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Small"))
 	table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.Weapon, ItemBoost:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Medium", {MinLevel=8}))
@@ -200,6 +215,10 @@ function LLENEMY_Server_RegisterCorruptionBoosts()
 		else
 			LeaderLib.Print("[LLENEMY_ItemCorruptionDeltamods.lua] Mod ("..uuid..") is not active. Skipping deltamod registration.")
 		end
+	end
+
+	if Ext.IsDeveloperMode() and Ext.Version() >= 44 then
+		GetDefaultDeltamods()
 	end
 
 	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, ItemBoost:Create("Small"})
