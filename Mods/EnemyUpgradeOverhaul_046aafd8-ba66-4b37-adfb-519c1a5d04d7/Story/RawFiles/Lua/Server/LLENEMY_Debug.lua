@@ -385,7 +385,7 @@ function LLENEMY_Ext_Debug_PrintItemProperties(obj)
 end
 
 BuiltinColorCodes = {
-    "#FFFFFF",
+    [0] = "#FFFFFF",
     "#454545",
     "#AE9F95",
     "#DBDBDB",
