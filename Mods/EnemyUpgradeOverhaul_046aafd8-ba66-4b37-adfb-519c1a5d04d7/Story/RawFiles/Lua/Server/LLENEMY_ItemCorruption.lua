@@ -221,9 +221,7 @@ end
 local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	local boosts = {}
 	for i,entry in pairs(boostTable) do
-		--Ext.Print(tostring(i)..": "..LeaderLib.Common.Dump(entry))
 		if entry["Entries"] ~= nil then
-			Ext.Print("Value is an ItemBoostGroup.")
 			local ranEntry = entry:GetRandomEntry()
 			if ranEntry.MinLevel <= 0 and ranEntry.MaxLevel <= 0 then
 				boosts[#boosts+1] = ranEntry
@@ -231,7 +229,6 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 				boosts[#boosts+1] = ranEntry
 			end
 		else
-			Ext.Print("Value is an ItemBoost.")
 			if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
 				boosts[#boosts+1] = entry
 			elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
