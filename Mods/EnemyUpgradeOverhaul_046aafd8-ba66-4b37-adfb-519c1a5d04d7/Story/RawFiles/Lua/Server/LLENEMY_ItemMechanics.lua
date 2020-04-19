@@ -27,7 +27,7 @@ local function LLENEMY_TryScatterInventory(uuid)
 						
 						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."] Slot("..tostring(item.Slot)..")")
 						if not string.find(stat, "Gold") and (LLENEMY_ItemIsRare(v, item.ItemType)) then
-							PlayEffect(v, "LLENEMY_FX_TreasureGoblins_Loot_Dropped_01");
+							PlayEffect(v, "LLENEMY_FX_TreasureGoblin_Loot_Dropped_01");
 						end
 					else
 						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Item ("..tostring(stat)..")["..v.."] is equipped ("..tostring(equipped)..") or an NPC item. Skipping.")
