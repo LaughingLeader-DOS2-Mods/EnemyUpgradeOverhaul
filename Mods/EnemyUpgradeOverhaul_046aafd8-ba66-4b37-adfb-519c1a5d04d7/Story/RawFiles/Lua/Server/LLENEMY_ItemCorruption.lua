@@ -212,13 +212,14 @@ local function RollForBoost(entry)
 		if roll <= entry.Chance then
 			return true
 		end
-	else
+	elseif entry.Chance >= 100 then
 		return true
 	end
 	return false
 end
 
 local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
+	local totalBoosts = 0
 	local boosts = {}
 	for i,entry in pairs(boostTable) do
 		if entry["Entries"] ~= nil then
@@ -245,6 +246,7 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 			if RollForBoost(entry) then
 				NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
 				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+				totalBoosts = totalBoosts + 1
 				boostAdded = true
 			end
 		end
@@ -253,6 +255,7 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 			if RollForBoost(entry) then
 				NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
 				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+				totalBoosts = totalBoosts + 1
 				boostAdded = true
 			end
 		end
@@ -262,19 +265,24 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 		if entry ~= nil then
 			NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
 			LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding fallback deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+			totalBoosts = totalBoosts + 1
 		end
 	end
-	if statType == "Shield" then
-		NRD_ItemCloneAddBoost("DeltaMod", "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage")
-	end
+	-- if statType == "Shield" then
+	-- 	NRD_ItemCloneAddBoost("DeltaMod", "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage")
+	-- 	totalBoosts = totalBoosts + 1
+	-- end
+	return totalBoosts
 end
 
 local function AddRandomBoosts(item,stat,statType,level)
+	local totalBoosts = 0
 	local boostTable = EnemyUpgradeOverhaul.CorruptionBoosts[statType]
 	if boostTable ~= nil then
-		AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
+		totalBoosts = AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	end
 	--AddRandomBoostsFromTable(item,stat,statType,level,EnemyUpgradeOverhaul.CorruptionBoosts.All)
+	return totalBoosts
 end
 
 local function SetRandomShadowName(item,statType)
@@ -302,6 +310,16 @@ local function SetRandomShadowName(item,statType)
 	end
 end
 
+local rarityValue = {
+	Common = 0,
+	Uncommon = 1,
+	Rare = 2,
+	Epic = 3,
+	Legendary = 4,
+	Divine = 5,
+	Unique = 6
+}
+
 local function GetClone(item,stat,statType)
 	local baseStat,rarity,level,seed = NRD_ItemGetGenerationParams(item)
 	if level == nil then
@@ -309,9 +327,6 @@ local function GetClone(item,stat,statType)
 		if level == 0 or level == nil then
 			level = CharacterGetLevel(CharacterGetHostCharacter())
 		end
-	end
-	if rarity == nil or rarity == "Common" then
-		rarity = "Uncommon"
 	end
     local template = GetTemplate(item)
 	local last_underscore = string.find(template, "_[^_]*$")
@@ -341,14 +356,18 @@ local function GetClone(item,stat,statType)
 
 	NRD_ItemCloneSetString("GenerationStatsId", stat)
 	NRD_ItemCloneSetString("StatsEntryName", stat)
-	NRD_ItemCloneSetString("ItemType", rarity)
-	NRD_ItemCloneSetString("GenerationItemType", rarity)
 	NRD_ItemCloneSetInt("HasGeneratedStats", 0)
 	NRD_ItemCloneSetInt("GenerationLevel", level)
 	NRD_ItemCloneSetInt("StatsLevel", level)
 	NRD_ItemCloneSetInt("IsIdentified", 1)
 	--NRD_ItemCloneSetInt("GMFolding", 0)
-	AddRandomBoosts(item,stat,statType,level)
+	local totalBoosts = AddRandomBoosts(item,stat,statType,level)
+	if rarity == nil or (totalBoosts >= 2 and rarityValue[rarity] < rarityValue["Epic"]) then
+		rarity = "Epic"
+	end
+	NRD_ItemCloneSetString("ItemType", rarity)
+	NRD_ItemCloneSetString("GenerationItemType", rarity)
+
 	SetRandomShadowName(item, statType)
 	local cloned = NRD_ItemClone()
 	ItemRemove(item)
