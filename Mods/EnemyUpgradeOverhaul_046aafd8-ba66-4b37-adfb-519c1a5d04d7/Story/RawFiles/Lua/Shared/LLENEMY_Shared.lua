@@ -31,21 +31,19 @@ Ext.Require("Shared/LLENEMY_VoiceData.lua")
 Ext.Require("Shared/LLENEMY_SharedUpgradeInfo.lua")
 
 local function FixModTypos()
+	-- Greed typos
 	if Ext.IsModLoaded("d1ba8097-dba1-d74b-7efe-8fca3ef71fe5") then
 		local dm = Ext.GetDeltaMod("Boost_Weapon_Status_Set_TankerClub", "Weapon")
-		dm.WeaponType = "Club"
-		dm.BoostType = "Legendary"
-		Ext.Print(Ext.JsonStringify(dm))
+		dm.WeaponType = "Club" -- Legendary -> Club
+		dm.BoostType = "Legendary" -- Normal -> Legendary
 		Ext.UpdateDeltaMod(dm)
 
 		dm = Ext.GetDeltaMod("Gloves_PiercingDamage", "Armor")
-		dm.BoostType = "Normal"
-		Ext.Print(Ext.JsonStringify(dm))
+		dm.BoostType = "Normal" -- Norma -> Normal
 		Ext.UpdateDeltaMod(dm)
 
 		dm = Ext.GetDeltaMod("Gloves_AirDamage", "Armor")
-		dm.BoostType = "Normal"
-		Ext.Print(Ext.JsonStringify(dm))
+		dm.BoostType = "Normal" -- Norma -> Normal
 		Ext.UpdateDeltaMod(dm)
 	end
 end

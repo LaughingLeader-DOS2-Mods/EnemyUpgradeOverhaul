@@ -234,9 +234,9 @@
 	<content contentuid="h7987a4c4ge79ag4b93gbb98g63644b6ab4ef" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE3_DisplayName">Rage (III)</content>
 	<content contentuid="h752158cdg06beg4034gaddeg66921ff01d83" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE4_DisplayName">Rage (IV)</content>
 	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE5_DisplayName">Rage (V)</content>
-	<content contentuid="h24c8d0feg3b3dg40fcgb813g4f28db83b05b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_LARGE_DisplayName">Reflect 30% of Melee Damage as Shadow Damage</content>
-	<content contentuid="h5ec49a5ag418ag4d15ga917g2a406406060f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_MEDIUM_DisplayName">Reflect 20% of Melee Damage as Shadow Damage</content>
-	<content contentuid="hff952d5dgebedg4f53ga10fg1bd872871cee" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_SMALL_DisplayName">Reflect 10% of Melee Damage as Shadow Damage</content>
+	<content contentuid="h24c8d0feg3b3dg40fcgb813g4f28db83b05b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_LARGE_DisplayName">Reflect 30% of melee damage as shadow damage</content>
+	<content contentuid="h5ec49a5ag418ag4d15ga917g2a406406060f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_MEDIUM_DisplayName">Reflect 20% of melee damage as shadow damage</content>
+	<content contentuid="hff952d5dgebedg4f53ga10fg1bd872871cee" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_SMALL_DisplayName">Reflect 10% of melee damage as shadow damage</content>
 	<content contentuid="hc505e9aagab98g49e8g8777g72eb60325a35" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_Description">Character will discover hidden enemies while in combat.&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Stealthed and Invisible enemies within 4m are revealed.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF3333&apos;&gt;Becoming Drunk or disabled temporarily disables a Seeker&apos;s detection.&lt;/font&gt;</content>
 	<content contentuid="hd8f04806g2228g4144g964eg5f6694865d41" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_Description">Character cannot discover hidden enemies while disabled/drunk.</content>
 	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_DisplayName">Seeker (Disabled)</content>
@@ -315,7 +315,7 @@
 	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee" OT="[1] on applying [2]"></content>
 	<content contentuid="h54e0b91cg48a7g4d5agaedcgbde756a109ea" OT="[1]% chance to succeed.">([1]% Chance)</content>
 	<content contentuid="h233bf83cg2204g4f14gb46agad27f95deb43" OT="Set [1].[2][3]">[1][2][3]</content>
-	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135" OT="rot damage">Shadow Damage</content>
-	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8" OT="rot">Shadow</content>
+	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135" OT="rot damage">shadow damage</content>
+	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8" OT="rot">shadow</content>
 	<content contentuid="hf4632a8fg42a7g4d53gbe26gd203f28e3d5e" OT="Rot">Shadow</content>
 </contentList>
