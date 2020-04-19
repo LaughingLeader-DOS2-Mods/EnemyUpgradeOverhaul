@@ -254,6 +254,15 @@ local function LLENEMY_DebugInit()
 		if shadowItem ~= nil then
 			ItemToInventory(shadowItem, host, 1, 1, 1)
 		end
+		item = CreateItemTemplateAtPosition("60a82f10-ed3e-417f-b000-5b0a2099d129", x, y, z)
+		NRD_ItemCloneBegin(item)
+		NRD_ItemCloneSetString("GenerationStatsId", "LLENEMY_Shield_Shadow_A")
+		NRD_ItemCloneSetString("StatsEntryName", "LLENEMY_Shield_Shadow_A")
+		NRD_ItemCloneSetInt("HasGeneratedStats", 0)
+		NRD_ItemCloneSetInt("StatsLevel", 1)
+		local cloned = NRD_ItemClone()
+		ItemToInventory(cloned, host, 1, 1, 1)
+		ItemRemove(item)
 	end
 
 	if Ext.IsDeveloperMode() then
