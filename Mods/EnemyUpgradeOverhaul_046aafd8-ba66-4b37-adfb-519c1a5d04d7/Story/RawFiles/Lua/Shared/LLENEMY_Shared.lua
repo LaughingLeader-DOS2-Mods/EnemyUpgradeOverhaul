@@ -30,12 +30,35 @@ Ext.Require("Shared/LLENEMY_StatOverrides.lua")
 Ext.Require("Shared/LLENEMY_VoiceData.lua")
 Ext.Require("Shared/LLENEMY_SharedUpgradeInfo.lua")
 
+local function FixModTypos()
+	if Ext.IsModLoaded("d1ba8097-dba1-d74b-7efe-8fca3ef71fe5") then
+		local dm = Ext.GetDeltaMod("Boost_Weapon_Status_Set_TankerClub", "Weapon")
+		dm.WeaponType = "Club"
+		dm.BoostType = "Legendary"
+		Ext.Print(Ext.JsonStringify(dm))
+		Ext.UpdateDeltaMod(dm)
+
+		dm = Ext.GetDeltaMod("Gloves_PiercingDamage", "Armor")
+		dm.BoostType = "Normal"
+		Ext.Print(Ext.JsonStringify(dm))
+		Ext.UpdateDeltaMod(dm)
+
+		dm = Ext.GetDeltaMod("Gloves_AirDamage", "Armor")
+		dm.BoostType = "Normal"
+		Ext.Print(Ext.JsonStringify(dm))
+		Ext.UpdateDeltaMod(dm)
+	end
+end
+
 function LLENEMY_Shared_InitModuleLoading()
 	Ext.Print("LLENEMY_Shared.lua] Module is loading.")
 	for key,fallback in pairs(EnemyUpgradeOverhaul.ExtraData) do
 		local value = LLENEMY_Ext_GetExtraDataValue(key, fallback)
 		EnemyUpgradeOverhaul.ExtraData[key] = value
 		LeaderLib.Print("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Loaded Data.txt key - [" .. tostring(key) .. "] = (" .. tostring(value) .. ")")
+	end
+	if Ext.IsDeveloperMode() and Ext.Version() >= 44 and Ext.GetDeltaMod ~= nil then
+		FixModTypos()
 	end
 end
 

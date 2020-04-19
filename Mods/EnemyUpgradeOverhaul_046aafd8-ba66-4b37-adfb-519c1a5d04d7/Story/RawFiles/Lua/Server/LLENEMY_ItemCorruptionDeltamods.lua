@@ -155,8 +155,8 @@ local ModBoosts = {
 }
 
 local function GetDefaultDeltamods()
-	local deltamods = Ext.GetStatEntries("DeltaModifier")
-	Ext.Print("Deltamods:\n" .. LeaderLib.Common.Dump(deltamods))
+	--local deltamods = Ext.GetStatEntries("DeltaModifier")
+	--Ext.Print("Deltamods:\n" .. LeaderLib.Common.Dump(deltamods))
 end
 
 function LLENEMY_Server_RegisterCorruptionBoosts()
