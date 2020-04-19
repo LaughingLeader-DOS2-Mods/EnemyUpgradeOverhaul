@@ -31,6 +31,10 @@ local ModBoosts = {
 				ItemBoost:Create("WeaponBoost_HeavyWeaponS", {Chance=1}),
 				ItemBoost:Create("WeaponBoost_HeavyWeaponA", {Chance=5}),
 				ItemBoost:Create("WeaponBoost_HeavyWeaponC", {Chance=10}),
+			}),
+			ItemBoostGroup:Create({
+				ItemBoost:Create("Boost_Weapon_Status_Set_FarSightBow", {Chance=10, WeaponType="Bow"}),
+				ItemBoost:Create("Boost_Weapon_Status_Set_FarSightXBow", {Chance=10, WeaponType="Crossbow"})
 			})
 		},
 		Armor = {
@@ -62,12 +66,12 @@ local ModBoosts = {
 				ItemBoost:Create("Gloves_APRecovery_SmokeCover", {Chance=2}),
 				ItemBoost:Create("Gloves_APRecovery_DeathsDoor", {Chance=2}),
 				ItemBoost:Create("Gloves_APRecovery_MosquitoSwarm", {Chance=2}),
-			}),
-			ItemBoost:Create("Boots_OnTurn_BloodBubble", {Chance=2}),
+			}, {SlotType="Gloves"}),
 			ItemBoostGroup:Create({
+				ItemBoost:Create("Boots_OnTurn_BloodBubble", {Chance=2}),
 				ItemBoost:Create("Boots_CombatStart_ThickOfTheFight", {Chance=2}),
 				ItemBoost:Create("Boots_CombatStart_SmokeCover", {Chance=2}),
-			}),
+			}, {SlotType="Boots"}),
 			ItemBoostGroup:Create({
 				ItemBoost:Create("Gloves_AcidicAttacks", {Chance=2}),
 				ItemBoost:Create("Gloves_SuffocatingAttacks", {Chance=2}),
@@ -76,7 +80,7 @@ local ModBoosts = {
 				ItemBoost:Create("Gloves_BleedingAttacks", {Chance=2}),
 				ItemBoost:Create("Gloves_MutingAttacks", {Chance=2}),
 				ItemBoost:Create("Gloves_ShacklingAttacks", {Chance=2}),
-			})
+			}, {SlotType="Gloves"})
 		},
 		Shield = {
 			ItemBoostGroup:Create({

@@ -227,6 +227,8 @@ local function CanAddBoost(entry, stat, statType)
 				if dm.WeaponType == "Sentinel" or dm.WeaponType == weaponType then
 					return true
 				else
+					LeaderLib.Print("[LLENEMY_ItemCorruption.lua:CanAddBoost] WeaponType deltamod mismatch for ("..stat..") ("..weaponType..") => ("..dm.WeaponType..") with deltamod ["..entry.Boost.."]")
+					--LeaderLib.Print(Ext.JsonStringify(dm))
 					return false
 				end
 			else
