@@ -65,7 +65,7 @@ local function RegisterVoiceMetaData()
 end
 
 local function LLENEMY_Shared_SessionLoaded()
-	RegisterVoiceMetaData()
+	--RegisterVoiceMetaData()
 end
 
 Ext.RegisterListener("SessionLoaded", LLENEMY_Shared_SessionLoaded)
