@@ -100,6 +100,8 @@ LLENEMY_Upgrades_QRY_CanAddUpgrades((CHARACTERGUID)_Char)
 AND
 NOT DB_LLENEMY_IgnoredCharacters(_Char)
 AND
+CharacterIsSummon(_Char, 0)
+AND
 IsTagged(_Char, "LLENEMY_UpgradesDisabled", 0)
 AND
 ObjectGetFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0)
