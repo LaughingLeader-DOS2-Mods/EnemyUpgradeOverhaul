@@ -196,7 +196,7 @@ data "Hearing" "-10"
 data "Movement" "125"
 data "MagicArmor" "0"
 data "RangerLore" "2"
-data "Initiative" "30"
+data "Initiative" "100"
 data "Talents" "Escapist;NoAttackOfOpportunity"
 data "Flags" "CharmImmunity;KnockdownImmunity;BleedingImmunity;CrippledImmunity;SlippingImmunity;FreezeImmunity;PetrifiedImmunity;StunImmunity;SlowedImmunity;EnragedImmunity;ChickenImmunity"
 

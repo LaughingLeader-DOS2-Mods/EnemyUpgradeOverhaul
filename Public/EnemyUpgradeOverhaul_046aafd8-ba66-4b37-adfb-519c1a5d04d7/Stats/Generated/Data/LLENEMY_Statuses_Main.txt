@@ -1493,7 +1493,7 @@ data "Flags" "CharmImmunity;FearImmunity;MadnessImmunity"
 
 new entry "LLENEMY_TREASURE_GOBLIN"
 type "StatusData"
-data "StatusType" "FEAR"
+data "StatusType" "CONSUME"
 data "ForGameMaster" "No"
 data "InitiateCombat" "No"
 data "DisplayName" "LLENEMY_TREASURE_GOBLIN_DisplayName"

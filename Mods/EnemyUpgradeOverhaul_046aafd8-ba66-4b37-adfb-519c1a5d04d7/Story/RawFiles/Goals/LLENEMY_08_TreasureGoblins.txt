@@ -123,7 +123,7 @@ CharacterCreateAtPosition(_x, _y, _z, "444e50a0-e59b-4866-b548-49a0197a0de1", 1,
 THEN
 NOT DB_LeaderLib_Helper_Temp_HighestPlayerLevel(_Level);
 CharacterLevelUpTo(_Goblin, _Level);
-LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned(_Goblin, _CombatID);
+LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned(_Goblin, _CombatID, _x, _y, _z);
 LLENEMY_Rewards_TreasureGoblin_ToggleScript(1);
 DB_LLENEMY_TreasureGoblins_Temp_Active(_Goblin);
 //LeaderLib_Helper_EnterCombatWithPlayers(_Goblin);
@@ -131,7 +131,7 @@ LeaderLib_Helper_MakeHostileToPlayers(_Goblin);
 LeaderLib_Timers_StartObjectTimer(_Goblin, 1000, "Timers_LLENEMY_Goblin_EnterCombatWithPlayers", "LeaderLib_Commands_EnterCombatWithPlayers");
 
 PROC
-LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned((CHARACTERGUID)_Goblin, (INTEGER)_CombatID)
+LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned((CHARACTERGUID)_Goblin, (INTEGER)_CombatID, (REAL)_x, (REAL)_y, (REAL)_z)
 AND
 CharacterIsInCombat(_Goblin, 0)
 AND
@@ -326,14 +326,13 @@ SysClear("DB_LLENEMY_TreasureGoblins_Temp_AddToSack", 2);
 //END_REGION
 
 //REGION INIT
-IF
-StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_OnInit")
+PROC
+LLENEMY_TreasureGoblins_Internal_OnGoblinSpawned((CHARACTERGUID)_Goblin, (INTEGER)_CombatID, (REAL)_x, (REAL)_y, (REAL)_z)
+//StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_OnInit")
 AND
 LeaderLib_Random_QRY(6,12)
 AND
 DB_LeaderLib_Random(_MaxHits)
-AND
-GetPosition(_Goblin, _x, _y, _z)
 THEN
 NOT DB_LeaderLib_Random(_MaxHits);
 SetVarFloat3(_Goblin, "LLENEMY_TreasureGoblin_StartPos", _x, _y, _z);
@@ -341,6 +340,15 @@ SetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_PlayingAnim", 0);
 SetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_Defeated", 0);
 SetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_TotalHits", 0);
 SetVarInteger(_Goblin, "LLENEMY_TreasureGoblin_MaxTotalHits", _MaxHits);
+
+IF
+StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_OnTurnEnded")
+AND
+GetStatusTurns(_Goblin, "LLENEMY_TREASURE_GOBLIN", _TurnsLeft)
+AND
+_TurnsLeft >= 0
+THEN
+CharacterDisplayTextWithParam(_Goblin, "LLENEMY_DisplayText_TreasureGoblins_TurnsLeft", _TurnsLeft);
 //END_REGION
 EXITSECTION
 
