@@ -4,10 +4,12 @@ INIT
 	INT:%LLENEMY_TreasureGoblin_MaxTotalHits = 8
 	INT:%LLENEMY_TreasureGoblin_Defeated = 0
 	FLOAT3:%LLENEMY_TreasureGoblin_StartPos = null
-	FLOAT:%LLENEMY_TreasureGoblin_MaxFleeDistance = 16.0
+	FLOAT:%LLENEMY_TreasureGoblin_MaxFleeDistance = 20.0
 EVENTS
 
 EVENT LLENEMY_TreasureGoblin_Init
+VARS
+	INT:_RanTurns
 ON
 	OnInit()
 ACTIONS
@@ -17,9 +19,14 @@ IF "c1|c2"
 THEN
 	GetPosition(__Me, %LLENEMY_TreasureGoblin_StartPos)
 ENDIF
+IF "!c1"
+	CharacterHasStatus(__Me, LLENEMY_TREASURE_GOBLIN)
+THEN
+	GetRandomBetween(_RanTurns, 2,3)
+	CharacterApplyStatus(__Me, LLENEMY_TREASURE_GOBLIN, _RanTurns, 1, __Me)
+ENDIF
 	//CharacterEvent(__Me, "LLENEMY_TreasureGoblins_OnInit")
 	CharacterApplyStatus(__Me, UNSHEATHED, -1, 1, __Me)
-	CharacterApplyStatus(__Me, LLENEMY_TREASURE_GOBLIN, 3, 1, __Me)
 	CharacterSetFightMode(__Me, 1, 1)
 	CharacterSetCanSpotSneakers(__Me,1)
 	
