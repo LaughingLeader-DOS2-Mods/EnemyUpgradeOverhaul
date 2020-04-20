@@ -464,21 +464,21 @@ local function ShadowCorruptItem(uuid, container)
 	end
 end
 
-local corruptedItemCount = {}
+local corruptedItemLimit = {}
 
 function LLENEMY_Ext_ShadowCorruptItem(item)
 	local container = GetInventoryOwner(item)
-	local count = corruptedItemCount[container]
 
-	if count ~= nil and count >= 4 then
+	local limit = corruptedItemLimit[container]
+	if limit ~= nil and limit <= 0 then
 		return nil
 	end
 
 	local b,result = xpcall(ShadowCorruptItem, debug.traceback, item, container)
 	if b then
-		if count ~= nil then
-			count = count + 1
-			corruptedItemCount[container] = count
+		if limit ~= nil then
+			limit = limit - 1
+			corruptedItemLimit[container] = limit
 		end
 		return result
 	else
@@ -489,7 +489,7 @@ end
 Ext.NewCall(LLENEMY_Ext_ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
 function LLENEMY_Ext_ShadowCorruptItems(uuid)
-	corruptedItemCount[uuid] = 0
+	corruptedItemLimit[uuid] = Ext.Random(2,6)
 	InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
 	--[[ local success = false
 	local item = Ext.GetItem(uuid)
