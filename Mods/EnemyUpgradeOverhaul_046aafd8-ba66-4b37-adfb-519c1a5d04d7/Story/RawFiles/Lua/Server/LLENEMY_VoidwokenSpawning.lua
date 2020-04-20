@@ -216,6 +216,15 @@ function LLENEMY_Ext_SpawnVoidwoken(source,testing,totalPoints)
 			LeaderLib.Print("Picked random entry: " .. entry.Template .. " | " ..tostring(rand) .. " / " .. tostring(totalWeight))
 			if testing ~= true then
 				local x,y,z = GetPosition(source)
+				local combatid = CombatGetIDForCharacter(source)
+				if combatid ~= nil and combatid >= 0 then
+					local combatEntries = Osi.DB_CombatCharacters:Get(nil,combatid)
+					local randomEntry = LeaderLib.Common.GetRandomTableEntry(combatEntries)
+					if randomEntry ~= nil then
+						x,y,z = GetPosition(randomEntry[1])
+					end
+				end
+
 				local voidwoken = CharacterCreateAtPosition(x, y, z, entry:GetTemplate(), 1)
 				SetFaction(voidwoken, "RC_Voidwoken")
 				LLENEMY_Ext_ClearGain(voidwoken)
