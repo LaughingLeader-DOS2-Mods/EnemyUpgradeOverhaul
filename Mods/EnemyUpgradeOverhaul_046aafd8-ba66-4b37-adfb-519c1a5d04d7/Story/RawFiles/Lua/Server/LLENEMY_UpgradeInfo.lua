@@ -5,7 +5,7 @@ function LLENEMY_Ext_SetChallengePointsTag(uuid)
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 		if cp >= tbl.Min and cp <= tbl.Max then
 			SetTag(uuid, tbl.Tag)
-			LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid)
+			LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid,true)
 		else
 			ClearTag(uuid, tbl.Tag)
 		end
@@ -23,11 +23,12 @@ local function HasUpgrades(uuid)
 	return false
 end
 
-function LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid)
-	if HasUpgrades(uuid) then
+function LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid,force)
+	local hasUpgrades = HasUpgrades(uuid)
+	if hasUpgrades or force == true then
 		ApplyStatus(uuid, "LLENEMY_UPGRADE_INFO", -1.0, 1, uuid)
-	else
-		RemoveStatus(uuid, "LLENEMY_UPGRADE_INFO");
+	elseif hasUpgrades == false then
+		RemoveStatus(uuid, "LLENEMY_UPGRADE_INFO")
 	end
 end
 

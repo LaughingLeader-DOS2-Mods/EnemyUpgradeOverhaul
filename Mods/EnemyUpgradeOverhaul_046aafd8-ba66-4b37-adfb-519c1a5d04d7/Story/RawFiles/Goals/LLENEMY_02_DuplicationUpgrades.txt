@@ -140,13 +140,13 @@ SetFaction(_Dupe, _Faction);
 //ChangeAttitude(_Source, _Dupe, 200);
 //ChangeAttitude(_Dupe, _Source, 200);
 NRD_LuaCall("LLENEMY_Ext_Duplication_CopySource", _SourceUUID, _DupeUUID);
+LeaderLib_Timers_StartObjectTimer(_Source, 750, "Timers_LLENEMY_Duplication_SetCPTag", "LLENEMY_Duplication_SetCPTag");
 
 PROC
 LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, 1)
 THEN
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_UpgradesDisabled");
 LeaderLib_Timers_StartObjectTimer(_Source, 250, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
-LeaderLib_Timers_StartObjectTimer(_Source, 750, "Timers_LLENEMY_Duplication_SetCPTag", "LLENEMY_Duplication_SetCPTag");
 
 IF
 StoryEvent(_Dupe, "LLENEMY_Duplication_SetCPTag")
@@ -233,6 +233,13 @@ AND
 DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _DupeOwner, _Status, _RealDuration)
 THEN
 DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Dupe, _Status, _RealDuration);
+
+PROC
+LLENEMY_Duplication_CopyStatus((CHARACTERGUID)_DupeSource, (CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration, (GUIDSTRING)_StatusSource)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _EndInt, _Duration, _ChallengePoints)
+THEN
+LLENEMY_Upgrades_IncreaseChallengePoints(_Dupe, _ChallengePoints);
 //END_REGION
 
 //REGION STAGE_TWO_SETUP
