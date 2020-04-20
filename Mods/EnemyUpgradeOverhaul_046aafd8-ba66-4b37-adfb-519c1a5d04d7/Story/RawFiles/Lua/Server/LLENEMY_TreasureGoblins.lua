@@ -16,6 +16,8 @@ local function TreasureGoblins_MoveItemsToSack(uuid,x,y,z,lootSack)
 		if #tbl > 0 then
 			if lootSack == nil then
 				lootSack = CreateItemTemplateAtPosition("CONT_LLENEMY_Bag_TreasureGoblinSack_A_2b7888b9-833c-4443-b4b5-cc372b95b459", x, y, z)
+				NRD_ItemSetPermanentBoostInt(lootSack, "Value", 0)
+				NRD_ItemSetPermanentBoostInt(lootSack, "Weight", 0)
 				PlayEffect(lootSack,"RS3_FX_Skills_Void_Netherswap_Reappear_01")
 			end
 			if lootSack ~= nil then

@@ -471,6 +471,10 @@ GetPosition(_Dupe, _x, _y, _z)
 AND
 CreateItemTemplateAtPosition("CONT_LLENEMY_DuplicantTreasure_b6773d33-18e4-4fa3-abe0-85d33c30df0a", _x, _y, _z, _Container)
 THEN
+/* [OSITOOLS_ONLY]
+NRD_ItemSetPermanentBoostInt(_Container, "Value", 0);
+NRD_ItemSetPermanentBoostInt(_Container, "Weight", 0);
+*/
 DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container);
 PlayEffectAtPosition("LLENEMY_FX_ShadowOrb_Spawn_01", _x, _y, _z);
 
