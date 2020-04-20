@@ -13,6 +13,12 @@
 	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9" Source="LLENEMY_Creatures_Voidwoken_Drillworm_A">Evolved Voidling</content>
 	<content contentuid="h9713cc3dgea3ag4bf4gacb1g1428f7baa338" Source="LLENEMY_Creatures_Voidwoken_GiantInsect_Dominator_A">Dominator of the Void</content>
 	<content contentuid="hddb242e2gf4b1g4883gb65bg53a0976fbc2c" Source="LLENEMY_Creatures_Voidwoken_Troll_A">Voidwoken Troll</content>
+	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_FumbleText">[1] on applying [2]</content>
+	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage1">shadow Damage</content>
+	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage2">shadow</content>
+	<content contentuid="hf4632a8fg42a7g4d53gbe26gd203f28e3d5e" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage3">Shadow</content>
+	<content contentuid="h54e0b91cg48a7g4d5agaedcgbde756a109ea" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_StatusApplyChance">([1]% Chance)</content>
+	<content contentuid="h233bf83cg2204g4f14gb46agad27f95deb43" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_StatusApplySet">[1][2][3]</content>
 	<content contentuid="h52b8e7bbgea9fg4ddbgbc78g42479d9d082d" Source="LLENEMY_Menu_GameSettings.lsj">Voidwoken will no longer be lured into battle by source skills.</content>
 	<content contentuid="hd21c0029gc4b2g4810gbdb4gdff891204a8f" Source="LLENEMY_Menu_GameSettings.lsj">Cancel upgrading the world.</content>
 	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Menu_GameSettings.lsj">Settings updated.</content>
@@ -312,10 +318,4 @@
 	<content contentuid="h662390f7gfd9eg4a56g95e5g658283cc548a" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_ShadowDropText">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Grants Treasure of the Shadow Realm (&lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt;) on death.&lt;/font&gt;</content>
 	<content contentuid="h86cfb164g8505g4e4fg89degcb3c24372f3c" Source="LLENEMY_TreasureGoblin_A">Treasure Goblin</content>
 	<content contentuid="h7c05fad0gf6f3g44c6g8a28g7eb8f9bc548c" Source="S_LLENEMY_LootGeneratorChest">Loot Generator</content>
-	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee" OT="[1] on applying [2]"></content>
-	<content contentuid="h54e0b91cg48a7g4d5agaedcgbde756a109ea" OT="[1]% chance to succeed.">([1]% Chance)</content>
-	<content contentuid="h233bf83cg2204g4f14gb46agad27f95deb43" OT="Set [1].[2][3]">[1][2][3]</content>
-	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135" OT="rot damage">shadow damage</content>
-	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8" OT="rot">shadow</content>
-	<content contentuid="hf4632a8fg42a7g4d53gbe26gd203f28e3d5e" OT="Rot">Shadow</content>
 </contentList>
