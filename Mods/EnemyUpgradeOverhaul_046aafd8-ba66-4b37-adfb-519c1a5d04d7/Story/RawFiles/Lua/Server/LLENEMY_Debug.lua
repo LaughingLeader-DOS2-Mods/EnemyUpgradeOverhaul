@@ -387,9 +387,9 @@ end
 BuiltinColorCodes = {
     [0] = "#FFFFFF",
     "#454545",
-    "#AE9F95",
+    "#AE9F95", -- Physical
     "#DBDBDB",
-    "#CD1F1F",
+    "#CD1F1F", -- Pure/None, Piercing, Chaos
     "#188EDE",
     "#078FC8",
     "#CFECFF",
@@ -400,16 +400,16 @@ BuiltinColorCodes = {
     "#FFC3C3",
     "#7F00FF",
     "#B97A57",
-    "#C7A758",
+    "#C7A758", -- Custom / Sulfuric?
     "#000000",
     "#FFFFFF",
     "#D040D0",
-    "#797980",
-    "#65C900",
-    "#F7BA14",
-    "#7D71D9",
-    "#4197E2",
-    "#FE6E27",
+    "#797980", -- Corrosive, Shadow
+    "#65C900", -- Poison
+    "#F7BA14", -- Earth
+    "#7D71D9", -- Air
+    "#4197E2", -- Water
+    "#FE6E27", -- Fire
     "#46B195",
     "#B823CB",
     "#F7BA14",
