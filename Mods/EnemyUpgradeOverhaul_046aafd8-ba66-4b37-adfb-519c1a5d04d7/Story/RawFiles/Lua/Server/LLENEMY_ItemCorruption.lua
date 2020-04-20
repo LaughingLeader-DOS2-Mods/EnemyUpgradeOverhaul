@@ -476,7 +476,7 @@ function LLENEMY_Ext_ShadowCorruptItem(item)
 
 	local b,result = xpcall(ShadowCorruptItem, debug.traceback, item, container)
 	if b then
-		if count ~= nil then 
+		if count ~= nil then
 			count = count + 1
 			corruptedItemCount[container] = count
 		end
