@@ -239,6 +239,57 @@ local function CanAddBoost(entry, stat, statType)
 	return true
 end
 
+local function AddRandomNegativeBoost(item,stat,statType,level)
+	local boostTable = EnemyUpgradeOverhaul.NegativeCorruptionBoosts[statType]
+	if boostTable ~= nil then
+		local boosts = {}
+		for i,entry in pairs(boostTable) do
+			if entry["Entries"] ~= nil then
+				-- Keep trying to get random entries until we find at least one that's valid
+				for k=0,#entry.Entries do
+					local ranEntry = entry:GetRandomEntry()
+					if CanAddBoost(ranEntry, stat, statType) then
+						if ranEntry.MinLevel <= 0 and ranEntry.MaxLevel <= 0 then
+							boosts[#boosts+1] = ranEntry
+						elseif level >= ranEntry.MinLevel and (level <= ranEntry.MaxLevel or ranEntry.MaxLevel <= 0) then
+							boosts[#boosts+1] = ranEntry
+						end
+						break
+					end
+				end
+			else
+				if CanAddBoost(entry, stat, statType) then
+					if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
+						boosts[#boosts+1] = entry
+					elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
+						boosts[#boosts+1] = entry
+					end
+				end
+			end
+		end
+		local boostCount = #boosts
+		boosts = LeaderLib.Common.ShuffleTable(boosts)
+		if boostCount == 1 then
+			local entry = boosts[1]
+			if entry ~= nil then
+				if RollForBoost(entry) then
+					NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+					LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomNegativeBoost] Added deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+					return true
+				end
+			end
+		elseif boostCount > 0 then
+			for i,entry in pairs(boosts) do
+				if RollForBoost(entry) then
+					NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+					LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomNegativeBoost] Added deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+					return true
+				end
+			end
+		end
+	end
+end
+
 local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	local totalBoosts = 0
 	local boosts = {}
@@ -269,6 +320,7 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Boosts:\n" .. LeaderLib.Common.Dump(boosts))
 	local boostCount = #boosts
 	local boostAdded = false
+	local addNegativeBoost = 2
 	if boostCount == 1 then
 		local entry = boosts[1]
 		if entry ~= nil then
@@ -277,6 +329,13 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 				totalBoosts = totalBoosts + 1
 				boostAdded = true
+				if addNegativeBoost >= 2 then
+					if AddRandomNegativeBoost(item, stat, statType, level) then
+						addNegativeBoost = 0
+					end
+				else
+					addNegativeBoost = addNegativeBoost + 1
+				end
 			end
 		end
 	elseif boostCount > 0 then
@@ -286,6 +345,13 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 				totalBoosts = totalBoosts + 1
 				boostAdded = true
+				if addNegativeBoost >= 2 then
+					if AddRandomNegativeBoost(item, stat, statType, level) then
+						addNegativeBoost = 0
+					end
+				else
+					addNegativeBoost = addNegativeBoost + 1
+				end
 			end
 		end
 	end
@@ -295,6 +361,13 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 			NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
 			LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding fallback deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 			totalBoosts = totalBoosts + 1
+			if addNegativeBoost >= 2 then
+				if AddRandomNegativeBoost(item, stat, statType, level) then
+					addNegativeBoost = 0
+				end
+			else
+				addNegativeBoost = addNegativeBoost + 1
+			end
 		end
 	end
 	-- if statType == "Shield" then
