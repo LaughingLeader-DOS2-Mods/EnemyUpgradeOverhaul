@@ -48,7 +48,7 @@
                                                 "TagText" : {
                                                    "handle" : "hdb982497gc47dg4fd4gabdega3d6af9b0760",
                                                    "type" : 28,
-                                                   "value" : "Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades."
+                                                   "value" : "Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -270,7 +270,7 @@
                                                 "TagText" : {
                                                    "handle" : "he4a9526dg0dd1g4babg824eg01a0e9993e55",
                                                    "type" : 28,
-                                                   "value" : "Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon."
+                                                   "value" : "Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -386,7 +386,7 @@
                                                 "TagText" : {
                                                    "handle" : "h46cf8395ga421g4d8eg994cg9cc757c5b41d",
                                                    "type" : 28,
-                                                   "value" : "Enable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns)."
+                                                   "value" : "Enable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns). (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -502,7 +502,7 @@
                                                 "TagText" : {
                                                    "handle" : "hae3e586aga38eg4ee0g8728g5280e0d41165",
                                                    "type" : 28,
-                                                   "value" : "Enable Bonus Skill Upgrades. These give enemies new skills using the Script Extender."
+                                                   "value" : "Enable Bonus Skill Upgrades. These give enemies new skills using the Script Extender. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -618,7 +618,7 @@
                                                 "TagText" : {
                                                    "handle" : "h369c8cf4g1083g4df3gbc79gac57bc3f6074",
                                                    "type" : 28,
-                                                   "value" : "Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion."
+                                                   "value" : "Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -734,7 +734,7 @@
                                                 "TagText" : {
                                                    "handle" : "hae44c262g8fffg4f1cg8740g4874c69c39e7",
                                                    "type" : 28,
-                                                   "value" : "Enable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras."
+                                                   "value" : "Enable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -850,7 +850,7 @@
                                                 "TagText" : {
                                                    "handle" : "h43542436ge2dcg49f8g9233g292e2f887bf6",
                                                    "type" : 28,
-                                                   "value" : "Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon."
+                                                   "value" : "Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -966,7 +966,7 @@
                                                 "TagText" : {
                                                    "handle" : "hb8e49700gfb78g4a25gb451g21026ea98f20",
                                                    "type" : 28,
-                                                   "value" : "Enable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite."
+                                                   "value" : "Enable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1122,7 +1122,7 @@
                                                 "TagText" : {
                                                    "handle" : "hbe6a42a1g49e0g44e0g9546g4b45f038d6cb",
                                                    "type" : 28,
-                                                   "value" : "Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras."
+                                                   "value" : "Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1238,7 +1238,7 @@
                                                 "TagText" : {
                                                    "handle" : "h5a190392g61c4g439dgbd08gc227c5e69923",
                                                    "type" : 28,
-                                                   "value" : "Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns)."
+                                                   "value" : "Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns). (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1442,7 +1442,7 @@
                                                 "TagText" : {
                                                    "handle" : "h451c2d3eg3c6eg4366g8a31ga9792596a488",
                                                    "type" : 28,
-                                                   "value" : "Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion."
+                                                   "value" : "Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1558,7 +1558,7 @@
                                                 "TagText" : {
                                                    "handle" : "he98adb62g6a62g43abg9723g160e736ebd6d",
                                                    "type" : 28,
-                                                   "value" : "Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite."
+                                                   "value" : "Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1674,7 +1674,7 @@
                                                 "TagText" : {
                                                    "handle" : "h0f2a61a6g5427g4e2bgbc76g986dc3e1fa79",
                                                    "type" : 28,
-                                                   "value" : "Disable Bonus Skill Upgrades. These give enemies new skills using the Script Extender."
+                                                   "value" : "Disable Bonus Skill Upgrades. These give enemies new skills using the Script Extender. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1790,7 +1790,7 @@
                                                 "TagText" : {
                                                    "handle" : "h3e93fbd4g6fe8g4f0bgae12g32a833f98bc0",
                                                    "type" : 28,
-                                                   "value" : "Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Default: Enabled)"
+                                                   "value" : "Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1810,7 +1810,7 @@
                                  {
                                     "flag" : [
                                        {
-                                          "name" : {"type" : 22, "value" : "LLENEMY_DuplicationUpgradesDisabled"},"value" : {"type" : 19, "value" : 1}},
+                                          "name" : {"type" : 22, "value" : "LLENEMY_DuplicationUpgradesDisabled"},"value" : {"type" : 19, "value" : 0}},
                                        {
                                           "name" : {"type" : 22, "value" : "LLENEMY_DuplicationUpgrades_BossesDisabled"},"value" : {"type" : 19, "value" : 1}}
                                     ],"type" : {"type" : 22, "value" : "Global"}}
@@ -1908,7 +1908,7 @@
                                                 "TagText" : {
                                                    "handle" : "h5372c630g9c16g493fga294gde25ab176b6b",
                                                    "type" : 28,
-                                                   "value" : "Disable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Default: Enabled)"
+                                                   "value" : "Disable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1928,7 +1928,7 @@
                                  {
                                     "flag" : [
                                        {
-                                          "name" : {"type" : 22, "value" : "LLENEMY_DuplicationUpgradesDisabled"},"value" : {"type" : 19, "value" : 1}},
+                                          "name" : {"type" : 22, "value" : "LLENEMY_DuplicationUpgradesDisabled"},"value" : {"type" : 19, "value" : 0}},
                                        {
                                           "name" : {"type" : 22, "value" : "LLENEMY_DuplicationUpgrades_BossesDisabled"},"value" : {"type" : 19, "value" : 0}}
                                     ],"type" : {"type" : 22, "value" : "Global"}}
@@ -2026,7 +2026,7 @@
                                                 "TagText" : {
                                                    "handle" : "h506de539g84a3g464fgba77g2fe643c629d9",
                                                    "type" : 28,
-                                                   "value" : "Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades."
+                                                   "value" : "Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -2142,7 +2142,7 @@
                                                 "TagText" : {
                                                    "handle" : "h250561a9g4ce0g4989ga495g3150b4f80015",
                                                    "type" : 28,
-                                                   "value" : "Disable Duplication Upgrades. This is a chance for clones of enemies to appear in battle."
+                                                   "value" : "Disable Duplication Upgrades. This is a chance for clones of enemies to appear in battle. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -2258,7 +2258,7 @@
                                                 "TagText" : {
                                                    "handle" : "h9978b702g8683g49bbga061g0c806d92f829",
                                                    "type" : 28,
-                                                   "value" : "Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle."
+                                                   "value" : "Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -2508,7 +2508,7 @@
          },
          "editorData" : {
             "needLayout" : {"type" : 19, "value" : 0},
-            "nextNodeId" : {"type" : 5, "value" : 96}
+            "nextNodeId" : {"type" : 5, "value" : 97}
          }
       }
    }

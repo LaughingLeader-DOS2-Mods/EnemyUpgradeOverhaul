@@ -132,7 +132,7 @@
 															{
 																"TagText": {
 																	"type": 28,
-																	"value": "Enable Rewards - When upgraded enemies die, there's a chance for bonus loot, depending on their total number of \"Challenge Points\", which is determined by their upgrades.",
+																	"value": "Enable Rewards - When upgraded enemies die, there's a chance for bonus loot, depending on their total number of \"Challenge Points\", which is determined by their upgrades. (Currently <font color='#FF4949'>Disabled</font>)",
 																	"handle": "h9c5daca5g3786g435agb9feg0ad41260a1bc"
 																},
 																"stub": {
@@ -1036,7 +1036,7 @@
 															{
 																"TagText": {
 																	"type": 28,
-																	"value": "Disable Rewards - When upgraded enemies die, there's a chance for bonus loot, depending on their total number of \"Challenge Points\", which is determined by their upgrades.",
+																	"value": "Disable Rewards - When upgraded enemies die, there's a chance for bonus loot, depending on their total number of \"Challenge Points\", which is determined by their upgrades. (Currently <font color='#8AFF49'>Enabled</font>)",
 																	"handle": "h085c6ba2g63acg48f6g9c2ag677294738be0"
 																},
 																"stub": {

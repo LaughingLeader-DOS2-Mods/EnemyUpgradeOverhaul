@@ -136,7 +136,7 @@
                                                 "TagText" : {
                                                    "handle" : "h34c37ad9g928bg4504g9e35g9e19f9698a14",
                                                    "type" : 28,
-                                                   "value" : "Enable Enemy Level Scaling - Enemy will scale to the party's level + the current Level Modifier value."
+                                                   "value" : "Enable Enemy Level Scaling - Enemy will scale to the party's level + the current Level Modifier value. (Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -487,7 +487,7 @@
                                                 "TagText" : {
                                                    "handle" : "h6493380bgf46eg46fdga0f8g399ed299b249",
                                                    "type" : 28,
-                                                   "value" : "[DEBUG] Disable Enemy Level Limit - <b>WARNING</b> - Enemy levels above 35 may crash the game. Uncap at your own risk!"
+                                                   "value" : "[DEBUG] Disable Enemy Level Limit - <b>WARNING</b> - Enemy levels above 35 may crash the game. Uncap at your own risk! (Level Limit Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -613,7 +613,7 @@
                                                 "TagText" : {
                                                    "handle" : "h2e424a5ag2a45g4c6bg9ca3gd3302a0c31ed",
                                                    "type" : 28,
-                                                   "value" : "[DEBUG] Enable Enemy Level Limit [<b>Recommended</b>] - Enemy levels above 35 may crash the game, so enable the limit to prevent leveling above 35."
+                                                   "value" : "[DEBUG] Enable Enemy Level Limit [<b>Recommended</b>] - Enemy levels above 35 may crash the game, so enable the limit to prevent leveling above 35. (Enemy Level Limit Currently <font color='#FF4949'>Disabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -1383,7 +1383,7 @@
                                                 "TagText" : {
                                                    "handle" : "h0c13903cgd246g4a35gbce9g19db61af1db9",
                                                    "type" : 28,
-                                                   "value" : "Disable Commit Level Modifier to the World - <b>*NOTE* </b>This will not down-level enemies. Leveling only works one way!"
+                                                   "value" : "Disable Commit Level Modifier to the World - <b>*NOTE* </b>This will not down-level enemies. Leveling only works one way! (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }

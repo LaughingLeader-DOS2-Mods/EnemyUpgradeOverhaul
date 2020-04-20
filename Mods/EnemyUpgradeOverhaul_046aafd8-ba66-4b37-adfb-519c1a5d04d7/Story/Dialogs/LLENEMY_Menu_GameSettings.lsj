@@ -346,7 +346,7 @@
                                                 "TagText" : {
                                                    "handle" : "h82758d47g38eeg4cafg9d24gf84edc578577",
                                                    "type" : 28,
-                                                   "value" : "[GLOBAL] Disable source spells having a change to lure Voidwoken into battle."
+                                                   "value" : "[GLOBAL] Disable source spells having a chance to lure Voidwoken into battle. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -462,7 +462,7 @@
                                                 "TagText" : {
                                                    "handle" : "he15a3e15g141dg45e5g96edg8148c2106792",
                                                    "type" : 28,
-                                                   "value" : "[GLOBAL] Disable Hard Mode (Default - Disabled)"
+                                                   "value" : "[GLOBAL] Disable Hard Mode (Default - Disabled) (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -578,7 +578,7 @@
                                                 "TagText" : {
                                                    "handle" : "h06d5e2ebg8395g442ega8c8g011c5a25a2f4",
                                                    "type" : 28,
-                                                   "value" : "[GLOBAL] Disable automatic world upgrading (upgrading everything in the level automatically outside of combat).<br><br>Note that this won't undo any current upgrades."
+                                                   "value" : "[GLOBAL] Disable automatic world upgrading (upgrading everything in the level automatically outside of combat).<br><br>Note that this won't undo any current upgrades. (Currently <font color='#8AFF49'>Enabled</font>)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
@@ -808,7 +808,7 @@
                                                 "TagText" : {
                                                    "handle" : "hbf07ab58g09aag415fg999eg4e4f1bc04f8e",
                                                    "type" : 28,
-                                                   "value" : "[GLOBAL] Enable source spells having a change to lure Voidwoken into battle.<br><br>Total source points used in the level will be tracked, and will gradually increase the chance and difficulty of voidwoken spawned. Total SP degrades every 5 minutes of real time (default).<br>Higher cost source skills have a higher chance to lure hostile voidwoken."
+                                                   "value" : "[GLOBAL] Enable source spells having a chance to lure Voidwoken into battle. (Currently <font color='#FF4949'>Disabled</font>)<br><br>Total source points used in the level will be tracked, and will gradually increase the chance and difficulty of voidwoken spawned. Total SP degrades every 5 minutes of real time (default).<br>Higher cost source skills have a higher chance to lure hostile voidwoken."
                                                 },
                                                 "stub" : {"type" : 19, "value" : 0}
                                              }
@@ -1232,7 +1232,7 @@
                                                 "TagText" : {
                                                    "handle" : "h4075ecfag0da0g4c26gb858g06626a165ed9",
                                                    "type" : 28,
-                                                   "value" : "[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Default - Disabled)"
+                                                   "value" : "[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Currently <font color='#FF4949'>Disabled</font>) (Default - Disabled)"
                                                 },
                                                 "stub" : {"type" : 19, "value" : 1}
                                              }
