@@ -65,12 +65,12 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "OdinGEO_ParasiticAffliction", 125,
 PROC
 LLENEMY_Upgrades_Register_ModUpgrades(02ca48b9-e4ef-a8e4-91d7-0b9df70bb595, "Buffs", "Weak", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinWater_FROSTBLADE", 190, 2);
+LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinWater_FROSTBLADE", 100, 2);
 
 PROC
 LLENEMY_Upgrades_Register_ModUpgrades(02ca48b9-e4ef-a8e4-91d7-0b9df70bb595, "Buffs", "Elite", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinWater_ICEARMOUR", 190, 6);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinWater_ICEARMOUR", 50, 6);
 
 // OdinbladeNecromancerOverhaul_8700ba4e-7d4b-40ca-a23f-b43816794957
 PROC

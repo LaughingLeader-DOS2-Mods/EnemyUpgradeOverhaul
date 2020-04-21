@@ -16,7 +16,7 @@ LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite", 0)
 THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LIGHTNINGROD", 50, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LONEWOLF", 100, 12);
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD", 200, 8);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD", 125, 8);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD2", 20, 10);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_TORTURER", 259, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_UNSTABLE", 70, 5);
@@ -27,13 +27,13 @@ PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite", 1)
 THEN
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LIGHTNINGROD", 60, 4);
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LONEWOLF", 175, 12);
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD", 250, 8);
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD2", 250, 10);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LONEWOLF", 150, 12);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD", 150, 8);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD2", 100, 10);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_TORTURER", 259, 4);
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_UNSTABLE", 70, 5);
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_WHATARUSH", 100, 6);
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_BULLY", 200, 6);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_UNSTABLE", 150, 5);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_WHATARUSH", 200, 6);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_BULLY", 250, 6);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Normal", (INTEGER)_HardModeEnabled)
