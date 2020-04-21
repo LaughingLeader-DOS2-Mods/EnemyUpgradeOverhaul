@@ -338,6 +338,11 @@ THEN
 ObjectClearFlag(_Char, _RolledForFlag);
 
 PROC
+LLENEMY_Upgrades_ClearFlags((CHARACTERGUID)_Char)
+THEN
+ObjectClearFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0);
+
+PROC
 LLENEMY_Upgrades_RollForUpgrades((CHARACTERGUID)_Char)
 AND
 LeaderLib_Random_QRY(999)
@@ -1021,6 +1026,13 @@ AND
 GetRegion(_Char, _Region)
 THEN
 LLENEMY_Upgrades_Internal_StartRolling(_Char, _Region);
+LLENEMY_Upgrades_SetWorldUpgradeFlag(_Char);
+
+PROC
+LLENEMY_Upgrades_SetWorldUpgradeFlag((CHARACTERGUID)_Char)
+AND
+DB_GlobalFlag("LLENEMY_WorldUpgradesEnabled")
+THEN
 ObjectSetFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0);
 //END_REGION
 EXITSECTION
