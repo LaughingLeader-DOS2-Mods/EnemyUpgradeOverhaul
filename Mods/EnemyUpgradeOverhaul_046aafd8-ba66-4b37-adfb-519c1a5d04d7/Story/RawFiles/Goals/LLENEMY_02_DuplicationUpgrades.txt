@@ -453,6 +453,8 @@ IF
 CharacterDied(_Dupe)
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+AND
+NOT DB_LLENEMY_Talents_Temp_ReviveNext(_Dupe, _)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 LeaderLib_Tags_ClearAllPreservedTags(_Dupe);
