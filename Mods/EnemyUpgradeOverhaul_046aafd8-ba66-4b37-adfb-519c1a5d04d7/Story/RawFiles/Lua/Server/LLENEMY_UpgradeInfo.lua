@@ -72,8 +72,32 @@ function LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster(highest)
 end
 
 local function TimerFinished(event, ...)
+	Ext.Print("TimerFinished: ", event, LeaderLib.Common.Dump({...}))
 	if event == "Timers_LLENEMY_SendHighestLoremaster" then
 		LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
+	end
+	if event == "Timers_LLENEMY_AddNegativeItemBoosts" then
+		local params = {...}
+		local item = params[1]
+		local totalBoosts = GetVarInteger(item, "LLENEMY_ItemCorruption_TotalBoosts")
+		local stat = NRD_ItemGetStatsId(item)
+		local statType = NRD_StatGetType(stat)
+		local level = 1
+		local baseStat,rarity,level,seed = NRD_ItemGetGenerationParams(item)
+		if level == nil then
+			level = NRD_ItemGetInt(item, "LevelOverride")
+			if level == 0 or level == nil then
+				level = CharacterGetLevel(CharacterGetHostCharacter())
+			end
+		end
+		for k=0,totalBoosts,1 do
+			EnemyUpgradeOverhaul.ItemCorruption.AddRandomNegativeBoost(item, stat, statType, level)
+		end
+		Ext.Print("=============================================")
+		Ext.Print("Cloned Item Stats:"..item)
+		Ext.Print("=============================================")
+		EnemyUpgradeOverhaul.ItemCorruption.DebugItemStats(item)
+		Ext.Print("=============================================")
 	end
 end
 LeaderLib.RegisterListener("TimerFinished", TimerFinished)

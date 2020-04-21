@@ -16,8 +16,7 @@ EnemyUpgradeOverhaul = {
 	Commands = {
 		CHECKLOREMASTER = "CheckLoremaster"
 	},
-	CorruptionBoosts = { Weapon = {}, Armor = {}, Shield = {}},
-	NegativeCorruptionBoosts = { Weapon = {}, Armor = {}, Shield = {}}
+	CorruptionBoosts = { Weapon={}, Armor={}, Shield={}, Resistances={}},
 }
 
 

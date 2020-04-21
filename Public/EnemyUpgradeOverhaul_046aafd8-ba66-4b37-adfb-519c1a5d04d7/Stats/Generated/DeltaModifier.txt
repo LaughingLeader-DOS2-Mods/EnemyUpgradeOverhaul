@@ -1,8 +1,8 @@
-new deltamod "LLENEMY_Boost_Weapon_Damage_Shadow_Large"
+new deltamod "LLENEMY_Boost_Weapon_Damage_Shadow_Small"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Large",1
+new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Small",1
 
 new deltamod "LLENEMY_Boost_Weapon_Damage_Shadow_Medium"
 param "BoostType" "ItemCombo"
@@ -10,155 +10,11 @@ param "Frequency" "1"
 param "ModifierType" "Weapon"
 new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Medium",1
 
-new deltamod "LLENEMY_Boost_Weapon_Damage_Shadow_Small"
+new deltamod "LLENEMY_Boost_Weapon_Damage_Shadow_Large"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Small",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeAccuracyBoost"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeAccuracyBoost",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeAccuracyBoost_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeAccuracyBoost_Large",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeAccuracyBoost_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeAccuracyBoost_Medium",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeCriticalChance"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeCriticalChance",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeCriticalChance_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeCriticalChance_Large",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeCriticalChance_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeCriticalChance_Medium",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeDodgeBoost"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeDodgeBoost",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeDodgeBoost_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeDodgeBoost_Large",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeDodgeBoost_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeDodgeBoost_Medium",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeInitiative"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeInitiative",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeInitiative_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeInitiative_Large",1
-
-new deltamod "LLENEMY_Boost_Weapon_NegativeInitiative_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Weapon"
-new boost "_LLENEMY_Boost_Weapon_NegativeInitiative_Medium",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeBlocking"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeBlocking",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeBlocking_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeBlocking_Large",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeBlocking_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeBlocking_Medium",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeDodgeBoost"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeDodgeBoost",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeDodgeBoost_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeDodgeBoost_Large",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeDodgeBoost_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeDodgeBoost_Medium",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeInitiative"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeInitiative",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeInitiative_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeInitiative_Large",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeInitiative_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeInitiative_Medium",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeMovement"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeMovement",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeMovement_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeMovement_Large",1
-
-new deltamod "LLENEMY_Boost_Shield_NegativeMovement_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_NegativeMovement_Medium",1
+new boost "_LLENEMY_Boost_Weapon_Damage_Shadow_Large",1
 
 new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage"
 param "BoostType" "ItemCombo"
@@ -166,179 +22,53 @@ param "Frequency" "1"
 param "ModifierType" "Shield"
 new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage",1
 
-new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Shield"
-new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large",1
-
 new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Shield"
 new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium",1
 
-new deltamod "Boost_Armor_Amulet_Ability_Lockpicking"
+new deltamod "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_Boost_Armor_Amulet_Ability_Lockpicking",1
+param "ModifierType" "Shield"
+new boost "_LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large",1
 
-new deltamod "Boost_Armor_Amulet_Ability_Lockpicking_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_Boost_Armor_Amulet_Ability_Lockpicking_Large",1
-
-new deltamod "Boost_Armor_Amulet_Ability_Lockpicking_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_Boost_Armor_Amulet_Ability_Lockpicking_Medium",1
-
-new deltamod "Boost_Armor_Amulet_Ability_Sneaking"
+new deltamod "LLENEMY_Boost_Armor_Ability_Sneaking"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Armor"
 new boost "_Boost_Armor_Amulet_Ability_Sneaking",1
 
-new deltamod "Boost_Armor_Amulet_Ability_Sneaking_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_Boost_Armor_Amulet_Ability_Sneaking_Large",1
-
-new deltamod "Boost_Armor_Amulet_Ability_Sneaking_Medium"
+new deltamod "LLENEMY_Boost_Armor_Ability_Sneaking_Medium"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Armor"
 new boost "_Boost_Armor_Amulet_Ability_Sneaking_Medium",1
 
-new deltamod "LLENEMY_Boost_Armor_NegativeAirResistance"
+new deltamod "LLENEMY_Boost_Armor_Ability_Sneaking_Large"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeAirResistance",1
+new boost "_Boost_Armor_Amulet_Ability_Sneaking_Large",1
 
-new deltamod "LLENEMY_Boost_Armor_NegativeAirResistance_Large"
+new deltamod "LLENEMY_Boost_Armor_Ability_Lockpicking"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeAirResistance_Large",1
+new boost "_Boost_Armor_Amulet_Ability_Lockpicking",1
 
-new deltamod "LLENEMY_Boost_Armor_NegativeAirResistance_Medium"
+new new deltamod "LLENEMY_Boost_Armor_Ability_Lockpicking_Medium"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeAirResistance_Medium",1
+new boost "_Boost_Armor_Amulet_Ability_Lockpicking_Medium",1
 
-new deltamod "LLENEMY_Boost_Armor_NegativeEarthResistance"
+new new deltamod "LLENEMY_Boost_Armor_Ability_Lockpicking_Large"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeEarthResistance",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativeEarthResistance_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeEarthResistance_Large",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativeEarthResistance_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeEarthResistance_Medium",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativeFireResistance"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeFireResistance",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativeFireResistance_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeFireResistance_Large",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativeFireResistance_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeFireResistance_Medium",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePhysicalResistance"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePhysicalResistance",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePhysicalResistance_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePhysicalResistance_Large",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePhysicalResistance_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePhysicalResistance_Medium",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePiercingResistance"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePiercingResistance",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePiercingResistance_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePiercingResistance_Large",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePiercingResistance_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePiercingResistance_Medium",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePoisonResistance"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePoisonResistance",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePoisonResistance_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePoisonResistance_Large",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativePoisonResistance_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativePoisonResistance_Medium",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativeWaterResistance"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeWaterResistance",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativeWaterResistance_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeWaterResistance_Large",1
-
-new deltamod "LLENEMY_Boost_Armor_NegativeWaterResistance_Medium"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_NegativeWaterResistance_Medium",1
+new boost "_Boost_Armor_Amulet_Ability_Lockpicking_Large",1
 
 new deltamod "LLENEMY_Boost_Armor_PhysicalResistance"
 param "BoostType" "ItemCombo"
@@ -346,14 +76,14 @@ param "Frequency" "1"
 param "ModifierType" "Armor"
 new boost "_LLENEMY_Boost_Armor_PhysicalResistance",1
 
-new deltamod "LLENEMY_Boost_Armor_PhysicalResistance_Large"
-param "BoostType" "ItemCombo"
-param "Frequency" "1"
-param "ModifierType" "Armor"
-new boost "_LLENEMY_Boost_Armor_PhysicalResistance_Large",1
-
 new deltamod "LLENEMY_Boost_Armor_PhysicalResistance_Medium"
 param "BoostType" "ItemCombo"
 param "Frequency" "1"
 param "ModifierType" "Armor"
 new boost "_LLENEMY_Boost_Armor_PhysicalResistance_Medium",1
+
+new deltamod "LLENEMY_Boost_Armor_PhysicalResistance_Large"
+param "BoostType" "ItemCombo"
+param "Frequency" "1"
+param "ModifierType" "Armor"
+new boost "_LLENEMY_Boost_Armor_PhysicalResistance_Large",1

@@ -5,7 +5,8 @@ Ext.Require("Server/LLENEMY_BonusSkills.lua")
 Ext.Require("Server/LLENEMY_GameMechanics.lua")
 Ext.Require("Server/LLENEMY_ItemMechanics.lua")
 Ext.Require("Server/LLENEMY_ItemCorruption.lua")
-Ext.Require("Server/LLENEMY_ItemCorruptionDeltamods.lua")
+Ext.Require("Server/LLENEMY_ItemCorruptionBoosts.lua")
+--Ext.Require("Server/LLENEMY_ItemCorruptionDeltamods.lua")
 Ext.Require("Server/LLENEMY_TreasureGoblins.lua")
 Ext.Require("Server/LLENEMY_VoidwokenSpawning.lua")
 Ext.Require("Server/LLENEMY_ServerMessages.lua")
@@ -32,7 +33,7 @@ local function LLENEMY_Server_SessionLoaded()
 end
 Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
 
-local function LLENEMY_Server_SessionLoading()
-	LLENEMY_Server_RegisterCorruptionBoosts()
-end
-Ext.RegisterListener("SessionLoading", LLENEMY_Server_SessionLoading)
+-- local function LLENEMY_Server_SessionLoading()
+	
+-- end
+-- Ext.RegisterListener("SessionLoading", LLENEMY_Server_SessionLoading)

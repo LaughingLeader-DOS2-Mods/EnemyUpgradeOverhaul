@@ -239,58 +239,168 @@ local function CanAddBoost(entry, stat, statType)
 	return true
 end
 
-local function AddRandomNegativeBoost(item,stat,statType,level)
-	local boostTable = EnemyUpgradeOverhaul.NegativeCorruptionBoosts[statType]
-	if boostTable ~= nil then
-		local boosts = {}
-		for i,entry in pairs(boostTable) do
-			if entry["Entries"] ~= nil then
-				-- Keep trying to get random entries until we find at least one that's valid
-				for k=0,#entry.Entries do
-					local ranEntry = entry:GetRandomEntry()
-					if CanAddBoost(ranEntry, stat, statType) then
-						if ranEntry.MinLevel <= 0 and ranEntry.MaxLevel <= 0 then
-							boosts[#boosts+1] = ranEntry
-						elseif level >= ranEntry.MinLevel and (level <= ranEntry.MaxLevel or ranEntry.MaxLevel <= 0) then
-							boosts[#boosts+1] = ranEntry
-						end
-						break
-					end
-				end
-			else
-				if CanAddBoost(entry, stat, statType) then
-					if entry.MinLevel <= 0 and entry.MaxLevel <= 0 then
-						boosts[#boosts+1] = entry
-					elseif level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0) then
-						boosts[#boosts+1] = entry
-					end
-				end
+local Boosts = {
+	Weapon = {
+		MinDamage = "integer",
+		MaxDamage = "integer",
+		DamageBoost = "integer",
+		DamageFromBase = "integer",
+		CriticalDamage = "integer",
+		WeaponRange = "number",
+		CleaveAngle = "integer",
+		CleavePercentage = "number",
+		AttackAPCost = "integer",
+	},
+	Armor = {
+		ArmorValue = "integer",
+		ArmorBoost = "integer",
+		MagicArmorValue = "integer",
+		MagicArmorBoost = "integer",
+	},
+	Shield = {
+		ArmorValue = "integer",
+		ArmorBoost = "integer",
+		MagicArmorValue = "integer",
+		MagicArmorBoost = "integer",
+		Blocking = "integer",
+	},
+	Any = {
+		Durability = "integer",
+		DurabilityDegradeSpeed = "integer",
+		StrengthBoost = "integer",
+		FinesseBoost = "integer",
+		IntelligenceBoost = "integer",
+		ConstitutionBoost = "integer",
+		Memory = "integer",
+		WitsBoost = "integer",
+		Willpower = "integer",
+		Bodybuilding = "integer",
+		SightBoost = "integer",
+		HearingBoost = "integer",
+		VitalityBoost = "integer",
+		SourcePointsBoost = "integer",
+		MaxAP = "integer",
+		StartAP = "integer",
+		APRecovery = "integer",
+		AccuracyBoost = "integer",
+		DodgeBoost = "integer",
+		LifeSteal = "integer",
+		CriticalChance = "integer",
+		ChanceToHitBoost = "integer",
+		MovementSpeedBoost = "integer",
+		RuneSlots = "integer",
+		RuneSlots_V1 = "integer",
+		FireResistance = "integer",
+		AirResistance = "integer",
+		WaterResistance = "integer",
+		EarthResistance = "integer",
+		PoisonResistance = "integer",
+		ShadowResistance = "integer",
+		PiercingResistance = "integer",
+		CorrosiveResistance = "integer",
+		PhysicalResistance = "integer",
+		MagicResistance = "integer",
+		CustomResistance = "integer",
+		Movement = "integer",
+		Initiative = "integer",
+		MaxSummons = "integer",
+		Value = "integer",
+		Weight = "integer",
+		Skills = "string",
+		ItemColor = "string",
+	}
+}
+
+local armorResistances = {
+	"FireResistance",
+	"AirResistance",
+	"WaterResistance",
+	"EarthResistance",
+	"PoisonResistance",
+	"PiercingResistance",
+	"PhysicalResistance",
+	--"ShadowResistance",
+	--"CorrosiveResistance",
+	--"MagicResistance",
+}
+
+local weaponNegativeBoosts = {
+	{Stat="CriticalDamage", Min=1,Max=10},
+	{Stat="WeaponRange", Min=1,Max=10},
+	{Stat="DamageFromBase", Min=1,Max=5},
+	{Stat="CriticalChance", Min=1,Max=5},
+}
+
+local function DebugItemStats(uuid)
+	local item = Ext.GetItem(uuid)
+	for i,stat in ipairs(item.Stats.DynamicStats) do
+		Ext.Print("Stat " .. tostring(i) ..":")
+		Ext.Print("---------------------------")
+		for boostName,valType in pairs(Boosts.Any) do
+			Ext.Print(boostName, stat[boostName])
+		end
+		if stat.StatsType == "Weapon" then
+			for boostName,valType in pairs(Boosts.Weapon) do
+				Ext.Print(boostName, stat[boostName])
 			end
 		end
-		local boostCount = #boosts
-		boosts = LeaderLib.Common.ShuffleTable(boosts)
-		if boostCount == 1 then
-			local entry = boosts[1]
-			if entry ~= nil then
-				if RollForBoost(entry) then
-					NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
-					LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomNegativeBoost] Added deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
-					return true
-				end
-			end
-		elseif boostCount > 0 then
-			for i,entry in pairs(boosts) do
-				if RollForBoost(entry) then
-					NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
-					LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomNegativeBoost] Added deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
-					return true
-				end
+		if stat.StatsType == "Shield" then
+			for boostName,valType in pairs(Boosts.Shield) do
+				Ext.Print(boostName, stat[boostName])
 			end
 		end
+		if stat.StatsType == "Armor" then
+			for boostName,valType in pairs(Boosts.Armor) do
+				Ext.Print(boostName, stat[boostName])
+			end
+		end
+		Ext.Print("---------------------------")
 	end
 end
 
-local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
+local function AddBoost(item,stat,min,max,negative)
+	local currentValue = NRD_ItemGetPermanentBoostInt(item, stat)
+	local valMod = 0
+	Ext.Print("Adding boost:",stat,min,max,negative)
+	if not negative then
+		valMod = Ext.Random(min, max)
+	else
+		valMod = -Ext.Random(min, max)
+	end
+	local nextValue = currentValue + valMod
+	NRD_ItemSetPermanentBoostInt(item, stat, nextValue)
+	LeaderLib.Print("	[LLENEMY_ItemCorruption.lua:AddBoost] Adding boost ["..stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
+end
+
+local function AddRandomNegativeBoost_Old(item,stat,statType,level)
+	if level == nil or level <= 0 then level = 1 end
+	if statType == "Armor" or statType == "Shield" then
+		local boostStat = LeaderLib.Common.GetRandomTableEntry(armorResistances)
+		local min = 1 + math.ceil(level/2)
+		local max = 5 + math.min(level,15)
+		AddBoost(item,boostStat,min,max,true)
+		if statType == "Shield" and Ext.Random(1,100) >= 50 then
+			AddBoost(item,"Blocking",1,5,true)
+		end
+		return true
+	elseif statType == "Weapon" then
+		local boostStatEntry = LeaderLib.Common.GetRandomTableEntry(weaponNegativeBoosts)
+		AddBoost(item,boostStatEntry.Stat,boostStatEntry.Min,boostStatEntry.Max,true)
+		if Ext.Random(1,100) >= 50 then
+			boostStatEntry = LeaderLib.Common.GetRandomTableEntry(weaponNegativeBoosts)
+			AddBoost(item,boostStatEntry.Stat,boostStatEntry.Min,boostStatEntry.Max,true)
+		end
+		return true
+	end
+	return false
+end
+
+local function AddRandomNegativeBoost(item,stat,statType,level)
+	if level == nil or level <= 0 then level = 1 end
+	EnemyUpgradeOverhaul.CorruptionBoosts.Resistances:Apply(item,stat,statType,level,-1,false,Ext.Random(1,2))
+end
+
+local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,isClone)
 	local totalBoosts = 0
 	local boosts = {}
 	for i,entry in pairs(boostTable) do
@@ -320,60 +430,59 @@ local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Boosts:\n" .. LeaderLib.Common.Dump(boosts))
 	local boostCount = #boosts
 	local boostAdded = false
-	local addNegativeBoost = 2
 	if boostCount == 1 then
 		local entry = boosts[1]
 		if entry ~= nil then
 			if RollForBoost(entry) then
-				NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+				if isClone == true then
+					NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+				else
+					ItemAddDeltaModifier(item, entry.Boost)
+				end
 				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 				totalBoosts = totalBoosts + 1
 				boostAdded = true
-				if addNegativeBoost >= 2 then
-					if AddRandomNegativeBoost(item, stat, statType, level) then
-						addNegativeBoost = 0
-					end
-				else
-					addNegativeBoost = addNegativeBoost + 1
-				end
 			end
 		end
 	elseif boostCount > 0 then
 		for i,entry in pairs(boosts) do
 			if RollForBoost(entry) then
-				NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+				if isClone == true then
+					NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+				else
+					ItemAddDeltaModifier(item, entry.Boost)
+				end
 				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 				totalBoosts = totalBoosts + 1
 				boostAdded = true
-				if addNegativeBoost >= 2 then
-					if AddRandomNegativeBoost(item, stat, statType, level) then
-						addNegativeBoost = 0
-					end
-				else
-					addNegativeBoost = addNegativeBoost + 1
-				end
 			end
 		end
 	end
 	if not boostAdded then
 		local entry = LeaderLib.Common.GetRandomTableEntry(boosts)
 		if entry ~= nil then
-			NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+			if isClone == true then
+				NRD_ItemCloneAddBoost(entry.Type, entry.Boost)
+			else
+				ItemAddDeltaModifier(item, entry.Boost)
+			end
 			LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding fallback deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 			totalBoosts = totalBoosts + 1
-			if addNegativeBoost >= 2 then
-				if AddRandomNegativeBoost(item, stat, statType, level) then
-					addNegativeBoost = 0
-				end
-			else
-				addNegativeBoost = addNegativeBoost + 1
-			end
 		end
 	end
 	-- if statType == "Shield" then
 	-- 	NRD_ItemCloneAddBoost("DeltaMod", "LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage")
 	-- 	totalBoosts = totalBoosts + 1
 	-- end
+	return totalBoosts
+end
+
+local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
+	local totalBoosts = 0
+	for i,group in ipairs(boostTable) do
+		LeaderLib.Print("Applying boosts from group: " .. tostring(group.ID))
+		totalBoosts = totalBoosts + group:Apply(item,stat,statType,level,1,false)
+	end
 	return totalBoosts
 end
 
@@ -458,13 +567,12 @@ local function GetClone(item,stat,statType)
 
 	NRD_ItemCloneSetString("GenerationStatsId", stat)
 	NRD_ItemCloneSetString("StatsEntryName", stat)
-	NRD_ItemCloneSetInt("HasGeneratedStats", 0)
+	NRD_ItemCloneSetInt("HasGeneratedStats", 1)
 	NRD_ItemCloneSetInt("GenerationLevel", level)
 	NRD_ItemCloneSetInt("StatsLevel", level)
 	NRD_ItemCloneSetInt("IsIdentified", 1)
 	--NRD_ItemCloneSetInt("GMFolding", 0)
-	local totalBoosts = AddRandomBoosts(item,stat,statType,level)
-	if rarity == nil or (totalBoosts >= 2 and rarityValue[rarity] < rarityValue["Epic"]) then
+	if rarity == nil or (rarityValue[rarity] < rarityValue["Epic"] and Ext.Random(1,100) >= 75) then
 		rarity = "Epic"
 	end
 	NRD_ItemCloneSetString("ItemType", rarity)
@@ -472,6 +580,14 @@ local function GetClone(item,stat,statType)
 
 	SetRandomShadowName(item, statType)
 	local cloned = NRD_ItemClone()
+	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level)
+	if totalBoosts > 0 then
+		--SetVarInteger(cloned, "LLENEMY_ItemCorruption_TotalBoosts", totalBoosts)
+		--LeaderLib_Ext_StartTimer("Timers_LLENEMY_AddNegativeItemBoosts", 100, cloned)
+		for k=0,math.max(2,math.ceil(totalBoosts/2)),1 do
+			AddRandomNegativeBoost(cloned, stat, statType, level)
+		end
+	end
 	ItemRemove(item)
 	--ItemLevelUpTo(cloned,level)
 	return cloned
@@ -501,6 +617,7 @@ local function ShadowCorruptItem(uuid, container)
 				if item.Slot > 13 then
 					if EnemyUpgradeOverhaul.CorruptionBoosts[statType] ~= nil then
 						local cloned = GetClone(uuid, stat, statType)
+						NRD_ItemSetIdentified(cloned,1)
 						if container == nil and ItemIsInInventory(uuid) then
 							container = GetInventoryOwner(uuid)
 							if container == nil then
@@ -555,7 +672,7 @@ function LLENEMY_Ext_ShadowCorruptItem(item)
 		end
 		return result
 	else
-		LeaderLib.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
+		Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
 	end
 	return nil
 end
@@ -580,3 +697,8 @@ function LLENEMY_Ext_ShadowCorruptItems(uuid)
 		InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
 	end ]]
 end
+
+EnemyUpgradeOverhaul.ItemCorruption = {
+	AddRandomNegativeBoost = AddRandomNegativeBoost,
+	DebugItemStats = DebugItemStats
+}
