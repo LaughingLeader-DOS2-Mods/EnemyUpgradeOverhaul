@@ -52,7 +52,7 @@ local function LLENEMY_TryScatterInventory(uuid)
 				if ObjectExists(v) == 1 then
 					--LLENEMY_Ext_Debug_PrintItemProperties(v)
 					--LLENEMY_Ext_Debug_PrintFlags(v)
-					--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
+					--local equipped = Mods.LeaderLib.ItemIsEquipped(char,v)
 					local item = Ext.GetItem(v)
 					local stat = item.StatsId
 					local equipped = item.Slot <= 13
@@ -111,7 +111,7 @@ local function LLENEMY_TreasureGoblinDefeated_TrySpawnLoot(goblin)
 			for k,v in pairs(inventory) do
 				--LLENEMY_Ext_Debug_PrintItemProperties(v)
 				--LLENEMY_Ext_Debug_PrintFlags(v)
-				--local equipped = LeaderLib_Ext_ItemIsEquipped(char,v)
+				--local equipped = Mods.LeaderLib.ItemIsEquipped(char,v)
 				local item = Ext.GetItem(v)
 				local stat = item.StatsId
 				local equipped = item.Slot <= 13

@@ -35,14 +35,14 @@ function LLENEMY_Ext_MugTarget_Start(attacker, target, damage, handle)
 	local hit_type = NRD_StatusGetInt(target, handle, "HitReason")
 	if (hit_type == 0 or hit_type == 3) and LeaderLib.Game.HitSucceeded(target, handle, 0) then
 		if Ext.IsDeveloperMode() then
-			pcall(LeaderLib_Ext_Debug_TraceOnHit,target,attacker,damage,handle)
+			pcall(Mods.LeaderLib.Debug_TraceOnHit,target,attacker,damage,handle)
 		end
 		local weaponHandle = NRD_StatusGetGuidString(target, handle, "WeaponHandle")
 		local hitWithWeapon = NRD_StatusGetInt(target, handle, "HitWithWeapon")
 		local isMelee = hitWithWeapon == 1 or (weaponHandle ~= "NULL_00000000-0000-0000-0000-000000000000" and weaponHandle ~= nil)
 		local skill = NRD_StatusGetString(target, handle, "SkillId")
 		if skill ~= nil and skill ~= "" then
-			skill = LeaderLib_Ext_GetSkillEntryName(skill) -- Actual skill name without the prototype level
+			skill = Mods.LeaderLib.GetSkillEntryName(skill) -- Actual skill name without the prototype level
 			local skillIsMelee = Ext.StatGetAttribute(skill, "IsMelee")
 			local requirement = Ext.StatGetAttribute(skill, "Requirement")
 			if skillIsMelee == "Yes" or requirement == "MeleeWeapon" or requirement == "DaggerWeapon" or requirement == "StaffWeapon" then

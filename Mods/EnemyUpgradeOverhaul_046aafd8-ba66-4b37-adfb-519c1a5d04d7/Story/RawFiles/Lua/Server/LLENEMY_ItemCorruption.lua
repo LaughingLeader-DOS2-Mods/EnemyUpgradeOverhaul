@@ -583,7 +583,7 @@ local function GetClone(item,stat,statType)
 	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level)
 	if totalBoosts > 0 then
 		--SetVarInteger(cloned, "LLENEMY_ItemCorruption_TotalBoosts", totalBoosts)
-		--LeaderLib_Ext_StartTimer("Timers_LLENEMY_AddNegativeItemBoosts", 100, cloned)
+		--Mods.LeaderLib.StartTimer("Timers_LLENEMY_AddNegativeItemBoosts", 100, cloned)
 		for k=0,math.max(2,math.ceil(totalBoosts/2)),1 do
 			AddRandomNegativeBoost(cloned, stat, statType, level)
 		end
@@ -657,22 +657,27 @@ end
 local corruptedItemLimit = {}
 
 function LLENEMY_Ext_ShadowCorruptItem(item)
-	local container = GetInventoryOwner(item)
-
-	local limit = corruptedItemLimit[container]
-	if limit ~= nil and limit <= 0 then
-		return nil
-	end
-
-	local b,result = xpcall(ShadowCorruptItem, debug.traceback, item, container)
-	if b then
-		if limit ~= nil then
-			limit = limit - 1
-			corruptedItemLimit[container] = limit
-		end
-		return result
+	local stat = NRD_ItemGetStatsId(item)
+	if string.sub(stat,1,1) == "_" then
+		ItemRemove(item)
+		Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Deleted item with NPC stat: "..stat)
 	else
-		Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
+		local container = GetInventoryOwner(item)
+		local limit = corruptedItemLimit[container]
+		if limit ~= nil and limit <= 0 then
+			return nil
+		end
+
+		local b,result = xpcall(ShadowCorruptItem, debug.traceback, item, container)
+		if b then
+			if limit ~= nil then
+				limit = limit - 1
+				corruptedItemLimit[container] = limit
+			end
+			return result
+		else
+			Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
+		end
 	end
 	return nil
 end

@@ -231,7 +231,7 @@ StringConcatenate(_Msg4, ") CP (", _Msg5)
 AND
 StringConcatenate(_Msg5, _CPStr, _Msg6)
 THEN
-NRD_LuaCall("LeaderLib_Ext_Log", _Msg6, ") Group(",_Group,") Type(",_Type,") HardMode(",_HardModeStr,")");
+NRD_ModCall("LeaderLib", "Log", _Msg6, ") Group(",_Group,") Type(",_Type,") HardMode(",_HardModeStr,")");
 */
 
 /* [OSITOOLS_ONLY]

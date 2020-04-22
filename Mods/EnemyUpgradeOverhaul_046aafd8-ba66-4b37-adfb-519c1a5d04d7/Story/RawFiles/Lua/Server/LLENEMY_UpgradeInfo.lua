@@ -72,7 +72,7 @@ function LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster(highest)
 end
 
 local function TimerFinished(event, ...)
-	Ext.Print("TimerFinished: ", event, LeaderLib.Common.Dump({...}))
+	--Ext.Print("TimerFinished: ", event, LeaderLib.Common.Dump({...}))
 	if event == "Timers_LLENEMY_SendHighestLoremaster" then
 		LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
 	end
@@ -134,5 +134,5 @@ function LLENEMY_Ext_StoreHighestLoremaster(nextHighest)
 	EnemyUpgradeOverhaul.HighestLoremaster = nextHighest
 	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
 	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(EnemyUpgradeOverhaul.HighestLoremaster)..")")
-	LeaderLib_Ext_StartTimer("Timers_LLENEMY_SendHighestLoremaster", 100)
+	Mods.LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 100)
 end
