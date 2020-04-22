@@ -84,9 +84,14 @@ LLENEMY_TreasureGoblins_Internal_IncreaseFailures((INTEGER)_CombatID)
 AND
 DB_LLENEMY_Temp_TreasureGoblinRollFailures(_TotalFailures)
 AND
-_TotalFailures >= 12
+LeaderLib_Random_QRY(12,36)
+AND
+DB_LeaderLib_Random(_Failimit)
+AND
+_TotalFailures >= _Failimit
 THEN
 NOT DB_LLENEMY_Temp_TreasureGoblinRollFailures(_TotalFailures);
+NOT DB_LeaderLib_Random(_Failimit);
 LLENEMY_TreasureGoblins_Spawn(_CombatID);
 
 PROC
