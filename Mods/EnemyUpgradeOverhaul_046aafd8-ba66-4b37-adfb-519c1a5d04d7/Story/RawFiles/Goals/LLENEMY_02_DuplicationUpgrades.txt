@@ -62,8 +62,11 @@ LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_ApplyStats");
 //END_REGION
 
 //REGION UPDATES
+/*
 PROC
 LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
+AND
+_LastVersion > -1
 AND
 _LastVersion < 536870929
 AND
@@ -71,6 +74,7 @@ DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
+*/
 //END_REGION
 
 //REGION CREATE

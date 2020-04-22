@@ -496,7 +496,7 @@ LLENEMY_Rewards_SpawnShadowOrb((CHARACTERGUID)_Dupe)
 AND
 DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container)
 THEN
-MoveAllItemsTo(_Dupe, _Container, 0, 0, 1);
+//MoveAllItemsTo(_Dupe, _Container, 0, 0, 1);
 LLENEMY_Rewards_Internal_ShadowCorruptItems(_Dupe, _Container);
 ObjectClearFlag(_Dupe, "LLENEMY_GenerateRewards", 0);
 
