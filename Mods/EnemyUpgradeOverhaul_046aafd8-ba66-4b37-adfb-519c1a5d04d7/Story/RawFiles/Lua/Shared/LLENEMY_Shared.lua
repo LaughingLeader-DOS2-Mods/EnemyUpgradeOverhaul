@@ -20,7 +20,7 @@ EnemyUpgradeOverhaul = {
 }
 
 
-function LLENEMY_Ext_GetExtraDataValue(key, fallback)
+function GetExtraDataValue(key, fallback)
 	local val = Ext.ExtraData[key]
 	if val ~= nil then return val end
 	return fallback
@@ -51,7 +51,7 @@ end
 function LLENEMY_Shared_InitModuleLoading()
 	Ext.Print("LLENEMY_Shared.lua] Module is loading.")
 	for key,fallback in pairs(EnemyUpgradeOverhaul.ExtraData) do
-		local value = LLENEMY_Ext_GetExtraDataValue(key, fallback)
+		local value = GetExtraDataValue(key, fallback)
 		EnemyUpgradeOverhaul.ExtraData[key] = value
 		LeaderLib.Print("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Loaded Data.txt key - [" .. tostring(key) .. "] = (" .. tostring(value) .. ")")
 	end

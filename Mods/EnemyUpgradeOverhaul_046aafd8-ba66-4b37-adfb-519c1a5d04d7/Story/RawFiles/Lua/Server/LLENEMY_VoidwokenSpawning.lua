@@ -227,7 +227,7 @@ function SpawnVoidwoken(source,testing,totalPoints)
 
 				local voidwoken = CharacterCreateAtPosition(x, y, z, entry:GetTemplate(), 1)
 				SetFaction(voidwoken, "RC_Voidwoken")
-				LLENEMY_Ext_ClearGain(voidwoken)
+				ClearGain(voidwoken)
 				TeleportToRandomPosition(voidwoken, 12.0, "")
 				if ObjectExists(voidwoken) == 0 then
 					LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] Failed to spawn voidwoken at (",x,y,z,")")
@@ -241,7 +241,7 @@ function SpawnVoidwoken(source,testing,totalPoints)
 			for i,v in pairs(voidwokenTemplates) do
 				v.Weight = v.DefaultWeight
 			end
-			LLENEMY_Ext_SpawnVoidwoken(source, testing)
+			SpawnVoidwoken(source, testing)
 		end
 	end
 end
@@ -289,7 +289,7 @@ local function TrySummonVoidwoken(char, skill, skilltype, skillelement)
 		local roll = Ext.Random(0,100)
 		LeaderLib.Print("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Roll: ["..tostring(roll).."/100 <= "..tostring(chance).."] TotalSP ("..tostring(totalPointsUsed)..").")
 		if roll <= chance then
-			LLENEMY_Ext_SpawnVoidwoken(char)
+			SpawnVoidwoken(char)
 		end
 	end
 end

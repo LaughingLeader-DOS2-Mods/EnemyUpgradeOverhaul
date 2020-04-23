@@ -151,7 +151,7 @@ EnemyUpgradeOverhaul.ChallengePointsText = {
 ---Get an upgrade's info text table.
 ---@param status string
 ---@return table
-function LLENEMY_Ext_UpgradeInfo_GetText(status)
+function UpgradeInfo_GetText(status)
 	local infoText = EnemyUpgradeOverhaul.UpgradeData.Statuses[status]
 	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.ArmorBoostStatuses[status] end
 	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.MagicArmorBoostStatuses[status] end

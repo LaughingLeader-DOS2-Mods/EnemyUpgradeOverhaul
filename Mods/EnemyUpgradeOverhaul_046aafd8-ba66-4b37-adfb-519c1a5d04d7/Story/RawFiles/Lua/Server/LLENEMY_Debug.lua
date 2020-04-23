@@ -51,7 +51,7 @@ local character_stats_computed = {
 	"ChanceToHitBoost"
 }
 
-function LLENEMY_Ext_TraceCharacterStats_Restricted(char)
+function TraceCharacterStats_Restricted(char)
 	Ext.Print("====== Stats: "..tostring(char).." ======")
 	Ext.Print("==== COMPUTED ====")
 	for _,stat in pairs(character_stats_computed) do
@@ -63,7 +63,7 @@ function LLENEMY_Ext_TraceCharacterStats_Restricted(char)
 	end
 end
 
-function LLENEMY_Ext_TraceCharacterStats(char)
+function TraceCharacterStats(char)
 	Ext.Print("====== Stats: "..tostring(char).." ======")
 	Ext.Print("==== COMPUTED ====")
 	for _,stat in pairs(character_stats_computed) do
@@ -78,7 +78,7 @@ function LLENEMY_Ext_TraceCharacterStats(char)
 	end
 end
 
-function LLENEMY_Ext_InitDebugLevel()
+function InitDebugLevel()
 	local char = "Lizards_Hero_Male_Undead_000_09478f32-8fbf-4502-a59d-011e4d1b3d4d"
 	ApplyStatus(char, "LLENEMY_RAGE", -1.0, 1, char)
 
@@ -128,14 +128,14 @@ local indexMap_DB_LLENEMY_Upgrades_Statuses = {
 	"CP"
 }
 
-function LLENEMY_Ext_Debug_TraceItemOwnership(item)
+function Debug_TraceItemOwnership(item)
 	local inventoryOwner = GetInventoryOwner(item)
 	local inventoryOwnerOwner = GetInventoryOwner(inventoryOwner)
 	local goblinOwner = ItemGetOwner(item)
-	Ext.Print("[LLENEMY_Ext_Debug_TraceItemOwnership] item("..tostring(item)..") inventoryOwner("..tostring(inventoryOwner)..") inventoryOwnerOwner("..tostring(inventoryOwnerOwner)..") goblinOwner("..tostring(goblinOwner)..")")
+	Ext.Print("[Debug_TraceItemOwnership] item("..tostring(item)..") inventoryOwner("..tostring(inventoryOwner)..") inventoryOwnerOwner("..tostring(inventoryOwnerOwner)..") goblinOwner("..tostring(goblinOwner)..")")
 end
 
-function LLENEMY_Ext_DumpUpgradeTables()
+function DumpUpgradeTables()
 --SysLog("DB_LLENEMY_Upgrades_TypeRollValues", 4);
 --SysLog("DB_LLENEMY_Upgrades_Statuses", 7);
 	local typeRolls = Osi.DB_LLENEMY_Upgrades_TypeRollValues:Get(nil,nil,nil,nil)
@@ -146,7 +146,7 @@ function LLENEMY_Ext_DumpUpgradeTables()
 	Ext.Print("DB_LLENEMY_Upgrades_Statuses:\n" .. LeaderLib.Common.Dump(upgrades, indexMap_DB_LLENEMY_Upgrades_Statuses, true))
 end
 
-function LLENEMY_Ext_Debug_TraceStats(char)
+function Debug_TraceStats(char)
 	local stats = nil
 	local character = Ext.GetCharacter(char)
 	if character ~= nil then
@@ -154,11 +154,11 @@ function LLENEMY_Ext_Debug_TraceStats(char)
 	end
 	if stats == nil then stats = GetStatString(char) end
 	if stats ~= nil then
-		Osi.LeaderLog_Log("DEBUG", "[LLENEMY_Debug.lua:LLENEMY_Ext_Debug_TraceStats] Character's instance stat ID is (",stats,")")
+		Osi.LeaderLog_Log("DEBUG", "[LLENEMY_Debug.lua:Debug_TraceStats] Character's instance stat ID is (",stats,")")
 	end
 end
 
-function LLENEMY_Ext_Debug_RerollLevel(char)
+function Debug_RerollLevel(char)
 	local character = Ext.GetCharacter(char)
 	if character ~= nil then
 		SetVarFixedString(char, "LLENEMY_Debug_Stats", character.Stats.Name)
@@ -167,12 +167,12 @@ function LLENEMY_Ext_Debug_RerollLevel(char)
 	CharacterRemoveAttribute(char, "Dummy", 0)
 	CharacterAddAttribute(char, "Dummy", 0)
 	--CharacterAddExplorationExperience(char, 1, 1, 1)
-	--Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Leveling up (".. char ..").")
+	--Ext.Print("[LLENEMY_ExperienceScaling:Debug_RerollLevel] Leveling up (".. char ..").")
 	--CharacterLevelUp(char)
-	--Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Transforming (".. char ..").")
+	--Ext.Print("[LLENEMY_ExperienceScaling:Debug_RerollLevel] Transforming (".. char ..").")
 	--CharacterTransformFromCharacter(char, char, 1, 1, 1, 1, 1, 1, 1)
 	--Transform(char, "57b70554-36bf-4b86-b9aa-8f7cc3944153", 1, 1, 1)
-	--Ext.Print("[LLENEMY_ExperienceScaling:LLENEMY_Ext_Debug_RerollLevel] Leveling up (".. char ..").")
+	--Ext.Print("[LLENEMY_ExperienceScaling:Debug_RerollLevel] Leveling up (".. char ..").")
 	--CharacterLevelUpTo(char, 3)
 	--CharacterLevelUp(char)
 end
@@ -181,11 +181,11 @@ local debugCheckEnemies = {
 	"S_FTJ_SeekerCaptain_1329f018-23e4-4717-9bc8-074b28d04c54"
 }
 
-function LLENEMY_Ext_CheckFactions()
+function CheckFactions()
 	for i,uuid in pairs(debugCheckEnemies) do
 		if ObjectExists(uuid) == 1 then
 			local name = CharacterGetDisplayName(uuid)
-			Ext.Print("[LLENEMY_Ext_CheckFactions] ["..uuid.."]("..name..") faction ("..GetFaction(uuid)..")")
+			Ext.Print("[CheckFactions] ["..uuid.."]("..name..") faction ("..GetFaction(uuid)..")")
 		end
 	end
 end
@@ -222,7 +222,7 @@ local function LLENEMY_DebugInit()
 		--NRD_Summon(host, "e63a712f-fc87-4469-8848-fd8941043afd", x, y, z, -1, 1, 1, 1)
 		--NRD_Summon(host, "26f10a2d-910c-42ed-b629-9a3ce550c1f7", x, y, z, -1, 1, 1, 1)
 		CharacterSetImmortal(host, 1)
-		LLENEMY_Ext_SpawnVoidwoken(host, true)
+		SpawnVoidwoken(host, true)
 		--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
 		-- local level = GetRegion(host)
 		-- if level == "TUT_Tutorial_A" then
@@ -234,11 +234,11 @@ local function LLENEMY_DebugInit()
 		-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_03_d32d32b2-c05b-4acd-944c-f2b802ec7234"
 		-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b"
 		-- end
-		-- LLENEMY_Ext_CheckFactions()
+		-- CheckFactions()
 		local x,y,z = GetPosition(host)
 		-- Weapon
 		local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
-		local shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
+		local shadowItem = ShadowCorruptItem(item)
 		if shadowItem ~= nil then
 			ItemToInventory(shadowItem, host, 1, 1, 1)
 			-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -10)
@@ -251,7 +251,7 @@ local function LLENEMY_DebugInit()
 		end
 		-- Helmet
 		item = CreateItemTemplateAtPosition("fa3f2b84-46da-43b7-afb3-0a4481290dab", x, y, z)
-		shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
+		shadowItem = ShadowCorruptItem(item)
 		if shadowItem ~= nil then
 			ItemToInventory(shadowItem, host, 1, 1, 1)
 			-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -10)
@@ -263,7 +263,7 @@ local function LLENEMY_DebugInit()
 		end
 		-- Shield
 		item = CreateItemTemplateAtPosition("08854157-2996-449a-bde0-083277ca1119", x, y, z)
-		shadowItem = LLENEMY_Ext_ShadowCorruptItem(item)
+		shadowItem = ShadowCorruptItem(item)
 		if shadowItem ~= nil then
 			ItemToInventory(shadowItem, host, 1, 1, 1)
 			-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -50)
@@ -308,9 +308,9 @@ local function LLENEMY_DebugInit()
 	end
 
 	if Ext.IsDeveloperMode() then
-		GlobalSetFlag("LLENEMY_Ext_IsDeveloperMode")
+		GlobalSetFlag("IsDeveloperMode")
 	else
-		GlobalClearFlag("LLENEMY_Ext_IsDeveloperMode")
+		GlobalClearFlag("IsDeveloperMode")
 	end
 
 	EnemyUpgradeOverhaul.GetSourceDegredation(300000, 50)
@@ -327,11 +327,11 @@ function LLENEMY_Debug_SpawnTreasureGoblinTest()
 			--Osi.LLENEMY_TreasureGoblins_Spawn(combatid)
 			--local x,y,z = GetPosition(combat[1][1])
 			--Osi.LLENEMY_TreasureGoblins_Internal_Spawn(x, y, z, combatid)
-			LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,CharacterGetLevel(host),combatid)
+			SpawnTreasureGoblin(x,y,z,CharacterGetLevel(host),combatid)
 			LeaderLib.Print("Spawning treasure goblin at ", x, y, z)
 		end
 	else
-		LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,CharacterGetLevel(host),0)
+		SpawnTreasureGoblin(x,y,z,CharacterGetLevel(host),0)
 		LeaderLib.Print("Spawning treasure goblin at ", x, y, z)
 	end
 end
@@ -353,14 +353,14 @@ if Ext.IsDeveloperMode() then
 	Ext.RegisterListener("SessionLoaded", LLENEMY_Debug_SessionLoaded)
 end
 
-function LLENEMY_Ext_Debug_PrintFlags(obj)
+function Debug_PrintFlags(obj)
 	local stat = nil
 	if ObjectIsItem(obj) == 1 then
 		stat = NRD_ItemGetStatsId(obj)
 	elseif ObjectIsCharacter(obj) then
 		stat = NRD_CharacterGetStatString(obj)
 	end
-	Ext.Print("[LLENEMY_Ext_Debug_PrintFlags] Object ("..tostring(stat)..")["..tostring(obj).."] Flags:")
+	Ext.Print("[Debug_PrintFlags] Object ("..tostring(stat)..")["..tostring(obj).."] Flags:")
 	Ext.Print("==========================")
 	for i=0,72,1 do
 		local flagVal = NRD_ObjectGetInternalFlag(obj,i)
@@ -369,7 +369,7 @@ function LLENEMY_Ext_Debug_PrintFlags(obj)
 	Ext.Print("==========================")
 end
 
-function LLENEMY_Ext_Debug_PrintTags(uuid)
+function Debug_PrintTags(uuid)
 	SetTag(uuid, "DEBUGGING")
 	local character = Ext.GetCharacter(uuid)
 	if character ~= nil then
@@ -381,7 +381,7 @@ function LLENEMY_Ext_Debug_PrintTags(uuid)
 	end
 end
 
-function LLENEMY_Ext_Debug_PrintTagsOnClient()
+function Debug_PrintTagsOnClient()
 	local data = Ext.JsonStringify(Osi.DB_LLENEMY_Debug_PrintTags:Get(nil))
 	Ext.Print("[LLENEMY_Debug.lua:PrintTagsOnClient] Broadcasting data to clients ("..data..")")
 	Ext.BroadcastMessage("LLENEMY_Debug_PrintTags", data, nil)
@@ -415,10 +415,10 @@ local ItemProperties = {
 	"ForceSynch",
 }
 
-function LLENEMY_Ext_Debug_PrintItemProperties(obj)
+function Debug_PrintItemProperties(obj)
 	local item = Ext.GetItem(obj)
 	local stat = NRD_ItemGetStatsId(obj)
-	Ext.Print("[LLENEMY_Ext_Debug_PrintItemProperties] Object ("..tostring(stat)..")["..tostring(obj).."] Properties:")
+	Ext.Print("[Debug_PrintItemProperties] Object ("..tostring(stat)..")["..tostring(obj).."] Properties:")
 	Ext.Print("==========================")
 	for i,prop in pairs(ItemProperties) do
 		Ext.Print("["..tostring(prop).."] = "..tostring(item[prop]))

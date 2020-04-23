@@ -23,7 +23,7 @@ local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 		local output = "<br><img src='Icon_Line' width='350%'><br>"
 		local i = 0
 		for _,status in ipairs(upgradeKeys) do
-			local infoText = LLENEMY_Ext_UpgradeInfo_GetText(status)
+			local infoText = UpgradeInfo_GetText(status)
 			if infoText ~= nil then
 				local color = infoText.Color
 				Ext.Print("Highest Loremaster:" .. tostring(EnemyUpgradeOverhaul.HighestLoremaster))

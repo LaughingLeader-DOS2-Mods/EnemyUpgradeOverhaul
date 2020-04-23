@@ -28,7 +28,7 @@ function IncreaseRage(character, damage, handle, source)
 	local add_rage = math.ceil(damage_ratio)
 	Osi.LeaderLib_Variables_DB_ModifyVariableInt(character, "LLENEMY_Rage", add_rage, 100, 0, source);
 	local rage_entry = Osi.DB_LeaderLib_Variables_Integer:Get(character, "LLENEMY_Rage", nil, nil)
-	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_IncreaseRage] Added ("..tostring(add_rage)..") Rage to ("..tostring(character).."). Total: ("..tostring(rage_entry[1][3])..")")
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:IncreaseRage] Added ("..tostring(add_rage)..") Rage to ("..tostring(character).."). Total: ("..tostring(rage_entry[1][3])..")")
 end
 
 function MugTarget_Start(attacker, target, damage, handle)
@@ -52,9 +52,9 @@ function MugTarget_Start(attacker, target, damage, handle)
 			isMelee = true
 		end
 		if isMelee then
-			--LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Hit type: " .. tostring(hit_type))
-			LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] ("..tostring(attacker)..") is mugging target: ", target)
-			--LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_Start] Dodged: ",NRD_StatusGetInt(target, handle, "Dodged")," | Missed: ", NRD_StatusGetInt(target, handle, "Missed")," | Blocked: ",NRD_StatusGetInt(target, handle, "Blocked"))
+			--LeaderLib.Print("[LLENEMY_GameMechanics.lua:MugTarget_Start] Hit type: " .. tostring(hit_type))
+			LeaderLib.Print("[LLENEMY_GameMechanics.lua:MugTarget_Start] ("..tostring(attacker)..") is mugging target: ", target)
+			--LeaderLib.Print("[LLENEMY_GameMechanics.lua:MugTarget_Start] Dodged: ",NRD_StatusGetInt(target, handle, "Dodged")," | Missed: ", NRD_StatusGetInt(target, handle, "Missed")," | Blocked: ",NRD_StatusGetInt(target, handle, "Blocked"))
 			Osi.LLENEMY_Talents_MugTarget(attacker, target)
 		end
 	end
@@ -62,7 +62,7 @@ end
 
 function MugTarget_StealGold(character, target)
 	local gold = CharacterGetGold(target)
-	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_StealGold] Target ("..tostring(target)..") has ("..tostring(gold)..") gold.")
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:MugTarget_StealGold] Target ("..tostring(target)..") has ("..tostring(gold)..") gold.")
 	if gold > 0 then
 		local add_gold = math.tointeger(math.max(math.ceil(gold / 8), 1))
 		local remove_gold = math.tointeger(add_gold * -1)
@@ -77,20 +77,20 @@ end
 
 function MugTarget_End(character, target)
 	local items = Osi.DB_LLENEMY_Talents_Temp_MasterThief_Items:Get(target, nil, nil)
-	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_End] Picking items from:\n",LeaderLib.Common.Dump(items))
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:MugTarget_End] Picking items from:\n",LeaderLib.Common.Dump(items))
 	local item_entry = LeaderLib.Common.GetRandomTableEntry(items)	
 	if item_entry ~= nil then
 		local item = item_entry[3]
-		LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_End] Transfering (",item,") from (",target,") to (",character,").")
+		LeaderLib.Print("[LLENEMY_GameMechanics.lua:MugTarget_End] Transfering (",item,") from (",target,") to (",character,").")
 		ItemToInventory(item, character, 1, CharacterIsPlayer(character), 0)
 		Osi.LLENEMY_Talents_OnTargetMugged(character, target, item, 1)
-		LLENEMY_Ext_MugTarget_DisplayText(character, target, item, 1)
+		MugTarget_DisplayText(character, target, item, 1)
 	end
 	Osi.LLENEMY_Talents_Internal_Mug_ClearData(target)
 end
 
 function MugTarget_DisplayText(character, target, item, amount)
-	local lost_gold = LLENEMY_Ext_MugTarget_StealGold(character, target)
+	local lost_gold = MugTarget_StealGold(character, target)
 	local template = GetTemplate(item)
 	local handle,name = ItemTemplateGetDisplayString(template)
 	local text = ""
@@ -102,7 +102,7 @@ function MugTarget_DisplayText(character, target, item, amount)
 	CharacterStatusText(target, text)
 	if lost_gold > 0 then CharacterStatusText(target, "<font color='#ffbd30' size='23'>Lost "..tostring(lost_gold).." Gold!</font>") end
 end
---Ext.NewCall(LLENEMY_Ext_MugTarget_DisplayText, "LLENEMY_Ext_MugTarget_DisplayText", "(CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target, (ITEMGUID)_Item, (INTEGER)_Amount")
+--Ext.NewCall(MugTarget_DisplayText, "LLENEMY_Ext_MugTarget_DisplayText", "(CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target, (ITEMGUID)_Item, (INTEGER)_Amount")
 
 function RemoveInvisible(target, source)
 	local detected = false
@@ -180,10 +180,10 @@ function Duplication_CopySource(source,dupe)
 	end
 	local level = CharacterGetLevel(source)
 	CharacterLevelUpTo(dupe, level)
-	LLENEMY_Ext_Duplication_CopySourceStat(source, dupe, "LLENEMY_ApplyStats")
-	LLENEMY_Ext_Duplication_CopyName(source, dupe)
-	LLENEMY_Ext_Duplication_CopyCP(source, dupe)
-	LLENEMY_Ext_ClearGain(dupe)
+	Duplication_CopySourceStat(source, dupe, "LLENEMY_ApplyStats")
+	Duplication_CopyName(source, dupe)
+	Duplication_CopyCP(source, dupe)
+	ClearGain(dupe)
 	NRD_CharacterIterateSkills(source, "LLENEMY_Dupe_CopySkill")
 	Osi.LLENEMY_Duplication_Internal_SetupDupe_StageTwo(source, dupe)
 end
@@ -191,13 +191,13 @@ end
 function Duplication_CopyCP(source,dupe)
 	local cp = GetVarInteger(source, "LLENEMY_ChallengePoints")
 	SetVarInteger(dupe, "LLENEMY_ChallengePoints", cp)
-	LLENEMY_Ext_SetChallengePointsTag(dupe)
+	SetChallengePointsTag(dupe)
 end
 
 function Duplication_CopySourceStat(source,dupe,applyevent)
 	local sourceCharStat = Ext.GetCharacter(source).Stats.Name
 	SetVarFixedString(dupe, "LLENEMY_Dupe_Stats", sourceCharStat)
-	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_Duplication_CopySourceStat] Copying stat " .. tostring(sourceCharStat) .." to dupe ("..dupe..").")
+	LeaderLib.Print("[LLENEMY_GameMechanics.lua:Duplication_CopySourceStat] Copying stat " .. tostring(sourceCharStat) .." to dupe ("..dupe..").")
 	SetStoryEvent(dupe, applyevent)
 	NRD_CharacterSetPermanentBoostInt(dupe, "Gain", 0)
 	CharacterAddAttribute(dupe, "Dummy", 0)

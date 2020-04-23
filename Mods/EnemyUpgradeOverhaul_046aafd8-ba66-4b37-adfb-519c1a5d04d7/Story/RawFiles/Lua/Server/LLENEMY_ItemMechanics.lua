@@ -52,7 +52,7 @@ end
 function DestroyEmptyContainer(uuid)
 	local containerGoldValue = ContainerGetGoldValue(uuid)
 	local containerValue = ItemGetGoldValue(uuid)
-	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_Ext_DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
+	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
 	if containerGoldValue <= 1 then
 		ItemDestroy(uuid)
 	end

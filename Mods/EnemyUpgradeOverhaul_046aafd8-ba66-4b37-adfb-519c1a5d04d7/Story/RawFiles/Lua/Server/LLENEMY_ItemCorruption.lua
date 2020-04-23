@@ -693,12 +693,12 @@ function ShadowCorruptItems(uuid)
 		if inventory ~= nil and #inventory > 0 then
 			success = true
 			for k,v in pairs(inventory) do
-				LLENEMY_Ext_ShadowCorruptItem(v, uuid)
+				ShadowCorruptItem(v, uuid)
 			end
 		end
 	end
 	if not success then
-		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_Ext_ShadowCorruptItems] Failed to get inventory for item ("..uuid..")")
+		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItems] Failed to get inventory for item ("..uuid..")")
 		InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
 	end ]]
 end

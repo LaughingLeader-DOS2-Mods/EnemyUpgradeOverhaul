@@ -1,11 +1,11 @@
 function SetChallengePointsTag(uuid)
 	local cp = GetVarInteger(uuid, "LLENEMY_ChallengePoints")
 	if cp == nil or cp < 0 then cp = 0 end
-	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:LLENEMY_Ext_SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
+	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 		if cp >= tbl.Min and cp <= tbl.Max then
 			SetTag(uuid, tbl.Tag)
-			LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid,true)
+			UpgradeInfo_ApplyInfoStatus(uuid,true)
 		else
 			ClearTag(uuid, tbl.Tag)
 		end
@@ -68,13 +68,13 @@ function UpgradeInfo_SendHighestLoremaster(highest)
 	local highestStr = tostring(highest)
 	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", highestStr, nil)
 	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highestStr..")")
-	LLENEMY_Ext_UpgradeInfo_RefreshInfoStatuses()
+	UpgradeInfo_RefreshInfoStatuses()
 end
 
 local function TimerFinished(event, ...)
 	--Ext.Print("TimerFinished: ", event, LeaderLib.Common.Dump({...}))
 	if event == "Timers_LLENEMY_SendHighestLoremaster" then
-		LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
+		UpgradeInfo_SendHighestLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
 	end
 	if event == "Timers_LLENEMY_AddNegativeItemBoosts" then
 		local params = {...}
@@ -119,7 +119,7 @@ local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
 	end
 
 	if EnemyUpgradeOverhaul.HighestLoremaster ~= nextHighest then
-		LLENEMY_Ext_StoreHighestLoremaster(nextHighest)
+		StoreHighestLoremaster(nextHighest)
 	end
 end
 
