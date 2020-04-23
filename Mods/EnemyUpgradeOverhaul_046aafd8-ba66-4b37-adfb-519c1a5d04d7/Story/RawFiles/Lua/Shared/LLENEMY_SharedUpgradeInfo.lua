@@ -79,6 +79,10 @@ EnemyUpgradeOverhaul.UpgradeData = {
 		LLENEMY_BONUSSKILLS_SET_NORMAL = UpgradeInfoData:Create(TranslatedString:Create("h5aa2a41bgbaa4g46d0g9987ge5c19c4b4aa4", "Bonus Skillset"), "#B823CB", 3),
 		LLENEMY_BONUSSKILLS_SET_ELITE = UpgradeInfoData:Create(TranslatedString:Create("h7040a2f0g29d3g43d6ga656gb5eb0aac1934", "Elite Skillset"), "#73F6FF", 4),
 		LLENEMY_SKILL_MASS_SHACKLES = UpgradeInfoData:Create(TranslatedString:Create("h17c3aeabg026ag41e4g93a0gfd8da7534786","Mass Shackler"), "#F1D466"),
+		-- Class Upgrades
+		LLENEMY_CLASS_GEOPYRO = UpgradeInfoData:Create(TranslatedString:Create("h84c9caecgf4f2g4e36ga17ag1ee9b85184a2","Ignitionmancer"), "#FFAB00"),
+		LLENEMY_CLASS_HYDROSHOCK = UpgradeInfoData:Create(TranslatedString:Create("h4b7423d8g2abag4800g8f4eg32dcda21a98d","Shockspiker"), "#7D71D9"),
+		LLENEMY_CLASS_CONTAMINATOR = UpgradeInfoData:Create(TranslatedString:Create("h4b7423d8g2abag4800g8f4eg32dcda21a98d","Contaminator"), "#65C900"),
 		-- Hidden vanilla statuses
 		LLENEMY_HERBMIX_COURAGE = UpgradeInfoData:Create(TranslatedString:Create("h503bd9fag7526g41abgbe28g612e3bffe6a1","Courage"), "#AAF0FF", 1),
 		LLENEMY_HERBMIX_FEROCITY = UpgradeInfoData:Create(TranslatedString:Create("hefe488c0g2e40g4f25gb312g21899f4bbd90","Ferocity"), "#FF3382"),

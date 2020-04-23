@@ -117,7 +117,8 @@
 	<content contentuid="h0982817bgf111g4dc3g811bga9fbd51ab0ca" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_5">Vitality Boost</content>
 	<content contentuid="h5b647354gce9dg4797gadc0g78ed927e407c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_50">Vitality Boost</content>
 	<content contentuid="h47cc8f43g77e0g4fafg908dg744a41931eec" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ChickenOverlord">Chicken Overlord</content>
-	<content contentuid="h84c9caecgf4f2g4e36ga17ag1ee9b85184a2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Class_Default_GeoPyro">Ignitionmancer</content>
+	<content contentuid="h84c9caecgf4f2g4e36ga17ag1ee9b85184a2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Class_GeoPyro">Ignitionmancer</content>
+	<content contentuid="h4b7423d8g2abag4800g8f4eg32dcda21a98d" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Class_HydroShock">Shockspiker</content>
 	<content contentuid="h5bf7f290gc323g4ad5g97ffgdcc13b20fb5c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_DemonicHasted">Demonic Celerity</content>
 	<content contentuid="h1dec449dgfec9g48eaga922gbbf72721497e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Duplicant">Shadow Duplicant</content>
 	<content contentuid="hd041be63gbfdeg4355g84c1ge870d92387af" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Empowered">Empowered</content>

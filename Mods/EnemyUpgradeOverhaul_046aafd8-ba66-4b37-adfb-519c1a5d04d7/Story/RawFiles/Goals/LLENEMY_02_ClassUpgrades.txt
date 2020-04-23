@@ -8,13 +8,15 @@ LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddGroup("Class", "LLENEMY_ClassUpgradesUpgradesDisabled", "LLENEMY_ClassUpgradesRolled", "LLENEMY_ClassUpgradesUpgradeAdded");
 
-LLENEMY_Upgrades_AddType("Class", "Default", 1, 499, 5);
-LLENEMY_Upgrades_AddType("Class", "Mods", 500, 999, 5);
+LLENEMY_Upgrades_AddType("Class", "Default", 99, 425, 5);
+LLENEMY_Upgrades_AddType("Class", "Mods", 600, 900, 5);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Class", "Default", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_DEFAULT_PYRO", 50, 6);
+LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_GEOPYRO", 100, 6);
+LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_HYDROSHOCK", 100, 6);
+LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_CONTAMINATOR", 100, 6);
 //END_REGION
 
 //REGION MOD_REGISTRATION_EXAMPLE
