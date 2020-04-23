@@ -447,6 +447,17 @@ NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "GreedyVessel");
 
 //REGION TALENT_BLOCKING
 PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_MASTERTHIEF")
+AND
+CharacterGetEquippedWeapon(_Character, (ITEMGUID)_Weapon)
+AND
+_Weapon != NULL_00000000-0000-0000-0000-000000000000
+AND
+LeaderLib_Helper_QRY_IsRangedWeapon(_Weapon)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_MASTERTHIEF");
+
+PROC
 LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_GLADIATOR")
 AND
 CharacterHasTalent(_Character, "Gladiator", 1)

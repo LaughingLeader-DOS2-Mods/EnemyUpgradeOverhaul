@@ -219,6 +219,20 @@ DB_LLENEMY_StatusUpgradeBlocked(_Character, "Buffs", "Polymorph", _Status);
 //LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Blocked upgrade [",_Status,"] from applying to a non-humanoid character.");
 //LLENEMY_Upgrades_RedirectUpgrade(_Character, "Buffs", "Polymorph", _Status, "RESTED");
 //LLENEMY_Upgrades_RedirectUpgrade(_Character, "Buffs", "Polymorph", _Status, "CLEAR_MINDED");
+
+// Sparked statuses for characters with ranged weapons
+PROC
+LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status)
+AND
+GetStatusType(_Status, "SPARK")
+AND
+CharacterGetEquippedWeapon(_Character, (ITEMGUID)_Weapon)
+AND
+_Weapon != NULL_00000000-0000-0000-0000-000000000000
+AND
+LeaderLib_Helper_QRY_IsRangedWeapon(_Weapon)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
 //END_REGION
 
 //REGION GRENADE_ENTHUSIAST
