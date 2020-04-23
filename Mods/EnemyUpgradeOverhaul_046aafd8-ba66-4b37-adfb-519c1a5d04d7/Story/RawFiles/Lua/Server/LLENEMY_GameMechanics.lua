@@ -216,7 +216,7 @@ local function StatusHasAura(status)
 	return auraRadius ~= nil and auraRadius > 0
 end
 
-function LLENEMY_Duplication_CopyStatus(source,dupe,status,handlestr)
+function Duplication_CopyStatus(source,dupe,status,handlestr)
 	if not StatusHasAura(status) and HasActiveStatus(dupe, status) == 0 then
 		local handle = math.tointeger(handlestr)
 		local duration = NRD_StatusGetReal(source, handle, "CurrentLifeTime")

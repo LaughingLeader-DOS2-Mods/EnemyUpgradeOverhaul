@@ -184,7 +184,7 @@ StoryEvent((CHARACTERGUID)_Replacement, "LLENEMY_TopLivingMagister_StoodUp")
 AND
 GetUUID(_Replacement, _UUID)
 THEN
-NRD_LuaCall("LeaderLib_Ext_SetCustomNameWithLocalization", _UUID, "h8350321agf54cg4528gb29egcb7dbb16cdc0", "Magister Knight (Not Dead)");
+NRD_ModCall("LeaderLib", "SetCustomNameWithLocalization", _UUID, "h8350321agf54cg4528gb29egcb7dbb16cdc0", "Magister Knight (Not Dead)");
 */
 
 //END_REGION

@@ -33,13 +33,13 @@ TimerFinished("Timers_LLENEMY_Debug_PrintServerTags")
 THEN
 TimerLaunch("Timers_LLENEMY_Debug_PrintClientTags", 1500);
 //NRD_ModCall("EnemyUpgradeOverhaul", "DumpUpgradeTables");
-//NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
+//NRD_ModCall("EnemyUpgradeOverhaul", "Debug_SpawnTreasureGoblinTest");
 
 /* [OSITOOLS_ONLY]
 IF
 TextEventSet("llenemy_goblintest")
 THEN
-NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
+NRD_ModCall("EnemyUpgradeOverhaul", "Debug_SpawnTreasureGoblinTest");
 
 IF
 TimerFinished("Timers_LLENEMY_Debug_PrintServerTags")
