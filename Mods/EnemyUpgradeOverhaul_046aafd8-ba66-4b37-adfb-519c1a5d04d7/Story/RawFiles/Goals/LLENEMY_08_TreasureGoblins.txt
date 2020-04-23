@@ -182,7 +182,7 @@ CharacterGiveReward(_Goblin, "LLENEMY_TreasureGoblin_A", 1);
 InventoryLaunchIterator(_Goblin, "LLENEMY_TreasureGoblins_TreasureFound", "");
 // [END_NO_OSITOOLS]
 /* [OSITOOLS_ONLY]
-NRD_LuaCall("LLENEMY_Ext_TreasureGoblins_ScatterInventory", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "TreasureGoblins_ScatterInventory", _UUID);
 */
 
 IF
@@ -266,7 +266,7 @@ StoryEvent((CHARACTERGUID)_Goblin, "LLENEMY_TreasureGoblins_Defeated")
 AND
 GetUUID(_Goblin, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_TreasureGoblinDefeated", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "TreasureGoblinDefeated", _UUID);
 */
 
 IF

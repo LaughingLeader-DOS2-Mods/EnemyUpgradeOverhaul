@@ -18,7 +18,7 @@ CharacterIsDead(_Char, 0)
 AND
 LeaderLib_Hit_QRY_HitSucceeded(_Char, _Handle, 0)
 THEN
-NRD_LuaCall("LLENEMY_Ext_IncreaseRage", (STRING)_Char, (STRING)_Damage, (STRING)_Handle, (STRING)_Source);
+NRD_ModCall("EnemyUpgradeOverhaul", "IncreaseRage", (STRING)_Char, (STRING)_Damage, (STRING)_Handle, (STRING)_Source);
 */
 
 // [BEGIN_NO_OSITOOLS]

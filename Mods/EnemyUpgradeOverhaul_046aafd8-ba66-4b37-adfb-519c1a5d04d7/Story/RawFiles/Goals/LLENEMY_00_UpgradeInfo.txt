@@ -26,7 +26,7 @@ StoryEvent((CHARACTERGUID)_Char, "LLENEMY_SetCPTag")
 AND
 GetUUID(_Char, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "SetChallengePointsTag", _UUID);
 */
 //END_REGION
 
@@ -54,7 +54,7 @@ _Lore > 0
 AND
 IntegertoString(_Lore, _Highest)
 THEN
-NRD_LuaCall("LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster", _Highest);
+NRD_ModCall("EnemyUpgradeOverhaul", "UpgradeInfo_SendHighestLoremaster", _Highest);
 */
 //END_REGION
 EXITSECTION

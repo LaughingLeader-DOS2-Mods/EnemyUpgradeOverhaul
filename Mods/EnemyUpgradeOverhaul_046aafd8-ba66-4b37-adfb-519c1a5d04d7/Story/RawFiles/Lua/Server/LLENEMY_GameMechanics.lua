@@ -1,4 +1,4 @@
-function LLENEMY_Ext_RollForCounterAttack(character,target)
+function RollForCounterAttack(character,target)
 	local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
 	local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
 	chance = math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance) * 10
@@ -10,7 +10,7 @@ function LLENEMY_Ext_RollForCounterAttack(character,target)
 	end
 end
 
-function LLENEMY_Ext_AddTalent(character,talent)
+function AddTalent(character,talent)
 	if Ext.Version() >= 40 then
 		Osi.NRD_CharacterSetPermanentBoostTalent(character, talent, 1)
 		CharacterAddAttribute(character, "Dummy", 0)
@@ -21,7 +21,7 @@ end
 ---@param character string
 ---@param damage integer
 ---@param handle integer
-function LLENEMY_Ext_IncreaseRage(character, damage, handle, source)
+function IncreaseRage(character, damage, handle, source)
 	--local hp = NRD_CharacterGetStatInt(character, "CurrentVitality")
 	local maxhp = NRD_CharacterGetStatInt(character, "MaxVitality")
 	local damage_ratio = math.max((damage / maxhp) * 88.88, 1.0)
@@ -31,7 +31,7 @@ function LLENEMY_Ext_IncreaseRage(character, damage, handle, source)
 	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_IncreaseRage] Added ("..tostring(add_rage)..") Rage to ("..tostring(character).."). Total: ("..tostring(rage_entry[1][3])..")")
 end
 
-function LLENEMY_Ext_MugTarget_Start(attacker, target, damage, handle)
+function MugTarget_Start(attacker, target, damage, handle)
 	local hit_type = NRD_StatusGetInt(target, handle, "HitReason")
 	if (hit_type == 0 or hit_type == 3) and LeaderLib.Game.HitSucceeded(target, handle, 0) then
 		if Ext.IsDeveloperMode() then
@@ -60,7 +60,7 @@ function LLENEMY_Ext_MugTarget_Start(attacker, target, damage, handle)
 	end
 end
 
-function LLENEMY_Ext_MugTarget_StealGold(character, target)
+function MugTarget_StealGold(character, target)
 	local gold = CharacterGetGold(target)
 	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_StealGold] Target ("..tostring(target)..") has ("..tostring(gold)..") gold.")
 	if gold > 0 then
@@ -75,7 +75,7 @@ function LLENEMY_Ext_MugTarget_StealGold(character, target)
 	return 0
 end
 
-function LLENEMY_Ext_MugTarget_End(character, target)
+function MugTarget_End(character, target)
 	local items = Osi.DB_LLENEMY_Talents_Temp_MasterThief_Items:Get(target, nil, nil)
 	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_MugTarget_End] Picking items from:\n",LeaderLib.Common.Dump(items))
 	local item_entry = LeaderLib.Common.GetRandomTableEntry(items)	
@@ -89,7 +89,7 @@ function LLENEMY_Ext_MugTarget_End(character, target)
 	Osi.LLENEMY_Talents_Internal_Mug_ClearData(target)
 end
 
-function LLENEMY_Ext_MugTarget_DisplayText(character, target, item, amount)
+function MugTarget_DisplayText(character, target, item, amount)
 	local lost_gold = LLENEMY_Ext_MugTarget_StealGold(character, target)
 	local template = GetTemplate(item)
 	local handle,name = ItemTemplateGetDisplayString(template)
@@ -104,7 +104,7 @@ function LLENEMY_Ext_MugTarget_DisplayText(character, target, item, amount)
 end
 --Ext.NewCall(LLENEMY_Ext_MugTarget_DisplayText, "LLENEMY_Ext_MugTarget_DisplayText", "(CHARACTERGUID)_Enemy, (CHARACTERGUID)_Target, (ITEMGUID)_Item, (INTEGER)_Amount")
 
-function LLENEMY_Ext_RemoveInvisible(target, source)
+function RemoveInvisible(target, source)
 	local detected = false
 	for status,b in pairs(EnemyUpgradeOverhaul.InvisibleStatuses) do
 		if b == true and HasActiveStatus(target, status) == 1 then
@@ -119,7 +119,7 @@ function LLENEMY_Ext_RemoveInvisible(target, source)
 	return detected
 end
 
-function LLENEMY_Ext_CharacterIsHidden(target, source)
+function CharacterIsHidden(target, source)
 	for status,b in pairs(EnemyUpgradeOverhaul.InvisibleStatuses) do
 		if b == true and HasActiveStatus(target, status) == 1 then
 			return 1
@@ -128,9 +128,9 @@ function LLENEMY_Ext_CharacterIsHidden(target, source)
 	return 0
 end
 
-Ext.NewQuery(LLENEMY_Ext_CharacterIsHidden, "LLENEMY_Ext_QRY_CharacterIsHidden", "[in](CHARACTERGUID)_Character, [out](INTEGER)_IsHidden")
+Ext.NewQuery(CharacterIsHidden, "LLENEMY_Ext_QRY_CharacterIsHidden", "[in](CHARACTERGUID)_Character, [out](INTEGER)_IsHidden")
 
-function LLENEMY_Ext_ClearGain(char)
+function ClearGain(char)
 	--ScaleExperienceByPlayerLevel_d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418
 	if Ext.IsModLoaded("d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418") then
 		SetTag(char, "LLXPSCALE_DisableDeathExperience")
@@ -139,7 +139,7 @@ function LLENEMY_Ext_ClearGain(char)
 	CharacterAddAttribute(char, "Dummy", 0)
 end
 
-function LLENEMY_Ext_HM_RollAdditionalUpgrades(char)
+function HM_RollAdditionalUpgrades(char)
 	local bonusRolls = Ext.Random(1,3) + 1
 	for i=bonusRolls,0,-1 do
 		Osi.LLENEMY_Upgrades_RollForUpgrades(char)
@@ -147,7 +147,7 @@ function LLENEMY_Ext_HM_RollAdditionalUpgrades(char)
 	end
 end
 
-function LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,level,combatid)
+function SpawnTreasureGoblin(x,y,z,level,combatid)
 	local host = CharacterGetHostCharacter()
 	if level == nil then
 		level = CharacterGetLevel(host)
@@ -168,7 +168,7 @@ function LLENEMY_Ext_SpawnTreasureGoblin(x,y,z,level,combatid)
 	Osi.LeaderLib_Timers_StartObjectTimer(goblin, 1000, "Timers_LLENEMY_Goblin_EnterCombatWithPlayers", "LeaderLib_Commands_EnterCombatWithPlayers")
 end
 
-function LLENEMY_Ext_Duplication_CopySource(source,dupe)
+function Duplication_CopySource(source,dupe)
 	local sourceCharacter = Ext.GetCharacter(source)
 	for i,slot in pairs(LeaderLib.Data.VisibleEquipmentSlots) do
 		local item = CharacterGetEquippedItem(source, slot)
@@ -188,13 +188,13 @@ function LLENEMY_Ext_Duplication_CopySource(source,dupe)
 	Osi.LLENEMY_Duplication_Internal_SetupDupe_StageTwo(source, dupe)
 end
 
-function LLENEMY_Ext_Duplication_CopyCP(source,dupe)
+function Duplication_CopyCP(source,dupe)
 	local cp = GetVarInteger(source, "LLENEMY_ChallengePoints")
 	SetVarInteger(dupe, "LLENEMY_ChallengePoints", cp)
 	LLENEMY_Ext_SetChallengePointsTag(dupe)
 end
 
-function LLENEMY_Ext_Duplication_CopySourceStat(source,dupe,applyevent)
+function Duplication_CopySourceStat(source,dupe,applyevent)
 	local sourceCharStat = Ext.GetCharacter(source).Stats.Name
 	SetVarFixedString(dupe, "LLENEMY_Dupe_Stats", sourceCharStat)
 	LeaderLib.Print("[LLENEMY_GameMechanics.lua:LLENEMY_Ext_Duplication_CopySourceStat] Copying stat " .. tostring(sourceCharStat) .." to dupe ("..dupe..").")
@@ -203,7 +203,7 @@ function LLENEMY_Ext_Duplication_CopySourceStat(source,dupe,applyevent)
 	CharacterAddAttribute(dupe, "Dummy", 0)
 end
 
-function LLENEMY_Ext_Duplication_CopyName(source,dupe)
+function Duplication_CopyName(source,dupe)
 	local handle,refStr = CharacterGetDisplayName(source)
 	local characterName = Ext.GetTranslatedString(handle, refStr)
 	local dupeNameBase = Ext.GetTranslatedString("h02023d82gc736g447fgaea3g327be0956688", "<font color='#BF5FFF'>[1] (Shadow)</font>")

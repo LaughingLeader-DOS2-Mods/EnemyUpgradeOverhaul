@@ -546,7 +546,7 @@ ItemIsDestroyed(_Item, 0)
 AND
 GetUUID(_Item, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_DestroyEmptyContainer", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "DestroyEmptyContainer", _UUID);
 */
 
 IF
@@ -579,7 +579,7 @@ StoryEvent((ITEMGUID)_Container, "LLENEMY_Duplication_CorruptShadowRewards")
 AND
 GetUUID(_Container, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_ShadowCorruptItems", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "ShadowCorruptItems", _UUID);
 
 IF
 StoryEvent((ITEMGUID)_Item, "Iterators_LLENEMY_CorruptItem")

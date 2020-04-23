@@ -656,7 +656,7 @@ end
 
 local corruptedItemLimit = {}
 
-function LLENEMY_Ext_ShadowCorruptItem(item)
+function ShadowCorruptItem(item)
 	local stat = NRD_ItemGetStatsId(item)
 	if string.sub(stat,1,1) == "_" then
 		ItemRemove(item)
@@ -681,9 +681,9 @@ function LLENEMY_Ext_ShadowCorruptItem(item)
 	end
 	return nil
 end
-Ext.NewCall(LLENEMY_Ext_ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
+Ext.NewCall(ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
-function LLENEMY_Ext_ShadowCorruptItems(uuid)
+function ShadowCorruptItems(uuid)
 	corruptedItemLimit[uuid] = Ext.Random(2,6)
 	InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
 	--[[ local success = false

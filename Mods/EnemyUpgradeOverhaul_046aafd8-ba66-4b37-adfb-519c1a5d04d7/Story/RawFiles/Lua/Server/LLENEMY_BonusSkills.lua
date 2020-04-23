@@ -359,7 +359,7 @@ local function IgnoreSkill_QRY(skill)
 	end
 	return 0
 end
-Ext.NewQuery(IgnoreSkill_QRY, "LLENEMY_Ext_QRY_IgnoreSkill", "[in](STRING)_Skill, [out](INTEGER))_Ignored")
+Ext.NewQuery(IgnoreSkill_QRY, "LLENEMY_Ext_QRY_IgnoreSkill", "[in](STRING)_Skill, [out](INTEGER)_Ignored")
 
 local AIFLAG_CANNOT_USE = 140689826905584
 
@@ -374,7 +374,7 @@ local function LLENEMY_ParentSkillIsInvalid(skill)
 	return false
 end
 
-function LLENEMY_Ext_BuildEnemySkills()
+local function BuildEnemySkills()
 	EnemyUpgradeOverhaul.EnemySkills = {
 		SkillGroup:Create("None", "None"),
 		SkillGroup:Create("WarriorLore", "Warrior"),
@@ -529,7 +529,7 @@ local function GetPreferredSkillGroup(ability,requirement,lastgroup)
 	return nil
 end
 
-function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingstr)
+function AddBonusSkills(enemy,remainingstr,source_skills_remainingstr)
 	local remaining = math.max(tonumber(remainingstr), 1)
 	local source_skills_remaining = math.max(tonumber(source_skills_remainingstr), 0)
 	local preferred_ability = GetHighestAbility(enemy)
@@ -573,3 +573,7 @@ function LLENEMY_Ext_AddBonusSkills(enemy,remainingstr,source_skills_remainingst
 		LeaderLib.Print("[LLENEMY_BonusSkills.lua] Enemy '" .. tostring(enemy) .. "' hit the maximum amount of random attempts when getting a skill from group ("..skillgroup.id..").")
 	end
 end
+
+return {
+	Init = BuildEnemySkills
+}

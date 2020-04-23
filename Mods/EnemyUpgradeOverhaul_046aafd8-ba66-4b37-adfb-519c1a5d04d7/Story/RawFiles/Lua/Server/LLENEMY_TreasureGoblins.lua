@@ -79,7 +79,7 @@ local function LLENEMY_TryScatterInventory(uuid)
 	end
 end
 
-function LLENEMY_Ext_TreasureGoblins_ScatterInventory(char)
+function TreasureGoblins_ScatterInventory(char)
 	local success = pcall(LLENEMY_TryScatterInventory, char)
 	if not success then
 		LeaderLib.Print("[LLENEMY_TreasureGoblins.lua:ScatterInventory] Failed to scatter items for ("..tostring(char)..").")
@@ -132,7 +132,7 @@ local function LLENEMY_TreasureGoblinDefeated_TrySpawnLoot(goblin)
 	TreasureGoblins_MoveItemsToSack(character.MyGuid,x,y,z,lootSack)
 end
 
-function LLENEMY_Ext_TreasureGoblinDefeated(goblin)
+function TreasureGoblinDefeated(goblin)
 	--SetInvulnerable_UseProcSetInvulnerable(goblin, 1)
 	local b = pcall(LLENEMY_TreasureGoblinDefeated_TrySpawnLoot, goblin)
 end

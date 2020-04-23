@@ -143,7 +143,7 @@ CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
 SetFaction(_Dupe, _Faction);
 //ChangeAttitude(_Source, _Dupe, 200);
 //ChangeAttitude(_Dupe, _Source, 200);
-NRD_LuaCall("LLENEMY_Ext_Duplication_CopySource", _SourceUUID, _DupeUUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "Duplication_CopySource", _SourceUUID, _DupeUUID);
 LeaderLib_Timers_StartObjectTimer(_Source, 750, "Timers_LLENEMY_Duplication_SetCPTag", "LLENEMY_Duplication_SetCPTag");
 
 PROC
@@ -157,7 +157,7 @@ StoryEvent(_Dupe, "LLENEMY_Duplication_SetCPTag")
 AND
 GetUUID(_Dupe, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_SetChallengePointsTag", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "SetChallengePointsTag", _UUID);
 */
 //END_REGION
 
@@ -358,7 +358,7 @@ GetUUID(_Dupe, _DupeUUID)
 AND
 GetUUID(_Source, _SourceUUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_Duplication_CopyName", _SourceUUID, _DupeUUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "Duplication_CopyName", _SourceUUID, _DupeUUID);
 */
 //END_REGION
 

@@ -143,7 +143,7 @@ GetUUID(_Char, _UUID)
 AND
 GetUUID(_Source, _UUID2)
 THEN
-NRD_LuaCall("LLENEMY_Ext_RemoveInvisible", _UUID, _UUID2);
+NRD_ModCall("EnemyUpgradeOverhaul", "RemoveInvisible", _UUID, _UUID2);
 */
 
 // [BEGIN_NO_OSITOOLS]

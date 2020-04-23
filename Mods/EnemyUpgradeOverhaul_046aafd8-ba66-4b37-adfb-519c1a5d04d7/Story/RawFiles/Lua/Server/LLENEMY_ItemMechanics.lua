@@ -42,14 +42,14 @@ local function LLENEMY_TryScatterInventory(uuid)
 	end
 end
 
-function LLENEMY_Ext_ScatterInventory(char)
+function ScatterInventory(char)
 	local success = pcall(LLENEMY_TryScatterInventory, char)
 	if not success then
 		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Failed to scatter items for ("..char..").")
 	end
 end
 
-function LLENEMY_Ext_DestroyEmptyContainer(uuid)
+function DestroyEmptyContainer(uuid)
 	local containerGoldValue = ContainerGetGoldValue(uuid)
 	local containerValue = ItemGetGoldValue(uuid)
 	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_Ext_DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")

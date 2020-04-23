@@ -32,7 +32,7 @@ IF
 TimerFinished("Timers_LLENEMY_Debug_PrintServerTags")
 THEN
 TimerLaunch("Timers_LLENEMY_Debug_PrintClientTags", 1500);
-//NRD_LuaCall("LLENEMY_Ext_DumpUpgradeTables");
+//NRD_ModCall("EnemyUpgradeOverhaul", "DumpUpgradeTables");
 //NRD_LuaCall("LLENEMY_Debug_SpawnTreasureGoblinTest");
 
 /* [OSITOOLS_ONLY]
@@ -50,7 +50,7 @@ DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
 GetUUID(_Dupe, _UUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_Debug_PrintTags", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "Debug_PrintTags", _UUID);
 
 IF
 TimerFinished("Timers_LLENEMY_Debug_PrintServerTags")
@@ -64,14 +64,14 @@ AND
 GetUUID(_Source, _SourceUUID)
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY_91_Debug_DevMode:] Killing dupe source ", _SourceUUID);
-NRD_LuaCall("LLENEMY_Ext_Debug_PrintTags", _SourceUUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "Debug_PrintTags", _SourceUUID);
 SetTag(_Source, "SOURCE_OF_DUPE_HI_NORBYTE");
 //CharacterDieImmediate(_Source, 0, "", _Source);
 
 IF
 TimerFinished("Timers_LLENEMY_Debug_PrintClientTags")
 THEN
-NRD_LuaCall("LLENEMY_Ext_Debug_PrintTagsOnClient");
+NRD_ModCall("EnemyUpgradeOverhaul", "Debug_PrintTagsOnClient");
 */
 
 IF

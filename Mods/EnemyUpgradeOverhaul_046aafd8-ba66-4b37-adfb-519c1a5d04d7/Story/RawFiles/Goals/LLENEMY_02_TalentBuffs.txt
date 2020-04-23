@@ -378,69 +378,69 @@ RemoveStatus(_Enemy, "LLENEMY_TALENT_BULLY_DAMAGEBONUS");
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_UNSTABLE", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Unstable");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Unstable");
 */
 
 /* [OSITOOLS_ONLY]
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_LONEWOLF", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "LoneWolf");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "LoneWolf");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_TORTURER", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Torturer");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Torturer");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_WHATARUSH", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "WhatARush");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "WhatARush");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_LEECH", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Leech");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Leech");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_QUICKSTEP", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "QuickStep");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "QuickStep");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_SADIST", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Sadist");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Sadist");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_GLADIATOR", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Gladiator");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Gladiator");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_HAYMAKER", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Haymaker");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Haymaker");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_INDOMITABLE", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Indomitable");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Indomitable");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_SOULCATCHER", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "Soulcatcher");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Soulcatcher");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_MAGICCYCLES", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "MagicCycles");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "MagicCycles");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_GREEDYVESSEL", _)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddTalent", (STRING)_Char, "GreedyVessel");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "GreedyVessel");
 */
 //END_REGION
 

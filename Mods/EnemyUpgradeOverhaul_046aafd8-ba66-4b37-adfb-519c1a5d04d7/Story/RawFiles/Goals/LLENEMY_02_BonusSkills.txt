@@ -95,7 +95,7 @@ IntegertoString(_AddSkills, _AddSkillsStr)
 AND
 IntegertoString(_SourceAllowed, _SourceAllowedStr)
 THEN
-NRD_LuaCall("LLENEMY_Ext_AddBonusSkills", _EnemyStr, _AddSkillsStr, _SourceAllowedStr);
+NRD_ModCall("EnemyUpgradeOverhaul", "AddBonusSkills", _EnemyStr, _AddSkillsStr, _SourceAllowedStr);
 */
 
 IF

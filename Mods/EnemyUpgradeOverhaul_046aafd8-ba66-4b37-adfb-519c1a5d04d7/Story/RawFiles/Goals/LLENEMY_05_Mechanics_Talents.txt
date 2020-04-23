@@ -146,7 +146,7 @@ GetUUID(_Target, _TargetUUID)
 AND
 GetUUID(_Enemy, _EnemyUUID)
 THEN
-NRD_LuaCall("LLENEMY_Ext_MugTarget_End", _EnemyUUID, _TargetUUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "MugTarget_End", _EnemyUUID, _TargetUUID);
 */
 
 PROC

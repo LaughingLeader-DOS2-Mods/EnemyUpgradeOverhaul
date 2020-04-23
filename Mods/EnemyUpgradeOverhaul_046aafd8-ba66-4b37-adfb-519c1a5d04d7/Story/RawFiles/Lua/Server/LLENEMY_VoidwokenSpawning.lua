@@ -169,7 +169,7 @@ local function GetTotalPointsForRegion(source)
 	return 0
 end
 
-function LLENEMY_Ext_SpawnVoidwoken(source,testing,totalPoints)
+function SpawnVoidwoken(source,testing,totalPoints)
 	local totalPointsUsed = 0
 	if totalPoints ~= nil then
 		totalPointsUsed = totalPoints

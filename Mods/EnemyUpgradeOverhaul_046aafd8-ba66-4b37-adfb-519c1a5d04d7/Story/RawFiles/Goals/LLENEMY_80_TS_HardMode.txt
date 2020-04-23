@@ -48,7 +48,7 @@ LLENEMY_Upgrades_Internal_StartBonusTimer(_Char);
 PROC
 LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Region)
 THEN
-NRD_LuaCall("LLENEMY_Ext_HM_RollAdditionalUpgrades", (STRING)_Char);
+NRD_ModCall("EnemyUpgradeOverhaul", "HM_RollAdditionalUpgrades", (STRING)_Char);
 */
 
 //Cleanup

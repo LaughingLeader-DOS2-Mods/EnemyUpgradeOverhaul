@@ -1,7 +1,7 @@
 Ext.Require("Shared/LLENEMY_Shared.lua")
 
 Ext.Require("Server/LLENEMY_UpgradeInfo.lua")
-Ext.Require("Server/LLENEMY_BonusSkills.lua")
+local bonusSkillsScript = Ext.Require("Server/LLENEMY_BonusSkills.lua")
 Ext.Require("Server/LLENEMY_GameMechanics.lua")
 Ext.Require("Server/LLENEMY_ItemMechanics.lua")
 Ext.Require("Server/LLENEMY_ItemCorruption.lua")
@@ -12,7 +12,7 @@ Ext.Require("Server/LLENEMY_VoidwokenSpawning.lua")
 Ext.Require("Server/LLENEMY_ServerMessages.lua")
 Ext.Require("Server/LLENEMY_Debug.lua")
 
-function LLENEMY_Ext_Init()
+function Init()
 	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
 	if NRD_IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") == 1 then
 		GlobalSetFlag("LLENEMY_SingleplayerModeEnabled")
@@ -29,7 +29,7 @@ end
 Ext.RegisterListener("ModuleLoading", LLENEMY_Server_ModuleLoading)
 
 local function LLENEMY_Server_SessionLoaded()
-	LLENEMY_Ext_BuildEnemySkills()
+	bonusSkillsScript.Init()
 end
 Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
 

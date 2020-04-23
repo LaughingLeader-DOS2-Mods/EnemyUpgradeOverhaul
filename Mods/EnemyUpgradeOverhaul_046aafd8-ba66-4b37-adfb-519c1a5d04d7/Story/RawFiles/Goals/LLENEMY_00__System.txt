@@ -67,12 +67,12 @@ LLENEMY_System_InitSettings();
 IF
 SavegameLoaded(_,_,_,_)
 THEN
-NRD_LuaCall("LLENEMY_Ext_Init");
+NRD_ModCall("EnemyUpgradeOverhaul", "Init");
 
 IF
 GameModeStarted(_,_)
 THEN
-NRD_LuaCall("LLENEMY_Ext_Init");
+NRD_ModCall("EnemyUpgradeOverhaul", "Init");
 */
 
 //REGION ACTIVE_MODS_CHANGED

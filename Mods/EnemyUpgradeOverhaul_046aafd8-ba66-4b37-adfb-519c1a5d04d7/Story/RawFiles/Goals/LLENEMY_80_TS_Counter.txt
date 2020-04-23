@@ -38,7 +38,7 @@ CharacterIsDead(_Enemy, 0)
 AND
 CharacterIsDead(_Attacker, 0)
 THEN
-NRD_LuaCall("LLENEMY_Ext_RollForCounterAttack", (STRING)_Enemy, (STRING)_Attacker);
+NRD_ModCall("EnemyUpgradeOverhaul", "RollForCounterAttack", (STRING)_Enemy, (STRING)_Attacker);
 */
 EXITSECTION
 

@@ -1,4 +1,4 @@
-function LLENEMY_Ext_SetChallengePointsTag(uuid)
+function SetChallengePointsTag(uuid)
 	local cp = GetVarInteger(uuid, "LLENEMY_ChallengePoints")
 	if cp == nil or cp < 0 then cp = 0 end
 	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:LLENEMY_Ext_SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
@@ -23,7 +23,7 @@ local function HasUpgrades(uuid)
 	return false
 end
 
-function LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid,force)
+function UpgradeInfo_ApplyInfoStatus(uuid,force)
 	local hasUpgrades = HasUpgrades(uuid)
 	if hasUpgrades or force == true then
 		ApplyStatus(uuid, "LLENEMY_UPGRADE_INFO", -1.0, 1, uuid)
@@ -32,7 +32,7 @@ function LLENEMY_Ext_UpgradeInfo_ApplyInfoStatus(uuid,force)
 	end
 end
 
-function LLENEMY_Ext_UpgradeInfo_RefreshInfoStatuses()
+function UpgradeInfo_RefreshInfoStatuses()
 	local combatCharacters = Osi.DB_CombatCharacters:Get(nil,nil)
 	if #combatCharacters > 0 then
 		for i,entry in pairs(combatCharacters) do
@@ -64,7 +64,7 @@ local function CheckPartyLoremaster()
 	return nextHighest
 end
 
-function LLENEMY_Ext_UpgradeInfo_SendHighestLoremaster(highest)
+function UpgradeInfo_SendHighestLoremaster(highest)
 	local highestStr = tostring(highest)
 	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", highestStr, nil)
 	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highestStr..")")
@@ -130,7 +130,7 @@ local function CharacterBasePointsChanged(player, stat, lastVal, nextVal)
 end
 LeaderLib.RegisterListener("CharacterBasePointsChanged", CharacterBasePointsChanged)
 
-function LLENEMY_Ext_StoreHighestLoremaster(nextHighest)
+function StoreHighestLoremaster(nextHighest)
 	EnemyUpgradeOverhaul.HighestLoremaster = nextHighest
 	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
 	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(EnemyUpgradeOverhaul.HighestLoremaster)..")")
