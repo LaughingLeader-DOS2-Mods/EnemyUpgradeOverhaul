@@ -271,6 +271,8 @@ LeaderLib_Tags_PreserveTag(_Dupe, "LLFULOOT_LootDisabled");
 IF
 NRD_SkillIteratorEvent("LLENEMY_Dupe_CopySkill", _Source, _Skill, _IsLearned, _IsActivated)
 AND
+LLENEMY_Ext_QRY_IgnoreSkill(_Skill, 0)
+AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 CharacterAddSkill(_Dupe, _Skill, 0);

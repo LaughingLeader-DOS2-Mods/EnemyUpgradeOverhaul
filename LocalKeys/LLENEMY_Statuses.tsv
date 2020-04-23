@@ -1,125 +1,126 @@
-Key	Content
-LLENEMY_BONUS_TREASURE_ROLL_Description	Character rolled a <font color='#FF0000'>Critical Failure (0)</font>, and now has to give bonus treasure if killed before this status expires. Hurry!
-LLENEMY_BONUS_TREASURE_ROLL_DisplayName	Bonus Treasure
-LLENEMY_CHICKEN_OVERLORD_Description	Character is the Overlord for an armada of chickens. Beware! Bwark!
-LLENEMY_CHICKEN_OVERLORD_DisplayName	Chicken Overlord
-LLENEMY_GRANADA_Description	Character is obsessed with collecting grenades. One misstep and boom!
-LLENEMY_GRANADA_DisplayName	Grenade Enthusiast
-LLENEMY_IMMUNITY_LOSECONTROL_Description	Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.
-LLENEMY_IMMUNITY_LOSECONTROL_DisplayName	Perfect Control
-LLENEMY_IMMUNITY_PIERCING_DisplayName	Piercing Immunity
-LLENEMY_IMMUNITY_PIERCING_Description	Character is immune to <font color='#FF0000'>Piercing Damage</font>.
-LLENEMY_INFUSION_INFO_Description	Character is infused with a mysterious power, granting a variety of bonuses and extra skills.
-LLENEMY_INFUSION_INFO_DisplayName	Infused
-LLENEMY_INFUSION_INFO_ELITE_Description	Character is infused with tremendous power, granting a variety of bonuses and extra skills.
-LLENEMY_INFUSION_INFO_ELITE_DisplayName	Super-Infused
-LLENEMY_INF_ACID_DisplayName	Melter
-LLENEMY_INF_ACID_G_DisplayName	Elite Melter
-LLENEMY_INF_BLESSED_ICE_DisplayName	Heatsapper
-LLENEMY_INF_BLESSED_ICE_G_DisplayName	Elite Heatsapper
-LLENEMY_INF_BLOOD_DisplayName	Bloodbender
-LLENEMY_INF_BLOOD_G_DisplayName	Elite Bloodbender
-LLENEMY_INF_CURSED_ELECTRIC_DisplayName	Teslacoil
-LLENEMY_INF_CURSED_ELECTRIC_G_DisplayName	Elite Teslacoil
-LLENEMY_INF_ELECTRIC_DisplayName	Circuitbreaker
-LLENEMY_INF_ELECTRIC_G_DisplayName	Elite Circuitbreaker
-LLENEMY_INF_FIRE_DisplayName	Firestarter
-LLENEMY_INF_FIRE_G_DisplayName	Elite Firestarter
-LLENEMY_INF_NECROFIRE_DisplayName	Infernoblazer
-LLENEMY_INF_NECROFIRE_G_DisplayName	Elite Infernoblazer
-LLENEMY_INF_OIL_DisplayName	Earthcracker
-LLENEMY_INF_OIL_G_DisplayName	Elite Earthcracker
-LLENEMY_INF_POISON_DisplayName	Venomstriker
-LLENEMY_INF_POISON_G_DisplayName	Elite Venomstriker
-LLENEMY_INF_WATER_DisplayName	Cascader
-LLENEMY_INF_WATER_G_DisplayName	Elite Cascader
-LLENEMY_TALENT_BACKSTAB_Description	Character can backstab with non-dagger weapons.
-LLENEMY_TALENT_BACKSTAB_DisplayName	Talent: Assassin
-LLENEMY_TALENT_BASE_DisplayName	Talent
-LLENEMY_TALENT_BULLY_Description	Character deals 50% extra damage with direct attacks against opponents that are Slowed, Crippled or Knocked Down.
-LLENEMY_TALENT_BULLY_DisplayName	Talent: Bully
-LLENEMY_TALENT_LEECH_Description	Character is healed when standing in blood.
-LLENEMY_TALENT_LEECH_DisplayName	Talent: Leech
-LLENEMY_TALENT_LIGHTNINGROD_Description	Character is immune to stun, and gains health when hit by <font color='#7d71d9'>Air Damage</font>.
-LLENEMY_TALENT_LIGHTNINGROD_DisplayName	Talent: Lightning Rod
-LLENEMY_TALENT_LONEWOLF_Description	Character has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.
-LLENEMY_TALENT_LONEWOLF_DisplayName	Talent: Lone Wolf
-LLENEMY_TALENT_NATURALCONDUCTOR_Description	Character gains <font color='#7d71d9'>Hasted</font> when standing on electric surfaces.
-LLENEMY_TALENT_NATURALCONDUCTOR_DisplayName	Talent: Natural Conductor
-LLENEMY_TALENT_QUICKSTEP_Description	Character gets 1 AP worth of free movement each turn.
-LLENEMY_TALENT_QUICKSTEP_DisplayName	Talent: The Pawn
-LLENEMY_TALENT_RANGERRANGE_Description	Character has increased attack range of Bows and Crossbows by 2m.
-LLENEMY_TALENT_RANGERRANGE_DisplayName	Talent: Quickdraw
-LLENEMY_TALENT_RESISTDEAD2_Description	Character will revive once when killed, coming back with full health.
-LLENEMY_TALENT_RESISTDEAD2_DisplayName	Talent: Elite Comeback Kid
-LLENEMY_TALENT_RESISTDEAD_Description	Character will revive once when killed, coming back with 30% health.
-LLENEMY_TALENT_RESISTDEAD_DisplayName	Talent:  Comeback Kid
-LLENEMY_TALENT_TORTURER_Description	Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.
-LLENEMY_TALENT_TORTURER_DisplayName	Talent: Torturer
-LLENEMY_TALENT_UNSTABLE_Description	Character will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.
-LLENEMY_TALENT_UNSTABLE_DisplayName	Talent: Unstable
-LLENEMY_TALENT_WEATHERPROOF_Description	Character is immune to enviromental effects.
-LLENEMY_TALENT_WEATHERPROOF_DisplayName	Talent: Weatherproof
-LLENEMY_TALENT_WHATARUSH_Description	Character has increased recovery and maximum Action Points when their health is below 50%.
-LLENEMY_TALENT_WHATARUSH_DisplayName	Talent: What a Rush
-LLENEMY_TALENT_SADIST_DisplayName	Talent: Sadist
-LLENEMY_TALENT_SADIST_Description	Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.
-LLENEMY_TALENT_COUNTER_DisplayName	Talent: Counter
-LLENEMY_TALENT_COUNTER_Description	Character has a chance to counter-attack when attacked within weapon range.
-LLENEMY_TALENT_COUNTER_EXTENDER_Description	Character has a [1] chance to counter-attack when attacked within weapon range.
-LLENEMY_TALENT_HAYMAKER_DisplayName	Talent: Haymaker
-LLENEMY_TALENT_HAYMAKER_Description	Character's attacks never miss but they cannot deal critical strikes.
-LLENEMY_TALENT_GLADIATOR_DisplayName	Talent: Gladiator
-LLENEMY_TALENT_GLADIATOR_Description	Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.<br>Can happen only once per turn. 
-LLENEMY_TALENT_INDOMITABLE_DisplayName	Talent: Indomitable
-LLENEMY_TALENT_INDOMITABLE_Description	Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.<br>Can happen once every 3 turns.
-LLENEMY_TALENT_SOULCATCHER_DisplayName	Talent: Soulcatcher
-LLENEMY_TALENT_SOULCATCHER_Description	When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.
-LLENEMY_TALENT_MASTERTHIEF_DisplayName	Talent: Master Thief
-LLENEMY_TALENT_MASTERTHIEF_Description	Character has a chance to steal a consumable item on attack.<br>Can only happen once per turn.
-LLENEMY_TALENT_MASTERTHIEF_COOLDOWN_DisplayName	Cooldown (Master Thief)
-LLENEMY_TALENT_MASTERTHIEF_COOLDOWN_Description	Character must wait before they can mug again.
-LLENEMY_TALENT_GREEDYVESSEL_DisplayName	Talent: Greedy Vessel
-LLENEMY_TALENT_GREEDYVESSEL_Description	Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.
-LLENEMY_TALENT_MAGICCYCLES_DisplayName	Talent: Magic Cycles
-LLENEMY_TALENT_MAGICCYCLES_Description	At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.
-LLENEMY_DOUBLE_DIP_DisplayName	Double Dip
-LLENEMY_DOUBLE_DIP_Description	Character is growing even more powerful through a second round of upgrades!
-LLENEMY_PERSEVERANCE_MASTERY_DisplayName	Perseverance Mastery
-LLENEMY_PERSEVERANCE_MASTERY_Description	Character is persevering through sheer force of will.
-LLENEMY_DUPLICANT_DisplayName	Shadow Duplicant
-LLENEMY_DUPLICANT_Description	Character is a <font color='#9B30FF'>Shadow</font> of another character.<br><font color='#65C900' size='16'>Grants no experience, but drops guaranteed loot.</font>
-LLENEMY_BONUSSKILLS_SINGLE_DisplayName	Bonus Skill
-LLENEMY_BONUSSKILLS_SINGLE_Description	Character has a new bonus skill.
-LLENEMY_BONUSSKILLS_SET_NORMAL_DisplayName	Bonus Skillset
-LLENEMY_BONUSSKILLS_SET_NORMAL_Description	Character has a set of new bonus skills.
-LLENEMY_BONUSSKILLS_SOURCE_DisplayName	Bonus Source Skill
-LLENEMY_BONUSSKILLS_SOURCE_Description	Character has a new bonus source skill.
-LLENEMY_BONUSSKILLS_SET_ELITE_DisplayName	Elite Skillset
-LLENEMY_BONUSSKILLS_SET_ELITE_Description	Character has an elite set of new bonus skills.
-LLENEMY_UPGRADE_INFO_DisplayName	Upgraded
-LLENEMY_UPGRADE_INFO_Description	Character is empowered with random upgrades.[1][2]
-LLENEMY_FAKE_DYING_DisplayName	Dead
-LLENEMY_FAKE_DYING_Description	Character appears to be dead.
-LLENEMY_VOID_EMPOWERED_DisplayName	Void Empowered
-LLENEMY_VOID_EMPOWERED_Description	Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.
-LLENEMY_RAGE_DisplayName	Rage
-LLENEMY_RAGE_Description	Damage taken increases <font color='#FF3333' size='20'>Rage</font>.<br><font color='#DDCC22'>At max <font color='#FF3333' size='20'>Rage</font>, character gains 100% Critical Chance and Immunity to Disabling Statuses.</font><br><font color='#FF00CC'>Sleeping reduces Rage.</font>
-LLENEMY_RAGE2_DisplayName	Rage (II)
-LLENEMY_RAGE3_DisplayName	Rage (III)
-LLENEMY_RAGE4_DisplayName	Rage (IV)
-LLENEMY_RAGE5_DisplayName	Rage (V)
-LLENEMY_GATHERING_POWER_DisplayName	Gathering Power
-LLENEMY_GATHERING_POWER_Description	Character is preparing to unleash their full power.
-LLENEMY_EMPOWERED_DisplayName	Empowered
-LLENEMY_EMPOWERED_Description	Character is fully powered up.
-LLENEMY_TREASURE_GOBLIN_DisplayName	Fleeing
-LLENEMY_TREASURE_GOBLIN_Description	The treasure goblin is fleeing!<br><font color='#FF00CC' size='24'>Quickly, strike it down for <font color='#C7A758' size='24' face='Copperplate Gothic Light'>LOOT</font>!</font>
-LLENEMY_SEEKER_DisplayName	Seeker
-LLENEMY_SEEKER_Description	Character will discover hidden enemies while in combat.<br><font color='#FF00CC'>Stealthed and Invisible enemies within 4m are revealed.</font><br><font color='#FF3333'>Becoming Drunk or disabled temporarily disables a Seeker's detection.</font>
-LLENEMY_SEEKER_DISABLED_DisplayName	Seeker (Disabled)
-LLENEMY_SEEKER_DISABLED_Description	Character cannot discover hidden enemies while disabled/drunk.
-LLENEMY_DEMONIC_HASTED_Description	Character is as quick as a demon.<br><font color='#CD1F1F'>With how fast this character can move, they're almost guaranteed to slip on ice.</font>
-LLENEMY_REFLECT_SHADOW_SMALL_DisplayName	Reflect 10% of melee damage as shadow damage
-LLENEMY_REFLECT_SHADOW_MEDIUM_DisplayName	Reflect 20% of melee damage as shadow damage
-LLENEMY_REFLECT_SHADOW_LARGE_DisplayName	Reflect 30% of melee damage as shadow damage
+Key	Content	Handle
+LLENEMY_BONUS_TREASURE_ROLL_Description	Character rolled a <font color='#FF0000'>Critical Failure (0)</font>, and now has to give bonus treasure if killed before this status expires. Hurry!	h1a306bc6gbee4g4d46g9748g69148e74ded0
+LLENEMY_BONUS_TREASURE_ROLL_DisplayName	Bonus Treasure	h194ac7f5g9da2g4067g83efgf23de735ad79
+LLENEMY_BONUSSKILLS_SET_ELITE_Description	Character has an elite set of new bonus skills.	h358b00a4g6320g494fg9441g94add11507ba
+LLENEMY_BONUSSKILLS_SET_ELITE_DisplayName	Elite Skillset	h7040a2f0g29d3g43d6ga656gb5eb0aac1934
+LLENEMY_BONUSSKILLS_SET_NORMAL_Description	Character has a set of new bonus skills.	h2e45720ag8842g4c73g917fg7e1d2044cb52
+LLENEMY_BONUSSKILLS_SET_NORMAL_DisplayName	Bonus Skillset	h5aa2a41bgbaa4g46d0g9987ge5c19c4b4aa4
+LLENEMY_BONUSSKILLS_SINGLE_Description	Character has a new bonus skill.	hbacea44ag4103g49ccgbd8fgb9f026bb437d
+LLENEMY_BONUSSKILLS_SINGLE_DisplayName	Bonus Skill	he79478e5gfa95g4461gba2bg9122ba540b28
+LLENEMY_BONUSSKILLS_SOURCE_Description	Character has a new bonus source skill.	h2b3daf7egef57g4286g9247gf5c0b9752757
+LLENEMY_BONUSSKILLS_SOURCE_DisplayName	Bonus Source Skill	hd1a568b1g2c56g4343gb1fcg4ae8f47c28e4
+LLENEMY_CHICKEN_OVERLORD_Description	Character is the Overlord for an armada of chickens. Beware! Bwark!	h35042572gd0f8g42f0gbc95g44d818841347
+LLENEMY_CHICKEN_OVERLORD_DisplayName	Chicken Overlord	h9bc9d98ag9fa9g4d23g88c4ge55de8f8c73a
+LLENEMY_DEMONIC_HASTED_Description	Character is as quick as a demon.<br><font color='#CD1F1F'>With how fast this character can move, they're almost guaranteed to slip on ice.</font>	h3784f369g657fg462dg8381g97d55c3229aa
+LLENEMY_DOUBLE_DIP_Description	Character is growing even more powerful through a second round of upgrades!	hf6486123g0005g46c9g8a40ga098203e2ab6
+LLENEMY_DOUBLE_DIP_DisplayName	Double Dip	hf180561cge97ag426cg84ddg83dd257ce95d
+LLENEMY_DUPLICANT_Description	Character is a <font color='#9B30FF'>Shadow</font> of another character.<br><font color='#65C900' size='16'>Grants no experience, but drops guaranteed loot.</font>	h726f61abg07a3g4986g8837g02503a578c5f
+LLENEMY_DUPLICANT_DisplayName	Shadow Duplicant	hf91deedcga4c7g427eg8153g2e347c06d3e8
+LLENEMY_EMPOWERED_Description	Character is fully powered up.	hba37a70cg63f9g491eg94f0gdf69970ff0e6
+LLENEMY_EMPOWERED_DisplayName	Empowered	he2172050g115bg4345gae5eg4a45798086b4
+LLENEMY_FAKE_DYING_Description	Character appears to be dead.	h35f368f7g6d97g4adfgb26cgfcbf91e6a9fc
+LLENEMY_FAKE_DYING_DisplayName	Dead	hdace76dag01cbg499dg9777geb2c80877c7c
+LLENEMY_GATHERING_POWER_Description	Character is preparing to unleash their full power.	h8f68810dg481ag4379gb223g0f03f78434f5
+LLENEMY_GATHERING_POWER_DisplayName	Gathering Power	h18c28f76g6913g4685g81b9g6a6326ac81a3
+LLENEMY_GRANADA_Description	Character is obsessed with collecting grenades. One misstep and boom!	hc950451dgfa32g421eg8f77g3de4f2ba4937
+LLENEMY_GRANADA_DisplayName	Grenade Enthusiast	h77532147gd01fg47efgb317gbf00813dbcb6
+LLENEMY_IMMUNITY_LOSECONTROL_Description	Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.	h626f03b5gb1a5g4e8eg94b3g1686a8687718
+LLENEMY_IMMUNITY_LOSECONTROL_DisplayName	Perfect Control	h8cfd1ba3gcfb3g4f0cga950gc29672af34c9
+LLENEMY_IMMUNITY_PIERCING_Description	Character is immune to <font color='#FF0000'>Piercing Damage</font>.	hceb85350g54fdg4134gba42g9a0da585edb8
+LLENEMY_IMMUNITY_PIERCING_DisplayName	Piercing Immunity	h8074f9d7g5360g49fbgb949gce8a729c7755
+LLENEMY_INF_ACID_DisplayName	Melter	he9cb8fddg5db3g4d64ga27cgb93613250725
+LLENEMY_INF_ACID_G_DisplayName	Elite Melter	h1049b802g537bg4815gb5b6g34c387f9aa9c
+LLENEMY_INF_BLESSED_ICE_DisplayName	Heatsapper	h6e85fa28gc76eg423egaf24g5c0c278717bf
+LLENEMY_INF_BLESSED_ICE_G_DisplayName	Elite Heatsapper	h9cf11b15g91d4g4d12gae38ga5a8f70272be
+LLENEMY_INF_BLOOD_DisplayName	Bloodbender	h0d2c2ac4g44e2g48dfg835dgcc860fcdd0d9
+LLENEMY_INF_BLOOD_G_DisplayName	Elite Bloodbender	h31d032dcg2e05g4d91gb846g125bbed07f42
+LLENEMY_INF_CURSED_ELECTRIC_DisplayName	Teslacoil	hd71fe8a1g0247g42c5g8bfcg2408029eca06
+LLENEMY_INF_CURSED_ELECTRIC_G_DisplayName	Elite Teslacoil	hdcdcd727gc9e6g4548g88dag25a265517c1b
+LLENEMY_INF_ELECTRIC_DisplayName	Circuitbreaker	hd419ca09g8d69g4af6g840egdd4a81f7587f
+LLENEMY_INF_ELECTRIC_G_DisplayName	Elite Circuitbreaker	h24cc83b3g5ce3g44d2ga7fbg7c743030b0a2
+LLENEMY_INF_FIRE_DisplayName	Firestarter	hc3f8497bg97acg449ag910ag07b825f3b8bb
+LLENEMY_INF_FIRE_G_DisplayName	Elite Firestarter	hd880d646g45b4g4fa6ga6cbgd746dcd242bd
+LLENEMY_INF_NECROFIRE_DisplayName	Infernoblazer	h8e75cbbdg06d7g4404gbfb2g92f6fd11147d
+LLENEMY_INF_NECROFIRE_G_DisplayName	Elite Infernoblazer	had606e03g6713g4064g84c0gf28395d81019
+LLENEMY_INF_OIL_DisplayName	Earthcracker	hba68eb52gbd87g443fga8acgb61922bf4211
+LLENEMY_INF_OIL_G_DisplayName	Elite Earthcracker	he7dfdae3gf1bbg47ecg84edg1a094e326d94
+LLENEMY_INF_POISON_DisplayName	Venomstriker	h78f9641bgaf92g4bc4gb27bg759d63a0353f
+LLENEMY_INF_POISON_G_DisplayName	Elite Venomstriker	h0e137225ge71fg4b5dg9822g1f73a6646671
+LLENEMY_INF_WATER_DisplayName	Cascader	h645270dag6b15g47a8gad4bgfcc34034a77e
+LLENEMY_INF_WATER_G_DisplayName	Elite Cascader	h70e74b6fg7c33g41e5g8bf4g6fe9a096a69d
+LLENEMY_INFUSION_INFO_Description	Character is infused with a mysterious power, granting a variety of bonuses and extra skills.	h04644a8dg313cg4d53gb2b4g1dc1a5fea103
+LLENEMY_INFUSION_INFO_DisplayName	Infused	h77bbc2b5gb387g4ba2g97c6gbbc058bbb5c6
+LLENEMY_INFUSION_INFO_ELITE_Description	Character is infused with tremendous power, granting a variety of bonuses and extra skills.	hea2ac23fg62fag4befg9b85g1277c11011e6
+LLENEMY_INFUSION_INFO_ELITE_DisplayName	Super-Infused	hffc4903fg3cb8g48e0gb183g8e5d9eeaa066
+LLENEMY_PERSEVERANCE_MASTERY_Description	Character is persevering through sheer force of will.	h52cf2d76g890fg4255g913agaf040b1015cf
+LLENEMY_PERSEVERANCE_MASTERY_DisplayName	Perseverance Mastery	hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990
+LLENEMY_RAGE_Description	Damage taken increases <font color='#FF3333' size='20'>Rage</font>.<br><font color='#DDCC22'>At max <font color='#FF3333' size='20'>Rage</font>, character gains 100% Critical Chance and Immunity to Disabling Statuses.</font><br><font color='#FF00CC'>Sleeping reduces Rage.</font>	h68b2574cgb7d7g46d8g9c8bge4edff270a17
+LLENEMY_RAGE_DisplayName	Rage	h51f428d7gd529g4b83gad1ag674a188d1492
+LLENEMY_RAGE2_DisplayName	Rage (II)	hdfeb0377gbab4g4fc6ga428g98aa0a12eb88
+LLENEMY_RAGE3_DisplayName	Rage (III)	h7987a4c4ge79ag4b93gbb98g63644b6ab4ef
+LLENEMY_RAGE4_DisplayName	Rage (IV)	h752158cdg06beg4034gaddeg66921ff01d83
+LLENEMY_RAGE5_DisplayName	Rage (V)	h10a8c3f8g6fedg4baag91f7g5b421eaa770c
+LLENEMY_REFLECT_SHADOW_LARGE_DisplayName	Reflect 30% of melee damage as shadow damage	h24c8d0feg3b3dg40fcgb813g4f28db83b05b
+LLENEMY_REFLECT_SHADOW_MEDIUM_DisplayName	Reflect 20% of melee damage as shadow damage	h5ec49a5ag418ag4d15ga917g2a406406060f
+LLENEMY_REFLECT_SHADOW_SMALL_DisplayName	Reflect 10% of melee damage as shadow damage	hff952d5dgebedg4f53ga10fg1bd872871cee
+LLENEMY_SEEKER_Description	Character will discover hidden enemies while in combat.<br><font color='#FF00CC'>Stealthed and Invisible enemies within 4m are revealed.</font><br><font color='#FF3333'>Becoming Drunk or disabled temporarily disables a Seeker's detection.</font>	hc505e9aagab98g49e8g8777g72eb60325a35
+LLENEMY_SEEKER_DISABLED_Description	Character cannot discover hidden enemies while disabled/drunk.	hd8f04806g2228g4144g964eg5f6694865d41
+LLENEMY_SEEKER_DISABLED_DisplayName	Seeker (Disabled)	h420749e5g8297g4de6ga556g9b67569e6c38
+LLENEMY_SEEKER_DisplayName	Seeker	h2a92d66eg220eg4196gb8dag81570a513978
+LLENEMY_TALENT_BACKSTAB_Description	Character can backstab with non-dagger weapons.	h9305ff62g9590g4f7fg82beg5e3ab9edafbf
+LLENEMY_TALENT_BACKSTAB_DisplayName	Talent: Assassin	hac3946feg2bc8g4337gbcb7ge3980e905f1b
+LLENEMY_TALENT_BASE_DisplayName	Talent	h1ad605c4gb69bg4562ga6adgc2d42e102770
+LLENEMY_TALENT_BULLY_Description	Character deals 50% extra damage with direct attacks against opponents that are Slowed, Crippled or Knocked Down.	h5ad0d829g7dd4g4a79gaa2cgd5d882d05390
+LLENEMY_TALENT_BULLY_DisplayName	Talent: Bully	hdd62da1agf6adg438dg811cg08c9e58e07c9
+LLENEMY_TALENT_COUNTER_Description	Character has a chance to counter-attack when attacked within weapon range.	h5ff7ce69gb95ag417ag8a63g5fe67a7fb7f7
+LLENEMY_TALENT_COUNTER_DisplayName	Talent: Counter	h3c47b59cgd1f6g49a4g9e6bg9624181d40d1
+LLENEMY_TALENT_COUNTER_EXTENDER_Description	Character has a [1] chance to counter-attack when attacked within weapon range.	hfb82117ag09acg4668ga5ccg081651aff9a9
+LLENEMY_TALENT_GLADIATOR_Description	Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.<br>Can happen only once per turn. 	h80df5eb1gf3cag41cfgbaecg1c053ae7e83c
+LLENEMY_TALENT_GLADIATOR_DisplayName	Talent: Gladiator	h3d6d46bbg4819g48fbga980gcb521d5c49d8
+LLENEMY_TALENT_GREEDYVESSEL_Description	Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.	he845eb33gfbffg4903ga161ge64d9dbf567d
+LLENEMY_TALENT_GREEDYVESSEL_DisplayName	Talent: Greedy Vessel	h4cf1c406gceb1g411fga0d9gc9832cc4d2f5
+LLENEMY_TALENT_HAYMAKER_Description	Character's attacks never miss but they cannot deal critical strikes.	h5461b448g15ceg403dg8076ge4a9b00e6675
+LLENEMY_TALENT_HAYMAKER_DisplayName	Talent: Haymaker	h0dda4bf0g924ag4c8bgaf5ag1d6e7e643b50
+LLENEMY_TALENT_INDOMITABLE_Description	Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.<br>Can happen once every 3 turns.	h055079e8g89f6g4275gb06ag48f70f0c7e1b
+LLENEMY_TALENT_INDOMITABLE_DisplayName	Talent: Indomitable	hb52d1ac1g7c4fg45a4g87d8g52056a5a2ba2
+LLENEMY_TALENT_LEECH_Description	Character is healed when standing in blood.	hc2dfd3fcg7132g4e47g9a89g35e2089966df
+LLENEMY_TALENT_LEECH_DisplayName	Talent: Leech	h7e28471fg1959g47e6g9d58g4d4f8ce054f6
+LLENEMY_TALENT_LIGHTNINGROD_Description	Character is immune to stun, and gains health when hit by <font color='#7d71d9'>Air Damage</font>.	h176db059gab0eg4ec8g8017geb16079d503a
+LLENEMY_TALENT_LIGHTNINGROD_DisplayName	Talent: Lightning Rod	hbc7f9c3dg471bg47c6ga015g77c92a439e4e
+LLENEMY_TALENT_LONEWOLF_Description	Character has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.	h07429824g8a6eg4c0cg865cg55b38f50646d
+LLENEMY_TALENT_LONEWOLF_DisplayName	Talent: Lone Wolf	h3b229661g43b9g44e1gbaebgc33ab487ce44
+LLENEMY_TALENT_MAGICCYCLES_Description	At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.	h3ab830begfaf4g4524g9b76g97e55e6b1703
+LLENEMY_TALENT_MAGICCYCLES_DisplayName	Talent: Magic Cycles	h09ee507ag16fag471cg9e13gf4b0a614dcb8
+LLENEMY_TALENT_MASTERTHIEF_COOLDOWN_Description	Character must wait before they can mug again.	he23ccfa9gadbcg4c34g9f04g1c93f864badf
+LLENEMY_TALENT_MASTERTHIEF_COOLDOWN_DisplayName	Cooldown (Master Thief)	hbfafd8eeg3703g4b46g837eg2389c8302f35
+LLENEMY_TALENT_MASTERTHIEF_Description	Character has a chance to steal a consumable item on attack.<br>Can only happen once per turn.	h95fbde3bg3be6g4b7cgb6acg1bacabcba562
+LLENEMY_TALENT_MASTERTHIEF_DisplayName	Talent: Master Thief	hba05c2f9g55f0g4b5agb936g5ff5daa6877e
+LLENEMY_TALENT_NATURALCONDUCTOR_Description	Character gains <font color='#7d71d9'>Hasted</font> when standing on electric surfaces.	h16915945gaa26g46f1gaae7g3a2d3b46631e
+LLENEMY_TALENT_NATURALCONDUCTOR_DisplayName	Talent: Natural Conductor	h52b7f26cg0535g416bgb820ge7e49b19197f
+LLENEMY_TALENT_QUICKSTEP_Description	Character gets 1 AP worth of free movement each turn.	h3d82bfaag7871g4fe4gb3d0gf326ec25ad1b
+LLENEMY_TALENT_QUICKSTEP_DisplayName	Talent: The Pawn	h79f5b874g6cb3g4a99ga1cfg9f472c12036f
+LLENEMY_TALENT_RANGERRANGE_Description	Character has increased attack range of Bows and Crossbows by 2m.	h8edc2076g91e3g43d3g8314g5efb21208571
+LLENEMY_TALENT_RANGERRANGE_DisplayName	Talent: Quickdraw	h15a9ae98gb2d3g49d5gbccbg0aecd38fe18c
+LLENEMY_TALENT_RESISTDEAD_Description	Character will revive once when killed, coming back with 30% health.	h38491eddg4d2cg40adg96f3g33994e1a96d6
+LLENEMY_TALENT_RESISTDEAD_DisplayName	Talent:  Comeback Kid	h12db0e65g1dceg4d56g8857gb018ab29f393
+LLENEMY_TALENT_RESISTDEAD2_Description	Character will revive once when killed, coming back with full health.	hc0a53dd7g55f4g4c2cgae98g350ed1b9cbb9
+LLENEMY_TALENT_RESISTDEAD2_DisplayName	Talent: Elite Comeback Kid	haec75225g4305g4fcdg8e61g0f9b4de56075
+LLENEMY_TALENT_SADIST_Description	Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.	hf34ecf43gdb49g40b5g9e50g876244609429
+LLENEMY_TALENT_SADIST_DisplayName	Talent: Sadist	h1c81c46bg9330g4d43gba21g6b72b951b3fd
+LLENEMY_TALENT_SOULCATCHER_Description	When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.	h3f78a207gadfdg4801gb063g787c9f108845
+LLENEMY_TALENT_SOULCATCHER_DisplayName	Talent: Soulcatcher	h9a2a7390gc764g4fa0g8e97gf73ffac2a93c
+LLENEMY_TALENT_TORTURER_Description	Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.	h64144ff5gee91g4ac5g87cdg43d27aaacef3
+LLENEMY_TALENT_TORTURER_DisplayName	Talent: Torturer	h18ff40ffg5d06g48c6gb09egaec569a55aa8
+LLENEMY_TALENT_UNSTABLE_Description	Character will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.	hf39968a3gf18eg4e17gba81g6d3cff64d4aa
+LLENEMY_TALENT_UNSTABLE_DisplayName	Talent: Unstable	h2b8ca96eg181cg4d13gaef5g84d2bb6f88fc
+LLENEMY_TALENT_WEATHERPROOF_Description	Character is immune to enviromental effects.	h08f37745g3fbeg43d9gaf74g9e9bfd4ca89f
+LLENEMY_TALENT_WEATHERPROOF_DisplayName	Talent: Weatherproof	hdb001da6g340cg4f00g9190g13e8c1a96f90
+LLENEMY_TALENT_WHATARUSH_Description	Character has increased recovery and maximum Action Points when their health is below 50%.	he6532e10gc9d5g4923g9544g033fca885329
+LLENEMY_TALENT_WHATARUSH_DisplayName	Talent: What a Rush	hd0938a28g404dg47bagb7afg1ab9a2215f9d
+LLENEMY_TREASURE_GOBLIN_Description	The treasure goblin is fleeing!<br><font color='#FF00CC' size='24'>Quickly, strike it down for <font color='#C7A758' size='24' face='Copperplate Gothic Light'>LOOT</font>!</font>	hbba08b72g0d5bg416eg9a46gb2150b29fb05
+LLENEMY_TREASURE_GOBLIN_DisplayName	Fleeing	h6ea17edfgea06g402eg9a78gc538e1959ead
+LLENEMY_UPGRADE_INFO_Description	Character is empowered with random upgrades.[1][2]	h12f95fb9g81e2g430egba6eg7db9633652de
+LLENEMY_UPGRADE_INFO_DisplayName	Upgraded	h84c27debgd38dg4844g84d4g75eb558eb5de
+LLENEMY_VOID_EMPOWERED_Description	Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.	h1624d634gdfdcg4129g9624g9efe5660220b
+LLENEMY_VOID_EMPOWERED_DisplayName	Void Empowered	h398b5931gfa52g4a26gadb9gf94bbb7d35e2
+LLENEMY_SKILL_MASS_SHACKLES_DisplayName	Mass Shackler	h17c3aeabg026ag41e4g93a0gfd8da7534786

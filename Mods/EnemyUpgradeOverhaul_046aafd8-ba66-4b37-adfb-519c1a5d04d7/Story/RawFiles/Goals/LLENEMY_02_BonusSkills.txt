@@ -27,9 +27,16 @@ LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE"
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SET_NORMAL", 299, 6);
 
 PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Elite", (INTEGER)_HardModeEnabled)
+LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Elite", 0)
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 899, 10);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_SKILL_MASS_SHACKLES", 10, 8);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 988, 10);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Elite", 1)
+THEN
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_SKILL_MASS_SHACKLES", 50, 8);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 948, 10);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source1", (INTEGER)_HardModeEnabled)

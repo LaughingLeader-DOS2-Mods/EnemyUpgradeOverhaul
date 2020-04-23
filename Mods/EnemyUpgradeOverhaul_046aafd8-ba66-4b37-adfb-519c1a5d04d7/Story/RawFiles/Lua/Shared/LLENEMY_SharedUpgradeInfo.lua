@@ -78,6 +78,7 @@ EnemyUpgradeOverhaul.UpgradeData = {
 		LLENEMY_BONUSSKILLS_SOURCE = UpgradeInfoData:Create(TranslatedString:Create("hd1a568b1g2c56g4343gb1fcg4ae8f47c28e4", "Bonus Source Skill"), "#46B195", 4),
 		LLENEMY_BONUSSKILLS_SET_NORMAL = UpgradeInfoData:Create(TranslatedString:Create("h5aa2a41bgbaa4g46d0g9987ge5c19c4b4aa4", "Bonus Skillset"), "#B823CB", 3),
 		LLENEMY_BONUSSKILLS_SET_ELITE = UpgradeInfoData:Create(TranslatedString:Create("h7040a2f0g29d3g43d6ga656gb5eb0aac1934", "Elite Skillset"), "#73F6FF", 4),
+		LLENEMY_SKILL_MASS_SHACKLES = UpgradeInfoData:Create(TranslatedString:Create("h17c3aeabg026ag41e4g93a0gfd8da7534786","Mass Shackler"), "#F1D466"),
 		-- Hidden vanilla statuses
 		LLENEMY_HERBMIX_COURAGE = UpgradeInfoData:Create(TranslatedString:Create("h503bd9fag7526g41abgbe28g612e3bffe6a1","Courage"), "#AAF0FF", 1),
 		LLENEMY_HERBMIX_FEROCITY = UpgradeInfoData:Create(TranslatedString:Create("hefe488c0g2e40g4f25gb312g21899f4bbd90","Ferocity"), "#FF3382"),

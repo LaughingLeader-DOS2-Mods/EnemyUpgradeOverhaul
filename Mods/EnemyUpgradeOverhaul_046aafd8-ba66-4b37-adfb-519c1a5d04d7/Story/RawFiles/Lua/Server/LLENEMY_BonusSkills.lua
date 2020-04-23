@@ -171,6 +171,7 @@ local ignored_skills = {
 	Projectile_EnemyInsectSpinWeb = true,
 	Shout_EnemyFear = true,
 	Shout_EnemyCauseMadness = true,
+	Shout_EnemyMassShacklesOfPain = true,
 }
 
 local ignored_skillwords = {
@@ -351,6 +352,14 @@ local function IgnoreSkill(skill)
 	end
 	return false
 end
+
+local function IgnoreSkill_QRY(skill)
+	if IgnoreSkill(skill) then
+		return 1
+	end
+	return 0
+end
+Ext.NewQuery(IgnoreSkill_QRY, "LLENEMY_Ext_QRY_IgnoreSkill", "[in](STRING)_Skill, [out](INTEGER))_Ignored")
 
 local AIFLAG_CANNOT_USE = 140689826905584
 

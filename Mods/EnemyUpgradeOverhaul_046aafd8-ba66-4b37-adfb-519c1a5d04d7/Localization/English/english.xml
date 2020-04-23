@@ -13,7 +13,7 @@
 	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9" Source="LLENEMY_Creatures_Voidwoken_Drillworm_A">Evolved Voidling</content>
 	<content contentuid="h9713cc3dgea3ag4bf4gacb1g1428f7baa338" Source="LLENEMY_Creatures_Voidwoken_GiantInsect_Dominator_A">Dominator of the Void</content>
 	<content contentuid="hddb242e2gf4b1g4883gb65bg53a0976fbc2c" Source="LLENEMY_Creatures_Voidwoken_Troll_A">Voidwoken Troll</content>
-	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_FumbleText">[1] on applying [2]</content>
+	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_FumbleText"></content>
 	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage1">shadow Damage</content>
 	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage2">shadow</content>
 	<content contentuid="hf4632a8fg42a7g4d53gbe26gd203f28e3d5e" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage3">Shadow</content>
@@ -247,6 +247,7 @@
 	<content contentuid="hd8f04806g2228g4144g964eg5f6694865d41" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_Description">Character cannot discover hidden enemies while disabled/drunk.</content>
 	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_DisplayName">Seeker (Disabled)</content>
 	<content contentuid="h2a92d66eg220eg4196gb8dag81570a513978" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DisplayName">Seeker</content>
+	<content contentuid="h17c3aeabg026ag41e4g93a0gfd8da7534786" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SKILL_MASS_SHACKLES_DisplayName">Mass Shackler</content>
 	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_Description">Character can backstab with non-dagger weapons.</content>
 	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_DisplayName">Talent: Assassin</content>
 	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BASE_DisplayName">Talent</content>
