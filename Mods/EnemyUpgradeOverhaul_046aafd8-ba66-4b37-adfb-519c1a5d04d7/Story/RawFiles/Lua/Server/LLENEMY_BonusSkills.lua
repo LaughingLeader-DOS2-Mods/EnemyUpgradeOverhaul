@@ -172,6 +172,8 @@ local ignored_skills = {
 	Shout_EnemyFear = true,
 	Shout_EnemyCauseMadness = true,
 	Shout_EnemyMassShacklesOfPain = true,
+	Jump_LLWEAPONEX_EnemyChaosDive = true,
+	Rush_LLWEAPONEX_EnemyChaosCharge = true,
 }
 
 local ignored_skillwords = {
