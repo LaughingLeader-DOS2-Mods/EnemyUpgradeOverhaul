@@ -212,7 +212,7 @@ DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
 GetUUID(_Dupe, _DupeUUID)
 THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "CopyStatus", _SourceUUID, _DupeUUID, _Status, (STRING)_Handle);
+NRD_ModCall("EnemyUpgradeOverhaul", "Duplication_CopyStatus", _SourceUUID, _DupeUUID, _Status, (STRING)_Handle);
 */
 
 PROC
