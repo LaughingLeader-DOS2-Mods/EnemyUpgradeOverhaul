@@ -129,7 +129,7 @@ local function LLENEMY_StatusGetDescriptionParam(status, obj1, obj2, param)
 		target = obj1
 		statusSource = obj2
 	end
-	LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource.Name)..")["..tostring(statusSource.NetID).."] character("..tostring(target.Name)..")["..tostring(target.NetID).."] param("..tostring(param)..")")
+	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource.Name)..")["..tostring(statusSource.NetID).."] character("..tostring(target.Name)..")["..tostring(target.NetID).."] param("..tostring(param)..")")
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
 		if target.Character ~= nil then
