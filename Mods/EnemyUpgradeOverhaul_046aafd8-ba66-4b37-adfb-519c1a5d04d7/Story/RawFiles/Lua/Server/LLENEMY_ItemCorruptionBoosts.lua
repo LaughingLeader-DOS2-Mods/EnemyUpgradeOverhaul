@@ -85,6 +85,7 @@ function ItemBoost:Apply(item,mod)
 				LeaderLib.Print("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(v.Min)..")")
 			else
 				local currentValue = NRD_ItemGetPermanentBoostInt(item, v.Stat)
+				if currentValue == nil then currentValue = 0 end
 				local valMod = Ext.Random(v.Min, v.Max) * mod
 				local nextValue = currentValue + valMod
 				NRD_ItemSetPermanentBoostInt(item, v.Stat, nextValue)

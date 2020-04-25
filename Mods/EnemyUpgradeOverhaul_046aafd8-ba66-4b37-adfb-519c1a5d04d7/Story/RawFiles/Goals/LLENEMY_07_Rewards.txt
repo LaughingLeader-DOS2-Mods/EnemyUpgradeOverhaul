@@ -579,7 +579,7 @@ StoryEvent((ITEMGUID)_Container, "LLENEMY_Duplication_CorruptShadowRewards")
 AND
 GetUUID(_Container, _UUID)
 THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "ShadowCorruptItems", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "ShadowCorruptContainerItems", _UUID);
 
 IF
 StoryEvent((ITEMGUID)_Item, "Iterators_LLENEMY_CorruptItem")

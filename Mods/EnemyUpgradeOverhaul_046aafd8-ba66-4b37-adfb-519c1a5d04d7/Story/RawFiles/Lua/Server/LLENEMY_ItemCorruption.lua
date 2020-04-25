@@ -552,7 +552,7 @@ local function GetClone(item,stat,statType)
 	if seed ~= nil and seed > 0 then
 		NRD_ItemCloneSetInt("GenerationRandom", seed)
 	else
-		NRD_ItemCloneSetInt("GenerationRandom", LEADERLIB_RAN_SEED)
+		NRD_ItemCloneSetInt("GenerationRandom", Ext.Random(1,9999999))
 	end
 
 	if statType == "Weapon" then
@@ -605,7 +605,7 @@ local corruptableTypes = {
 	Armor = true,
 }
 
-local function ShadowCorruptItem(uuid, container)
+local function TryShadowCorruptItem(uuid, container)
 	if uuid ~= nil then
 		local item = Ext.GetItem(uuid)
 		local stat = item.StatsId
@@ -668,7 +668,7 @@ function ShadowCorruptItem(item)
 			return nil
 		end
 
-		local b,result = xpcall(ShadowCorruptItem, debug.traceback, item, container)
+		local b,result = xpcall(TryShadowCorruptItem, debug.traceback, item, container)
 		if b then
 			if limit ~= nil then
 				limit = limit - 1
@@ -683,7 +683,7 @@ function ShadowCorruptItem(item)
 end
 Ext.NewCall(ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
-function ShadowCorruptItems(uuid)
+function ShadowCorruptContainerItems(uuid)
 	corruptedItemLimit[uuid] = Ext.Random(2,6)
 	InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
 	--[[ local success = false
