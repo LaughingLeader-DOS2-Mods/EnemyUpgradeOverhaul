@@ -25,12 +25,12 @@ local function LLENEMY_TryScatterInventory(uuid)
 						ItemScatterAt(v, x,y,z)
 						ItemClearOwner(v)
 						
-						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."] Slot("..tostring(item.Slot)..")")
+						LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ScatterInventory] Scattering item ("..tostring(stat)..")["..v.."] Slot("..tostring(item.Slot)..")")
 						if not string.find(stat, "Gold") and (LLENEMY_ItemIsRare(v, item.ItemType)) then
 							PlayEffect(v, "LLENEMY_FX_TreasureGoblin_Loot_Dropped_01");
 						end
 					else
-						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Item ("..tostring(stat)..")["..v.."] is equipped ("..tostring(equipped)..") or an NPC item. Skipping.")
+						LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ScatterInventory] Item ("..tostring(stat)..")["..v.."] is equipped ("..tostring(equipped)..") or an NPC item. Skipping.")
 					end
 				end
 			end
@@ -45,14 +45,14 @@ end
 function ScatterInventory(char)
 	local success = pcall(LLENEMY_TryScatterInventory, char)
 	if not success then
-		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ScatterInventory] Failed to scatter items for ("..char..").")
+		LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ScatterInventory] Failed to scatter items for ("..char..").")
 	end
 end
 
 function DestroyEmptyContainer(uuid)
 	local containerGoldValue = ContainerGetGoldValue(uuid)
 	local containerValue = ItemGetGoldValue(uuid)
-	LeaderLib.Print("[LLENEMY_ItemMechanics.lua:DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
+	LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
 	if containerGoldValue <= 1 then
 		ItemDestroy(uuid)
 	end

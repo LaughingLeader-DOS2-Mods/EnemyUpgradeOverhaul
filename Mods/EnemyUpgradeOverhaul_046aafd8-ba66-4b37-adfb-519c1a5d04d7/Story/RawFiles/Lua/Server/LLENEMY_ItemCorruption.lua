@@ -208,7 +208,7 @@ local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083g
 local function RollForBoost(entry)
 	if entry.Chance < 100 and entry.Chance > 0 then
 		local roll = Ext.Random(1,100)
-		LeaderLib.Print("[LLENEMY_ItemCorruption.lua:RollForBoost] Roll for ("..entry.Boost.."): ".. tostring(roll).."/"..tostring(entry.Chance))
+		LeaderLib.PrintDebug("[LLENEMY_ItemCorruption.lua:RollForBoost] Roll for ("..entry.Boost.."): ".. tostring(roll).."/"..tostring(entry.Chance))
 		if roll <= entry.Chance then
 			return true
 		end
@@ -227,8 +227,8 @@ local function CanAddBoost(entry, stat, statType)
 				if dm.WeaponType == "Sentinel" or dm.WeaponType == weaponType then
 					return true
 				else
-					LeaderLib.Print("[LLENEMY_ItemCorruption.lua:CanAddBoost] WeaponType deltamod mismatch for ("..stat..") ("..weaponType..") => ("..dm.WeaponType..") with deltamod ["..entry.Boost.."]")
-					--LeaderLib.Print(Ext.JsonStringify(dm))
+					LeaderLib.PrintDebug("[LLENEMY_ItemCorruption.lua:CanAddBoost] WeaponType deltamod mismatch for ("..stat..") ("..weaponType..") => ("..dm.WeaponType..") with deltamod ["..entry.Boost.."]")
+					--LeaderLib.PrintDebug(Ext.JsonStringify(dm))
 					return false
 				end
 			else
@@ -369,7 +369,7 @@ local function AddBoost(item,stat,min,max,negative)
 	end
 	local nextValue = currentValue + valMod
 	NRD_ItemSetPermanentBoostInt(item, stat, nextValue)
-	LeaderLib.Print("	[LLENEMY_ItemCorruption.lua:AddBoost] Adding boost ["..stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
+	LeaderLib.PrintDebug("	[LLENEMY_ItemCorruption.lua:AddBoost] Adding boost ["..stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 end
 
 local function AddRandomNegativeBoost_Old(item,stat,statType,level)
@@ -427,7 +427,7 @@ local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,i
 			end
 		end
 	end
-	LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Boosts:\n" .. LeaderLib.Common.Dump(boosts))
+	LeaderLib.PrintDebug("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Boosts:\n" .. LeaderLib.Common.Dump(boosts))
 	local boostCount = #boosts
 	local boostAdded = false
 	if boostCount == 1 then
@@ -439,7 +439,7 @@ local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,i
 				else
 					ItemAddDeltaModifier(item, entry.Boost)
 				end
-				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+				LeaderLib.PrintDebug("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 				totalBoosts = totalBoosts + 1
 				boostAdded = true
 			end
@@ -452,7 +452,7 @@ local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,i
 				else
 					ItemAddDeltaModifier(item, entry.Boost)
 				end
-				LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+				LeaderLib.PrintDebug("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 				totalBoosts = totalBoosts + 1
 				boostAdded = true
 			end
@@ -466,7 +466,7 @@ local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,i
 			else
 				ItemAddDeltaModifier(item, entry.Boost)
 			end
-			LeaderLib.Print("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding fallback deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
+			LeaderLib.PrintDebug("[LLENEMY_ItemCorruption.lua:AddRandomBoostsFromTable] Adding fallback deltamod ["..entry.Type.."]".."("..entry.Boost..") to item ["..item.."]("..stat..")")
 			totalBoosts = totalBoosts + 1
 		end
 	end
@@ -480,7 +480,7 @@ end
 local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	local totalBoosts = 0
 	for i,group in ipairs(boostTable) do
-		LeaderLib.Print("Applying boosts from group: " .. tostring(group.ID))
+		LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(group.ID))
 		totalBoosts = totalBoosts + group:Apply(item,stat,statType,level,1,false)
 	end
 	return totalBoosts
@@ -503,20 +503,20 @@ local function SetRandomShadowName(item,statType)
 		name = string.format("<font color='%s'>%s</font>", color, name)
 		NRD_ItemCloneSetString("CustomDisplayName", name)
 		if Ext.IsDeveloperMode() then
-			LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
+			LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
 		end
 		NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription.Value)
 	else
 		-- Wrap original names in a purple color
 		local handle,templateName = ItemTemplateGetDisplayString(GetTemplate(item))
-		LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] ("..item..") handle("..handle..") templateName("..templateName..")")
+		LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] ("..item..") handle("..handle..") templateName("..templateName..")")
 		local originalName = Ext.GetTranslatedString(handle, templateName)
 		if originalName ~= NRD_ItemGetStatsId(item) and originalName ~= GetStatString(item) then
 			-- Name isn't a stat entry name.
 			local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
 			local name = string.format("<font color='%s'>%s</font>", color, originalName)
 			NRD_ItemCloneSetString("CustomDisplayName", name)
-			LeaderLib.Print("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
+			LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
 		end
 	end
 end
@@ -612,7 +612,7 @@ local function TryShadowCorruptItem(uuid, container)
 		local statType = NRD_StatGetType(stat)
 		if statType == "Weapon" or statType == "Armor" or statType == "Shield" then
 			local equippedSlot = Ext.StatGetAttribute(stat, "Slot")
-			LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
+			LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
 			if ignoredSlots[equippedSlot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
 				if item.Slot > 13 then
 					if EnemyUpgradeOverhaul.CorruptionBoosts[statType] ~= nil then
@@ -634,15 +634,15 @@ local function TryShadowCorruptItem(uuid, container)
 							TeleportToPosition(cloned, x,y,z, "", 0, 1)
 						end
 						ItemRemove(uuid)
-						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(cloned)..")")
+						LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Successfully corrupted ("..tostring(cloned)..")")
 						return cloned
 						--NRD_ItemSetIdentified(cloned, 1)
 					else
-						LeaderLib.Print("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] No boosts table for type ("..tostring(statType)..")")
+						LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] No boosts table for type ("..tostring(statType)..")")
 					end
 				end
 			elseif item.Slot > 13 then -- Not equipped
-				LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] Deleting ("..uuid..") Stat("..tostring(stat)..") since it's an item that shouldn't be given to players.")
+				LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] Deleting ("..uuid..") Stat("..tostring(stat)..") since it's an item that shouldn't be given to players.")
 				ItemRemove(uuid)
 				return nil
 			end
@@ -698,7 +698,7 @@ function ShadowCorruptContainerItems(uuid)
 		end
 	end
 	if not success then
-		LeaderLib.Print("[LLENEMY_ItemMechanics.lua:ShadowCorruptItems] Failed to get inventory for item ("..uuid..")")
+		LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItems] Failed to get inventory for item ("..uuid..")")
 		InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
 	end ]]
 end

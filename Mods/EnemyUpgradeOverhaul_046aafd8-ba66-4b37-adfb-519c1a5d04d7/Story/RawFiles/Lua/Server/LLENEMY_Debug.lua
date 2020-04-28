@@ -335,11 +335,11 @@ function LLENEMY_Debug_SpawnTreasureGoblinTest()
 			--local x,y,z = GetPosition(combat[1][1])
 			--Osi.LLENEMY_TreasureGoblins_Internal_Spawn(x, y, z, combatid)
 			SpawnTreasureGoblin(x,y,z,CharacterGetLevel(host),combatid)
-			LeaderLib.Print("Spawning treasure goblin at ", x, y, z)
+			LeaderLib.PrintDebug("Spawning treasure goblin at ", x, y, z)
 		end
 	else
 		SpawnTreasureGoblin(x,y,z,CharacterGetLevel(host),0)
-		LeaderLib.Print("Spawning treasure goblin at ", x, y, z)
+		LeaderLib.PrintDebug("Spawning treasure goblin at ", x, y, z)
 	end
 end
 
@@ -349,10 +349,10 @@ local function LLENEMY_SessionLoading()
 end
 
 local function LLENEMY_Debug_SessionLoaded()
-	LeaderLib.Print("[LLENEMY:Debug.lua] VENOM_AURA | StackId("..Ext.StatGetAttribute("VENOM_AURA", "StackId")..")")
-	LeaderLib.Print("[LLENEMY:Debug.lua] VENOM_COATING | StackId("..Ext.StatGetAttribute("VENOM_COATING", "StackId")..")")
-	LeaderLib.Print("[LLENEMY:Debug.lua] FIRE_BRAND_AURA | StackId("..Ext.StatGetAttribute("FIRE_BRAND_AURA", "StackId")..")")
-	LeaderLib.Print("[LLENEMY:Debug.lua] FIRE_BRAND | StackId("..Ext.StatGetAttribute("FIRE_BRAND", "StackId")..")")
+	LeaderLib.PrintDebug("[LLENEMY:Debug.lua] VENOM_AURA | StackId("..Ext.StatGetAttribute("VENOM_AURA", "StackId")..")")
+	LeaderLib.PrintDebug("[LLENEMY:Debug.lua] VENOM_COATING | StackId("..Ext.StatGetAttribute("VENOM_COATING", "StackId")..")")
+	LeaderLib.PrintDebug("[LLENEMY:Debug.lua] FIRE_BRAND_AURA | StackId("..Ext.StatGetAttribute("FIRE_BRAND_AURA", "StackId")..")")
+	LeaderLib.PrintDebug("[LLENEMY:Debug.lua] FIRE_BRAND | StackId("..Ext.StatGetAttribute("FIRE_BRAND", "StackId")..")")
 end
 
 if Ext.IsDeveloperMode() then

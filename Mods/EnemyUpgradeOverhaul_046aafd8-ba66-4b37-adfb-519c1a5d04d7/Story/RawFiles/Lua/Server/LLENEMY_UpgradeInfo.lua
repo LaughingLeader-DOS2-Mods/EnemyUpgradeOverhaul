@@ -1,7 +1,7 @@
 function SetChallengePointsTag(uuid)
 	local cp = GetVarInteger(uuid, "LLENEMY_ChallengePoints")
 	if cp == nil or cp < 0 then cp = 0 end
-	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
+	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
 	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
 		if cp >= tbl.Min and cp <= tbl.Max then
 			SetTag(uuid, tbl.Tag)
@@ -46,7 +46,7 @@ function UpgradeInfo_RefreshInfoStatuses()
 				ApplyStatus(uuid, "LLENEMY_UPGRADE_INFO", -1.0, 1, uuid)
 			end
 		end
-		LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:RefreshInfoStatuses] Refreshed upgrade info on characters in combat.")
+		LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:RefreshInfoStatuses] Refreshed upgrade info on characters in combat.")
 	end
 end
 
@@ -67,7 +67,7 @@ end
 function UpgradeInfo_SendHighestLoremaster(highest)
 	local highestStr = tostring(highest)
 	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", highestStr, nil)
-	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highestStr..")")
+	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highestStr..")")
 	UpgradeInfo_RefreshInfoStatuses()
 end
 
@@ -133,6 +133,6 @@ LeaderLib.RegisterListener("CharacterBasePointsChanged", CharacterBasePointsChan
 function StoreHighestLoremaster(nextHighest)
 	EnemyUpgradeOverhaul.HighestLoremaster = nextHighest
 	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
-	LeaderLib.Print("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(EnemyUpgradeOverhaul.HighestLoremaster)..")")
+	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(EnemyUpgradeOverhaul.HighestLoremaster)..")")
 	Mods.LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 100)
 end

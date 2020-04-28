@@ -78,18 +78,18 @@ function ItemBoost:Apply(item,mod)
 				local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
 				local nextValue = currentValue .. ";" .. v.Min
 				NRD_ItemSetPermanentBoostString(item, v.Stat, nextValue)
-				LeaderLib.Print("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
+				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 			elseif v.Stat == "ItemColor" then
 				local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
 				NRD_ItemSetPermanentBoostString(item, v.Stat, v.Min)
-				LeaderLib.Print("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(v.Min)..")")
+				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(v.Min)..")")
 			else
 				local currentValue = NRD_ItemGetPermanentBoostInt(item, v.Stat)
 				if currentValue == nil then currentValue = 0 end
 				local valMod = Ext.Random(v.Min, v.Max) * mod
 				local nextValue = currentValue + valMod
 				NRD_ItemSetPermanentBoostInt(item, v.Stat, nextValue)
-				LeaderLib.Print("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
+				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 			end
 		end
 	else
@@ -193,7 +193,7 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 	if limit == nil then limit = 0 end
 	local totalApplied = 0
 	if #self.Entries > 0 then
-		LeaderLib.Print("Applying boosts from group: " .. tostring(self.ID) .. " | Total: " .. tostring(#self.Entries))
+		LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(self.ID) .. " | Total: " .. tostring(#self.Entries))
 		if noRandomization == true then
 			for i,v in pairs(self.Entries) do
 				if limit > 0 and totalApplied >= limit then

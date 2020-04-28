@@ -213,14 +213,14 @@ function LLENEMY_Server_RegisterCorruptionBoosts_DeltaMods()
 		if Ext.IsModLoaded(uuid) then
 			for tableName,entries in pairs(tbl) do
 				if EnemyUpgradeOverhaul.CorruptionBoosts[tableName] ~= nil then
-					LeaderLib.Print("[LLENEMY_ItemCorruptionDeltamods.lua] Merging entries from ("..uuid..") into main table ("..tableName..")")
+					LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua] Merging entries from ("..uuid..") into main table ("..tableName..")")
 					for i,entry in ipairs(entries) do
 						table.insert(EnemyUpgradeOverhaul.CorruptionBoosts[tableName], entry)
 					end
 				end
 			end
 		else
-			LeaderLib.Print("[LLENEMY_ItemCorruptionDeltamods.lua] Mod ("..uuid..") is not active. Skipping deltamod registration.")
+			LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua] Mod ("..uuid..") is not active. Skipping deltamod registration.")
 		end
 	end
 
@@ -238,5 +238,5 @@ function LLENEMY_Server_RegisterCorruptionBoosts_DeltaMods()
 	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, DeltaMod:Create("Primary", MinLevel=8})
 	--table.insert(EnemyUpgradeOverhaul.CorruptionBoosts.All, DeltaMod:Create("Legendary", MinLevel=16})
 
-	LeaderLib.Print("[LLENEMY_ItemCorruptionDeltamods.lua] Boosts:\n" .. LeaderLib.Common.Dump(EnemyUpgradeOverhaul.CorruptionBoosts))
+	LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua] Boosts:\n" .. LeaderLib.Common.Dump(EnemyUpgradeOverhaul.CorruptionBoosts))
 end

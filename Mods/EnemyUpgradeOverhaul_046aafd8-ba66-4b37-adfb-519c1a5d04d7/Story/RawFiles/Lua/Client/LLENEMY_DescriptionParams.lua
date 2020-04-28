@@ -56,8 +56,8 @@ local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 			end
 			i = i + 1
 		end
-		--LeaderLib.Print("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Upgrade info for (" .. uuid .. ") is nil or empty ("..LeaderLib.Common.Dump(data)..")")
-		--LeaderLib.Print("Upgrade info (".. tostring(uuid)..") = ("..output..")")
+		--LeaderLib.PrintDebug("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Upgrade info for (" .. uuid .. ") is nil or empty ("..LeaderLib.Common.Dump(data)..")")
+		--LeaderLib.PrintDebug("Upgrade info (".. tostring(uuid)..") = ("..output..")")
 		return output
 	end
 	return ""
@@ -91,11 +91,11 @@ local function StatDescription_ChallengePoints(status, target, param, statusSour
 			isTagged = true
 		end
 	end
-	--LeaderLib.Print("CP Tooltip | Name("..tostring(character.Name)..") NetID(".. tostring(character.NetID)..") character.Stats.NetID("..tostring(Ext.GetCharacter(character.NetID).Stats.NetID)..")")
-	--LeaderLib.Print("Tags: " .. LeaderLib.Common.Dump(character.Character:GetTags()))
+	--LeaderLib.PrintDebug("CP Tooltip | Name("..tostring(character.Name)..") NetID(".. tostring(character.NetID)..") character.Stats.NetID("..tostring(Ext.GetCharacter(character.NetID).Stats.NetID)..")")
+	--LeaderLib.PrintDebug("Tags: " .. LeaderLib.Common.Dump(character.Character:GetTags()))
 	-- if statusSource ~= nil then
-	-- 	LeaderLib.Print("CP Tooltip | Source Name("..tostring(statusSource.Name)..") NetID(".. tostring(statusSource.NetID)..") character.Stats.NetID("..tostring(Ext.GetCharacter(statusSource.NetID).Stats.NetID)..")")
-	-- 	LeaderLib.Print("Tags: " .. LeaderLib.Common.Dump(statusSource.Character:GetTags()))
+	-- 	LeaderLib.PrintDebug("CP Tooltip | Source Name("..tostring(statusSource.Name)..") NetID(".. tostring(statusSource.NetID)..") character.Stats.NetID("..tostring(Ext.GetCharacter(statusSource.NetID).Stats.NetID)..")")
+	-- 	LeaderLib.PrintDebug("Tags: " .. LeaderLib.Common.Dump(statusSource.Character:GetTags()))
 	-- end
 	-- if data.isDuplicant == true then
 	-- 	output = output .. "<br><font color='#65C900' size='14'>Grants no experience, but drops guaranteed loot.</font>"
@@ -129,7 +129,7 @@ local function LLENEMY_StatusGetDescriptionParam(status, obj1, obj2, param)
 		target = obj1
 		statusSource = obj2
 	end
-	--LeaderLib.Print("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource.Name)..")["..tostring(statusSource.NetID).."] character("..tostring(target.Name)..")["..tostring(target.NetID).."] param("..tostring(param)..")")
+	--LeaderLib.PrintDebug("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource.Name)..")["..tostring(statusSource.NetID).."] character("..tostring(target.Name)..")["..tostring(target.NetID).."] param("..tostring(param)..")")
 	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
 	if func ~= nil then
 		if target.Character ~= nil then
@@ -155,6 +155,6 @@ end
 --Ext.RegisterListener("SkillGetDescriptionParam", SkillGetDescriptionParam)
 
 Ext.RegisterNetListener("LLENEMY_SetHighestLoremaster", function(call, valStr)
-	LeaderLib.Print("[LLENEMY_Shared.lua:LLENEMY_SetHighestLoremaster] Set highest loremaster value to ("..valStr..") on client.")
+	LeaderLib.PrintDebug("[LLENEMY_Shared.lua:LLENEMY_SetHighestLoremaster] Set highest loremaster value to ("..valStr..") on client.")
 	EnemyUpgradeOverhaul.HighestLoremaster = math.tointeger(valStr)
 end)

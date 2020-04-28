@@ -1,3 +1,5 @@
+LeaderLib = Mods["LeaderLib"]
+
 EnemyUpgradeOverhaul = {
 	IgnoredSkills = {},
 	IgnoredWords = {},
@@ -18,7 +20,6 @@ EnemyUpgradeOverhaul = {
 	},
 	CorruptionBoosts = { Weapon={}, Armor={}, Shield={}, Resistances={}},
 }
-
 
 function GetExtraDataValue(key, fallback)
 	local val = Ext.ExtraData[key]
@@ -53,7 +54,7 @@ function LLENEMY_Shared_InitModuleLoading()
 	for key,fallback in pairs(EnemyUpgradeOverhaul.ExtraData) do
 		local value = GetExtraDataValue(key, fallback)
 		EnemyUpgradeOverhaul.ExtraData[key] = value
-		LeaderLib.Print("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Loaded Data.txt key - [" .. tostring(key) .. "] = (" .. tostring(value) .. ")")
+		LeaderLib.PrintDebug("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Loaded Data.txt key - [" .. tostring(key) .. "] = (" .. tostring(value) .. ")")
 	end
 	if Ext.IsDeveloperMode() and Ext.Version() >= 44 and Ext.GetDeltaMod ~= nil then
 		FixModTypos()
