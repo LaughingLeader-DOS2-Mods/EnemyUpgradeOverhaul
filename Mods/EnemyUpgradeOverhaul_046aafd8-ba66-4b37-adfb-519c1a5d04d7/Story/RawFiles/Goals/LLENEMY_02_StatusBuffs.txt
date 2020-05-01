@@ -207,22 +207,22 @@ LLENEMY_Upgrades_QRY_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STR
 AND
 IsTagged(_Character, "VOIDWOKEN", 1)
 THEN
-LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Redirected upgrade [BLESSED] on a Voidwoken to [LLENEMY_VOID_EMPOWERED].");
+LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanApplyUpgrade] Redirected upgrade [BLESSED] on a Voidwoken to [LLENEMY_VOID_EMPOWERED].");
 LLENEMY_Upgrades_ApplyStatus(_Character, _Group, _Type, "LLENEMY_VOID_EMPOWERED", _Duration, _IsHardMode);
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, "Buffs", "Polymorph", (STRING)_Status)
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, "Buffs", "Polymorph", (STRING)_Status, (REAL)_Duration)
 AND
 NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Character)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, "Buffs", "Polymorph", _Status);
-//LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Blocked upgrade [",_Status,"] from applying to a non-humanoid character.");
+//LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanApplyUpgrade] Blocked upgrade [",_Status,"] from applying to a non-humanoid character.");
 //LLENEMY_Upgrades_RedirectUpgrade(_Character, "Buffs", "Polymorph", _Status, "RESTED");
 //LLENEMY_Upgrades_RedirectUpgrade(_Character, "Buffs", "Polymorph", _Status, "CLEAR_MINDED");
 
 // Sparked statuses for characters with ranged weapons
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status)
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration)
 AND
 GetStatusType(_Status, "SPARK")
 AND
@@ -238,12 +238,12 @@ DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, _Status);
 //REGION GRENADE_ENTHUSIAST
 //Prevent weird things like voidlings from getting grenades
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_GRANADA")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_GRANADA", (REAL)_Duration)
 AND
 NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Character)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_GRANADA");
-LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanRollForStatusUpgrade] Blocked upgrade [LLENEMY_GRANADA] from applying to a non-humanoid.");
+LeaderLog_Log("DEBUG", "[LLENEMY_02_StatusBuffs:CanApplyUpgrade] Blocked upgrade [LLENEMY_GRANADA] from applying to a non-humanoid.");
 
 IF
 CharacterStatusApplied(_Enemy, "LLENEMY_GRANADA", _)

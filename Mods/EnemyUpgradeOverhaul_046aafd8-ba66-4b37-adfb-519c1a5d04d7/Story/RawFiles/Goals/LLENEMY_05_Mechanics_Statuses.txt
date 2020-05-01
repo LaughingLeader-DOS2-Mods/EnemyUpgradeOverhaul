@@ -353,7 +353,7 @@ LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_Rage_Active", "Ene
 
 //REGION GATHERING_POWER_EMPOWERED
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, "LLENEMY_GATHERING_POWER")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, "LLENEMY_GATHERING_POWER", (REAL)_Duration)
 AND
 HasActiveStatus(_Char, "LLENEMY_EMPOWERED", _a)
 AND

@@ -118,7 +118,7 @@ LLENEMY_Upgrades_Register_ModUpgradesForType("Talents", "Weapon");
 //REGION ALREADY_HAS_TALENT_BELT
 // [BEGIN_NO_OSITOOLS]
 PROC
-LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Talents", (STRING)_Type)
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Talents", (STRING)_Type)
 AND
 CharacterGetEquippedItem(_Enemy, "Belt", _Belt)
 AND
@@ -130,19 +130,19 @@ DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Talents", _Type);
 
 //REGION MELEE_WEAPON_TALENT
 PROC
-LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Talents", "Melee")
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Talents", "Melee")
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Talents", "Melee");
 //END_REGION
 
 //REGION WEAPON_TALENT_ROLLING
 PROC
-LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Talents", "Weapon")
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Talents", "Weapon");
 
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_Internal_RollGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Talents", "Weapon")
 AND
 NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
 AND
@@ -170,7 +170,7 @@ DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 //Backstab
 /*
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_Internal_RollGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Talents", "Weapon")
 AND
 NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
 AND
@@ -200,7 +200,7 @@ DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 //Gladiator
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_Internal_RollGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Talents", "Weapon")
 AND
 NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
 AND
@@ -227,7 +227,7 @@ DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 //Sadist
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_Internal_RollGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Talents", "Weapon")
 AND
 NOT DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
 AND
@@ -253,7 +253,7 @@ LLENEMY_Upgrades_ApplyUpgrade(_Enemy, _Group, _Type, "LLENEMY_TALENT_SADIST", _D
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy);
 
 PROC
-LLENEMY_Upgrades_RollForStatusUpgrade((CHARACTERGUID)_Enemy, "Talents", "Weapon")
+LLENEMY_Upgrades_Internal_RollGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Talents", "Weapon")
 AND
 DB_LLENEMY_Talents_Temp_WeaponTalentAdded(_Enemy)
 THEN
@@ -447,7 +447,7 @@ NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "GreedyVessel");
 
 //REGION TALENT_BLOCKING
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_MASTERTHIEF")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_MASTERTHIEF", (REAL)_Duration)
 AND
 CharacterGetEquippedWeapon(_Character, (ITEMGUID)_Weapon)
 AND
@@ -458,91 +458,91 @@ THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_MASTERTHIEF");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_GLADIATOR")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_GLADIATOR", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "Gladiator", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_GLADIATOR");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_GREEDYVESSEL")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_GREEDYVESSEL", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "GreedyVessel", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_GREEDYVESSEL");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_HAYMAKER")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_HAYMAKER", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "Haymaker", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_HAYMAKER");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_INDOMITABLE")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_INDOMITABLE", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "Indomitable", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_INDOMITABLE");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_LEECH")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_LEECH", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "Leech", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_LEECH");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_LONEWOLF")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_LONEWOLF", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "LoneWolf", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_LONEWOLF");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_MAGICCYCLES")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_MAGICCYCLES", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "MagicCycles", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_MAGICCYCLES");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_QUICKSTEP")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_QUICKSTEP", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "QuickStep", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_QUICKSTEP");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_SADIST")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_SADIST", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "Sadist", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_SADIST");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_SOULCATCHER")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_SOULCATCHER", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "Soulcatcher", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_SOULCATCHER");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_TORTURER")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_TORTURER", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "Torturer", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_TORTURER");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_UNSTABLE")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_UNSTABLE", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "Unstable", 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Character, _Group, _Type, "LLENEMY_TALENT_UNSTABLE");
 
 PROC
-LLENEMY_Upgrades_CanRollForStatusUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_WHATARUSH")
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_WHATARUSH", (REAL)_Duration)
 AND
 CharacterHasTalent(_Character, "WhatARush", 1)
 THEN

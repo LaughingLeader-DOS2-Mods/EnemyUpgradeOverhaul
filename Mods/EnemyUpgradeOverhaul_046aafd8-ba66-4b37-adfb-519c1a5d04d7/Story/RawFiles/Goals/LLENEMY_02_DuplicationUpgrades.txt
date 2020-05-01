@@ -91,7 +91,7 @@ THEN
 DB_NOOP(1);
 
 PROC
-LLENEMY_Upgrades_CanRollForGroupUpgrade((CHARACTERGUID)_Enemy, "Duplication", (STRING)_Type)
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Duplication", (STRING)_Type)
 AND
 IsBoss(_Enemy, _IsBoss)
 AND
