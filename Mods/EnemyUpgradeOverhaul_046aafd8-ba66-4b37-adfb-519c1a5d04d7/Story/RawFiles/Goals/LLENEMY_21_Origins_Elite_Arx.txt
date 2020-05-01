@@ -3,6 +3,14 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
+//REGION REDIRECTING
+// Lone Wolf apparently causes a crash with The Doctor transforming into Adramahlihk 
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade(S_ARX_DoctorsHouse_TheDoctor_83083470-c543-45b3-ac8a-108df0daca8d, (STRING)_Group, (STRING)_Type, "LLENEMY_TALENT_LONEWOLF", (REAL)_Duration)
+THEN
+LLENEMY_Upgrades_RedirectUpgrade(S_ARX_DoctorsHouse_TheDoctor_83083470-c543-45b3-ac8a-108df0daca8d, _Group, _Type, "LLENEMY_TALENT_LONEWOLF", "LLENEMY_DEMONIC_HASTED");
+//END_REGION
+
 //REGION CUSTOM
 /*
 PROC
