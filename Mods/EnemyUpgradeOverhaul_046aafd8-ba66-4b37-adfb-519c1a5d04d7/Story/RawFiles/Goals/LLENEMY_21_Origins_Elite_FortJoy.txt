@@ -14,6 +14,16 @@ THEN
 LLENEMY_Elites_ClearUpgradesForLevel("FJ_FortJoy");
 LLENEMY_Elites_InitLevel("FJ_FortJoy_Main");
 
+//REGION BLOCKING
+// Preventing shadow clones on Trompdoy illusions
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Char, "Duplication", (STRING)_Type, (STRING)_Status, (REAL)_Duration)
+AND
+DB_SW_IllusionistsIllusions((CHARACTERGUID)_Char)
+THEN
+LLENEMY_Upgrades_RedirectUpgradeToGroupType(_Char, "Duplication", _Type, _Status, "Buffs", "Normal");
+//END_REGION
+
 //REGION IGNORED
 PROC
 LLENEMY_Elites_InitLevel("FJ_FortJoy_Main")
