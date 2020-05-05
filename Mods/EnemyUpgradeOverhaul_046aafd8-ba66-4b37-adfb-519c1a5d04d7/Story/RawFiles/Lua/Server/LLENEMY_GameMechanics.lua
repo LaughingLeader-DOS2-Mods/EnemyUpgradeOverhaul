@@ -227,3 +227,72 @@ function Duplication_CopyStatus(source,dupe,status,handlestr)
 		Osi.LLENEMY_Duplication_CopyStatus(source, dupe, status, duration, statusSourceHandle)
 	end
 end
+
+local loneWolfAbilities = {
+	"WarriorLore",
+	"RangerLore",
+	"RogueLore",
+	--"SingleHanded",
+	--"TwoHanded",
+	--"Reflection",
+	--"Ranged",
+	--"Shield",
+	--"Reflexes",
+	--"PhysicalArmorMastery",
+	--"Sourcery",
+	--"Telekinesis",
+	"FireSpecialist",
+	"WaterSpecialist",
+	"AirSpecialist",
+	"EarthSpecialist",
+	"Necromancy",
+	"Summoning",
+	--"Polymorph",
+	--"Repair",
+	--"Sneaking",
+	--"Pickpocket",
+	--"Thievery",
+	--"Loremaster",
+	--"Crafting",
+	--"Barter",
+	--"Charm",
+	--"Intimidate",
+	--"Reason",
+	--"Persuasion",
+	--"Leadership",
+	--"Luck",
+	--"DualWielding",
+	--"Wand",
+	--"MagicArmorMastery",
+	--"VitalityMastery",
+	--"Perseverance",
+	--"Runecrafting",
+	--"Brewmaster",
+}
+
+function ApplyLoneWolfBonuses(uuid)
+	for _,stat in pairs(LeaderLib.Data.Attribute) do
+		local baseVal = CharacterGetBaseAttribute(uuid, stat)
+		local currentVal = CharacterGetAttribute(uuid, stat)
+		if currentVal < Ext.ExtraData.AttributeSoftCap then
+			local nextVal = math.min(Ext.ExtraData.AttributeSoftCap, baseVal * 2) -- Capped at 40
+			nextVal = nextVal - baseVal
+			if nextVal > 0 then
+				CharacterAddAttribute(uuid, stat, nextVal);
+				LeaderLib.PrintDebug("[LLENEMY_GameMechanics:ApplyLoneWolfBonuses] ("..uuid..") ["..stat.."]["..tostring(currentVal).."] => ["..tostring(currentVal+nextVal).."] Bonus("..tostring(nextVal)..")")
+			end
+		end
+	end
+	for _,stat in pairs(loneWolfAbilities) do
+		local baseVal = CharacterGetBaseAbility(uuid, stat)
+		local currentVal = CharacterGetAbility(uuid, stat)
+		if currentVal < Ext.ExtraData.CombatAbilityCap then
+			local nextVal = math.min(Ext.ExtraData.CombatAbilityCap, baseVal * 2) -- Capped at 10
+			nextVal = nextVal - baseVal
+			if nextVal > 0 then
+				CharacterAddAbility(uuid, stat, nextVal);
+				LeaderLib.PrintDebug("[LLENEMY_GameMechanics:ApplyLoneWolfBonuses] ("..uuid..") ["..stat.."]["..tostring(currentVal).."] => ["..tostring(currentVal+nextVal).."] Bonus("..tostring(nextVal)..")")
+			end
+		end
+	end
+end

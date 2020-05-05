@@ -379,14 +379,14 @@ IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_UNSTABLE", _)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Unstable");
-*/
 
-/* [OSITOOLS_ONLY]
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_LONEWOLF", _)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "LoneWolf");
+*/
 
+/* [OSITOOLS_ONLY]
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_TORTURER", _)
 THEN
@@ -444,6 +444,14 @@ NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "GreedyVessel");
 */
 //END_REGION
 
+//REGION LONE_WOLF_POINTS_BOOST
+/* [OSITOOLS_ONLY]
+IF
+CharacterStatusApplied(_Char, "LLENEMY_TALENT_LONEWOLF", _)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "ApplyLoneWolfBonuses", (STRING)_Char);
+*/
+//END_REGION
 
 //REGION TALENT_BLOCKING
 PROC
