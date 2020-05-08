@@ -169,6 +169,8 @@ local function GetTotalPointsForRegion(source)
 	return 0
 end
 
+local totalResets = 0
+
 function SpawnVoidwoken(source,testing,totalPoints)
 	local totalPointsUsed = 0
 	if totalPoints ~= nil then
@@ -215,6 +217,7 @@ function SpawnVoidwoken(source,testing,totalPoints)
 		if entry ~= nil then
 			LeaderLib.PrintDebug("Picked random entry: " .. entry.Template .. " | " ..tostring(rand) .. " / " .. tostring(totalWeight))
 			if testing ~= true then
+				totalResets = 0
 				local x,y,z = GetPosition(source)
 				local combatid = CombatGetIDForCharacter(source)
 				if combatid ~= nil and combatid >= 0 then
@@ -226,7 +229,10 @@ function SpawnVoidwoken(source,testing,totalPoints)
 				end
 
 				local voidwoken = CharacterCreateAtPosition(x, y, z, entry:GetTemplate(), 1)
-				SetFaction(voidwoken, "RC_Voidwoken")
+				SetFaction(voidwoken, "Evil NPC")
+				--Osi.LeaderLib_Helper_MakeHostileToPlayers(voidwoken)
+				--CharacterSetRelationFactionToFaction("RC_Voidwoken","Hero",0)
+				--CharacterSetRelationFactionToFaction("Hero","RC_Voidwoken",0)
 				ClearGain(voidwoken)
 				TeleportToRandomPosition(voidwoken, 12.0, "")
 				if ObjectExists(voidwoken) == 0 then
@@ -236,7 +242,8 @@ function SpawnVoidwoken(source,testing,totalPoints)
 					PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_FJ_Worm_Voidwoken_Spawning_01", x,y,z)
 				end
 			end
-		else
+		elseif totalResets < 30 then
+			totalResets = totalResets + 1
 			LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] No entry picked! Resetting.")
 			for i,v in pairs(voidwokenTemplates) do
 				v.Weight = v.DefaultWeight
