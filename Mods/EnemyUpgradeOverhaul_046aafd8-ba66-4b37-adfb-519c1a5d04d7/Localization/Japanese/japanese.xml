@@ -164,6 +164,7 @@
 	<content contentuid="ha01be380g46ddg41a4g8408g41eb724325d2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_SeekerDisabled">Seeker (Disabled)</content>
 	<content contentuid="h24701ed8gaeeag41d9gb1d8g1ff3f96f2abc" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_BullyDamageBonus">Talent: Bully</content>
 	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LightningRod">Talent: Lightning Rod</content>
+	<content contentuid="hcb08a432g19a5g4571g820fg92ddc92ac4d9" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LoneWolf">Talent: Lone Wolf</content>
 	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_NaturalConductor">Talent: Natural Conductor</content>
 	<content contentuid="hf3eea666ge611g406eg9838gcaf7b89b5c93" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Quickstep">Talent: The Pawn</content>
 	<content contentuid="hdf0ea9a2g01cbg481dg8107g6ee870f53548" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Unstable">Talent: Unstable</content>
