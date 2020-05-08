@@ -32,7 +32,7 @@ function UpgradeInfoData:Create(name, ...)
     return this
 end
 
-EnemyUpgradeOverhaul.UpgradeData = {
+UpgradeData = {
 	Statuses = {
 		LLENEMY_TALENT_BACKSTAB = UpgradeInfoData:Create(TranslatedString:Create("h9305ff62g9590g4f7fg82beg5e3ab9edafbf", "Talent: Backstab"), "#F59B00"),
 		LLENEMY_TALENT_GLADIATOR = UpgradeInfoData:Create(TranslatedString:Create("h3d6d46bbg4819g48fbga980gcb521d5c49d8", "Talent: Gladiator"), "#F59B00"),
@@ -134,13 +134,13 @@ EnemyUpgradeOverhaul.UpgradeData = {
 	},
 }
 
-EnemyUpgradeOverhaul.DropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#00FFAA' size='16'>Will drop [1] on death.</font>")
-EnemyUpgradeOverhaul.ShadowDropText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ([1]) on death.</font>")
+DropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#00FFAA' size='16'>Will drop [1] on death.</font>")
+ShadowDropText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ([1]) on death.</font>")
 
-EnemyUpgradeOverhaul.HiddenDropText = TranslatedString:Create("h623a9ed0gaaacg4c3egacdfg56f1c23a1dec", "<font color='#00FFAA' size='16'>Drops ??? on death.</font>")
-EnemyUpgradeOverhaul.HiddenShadowDropText = TranslatedString:Create("h882390f1gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Drops ??? on death.</font>")
+HiddenDropText = TranslatedString:Create("h623a9ed0gaaacg4c3egacdfg56f1c23a1dec", "<font color='#00FFAA' size='16'>Drops ??? on death.</font>")
+HiddenShadowDropText = TranslatedString:Create("h882390f1gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Drops ??? on death.</font>")
 
-EnemyUpgradeOverhaul.ChallengePointsText = {
+ChallengePointsText = {
 	{Tag = "LLENEMY_CP_01", Min = 1, Max = 10, Text = TranslatedString:Create("h5addfbc4gcac7g4935g8effg8096574b8913", "<font color='#FFFFFF' size='12'>Regular Bonus Loot</font>")},
 	{Tag = "LLENEMY_CP_02", Min = 11, Max = 16, Text = TranslatedString:Create("h8a442345g8c3ag4161g8f45gd93745f99d3e", "<font color='#4197E2' size='14'>Great Loot</font>")},
 	{Tag = "LLENEMY_CP_03", Min = 17, Max = 31, Text = TranslatedString:Create("hf03d120ag2329g476dg94dcg7df0d27c3e1e", "<font color='#F7BA14' size='16'>Good Loot</font>")},
@@ -152,11 +152,11 @@ EnemyUpgradeOverhaul.ChallengePointsText = {
 ---@param status string
 ---@return table
 function UpgradeInfo_GetText(status)
-	local infoText = EnemyUpgradeOverhaul.UpgradeData.Statuses[status]
-	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.ArmorBoostStatuses[status] end
-	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.MagicArmorBoostStatuses[status] end
-	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.DamageBoostStatuses[status] end
-	--if infoText == nil then	infoText = EnemyUpgradeOverhaul.UpgradeData.VitalityBoostStatuses[status] end
+	local infoText = UpgradeData.Statuses[status]
+	--if infoText == nil then	infoText = UpgradeData.ArmorBoostStatuses[status] end
+	--if infoText == nil then	infoText = UpgradeData.MagicArmorBoostStatuses[status] end
+	--if infoText == nil then	infoText = UpgradeData.DamageBoostStatuses[status] end
+	--if infoText == nil then	infoText = UpgradeData.VitalityBoostStatuses[status] end
 	if infoText ~= nil then
 		return infoText
 	end

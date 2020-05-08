@@ -2,7 +2,7 @@ function SetChallengePointsTag(uuid)
 	local cp = GetVarInteger(uuid, "LLENEMY_ChallengePoints")
 	if cp == nil or cp < 0 then cp = 0 end
 	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
-	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
+	for k,tbl in pairs(ChallengePointsText) do
 		if cp >= tbl.Min and cp <= tbl.Max then
 			SetTag(uuid, tbl.Tag)
 			UpgradeInfo_ApplyInfoStatus(uuid,true)
@@ -13,7 +13,7 @@ function SetChallengePointsTag(uuid)
 end
 
 local function HasUpgrades(uuid)
-	for key,group in pairs(EnemyUpgradeOverhaul.UpgradeData) do
+	for key,group in pairs(UpgradeData) do
 		for status,infoText in pairs(group) do
 			if HasActiveStatus(uuid, status) == 1 then
 				return true
@@ -74,7 +74,7 @@ end
 local function TimerFinished(event, ...)
 	--Ext.Print("TimerFinished: ", event, LeaderLib.Common.Dump({...}))
 	if event == "Timers_LLENEMY_SendHighestLoremaster" then
-		UpgradeInfo_SendHighestLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
+		UpgradeInfo_SendHighestLoremaster(HighestLoremaster)
 	end
 	if event == "Timers_LLENEMY_AddNegativeItemBoosts" then
 		local params = {...}
@@ -91,12 +91,12 @@ local function TimerFinished(event, ...)
 			end
 		end
 		for k=0,totalBoosts,1 do
-			EnemyUpgradeOverhaul.ItemCorruption.AddRandomNegativeBoost(item, stat, statType, level)
+			ItemCorruption.AddRandomNegativeBoost(item, stat, statType, level)
 		end
 		Ext.Print("=============================================")
 		Ext.Print("Cloned Item Stats:"..item)
 		Ext.Print("=============================================")
-		EnemyUpgradeOverhaul.ItemCorruption.DebugItemStats(item)
+		ItemCorruption.DebugItemStats(item)
 		Ext.Print("=============================================")
 	end
 end
@@ -104,11 +104,11 @@ LeaderLib.RegisterListener("TimerFinished", TimerFinished)
 
 -- Loremaster
 local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
-	local nextHighest = EnemyUpgradeOverhaul.HighestLoremaster
+	local nextHighest = HighestLoremaster
 	if player ~= nil then
 		if nextVal >= nextHighest then
 			local lore = CharacterGetAbility(player, "Loremaster")
-			if lore >= EnemyUpgradeOverhaul.HighestLoremaster then
+			if lore >= HighestLoremaster then
 				nextHighest = lore
 			end
 		elseif nextVal < lastVal then
@@ -118,7 +118,7 @@ local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
 		nextHighest = CheckPartyLoremaster()
 	end
 
-	if EnemyUpgradeOverhaul.HighestLoremaster ~= nextHighest then
+	if HighestLoremaster ~= nextHighest then
 		StoreHighestLoremaster(nextHighest)
 	end
 end
@@ -131,8 +131,8 @@ end
 LeaderLib.RegisterListener("CharacterBasePointsChanged", CharacterBasePointsChanged)
 
 function StoreHighestLoremaster(nextHighest)
-	EnemyUpgradeOverhaul.HighestLoremaster = nextHighest
-	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(EnemyUpgradeOverhaul.HighestLoremaster)
-	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(EnemyUpgradeOverhaul.HighestLoremaster)..")")
-	Mods.LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 100)
+	HighestLoremaster = nextHighest
+	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(HighestLoremaster)
+	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(HighestLoremaster)..")")
+	LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 500)
 end

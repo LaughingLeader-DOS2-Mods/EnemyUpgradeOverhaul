@@ -256,7 +256,7 @@ local armorResistances = {
 	--"MagicResistance",
 }
 
-local CorruptionBoosts = {
+CorruptionBoosts = {
 	Weapon = {
 		ItemBoostGroup:Create("WeaponMain", {
 			ItemBoost:Create({
@@ -357,7 +357,6 @@ for i,v in pairs(armorResistances) do
 end
 
 CorruptionBoosts.Resistances = resistancesItemBoostGroup
-EnemyUpgradeOverhaul.CorruptionBoosts = CorruptionBoosts
 
 Ext.Print("CorruptionBoosts:")
 Ext.Print(LeaderLib.Common.Dump(CorruptionBoosts))

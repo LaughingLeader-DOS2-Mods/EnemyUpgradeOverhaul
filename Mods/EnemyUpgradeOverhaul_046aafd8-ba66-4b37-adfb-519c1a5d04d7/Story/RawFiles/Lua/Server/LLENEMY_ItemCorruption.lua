@@ -397,7 +397,7 @@ end
 
 local function AddRandomNegativeBoost(item,stat,statType,level)
 	if level == nil or level <= 0 then level = 1 end
-	EnemyUpgradeOverhaul.CorruptionBoosts.Resistances:Apply(item,stat,statType,level,-1,false,Ext.Random(1,2))
+	CorruptionBoosts.Resistances:Apply(item,stat,statType,level,-1,false,Ext.Random(1,2))
 end
 
 local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,isClone)
@@ -488,11 +488,11 @@ end
 
 local function AddRandomBoosts(item,stat,statType,level)
 	local totalBoosts = 0
-	local boostTable = EnemyUpgradeOverhaul.CorruptionBoosts[statType]
+	local boostTable = CorruptionBoosts[statType]
 	if boostTable ~= nil then
 		totalBoosts = AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
 	end
-	--AddRandomBoostsFromTable(item,stat,statType,level,EnemyUpgradeOverhaul.CorruptionBoosts.All)
+	--AddRandomBoostsFromTable(item,stat,statType,level,CorruptionBoosts.All)
 	return totalBoosts
 end
 
@@ -615,7 +615,7 @@ local function TryShadowCorruptItem(uuid, container)
 			LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
 			if ignoredSlots[equippedSlot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
 				if item.Slot > 13 then
-					if EnemyUpgradeOverhaul.CorruptionBoosts[statType] ~= nil then
+					if CorruptionBoosts[statType] ~= nil then
 						local cloned = GetClone(uuid, stat, statType)
 						NRD_ItemSetIdentified(cloned,1)
 						if container == nil and ItemIsInInventory(uuid) then
@@ -703,7 +703,7 @@ function ShadowCorruptContainerItems(uuid)
 	end ]]
 end
 
-EnemyUpgradeOverhaul.ItemCorruption = {
+ItemCorruption = {
 	AddRandomNegativeBoost = AddRandomNegativeBoost,
 	DebugItemStats = DebugItemStats
 }

@@ -1,7 +1,7 @@
 function RollForCounterAttack(character,target)
 	local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
-	local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
-	chance = math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance) * 10
+	local chance = (math.log(1 + initiative) / math.log(1 + ExtraData.LLENEMY_Counter_MaxChance))
+	chance = math.floor(chance * ExtraData.LLENEMY_Counter_MaxChance) * 10
 	local roll = LeaderLib.Common.GetRandom(999)
 	LeaderLib.PrintDebug("Counter roll: " .. tostring(roll) .. " / " .. tostring(chance))
 	if roll >= chance then
@@ -106,7 +106,7 @@ end
 
 function RemoveInvisible(target, source)
 	local detected = false
-	for status,b in pairs(EnemyUpgradeOverhaul.InvisibleStatuses) do
+	for status,b in pairs(InvisibleStatuses) do
 		if b == true and HasActiveStatus(target, status) == 1 then
 			RemoveStatus(target, status)
 			detected = true
@@ -120,7 +120,7 @@ function RemoveInvisible(target, source)
 end
 
 function CharacterIsHidden(target, source)
-	for status,b in pairs(EnemyUpgradeOverhaul.InvisibleStatuses) do
+	for status,b in pairs(InvisibleStatuses) do
 		if b == true and HasActiveStatus(target, status) == 1 then
 			return 1
 		end

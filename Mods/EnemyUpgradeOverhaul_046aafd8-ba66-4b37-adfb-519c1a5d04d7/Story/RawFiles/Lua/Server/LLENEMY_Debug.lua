@@ -253,7 +253,7 @@ local function LLENEMY_DebugInit()
 			-- Ext.Print("=============================================")
 			-- Ext.Print("Cloned Item Stats:"..shadowItem)
 			-- Ext.Print("=============================================")
-			-- EnemyUpgradeOverhaul.ItemCorruption.DebugItemStats(shadowItem)
+			-- ItemCorruption.DebugItemStats(shadowItem)
 			-- Ext.Print("=============================================")
 		end
 		-- Helmet
@@ -265,7 +265,7 @@ local function LLENEMY_DebugInit()
 			-- Ext.Print("=============================================")
 			-- Ext.Print("Cloned Item Stats:"..shadowItem)
 			-- Ext.Print("=============================================")
-			-- EnemyUpgradeOverhaul.ItemCorruption.DebugItemStats(shadowItem)
+			-- ItemCorruption.DebugItemStats(shadowItem)
 			-- Ext.Print("=============================================")
 		end
 		-- Shield
@@ -278,7 +278,7 @@ local function LLENEMY_DebugInit()
 			-- Ext.Print("=============================================")
 			-- Ext.Print("Cloned Item Stats:"..shadowItem)
 			-- Ext.Print("=============================================")
-			-- EnemyUpgradeOverhaul.ItemCorruption.DebugItemStats(shadowItem)
+			-- ItemCorruption.DebugItemStats(shadowItem)
 			-- Ext.Print("=============================================")
 
 			-- local testItem = CreateItemTemplateAtPosition("08854157-2996-449a-bde0-083277ca1119", x, y, z)
@@ -320,7 +320,7 @@ local function LLENEMY_DebugInit()
 		GlobalClearFlag("IsDeveloperMode")
 	end
 
-	EnemyUpgradeOverhaul.GetSourceDegredation(300000, 50)
+	GetSourceDegredation(300000, 50)
 end
 
 function LLENEMY_Debug_SpawnTreasureGoblinTest()
@@ -345,7 +345,7 @@ end
 
 local function LLENEMY_SessionLoading()
 	Ext.Print("[LLENEMY:Debug.lua] Registered debug init call to LeaderLib.")
-	LeaderLib_Ext_AddDebugInitCall(LLENEMY_DebugInit)
+	LeaderLib.AddDebugInitCall(LLENEMY_DebugInit)
 end
 
 local function LLENEMY_Debug_SessionLoaded()

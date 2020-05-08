@@ -2,7 +2,7 @@
 local soundsPath = "Mods/EnemyUpgradeOverhaul_046aafd8-ba66-4b37-adfb-519c1a5d04d7/Localization/English/Soundbanks/"
 local DEFAULT_PRIORITY = 0--"P1_StoryDialog"
 
-EnemyUpgradeOverhaul.VoiceMetaData = {
+VoiceMetaData = {
 	--Narrator
 	["NARRATOR"] = {
 		{
@@ -20,8 +20,8 @@ EnemyUpgradeOverhaul.VoiceMetaData = {
 	},
 }
 -- Red Prince
---EnemyUpgradeOverhaul.VoiceMetaData["a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f"] = EnemyUpgradeOverhaul.VoiceMetaData["NARRATOR"]
---EnemyUpgradeOverhaul.VoiceMetaData["a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f"] = EnemyUpgradeOverhaul.VoiceMetaData["09478f32-8fbf-4502-a59d-011e4d1b3d4d"]
+--VoiceMetaData["a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f"] = VoiceMetaData["NARRATOR"]
+--VoiceMetaData["a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f"] = VoiceMetaData["09478f32-8fbf-4502-a59d-011e4d1b3d4d"]
 -- CC Dummy 1
---EnemyUpgradeOverhaul.VoiceMetaData["da072fe7-fdd5-42ae-9139-8bd4b9fca406"] = EnemyUpgradeOverhaul.VoiceMetaData["09478f32-8fbf-4502-a59d-011e4d1b3d4d"]
---EnemyUpgradeOverhaul.VoiceMetaData["7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe"] = EnemyUpgradeOverhaul.VoiceMetaData["09478f32-8fbf-4502-a59d-011e4d1b3d4d"]
+--VoiceMetaData["da072fe7-fdd5-42ae-9139-8bd4b9fca406"] = VoiceMetaData["09478f32-8fbf-4502-a59d-011e4d1b3d4d"]
+--VoiceMetaData["7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe"] = VoiceMetaData["09478f32-8fbf-4502-a59d-011e4d1b3d4d"]

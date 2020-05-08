@@ -155,7 +155,7 @@ local voidwokenGroups = {
 		VoidwokenSpawn:Create(1, "LLENEMY_Creatures_Nightmare_Werewolf_A_6d57af19-aebf-4893-b0c3-3d96f140ae2f"))
 }
 
-EnemyUpgradeOverhaul.VoidwokenGroups = voidwokenGroups
+VoidwokenGroups = voidwokenGroups
 
 local function GetTotalPointsForRegion(source)
 	local region = GetRegion(source)
@@ -305,6 +305,6 @@ local function GetSourceDegredation(gameHourSpeed, totalPoints)
 	return ran
 end
 
-EnemyUpgradeOverhaul.GetSourceDegredation = GetSourceDegredation
+GetSourceDegredation = GetSourceDegredation
 
 Ext.NewQuery(GetSourceDegredation, "LLENEMY_Ext_QRY_GetSourceDegredation", "[in](INTEGER)_GameHourSpeed, [in](INTEGER)_TotalPoints, [out](INTEGER)_DegredationAmount")

@@ -12,7 +12,7 @@ local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4c
 
 local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 	local upgradeKeys = {}
-	for status,data in pairs(EnemyUpgradeOverhaul.UpgradeData.Statuses) do
+	for status,data in pairs(UpgradeData.Statuses) do
 		if target.Character:GetStatus(status) ~= nil then
 			table.insert(upgradeKeys, status)
 		end
@@ -26,13 +26,13 @@ local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 			local infoText = UpgradeInfo_GetText(status)
 			if infoText ~= nil then
 				local color = infoText.Color
-				Ext.Print("Highest Loremaster:" .. tostring(EnemyUpgradeOverhaul.HighestLoremaster))
-				if EnemyUpgradeOverhaul.HighestLoremaster > 0 then
+				Ext.Print("Highest Loremaster:" .. tostring(HighestLoremaster))
+				if HighestLoremaster > 0 then
 					---@type TranslatedString
 					local translatedString = infoText.Name
 					if translatedString ~= nil then
 						local nameText = translatedString.Value
-						if infoText.Lore > 0 and EnemyUpgradeOverhaul.HighestLoremaster < infoText.Lore then
+						if infoText.Lore > 0 and HighestLoremaster < infoText.Lore then
 							nameText = "???"
 						end
 						if color ~= nil and color ~= "" then
@@ -62,7 +62,7 @@ local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 	end
 	return ""
 end
-EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescription_UpgradeInfo
+StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescription_UpgradeInfo
 
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Easy", 1, 10);
 -- LLENEMY_Rewards_AddTreasurePool("LLENEMY.Rewards.Medium", 11, 16);
@@ -73,19 +73,19 @@ EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_UpgradeInfo"] = StatDescri
 local function StatDescription_ChallengePoints(status, target, param, statusSource)
 	local output = "<br><img src='Icon_Line' width='350%'><br>"
 	local isTagged = false
-	for k,tbl in pairs(EnemyUpgradeOverhaul.ChallengePointsText) do
+	for k,tbl in pairs(ChallengePointsText) do
 		if target.Character:HasTag(tbl.Tag) then
-			if EnemyUpgradeOverhaul.HighestLoremaster >= 2 then
+			if HighestLoremaster >= 2 then
 				if target.Character:GetStatus("LLENEMY_DUPLICANT") == nil then
-					output = output .. string.gsub(EnemyUpgradeOverhaul.DropText.Value, "%[1%]", tbl.Text.Value)
+					output = output .. string.gsub(DropText.Value, "%[1%]", tbl.Text.Value)
 				else
-					output = output .. string.gsub(EnemyUpgradeOverhaul.ShadowDropText.Value, "%[1%]", tbl.Text.Value)
+					output = output .. string.gsub(ShadowDropText.Value, "%[1%]", tbl.Text.Value)
 				end
 			else
 				if target.Character:GetStatus("LLENEMY_DUPLICANT") == nil then
-					output = output .. EnemyUpgradeOverhaul.HiddenDropText.Value
+					output = output .. HiddenDropText.Value
 				else
-					output = output .. EnemyUpgradeOverhaul.HiddenShadowDropText.Value
+					output = output .. HiddenShadowDropText.Value
 				end
 			end
 			isTagged = true
@@ -105,7 +105,7 @@ local function StatDescription_ChallengePoints(status, target, param, statusSour
 	end
 	return ""
 end
-EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_ChallengePoints"] = StatDescription_ChallengePoints
+StatusDescriptionParams["LLENEMY_ChallengePoints"] = StatDescription_ChallengePoints
 
 local counterParamText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#D416FF'>[1]%</font>")
 
@@ -114,13 +114,13 @@ local function StatDescription_Counter(status, target, param, statusSource)
 	--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
 	local initiative = target.Initiative
 	--local percent = (initiative - COUNTER_MIN) / (COUNTER_MAX - COUNTER_MIN)
-	local chance = (math.log(1 + initiative) / math.log(1 + EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance))
+	local chance = (math.log(1 + initiative) / math.log(1 + ExtraData.LLENEMY_Counter_MaxChance))
 	--Ext.Print("Chance: " .. tostring(chance))
 	--local chance = (math.log(initiative/COUNTER_MIN) / math.log(COUNTER_MAX/COUNTER_MIN)) * COUNTER_MAX
-	return string.gsub(counterParamText.Value, "%[1%]", tostring(math.floor(chance * EnemyUpgradeOverhaul.ExtraData.LLENEMY_Counter_MaxChance)))
+	return string.gsub(counterParamText.Value, "%[1%]", tostring(math.floor(chance * ExtraData.LLENEMY_Counter_MaxChance)))
 end
 
-EnemyUpgradeOverhaul.StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
+StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter
 
 local function LLENEMY_StatusGetDescriptionParam(status, obj1, obj2, param)
 	local target = obj2
@@ -130,7 +130,7 @@ local function LLENEMY_StatusGetDescriptionParam(status, obj1, obj2, param)
 		statusSource = obj2
 	end
 	--LeaderLib.PrintDebug("[LLENEMY_StatusGetDescriptionParam] status("..tostring(status.Name)..") statusSource("..tostring(statusSource.Name)..")["..tostring(statusSource.NetID).."] character("..tostring(target.Name)..")["..tostring(target.NetID).."] param("..tostring(param)..")")
-	local func = EnemyUpgradeOverhaul.StatusDescriptionParams[param]
+	local func = StatusDescriptionParams[param]
 	if func ~= nil then
 		if target.Character ~= nil then
 			local b,result = xpcall(func, debug.traceback, status, target, param, statusSource)
@@ -156,5 +156,5 @@ end
 
 Ext.RegisterNetListener("LLENEMY_SetHighestLoremaster", function(call, valStr)
 	LeaderLib.PrintDebug("[LLENEMY_Shared.lua:LLENEMY_SetHighestLoremaster] Set highest loremaster value to ("..valStr..") on client.")
-	EnemyUpgradeOverhaul.HighestLoremaster = math.tointeger(valStr)
+	HighestLoremaster = math.tointeger(valStr)
 end)

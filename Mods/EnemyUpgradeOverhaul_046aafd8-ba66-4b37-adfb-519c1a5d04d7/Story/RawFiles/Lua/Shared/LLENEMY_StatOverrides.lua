@@ -175,7 +175,7 @@ local function CanChangeSkillTier(stat, tier)
 	end
 end
 
-local function OverrideStats()
+function OverrideStats()
     local total_changes = 0
     local total_stats = 0
     --LeaderLib_7e737d2f-31d2-4751-963f-be6ccc59cd0c
@@ -230,5 +230,3 @@ local function OverrideStats()
 	end
 	LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
 end
-
-EnemyUpgradeOverhaul.OverrideStats = OverrideStats;

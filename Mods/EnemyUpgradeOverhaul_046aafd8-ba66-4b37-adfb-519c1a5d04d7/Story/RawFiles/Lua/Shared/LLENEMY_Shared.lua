@@ -1,25 +1,23 @@
 LeaderLib = Mods["LeaderLib"]
 
-EnemyUpgradeOverhaul = {
-	IgnoredSkills = {},
-	IgnoredWords = {},
-	EnemySkills = {},
-	StatusDescriptionParams = {},
-	SINGLEPLAYER = false,
-	HighestLoremaster = 0,
-	InvisibleStatuses = {
-		["SNEAKING"] = true,
-		["INVISIBLE"] = true,
-	},
-	ExtraData = {
-		LLENEMY_Counter_MaxChance = 75,
-	},
-	VoiceMetaData = {},
-	Commands = {
-		CHECKLOREMASTER = "CheckLoremaster"
-	},
-	CorruptionBoosts = { Weapon={}, Armor={}, Shield={}, Resistances={}},
+IgnoredSkills = {}
+IgnoredWords = {}
+EnemySkills = {}
+StatusDescriptionParams = {}
+SINGLEPLAYER = false
+HighestLoremaster = 0
+InvisibleStatuses = {
+	["SNEAKING"] = true,
+	["INVISIBLE"] = true,
 }
+ExtraData = {
+	LLENEMY_Counter_MaxChance = 75
+}
+VoiceMetaData = {}
+Commands = {
+	CHECKLOREMASTER = "CheckLoremaster"
+}
+CorruptionBoosts = { Weapon={}, Armor={}, Shield={}, Resistances={}}
 
 function GetExtraDataValue(key, fallback)
 	local val = Ext.ExtraData[key]
@@ -51,9 +49,9 @@ end
 
 function LLENEMY_Shared_InitModuleLoading()
 	Ext.Print("LLENEMY_Shared.lua] Module is loading.")
-	for key,fallback in pairs(EnemyUpgradeOverhaul.ExtraData) do
-		local value = GetExtraDataValue(key, fallback)
-		EnemyUpgradeOverhaul.ExtraData[key] = value
+	for key,fallback in pairs(ExtraData) do
+		local value = LeaderLib.Game.GetExtraData(key, fallback)
+		ExtraData[key] = value
 		LeaderLib.PrintDebug("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Loaded Data.txt key - [" .. tostring(key) .. "] = (" .. tostring(value) .. ")")
 	end
 	if Ext.IsDeveloperMode() and Ext.Version() >= 44 and Ext.GetDeltaMod ~= nil then
@@ -64,21 +62,21 @@ end
 local function LLENEMY_Shared_SessionLoading()
 	Ext.Print("[LLENEMY:Bootstrap.lua] Session is loading.")
 	if Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9") then
-		EnemyUpgradeOverhaul.SINGLEPLAYER = true
+		SINGLEPLAYER = true
 	end
 
 	local statuses = Ext.GetStatEntries("StatusData")
 	for _,stat in pairs(statuses) do
 		local status_type = Ext.StatGetAttribute(stat, "StatusType")
-		if status_type == "INVISIBLE" and EnemyUpgradeOverhaul.InvisibleStatuses[stat] == nil then
-			EnemyUpgradeOverhaul.InvisibleStatuses[stat] = true
+		if status_type == "INVISIBLE" and InvisibleStatuses[stat] == nil then
+			InvisibleStatuses[stat] = true
 		end
 	end
 end
 Ext.RegisterListener("SessionLoading", LLENEMY_Shared_SessionLoading)
 
 local function RegisterVoiceMetaData()
-	for speaker,entries in pairs(EnemyUpgradeOverhaul.VoiceMetaData) do
+	for speaker,entries in pairs(VoiceMetaData) do
 		for i,data in pairs(entries) do
 			Ext.Print("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Registered VoiceMetaData - Speaker[" .. speaker .. "] Handle(" .. tostring(data.Handle) .. ") Source(" .. tostring(data.Source) .. ") Length(" .. tostring(data.Length) .. ")")
 			Ext.AddVoiceMetaData(speaker, data.Handle, data.Source, data.Length, data.Priority)
