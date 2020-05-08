@@ -148,33 +148,6 @@ local upgrade_info_statuses = {
 	"LLENEMY_BONUSSKILLS_SET_ELITE",
 }
 
-local ignore_skill_names = {
-	Enemy = true,
-	Quest = true,
-	QUEST = true,
-	NPC = true
-}
-
-local function CanChangeSkillTier(stat, tier)
-	if Ext.StatGetAttribute(stat, "ForGameMaster") == "Yes" then
-		if tier == "" or tier == "Starter" then
-			return false
-		end
-		local isenemy = Ext.StatGetAttribute(stat, "IsEnemySkill")
-		if isenemy == "Yes" then
-			return false
-		end
-		for str,b in pairs(ignore_skill_names) do
-			if string.find(stat, str) then
-				return false
-			end
-		end
-		return true
-	else
-		return false
-	end
-end
-
 function OverrideStats()
     local total_changes = 0
     local total_stats = 0
@@ -205,8 +178,7 @@ function OverrideStats()
 	end
 
 	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
-	local enhancementsLoaded = Ext.IsModLoaded("88d7c1d3-8de9-4494-be12-a8fcbc8171e9")
-	if Ext.Version() >= 42 or enhancementsLoaded then
+	if Ext.Version() >= 42 then
 		--LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Enabling v42+ enhancements.")
 		--LeaderLib.PrintDebug("==============================================================")
 		--LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] (Upgrade Info) enabled. Hiding statuses used for info.")
@@ -215,16 +187,6 @@ function OverrideStats()
 			Ext.StatSetAttribute(statname, "Icon", "")
 			total_changes = total_changes + 1
 			total_stats = total_stats + 1
-		end
-		if enhancementsLoaded or Ext.IsDeveloperMode() == true then
-			LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Enabling skill Tier overrides.")
-			for _,stat in pairs(Ext.GetStatEntries("SkillData")) do
-				local tier = Ext.StatGetAttribute(stat, "Tier")
-				if CanChangeSkillTier(stat, tier) then
-					Ext.StatSetAttribute(stat, "Tier", "Starter")
-					--LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Change Tier for skill ("..stat..") "..tier.." => Starter.")
-				end
-			end
 		end
 		--LeaderLib.PrintDebug("==============================================================")
 	end
