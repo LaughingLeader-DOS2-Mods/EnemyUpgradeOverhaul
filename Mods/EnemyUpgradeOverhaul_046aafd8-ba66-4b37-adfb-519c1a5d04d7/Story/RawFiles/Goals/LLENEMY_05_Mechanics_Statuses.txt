@@ -363,6 +363,13 @@ IntegerMax(_a, _b, 1)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, "LLENEMY_GATHERING_POWER");
 
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, "LLENEMY_GATHERING_POWER", (REAL)_Duration)
+AND
+DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_GATHERING_POWER")
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, "LLENEMY_GATHERING_POWER");
+
 QRY
 LLENEMY_Upgrades_QRY_ApplyStatus((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, "LLENEMY_GATHERING_POWER", (REAL)_Duration, 1)
 AND
