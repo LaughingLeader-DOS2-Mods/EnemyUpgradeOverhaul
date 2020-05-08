@@ -4,15 +4,44 @@
 	<content contentuid="h8311eb63g89cfg41c1g961cgde31f8d79927" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A"></content>
 	<content contentuid="h07bf13ceg4493g4f9cg90a3gf2c65b452bfd" Source="CONT_LLENEMY_DuplicantTreasure">A shadowy orb, filled with  &lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Treasure of the Shadow Realm&lt;/font&gt;.</content>
 	<content contentuid="h9bcf1767g7b81g4ae1gbf20ge19a6b4454ef" Source="CONT_LLENEMY_DuplicantTreasure">&lt;font color=&apos;#AA00FF&apos;&gt;Shadow Treasure&lt;/font&gt;</content>
+	<content contentuid="h7f31f21fg9232g4fcbg8eadg2eacf1f25ae6" Source="LLENEMY_Animals_Bear_A_Voidwoken">Source-Hungry Voidwoken Bear</content>
+	<content contentuid="h55545e7ag3290g4520g9adfg6dcd737ca8c4" Source="LLENEMY_Animals_Beetle_A_Fire">Source-Hungry Voidwoken Fire Beetle</content>
+	<content contentuid="h4d505354g26bdg4ae8gb91fgcb5451d31bea" Source="LLENEMY_Animals_Beetle_A_Green">Source-Hungry Voidwoken Beetle</content>
+	<content contentuid="haeb6c61bga35fg45d8ga373gadf142b6fc2b" Source="LLENEMY_Animals_Boar_A_Void_A">Source-Hungry Voidwoken Boar</content>
 	<content contentuid="ha3ccca0bg576dg4a64gb2edg8819d8f2cdc0" Source="LLENEMY_Animals_Chicken_BattleChicken_A">Chicken Infantry</content>
 	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>
 	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
+	<content contentuid="hfff1d303g1033g40dcgb198gb3b4330de0d4" Source="LLENEMY_Animals_Deer_A_Void_A">Source-Hungry Voidwoken Deer</content>
+	<content contentuid="hb7ee58faga3c6g41e0gad2age7b6783006dc" Source="LLENEMY_Animals_Frog_Merman_A">Source-Hungry Slippery Voidling</content>
+	<content contentuid="ha78e3050g202cg4650g8df9g2ef53c2463a2" Source="LLENEMY_Animals_Frog_Merman_A_Giant">Source-Hungry Slippery Voidling</content>
+	<content contentuid="hbaf0e000gcc52g4d00gad02g1047a2b95558" Source="LLENEMY_Animals_Salamander_A_Poison">Source-Hungry Voidwoken Salamander</content>
+	<content contentuid="he10bc4ddge536g4696gb6f1g34a29479255c" Source="LLENEMY_Animals_Salamander_A_Voidwoken">Source-Hungry Voidwoken Salamander</content>
+	<content contentuid="h721c6341gf33bg4b02ga7adg42e9249a22c4" Source="LLENEMY_Animals_Turtle_A_Voidwoken">Source-Hungry Voidwoken Turtle</content>
+	<content contentuid="h57ae12ebg419eg4f53g8780g350576cd63c9" Source="LLENEMY_Creatures_Demon_Hound_A">Source-Hungry Voidwoken Hound</content>
+	<content contentuid="h4421e763g9ab4g4766g9f08g491f9ce55b70" Source="LLENEMY_Creatures_Demons_Worm_A">Source-Hungry Nemesis Mindflayer</content>
 	<content contentuid="h6fdad790gaa70g47f6g8cedgc23ec425b99d" Source="LLENEMY_Creatures_GiantInsect_A_Wings">Venom-wing Voidwoken</content>
 	<content contentuid="hea8180efg9c0eg4cdega019g233a720fc32c" Source="LLENEMY_Creatures_GiantInsect_C_Wings">Storm-wing Voidwoken</content>
+	<content contentuid="hff19af0agb6b4g4337g953agb4dbb019b450" Source="LLENEMY_Creatures_Molespitter_A">Source-Hungry Armoured Voidling</content>
+	<content contentuid="hba3c1e10g095eg4478ga6f5g1619938b7560" Source="LLENEMY_Creatures_Molespitter_B">Source-Hungry Fluorescent Voidling</content>
+	<content contentuid="h89a403b4g8365g4109g96adg88d6136f2256" Source="LLENEMY_Creatures_Molespitter_C">Source-Hungry Oiled Voidling</content>
+	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee" Source="LLENEMY_Creatures_Nightmare_Werewolf_A">Source-Hungry Voidwolf</content>
 	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
+	<content contentuid="h6819a20fg7aefg4b55g919bg3dbe4b22cb81" Source="LLENEMY_Creatures_Statue_A_Voidwoken">Source-Hungry Voidwoken Statue</content>
+	<content contentuid="h785703b8g60c4g4264g8810gb50962fa237c" Source="LLENEMY_Creatures_Statue_A_Voidwoken_B">Source-Hungry Voidwoken Statue</content>
+	<content contentuid="h8ad314ffg18f8g496eg9893gcacf42981a8d" Source="LLENEMY_Creatures_VampireBat_A">Source-Hungry Vampiric Voidwoken</content>
+	<content contentuid="ha963a343g4464g4bb3ga553g95a99a0d4cf7" Source="LLENEMY_Creatures_VampireBat_B">Source-Hungry Vampiric Voidwoken</content>
+	<content contentuid="hf06524bdgf767g4831g8076gbb18355712ec" Source="LLENEMY_Creatures_Voidwoken_Caster">Source-Hungry Void Devourer</content>
+	<content contentuid="h570287eeg1beeg45efgb7b0g4eb6f2a1f501" Source="LLENEMY_Creatures_Voidwoken_Caster_Ice">Source-Hungry Abyssal Void Devourer</content>
 	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9" Source="LLENEMY_Creatures_Voidwoken_Drillworm_A">Evolved Voidling</content>
+	<content contentuid="h87dc0798g71d4g40a7ga672g27fdee5d3c77" Source="LLENEMY_Creatures_Voidwoken_Drillworm_A_Hatchling_ABC">Source-Hungry Voidling</content>
 	<content contentuid="h9713cc3dgea3ag4bf4gacb1g1428f7baa338" Source="LLENEMY_Creatures_Voidwoken_GiantInsect_Dominator_A">Dominator of the Void</content>
-	<content contentuid="hddb242e2gf4b1g4883gb65bg53a0976fbc2c" Source="LLENEMY_Creatures_Voidwoken_Troll_A">Voidwoken Troll</content>
+	<content contentuid="h113eaf38g98cfg4905gbdcbge7974c230658" Source="LLENEMY_Creatures_Voidwoken_Grunt_A">Source-Hungry Void Flayer</content>
+	<content contentuid="h9624e77bg9496g4560ga804gbdf88861ba35" Source="LLENEMY_Creatures_Voidwoken_Grunt_A_Ice">Source-Hungry Abyssal Void Flayer</content>
+	<content contentuid="h1c2d5b0eg1592g498aga1dfg0c9d7fe116dc" Source="LLENEMY_Creatures_Voidwoken_Merman_A">Source-Hungry Voidwoken Nightmare</content>
+	<content contentuid="h34700b60g0ce9g4882gb6b3gc2e82bf65f77" Source="LLENEMY_Creatures_Voidwoken_Spider_A">Source-Hungry Voidwoken Spider</content>
+	<content contentuid="hfe69818cgb11eg4957gbdfbg5dd37b13cadc" Source="LLENEMY_Creatures_Voidwoken_Spider_A_Poison">Source-Hungry Voidwoken Spider</content>
+	<content contentuid="hdf051e8cg6151g4f9dgab2bg2f6207ba84a3" Source="LLENEMY_Creatures_Voidwoken_Troll_A">Source-Hungry Voidwoken Troll</content>
+	<content contentuid="h4f3e64ebg09c2g4a07gbf4cg446fda449ce9" Source="LLENEMY_Creatures_Voidwoken_Troll_A_Ice">Source-Hungry Voidwoken Troll</content>
 	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_FumbleText"></content>
 	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage1">shadow Damage</content>
 	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage2">shadow</content>
