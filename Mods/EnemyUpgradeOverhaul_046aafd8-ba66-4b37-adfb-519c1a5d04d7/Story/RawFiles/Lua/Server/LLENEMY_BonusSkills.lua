@@ -213,6 +213,10 @@ local ignored_skillwords = {
 	"Turret",
 }
 
+local ignored_parents = {
+	Target_SourceVampirism = true
+}
+
 local redirected_skills = {
 	Rain_Oil = "Rain_LLENEMY_EnemyOil"
 }
@@ -347,6 +351,10 @@ local function IgnoreSkill(skill)
 	if ignored_skills[skill] == false then return false end
 	if ignored_skills[skill] == true then return true end
 	if string.sub(skill,1,1) == "_" then
+		return true
+	end
+	local parent = Ext.StatGetAttribute(skill, "Using")
+	if parent ~= nil and ignored_parents[parent] == true then
 		return true
 	end
 	for _,word in pairs(ignored_skillwords) do
