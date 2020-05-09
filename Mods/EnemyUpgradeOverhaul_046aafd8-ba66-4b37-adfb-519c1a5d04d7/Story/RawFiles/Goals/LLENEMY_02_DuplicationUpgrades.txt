@@ -432,8 +432,6 @@ AND
 CharacterIsDead(_Dupe, 0)
 AND
 ObjectIsOnStage(_Dupe, 0)
-AND
-DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 TeleportTo(_Dupe, _Source, "LLENEMY_Dupe_OnDupeJoinedCombat", 0, 1);
 
@@ -453,6 +451,7 @@ CharacterIsDead(_Dupe, 0)
 AND
 ObjectIsOnStage(_Dupe, 1)
 THEN
+LeaveCombat(_Dupe);
 SetOnStage(_Dupe, 0);
 //END_REGION
 
@@ -475,6 +474,7 @@ DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 LeaderLib_Tags_ClearAllPreservedTags(_Dupe);
+SetOnStage(_Dupe, 0);
 //END_REGION
 EXITSECTION
 
