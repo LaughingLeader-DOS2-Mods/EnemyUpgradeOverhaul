@@ -547,6 +547,26 @@ AND
 GetUUID(_Item, _UUID)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "DestroyEmptyContainer", _UUID);
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_EmptyContainer_CheckContents")
+AND
+NRD_ItemGetStatsId(_Item, _Stats)
+AND
+StringSub(_Stats, 0, 1, _Start)
+AND
+_Start == "_"
+THEN
+ItemRemove(_Item);
+
+IF
+StoryEvent((ITEMGUID)_Item, "LLENEMY_EmptyContainer_CheckAgain")
+AND
+ItemIsDestroyed(_Item, 0)
+AND
+GetUUID(_Item, _UUID)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "DestroyEmptyContainer", _UUID);
 */
 
 IF

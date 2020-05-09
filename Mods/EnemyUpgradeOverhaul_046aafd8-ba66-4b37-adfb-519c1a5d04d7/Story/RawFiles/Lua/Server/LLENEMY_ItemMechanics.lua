@@ -51,9 +51,13 @@ end
 
 function DestroyEmptyContainer(uuid)
 	local containerGoldValue = ContainerGetGoldValue(uuid)
-	local containerValue = ItemGetGoldValue(uuid)
-	LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
+	if Ext.IsDeveloperMode() then
+		local containerValue = ItemGetGoldValue(uuid)
+		LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
+	end
 	if containerGoldValue <= 1 then
 		ItemDestroy(uuid)
+	else
+		--InventoryLaunchIterator(uuid, "LLENEMY_EmptyContainer_CheckContents", "")
 	end
 end
