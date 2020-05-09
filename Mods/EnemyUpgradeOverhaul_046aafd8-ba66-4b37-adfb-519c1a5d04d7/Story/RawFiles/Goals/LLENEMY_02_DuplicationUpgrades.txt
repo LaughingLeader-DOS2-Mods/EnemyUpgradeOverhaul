@@ -453,6 +453,15 @@ ObjectIsOnStage(_Dupe, 1)
 THEN
 LeaveCombat(_Dupe);
 SetOnStage(_Dupe, 0);
+
+IF
+CharacterRelationChangedTo(_Source, _Target, _Attitude)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+AND
+CharacterIsDead(_Dupe, 0)
+THEN
+ChangeAttitude(_Dupe, _Target, _Attitude);
 //END_REGION
 
 //REGION DEATH_CLEANUP
