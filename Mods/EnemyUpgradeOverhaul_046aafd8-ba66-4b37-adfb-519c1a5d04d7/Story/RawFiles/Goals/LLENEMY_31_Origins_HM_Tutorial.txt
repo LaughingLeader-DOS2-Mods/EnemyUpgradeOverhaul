@@ -6,7 +6,11 @@ KBSECTION
 //REGION TOPDECK_INIT
 PROC
 LLENEMY_HardMode_InitLevel("TUT_Tutorial_A")
+AND
+NOT DB_LLENEMY_HM_InitializedLevel("TUT_Tutorial_A")
 THEN
+DB_LLENEMY_HM_InitializedLevel("TUT_Tutorial_A");
+DB_LLENEMY_IgnoredCharacters(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3);
 LLENEMY_HardMode_SetupNPC(S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "TUT_Tutorial_A", 1);
 LLENEMY_HardMode_SetupNPC(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "TUT_Tutorial_A", 1);
 //LLENEMY_HardMode_SetupNPC(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "TUT_Tutorial_A", 0);
@@ -14,7 +18,6 @@ LLENEMY_HardMode_SetupNPC(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0e
 CharacterSetHitpointsPercentage(TUT_CargoDeck_Humans_Male_Magister_Grunt_000_a06e61dd-58c6-4119-99be-716c3a4fc1ef, 100.0);
 LeaderLib_Helper_AddAndEquipItemTemplate(TUT_CargoDeck_Humans_Male_Magister_Grunt_000_a06e61dd-58c6-4119-99be-716c3a4fc1ef, "47131328-5335-4349-999b-c0fa4ad0a806", 0);
 LeaderLib_Helper_AddAndEquipItemTemplate(TUT_CargoDeck_Humans_Male_Magister_Grunt_000_a06e61dd-58c6-4119-99be-716c3a4fc1ef, "ec4769e6-bcfc-44e0-9e9c-de62e0bdf407", 0);
-DB_LLENEMY_IgnoredCharacters(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3);
 //END_REGION
 
 //REGION LEVEL_UP_TENTACLES
@@ -54,6 +57,7 @@ CharacterUseSkill(_Char, "Dome_LLENEMY_EnemyCircleOfProtection", CHARACTERGUID_S
 IF
 SkillCast(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Dome_LLENEMY_EnemyCircleOfProtection", _, _)
 THEN
+ProcObjectTimerCancel(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal");
 ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 1500);
 
 IF
@@ -62,7 +66,21 @@ OnStageChanged(ITEMGUID_S_TUT_FireSurfaceHelper_77d9fcb1-c857-4db9-bd31-19b5cfa4
 THEN
 SetVarInteger(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "FleeFromDangerousSurface", 0);
 SetVarInteger(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "FleeFromDangerousSurface", 0);
+ProcObjectTimerCancel(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal");
 ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 1000);
+ProcObjectTimerCancel(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal");
+ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 1000);
+
+IF
+ObjectEnteredCombat(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, _)
+THEN
+ProcObjectTimerCancel(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal");
+ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 1000);
+
+IF
+ObjectEnteredCombat(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, _)
+THEN
+ProcObjectTimerCancel(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal");
 ProcObjectTimer(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, "Timers_LLENEMY_Elites_TUT_TopDeck_MakeMortal", 1000);
 
 PROC
@@ -106,6 +124,8 @@ RemoveStatus(_Char, "ETHEREAL_SOLES");
 IF
 CharacterKilledBy(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6, S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6)
 AND
+NOT DB_LLENEMY_TUT_Temp_ReplacementMagister(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _)
+AND
 ObjectGetFlag(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "LLENEMY_TopMagister_Resurrected", 0)
 AND
 GetTemplate(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _MagisterTemplate)
@@ -127,11 +147,11 @@ ProcObjectTimer(_Replacement, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupComb
 LLENEMY_HardMode_SetupNPC(_Replacement, "TUT_Tutorial_A", 0);
 
 PROC
-ProcObjectTimerFinished((CHARACTERGUID)_Char, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupDying")
+ProcObjectTimerFinished((CHARACTERGUID)S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, "Timers_LLENEMY_Elites_TUT_TopDeckLiving_SetupDying")
 AND
-DB_LLENEMY_TUT_Temp_ReplacementMagister(_Char, _Replacement)
+DB_LLENEMY_TUT_Temp_ReplacementMagister(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _Replacement)
 AND
-GetPosition(_Char, _x, _y, _z)
+GetPosition(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _x, _y, _z)
 THEN
 TeleportToPosition(_Replacement, _x, _y, _z, "", 0, 1);
 SetTag(_Replacement, "AI_IGNORED_TARGET");
@@ -142,8 +162,8 @@ SetCanJoinCombat(_Replacement, 0);
 SetVarInteger(_Replacement, "bool_CanCower", 0);
 SetVarInteger(_Replacement, "bool_CanFleeWhileCowering", 0);
 SetVarInteger(_Replacement, "FleeFromDangerousSurface", 0);
-SetOnStage(_Char, 0);
-MoveAllItemsTo(_Char, _Replacement, 0, 0, 1);
+SetOnStage(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, 0);
+MoveAllItemsTo(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _Replacement, 0, 0, 1);
 //SetOnStage(_Replacement, 1);
 RemoveStatus(_Replacement, "LEADERLIB_NO_VISUAL");
 ApplyStatus(_Replacement, "LLENEMY_FAKE_DYING", -1.0, 1, _Replacement);
@@ -158,9 +178,9 @@ LeaderLib_Turns_TrackCombat(_CombatID, "LLENEMY_TopDeckLivingMagister_GetUp", 5)
 PROC
 LeaderLib_Turns_OnTurnCounterComplete_Combat((STRING)_ID, (INTEGER)_CombatID, "LLENEMY_TopDeckLivingMagister_GetUp")
 AND
-DB_LLENEMY_TUT_Temp_ReplacementMagister(_Char, _Replacement)
+DB_LLENEMY_TUT_Temp_ReplacementMagister(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _Replacement)
 THEN
-NOT DB_LLENEMY_TUT_Temp_ReplacementMagister(_Char, _Replacement);
+NOT DB_LLENEMY_TUT_Temp_ReplacementMagister(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _Replacement);
 NOT DB_LLENEMY_IgnoredCharacters(_Replacement);
 RemoveStatus(_Replacement, "LLENEMY_FAKE_DYING");
 CharacterSetAnimationOverride(_Replacement, "");

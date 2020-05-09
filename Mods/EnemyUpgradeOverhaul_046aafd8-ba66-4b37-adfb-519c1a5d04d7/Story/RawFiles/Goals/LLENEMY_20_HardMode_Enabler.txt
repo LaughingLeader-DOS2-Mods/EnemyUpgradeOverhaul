@@ -20,14 +20,29 @@ LLENEMY_Upgrades_ResetUpgradeData();
 IF
 GlobalFlagSet("LLENEMY_HardModeEnabled")
 THEN
+DB_LLENEMY_HardMode_ToggleTimer(1);
 TimerCancel("Timers_LLENEMY_HardModeToggled");
 TimerLaunch("Timers_LLENEMY_HardModeToggled", 3000);
 
 IF
 GlobalFlagCleared("LLENEMY_HardModeEnabled")
 THEN
+DB_LLENEMY_HardMode_ToggleTimer(1);
 TimerCancel("Timers_LLENEMY_HardModeToggled");
 TimerLaunch("Timers_LLENEMY_HardModeToggled", 3000);
+
+IF
+DialogEnded("LLENEMY_Settings", _Instance)
+AND
+DB_LLENEMY_HardMode_ToggleTimer(1)
+THEN
+TimerCancel("Timers_LLENEMY_HardModeToggled");
+TimerLaunch("Timers_LLENEMY_HardModeToggled", 5);
+
+IF
+TimerFinished("Timers_LLENEMY_HardModeToggled")
+THEN
+NOT DB_LLENEMY_HardMode_ToggleTimer(1);
 
 IF
 TimerFinished("Timers_LLENEMY_HardModeToggled")
@@ -49,12 +64,8 @@ PROC
 LLENEMY_HardMode_CheckForCampaign()
 AND
 GlobalGetFlag("LLENEMY_HardModeEnabled", 1)
-AND
-SysStatus("DOS2ModWrapper", _Status)
-AND
-_Status > 1
 THEN
-SysActivateGoal("LLENEMY_30_Origins_HardMode");
+LLENEMY_HardMode_Enabled();
 
 PROC
 Proc_GameModeStarted("Campaign", (INTEGER)_IsEditorMode)
@@ -67,8 +78,6 @@ PROC
 LLENEMY_HardMode_Enabled()
 AND
 SysStatus("DOS2ModWrapper", _Status)
-AND
-_Status > 1
 THEN
 SysActivateGoal("LLENEMY_30_Origins_HardMode");
 //END_REGION
