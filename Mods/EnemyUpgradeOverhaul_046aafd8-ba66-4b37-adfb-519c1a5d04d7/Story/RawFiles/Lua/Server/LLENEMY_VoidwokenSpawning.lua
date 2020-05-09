@@ -235,6 +235,7 @@ function SpawnVoidwoken(source,testing,totalPoints)
 				--CharacterSetRelationFactionToFaction("Hero","RC_Voidwoken",0)
 				ClearGain(voidwoken)
 				TeleportToRandomPosition(voidwoken, 12.0, "")
+				CharacterCharacterSetEvent(source, voidwoken, "LLENEMY_VoidwokenSpawned")
 				if ObjectExists(voidwoken) == 0 then
 					LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] Failed to spawn voidwoken at (",x,y,z,")")
 				else

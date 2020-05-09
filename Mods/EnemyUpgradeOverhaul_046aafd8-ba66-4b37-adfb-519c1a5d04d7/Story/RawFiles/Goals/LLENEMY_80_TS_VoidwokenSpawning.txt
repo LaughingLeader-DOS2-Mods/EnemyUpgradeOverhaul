@@ -33,6 +33,37 @@ NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP);
 LeaderLog_LogInt("DEBUG", "[LLENEMY_20_HardMode_Enabler:UpdateTime] Source used degraded (", _TotalSP, " => ", _CappedMin, ")");
 DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _CappedMin);
 */
+
+IF
+CharacterCharacterEvent(_Source, _Voidwoken, "LLENEMY_VoidwokenSpawned")
+AND
+DB_Arena_MobParticipants(_Inst,_Source,_Trig,_Team)
+AND
+CharacterIsPlayer(_Source, _IsPlayer)
+THEN
+LLENEMY_Voidwoken_ArenaSetup(_Source, _Voidwoken, _Inst, _Trig, _Team, _IsPlayer);
+
+PROC
+LLENEMY_Voidwoken_ArenaSetup((CHARACTERGUID)_Source, (CHARACTERGUID)_Voidwoken, (INTEGER)_Instance, (TRIGGERGUID)_Trigger, (STRING)_Team, 0)
+THEN
+DB_Arena_MobParticipants(_Instance,_Voidwoken,_Trigger,_Team);
+SetInArena(_Voidwoken, 1);
+SetFaction(_Voidwoken, _Team);
+
+// Player source
+PROC
+LLENEMY_Voidwoken_ArenaSetup((CHARACTERGUID)_Source, (CHARACTERGUID)_Voidwoken, (INTEGER)_Instance, (TRIGGERGUID)_Trigger, (STRING)_Team, 1)
+AND
+DB_Arena_MobParticipants(_Instance, _Enemy, _OtherTrigger, _OtherTeam)
+AND
+_OtherTeam != _Team
+AND
+NOT DB_Arena_MobParticipants(_,_Voidwoken,_,_)
+THEN
+DB_Arena_MobParticipants(_Instance, _Voidwoken, _OtherTrigger, _OtherTeam);
+SetInArena(_Voidwoken, 1);
+SetFaction(_Voidwoken, _OtherTeam);
+
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_80_ToggledScripts"

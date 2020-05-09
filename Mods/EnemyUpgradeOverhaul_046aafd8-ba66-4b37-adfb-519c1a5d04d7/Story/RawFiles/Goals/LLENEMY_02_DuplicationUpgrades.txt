@@ -408,6 +408,8 @@ AND
 DB_Arena_MobParticipants(_Inst, _Source, _Trig, _Team)
 THEN
 DB_Arena_MobParticipants(_Inst, _Dupe, _Trig, _Team);
+SetInArena(_Dupe, 1);
+SetFaction(_Dupe, _Team);
 //END_REGION
 
 //REGION COMBAT_HANDLING
