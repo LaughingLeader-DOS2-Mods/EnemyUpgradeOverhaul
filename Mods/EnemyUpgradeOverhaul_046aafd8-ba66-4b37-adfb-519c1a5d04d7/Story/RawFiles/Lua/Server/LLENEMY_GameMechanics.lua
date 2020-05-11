@@ -115,6 +115,7 @@ function RemoveInvisible(target, source)
 	if detected then
 		CharacterStatusText(target, "LLENEMY_StatusText_SeekerDiscoveredTarget")
 		PlayEffect(source, "RS3_FX_GP_Status_Warning_Red_01", "Dummy_OverheadFX")
+		Osi.CharacterSawSneakingCharacter(source, target)
 	end
 	return detected
 end
