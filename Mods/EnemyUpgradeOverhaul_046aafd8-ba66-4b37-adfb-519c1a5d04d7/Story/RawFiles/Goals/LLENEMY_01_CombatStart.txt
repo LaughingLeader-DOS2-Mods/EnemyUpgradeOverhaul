@@ -213,6 +213,24 @@ GetRegion(_Enemy, _Region)
 THEN
 LeaderLog_Log("DEBUG", "[LLENEMY:CombatQueue:OnCharacterJoinedCombat] Combat queue doesn't exist. Applying buffs instantly.");
 LLENEMY_Upgrades_Internal_StartRolling(_Enemy, _Region);
+
+// Player joined ongoing NPC vs. NPC combat
+IF
+ObjectEnteredCombat((CHARACTERGUID)_Player, _CombatID)
+AND
+CharacterIsPlayer(_Player, 1)
+AND
+NOT DB_LLENEMY_SkipCombat(_CombatID)
+AND
+DB_CombatCharacters(_Char, _CombatID)
+AND
+LLENEMY_Upgrades_QRY_CanAddUpgrades(_Char)
+AND
+NOT LeaderLib_Helper_QRY_IgnoreCharacter(_Char)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
+THEN
+LLENEMY_OnCharacterJoinedCombat(_Char, _CombatID);
 //END_REGION
 
 EXITSECTION
