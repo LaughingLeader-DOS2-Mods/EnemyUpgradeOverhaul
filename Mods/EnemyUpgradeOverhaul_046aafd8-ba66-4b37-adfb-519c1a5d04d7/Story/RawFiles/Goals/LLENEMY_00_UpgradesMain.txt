@@ -327,21 +327,87 @@ NRD_ModCall("EnemyUpgradeOverhaul", "UpgradeInfo_ApplyInfoStatus", _UUID);
 */
 //END_REGION
 
-//REGION APPLYING
+//REGION CLEAR_FLAGS
+/* Used to allow rerolling upgrades if an enemy leaves combat for too long. */
+
+IF
+ObjectLeftCombat((CHARACTERGUID)_Enemy, _CombatID)
+AND
+CharacterIsDead(_Enemy, 0)
+AND
+ObjectGetFlag(_Enemy, "LLENEMY_UpgradesAdded", 1)
+THEN
+DB_LLENEMY_Upgrades_Temp_ResetFlags(_Enemy, _CombatID);
+LLENEMY_Upgrades_Internal_StartCombatResetTimer(_CombatID);
+
+IF
+ObjectEnteredCombat((CHARACTERGUID)_Enemy, _)
+AND
+DB_LLENEMY_Upgrades_Temp_ResetFlags(_Enemy, _CombatID)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_ResetFlags(_Enemy, _CombatID);
+
+PROC
+LLENEMY_Upgrades_Internal_StartCombatResetTimer((INTEGER)_CombatID)
+AND
+NOT DB_LLENEMY_Upgrades_Temp_ResetFlagsTimer(_CombatID, _)
+AND
+IntegertoString(_CombatID, _CombatStr)
+AND
+StringConcatenate("Timers_LLENEMY_Upgrades_ResetFlags_", _CombatStr, _TimerName)
+THEN
+DB_LLENEMY_Upgrades_Temp_ResetFlagsTimer(_CombatID, _TimerName);
+
+PROC
+LLENEMY_Upgrades_Internal_StartCombatResetTimer((INTEGER)_CombatID)
+AND
+DB_LLENEMY_Upgrades_Temp_ResetFlagsTimer(_CombatID, _TimerName)
+THEN
+TimerCancel(_TimerName);
+TimerLaunch(_TimerName, 5000);
+
+IF
+TimerFinished(_TimerName)
+AND
+DB_LLENEMY_Upgrades_Temp_ResetFlagsTimer(_CombatID, _TimerName)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_ResetFlagsTimer(_CombatID, _TimerName);
+LLENEMY_Upgrades_Internal_ResetFlagsForCombat(_CombatID);
+
+PROC
+LLENEMY_Upgrades_Internal_ResetFlagsForCombat((INTEGER)_CombatID)
+AND
+DB_LLENEMY_Upgrades_Temp_ResetFlags(_Enemy, _CombatID)
+THEN
+NOT DB_LLENEMY_Upgrades_Temp_ResetFlags(_Enemy, _CombatID);
+LLENEMY_Upgrades_ClearFlags(_Enemy);
+
+IF
+CharacterDied(_Char)
+THEN
+LLENEMY_Upgrades_ClearFlags(_Char);
+
 PROC
 LLENEMY_Upgrades_ClearFlags((CHARACTERGUID)_Char)
 AND
 DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
-AND
-ObjectGetFlag(_Char, _RolledForFlag, 1)
 THEN
 ObjectClearFlag(_Char, _RolledForFlag);
 
 PROC
 LLENEMY_Upgrades_ClearFlags((CHARACTERGUID)_Char)
 THEN
-ObjectClearFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0);
+ObjectClearFlag(_Char, "LLENEMY_UpgradesAdded", 0);
 
+PROC
+LLENEMY_Upgrades_ClearFlags((CHARACTERGUID)_Char)
+AND
+NOT DB_GlobalFlag("LLENEMY_WorldUpgradesEnabled")
+THEN
+ObjectClearFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0);
+//END_REGION
+
+//REGION APPLYING
 PROC
 LLENEMY_Upgrades_RollForUpgrades((CHARACTERGUID)_Char)
 AND
@@ -731,6 +797,7 @@ PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
 THEN
 LLENEMY_Upgrades_IncreaseChallengePoints(_Char, _CP);
+ObjectSetFlag(_Char, "LLENEMY_UpgradesAdded", 0);
 
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)

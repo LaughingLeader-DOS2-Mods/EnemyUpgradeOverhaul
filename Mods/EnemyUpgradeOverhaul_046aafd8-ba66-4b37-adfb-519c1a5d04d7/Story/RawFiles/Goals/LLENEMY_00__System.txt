@@ -107,6 +107,8 @@ AND
 IsTagged(_Char, "LLENEMY_UpgradesDisabled", 0)
 AND
 ObjectGetFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0)
+AND
+ObjectGetFlag(_Char, "LLENEMY_UpgradesAdded", 0)
 THEN
 DB_NOOP(1);
 //END_REGION

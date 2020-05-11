@@ -377,7 +377,7 @@ ItemRemove(_Backpack);
 */
 //END_REGION
 
-//REGION EFFECTS
+//REGION DEATH_EVENT
 IF
 CharacterDied(_Char)
 AND
