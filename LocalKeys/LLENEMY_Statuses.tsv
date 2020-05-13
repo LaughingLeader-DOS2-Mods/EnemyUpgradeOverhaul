@@ -54,7 +54,7 @@ LLENEMY_INFUSION_INFO_ELITE_Description	Character is infused with tremendous pow
 LLENEMY_INFUSION_INFO_ELITE_DisplayName	Super-Infused	hffc4903fg3cb8g48e0gb183g8e5d9eeaa066
 LLENEMY_PERSEVERANCE_MASTERY_Description	Character is persevering through sheer force of will.	h52cf2d76g890fg4255g913agaf040b1015cf
 LLENEMY_PERSEVERANCE_MASTERY_DisplayName	Perseverance Mastery	hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990
-LLENEMY_RAGE_Description	Damage taken increases <font color='#FF3333' size='20'>Rage</font>.<br><font color='#DDCC22'>At max <font color='#FF3333' size='20'>Rage</font>, character gains 100% Critical Chance and Immunity to Disabling Statuses.</font><br><font color='#FF00CC'>Sleeping reduces Rage.</font>	h68b2574cgb7d7g46d8g9c8bge4edff270a17
+LLENEMY_RAGE_Description	Damage taken increases <font color='#FF3333' size='20'>Rage</font>.<br>At max <font color='#FF3333' size='20'>Rage</font>, character gains <font color='#43FF22'>+100% critical chance</font> and <font color='#DDCC22'>immunity to disabling statuses</font>.</font><br><font color='#FF00CC'>Sleeping reduces Rage.</font>	h68b2574cgb7d7g46d8g9c8bge4edff270a17
 LLENEMY_RAGE_DisplayName	Rage	h51f428d7gd529g4b83gad1ag674a188d1492
 LLENEMY_RAGE2_DisplayName	Rage (II)	hdfeb0377gbab4g4fc6ga428g98aa0a12eb88
 LLENEMY_RAGE3_DisplayName	Rage (III)	h7987a4c4ge79ag4b93gbb98g63644b6ab4ef
