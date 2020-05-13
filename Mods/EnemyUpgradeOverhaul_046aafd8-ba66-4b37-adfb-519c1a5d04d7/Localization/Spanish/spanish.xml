@@ -1,353 +1,353 @@
 <contentList>
-	<content contentuid="h9729fa03g8b20g4eccgbde7gc08c1d8d8e73" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A">A sack of loot that was previously carried by a Treasure Goblin.</content>
-	<content contentuid="h9f11e267gfe5bg41c6gad9ag7315b3f9e57b" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A">&lt;font color=&apos;#e6bc53&apos;&gt;Treasure Goblin&apos;s Hoard&lt;/font&gt;</content>
-	<content contentuid="h8311eb63g89cfg41c1g961cgde31f8d79927" Source="CONT_LLENEMY_Bag_TreasureGoblinSack_A"></content>
-	<content contentuid="h07bf13ceg4493g4f9cg90a3gf2c65b452bfd" Source="CONT_LLENEMY_DuplicantTreasure">A shadowy orb, filled with  &lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Treasure of the Shadow Realm&lt;/font&gt;.</content>
-	<content contentuid="h9bcf1767g7b81g4ae1gbf20ge19a6b4454ef" Source="CONT_LLENEMY_DuplicantTreasure">&lt;font color=&apos;#AA00FF&apos;&gt;Shadow Treasure&lt;/font&gt;</content>
-	<content contentuid="h7f31f21fg9232g4fcbg8eadg2eacf1f25ae6" Source="LLENEMY_Animals_Bear_A_Voidwoken">Source-Hungry Voidwoken Bear</content>
-	<content contentuid="h55545e7ag3290g4520g9adfg6dcd737ca8c4" Source="LLENEMY_Animals_Beetle_A_Fire">Source-Hungry Voidwoken Fire Beetle</content>
-	<content contentuid="h4d505354g26bdg4ae8gb91fgcb5451d31bea" Source="LLENEMY_Animals_Beetle_A_Green">Source-Hungry Voidwoken Beetle</content>
-	<content contentuid="haeb6c61bga35fg45d8ga373gadf142b6fc2b" Source="LLENEMY_Animals_Boar_A_Void_A">Source-Hungry Voidwoken Boar</content>
-	<content contentuid="ha3ccca0bg576dg4a64gb2edg8819d8f2cdc0" Source="LLENEMY_Animals_Chicken_BattleChicken_A">Chicken Infantry</content>
-	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05" Source="LLENEMY_Animals_Chicken_BattleChicken_B">Chicken Firestarter</content>
-	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89" Source="LLENEMY_Animals_Chicken_BattleChicken_C">Chicken Medic</content>
-	<content contentuid="hfff1d303g1033g40dcgb198gb3b4330de0d4" Source="LLENEMY_Animals_Deer_A_Void_A">Source-Hungry Voidwoken Deer</content>
-	<content contentuid="hb7ee58faga3c6g41e0gad2age7b6783006dc" Source="LLENEMY_Animals_Frog_Merman_A">Source-Hungry Slippery Voidling</content>
-	<content contentuid="ha78e3050g202cg4650g8df9g2ef53c2463a2" Source="LLENEMY_Animals_Frog_Merman_A_Giant">Source-Hungry Slippery Voidling</content>
-	<content contentuid="hbaf0e000gcc52g4d00gad02g1047a2b95558" Source="LLENEMY_Animals_Salamander_A_Poison">Source-Hungry Voidwoken Salamander</content>
-	<content contentuid="he10bc4ddge536g4696gb6f1g34a29479255c" Source="LLENEMY_Animals_Salamander_A_Voidwoken">Source-Hungry Voidwoken Salamander</content>
-	<content contentuid="h721c6341gf33bg4b02ga7adg42e9249a22c4" Source="LLENEMY_Animals_Turtle_A_Voidwoken">Source-Hungry Voidwoken Turtle</content>
-	<content contentuid="h57ae12ebg419eg4f53g8780g350576cd63c9" Source="LLENEMY_Creatures_Demon_Hound_A">Source-Hungry Voidwoken Hound</content>
-	<content contentuid="h4421e763g9ab4g4766g9f08g491f9ce55b70" Source="LLENEMY_Creatures_Demons_Worm_A">Source-Hungry Nemesis Mindflayer</content>
-	<content contentuid="h6fdad790gaa70g47f6g8cedgc23ec425b99d" Source="LLENEMY_Creatures_GiantInsect_A_Wings">Venom-wing Voidwoken</content>
-	<content contentuid="hea8180efg9c0eg4cdega019g233a720fc32c" Source="LLENEMY_Creatures_GiantInsect_C_Wings">Storm-wing Voidwoken</content>
-	<content contentuid="hff19af0agb6b4g4337g953agb4dbb019b450" Source="LLENEMY_Creatures_Molespitter_A">Source-Hungry Armoured Voidling</content>
-	<content contentuid="hba3c1e10g095eg4478ga6f5g1619938b7560" Source="LLENEMY_Creatures_Molespitter_B">Source-Hungry Fluorescent Voidling</content>
-	<content contentuid="h89a403b4g8365g4109g96adg88d6136f2256" Source="LLENEMY_Creatures_Molespitter_C">Source-Hungry Oiled Voidling</content>
-	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee" Source="LLENEMY_Creatures_Nightmare_Werewolf_A">Source-Hungry Voidwolf</content>
-	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633" Source="LLENEMY_Creatures_Raanaar_Automaton_A">Automaton (Reinforcements)</content>
-	<content contentuid="h6819a20fg7aefg4b55g919bg3dbe4b22cb81" Source="LLENEMY_Creatures_Statue_A_Voidwoken">Source-Hungry Voidwoken Statue</content>
-	<content contentuid="h785703b8g60c4g4264g8810gb50962fa237c" Source="LLENEMY_Creatures_Statue_A_Voidwoken_B">Source-Hungry Voidwoken Statue</content>
-	<content contentuid="h8ad314ffg18f8g496eg9893gcacf42981a8d" Source="LLENEMY_Creatures_VampireBat_A">Source-Hungry Vampiric Voidwoken</content>
-	<content contentuid="ha963a343g4464g4bb3ga553g95a99a0d4cf7" Source="LLENEMY_Creatures_VampireBat_B">Source-Hungry Vampiric Voidwoken</content>
-	<content contentuid="hf06524bdgf767g4831g8076gbb18355712ec" Source="LLENEMY_Creatures_Voidwoken_Caster">Source-Hungry Void Devourer</content>
-	<content contentuid="h570287eeg1beeg45efgb7b0g4eb6f2a1f501" Source="LLENEMY_Creatures_Voidwoken_Caster_Ice">Source-Hungry Abyssal Void Devourer</content>
-	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9" Source="LLENEMY_Creatures_Voidwoken_Drillworm_A">Evolved Voidling</content>
-	<content contentuid="h87dc0798g71d4g40a7ga672g27fdee5d3c77" Source="LLENEMY_Creatures_Voidwoken_Drillworm_A_Hatchling_ABC">Source-Hungry Voidling</content>
-	<content contentuid="h9713cc3dgea3ag4bf4gacb1g1428f7baa338" Source="LLENEMY_Creatures_Voidwoken_GiantInsect_Dominator_A">Dominator of the Void</content>
-	<content contentuid="h113eaf38g98cfg4905gbdcbge7974c230658" Source="LLENEMY_Creatures_Voidwoken_Grunt_A">Source-Hungry Void Flayer</content>
-	<content contentuid="h9624e77bg9496g4560ga804gbdf88861ba35" Source="LLENEMY_Creatures_Voidwoken_Grunt_A_Ice">Source-Hungry Abyssal Void Flayer</content>
-	<content contentuid="h1c2d5b0eg1592g498aga1dfg0c9d7fe116dc" Source="LLENEMY_Creatures_Voidwoken_Merman_A">Source-Hungry Voidwoken Nightmare</content>
-	<content contentuid="h34700b60g0ce9g4882gb6b3gc2e82bf65f77" Source="LLENEMY_Creatures_Voidwoken_Spider_A">Source-Hungry Voidwoken Spider</content>
-	<content contentuid="hfe69818cgb11eg4957gbdfbg5dd37b13cadc" Source="LLENEMY_Creatures_Voidwoken_Spider_A_Poison">Source-Hungry Voidwoken Spider</content>
-	<content contentuid="hdf051e8cg6151g4f9dgab2bg2f6207ba84a3" Source="LLENEMY_Creatures_Voidwoken_Troll_A">Source-Hungry Voidwoken Troll</content>
-	<content contentuid="h4f3e64ebg09c2g4a07gbf4cg446fda449ce9" Source="LLENEMY_Creatures_Voidwoken_Troll_A_Ice">Source-Hungry Voidwoken Troll</content>
-	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_FumbleText"></content>
-	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage1">shadow Damage</content>
-	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage2">shadow</content>
-	<content contentuid="hf4632a8fg42a7g4d53gbe26gd203f28e3d5e" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_RotDamage3">Shadow</content>
-	<content contentuid="h54e0b91cg48a7g4d5agaedcgbde756a109ea" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_StatusApplyChance">([1]% Chance)</content>
-	<content contentuid="h233bf83cg2204g4f14gb46agad27f95deb43" Source="LLENEMY_EnglishOverrides.lsb" Key="LLENEMY_Override_StatusApplySet">[1][2][3]</content>
-	<content contentuid="h52b8e7bbgea9fg4ddbgbc78g42479d9d082d" Source="LLENEMY_Menu_GameSettings.lsj">Voidwoken will no longer be lured into battle by source skills.</content>
-	<content contentuid="hd21c0029gc4b2g4810gbdb4gdff891204a8f" Source="LLENEMY_Menu_GameSettings.lsj">Cancel upgrading the world.</content>
-	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca" Source="LLENEMY_Menu_GameSettings.lsj">Settings updated.</content>
-	<content contentuid="h82758d47g38eeg4cafg9d24gf84edc578577" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Disable source spells having a chance to lure Voidwoken into battle. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="he15a3e15g141dg45e5g96edg8148c2106792" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Disable Hard Mode (Default - Disabled) (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h06d5e2ebg8395g442ega8c8g011c5a25a2f4" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Disable automatic world upgrading (upgrading everything in the level automatically outside of combat).&lt;br&gt;&lt;br&gt;Note that this won&apos;t undo any current upgrades. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h4229d882g7235g4cf5gafe6g3ef702647b81" Source="LLENEMY_Menu_GameSettings.lsj">Game Settings</content>
-	<content contentuid="hbf07ab58g09aag415fg999eg4e4f1bc04f8e" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Enable source spells having a chance to lure Voidwoken into battle. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)&lt;br&gt;&lt;br&gt;Total source points used in the level will be tracked, and will gradually increase the chance and difficulty of voidwoken spawned. Total SP degrades every 5 minutes of real time (default).&lt;br&gt;Higher cost source skills have a higher chance to lure hostile voidwoken.</content>
-	<content contentuid="h9622cd5bg735eg490egbbe1g5a4102ca7f29" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Make enemies in levels automatically gain upgrades without being in combat. This may happen once per level. Non-hostile characters that become hostile will gain upgrades like normal.&lt;br&gt;&lt;br&gt;*Note:* There may be a little bit of lag when upgrades are being applied initially, as this runs on every character in the level.</content>
-	<content contentuid="h48b2c770g394eg43abg8e87g170941d31051" Source="LLENEMY_Menu_GameSettings.lsj">There&apos;s a reason no one plays this mode, and you&apos;re about to find out.</content>
-	<content contentuid="h0a5513b9g841bg4565g8384g33d9251b832f" Source="LLENEMY_Menu_GameSettings.lsj">Upgrade the world. Unleash the power!</content>
-	<content contentuid="h4075ecfag0da0g4c26gb858g06626a165ed9" Source="LLENEMY_Menu_GameSettings.lsj">[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;) (Default - Disabled)</content>
-	<content contentuid="h00b8f45bg409bg4963gb505gc75fab2a5a01" Source="LLENEMY_Menu_GameSettings.lsj">Voidwoken now have a chance to appear when source skills are cast. Good luck!</content>
-	<content contentuid="he60340acg7e80g46b2g9449geba4ea159ab1" Source="LLENEMY_Menu_GameSettings.lsj">Really make characters in the level gain upgrades? This cannot be undone!</content>
-	<content contentuid="h02eee7f9g3786g4f33gad32gf34e10349c42" Source="LLENEMY_Menu_GameSettings.lsj">Upgrading world...</content>
-	<content contentuid="h03823bf7g9de8g48eag9e05g44ffcddb1a73" Source="LLENEMY_Menu_GameSettings.lsj">Today, we&apos;ll be playing Easy Mode.</content>
-	<content contentuid="h6efe8867g66bbg4d4ag936bgbb477bc57265" Source="LLENEMY_Menu_GameSettings.lsj">[Back]</content>
-	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14" Source="LLENEMY_Menu_Scaling.lsj">Enable Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="hf652aa9fgeca8g4265ga6b2ge3d557dfb11c" Source="LLENEMY_Menu_Scaling.lsj">Disabling Enemy Level Scaling</content>
-	<content contentuid="hd80e21d0gc2ffg4df8gbc9fgcdd3f5248980" Source="LLENEMY_Menu_Scaling.lsj">Decrease Level Modifier -1</content>
-	<content contentuid="h6493380bgf46eg46fdga0f8g399ed299b249" Source="LLENEMY_Menu_Scaling.lsj">[DEBUG] Disable Enemy Level Limit - &lt;b&gt;WARNING&lt;/b&gt; - Enemy levels above 35 may crash the game. Uncap at your own risk! (Level Limit Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h2e424a5ag2a45g4c6bg9ca3gd3302a0c31ed" Source="LLENEMY_Menu_Scaling.lsj">[DEBUG] Enable Enemy Level Limit [&lt;b&gt;Recommended&lt;/b&gt;] - Enemy levels above 35 may crash the game, so enable the limit to prevent leveling above 35. (Enemy Level Limit Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="h061dd3e2gfbc2g47afg860bg1a623122d95e" Source="LLENEMY_Menu_Scaling.lsj">Reset Level Modifier (0)</content>
-	<content contentuid="h9fc5d19eg4f21g4b1cg8c36g56370f2c5bb2" Source="LLENEMY_Menu_Scaling.lsj">Level Scaling Settings&lt;br&gt;Level Modifier: [LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f]&lt;br&gt;Scaled Enemy Level: [LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba]</content>
-	<content contentuid="h0f4b3d6bg416cg43b1g9ae2g879d929b4151" Source="LLENEMY_Menu_Scaling.lsj">Commit Level Modifier to the World - This will level up every non-player character in the world to the desired level modifier, including neutral or allied characters (non-recruited Origin companions are ignored).</content>
-	<content contentuid="ha5f6b750g5322g4043gac1dgfc82734fde21" Source="LLENEMY_Menu_Scaling.lsj">Updated settings.</content>
-	<content contentuid="h7b712de8ga474g487bgb2d8gd05c1e1d71c6" Source="LLENEMY_Menu_Scaling.lsj">Increase Level Modifier +1</content>
-	<content contentuid="h0c13903cgd246g4a35gbce9g19db61af1db9" Source="LLENEMY_Menu_Scaling.lsj">Disable Commit Level Modifier to the World - &lt;b&gt;*NOTE* &lt;/b&gt;This will not down-level enemies. Leveling only works one way! (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="hdb982497gc47dg4fd4gabdega3d6af9b0760" Source="LLENEMY_Menu_Upgrades.lsj">Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="he4a9526dg0dd1g4babg824eg01a0e9993e55" Source="LLENEMY_Menu_Upgrades.lsj">Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h46cf8395ga421g4d8eg994cg9cc757c5b41d" Source="LLENEMY_Menu_Upgrades.lsj">Enable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns). (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="hae3e586aga38eg4ee0g8728g5280e0d41165" Source="LLENEMY_Menu_Upgrades.lsj">Enable Bonus Skill Upgrades. These give enemies new skills using the Script Extender. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="h369c8cf4g1083g4df3gbc79gac57bc3f6074" Source="LLENEMY_Menu_Upgrades.lsj">Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="hae44c262g8fffg4f1cg8740g4874c69c39e7" Source="LLENEMY_Menu_Upgrades.lsj">Enable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="h43542436ge2dcg49f8g9233g292e2f887bf6" Source="LLENEMY_Menu_Upgrades.lsj">Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="hb8e49700gfb78g4a25gb451g21026ea98f20" Source="LLENEMY_Menu_Upgrades.lsj">Enable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="hbe6a42a1g49e0g44e0g9546g4b45f038d6cb" Source="LLENEMY_Menu_Upgrades.lsj">Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h5a190392g61c4g439dgbd08gc227c5e69923" Source="LLENEMY_Menu_Upgrades.lsj">Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns). (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h451c2d3eg3c6eg4366g8a31ga9792596a488" Source="LLENEMY_Menu_Upgrades.lsj">Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="he98adb62g6a62g43abg9723g160e736ebd6d" Source="LLENEMY_Menu_Upgrades.lsj">Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h0f2a61a6g5427g4e2bgbc76g986dc3e1fa79" Source="LLENEMY_Menu_Upgrades.lsj">Disable Bonus Skill Upgrades. These give enemies new skills using the Script Extender. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h3e93fbd4g6fe8g4f0bgae12g32a833f98bc0" Source="LLENEMY_Menu_Upgrades.lsj">Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="h5372c630g9c16g493fga294gde25ab176b6b" Source="LLENEMY_Menu_Upgrades.lsj">Disable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h506de539g84a3g464fgba77g2fe643c629d9" Source="LLENEMY_Menu_Upgrades.lsj">Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="h250561a9g4ce0g4989ga495g3150b4f80015" Source="LLENEMY_Menu_Upgrades.lsj">Disable Duplication Upgrades. This is a chance for clones of enemies to appear in battle. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h9978b702g8683g49bbga061g0c806d92f829" Source="LLENEMY_Menu_Upgrades.lsj">Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="h830f867bgc14cg47c2gb90bg4988469422fc" Source="LLENEMY_Menu_Upgrades.lsj">Upgrade Settings</content>
-	<content contentuid="hb5ed98e3g8acbg404cgaab9gdf882ba463ce" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_MuggedGold_Enemy">&lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;*Stole &lt;/font&gt;&lt;font color=&apos;#C7A758&apos; size=&apos;26&apos;&gt;[1]&lt;/font&gt; &lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;Gold!*&lt;/font&gt;</content>
-	<content contentuid="h9b5ef2b3gc8c3g4a89g986egb3ac78cde891" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_MuggedGold_Target">&lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;*Lost &lt;/font&gt;&lt;font color=&apos;#C7A758&apos; size=&apos;26&apos;&gt;[1]&lt;/font&gt; &lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;Gold!*&lt;/font&gt;</content>
-	<content contentuid="h034ae0a4g858eg4d30g82dege3c983c8b18a" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_TotalCharactersLeveled">&lt;font color=&apos;#BBFF00&apos; size=&apos;23&apos;&gt;*[1] beings gained a new level of power...*&lt;/font&gt;</content>
-	<content contentuid="h62cbd27fgb53ag4e4bgaee0gb0dfd466fe48" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_DisplayText_TreasureGoblins_TurnsLeft">&lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;[1] Turn(s) Left&lt;/font&gt;</content>
-	<content contentuid="hff477e91gde34g4795g863ag2c508293666d" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_MessageBox_ConfirmEnemyLevelingCommit">Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.&lt;br&gt;&lt;font color=&apos;#FF0000&apos; size=&apos;26&apos;&gt;This cannot be undone.&lt;/font&gt;</content>
-	<content contentuid="h745855c9g9761g40fdg8929g1fbc5ff29cb2" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_MessageBox_SingleplayerUserWarning">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;The EUO Singleplayer mod is active, yet the game is no longer singleplayer. Upgrade Info will not be synced for players.&lt;/font&gt;</content>
-	<content contentuid="h02023d82gc736g447fgaea3g327be0956688" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_ShadowDuplicationName">&lt;font color=&apos;#BF5FFF&apos;&gt;[1] (Shadow)&lt;/font&gt;</content>
-	<content contentuid="hbd7fc3f3g08f1g4684g8c47gccc404622fc6" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_AtusaBossActivated">&lt;font color=&apos;#FF3737&apos; size=&apos;26&apos;&gt;*Atusa&apos;s corpse oozes to life!*&lt;/font&gt;</content>
-	<content contentuid="h51e25546g078ag4d32gbb99g3af66b2dc917" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_CounterAttack">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Counter!&lt;/font&gt;</content>
-	<content contentuid="ha0190ec0g350eg4c71g9456g078481ad4128" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_ImmuneToDamageOnMove">&lt;font color=&apos;#FF3737&apos; size=&apos;18&apos;&gt;Immune to Movement-Based Damage Statuses&lt;/font&gt;</content>
-	<content contentuid="h5f654029g8f4ag454egbbd9g42e75c7fdfc1" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_RageReduced">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Rage Reduced&lt;/font&gt;</content>
-	<content contentuid="h483cc43ag6b13g4d05gaad9gb3c595847c6a" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_SeekerDiscoveredTarget">&lt;font color=&apos;#FF3737&apos; size=&apos;26&apos;&gt;*Revealed!*&lt;/font&gt;</content>
-	<content contentuid="h0c6fe9ccg70f0g434dgbe60gc2275abaa7d1" Source="LLENEMY_MiscText.lsb" Key="LLENEMY_StatusText_VoidlingTransformed">&lt;font color=&apos;#73F6FF&apos; size=&apos;26&apos;&gt;Empowered Evolution&lt;/font&gt;</content>
-	<content contentuid="h8350321agf54cg4528gb29egcb7dbb16cdc0" Source="LLENEMY_Names.lsb" Key="LLENEMY_Names_TopDeckMagister_TentacleVictim">Magister Knight (Not Dead)</content>
-	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_BonusSkills_Source">Skilled: Sourcery</content>
-	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_10">Armor Boost</content>
-	<content contentuid="h6f37a8adgd0e7g447fg816cg6248d5b69a10" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_15">Armor Boost</content>
-	<content contentuid="hf60945a4g7f7ag445cgacceg7f43da4a7f06" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_20">Armor Boost</content>
-	<content contentuid="h0c6343ecg8be2g4c1ag90b6g4549612a33e0" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_25">Armor Boost</content>
-	<content contentuid="h78190c63gaa74g4228gb184g7cc2e09afb27" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_30">Armor Boost</content>
-	<content contentuid="h7083987bg5f4dg45b6gbc43g96939df3b059" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_35">Armor Boost</content>
-	<content contentuid="hd58a85d5g8c13g41a7gb3fegd9a7fbdd4e9d" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_40">Armor Boost</content>
-	<content contentuid="h127721f1g27f1g4ffag9b50gf2720cedb009" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_45">Armor Boost</content>
-	<content contentuid="h05040c61g84bfg4989ga083g48f7642fbeb5" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_5">Armor Boost</content>
-	<content contentuid="h00b9a551g2b32g43d4g8c3fg450945250ef0" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Armor_50">Armor Boost</content>
-	<content contentuid="h842eaa46gb961g4b6dgbf83g833dd133bd7e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_10">Damage Boost</content>
-	<content contentuid="h0d80c25ag2866g4c58g9cdag227856e9e48c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_15">Damage Boost</content>
-	<content contentuid="hdc4e3c6dg30acg45c6ga046g0182ff2c70de" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_20">Damage Boost</content>
-	<content contentuid="hb03b0770g292ag4844g977dgf0e7534a1f5b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_25">Damage Boost</content>
-	<content contentuid="h6f6ccb6ag9cc6g4122g9040g432f4e787491" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Damage_5">Damage Boost</content>
-	<content contentuid="h719b59cdg64e5g4fe1g97bbgd6bd66675614" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_10">Magic Armor Boost</content>
-	<content contentuid="h7dc61280g5743g4a60g85c1g8bde41a13abb" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_15">Magic Armor Boost</content>
-	<content contentuid="h897741cbg8002g4c03g816fgcdba9d369b54" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_20">Magic Armor Boost</content>
-	<content contentuid="hef0955d5g3d94g4d39g87b1g20872d999f16" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_25">Magic Armor Boost</content>
-	<content contentuid="hd65fa52bge450g485cg8d08g084b1ef35990" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_30">Magic Armor Boost</content>
-	<content contentuid="hce14d863g96b1g4817ga295gbea6423c0190" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_35">Magic Armor Boost</content>
-	<content contentuid="h8ab2aa74g8581g4bf1g8e93ge8405d3572f3" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_40">Magic Armor Boost</content>
-	<content contentuid="h95d57e81gc533g4236gbb95g2ee7097f5155" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_45">Magic Armor Boost</content>
-	<content contentuid="h8fecc0a7g0c7eg4a22g8528g1a6ac5bf5f30" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_5">Magic Armor Boost</content>
-	<content contentuid="hd571cf40g88eeg4dedgb36dg9297c7ffb725" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_MagicArmor_50">Magic Armor Boost</content>
-	<content contentuid="h9edeb358g11e7g4372g92e7g8a164695e1e4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_10">Vitality Boost</content>
-	<content contentuid="hf4b01510gb94fg4c53g973bgdd15df71e687" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_15">Vitality Boost</content>
-	<content contentuid="h80e776e3gfe62g41c6g9bb0g4fc913baf4a4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_20">Vitality Boost</content>
-	<content contentuid="ha9dfee58ge73fg47e4gb9f7g1ff2ced6635e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_25">Vitality Boost</content>
-	<content contentuid="h844592e8g9000g4ce9gafd0ga87c8b086ef1" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_30">Vitality Boost</content>
-	<content contentuid="hfe5af913g4943g4a55g9572gb009a79c71a2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_35">Vitality Boost</content>
-	<content contentuid="hb3bee298g2eb6g461bgafb8ge07c9ecc8094" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_40">Vitality Boost</content>
-	<content contentuid="h3555a8feg9f0ag4a50g87a0gc1fde8ca3ce4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_45">Vitality Boost</content>
-	<content contentuid="h0982817bgf111g4dc3g811bga9fbd51ab0ca" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_5">Vitality Boost</content>
-	<content contentuid="h5b647354gce9dg4797gadc0g78ed927e407c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Boost_Vitality_50">Vitality Boost</content>
-	<content contentuid="h47cc8f43g77e0g4fafg908dg744a41931eec" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ChickenOverlord">Chicken Overlord</content>
-	<content contentuid="h84c9caecgf4f2g4e36ga17ag1ee9b85184a2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Class_GeoPyro">Ignitionmancer</content>
-	<content contentuid="h4b7423d8g2abag4800g8f4eg32dcda21a98d" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Class_HydroShock">Shockspiker</content>
-	<content contentuid="h5bf7f290gc323g4ad5g97ffgdcc13b20fb5c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_DemonicHasted">Demonic Celerity</content>
-	<content contentuid="h1dec449dgfec9g48eaga922gbbf72721497e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Duplicant">Shadow Duplicant</content>
-	<content contentuid="hd041be63gbfdeg4355g84c1ge870d92387af" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Empowered">Empowered</content>
-	<content contentuid="h722182d2g6efbg4d7bgb38ag2cdfd476d61b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_FakeDying">Dead?</content>
-	<content contentuid="hda008820gb374g4cf8g87c3g294742c772d8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_GatheringPower">Gathering Power</content>
-	<content contentuid="h0d2a065eg9cbag47fdgabe7gf919c9a87875" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Acid">Melter</content>
-	<content contentuid="h5c8f2c50g5a43g4a6agac29ge06c1f5ad378" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Acid_G">Elite Melter</content>
-	<content contentuid="h0ab60959ga9a0g49b3g9f1cgc98d30ea13f1" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blessed_Ice">Heatsapper</content>
-	<content contentuid="h106bb9f5ge8a1g4019g9d9dgebb27474f992" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blessed_Ice_G">Elite Heatsapper</content>
-	<content contentuid="h66ec71efgc7eeg47f2g920bgcbe909afcee4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blood">Bloodbender</content>
-	<content contentuid="ha4a3d3cfg755ag46deg86d2g4f1060841ee2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Blood_G">Elite Bloodbender</content>
-	<content contentuid="h81f47302g60dag426agb491g72452b206a43" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Cursed_Electric">Teslacoil</content>
-	<content contentuid="h2f7446a2gcb4ag4ee6gbf5age4425fa2851b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Cursed_Electric_G">Elite Teslacoil</content>
-	<content contentuid="h387574fbg27c8g4eafg97bfg00d5ebd19c95" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Electric">Circuitbreaker</content>
-	<content contentuid="h5f6eb2f9g93d6g4054gae42gd34eb9d7bbf6" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Electric_G">Elite Circuitbreaker</content>
-	<content contentuid="h29ba8b31g5c24g4d12ga056gb4a3880fadf5" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Fire">Firestarter</content>
-	<content contentuid="h7a8c8cd6ge3f7g4f9bgb0a3g98c51b7e9066" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Fire_G">Elite Firestarter</content>
-	<content contentuid="h57740f6ag6754g45bbg8310g304b3f91ab87" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Necrofire">Infernoblazer</content>
-	<content contentuid="hfd58a531g37f8g4573gbce3gdbac65d61add" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Necrofire_G">Elite Infernoblazer</content>
-	<content contentuid="h9f5a8ee9gda2dg4e5bg96fcgb6c8c3f7cc50" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Oil">Earthcracker</content>
-	<content contentuid="h1b451d33g304bg4112gab43g51a4721adab7" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Oil_G">Elite Earthcracker</content>
-	<content contentuid="hb992f98bg2019g4e2agb1f6g54d713d3ae4f" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Poison">Venomstriker</content>
-	<content contentuid="h27f6719cgc82fg4176g8f60g170b786d3c24" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Poison_G">Elite Venomstriker</content>
-	<content contentuid="h044ae60egd895g431fga21dgffdf784593c7" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Power">Power Boost</content>
-	<content contentuid="h7ce216e9gc9f4g4753gb39dgf42c27bfc01a" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Ranged">Range Boost</content>
-	<content contentuid="h5cee1628g461bg4ac8ga1e9ga90077d376e4" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Shadow">Shadoweaver</content>
-	<content contentuid="h786bb4a3gfc26g4a8dgab1bg0261c03bf617" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Warp">Warper</content>
-	<content contentuid="hd7df35a9gde1fg4d22g93f6gcb11fba955a0" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Water">Cascader</content>
-	<content contentuid="hdee6d2a6gee37g4892g84e8g83a79ebfd9ed" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Infusion_Water_G">Elite Cascader</content>
-	<content contentuid="hd8e442d5ge3fag4dbfg87d1g7403c979c4f7" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_LoseControlImmunity">Perfect Control</content>
-	<content contentuid="h5bf766cag0d92g4374gac83g28032389d45b" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_PerseveranceMastery">Perseverance Mastery</content>
-	<content contentuid="h0fac50d9g63c1g4dc1gb769g9fba10e602df" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_PiercingImmunity">Piercing Immunity</content>
-	<content contentuid="he76b283bgc7a8g4d4eg9c2bg2398cbe51a9e" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage">Rage</content>
-	<content contentuid="h83bb63c1g9d67g4c1dg94e4g04174fc2afad" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage2">Rage (II)</content>
-	<content contentuid="hfef82f38g204fg4ec0gbf1ag00b51c532e2c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage3">Rage (III)</content>
-	<content contentuid="h8c7cfc30gfa1ag46b8ga23bg524410b565c8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage4">Rage (IV)</content>
-	<content contentuid="h90ef8331gf15cg484egaefbgcbd1109a8698" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Rage5">Rage (V)</content>
-	<content contentuid="h5b62279dg9bebg46c7g83f6gd05c7a9c9310" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_RangerRange">Talent: Quickdraw</content>
-	<content contentuid="h87d1a253g6ec1g4352g96ffg856537b4759c" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ReflectShadowLarge">Shadow Reflection</content>
-	<content contentuid="h235cb048g7496g49acg9f6fg141610416505" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ReflectShadowMedium">Shadow Reflection</content>
-	<content contentuid="h4c9f3466gccd0g48bfg9e37gc1c23bacb69a" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_ReflectShadowSmall">Shadow Reflection</content>
-	<content contentuid="h5c8f7ecbg1aecg45f9g8be1gde4a3e95d448" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Seeker">Seeker</content>
-	<content contentuid="ha01be380g46ddg41a4g8408g41eb724325d2" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_SeekerDisabled">Seeker (Disabled)</content>
-	<content contentuid="h24701ed8gaeeag41d9gb1d8g1ff3f96f2abc" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_BullyDamageBonus">Talent: Bully</content>
-	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LightningRod">Talent: Lightning Rod</content>
-	<content contentuid="hcb08a432g19a5g4571g820fg92ddc92ac4d9" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_LoneWolf">Talent: Lone Wolf</content>
-	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_NaturalConductor">Talent: Natural Conductor</content>
-	<content contentuid="hf3eea666ge611g406eg9838gcaf7b89b5c93" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Quickstep">Talent: The Pawn</content>
-	<content contentuid="hdf0ea9a2g01cbg481dg8107g6ee870f53548" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Unstable">Talent: Unstable</content>
-	<content contentuid="ha0ac17b6gee82g44d9g81b9g66c9a941e010" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_Talent_Weatherproof">Talent: Weatherproof</content>
-	<content contentuid="h5073532ag87fag403fgaf2cgf4fc1febc983" Source="LLENEMY_Potions.lsb" Key="Stats_LLENEMY_VoidEmpowered">Void Empowered</content>
-	<content contentuid="h9c5daca5g3786g435agb9feg0ad41260a1bc" Source="LLENEMY_Settings.lsj">Enable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
-	<content contentuid="hf13c9277g29bfg4baegbecega1e5cd8aef76" Source="LLENEMY_Settings.lsj">Enemy Scaling Settings</content>
-	<content contentuid="h085c6ba2g63acg48f6g9c2ag677294738be0" Source="LLENEMY_Settings.lsj">Disable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
-	<content contentuid="h09982c04g289bg4d01gad23gaa88d6fc43fc" Source="LLENEMY_Settings.lsj">Only the host can edit these settings.</content>
-	<content contentuid="h90795f7dg9422g4b51g9835g0449efe50b1b" Source="LLENEMY_Settings.lsj">Enemy Upgrade Overhaul Settings</content>
-	<content contentuid="h279bcad6g5064g45ccg8e09g870c92e0cf6e" Source="LLENEMY_Settings.lsj">[Host Required] Upgrade Group Settings</content>
-	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19" Source="LLENEMY_Settings.lsj">Rewards Settings</content>
-	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefd" Source="LLENEMY_Settings.lsj">[Exit]</content>
-	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6" Source="LLENEMY_Settings.lsj">Upgrade Group Settings</content>
-	<content contentuid="h1d2be7b0gea03g4bfagbeaag02c29c65b877" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_Description">Summons your glorious chicken armada to the battlefield. Bwak!</content>
-	<content contentuid="h2f3fff9cge409g42a9gb29fgff5fc6065221" Source="LLENEMY_Skills.lsb" Key="Shout_LLENEMY_SummonChickenArmada_DisplayName">Summon Chicken Armada</content>
-	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUS_TREASURE_ROLL_Description">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
-	<content contentuid="h194ac7f5g9da2g4067g83efgf23de735ad79" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUS_TREASURE_ROLL_DisplayName">Bonus Treasure</content>
-	<content contentuid="h358b00a4g6320g494fg9441g94add11507ba" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_ELITE_Description">Character has an elite set of new bonus skills.</content>
-	<content contentuid="h7040a2f0g29d3g43d6ga656gb5eb0aac1934" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_ELITE_DisplayName">Elite Skillset</content>
-	<content contentuid="h2e45720ag8842g4c73g917fg7e1d2044cb52" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_NORMAL_Description">Character has a set of new bonus skills.</content>
-	<content contentuid="h5aa2a41bgbaa4g46d0g9987ge5c19c4b4aa4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SET_NORMAL_DisplayName">Bonus Skillset</content>
-	<content contentuid="hbacea44ag4103g49ccgbd8fgb9f026bb437d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SINGLE_Description">Character has a new bonus skill.</content>
-	<content contentuid="he79478e5gfa95g4461gba2bg9122ba540b28" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SINGLE_DisplayName">Bonus Skill</content>
-	<content contentuid="h2b3daf7egef57g4286g9247gf5c0b9752757" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SOURCE_Description">Character has a new bonus source skill.</content>
-	<content contentuid="hd1a568b1g2c56g4343gb1fcg4ae8f47c28e4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_BONUSSKILLS_SOURCE_DisplayName">Bonus Source Skill</content>
-	<content contentuid="h35042572gd0f8g42f0gbc95g44d818841347" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_CHICKEN_OVERLORD_Description">Character is the Overlord for an armada of chickens. Beware! Bwark!</content>
-	<content contentuid="h9bc9d98ag9fa9g4d23g88c4ge55de8f8c73a" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_CHICKEN_OVERLORD_DisplayName">Chicken Overlord</content>
-	<content contentuid="h3784f369g657fg462dg8381g97d55c3229aa" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DEMONIC_HASTED_Description">Character is as quick as a demon.&lt;br&gt;&lt;font color=&apos;#CD1F1F&apos;&gt;With how fast this character can move, they&apos;re almost guaranteed to slip on ice.&lt;/font&gt;</content>
-	<content contentuid="hf6486123g0005g46c9g8a40ga098203e2ab6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_Description">Character is growing even more powerful through a second round of upgrades!</content>
-	<content contentuid="hf180561cge97ag426cg84ddg83dd257ce95d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DOUBLE_DIP_DisplayName">Double Dip</content>
-	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_Description">Character is a &lt;font color=&apos;#9B30FF&apos;&gt;Shadow&lt;/font&gt; of another character.&lt;br&gt;&lt;font color=&apos;#65C900&apos; size=&apos;16&apos;&gt;Grants no experience, but drops guaranteed loot.&lt;/font&gt;</content>
-	<content contentuid="hf91deedcga4c7g427eg8153g2e347c06d3e8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_DUPLICANT_DisplayName">Shadow Duplicant</content>
-	<content contentuid="hba37a70cg63f9g491eg94f0gdf69970ff0e6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_EMPOWERED_Description">Character is fully powered up.</content>
-	<content contentuid="he2172050g115bg4345gae5eg4a45798086b4" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_EMPOWERED_DisplayName">Empowered</content>
-	<content contentuid="h35f368f7g6d97g4adfgb26cgfcbf91e6a9fc" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_FAKE_DYING_Description">Character appears to be dead.</content>
-	<content contentuid="hdace76dag01cbg499dg9777geb2c80877c7c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_FAKE_DYING_DisplayName">Dead</content>
-	<content contentuid="h8f68810dg481ag4379gb223g0f03f78434f5" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GATHERING_POWER_Description">Character is preparing to unleash their full power.</content>
-	<content contentuid="h18c28f76g6913g4685g81b9g6a6326ac81a3" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GATHERING_POWER_DisplayName">Gathering Power</content>
-	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_Description">Character is obsessed with collecting grenades. One misstep and boom!</content>
-	<content contentuid="h77532147gd01fg47efgb317gbf00813dbcb6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_GRANADA_DisplayName">Grenade Enthusiast</content>
-	<content contentuid="h626f03b5gb1a5g4e8eg94b3g1686a8687718" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_LOSECONTROL_Description">Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.</content>
-	<content contentuid="h8cfd1ba3gcfb3g4f0cga950gc29672af34c9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_LOSECONTROL_DisplayName">Perfect Control</content>
-	<content contentuid="hceb85350g54fdg4134gba42g9a0da585edb8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_PIERCING_Description">Character is immune to &lt;font color=&apos;#FF0000&apos;&gt;Piercing Damage&lt;/font&gt;.</content>
-	<content contentuid="h8074f9d7g5360g49fbgb949gce8a729c7755" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_IMMUNITY_PIERCING_DisplayName">Piercing Immunity</content>
-	<content contentuid="he9cb8fddg5db3g4d64ga27cgb93613250725" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ACID_DisplayName">Melter</content>
-	<content contentuid="h1049b802g537bg4815gb5b6g34c387f9aa9c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ACID_G_DisplayName">Elite Melter</content>
-	<content contentuid="h6e85fa28gc76eg423egaf24g5c0c278717bf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLESSED_ICE_DisplayName">Heatsapper</content>
-	<content contentuid="h9cf11b15g91d4g4d12gae38ga5a8f70272be" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLESSED_ICE_G_DisplayName">Elite Heatsapper</content>
-	<content contentuid="h0d2c2ac4g44e2g48dfg835dgcc860fcdd0d9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLOOD_DisplayName">Bloodbender</content>
-	<content contentuid="h31d032dcg2e05g4d91gb846g125bbed07f42" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_BLOOD_G_DisplayName">Elite Bloodbender</content>
-	<content contentuid="hd71fe8a1g0247g42c5g8bfcg2408029eca06" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_CURSED_ELECTRIC_DisplayName">Teslacoil</content>
-	<content contentuid="hdcdcd727gc9e6g4548g88dag25a265517c1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_CURSED_ELECTRIC_G_DisplayName">Elite Teslacoil</content>
-	<content contentuid="hd419ca09g8d69g4af6g840egdd4a81f7587f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ELECTRIC_DisplayName">Circuitbreaker</content>
-	<content contentuid="h24cc83b3g5ce3g44d2ga7fbg7c743030b0a2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_ELECTRIC_G_DisplayName">Elite Circuitbreaker</content>
-	<content contentuid="hc3f8497bg97acg449ag910ag07b825f3b8bb" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_FIRE_DisplayName">Firestarter</content>
-	<content contentuid="hd880d646g45b4g4fa6ga6cbgd746dcd242bd" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_FIRE_G_DisplayName">Elite Firestarter</content>
-	<content contentuid="h8e75cbbdg06d7g4404gbfb2g92f6fd11147d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_NECROFIRE_DisplayName">Infernoblazer</content>
-	<content contentuid="had606e03g6713g4064g84c0gf28395d81019" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_NECROFIRE_G_DisplayName">Elite Infernoblazer</content>
-	<content contentuid="hba68eb52gbd87g443fga8acgb61922bf4211" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_OIL_DisplayName">Earthcracker</content>
-	<content contentuid="he7dfdae3gf1bbg47ecg84edg1a094e326d94" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_OIL_G_DisplayName">Elite Earthcracker</content>
-	<content contentuid="h78f9641bgaf92g4bc4gb27bg759d63a0353f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_POISON_DisplayName">Venomstriker</content>
-	<content contentuid="h0e137225ge71fg4b5dg9822g1f73a6646671" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_POISON_G_DisplayName">Elite Venomstriker</content>
-	<content contentuid="h645270dag6b15g47a8gad4bgfcc34034a77e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_WATER_DisplayName">Cascader</content>
-	<content contentuid="h70e74b6fg7c33g41e5g8bf4g6fe9a096a69d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INF_WATER_G_DisplayName">Elite Cascader</content>
-	<content contentuid="h04644a8dg313cg4d53gb2b4g1dc1a5fea103" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_Description">Character is infused with a mysterious power, granting a variety of bonuses and extra skills.</content>
-	<content contentuid="h77bbc2b5gb387g4ba2g97c6gbbc058bbb5c6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_DisplayName">Infused</content>
-	<content contentuid="hea2ac23fg62fag4befg9b85g1277c11011e6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_ELITE_Description">Character is infused with tremendous power, granting a variety of bonuses and extra skills.</content>
-	<content contentuid="hffc4903fg3cb8g48e0gb183g8e5d9eeaa066" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_INFUSION_INFO_ELITE_DisplayName">Super-Infused</content>
-	<content contentuid="h52cf2d76g890fg4255g913agaf040b1015cf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_PERSEVERANCE_MASTERY_Description">Character is persevering through sheer force of will.</content>
-	<content contentuid="hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_PERSEVERANCE_MASTERY_DisplayName">Perseverance Mastery</content>
-	<content contentuid="h68b2574cgb7d7g46d8g9c8bge4edff270a17" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE_Description">Damage taken increases &lt;font color=&apos;#FF3333&apos; size=&apos;20&apos;&gt;Rage&lt;/font&gt;.&lt;br&gt;&lt;font color=&apos;#DDCC22&apos;&gt;At max &lt;font color=&apos;#FF3333&apos; size=&apos;20&apos;&gt;Rage&lt;/font&gt;, character gains 100% Critical Chance and Immunity to Disabling Statuses.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Sleeping reduces Rage.&lt;/font&gt;</content>
-	<content contentuid="h51f428d7gd529g4b83gad1ag674a188d1492" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE_DisplayName">Rage</content>
-	<content contentuid="hdfeb0377gbab4g4fc6ga428g98aa0a12eb88" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE2_DisplayName">Rage (II)</content>
-	<content contentuid="h7987a4c4ge79ag4b93gbb98g63644b6ab4ef" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE3_DisplayName">Rage (III)</content>
-	<content contentuid="h752158cdg06beg4034gaddeg66921ff01d83" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE4_DisplayName">Rage (IV)</content>
-	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_RAGE5_DisplayName">Rage (V)</content>
-	<content contentuid="h24c8d0feg3b3dg40fcgb813g4f28db83b05b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_LARGE_DisplayName">Reflect 30% of melee damage as shadow damage</content>
-	<content contentuid="h5ec49a5ag418ag4d15ga917g2a406406060f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_MEDIUM_DisplayName">Reflect 20% of melee damage as shadow damage</content>
-	<content contentuid="hff952d5dgebedg4f53ga10fg1bd872871cee" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_REFLECT_SHADOW_SMALL_DisplayName">Reflect 10% of melee damage as shadow damage</content>
-	<content contentuid="hc505e9aagab98g49e8g8777g72eb60325a35" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_Description">Character will discover hidden enemies while in combat.&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Stealthed and Invisible enemies within 4m are revealed.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF3333&apos;&gt;Becoming Drunk or disabled temporarily disables a Seeker&apos;s detection.&lt;/font&gt;</content>
-	<content contentuid="hd8f04806g2228g4144g964eg5f6694865d41" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_Description">Character cannot discover hidden enemies while disabled/drunk.</content>
-	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DISABLED_DisplayName">Seeker (Disabled)</content>
-	<content contentuid="h2a92d66eg220eg4196gb8dag81570a513978" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SEEKER_DisplayName">Seeker</content>
-	<content contentuid="h17c3aeabg026ag41e4g93a0gfd8da7534786" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_SKILL_MASS_SHACKLES_DisplayName">Mass Shackler</content>
-	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_Description">Character can backstab with non-dagger weapons.</content>
-	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BACKSTAB_DisplayName">Talent: Assassin</content>
-	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BASE_DisplayName">Talent</content>
-	<content contentuid="h5ad0d829g7dd4g4a79gaa2cgd5d882d05390" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BULLY_Description">Character deals 50% extra damage with direct attacks against opponents that are Slowed, Crippled or Knocked Down.</content>
-	<content contentuid="hdd62da1agf6adg438dg811cg08c9e58e07c9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_BULLY_DisplayName">Talent: Bully</content>
-	<content contentuid="h5ff7ce69gb95ag417ag8a63g5fe67a7fb7f7" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_COUNTER_Description">Character has a chance to counter-attack when attacked within weapon range.</content>
-	<content contentuid="h3c47b59cgd1f6g49a4g9e6bg9624181d40d1" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_COUNTER_DisplayName">Talent: Counter</content>
-	<content contentuid="hfb82117ag09acg4668ga5ccg081651aff9a9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_COUNTER_EXTENDER_Description">Character has a [1] chance to counter-attack when attacked within weapon range.</content>
-	<content contentuid="h80df5eb1gf3cag41cfgbaecg1c053ae7e83c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_GLADIATOR_Description">Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.&lt;br&gt;Can happen only once per turn. </content>
-	<content contentuid="h3d6d46bbg4819g48fbga980gcb521d5c49d8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_GLADIATOR_DisplayName">Talent: Gladiator</content>
-	<content contentuid="he845eb33gfbffg4903ga161ge64d9dbf567d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_GREEDYVESSEL_Description">Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.</content>
-	<content contentuid="h4cf1c406gceb1g411fga0d9gc9832cc4d2f5" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_GREEDYVESSEL_DisplayName">Talent: Greedy Vessel</content>
-	<content contentuid="h5461b448g15ceg403dg8076ge4a9b00e6675" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_HAYMAKER_Description">Character&apos;s attacks never miss but they cannot deal critical strikes.</content>
-	<content contentuid="h0dda4bf0g924ag4c8bgaf5ag1d6e7e643b50" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_HAYMAKER_DisplayName">Talent: Haymaker</content>
-	<content contentuid="h055079e8g89f6g4275gb06ag48f70f0c7e1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_INDOMITABLE_Description">Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.&lt;br&gt;Can happen once every 3 turns.</content>
-	<content contentuid="hb52d1ac1g7c4fg45a4g87d8g52056a5a2ba2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_INDOMITABLE_DisplayName">Talent: Indomitable</content>
-	<content contentuid="hc2dfd3fcg7132g4e47g9a89g35e2089966df" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LEECH_Description">Character is healed when standing in blood.</content>
-	<content contentuid="h7e28471fg1959g47e6g9d58g4d4f8ce054f6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LEECH_DisplayName">Talent: Leech</content>
-	<content contentuid="h176db059gab0eg4ec8g8017geb16079d503a" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LIGHTNINGROD_Description">Character is immune to stun, and gains health when hit by &lt;font color=&apos;#7d71d9&apos;&gt;Air Damage&lt;/font&gt;.</content>
-	<content contentuid="hbc7f9c3dg471bg47c6ga015g77c92a439e4e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LIGHTNINGROD_DisplayName">Talent: Lightning Rod</content>
-	<content contentuid="h07429824g8a6eg4c0cg865cg55b38f50646d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LONEWOLF_Description">Character has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.</content>
-	<content contentuid="h3b229661g43b9g44e1gbaebgc33ab487ce44" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_LONEWOLF_DisplayName">Talent: Lone Wolf</content>
-	<content contentuid="h3ab830begfaf4g4524g9b76g97e55e6b1703" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MAGICCYCLES_Description">At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.</content>
-	<content contentuid="h09ee507ag16fag471cg9e13gf4b0a614dcb8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MAGICCYCLES_DisplayName">Talent: Magic Cycles</content>
-	<content contentuid="he23ccfa9gadbcg4c34g9f04g1c93f864badf" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MASTERTHIEF_COOLDOWN_Description">Character must wait before they can mug again.</content>
-	<content contentuid="hbfafd8eeg3703g4b46g837eg2389c8302f35" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MASTERTHIEF_COOLDOWN_DisplayName">Cooldown (Master Thief)</content>
-	<content contentuid="h95fbde3bg3be6g4b7cgb6acg1bacabcba562" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MASTERTHIEF_Description">Character has a chance to steal a consumable item on attack.&lt;br&gt;Can only happen once per turn.</content>
-	<content contentuid="hba05c2f9g55f0g4b5agb936g5ff5daa6877e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_MASTERTHIEF_DisplayName">Talent: Master Thief</content>
-	<content contentuid="h16915945gaa26g46f1gaae7g3a2d3b46631e" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_NATURALCONDUCTOR_Description">Character gains &lt;font color=&apos;#7d71d9&apos;&gt;Hasted&lt;/font&gt; when standing on electric surfaces.</content>
-	<content contentuid="h52b7f26cg0535g416bgb820ge7e49b19197f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_NATURALCONDUCTOR_DisplayName">Talent: Natural Conductor</content>
-	<content contentuid="h3d82bfaag7871g4fe4gb3d0gf326ec25ad1b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_QUICKSTEP_Description">Character gets 1 AP worth of free movement each turn.</content>
-	<content contentuid="h79f5b874g6cb3g4a99ga1cfg9f472c12036f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_QUICKSTEP_DisplayName">Talent: The Pawn</content>
-	<content contentuid="h8edc2076g91e3g43d3g8314g5efb21208571" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RANGERRANGE_Description">Character has increased attack range of Bows and Crossbows by 2m.</content>
-	<content contentuid="h15a9ae98gb2d3g49d5gbccbg0aecd38fe18c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RANGERRANGE_DisplayName">Talent: Quickdraw</content>
-	<content contentuid="h38491eddg4d2cg40adg96f3g33994e1a96d6" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RESISTDEAD_Description">Character will revive once when killed, coming back with 30% health.</content>
-	<content contentuid="h12db0e65g1dceg4d56g8857gb018ab29f393" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RESISTDEAD_DisplayName">Talent:  Comeback Kid</content>
-	<content contentuid="hc0a53dd7g55f4g4c2cgae98g350ed1b9cbb9" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RESISTDEAD2_Description">Character will revive once when killed, coming back with full health.</content>
-	<content contentuid="haec75225g4305g4fcdg8e61g0f9b4de56075" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_RESISTDEAD2_DisplayName">Talent: Elite Comeback Kid</content>
-	<content contentuid="hf34ecf43gdb49g40b5g9e50g876244609429" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_SADIST_Description">Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.</content>
-	<content contentuid="h1c81c46bg9330g4d43gba21g6b72b951b3fd" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_SADIST_DisplayName">Talent: Sadist</content>
-	<content contentuid="h3f78a207gadfdg4801gb063g787c9f108845" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_SOULCATCHER_Description">When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.</content>
-	<content contentuid="h9a2a7390gc764g4fa0g8e97gf73ffac2a93c" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_SOULCATCHER_DisplayName">Talent: Soulcatcher</content>
-	<content contentuid="h64144ff5gee91g4ac5g87cdg43d27aaacef3" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_TORTURER_Description">Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.</content>
-	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_TORTURER_DisplayName">Talent: Torturer</content>
-	<content contentuid="hf39968a3gf18eg4e17gba81g6d3cff64d4aa" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_UNSTABLE_Description">Character will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.</content>
-	<content contentuid="h2b8ca96eg181cg4d13gaef5g84d2bb6f88fc" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_UNSTABLE_DisplayName">Talent: Unstable</content>
-	<content contentuid="h08f37745g3fbeg43d9gaf74g9e9bfd4ca89f" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WEATHERPROOF_Description">Character is immune to enviromental effects.</content>
-	<content contentuid="hdb001da6g340cg4f00g9190g13e8c1a96f90" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WEATHERPROOF_DisplayName">Talent: Weatherproof</content>
-	<content contentuid="he6532e10gc9d5g4923g9544g033fca885329" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_Description">Character has increased recovery and maximum Action Points when their health is below 50%.</content>
-	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TALENT_WHATARUSH_DisplayName">Talent: What a Rush</content>
-	<content contentuid="hbba08b72g0d5bg416eg9a46gb2150b29fb05" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TREASURE_GOBLIN_Description">The treasure goblin is fleeing!&lt;br&gt;&lt;font color=&apos;#FF00CC&apos; size=&apos;24&apos;&gt;Quickly, strike it down for &lt;font color=&apos;#C7A758&apos; size=&apos;24&apos; face=&apos;Copperplate Gothic Light&apos;&gt;LOOT&lt;/font&gt;!&lt;/font&gt;</content>
-	<content contentuid="h6ea17edfgea06g402eg9a78gc538e1959ead" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_TREASURE_GOBLIN_DisplayName">Fleeing</content>
-	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_Description">Character is empowered with random upgrades.[1][2]</content>
-	<content contentuid="h84c27debgd38dg4844g84d4g75eb558eb5de" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_UPGRADE_INFO_DisplayName">Upgraded</content>
-	<content contentuid="h1624d634gdfdcg4129g9624g9efe5660220b" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_Description">Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.</content>
-	<content contentuid="h398b5931gfa52g4a26gadb9gf94bbb7d35e2" Source="LLENEMY_Statuses.lsb" Key="LLENEMY_VOID_EMPOWERED_DisplayName">Void Empowered</content>
-	<content contentuid="h5addfbc4gcac7g4935g8effg8096574b8913" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot01">&lt;font color=&apos;#FFFFFF&apos; size=&apos;12&apos;&gt;Regular Bonus Loot&lt;/font&gt;</content>
-	<content contentuid="h8a442345g8c3ag4161g8f45gd93745f99d3e" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot02">&lt;font color=&apos;#4197E2&apos; size=&apos;14&apos;&gt;Moderate Loot&lt;/font&gt;</content>
-	<content contentuid="hf03d120ag2329g476dg94dcg7df0d27c3e1e" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot03">&lt;font color=&apos;#F7BA14&apos; size=&apos;16&apos;&gt;Good Loot&lt;/font&gt;</content>
-	<content contentuid="h8886e1f1gb725g4e9fg8f5bg4ab1f7262f48" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot04">&lt;font color=&apos;#B823CB&apos; size=&apos;18&apos;&gt;Great Loot&lt;/font&gt;</content>
-	<content contentuid="h99aba0bag7acbg4deagb9f3g0c52b807ce09" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ChallengeLoot05">&lt;font color=&apos;#FF00CC&apos; size=&apos;18&apos;&gt;Insane Loot&lt;/font&gt;</content>
-	<content contentuid="hd54110f8gbc6bg418dg8191g84eb716cbd54" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_Param_CounterChance">&lt;font color=&apos;#D416FF&apos;&gt;[1]%&lt;/font&gt;</content>
-	<content contentuid="h179efab0g7e6cg441ag8083gb11964394dc4" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_ShadowItemDescriptionA">A &lt;i&gt;strange&lt;/i&gt; item retrieved from a &lt;font color=&apos;#9B30FF&apos; face=&apos;Copperplate Gothic Bold&apos;&gt;Shadow Orb&lt;/font&gt;.&lt;br&gt;&lt;font color=&apos;#BDA0CB&apos;&gt;Cold to the touch, when this item is held, your grip on reality may begin to slip.&lt;/font&gt;</content>
-	<content contentuid="h623a7ed0gaaacg4c3egacdfg56f3c23a1dec" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_DropText">&lt;font color=&apos;#00FFAA&apos; size=&apos;16&apos;&gt;Will drop &lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt; on death.&lt;/font&gt;</content>
-	<content contentuid="h869a7616gfbb7g4cc2ga233g7c22612af67b" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_Entry_NoColor">&lt;img src=&apos;Icon_BulletPoint&apos;&gt;&lt;font size=&apos;18&apos;&gt;[1]&lt;/font&gt;</content>
-	<content contentuid="ha4587526ge140g42f9g9a98gc92b537d4209" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_Entry_WithColor">&lt;img src=&apos;Icon_BulletPoint&apos;&gt;&lt;font color=&apos;[2]&apos; size=&apos;18&apos;&gt;[1]&lt;/font&gt;</content>
-	<content contentuid="h623a9ed0gaaacg4c3egacdfg56f1c23a1dec" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_HiddenDropText">&lt;font color=&apos;#00FFAA&apos; size=&apos;16&apos;&gt;Drops ??? on death.&lt;/font&gt;</content>
-	<content contentuid="h882390f1gfd9eg4a56g95e5g658283cc548a" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_HiddenShadowDropText">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Drops ??? on death.&lt;/font&gt;</content>
-	<content contentuid="h662390f7gfd9eg4a56g95e5g658283cc548a" Source="LLENEMY_ToolTips.lsb" Key="LLENEMY_ToolTip_UpgradeInfo_ShadowDropText">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Grants Treasure of the Shadow Realm (&lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt;) on death.&lt;/font&gt;</content>
-	<content contentuid="h86cfb164g8505g4e4fg89degcb3c24372f3c" Source="LLENEMY_TreasureGoblin_A">Treasure Goblin</content>
-	<content contentuid="h7c05fad0gf6f3g44c6g8a28g7eb8f9bc548c" Source="S_LLENEMY_LootGeneratorChest">Loot Generator</content>
+	<content contentuid="h00b8f45bg409bg4963gb505gc75fab2a5a01">Voidwoken now have a chance to appear when source skills are cast. Good luck!</content>
+	<content contentuid="h00b9a551g2b32g43d4g8c3fg450945250ef0">Armor Boost</content>
+	<content contentuid="h02023d82gc736g447fgaea3g327be0956688">&lt;font color=&apos;#BF5FFF&apos;&gt;[1] (Shadow)&lt;/font&gt;</content>
+	<content contentuid="h02eee7f9g3786g4f33gad32gf34e10349c42">Upgrading world...</content>
+	<content contentuid="h034ae0a4g858eg4d30g82dege3c983c8b18a">&lt;font color=&apos;#BBFF00&apos; size=&apos;23&apos;&gt;*[1] beings gained a new level of power...*&lt;/font&gt;</content>
+	<content contentuid="h03823bf7g9de8g48eag9e05g44ffcddb1a73">Today, we&apos;ll be playing Easy Mode.</content>
+	<content contentuid="h044ae60egd895g431fga21dgffdf784593c7">Power Boost</content>
+	<content contentuid="h04644a8dg313cg4d53gb2b4g1dc1a5fea103">Character is infused with a mysterious power, granting a variety of bonuses and extra skills.</content>
+	<content contentuid="h05040c61g84bfg4989ga083g48f7642fbeb5">Armor Boost</content>
+	<content contentuid="h055079e8g89f6g4275gb06ag48f70f0c7e1b">Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.&lt;br&gt;Can happen once every 3 turns.</content>
+	<content contentuid="h061dd3e2gfbc2g47afg860bg1a623122d95e">Reset Level Modifier (0)</content>
+	<content contentuid="h06d5e2ebg8395g442ega8c8g011c5a25a2f4">[GLOBAL] Disable automatic world upgrading (upgrading everything in the level automatically outside of combat).&lt;br&gt;&lt;br&gt;Note that this won&apos;t undo any current upgrades. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h07429824g8a6eg4c0cg865cg55b38f50646d">Character has +2 Max AP, +2 Recovery AP, +30% Vitality, +30% Physical Armour, +30% Magic Armour, and doubles invested points in attributes and combat abilities.</content>
+	<content contentuid="h07bf13ceg4493g4f9cg90a3gf2c65b452bfd">A shadowy orb, filled with  &lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Treasure of the Shadow Realm&lt;/font&gt;.</content>
+	<content contentuid="h085c6ba2g63acg48f6g9c2ag677294738be0">Disable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h08f37745g3fbeg43d9gaf74g9e9bfd4ca89f">Character is immune to enviromental effects.</content>
+	<content contentuid="h0982817bgf111g4dc3g811bga9fbd51ab0ca">Vitality Boost</content>
+	<content contentuid="h09982c04g289bg4d01gad23gaa88d6fc43fc">Only the host can edit these settings.</content>
+	<content contentuid="h09ee507ag16fag471cg9e13gf4b0a614dcb8">Talent: Magic Cycles</content>
+	<content contentuid="h0a5513b9g841bg4565g8384g33d9251b832f">Upgrade the world. Unleash the power!</content>
+	<content contentuid="h0ab60959ga9a0g49b3g9f1cgc98d30ea13f1">Heatsapper</content>
+	<content contentuid="h0c13903cgd246g4a35gbce9g19db61af1db9">Disable Commit Level Modifier to the World - &lt;b&gt;*NOTE* &lt;/b&gt;This will not down-level enemies. Leveling only works one way! (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h0c6343ecg8be2g4c1ag90b6g4549612a33e0">Armor Boost</content>
+	<content contentuid="h0c6fe9ccg70f0g434dgbe60gc2275abaa7d1">&lt;font color=&apos;#73F6FF&apos; size=&apos;26&apos;&gt;Empowered Evolution&lt;/font&gt;</content>
+	<content contentuid="h0d2a065eg9cbag47fdgabe7gf919c9a87875">Melter</content>
+	<content contentuid="h0d2c2ac4g44e2g48dfg835dgcc860fcdd0d9">Bloodbender</content>
+	<content contentuid="h0d80c25ag2866g4c58g9cdag227856e9e48c">Damage Boost</content>
+	<content contentuid="h0dda4bf0g924ag4c8bgaf5ag1d6e7e643b50">Talent: Haymaker</content>
+	<content contentuid="h0e137225ge71fg4b5dg9822g1f73a6646671">Elite Venomstriker</content>
+	<content contentuid="h0f2a61a6g5427g4e2bgbc76g986dc3e1fa79">Disable Bonus Skill Upgrades. These give enemies new skills using the Script Extender. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h0f4b3d6bg416cg43b1g9ae2g879d929b4151">Commit Level Modifier to the World - This will level up every non-player character in the world to the desired level modifier, including neutral or allied characters (non-recruited Origin companions are ignored).</content>
+	<content contentuid="h0fac50d9g63c1g4dc1gb769g9fba10e602df">Piercing Immunity</content>
+	<content contentuid="h1049b802g537bg4815gb5b6g34c387f9aa9c">Elite Melter</content>
+	<content contentuid="h106bb9f5ge8a1g4019g9d9dgebb27474f992">Elite Heatsapper</content>
+	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c">Rage (V)</content>
+	<content contentuid="h113eaf38g98cfg4905gbdcbge7974c230658">Source-Hungry Void Flayer</content>
+	<content contentuid="h127721f1g27f1g4ffag9b50gf2720cedb009">Armor Boost</content>
+	<content contentuid="h12db0e65g1dceg4d56g8857gb018ab29f393">Talent:  Comeback Kid</content>
+	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de">Character is empowered with random upgrades.[1][2]</content>
+	<content contentuid="h15a9ae98gb2d3g49d5gbccbg0aecd38fe18c">Talent: Quickdraw</content>
+	<content contentuid="h1624d634gdfdcg4129g9624g9efe5660220b">Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.</content>
+	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8">shadow</content>
+	<content contentuid="h16915945gaa26g46f1gaae7g3a2d3b46631e">Character gains &lt;font color=&apos;#7d71d9&apos;&gt;Hasted&lt;/font&gt; when standing on electric surfaces.</content>
+	<content contentuid="h176db059gab0eg4ec8g8017geb16079d503a">Character is immune to stun, and gains health when hit by &lt;font color=&apos;#7d71d9&apos;&gt;Air Damage&lt;/font&gt;.</content>
+	<content contentuid="h179efab0g7e6cg441ag8083gb11964394dc4">A &lt;i&gt;strange&lt;/i&gt; item retrieved from a &lt;font color=&apos;#9B30FF&apos; face=&apos;Copperplate Gothic Bold&apos;&gt;Shadow Orb&lt;/font&gt;.&lt;br&gt;&lt;font color=&apos;#BDA0CB&apos;&gt;Cold to the touch, when this item is held, your grip on reality may begin to slip.&lt;/font&gt;</content>
+	<content contentuid="h17c3aeabg026ag41e4g93a0gfd8da7534786">Mass Shackler</content>
+	<content contentuid="h18c28f76g6913g4685g81b9g6a6326ac81a3">Gathering Power</content>
+	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee">Source-Hungry Voidwolf</content>
+	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8">Talent: Torturer</content>
+	<content contentuid="h194ac7f5g9da2g4067g83efgf23de735ad79">Bonus Treasure</content>
+	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
+	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770">Talent</content>
+	<content contentuid="h1b451d33g304bg4112gab43g51a4721adab7">Elite Earthcracker</content>
+	<content contentuid="h1c2d5b0eg1592g498aga1dfg0c9d7fe116dc">Source-Hungry Voidwoken Nightmare</content>
+	<content contentuid="h1c81c46bg9330g4d43gba21g6b72b951b3fd">Talent: Sadist</content>
+	<content contentuid="h1d2be7b0gea03g4bfagbeaag02c29c65b877">Summons your glorious chicken armada to the battlefield. Bwak!</content>
+	<content contentuid="h1dec449dgfec9g48eaga922gbbf72721497e">Shadow Duplicant</content>
+	<content contentuid="h233bf83cg2204g4f14gb46agad27f95deb43">[1][2][3]</content>
+	<content contentuid="h235cb048g7496g49acg9f6fg141610416505">Shadow Reflection</content>
+	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4">Skilled: Sourcery</content>
+	<content contentuid="h24701ed8gaeeag41d9gb1d8g1ff3f96f2abc">Talent: Bully</content>
+	<content contentuid="h24c8d0feg3b3dg40fcgb813g4f28db83b05b">Reflect 30% of melee damage as shadow damage</content>
+	<content contentuid="h24cc83b3g5ce3g44d2ga7fbg7c743030b0a2">Elite Circuitbreaker</content>
+	<content contentuid="h250561a9g4ce0g4989ga495g3150b4f80015">Disable Duplication Upgrades. This is a chance for clones of enemies to appear in battle. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h256557fbg1d49g45d9g8690gb86b39d2a135">shadow Damage</content>
+	<content contentuid="h279bcad6g5064g45ccg8e09g870c92e0cf6e">[Host Required] Upgrade Group Settings</content>
+	<content contentuid="h27f6719cgc82fg4176g8f60g170b786d3c24">Elite Venomstriker</content>
+	<content contentuid="h29ba8b31g5c24g4d12ga056gb4a3880fadf5">Firestarter</content>
+	<content contentuid="h2a92d66eg220eg4196gb8dag81570a513978">Seeker</content>
+	<content contentuid="h2b3daf7egef57g4286g9247gf5c0b9752757">Character has a new bonus source skill.</content>
+	<content contentuid="h2b8ca96eg181cg4d13gaef5g84d2bb6f88fc">Talent: Unstable</content>
+	<content contentuid="h2e424a5ag2a45g4c6bg9ca3gd3302a0c31ed">[DEBUG] Enable Enemy Level Limit [&lt;b&gt;Recommended&lt;/b&gt;] - Enemy levels above 35 may crash the game, so enable the limit to prevent leveling above 35. (Enemy Level Limit Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h2e45720ag8842g4c73g917fg7e1d2044cb52">Character has a set of new bonus skills.</content>
+	<content contentuid="h2f3fff9cge409g42a9gb29fgff5fc6065221">Summon Chicken Armada</content>
+	<content contentuid="h2f7446a2gcb4ag4ee6gbf5age4425fa2851b">Elite Teslacoil</content>
+	<content contentuid="h31d032dcg2e05g4d91gb846g125bbed07f42">Elite Bloodbender</content>
+	<content contentuid="h34700b60g0ce9g4882gb6b3gc2e82bf65f77">Source-Hungry Voidwoken Spider</content>
+	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14">Enable Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h35042572gd0f8g42f0gbc95g44d818841347">Character is the Overlord for an armada of chickens. Beware! Bwark!</content>
+	<content contentuid="h3555a8feg9f0ag4a50g87a0gc1fde8ca3ce4">Vitality Boost</content>
+	<content contentuid="h358b00a4g6320g494fg9441g94add11507ba">Character has an elite set of new bonus skills.</content>
+	<content contentuid="h35f368f7g6d97g4adfgb26cgfcbf91e6a9fc">Character appears to be dead.</content>
+	<content contentuid="h369c8cf4g1083g4df3gbc79gac57bc3f6074">Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h3784f369g657fg462dg8381g97d55c3229aa">Character is as quick as a demon.&lt;br&gt;&lt;font color=&apos;#CD1F1F&apos;&gt;With how fast this character can move, they&apos;re almost guaranteed to slip on ice.&lt;/font&gt;</content>
+	<content contentuid="h38491eddg4d2cg40adg96f3g33994e1a96d6">Character will revive once when killed, coming back with 30% health.</content>
+	<content contentuid="h387574fbg27c8g4eafg97bfg00d5ebd19c95">Circuitbreaker</content>
+	<content contentuid="h398b5931gfa52g4a26gadb9gf94bbb7d35e2">Void Empowered</content>
+	<content contentuid="h3ab830begfaf4g4524g9b76g97e55e6b1703">At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.</content>
+	<content contentuid="h3b229661g43b9g44e1gbaebgc33ab487ce44">Talent: Lone Wolf</content>
+	<content contentuid="h3c47b59cgd1f6g49a4g9e6bg9624181d40d1">Talent: Counter</content>
+	<content contentuid="h3d6d46bbg4819g48fbga980gcb521d5c49d8">Talent: Gladiator</content>
+	<content contentuid="h3d82bfaag7871g4fe4gb3d0gf326ec25ad1b">Character gets 1 AP worth of free movement each turn.</content>
+	<content contentuid="h3e93fbd4g6fe8g4f0bgae12g32a833f98bc0">Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h3f78a207gadfdg4801gb063g787c9f108845">When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.</content>
+	<content contentuid="h4075ecfag0da0g4c26gb858g06626a165ed9">[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;) (Default - Disabled)</content>
+	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38">Seeker (Disabled)</content>
+	<content contentuid="h4229d882g7235g4cf5gafe6g3ef702647b81">Game Settings</content>
+	<content contentuid="h43542436ge2dcg49f8g9233g292e2f887bf6">Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h4421e763g9ab4g4766g9f08g491f9ce55b70">Source-Hungry Nemesis Mindflayer</content>
+	<content contentuid="h451c2d3eg3c6eg4366g8a31ga9792596a488">Disable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h46cf8395ga421g4d8eg994cg9cc757c5b41d">Enable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns). (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h47cc8f43g77e0g4fafg908dg744a41931eec">Chicken Overlord</content>
+	<content contentuid="h483cc43ag6b13g4d05gaad9gb3c595847c6a">&lt;font color=&apos;#FF3737&apos; size=&apos;26&apos;&gt;*Revealed!*&lt;/font&gt;</content>
+	<content contentuid="h48b2c770g394eg43abg8e87g170941d31051">There&apos;s a reason no one plays this mode, and you&apos;re about to find out.</content>
+	<content contentuid="h4b7423d8g2abag4800g8f4eg32dcda21a98d">Shockspiker</content>
+	<content contentuid="h4c9f3466gccd0g48bfg9e37gc1c23bacb69a">Shadow Reflection</content>
+	<content contentuid="h4cf1c406gceb1g411fga0d9gc9832cc4d2f5">Talent: Greedy Vessel</content>
+	<content contentuid="h4d505354g26bdg4ae8gb91fgcb5451d31bea">Source-Hungry Voidwoken Beetle</content>
+	<content contentuid="h4f3e64ebg09c2g4a07gbf4cg446fda449ce9">Source-Hungry Voidwoken Troll</content>
+	<content contentuid="h506de539g84a3g464fgba77g2fe643c629d9">Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h5073532ag87fag403fgaf2cgf4fc1febc983">Void Empowered</content>
+	<content contentuid="h51e25546g078ag4d32gbb99g3af66b2dc917">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Counter!&lt;/font&gt;</content>
+	<content contentuid="h51f428d7gd529g4b83gad1ag674a188d1492">Rage</content>
+	<content contentuid="h52b7f26cg0535g416bgb820ge7e49b19197f">Talent: Natural Conductor</content>
+	<content contentuid="h52b8e7bbgea9fg4ddbgbc78g42479d9d082d">Voidwoken will no longer be lured into battle by source skills.</content>
+	<content contentuid="h52cf2d76g890fg4255g913agaf040b1015cf">Character is persevering through sheer force of will.</content>
+	<content contentuid="h5372c630g9c16g493fga294gde25ab176b6b">Disable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h5461b448g15ceg403dg8076ge4a9b00e6675">Character&apos;s attacks never miss but they cannot deal critical strikes.</content>
+	<content contentuid="h54e0b91cg48a7g4d5agaedcgbde756a109ea">([1]% Chance)</content>
+	<content contentuid="h55545e7ag3290g4520g9adfg6dcd737ca8c4">Source-Hungry Voidwoken Fire Beetle</content>
+	<content contentuid="h570287eeg1beeg45efgb7b0g4eb6f2a1f501">Source-Hungry Abyssal Void Devourer</content>
+	<content contentuid="h57740f6ag6754g45bbg8310g304b3f91ab87">Infernoblazer</content>
+	<content contentuid="h57ae12ebg419eg4f53g8780g350576cd63c9">Source-Hungry Voidwoken Hound</content>
+	<content contentuid="h5a190392g61c4g439dgbd08gc227c5e69923">Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns). (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h5aa2a41bgbaa4g46d0g9987ge5c19c4b4aa4">Bonus Skillset</content>
+	<content contentuid="h5ad0d829g7dd4g4a79gaa2cgd5d882d05390">Character deals 50% extra damage with direct attacks against opponents that are Slowed, Crippled or Knocked Down.</content>
+	<content contentuid="h5addfbc4gcac7g4935g8effg8096574b8913">&lt;font color=&apos;#FFFFFF&apos; size=&apos;12&apos;&gt;Regular Bonus Loot&lt;/font&gt;</content>
+	<content contentuid="h5b62279dg9bebg46c7g83f6gd05c7a9c9310">Talent: Quickdraw</content>
+	<content contentuid="h5b647354gce9dg4797gadc0g78ed927e407c">Vitality Boost</content>
+	<content contentuid="h5bf766cag0d92g4374gac83g28032389d45b">Perseverance Mastery</content>
+	<content contentuid="h5bf7f290gc323g4ad5g97ffgdcc13b20fb5c">Demonic Celerity</content>
+	<content contentuid="h5c8f2c50g5a43g4a6agac29ge06c1f5ad378">Elite Melter</content>
+	<content contentuid="h5c8f7ecbg1aecg45f9g8be1gde4a3e95d448">Seeker</content>
+	<content contentuid="h5cee1628g461bg4ac8ga1e9ga90077d376e4">Shadoweaver</content>
+	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6">Upgrade Group Settings</content>
+	<content contentuid="h5ec49a5ag418ag4d15ga917g2a406406060f">Reflect 20% of melee damage as shadow damage</content>
+	<content contentuid="h5f654029g8f4ag454egbbd9g42e75c7fdfc1">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Rage Reduced&lt;/font&gt;</content>
+	<content contentuid="h5f6eb2f9g93d6g4054gae42gd34eb9d7bbf6">Elite Circuitbreaker</content>
+	<content contentuid="h5ff7ce69gb95ag417ag8a63g5fe67a7fb7f7">Character has a chance to counter-attack when attacked within weapon range.</content>
+	<content contentuid="h623a7ed0gaaacg4c3egacdfg56f3c23a1dec">&lt;font color=&apos;#00FFAA&apos; size=&apos;16&apos;&gt;Will drop &lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt; on death.&lt;/font&gt;</content>
+	<content contentuid="h623a9ed0gaaacg4c3egacdfg56f1c23a1dec">&lt;font color=&apos;#00FFAA&apos; size=&apos;16&apos;&gt;Drops ??? on death.&lt;/font&gt;</content>
+	<content contentuid="h626f03b5gb1a5g4e8eg94b3g1686a8687718">Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.</content>
+	<content contentuid="h62cbd27fgb53ag4e4bgaee0gb0dfd466fe48">&lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;[1] Turn(s) Left&lt;/font&gt;</content>
+	<content contentuid="h64144ff5gee91g4ac5g87cdg43d27aaacef3">Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.</content>
+	<content contentuid="h645270dag6b15g47a8gad4bgfcc34034a77e">Cascader</content>
+	<content contentuid="h6493380bgf46eg46fdga0f8g399ed299b249">[DEBUG] Disable Enemy Level Limit - &lt;b&gt;WARNING&lt;/b&gt; - Enemy levels above 35 may crash the game. Uncap at your own risk! (Level Limit Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h662390f7gfd9eg4a56g95e5g658283cc548a">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Grants Treasure of the Shadow Realm (&lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt;) on death.&lt;/font&gt;</content>
+	<content contentuid="h66ec71efgc7eeg47f2g920bgcbe909afcee4">Bloodbender</content>
+	<content contentuid="h6819a20fg7aefg4b55g919bg3dbe4b22cb81">Source-Hungry Voidwoken Statue</content>
+	<content contentuid="h68b2574cgb7d7g46d8g9c8bge4edff270a17">Damage taken increases &lt;font color=&apos;#FF3333&apos; size=&apos;20&apos;&gt;Rage&lt;/font&gt;.&lt;br&gt;At max &lt;font color=&apos;#FF3333&apos; size=&apos;20&apos;&gt;Rage&lt;/font&gt;, character gains &lt;font color=&apos;#43FF22&apos;&gt;+100% critical chance&lt;/font&gt; and &lt;font color=&apos;#DDCC22&apos;&gt;immunity to disabling statuses&lt;/font&gt;.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Sleeping reduces Rage.&lt;/font&gt;</content>
+	<content contentuid="h6e85fa28gc76eg423egaf24g5c0c278717bf">Heatsapper</content>
+	<content contentuid="h6ea17edfgea06g402eg9a78gc538e1959ead">Fleeing</content>
+	<content contentuid="h6efe8867g66bbg4d4ag936bgbb477bc57265">[Back]</content>
+	<content contentuid="h6f37a8adgd0e7g447fg816cg6248d5b69a10">Armor Boost</content>
+	<content contentuid="h6f6ccb6ag9cc6g4122g9040g432f4e787491">Damage Boost</content>
+	<content contentuid="h6fdad790gaa70g47f6g8cedgc23ec425b99d">Venom-wing Voidwoken</content>
+	<content contentuid="h7040a2f0g29d3g43d6ga656gb5eb0aac1934">Elite Skillset</content>
+	<content contentuid="h7083987bg5f4dg45b6gbc43g96939df3b059">Armor Boost</content>
+	<content contentuid="h70e74b6fg7c33g41e5g8bf4g6fe9a096a69d">Elite Cascader</content>
+	<content contentuid="h719b59cdg64e5g4fe1g97bbgd6bd66675614">Magic Armor Boost</content>
+	<content contentuid="h721c6341gf33bg4b02ga7adg42e9249a22c4">Source-Hungry Voidwoken Turtle</content>
+	<content contentuid="h722182d2g6efbg4d7bgb38ag2cdfd476d61b">Dead?</content>
+	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f">Character is a &lt;font color=&apos;#9B30FF&apos;&gt;Shadow&lt;/font&gt; of another character.&lt;br&gt;&lt;font color=&apos;#65C900&apos; size=&apos;16&apos;&gt;Grants no experience, but drops guaranteed loot.&lt;/font&gt;</content>
+	<content contentuid="h738617e6g4c93g4343gb82egb11c6a0fdefd">[Exit]</content>
+	<content contentuid="h745855c9g9761g40fdg8929g1fbc5ff29cb2">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;The EUO Singleplayer mod is active, yet the game is no longer singleplayer. Upgrade Info will not be synced for players.&lt;/font&gt;</content>
+	<content contentuid="h752158cdg06beg4034gaddeg66921ff01d83">Rage (IV)</content>
+	<content contentuid="h77532147gd01fg47efgb317gbf00813dbcb6">Grenade Enthusiast</content>
+	<content contentuid="h77bbc2b5gb387g4ba2g97c6gbbc058bbb5c6">Infused</content>
+	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633">Automaton (Reinforcements)</content>
+	<content contentuid="h78190c63gaa74g4228gb184g7cc2e09afb27">Armor Boost</content>
+	<content contentuid="h785703b8g60c4g4264g8810gb50962fa237c">Source-Hungry Voidwoken Statue</content>
+	<content contentuid="h786bb4a3gfc26g4a8dgab1bg0261c03bf617">Warper</content>
+	<content contentuid="h78f9641bgaf92g4bc4gb27bg759d63a0353f">Venomstriker</content>
+	<content contentuid="h7987a4c4ge79ag4b93gbb98g63644b6ab4ef">Rage (III)</content>
+	<content contentuid="h79f5b874g6cb3g4a99ga1cfg9f472c12036f">Talent: The Pawn</content>
+	<content contentuid="h7a8c8cd6ge3f7g4f9bgb0a3g98c51b7e9066">Elite Firestarter</content>
+	<content contentuid="h7b712de8ga474g487bgb2d8gd05c1e1d71c6">Increase Level Modifier +1</content>
+	<content contentuid="h7c05fad0gf6f3g44c6g8a28g7eb8f9bc548c">Loot Generator</content>
+	<content contentuid="h7ce216e9gc9f4g4753gb39dgf42c27bfc01a">Range Boost</content>
+	<content contentuid="h7dc61280g5743g4a60g85c1g8bde41a13abb">Magic Armor Boost</content>
+	<content contentuid="h7e28471fg1959g47e6g9d58g4d4f8ce054f6">Talent: Leech</content>
+	<content contentuid="h7f31f21fg9232g4fcbg8eadg2eacf1f25ae6">Source-Hungry Voidwoken Bear</content>
+	<content contentuid="h8074f9d7g5360g49fbgb949gce8a729c7755">Piercing Immunity</content>
+	<content contentuid="h80df5eb1gf3cag41cfgbaecg1c053ae7e83c">Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.&lt;br&gt;Can happen only once per turn. </content>
+	<content contentuid="h80e776e3gfe62g41c6g9bb0g4fc913baf4a4">Vitality Boost</content>
+	<content contentuid="h81f47302g60dag426agb491g72452b206a43">Teslacoil</content>
+	<content contentuid="h82758d47g38eeg4cafg9d24gf84edc578577">[GLOBAL] Disable source spells having a chance to lure Voidwoken into battle. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h830f867bgc14cg47c2gb90bg4988469422fc">Upgrade Settings</content>
+	<content contentuid="h8311eb63g89cfg41c1g961cgde31f8d79927"></content>
+	<content contentuid="h8350321agf54cg4528gb29egcb7dbb16cdc0">Magister Knight (Not Dead)</content>
+	<content contentuid="h83bb63c1g9d67g4c1dg94e4g04174fc2afad">Rage (II)</content>
+	<content contentuid="h842eaa46gb961g4b6dgbf83g833dd133bd7e">Damage Boost</content>
+	<content contentuid="h844592e8g9000g4ce9gafd0ga87c8b086ef1">Vitality Boost</content>
+	<content contentuid="h84c27debgd38dg4844g84d4g75eb558eb5de">Upgraded</content>
+	<content contentuid="h84c9caecgf4f2g4e36ga17ag1ee9b85184a2">Ignitionmancer</content>
+	<content contentuid="h869a7616gfbb7g4cc2ga233g7c22612af67b">&lt;img src=&apos;Icon_BulletPoint&apos;&gt;&lt;font size=&apos;18&apos;&gt;[1]&lt;/font&gt;</content>
+	<content contentuid="h86cfb164g8505g4e4fg89degcb3c24372f3c">Treasure Goblin</content>
+	<content contentuid="h87d1a253g6ec1g4352g96ffg856537b4759c">Shadow Reflection</content>
+	<content contentuid="h87dc0798g71d4g40a7ga672g27fdee5d3c77">Source-Hungry Voidling</content>
+	<content contentuid="h882390f1gfd9eg4a56g95e5g658283cc548a">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Drops ??? on death.&lt;/font&gt;</content>
+	<content contentuid="h8886e1f1gb725g4e9fg8f5bg4ab1f7262f48">&lt;font color=&apos;#B823CB&apos; size=&apos;18&apos;&gt;Great Loot&lt;/font&gt;</content>
+	<content contentuid="h897741cbg8002g4c03g816fgcdba9d369b54">Magic Armor Boost</content>
+	<content contentuid="h89a403b4g8365g4109g96adg88d6136f2256">Source-Hungry Oiled Voidling</content>
+	<content contentuid="h8a442345g8c3ag4161g8f45gd93745f99d3e">&lt;font color=&apos;#4197E2&apos; size=&apos;14&apos;&gt;Moderate Loot&lt;/font&gt;</content>
+	<content contentuid="h8ab2aa74g8581g4bf1g8e93ge8405d3572f3">Magic Armor Boost</content>
+	<content contentuid="h8ad314ffg18f8g496eg9893gcacf42981a8d">Source-Hungry Vampiric Voidwoken</content>
+	<content contentuid="h8c7cfc30gfa1ag46b8ga23bg524410b565c8">Rage (IV)</content>
+	<content contentuid="h8cfd1ba3gcfb3g4f0cga950gc29672af34c9">Perfect Control</content>
+	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9">Evolved Voidling</content>
+	<content contentuid="h8e75cbbdg06d7g4404gbfb2g92f6fd11147d">Infernoblazer</content>
+	<content contentuid="h8edc2076g91e3g43d3g8314g5efb21208571">Character has increased attack range of Bows and Crossbows by 2m.</content>
+	<content contentuid="h8f68810dg481ag4379gb223g0f03f78434f5">Character is preparing to unleash their full power.</content>
+	<content contentuid="h8fecc0a7g0c7eg4a22g8528g1a6ac5bf5f30">Magic Armor Boost</content>
+	<content contentuid="h90795f7dg9422g4b51g9835g0449efe50b1b">Enemy Upgrade Overhaul Settings</content>
+	<content contentuid="h90ef8331gf15cg484egaefbgcbd1109a8698">Rage (V)</content>
+	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf">Character can backstab with non-dagger weapons.</content>
+	<content contentuid="h95d57e81gc533g4236gbb95g2ee7097f5155">Magic Armor Boost</content>
+	<content contentuid="h95fbde3bg3be6g4b7cgb6acg1bacabcba562">Character has a chance to steal a consumable item on attack.&lt;br&gt;Can only happen once per turn.</content>
+	<content contentuid="h9622cd5bg735eg490egbbe1g5a4102ca7f29">[GLOBAL] Make enemies in levels automatically gain upgrades without being in combat. This may happen once per level. Non-hostile characters that become hostile will gain upgrades like normal.&lt;br&gt;&lt;br&gt;*Note:* There may be a little bit of lag when upgrades are being applied initially, as this runs on every character in the level.</content>
+	<content contentuid="h9624e77bg9496g4560ga804gbdf88861ba35">Source-Hungry Abyssal Void Flayer</content>
+	<content contentuid="h9713cc3dgea3ag4bf4gacb1g1428f7baa338">Dominator of the Void</content>
+	<content contentuid="h9729fa03g8b20g4eccgbde7gc08c1d8d8e73">A sack of loot that was previously carried by a Treasure Goblin.</content>
+	<content contentuid="h9978b702g8683g49bbga061g0c806d92f829">Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h99aba0bag7acbg4deagb9f3g0c52b807ce09">&lt;font color=&apos;#FF00CC&apos; size=&apos;18&apos;&gt;Insane Loot&lt;/font&gt;</content>
+	<content contentuid="h9a2a7390gc764g4fa0g8e97gf73ffac2a93c">Talent: Soulcatcher</content>
+	<content contentuid="h9b0484e3gdd44g406bgad67gda2c8542be89">Chicken Medic</content>
+	<content contentuid="h9b5ef2b3gc8c3g4a89g986egb3ac78cde891">&lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;*Lost &lt;/font&gt;&lt;font color=&apos;#C7A758&apos; size=&apos;26&apos;&gt;[1]&lt;/font&gt; &lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;Gold!*&lt;/font&gt;</content>
+	<content contentuid="h9bc9d98ag9fa9g4d23g88c4ge55de8f8c73a">Chicken Overlord</content>
+	<content contentuid="h9bcf1767g7b81g4ae1gbf20ge19a6b4454ef">&lt;font color=&apos;#AA00FF&apos;&gt;Shadow Treasure&lt;/font&gt;</content>
+	<content contentuid="h9c5daca5g3786g435agb9feg0ad41260a1bc">Enable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h9cf11b15g91d4g4d12gae38ga5a8f70272be">Elite Heatsapper</content>
+	<content contentuid="h9edeb358g11e7g4372g92e7g8a164695e1e4">Vitality Boost</content>
+	<content contentuid="h9f11e267gfe5bg41c6gad9ag7315b3f9e57b">&lt;font color=&apos;#e6bc53&apos;&gt;Treasure Goblin&apos;s Hoard&lt;/font&gt;</content>
+	<content contentuid="h9f5a8ee9gda2dg4e5bg96fcgb6c8c3f7cc50">Earthcracker</content>
+	<content contentuid="h9fc5d19eg4f21g4b1cg8c36g56370f2c5bb2">Level Scaling Settings&lt;br&gt;Level Modifier: [LLENEMY_EnemyLeveling_Modifier_374d0f1d-bd61-4736-ad24-b1876a803c2f]&lt;br&gt;Scaled Enemy Level: [LLENEMY_EnemyLeveling_ExpectedLevel_4f2c6435-4ddc-4e2c-90d9-6506acb179ba]</content>
+	<content contentuid="ha0190ec0g350eg4c71g9456g078481ad4128">&lt;font color=&apos;#FF3737&apos; size=&apos;18&apos;&gt;Immune to Movement-Based Damage Statuses&lt;/font&gt;</content>
+	<content contentuid="ha01be380g46ddg41a4g8408g41eb724325d2">Seeker (Disabled)</content>
+	<content contentuid="ha0ac17b6gee82g44d9g81b9g66c9a941e010">Talent: Weatherproof</content>
+	<content contentuid="ha0eca831g2e16g463fgb80fg09f33092c2ee"></content>
+	<content contentuid="ha3ccca0bg576dg4a64gb2edg8819d8f2cdc0">Chicken Infantry</content>
+	<content contentuid="ha4587526ge140g42f9g9a98gc92b537d4209">&lt;img src=&apos;Icon_BulletPoint&apos;&gt;&lt;font color=&apos;[2]&apos; size=&apos;18&apos;&gt;[1]&lt;/font&gt;</content>
+	<content contentuid="ha4a3d3cfg755ag46deg86d2g4f1060841ee2">Elite Bloodbender</content>
+	<content contentuid="ha5f6b750g5322g4043gac1dgfc82734fde21">Updated settings.</content>
+	<content contentuid="ha78e3050g202cg4650g8df9g2ef53c2463a2">Source-Hungry Slippery Voidling</content>
+	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19">Rewards Settings</content>
+	<content contentuid="ha963a343g4464g4bb3ga553g95a99a0d4cf7">Source-Hungry Vampiric Voidwoken</content>
+	<content contentuid="ha9dfee58ge73fg47e4gb9f7g1ff2ced6635e">Vitality Boost</content>
+	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8">Talent: Natural Conductor</content>
+	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b">Talent: Assassin</content>
+	<content contentuid="had606e03g6713g4064g84c0gf28395d81019">Elite Infernoblazer</content>
+	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05">Chicken Firestarter</content>
+	<content contentuid="hae3e586aga38eg4ee0g8728g5280e0d41165">Enable Bonus Skill Upgrades. These give enemies new skills using the Script Extender. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="hae44c262g8fffg4f1cg8740g4874c69c39e7">Enable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="haeb6c61bga35fg45d8ga373gadf142b6fc2b">Source-Hungry Voidwoken Boar</content>
+	<content contentuid="haec75225g4305g4fcdg8e61g0f9b4de56075">Talent: Elite Comeback Kid</content>
+	<content contentuid="hb03b0770g292ag4844g977dgf0e7534a1f5b">Damage Boost</content>
+	<content contentuid="hb3bee298g2eb6g461bgafb8ge07c9ecc8094">Vitality Boost</content>
+	<content contentuid="hb52d1ac1g7c4fg45a4g87d8g52056a5a2ba2">Talent: Indomitable</content>
+	<content contentuid="hb5ed98e3g8acbg404cgaab9gdf882ba463ce">&lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;*Stole &lt;/font&gt;&lt;font color=&apos;#C7A758&apos; size=&apos;26&apos;&gt;[1]&lt;/font&gt; &lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;Gold!*&lt;/font&gt;</content>
+	<content contentuid="hb7ee58faga3c6g41e0gad2age7b6783006dc">Source-Hungry Slippery Voidling</content>
+	<content contentuid="hb8e49700gfb78g4a25gb451g21026ea98f20">Enable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="hb992f98bg2019g4e2agb1f6g54d713d3ae4f">Venomstriker</content>
+	<content contentuid="hba05c2f9g55f0g4b5agb936g5ff5daa6877e">Talent: Master Thief</content>
+	<content contentuid="hba37a70cg63f9g491eg94f0gdf69970ff0e6">Character is fully powered up.</content>
+	<content contentuid="hba3c1e10g095eg4478ga6f5g1619938b7560">Source-Hungry Fluorescent Voidling</content>
+	<content contentuid="hba68eb52gbd87g443fga8acgb61922bf4211">Earthcracker</content>
+	<content contentuid="hbacea44ag4103g49ccgbd8fgb9f026bb437d">Character has a new bonus skill.</content>
+	<content contentuid="hbaf0e000gcc52g4d00gad02g1047a2b95558">Source-Hungry Voidwoken Salamander</content>
+	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca">Settings updated.</content>
+	<content contentuid="hbba08b72g0d5bg416eg9a46gb2150b29fb05">The treasure goblin is fleeing!&lt;br&gt;&lt;font color=&apos;#FF00CC&apos; size=&apos;24&apos;&gt;Quickly, strike it down for &lt;font color=&apos;#C7A758&apos; size=&apos;24&apos; face=&apos;Copperplate Gothic Light&apos;&gt;LOOT&lt;/font&gt;!&lt;/font&gt;</content>
+	<content contentuid="hbc7f9c3dg471bg47c6ga015g77c92a439e4e">Talent: Lightning Rod</content>
+	<content contentuid="hbd7fc3f3g08f1g4684g8c47gccc404622fc6">&lt;font color=&apos;#FF3737&apos; size=&apos;26&apos;&gt;*Atusa&apos;s corpse oozes to life!*&lt;/font&gt;</content>
+	<content contentuid="hbe6a42a1g49e0g44e0g9546g4b45f038d6cb">Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="hbf07ab58g09aag415fg999eg4e4f1bc04f8e">[GLOBAL] Enable source spells having a chance to lure Voidwoken into battle. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)&lt;br&gt;&lt;br&gt;Total source points used in the level will be tracked, and will gradually increase the chance and difficulty of voidwoken spawned. Total SP degrades every 5 minutes of real time (default).&lt;br&gt;Higher cost source skills have a higher chance to lure hostile voidwoken.</content>
+	<content contentuid="hbfafd8eeg3703g4b46g837eg2389c8302f35">Cooldown (Master Thief)</content>
+	<content contentuid="hc0a53dd7g55f4g4c2cgae98g350ed1b9cbb9">Character will revive once when killed, coming back with full health.</content>
+	<content contentuid="hc2dfd3fcg7132g4e47g9a89g35e2089966df">Character is healed when standing in blood.</content>
+	<content contentuid="hc3f8497bg97acg449ag910ag07b825f3b8bb">Firestarter</content>
+	<content contentuid="hc505e9aagab98g49e8g8777g72eb60325a35">Character will discover hidden enemies while in combat.&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Stealthed and Invisible enemies within 4m are revealed.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF3333&apos;&gt;Becoming Drunk or disabled temporarily disables a Seeker&apos;s detection.&lt;/font&gt;</content>
+	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937">Character is obsessed with collecting grenades. One misstep and boom!</content>
+	<content contentuid="hcb08a432g19a5g4571g820fg92ddc92ac4d9">Talent: Lone Wolf</content>
+	<content contentuid="hce14d863g96b1g4817ga295gbea6423c0190">Magic Armor Boost</content>
+	<content contentuid="hceb85350g54fdg4134gba42g9a0da585edb8">Character is immune to &lt;font color=&apos;#FF0000&apos;&gt;Piercing Damage&lt;/font&gt;.</content>
+	<content contentuid="hd041be63gbfdeg4355g84c1ge870d92387af">Empowered</content>
+	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d">Talent: What a Rush</content>
+	<content contentuid="hd1a568b1g2c56g4343gb1fcg4ae8f47c28e4">Bonus Source Skill</content>
+	<content contentuid="hd21c0029gc4b2g4810gbdb4gdff891204a8f">Cancel upgrading the world.</content>
+	<content contentuid="hd419ca09g8d69g4af6g840egdd4a81f7587f">Circuitbreaker</content>
+	<content contentuid="hd54110f8gbc6bg418dg8191g84eb716cbd54">&lt;font color=&apos;#D416FF&apos;&gt;[1]%&lt;/font&gt;</content>
+	<content contentuid="hd571cf40g88eeg4dedgb36dg9297c7ffb725">Magic Armor Boost</content>
+	<content contentuid="hd58a85d5g8c13g41a7gb3fegd9a7fbdd4e9d">Armor Boost</content>
+	<content contentuid="hd65fa52bge450g485cg8d08g084b1ef35990">Magic Armor Boost</content>
+	<content contentuid="hd71fe8a1g0247g42c5g8bfcg2408029eca06">Teslacoil</content>
+	<content contentuid="hd7df35a9gde1fg4d22g93f6gcb11fba955a0">Cascader</content>
+	<content contentuid="hd80e21d0gc2ffg4df8gbc9fgcdd3f5248980">Decrease Level Modifier -1</content>
+	<content contentuid="hd880d646g45b4g4fa6ga6cbgd746dcd242bd">Elite Firestarter</content>
+	<content contentuid="hd8e442d5ge3fag4dbfg87d1g7403c979c4f7">Perfect Control</content>
+	<content contentuid="hd8f04806g2228g4144g964eg5f6694865d41">Character cannot discover hidden enemies while disabled/drunk.</content>
+	<content contentuid="hda008820gb374g4cf8g87c3g294742c772d8">Gathering Power</content>
+	<content contentuid="hdace76dag01cbg499dg9777geb2c80877c7c">Dead</content>
+	<content contentuid="hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990">Perseverance Mastery</content>
+	<content contentuid="hdb001da6g340cg4f00g9190g13e8c1a96f90">Talent: Weatherproof</content>
+	<content contentuid="hdb982497gc47dg4fd4gabdega3d6af9b0760">Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="hdc4e3c6dg30acg45c6ga046g0182ff2c70de">Damage Boost</content>
+	<content contentuid="hdcdcd727gc9e6g4548g88dag25a265517c1b">Elite Teslacoil</content>
+	<content contentuid="hdd62da1agf6adg438dg811cg08c9e58e07c9">Talent: Bully</content>
+	<content contentuid="hdee6d2a6gee37g4892g84e8g83a79ebfd9ed">Elite Cascader</content>
+	<content contentuid="hdf051e8cg6151g4f9dgab2bg2f6207ba84a3">Source-Hungry Voidwoken Troll</content>
+	<content contentuid="hdf0ea9a2g01cbg481dg8107g6ee870f53548">Talent: Unstable</content>
+	<content contentuid="hdfeb0377gbab4g4fc6ga428g98aa0a12eb88">Rage (II)</content>
+	<content contentuid="he10bc4ddge536g4696gb6f1g34a29479255c">Source-Hungry Voidwoken Salamander</content>
+	<content contentuid="he15a3e15g141dg45e5g96edg8148c2106792">[GLOBAL] Disable Hard Mode (Default - Disabled) (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="he2172050g115bg4345gae5eg4a45798086b4">Empowered</content>
+	<content contentuid="he23ccfa9gadbcg4c34g9f04g1c93f864badf">Character must wait before they can mug again.</content>
+	<content contentuid="he4a9526dg0dd1g4babg824eg01a0e9993e55">Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="he60340acg7e80g46b2g9449geba4ea159ab1">Really make characters in the level gain upgrades? This cannot be undone!</content>
+	<content contentuid="he6532e10gc9d5g4923g9544g033fca885329">Character has increased recovery and maximum Action Points when their health is below 50%.</content>
+	<content contentuid="he76b283bgc7a8g4d4eg9c2bg2398cbe51a9e">Rage</content>
+	<content contentuid="he79478e5gfa95g4461gba2bg9122ba540b28">Bonus Skill</content>
+	<content contentuid="he7dfdae3gf1bbg47ecg84edg1a094e326d94">Elite Earthcracker</content>
+	<content contentuid="he845eb33gfbffg4903ga161ge64d9dbf567d">Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.</content>
+	<content contentuid="he98adb62g6a62g43abg9723g160e736ebd6d">Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="he9cb8fddg5db3g4d64ga27cgb93613250725">Melter</content>
+	<content contentuid="hea2ac23fg62fag4befg9b85g1277c11011e6">Character is infused with tremendous power, granting a variety of bonuses and extra skills.</content>
+	<content contentuid="hea8180efg9c0eg4cdega019g233a720fc32c">Storm-wing Voidwoken</content>
+	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58">Talent: Lightning Rod</content>
+	<content contentuid="hef0955d5g3d94g4d39g87b1g20872d999f16">Magic Armor Boost</content>
+	<content contentuid="hf03d120ag2329g476dg94dcg7df0d27c3e1e">&lt;font color=&apos;#F7BA14&apos; size=&apos;16&apos;&gt;Good Loot&lt;/font&gt;</content>
+	<content contentuid="hf06524bdgf767g4831g8076gbb18355712ec">Source-Hungry Void Devourer</content>
+	<content contentuid="hf13c9277g29bfg4baegbecega1e5cd8aef76">Enemy Scaling Settings</content>
+	<content contentuid="hf180561cge97ag426cg84ddg83dd257ce95d">Double Dip</content>
+	<content contentuid="hf34ecf43gdb49g40b5g9e50g876244609429">Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.</content>
+	<content contentuid="hf39968a3gf18eg4e17gba81g6d3cff64d4aa">Character will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.</content>
+	<content contentuid="hf3eea666ge611g406eg9838gcaf7b89b5c93">Talent: The Pawn</content>
+	<content contentuid="hf4632a8fg42a7g4d53gbe26gd203f28e3d5e">Shadow</content>
+	<content contentuid="hf4b01510gb94fg4c53g973bgdd15df71e687">Vitality Boost</content>
+	<content contentuid="hf60945a4g7f7ag445cgacceg7f43da4a7f06">Armor Boost</content>
+	<content contentuid="hf6486123g0005g46c9g8a40ga098203e2ab6">Character is growing even more powerful through a second round of upgrades!</content>
+	<content contentuid="hf652aa9fgeca8g4265ga6b2ge3d557dfb11c">Disabling Enemy Level Scaling</content>
+	<content contentuid="hf91deedcga4c7g427eg8153g2e347c06d3e8">Shadow Duplicant</content>
+	<content contentuid="hfb82117ag09acg4668ga5ccg081651aff9a9">Character has a [1] chance to counter-attack when attacked within weapon range.</content>
+	<content contentuid="hfd58a531g37f8g4573gbce3gdbac65d61add">Elite Infernoblazer</content>
+	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814">Armor Boost</content>
+	<content contentuid="hfe5af913g4943g4a55g9572gb009a79c71a2">Vitality Boost</content>
+	<content contentuid="hfe69818cgb11eg4957gbdfbg5dd37b13cadc">Source-Hungry Voidwoken Spider</content>
+	<content contentuid="hfef82f38g204fg4ec0gbf1ag00b51c532e2c">Rage (III)</content>
+	<content contentuid="hff19af0agb6b4g4337g953agb4dbb019b450">Source-Hungry Armoured Voidling</content>
+	<content contentuid="hff477e91gde34g4795g863ag2c508293666d">Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.&lt;br&gt;&lt;font color=&apos;#FF0000&apos; size=&apos;26&apos;&gt;This cannot be undone.&lt;/font&gt;</content>
+	<content contentuid="hff952d5dgebedg4f53ga10fg1bd872871cee">Reflect 10% of melee damage as shadow damage</content>
+	<content contentuid="hffc4903fg3cb8g48e0gb183g8e5d9eeaa066">Super-Infused</content>
+	<content contentuid="hfff1d303g1033g40dcgb198gb3b4330de0d4">Source-Hungry Voidwoken Deer</content>
 </contentList>
