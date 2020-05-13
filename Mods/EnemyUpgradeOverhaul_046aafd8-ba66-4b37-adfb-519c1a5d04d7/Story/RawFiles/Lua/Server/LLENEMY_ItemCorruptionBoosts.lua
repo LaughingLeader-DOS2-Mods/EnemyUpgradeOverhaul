@@ -311,7 +311,7 @@ CorruptionBoosts = {
 				StatBoost:Create("VitalityBoost",1,7),
 			},{Chance=25, MinLevel=14,MaxLevel=-1,SlotType="Breast"}),
 			ItemBoost:Create({
-				StatBoost:Create("Memory",1,1),
+				StatBoost:Create("MemoryBoost",1,1),
 			},{Chance=10, SlotType="Helmet"}),
 			ItemBoost:Create({
 				StatBoost:Create("StartAP",1,1),
