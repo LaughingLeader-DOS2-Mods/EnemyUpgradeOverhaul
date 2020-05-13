@@ -20,7 +20,7 @@ LeaderLib_Helper_AddAndEquipItemTemplate(TUT_CargoDeck_Humans_Male_Magister_Grun
 LeaderLib_Helper_AddAndEquipItemTemplate(TUT_CargoDeck_Humans_Male_Magister_Grunt_000_a06e61dd-58c6-4119-99be-716c3a4fc1ef, "ec4769e6-bcfc-44e0-9e9c-de62e0bdf407", 0);
 //END_REGION
 
-//REGION LEVEL_UP_TENTACLES
+//REGION LEVEL_UP_TENTACLES 
 IF
 ObjectEnteredCombat(S_TUT_TopDeckVoidling10_bd0123ae-26fd-4dad-8326-b6ae9a3fc1c5, _CombatID)
 AND
@@ -122,7 +122,20 @@ RemoveStatus(_Char, "ETHEREAL_SOLES");
 
 //REGION RESURRECT_TOPDECK_GRUNT
 IF
-CharacterKilledBy(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6, S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6)
+CharacterUsedSkillOnTarget(S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6, S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _, _, _)
+THEN
+//RemoveHarmfulStatuses(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3);
+LeaderLib_Timers_StartObjectTimer(_S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, 1500, "Timers_LLENEMY_HM_TUT_ForceTopDeckMagisterDeath", "LLENEMY_HM_TUT_ForceTopDeckMagisterDeath");
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_HM_TUT_ForceTopDeckMagisterDeath")
+AND
+CharacterIsDead(_Char, 0)
+THEN
+CharacterDie(_Char, 0, "KnockedDown");
+
+IF
+CharacterDied(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3)
 AND
 NOT DB_LLENEMY_TUT_Temp_ReplacementMagister(S_TUT_TopDeck_LivingMagister1_b5e74192-498f-4eb3-844a-4a817f9802d3, _)
 AND
