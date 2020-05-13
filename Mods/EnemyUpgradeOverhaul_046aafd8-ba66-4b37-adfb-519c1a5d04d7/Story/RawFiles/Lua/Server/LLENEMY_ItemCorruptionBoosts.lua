@@ -76,7 +76,12 @@ function ItemBoost:Apply(item,mod)
 			--Ext.Print(LeaderLib.Common.Dump(v))
 			if v.Stat == "Skills" then
 				local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
-				local nextValue = currentValue .. ";" .. v.Min
+				local nextValue = ""
+				if currentValue == nil or currentValue == "" then
+					nextValue = v.Min
+				else
+					nextValue = currentValue .. ";" .. v.Min
+				end
 				NRD_ItemSetPermanentBoostString(item, v.Stat, nextValue)
 				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 			elseif v.Stat == "ItemColor" then
@@ -93,7 +98,7 @@ function ItemBoost:Apply(item,mod)
 			end
 		end
 	else
-		Ext.PrintError("[ItemBoost:Apply] nil Boosts?")
+		Ext.PrintError("[LLENEMY_ItemCorruptionBoosts.lua:ItemBoost:Apply] nil Boosts?")
 		Ext.PrintError(LeaderLib.Common.Dump(self))
 	end
 end
