@@ -363,5 +363,5 @@ end
 
 CorruptionBoosts.Resistances = resistancesItemBoostGroup
 
-Ext.Print("CorruptionBoosts:")
-Ext.Print(LeaderLib.Common.Dump(CorruptionBoosts))
+-- Ext.Print("CorruptionBoosts:")
+-- Ext.Print(LeaderLib.Common.Dump(CorruptionBoosts))
