@@ -218,100 +218,12 @@ local function LLENEMY_DebugInit()
 		CharacterAddSkill(host, "Target_EnemyRestoration", 0)
 		--ApplyStatus(host, "LLENEMY_VENOM_AURA", -1.0, 1, host)
 		--ApplyStatus(host, "LLENEMY_FIRE_BRAND_AURA", -1.0, 1, host)
-		local x,y,z = GetPosition(host)
 		--local barrel = CreateItemTemplateAtPosition("0ae0668f-418c-46c4-bcbb-1683aa3c68e3", x, y, z)
 		--TeleportTo(barrel, host)
 		--NRD_Summon(host, "e63a712f-fc87-4469-8848-fd8941043afd", x, y, z, -1, 1, 1, 1)
 		--NRD_Summon(host, "26f10a2d-910c-42ed-b629-9a3ce550c1f7", x, y, z, -1, 1, 1, 1)
-		CharacterSetImmortal(host, 1)
-		SpawnVoidwoken(host, true)
-		--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
-		-- local level = GetRegion(host)
-		-- if level == "TUT_Tutorial_A" then
-		-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902"
-		-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a"
-		-- elseif level == "FJ_FortJoy_Main" then
-		-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_01_584db8ce-8dcf-4906-bc6f-e51eb057de08"
-		-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_02_aff8be39-58b0-4bff-8fa6-7cf501b5060b"
-		-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_03_d32d32b2-c05b-4acd-944c-f2b802ec7234"
-		-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b"
-		-- end
-		-- CheckFactions()
-		-- Weapon
-		local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
-		local shadowItem = ShadowCorruptItem(item)
-		if shadowItem ~= nil then
-			ItemToInventory(shadowItem, host, 1, 1, 1)
-			NRD_ItemCloneBegin(shadowItem)
-			local clone = NRD_ItemClone()
-			ItemToInventory(clone, host, 1, 1, 1)
-			NRD_ItemCloneBegin(shadowItem)
-			clone = NRD_ItemClone()
-			ItemToInventory(clone, host, 1, 1, 1)
-			-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -10)
-			-- NRD_ItemSetPermanentBoostInt(shadowItem, "CriticalChance", -50)
-			-- Ext.Print("=============================================")
-			-- Ext.Print("Cloned Item Stats:"..shadowItem)
-			-- Ext.Print("=============================================")
-			-- ItemCorruption.DebugItemStats(shadowItem)
-			-- Ext.Print("=============================================")
-		end
-		-- Helmet
-		item = CreateItemTemplateAtPosition("fa3f2b84-46da-43b7-afb3-0a4481290dab", x, y, z)
-		shadowItem = ShadowCorruptItem(item)
-		if shadowItem ~= nil then
-			ItemToInventory(shadowItem, host, 1, 1, 1)
-			-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -10)
-			-- Ext.Print("=============================================")
-			-- Ext.Print("Cloned Item Stats:"..shadowItem)
-			-- Ext.Print("=============================================")
-			-- ItemCorruption.DebugItemStats(shadowItem)
-			-- Ext.Print("=============================================")
-		end
-		-- Shield
-		item = CreateItemTemplateAtPosition("08854157-2996-449a-bde0-083277ca1119", x, y, z)
-		shadowItem = ShadowCorruptItem(item)
-		if shadowItem ~= nil then
-			ItemToInventory(shadowItem, host, 1, 1, 1)
-			-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -50)
-			-- NRD_ItemSetPermanentBoostInt(shadowItem, "Blocking", -10)
-			-- Ext.Print("=============================================")
-			-- Ext.Print("Cloned Item Stats:"..shadowItem)
-			-- Ext.Print("=============================================")
-			-- ItemCorruption.DebugItemStats(shadowItem)
-			-- Ext.Print("=============================================")
-
-			-- local testItem = CreateItemTemplateAtPosition("08854157-2996-449a-bde0-083277ca1119", x, y, z)
-			-- NRD_ItemCloneBegin(testItem)
-			-- local cloned = NRD_ItemClone()
-			-- NRD_ItemSetPermanentBoostInt(cloned, "PoisonResistance", -50)
-			-- NRD_ItemSetPermanentBoostInt(cloned, "Blocking", -10)
-			-- ItemToInventory(cloned, host, 1, 1, 1)
-		end
-		-- item = CreateItemTemplateAtPosition("60a82f10-ed3e-417f-b000-5b0a2099d129", x, y, z)
-		-- NRD_ItemCloneBegin(item)
-		-- NRD_ItemCloneSetString("GenerationStatsId", "LLENEMY_Shield_Shadow_A")
-		-- NRD_ItemCloneSetString("StatsEntryName", "LLENEMY_Shield_Shadow_A")
-		-- NRD_ItemCloneSetInt("HasGeneratedStats", 0)
-		-- NRD_ItemCloneSetInt("StatsLevel", 1)
-		-- --NRD_ItemCloneAddBoost("DeltaMod", "LLENEMY_Boost_Armor_NegativePoisonResistance")
-		-- --NRD_ItemCloneAddBoost("DeltaMod", "Boost_Shield_Resistance_Poison")
-		-- local cloned = NRD_ItemClone()
-		-- NRD_ItemSetPermanentBoostInt(cloned, "PoisonResistance", -10)
-		-- NRD_ItemSetPermanentBoostInt(cloned, "Blocking", -10)
-		-- local itemObj = Ext.GetItem(cloned)
-		-- 		--Ext.Print(LeaderLib.Common.Dump(itemObj.Stats.DynamicStats))
-		-- 		--Ext.Print(LeaderLib.Common.Dump(getmetatable(itemObj.Stats.DynamicStats[1])))
-		-- Ext.Print("=============================================")
-		-- Ext.Print("Cloned Item Stats:")
-		-- Ext.Print("=============================================")
-		-- for i,stat in ipairs(itemObj.Stats.DynamicStats) do
-		-- 	Ext.Print("Stat: ",stat.ObjectInstanceName , stat.Blocking, stat.PoisonResistance)
-		-- end
-		-- Ext.Print("=============================================")
-		-- --Ext.Print(Ext.StatGetAttribute("_LLENEMY_Boost_Shield_NegativeBlocking_Large", "Blocking"))
-		-- ItemToInventory(cloned, host, 1, 1, 1)
-		-- ItemRemove(item)
+		--CharacterSetImmortal(host, 1)
+		--SpawnVoidwoken(host, true)
 	end
 
 	if Ext.IsDeveloperMode() then
@@ -321,6 +233,97 @@ local function LLENEMY_DebugInit()
 	end
 
 	GetSourceDegredation(300000, 50)
+end
+
+local function ItemCorruptionTest(host)
+	local x,y,z = GetPosition(host)
+	--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
+	-- local level = GetRegion(host)
+	-- if level == "TUT_Tutorial_A" then
+	-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902"
+	-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a"
+	-- elseif level == "FJ_FortJoy_Main" then
+	-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_01_584db8ce-8dcf-4906-bc6f-e51eb057de08"
+	-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_02_aff8be39-58b0-4bff-8fa6-7cf501b5060b"
+	-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_Torturer_Golem_03_d32d32b2-c05b-4acd-944c-f2b802ec7234"
+	-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_FTJ_MagisterTorturer_1d1c0ba0-a91e-4927-af79-6d8d27e0646b"
+	-- end
+	-- CheckFactions()
+	-- Weapon
+	local item = CreateItemTemplateAtPosition("537a06a5-0619-4d57-b77d-b4c319eab3e6", x, y, z)
+	local shadowItem = ShadowCorruptItem(item)
+	if shadowItem ~= nil then
+		ItemToInventory(shadowItem, host, 1, 1, 1)
+		NRD_ItemCloneBegin(shadowItem)
+		local clone = NRD_ItemClone()
+		ItemToInventory(clone, host, 1, 1, 1)
+		NRD_ItemCloneBegin(shadowItem)
+		clone = NRD_ItemClone()
+		ItemToInventory(clone, host, 1, 1, 1)
+		-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -10)
+		-- NRD_ItemSetPermanentBoostInt(shadowItem, "CriticalChance", -50)
+		-- Ext.Print("=============================================")
+		-- Ext.Print("Cloned Item Stats:"..shadowItem)
+		-- Ext.Print("=============================================")
+		-- ItemCorruption.DebugItemStats(shadowItem)
+		-- Ext.Print("=============================================")
+	end
+	-- Helmet
+	item = CreateItemTemplateAtPosition("fa3f2b84-46da-43b7-afb3-0a4481290dab", x, y, z)
+	shadowItem = ShadowCorruptItem(item)
+	if shadowItem ~= nil then
+		ItemToInventory(shadowItem, host, 1, 1, 1)
+		-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -10)
+		-- Ext.Print("=============================================")
+		-- Ext.Print("Cloned Item Stats:"..shadowItem)
+		-- Ext.Print("=============================================")
+		-- ItemCorruption.DebugItemStats(shadowItem)
+		-- Ext.Print("=============================================")
+	end
+	-- Shield
+	item = CreateItemTemplateAtPosition("08854157-2996-449a-bde0-083277ca1119", x, y, z)
+	shadowItem = ShadowCorruptItem(item)
+	if shadowItem ~= nil then
+		ItemToInventory(shadowItem, host, 1, 1, 1)
+		-- NRD_ItemSetPermanentBoostInt(shadowItem, "PoisonResistance", -50)
+		-- NRD_ItemSetPermanentBoostInt(shadowItem, "Blocking", -10)
+		-- Ext.Print("=============================================")
+		-- Ext.Print("Cloned Item Stats:"..shadowItem)
+		-- Ext.Print("=============================================")
+		-- ItemCorruption.DebugItemStats(shadowItem)
+		-- Ext.Print("=============================================")
+
+		-- local testItem = CreateItemTemplateAtPosition("08854157-2996-449a-bde0-083277ca1119", x, y, z)
+		-- NRD_ItemCloneBegin(testItem)
+		-- local cloned = NRD_ItemClone()
+		-- NRD_ItemSetPermanentBoostInt(cloned, "PoisonResistance", -50)
+		-- NRD_ItemSetPermanentBoostInt(cloned, "Blocking", -10)
+		-- ItemToInventory(cloned, host, 1, 1, 1)
+	end
+	-- item = CreateItemTemplateAtPosition("60a82f10-ed3e-417f-b000-5b0a2099d129", x, y, z)
+	-- NRD_ItemCloneBegin(item)
+	-- NRD_ItemCloneSetString("GenerationStatsId", "LLENEMY_Shield_Shadow_A")
+	-- NRD_ItemCloneSetString("StatsEntryName", "LLENEMY_Shield_Shadow_A")
+	-- NRD_ItemCloneSetInt("HasGeneratedStats", 0)
+	-- NRD_ItemCloneSetInt("StatsLevel", 1)
+	-- --NRD_ItemCloneAddBoost("DeltaMod", "LLENEMY_Boost_Armor_NegativePoisonResistance")
+	-- --NRD_ItemCloneAddBoost("DeltaMod", "Boost_Shield_Resistance_Poison")
+	-- local cloned = NRD_ItemClone()
+	-- NRD_ItemSetPermanentBoostInt(cloned, "PoisonResistance", -10)
+	-- NRD_ItemSetPermanentBoostInt(cloned, "Blocking", -10)
+	-- local itemObj = Ext.GetItem(cloned)
+	-- 		--Ext.Print(LeaderLib.Common.Dump(itemObj.Stats.DynamicStats))
+	-- 		--Ext.Print(LeaderLib.Common.Dump(getmetatable(itemObj.Stats.DynamicStats[1])))
+	-- Ext.Print("=============================================")
+	-- Ext.Print("Cloned Item Stats:")
+	-- Ext.Print("=============================================")
+	-- for i,stat in ipairs(itemObj.Stats.DynamicStats) do
+	-- 	Ext.Print("Stat: ",stat.ObjectInstanceName , stat.Blocking, stat.PoisonResistance)
+	-- end
+	-- Ext.Print("=============================================")
+	-- --Ext.Print(Ext.StatGetAttribute("_LLENEMY_Boost_Shield_NegativeBlocking_Large", "Blocking"))
+	-- ItemToInventory(cloned, host, 1, 1, 1)
+	-- ItemRemove(item)
 end
 
 function LLENEMY_Debug_SpawnTreasureGoblinTest()
