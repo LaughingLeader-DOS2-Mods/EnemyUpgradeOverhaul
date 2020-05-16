@@ -33,7 +33,7 @@ end
 
 function MugTarget_Start(attacker, target, damage, handle)
 	local hit_type = NRD_StatusGetInt(target, handle, "HitReason")
-	if (hit_type == 0 or hit_type == 3) and LeaderLib.Game.HitSucceeded(target, handle, 0) then
+	if (hit_type == 0 or hit_type == 3) and LeaderLib.GameHelpers.HitSucceeded(target, handle, 0) then
 		if Ext.IsDeveloperMode() then
 			pcall(Mods.LeaderLib.Debug_TraceOnHit,target,attacker,damage,handle)
 		end

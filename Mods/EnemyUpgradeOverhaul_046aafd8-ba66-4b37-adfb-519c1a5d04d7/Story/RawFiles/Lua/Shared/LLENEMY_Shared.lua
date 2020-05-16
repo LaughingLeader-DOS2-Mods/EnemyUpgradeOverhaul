@@ -50,7 +50,7 @@ end
 function LLENEMY_Shared_InitModuleLoading()
 	Ext.Print("LLENEMY_Shared.lua] Module is loading.")
 	for key,fallback in pairs(ExtraData) do
-		local value = LeaderLib.Game.GetExtraData(key, fallback)
+		local value = LeaderLib.GameHelpers.GetExtraData(key, fallback)
 		ExtraData[key] = value
 		LeaderLib.PrintDebug("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Loaded Data.txt key - [" .. tostring(key) .. "] = (" .. tostring(value) .. ")")
 	end
