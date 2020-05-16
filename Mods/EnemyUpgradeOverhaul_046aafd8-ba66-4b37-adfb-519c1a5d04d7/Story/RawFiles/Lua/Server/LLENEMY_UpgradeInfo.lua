@@ -50,8 +50,7 @@ function UpgradeInfo_RefreshInfoStatuses()
 	end
 end
 
-local function CheckPartyLoremaster()
-	local allPlayersHaveLowerValues = true
+local function GetHighestPartyLoremaster()
 	local nextHighest = 0
 	local players = Osi.DB_IsPlayer:Get(nil)
 	for _,entry in pairs(players) do
@@ -62,6 +61,14 @@ local function CheckPartyLoremaster()
 		end
 	end
 	return nextHighest
+end
+
+function UpgradeInfo_SetHighestPartyLoremaster()
+	local highest = GetHighestPartyLoremaster()
+	HighestLoremaster = highest
+	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(highest)
+	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(HighestLoremaster)..")")
+	LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 500)
 end
 
 function UpgradeInfo_SendHighestLoremaster(highest)
@@ -112,10 +119,10 @@ local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
 				nextHighest = lore
 			end
 		elseif nextVal < lastVal then
-			nextHighest = CheckPartyLoremaster()
+			nextHighest = GetHighestPartyLoremaster()
 		end
 	else
-		nextHighest = CheckPartyLoremaster()
+		nextHighest = GetHighestPartyLoremaster()
 	end
 
 	if HighestLoremaster ~= nextHighest then
