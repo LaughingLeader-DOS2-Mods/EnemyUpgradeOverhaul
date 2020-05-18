@@ -52,8 +52,10 @@ NOT DB_LLENEMY_HighestLoremaster(_)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "UpgradeInfo_SetHighestPartyLoremaster");
 
-IF
-SavegameLoaded(_,_,_,_)
+PROC
+LeaderLib_Initialized((STRING)_Region)
+AND
+IsGameLevel(_Region, 1)
 AND
 DB_LLENEMY_HighestLoremaster(_Lore)
 AND
