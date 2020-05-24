@@ -1,4 +1,6 @@
 LeaderLib = Mods["LeaderLib"]
+GameHelpers = LeaderLib.GameHelpers
+Common = LeaderLib.Common
 
 IgnoredSkills = {}
 IgnoredWords = {}

@@ -45,6 +45,23 @@ THEN
 SysCompleteGoal(_Script);
 //END_REGION
 
+//REGION HENCHMAN_RECRUITER
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_HardMode_SetupRecruiter((STRING)_Region)
+THEN
+DB_NOOP(1);
+// [END_NO_OSITOOLS]
+
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_HardMode_SetupRecruiter((STRING)_Region)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "SetupRecruiter", _Region);
+SysActivateGoal("GLO_LVHub_Henchmen");
+*/
+//END_REGION
+
 EXITSECTION
 LLENEMY_HardMode_DisableScripts();
 ENDEXITSECTION

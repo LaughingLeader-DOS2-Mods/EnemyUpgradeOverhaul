@@ -10,6 +10,7 @@ Ext.Require("Server/LLENEMY_ItemCorruptionBoosts.lua")
 Ext.Require("Server/LLENEMY_TreasureGoblins.lua")
 Ext.Require("Server/LLENEMY_VoidwokenSpawning.lua")
 Ext.Require("Server/LLENEMY_ServerMessages.lua")
+Ext.Require("Server/Recruiter.lua")
 Ext.Require("Server/LLENEMY_Debug.lua")
 
 function Init()
