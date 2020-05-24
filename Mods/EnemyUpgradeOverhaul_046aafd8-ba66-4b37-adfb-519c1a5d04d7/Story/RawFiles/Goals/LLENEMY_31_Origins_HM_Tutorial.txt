@@ -348,14 +348,21 @@ DialogSetVariableInt(_Dialog,_VarName,0);
 IF
 GameStarted("TUT_Tutorial_A", _)
 AND
+NOT DB_LLENEMY_HM_TUT_ReruiterFreed(1)
+AND
 ItemIsOpened(S_TUT_CargoDeck_Isolation_CageDoor_000_2584e8a5-1fbe-4848-a368-55aeff1a2435, _HasDialog)
 THEN
+DB_LLENEMY_HM_TUT_ReruiterFreed(_HasDialog);
 SetHasDialog(S_GLO_LV_HenchmenRecruiter_ed64ea06-9060-4b29-88dd-623ab008fae6, _HasDialog);
 
 IF
 ItemOpened(S_TUT_CargoDeck_Isolation_CageDoor_000_2584e8a5-1fbe-4848-a368-55aeff1a2435)
+AND
+NOT DB_LLENEMY_HM_TUT_ReruiterFreed(1)
 THEN
 SetHasDialog(S_GLO_LV_HenchmenRecruiter_ed64ea06-9060-4b29-88dd-623ab008fae6, 1);
+SysClear("DB_LLENEMY_HM_TUT_ReruiterFreed", 1);
+DB_LLENEMY_HM_TUT_ReruiterFreed(1);
 //END_REGION
 
 EXITSECTION
@@ -363,5 +370,6 @@ SysClear("DB_LLENEMY_TUT_Temp_ReplacementMagister", 2);
 SysClear("DB_LLENEMY_HM_TUT_LarianTriedToKillCaptain", 1);
 SysClear("DB_LLENEMY_HM_TUT_MadeMortal", 1);
 SysClear("DB_LLENEMY_HM_TUT_SlapWorkaround", 1);
+SysClear("DB_LLENEMY_HM_TUT_ReruiterFreed", 1);
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_30_Origins_HardMode"
