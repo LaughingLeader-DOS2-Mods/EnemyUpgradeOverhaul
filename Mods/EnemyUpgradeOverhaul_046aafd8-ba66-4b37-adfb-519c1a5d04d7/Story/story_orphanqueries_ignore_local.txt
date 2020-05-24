@@ -8,3 +8,7 @@ DB_LLENEMY_UpgradeInfo_Temp_InfoString 2
 DB_DallisDefeatedItemDrop 1
 DB_LLENEMY_TreasureGoblins_Temp_AddToSack 2
 DB_SW_IllusionistsIllusions 1
+DB_GLO_LVHub_Henchmen_HireAfterDialog 2
+DB_GLO_LVHub_Henchmen_Captain 1
+DB_GLO_LVHub_Henchmen_HiredFlags 3
+DB_GLO_LVHub_Henchmen_PriceGroup 3
