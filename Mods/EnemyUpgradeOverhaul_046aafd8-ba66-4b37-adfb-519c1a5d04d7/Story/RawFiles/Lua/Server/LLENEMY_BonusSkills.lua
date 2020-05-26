@@ -1,7 +1,8 @@
 local ATTEMPTS_MAX = 40
 
 local ignored_skills = {
-	--Target_BanishSummon = true,
+	Target_BanishSummon = true,
+	Target_EnemyBanishSummon = true,
 	Cone_Enemy_WaterSpit_Troll = true,
 	Cone_EnemyCorrosiveSpray_Beetle = true,
 	Cone_EnemyDragonBreath = true,
