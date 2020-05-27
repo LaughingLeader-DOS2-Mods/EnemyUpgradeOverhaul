@@ -17,6 +17,7 @@ THEN
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_GEOPYRO", 100, 6);
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_HYDROSHOCK", 100, 6);
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_CONTAMINATOR", 100, 6);
+LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_MEDIC", 25, 8);
 //END_REGION
 
 //REGION MOD_REGISTRATION_EXAMPLE
