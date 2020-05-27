@@ -148,8 +148,6 @@ local ignored_skills = {
 	Target_EnemyOverpower_Shambling = true,
 	Target_EnemyOverpower_Werewolf = true,
 	Target_EnemyRestoration_Horrorsleep = true,
-	Target_EnemyResurrect_Alan = true,
-	Target_EnemyResurrect_Alexandar = true,
 	Target_EnemyShacklesOfPain_LowVolume = true,
 	Target_EnemyTargetedFireSurface_Lucian = true,
 	Target_EnemyTerrify_Dragon = true,
@@ -164,13 +162,17 @@ local ignored_skills = {
 	Teleportation_EnemyInsectBurrow = true,
 	Teleportation_EnemyMagisterTorturerTeleport = true,
 	Teleportation_EnemyNetherswap_Heart	 = true,
+	Target_EnemyResurrect = true,
+	Target_EnemyMassResurrect = true, -- Clay Embrace
+	Target_EnemyResurrect_Alan = true,
+	Target_EnemyResurrect_Alexandar = true,
 	Teleportation_EnemyResurrect_Alan = true,
 	Teleportation_EnemyResurrect_Alexandar = true,
 	Teleportation_EnemyResurrect_Chicken = true,
 	Teleportation_EnemyResurrect_Shambling = true,
 	Teleportation_EnemyResurrect_Werewolf = true,
-	Teleportation_ResurrectScroll = true,
-	Teleportation_StoryModeFreeResurrect = true,
+	--Teleportation_ResurrectScroll = true,
+	--Teleportation_StoryModeFreeResurrect = true,
 	-- Summoning Rework
 	Summon_EnemySoulWolf = true,
 	Summon_EnemyBear = true,
@@ -218,6 +220,7 @@ local ignored_skillwords = {
 	"TEST",
 	"Trap",
 	"Turret",
+	"Resurrect",
 }
 
 local ignored_parents = {
