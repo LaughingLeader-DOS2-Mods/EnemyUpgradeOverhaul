@@ -469,6 +469,7 @@ local weapontype_requirements = {
 	Staff = {"StaffWeapon", "MeleeWeapon"},
 	Bow = "RangedWeapon",
 	Crossbow = "RangedWeapon",
+	Rifle = {"RifleWeapon", "RangedWeapon"},
 	--Wand = {"MeleeWeapon"},
 }
 
