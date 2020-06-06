@@ -137,6 +137,7 @@ AND
 GetUUID(_Dupe, _DupeUUID)
 THEN
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
+SetOnStage(_Dupe, 0);
 CharacterSetDetached(_Dupe, 1);
 SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
 ApplyStatus(_Dupe, "LLENEMY_DUPLICANT", -1.0, 0, _Source);
@@ -307,6 +308,7 @@ AND
 GetFaction(_Source, _Faction)
 THEN
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
+SetOnStage(_Dupe, 0);
 CharacterSetDetached(_Dupe, 1);
 SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
 ApplyStatus(_Dupe, "LLENEMY_DUPLICANT", -1.0, 0, _Source);
@@ -427,6 +429,20 @@ THEN
 SetOnStage(_Dupe, 0);
 
 IF
+StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_DupeCharacterTeleported")
+AND
+ObjectIsOnStage(_Dupe, 0)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+AND
+CharacterIsInCombat(_Source, 1)
+AND
+CharacterIsDead(_Dupe, 0)
+THEN
+SetOnStage(_Dupe, 1);
+CharacterSetDetached(_Dupe, 0);
+
+IF
 ObjectEnteredCombat((CHARACTERGUID)_Source, _CombatID)
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
@@ -441,6 +457,7 @@ IF
 StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_OnDupeJoinedCombat")
 THEN
 SetOnStage(_Dupe, 1);
+CharacterSetDetached(_Dupe, 0);
 
 IF
 ObjectLeftCombat((CHARACTERGUID)_Source, _CombatID)
