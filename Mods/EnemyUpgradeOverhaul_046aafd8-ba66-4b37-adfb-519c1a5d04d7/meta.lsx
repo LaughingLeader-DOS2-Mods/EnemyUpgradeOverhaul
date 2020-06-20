@@ -31,7 +31,7 @@
                     <attribute id="NumPlayers" value="2" type="1" />
                     <attribute id="PhotoBooth" value="" type="22" />
                     <attribute id="StartupLevelName" value="" type="22" />
-                    <attribute id="Tags" value="" type="30" />
+                    <attribute id="Tags" value="Difficulty;RNG" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
                     <attribute id="UUID" value="046aafd8-ba66-4b37-adfb-519c1a5d04d7" type="22" />
                     <attribute id="Version" value="536870943" type="4" />
