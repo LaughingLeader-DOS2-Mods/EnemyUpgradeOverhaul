@@ -1,202 +1,5 @@
-local ShadowItemNames = {
-	"Ac'thaorrirc",
-	"Ach-Math",
-	"Acxuthash",
-	"Agibhus",
-	"Aibradhrish",
-	"Aibragnuh",
-	"Aikhubrorh",
-	"Ainaioxo",
-	"Aiueghrouthler",
-	"Aiughrimbre",
-	"Aiuxothlarh",
-	"Aizyggdu",
-	"Alost",
-	"Amhygnexz",
-	"Anougr'itho",
-	"Athoughad",
-	"Avrethlor",
-	"Bhap'gni",
-	"Bhiopaxr",
-	"Botha",
-	"Braognu",
-	"Brejhi",
-	"Bryndoh",
-	"C'tholp'gno",
-	"Cnirv'dror",
-	"Ctedro",
-	"Cthucno",
-	"Cthymbrix",
-	"Ctiojh'dhrox",
-	"Ctuggilbh",
-	"Cxedhros",
-	"Cxezun",
-	"Cxocnurc",
-	"D'aacto",
-	"D'aorv'gnalbh",
-	"D'oct'drust",
-	"D'undilbh",
-	"Dh-Ugu",
-	"Dhorthoth-Mor",
-	"Dithro",
-	"Eghaior'ithi",
-	"Eghrap'metl",
-	"Egl-Iat",
-	"Ekhidhr'xexz",
-	"Ephothaol",
-	"Eshoubhush",
-	"Evraobrah",
-	"Ghiothrherc",
-	"Gho-Dacte",
-	"Ghraadrr'rolbh",
-	"Ghraarvesz",
-	"Ghrelth'vhass",
-	"Ghrognnor",
-	"Gn'both",
-	"Grebr'itrelbh",
-	"Grourvo",
-	"Hakeih-Rhla",
-	"Iakhuidr'dhroh",
-	"Iakthaadrran",
-	"Iaubrolped",
-	"Iaudaobh'krun",
-	"Iauv'atlen",
-	"Iauzoxixr",
-	"Ibhuxhag",
-	"Icnorr'dhreg",
-	"Icthaztosz",
-	"Ictoulug",
-	"Idurv'kud",
-	"Igactachua",
-	"Iggn-Kehlor",
-	"Iggtilao",
-	"Ihon",
-	"Illa",
-	"Itothrath",
-	"Itumbra",
-	"Iushexhod",
-	"Iuthulpast",
-	"Iuvhaiozhoh",
-	"Ivh'orus",
-	"Ivizh'xe",
-	"Kegnu",
-	"Kelhathaniha",
-	"Kelkal",
-	"Khoxul",
-	"Khyjh'krerh",
-	"Kiothlux",
-	"Kthaolpun",
-	"Ktheggd'xeg",
-	"Mh'edhro",
-	"Mh'edre",
-	"Mh'ujh'ithulbh",
-	"Mhourv'ithu",
-	"Mhuimbre",
-	"Mluilkun",
-	"N'kigoshat",
-	"Naul",
-	"Ngathlu",
-	"Ngibhexr",
-	"Ntharuggndho",
-	"Od'uillarc",
-	"Ot-Ot",
-	"Oth-Nor",
-	"Ozhaioghox",
-	"Phabboisc",
-	"Rniglo",
-	"Shotha",
-	"Taal'vho",
-	"Taola",
-	"Taorrass",
-	"Th'thuarlatl",
-	"Thuklex",
-	"Toklor",
-	"Tribrest",
-	"Uakrn",
-	"Ubornot-Gush",
-	"Ubrivhuxr",
-	"Uctaarin",
-	"Ucthioghaxz",
-	"Ugaxhig",
-	"Ugott-Eit",
-	"Ukhithuth",
-	"Ukhorvilb",
-	"Ukhougnatl",
-	"Utrygdurh",
-	"V'iozi",
-	"V'yl'xa",
-	"Vaiogh'dhre",
-	"Vh'agro",
-	"Vh'ylk'enda",
-	"Vhaogd'drirc",
-	"Vhograx",
-	"Vruxhelbh",
-	"Yamhaokle",
-	"Yamlodrexr",
-	"Yaz'oggd'kroxz",
-	"Yazaggd'ithast",
-	"Yg'stago",
-	"Yighraokl'ler",
-	"Yigraogr'zhe",
-	"Yishuivheh",
-	"Yiv'ioggdelbh",
-	"Yokelpest",
-	"Yomhuira",
-	"Yov'aiothle",
-	"Ythucnotl",
-	"Z'iztexz",
-	"Z'uthab",
-	"Zaiozhun",
-	"Zhoztid",
-	"Zithix",
-	"Actaioxon",
-	"Aizhulthe",
-	"Anguzhus",
-	"Bhuggdash",
-	"Bhylthas",
-	"Brunda",
-	"Diogro",
-	"Douxuth",
-	"Grolp'endotl",
-	"Ihiozed",
-	"Imh'iognna",
-	"Ivh'unda",
-	"Mhopass",
-	"Ngygh'xulb",
-	"Onguth'lu",
-	"Ud'aand'xel",
-	"Uzhaiodr'kru",
-	"Vh'ibrix",
-	"Vh'ubha",
-	"Yigaagnu",
-}
-
-local nameColors = {
-	--"#2E0854",
-	--"#4B0082",
-	--"#551A8B",
-	--"#5E2D79",
-	--"#660198",
-	--"#68228B",
-	--"#694489",
-	--"#6B238E",
-	--"#71637D",
-	--"#72587F",
-	"#7D26CD",
-	"#7F00FF",
-	"#8A2BE2",
-	"#912CEE",
-	"#9932CC",
-	"#9932CD",
-	"#9A32CD",
-	"#9B30FF",
-	"#A020F0",
-	"#AA00FF",
-	"#B23AEE",
-	"#BDA0CB",
-	"#BF3EFF",
-	"#BF5FFF",
-}
+local ShadowItemNames = Ext.Require("Server/Items/Corruption/Names.lua")
+local ShadowNameColors = Ext.Require("Server/Items/Corruption/Colors.lua")
 
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
 local ItemBoost = LeaderLib.Classes["ItemBoost"]
@@ -204,6 +7,10 @@ local ItemBoostGroup = LeaderLib.Classes["ItemBoostGroup"]
 
 local ShadowItemFallbackDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
 local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083gb11964394dc4", ShadowItemFallbackDescription)
+
+if ItemCorruption == nil then
+	ItemCorruption = {}
+end
 
 local function RollForBoost(entry)
 	if entry.Chance < 100 and entry.Chance > 0 then
@@ -477,29 +284,31 @@ local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,i
 	return totalBoosts
 end
 
-local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
+local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable,minBoosts)
 	local totalBoosts = 0
 	for i,group in ipairs(boostTable) do
 		LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(group.ID))
-		totalBoosts = totalBoosts + group:Apply(item,stat,statType,level,1,false)
+		totalBoosts = totalBoosts + group:Apply(item,stat,statType,level,1,false,nil,minBoosts)
 	end
 	return totalBoosts
 end
 
-local function AddRandomBoosts(item,stat,statType,level)
+local function AddRandomBoosts(item,stat,statType,level,minBoosts)
 	local totalBoosts = 0
 	local boostTable = CorruptionBoosts[statType]
 	if boostTable ~= nil then
-		totalBoosts = AddRandomBoostsFromTable(item,stat,statType,level,boostTable)
+		totalBoosts = AddRandomBoostsFromTable(item,stat,statType,level,boostTable,minBoosts)
 	end
 	--AddRandomBoostsFromTable(item,stat,statType,level,CorruptionBoosts.All)
 	return totalBoosts
 end
 
+ItemCorruption.AddRandomBoosts = AddRandomBoosts
+
 local function SetRandomShadowName(item,statType)
 	if statType == "Weapon" then
 		local name = LeaderLib.Common.GetRandomTableEntry(ShadowItemNames)
-		local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
+		local color = LeaderLib.Common.GetRandomTableEntry(ShadowNameColors)
 		name = string.format("<font color='%s'>%s</font>", color, name)
 		NRD_ItemCloneSetString("CustomDisplayName", name)
 		if Ext.IsDeveloperMode() then
@@ -513,13 +322,15 @@ local function SetRandomShadowName(item,statType)
 		local originalName = Ext.GetTranslatedString(handle, templateName)
 		if originalName ~= NRD_ItemGetStatsId(item) and originalName ~= GetStatString(item) then
 			-- Name isn't a stat entry name.
-			local color = LeaderLib.Common.GetRandomTableEntry(nameColors)
+			local color = LeaderLib.Common.GetRandomTableEntry(ShadowNameColors)
 			local name = string.format("<font color='%s'>%s</font>", color, originalName)
 			NRD_ItemCloneSetString("CustomDisplayName", name)
 			LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
 		end
 	end
 end
+
+ItemCorruption.SetRandomShadowName = SetRandomShadowName
 
 local rarityValue = {
 	Common = 0,
@@ -588,8 +399,6 @@ local function GetClone(item,stat,statType)
 			AddRandomNegativeBoost(cloned, stat, statType, level)
 		end
 	end
-	ItemRemove(item)
-	--ItemLevelUpTo(cloned,level)
 	return cloned
 end
 

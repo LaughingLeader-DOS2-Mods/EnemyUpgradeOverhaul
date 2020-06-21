@@ -21,6 +21,9 @@ function StatBoost:Create(stat,min,max)
     return this
 end
 
+---@type StatBoost
+Classes.StatBoost = StatBoost
+
 ---A boost to be used with NRD_ItemSetPermanentBoost.
 ---@class ItemBoost
 local ItemBoost = {
@@ -103,6 +106,9 @@ function ItemBoost:Apply(item,mod)
 	end
 end
 
+---@type ItemBoost
+Classes.ItemBoost = ItemBoost
+
 ---@class ItemBoostGroup
 local ItemBoostGroup = {
 	ID = "",
@@ -122,6 +128,9 @@ function ItemBoostGroup:Create(id, entries)
 	setmetatable(this, self)
     return this
 end
+
+---@type ItemBoostGroup
+Classes.ItemBoostGroup = ItemBoostGroup
 
 local function PropertyMatch(itemBoostProp, prop)
 	if itemBoostProp == nil or itemBoostProp == "" then
@@ -193,9 +202,12 @@ end
 ---@param level integer
 ---@param mod number
 ---@param noRandomization boolean
+---@param limit integer|nil
+---@param minAmount integer|nil
 ---@return ItemBoostGroup
-function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit)
+function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit,minAmount)
 	if limit == nil then limit = 0 end
+	if minAmount == nil then minAmount = 0 end
 	local totalApplied = 0
 	if #self.Entries > 0 then
 		LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(self.ID) .. " | Total: " .. tostring(#self.Entries))
@@ -215,15 +227,35 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 				end
 			end
 		else
-			for i,v in pairs(self.Entries) do
-				if limit > 0 and totalApplied >= limit then
-					return totalApplied
+			if minAmount > 0 then
+				local loopLimit = 0
+				while totalApplied < minAmount and loopLimit < 999 do
+					for i,v in pairs(self.Entries) do
+						if limit > 0 and totalApplied >= limit then
+							return totalApplied
+						end
+						if CanAddBoost(v, stat, statType) then
+							if v.MinLevel <= 0 and v.MaxLevel <= 0 or (level >= v.MinLevel and (level <= v.MaxLevel or v.MaxLevel <= 0)) then
+								if RollForBoost(v) then
+									v:Apply(item,mod)
+									totalApplied = totalApplied + 1
+								end
+							end
+						end
+					end
+					loopLimit = loopLimit + 1
 				end
-				if CanAddBoost(v, stat, statType) then
-					if v.MinLevel <= 0 and v.MaxLevel <= 0 or (level >= v.MinLevel and (level <= v.MaxLevel or v.MaxLevel <= 0)) then
-						if RollForBoost(v) then
-							v:Apply(item,mod)
-							totalApplied = totalApplied + 1
+			else
+				for i,v in pairs(self.Entries) do
+					if limit > 0 and totalApplied >= limit then
+						return totalApplied
+					end
+					if CanAddBoost(v, stat, statType) then
+						if v.MinLevel <= 0 and v.MaxLevel <= 0 or (level >= v.MinLevel and (level <= v.MaxLevel or v.MaxLevel <= 0)) then
+							if RollForBoost(v) then
+								v:Apply(item,mod)
+								totalApplied = totalApplied + 1
+							end
 						end
 					end
 				end
@@ -242,126 +274,8 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 			end
 		end
 	else
-		Ext.PrintError("[ItemBoostGroup:Apply] Empty Entries?")
+		Ext.PrintError("[EnemyUpgradeOverhaul:ItemBoostGroup:Apply] Empty Entries?")
 		Ext.PrintError(LeaderLib.Common.Dump(self))
 	end
 	return totalApplied
 end
-
-local armorResistances = {
-	"FireResistance",
-	"AirResistance",
-	"WaterResistance",
-	"EarthResistance",
-	"PoisonResistance",
-	"PiercingResistance",
-	"PhysicalResistance",
-	--"ShadowResistance",
-	--"CorrosiveResistance",
-	--"MagicResistance",
-}
-
-CorruptionBoosts = {
-	Weapon = {
-		ItemBoostGroup:Create("WeaponMain", {
-			ItemBoost:Create({
-				StatBoost:Create("DamageFromBase",1,5),
-				StatBoost:Create("CriticalChance",1,5),
-			},{Chance=50}),
-			ItemBoost:Create({
-				StatBoost:Create("LifeSteal",1,5),
-				StatBoost:Create("DodgeBoost",1,5),
-			},{Chance=50}),
-		})
-	},
-	Shield = {
-		ItemBoostGroup:Create("ShieldMain", {
-			ItemBoost:Create({
-				StatBoost:Create("Blocking",1,5),
-				StatBoost:Create("ArmorBoost",1,5),
-			},{Chance=50}),
-			ItemBoost:Create({
-				StatBoost:Create("MagicArmorBoost",1,5),
-				StatBoost:Create("PiercingResistance",1,5),
-			},{Chance=10}),
-		})
-	},
-	Armor = {
-		ItemBoostGroup:Create("ArmorMain", {
-			ItemBoost:Create({
-				StatBoost:Create("CriticalChance",1,3),
-			},{Chance=10, MinLevel=1,MaxLevel=8,SlotType="Gloves"}),
-			ItemBoost:Create({
-				StatBoost:Create("CriticalChance",1,5),
-			},{Chance=10, MinLevel=9,MaxLevel=13,SlotType="Gloves"}),
-			ItemBoost:Create({
-				StatBoost:Create("CriticalChance",1,7),
-			},{Chance=10, MinLevel=14,MaxLevel=-1,SlotType="Gloves"}),
-			ItemBoost:Create({
-				StatBoost:Create("LifeSteal",1,3),
-			},{Chance=25, MinLevel=1,MaxLevel=8,SlotType="Ring"}),
-			ItemBoost:Create({
-				StatBoost:Create("LifeSteal",1,5),
-			},{Chance=25, MinLevel=9,MaxLevel=13,SlotType="Ring"}),
-			ItemBoost:Create({
-				StatBoost:Create("LifeSteal",1,7),
-			},{Chance=25, MinLevel=14,MaxLevel=-1,SlotType="Ring"}),
-			ItemBoost:Create({
-				StatBoost:Create("VitalityBoost",1,3),
-			},{Chance=25, MinLevel=1,MaxLevel=8,SlotType="Breast"}),
-			ItemBoost:Create({
-				StatBoost:Create("VitalityBoost",1,5),
-			},{Chance=25, MinLevel=9,MaxLevel=13,SlotType="Breast"}),
-			ItemBoost:Create({
-				StatBoost:Create("VitalityBoost",1,7),
-			},{Chance=25, MinLevel=14,MaxLevel=-1,SlotType="Breast"}),
-			ItemBoost:Create({
-				StatBoost:Create("MemoryBoost",1,1),
-			},{Chance=10, SlotType="Helmet"}),
-			ItemBoost:Create({
-				StatBoost:Create("StartAP",1,1),
-			},{Chance=2, SlotType="Ring"}),
-			ItemBoost:Create({
-				StatBoost:Create("MaxAP",1,1),
-			},{Chance=1, SlotType="Ring"}),
-			ItemBoost:Create({
-				StatBoost:Create("SourcePointsBoost",1,1),
-			},{Chance=1, SlotType="Ring"}),
-			ItemBoost:Create({
-				StatBoost:Create("MovementSpeedBoost",1,5),
-			},{Chance=5, SlotType="Boots"}),
-			ItemBoost:Create({
-				StatBoost:Create("MaxSummons",1,1),
-			},{Chance=2, SlotType="Helmet"}),
-			ItemBoost:Create({
-				StatBoost:Create("ChanceToHitBoost",1,5),
-			},{Chance=3, SlotType="Helmet"}),
-			ItemBoost:Create({
-				StatBoost:Create("RuneSlots",1,1),
-			},{Chance=1}),
-		})
-	},
-	---@type ItemBoostGroup
-	Resistances = {}
-}
-
-local resistancesItemBoostGroup = ItemBoostGroup:Create("Resistances");
-for i,v in pairs(armorResistances) do
-	local a = ItemBoost:Create({
-		StatBoost:Create(v,1,2),
-	},{Chance=10, MinLevel=1,MaxLevel=8})
-	local b = ItemBoost:Create({
-		StatBoost:Create(v,2,4),
-	},{Chance=10, MinLevel=9,MaxLevel=13})
-	local c = ItemBoost:Create({
-		StatBoost:Create(v,4,8),
-	},{Chance=10, MinLevel=14,MaxLevel=-1})
-	resistancesItemBoostGroup.Entries[#resistancesItemBoostGroup.Entries+1] = a
-	resistancesItemBoostGroup.Entries[#resistancesItemBoostGroup.Entries+1] = b
-	resistancesItemBoostGroup.Entries[#resistancesItemBoostGroup.Entries+1] = c
-end
-
-CorruptionBoosts.Resistances = resistancesItemBoostGroup
-
--- Ext.Print("CorruptionBoosts:")
--- Ext.Print(LeaderLib.Common.Dump(CorruptionBoosts))

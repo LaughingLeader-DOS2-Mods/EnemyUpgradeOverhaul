@@ -1,17 +1,22 @@
-Ext.Require("Shared/LLENEMY_Shared.lua")
+Ext.Require("Shared/Init.lua")
 
-Ext.Require("Server/LLENEMY_UpgradeInfo.lua")
-local bonusSkillsScript = Ext.Require("Server/LLENEMY_BonusSkills.lua")
-Ext.Require("Server/LLENEMY_GameMechanics.lua")
-Ext.Require("Server/LLENEMY_ItemMechanics.lua")
-Ext.Require("Server/LLENEMY_ItemCorruption.lua")
-Ext.Require("Server/LLENEMY_ItemCorruptionBoosts.lua")
---Ext.Require("Server/LLENEMY_ItemCorruptionDeltamods.lua")
-Ext.Require("Server/LLENEMY_TreasureGoblins.lua")
-Ext.Require("Server/LLENEMY_VoidwokenSpawning.lua")
-Ext.Require("Server/LLENEMY_ServerMessages.lua")
+PersistentVars = {
+	NewCorruptionStats = {}
+}
+
+Ext.Require("Server/Classes/Init.lua")
+Ext.Require("Server/UpgradeInfo.lua")
+local bonusSkillsScript = Ext.Require("Server/BonusSkills.lua")
+Ext.Require("Server/GameMechanics.lua")
+Ext.Require("Server/ItemMechanics.lua")
+Ext.Require("Server/ItemCorruption.lua")
+Ext.Require("Server/ItemCorruptionBoosts.lua")
+--Ext.Require("Server/ItemCorruptionDeltamods.lua")
+Ext.Require("Server/TreasureGoblins.lua")
+Ext.Require("Server/VoidwokenSpawning.lua")
+Ext.Require("Server/ServerMessages.lua")
 Ext.Require("Server/Recruiter.lua")
-Ext.Require("Server/LLENEMY_Debug.lua")
+Ext.Require("Server/Debug.lua")
 
 function Init()
 	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
