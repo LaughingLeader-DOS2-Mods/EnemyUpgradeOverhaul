@@ -11,8 +11,9 @@ local armorResistances = {
 	--"MagicResistance",
 }
 
-CorruptionBoosts = {
-	Weapon = {
+local Boosts = {}
+
+Boosts.Weapon = {
 		Classes.ItemBoostGroup:Create("WeaponMain", {
 			Classes.ItemBoost:Create({
 				Classes.StatBoost:Create("DamageFromBase",1,5),
@@ -23,8 +24,8 @@ CorruptionBoosts = {
 				Classes.StatBoost:Create("DodgeBoost",1,5),
 			},{Chance=50}),
 		})
-	},
-	Shield = {
+	}
+Boosts.Shield = {
 		Classes.ItemBoostGroup:Create("ShieldMain", {
 			Classes.ItemBoost:Create({
 				Classes.StatBoost:Create("Blocking",1,5),
@@ -35,8 +36,8 @@ CorruptionBoosts = {
 				Classes.StatBoost:Create("PiercingResistance",1,5),
 			},{Chance=10}),
 		})
-	},
-	Armor = {
+}
+Boosts.Armor = {
 		Classes.ItemBoostGroup:Create("ArmorMain", {
 			Classes.ItemBoost:Create({
 				Classes.StatBoost:Create("CriticalChance",1,3),
@@ -90,10 +91,7 @@ CorruptionBoosts = {
 				Classes.StatBoost:Create("RuneSlots",1,1),
 			},{Chance=1}),
 		})
-	},
-	---@type Classes.ItemBoostGroup
-	Resistances = {}
-}
+	}
 
 local resistanceGroups = Classes.ItemBoostGroup:Create("Resistances");
 for i,v in pairs(armorResistances) do
@@ -111,7 +109,7 @@ for i,v in pairs(armorResistances) do
 	resistanceGroups.Entries[#resistanceGroups.Entries+1] = c
 end
 
-CorruptionBoosts.Resistances = resistanceGroups
+---@type Classes.ItemBoostGroup
+Boosts.Resistances = resistanceGroups
 
--- Ext.Print("CorruptionBoosts:")
--- Ext.Print(LeaderLib.Common.Dump(CorruptionBoosts))
+return Boosts

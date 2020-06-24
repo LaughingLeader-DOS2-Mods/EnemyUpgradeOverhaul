@@ -4,7 +4,6 @@ Ext.Require("Client/ClientDebug.lua")
 
 local function LLENEMY_Client_ModuleLoading()
 	LLENEMY_Shared_InitModuleLoading()
-	OverrideStats()
 end
 
 Ext.RegisterListener("ModuleLoading", LLENEMY_Client_ModuleLoading)

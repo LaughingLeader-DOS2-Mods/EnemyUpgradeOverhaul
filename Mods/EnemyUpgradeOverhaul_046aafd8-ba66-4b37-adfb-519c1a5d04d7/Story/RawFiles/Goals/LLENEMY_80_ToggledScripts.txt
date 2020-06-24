@@ -23,8 +23,6 @@ LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_HardMode", "LLENEMY_HardM
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_TreasureGoblin", "LLENEMY_TreasureGoblin_Active", 1);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_VoidwokenSpawning", "LLENEMY_VoidwokenSourceSpawningEnabled", 1);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_WorldUpgrading", "LLENEMY_WorldUpgradesEnabled", 1);
-
-LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_SingleplayerMode", "LLENEMY_SingleplayerModeEnabled");
 //END_REGION
 
 //REGION UPDATES

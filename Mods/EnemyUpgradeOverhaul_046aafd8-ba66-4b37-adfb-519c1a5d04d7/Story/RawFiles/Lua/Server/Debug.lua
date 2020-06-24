@@ -397,6 +397,14 @@ function Debug_PrintTagsOnClient()
 	Ext.BroadcastMessage("LLENEMY_Debug_PrintTags", data, nil)
 end
 
+if Ext.IsDeveloperMode() then
+	Ext.RegisterConsoleCommand("shadoworb", function(command,movie)
+		local host = CharacterGetHostCharacter()
+		Osi.DB_LLENEMY_Rewards_Temp_TreasureToGenerate(host, "LLENEMY_ShadowOrbRewards")
+		Osi.LLENEMY_Rewards_SpawnShadowOrb(host)
+	end)
+end
+
 local ItemProperties = {
 	"MyGuid",
 	"WorldPos",

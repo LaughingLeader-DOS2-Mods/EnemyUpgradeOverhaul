@@ -27,9 +27,9 @@ function GetExtraDataValue(key, fallback)
 	return fallback
 end
 
-Ext.Require("Shared/LLENEMY_StatOverrides.lua")
-Ext.Require("Shared/LLENEMY_VoiceData.lua")
-Ext.Require("Shared/LLENEMY_SharedUpgradeInfo.lua")
+local statOverrides = Ext.Require("Shared/StatOverrides.lua")
+Ext.Require("Shared/VoiceData.lua")
+Ext.Require("Shared/SharedUpgradeInfo.lua")
 
 local function FixModTypos()
 	-- Greed typos
@@ -50,6 +50,7 @@ local function FixModTypos()
 end
 
 function LLENEMY_Shared_InitModuleLoading()
+	statOverrides.Init()
 	Ext.Print("LLENEMY_Shared.lua] Module is loading.")
 	for key,fallback in pairs(ExtraData) do
 		local value = LeaderLib.GameHelpers.GetExtraData(key, fallback)

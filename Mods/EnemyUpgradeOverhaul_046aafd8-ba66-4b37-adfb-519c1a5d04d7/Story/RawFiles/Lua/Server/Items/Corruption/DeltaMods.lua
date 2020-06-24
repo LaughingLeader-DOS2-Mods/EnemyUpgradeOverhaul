@@ -166,7 +166,7 @@ local function GetDefaultDeltamods()
 	--Ext.Print("Deltamods:\n" .. LeaderLib.Common.Dump(deltamods))
 end
 
-function LLENEMY_Server_RegisterCorruptionBoosts_DeltaMods()
+local function Init(CorruptionBoosts)
 	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Small"))
 	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Medium", {MinLevel=8}))
 	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Large", {MinLevel=12}))
@@ -240,3 +240,7 @@ function LLENEMY_Server_RegisterCorruptionBoosts_DeltaMods()
 
 	LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua] Boosts:\n" .. LeaderLib.Common.Dump(CorruptionBoosts))
 end
+
+return {
+	Init = Init
+}

@@ -1,5 +1,7 @@
 local ShadowItemNames = Ext.Require("Server/Items/Corruption/Names.lua")
 local ShadowNameColors = Ext.Require("Server/Items/Corruption/Colors.lua")
+local CorruptionBoosts = Ext.Require("Server/Items/Corruption/Boosts.lua")
+local CorruptionDeltaMods = Ext.Require("Server/Items/Corruption/DeltaMods.lua")
 
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
 local ItemBoost = LeaderLib.Classes["ItemBoost"]
@@ -514,5 +516,6 @@ end
 
 ItemCorruption = {
 	AddRandomNegativeBoost = AddRandomNegativeBoost,
-	DebugItemStats = DebugItemStats
+	DebugItemStats = DebugItemStats,
+	InitDeltaMods = function() CorruptionDeltaMods.Init() end
 }
