@@ -407,16 +407,16 @@ local function GetClone(item,stat,statType)
 		minBoosts = 12
 	else
 		if level >= 4 then
-			minBoosts = minBoosts + 2
+			minBoosts = minBoosts + Ext.Random(0,2)
 		end
 		if level >= 8 then
-			minBoosts = minBoosts + 3
+			minBoosts = minBoosts + Ext.Random(0,3)
 		end
 		if level >= 13 then
-			minBoosts = minBoosts + 2
+			minBoosts = minBoosts + Ext.Random(0,2)
 		end
 		if level >= 16 then
-			minBoosts = minBoosts + 2
+			minBoosts = minBoosts + Ext.Random(0,2)
 		end
 	end
 
