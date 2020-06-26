@@ -407,6 +407,41 @@ THEN
 ObjectClearFlag(_Char, "LLENEMY_WorldUpgradesAdded", 0);
 //END_REGION
 
+//REGION QUERIES
+QRY
+LLENEMY_Upgrades_QRY_CanRollForGroup((STRING)_Group)
+AND
+DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
+AND
+GlobalGetFlag(_GlobalDisableFlag, 0)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Upgrades_QRY_CanRollForStatus((STRING)_Status)
+AND
+NOT DB_LLENEMY_Upgrades_Statuses(_, _, _Status, _, _, _, _)
+THEN
+DB_NOOP(1);
+
+QRY
+LLENEMY_Upgrades_QRY_CanRollForStatus((CHARACTERGUID)_Char, (STRING)_Status)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _CappedEnd, _Duration, _ChallengePoints)
+AND
+LLENEMY_Upgrades_QRY_CanRollForGroup(_Group)
+AND
+LLENEMY_Upgrades_QRY_CanApplyGroupTypeUpgrades(_Char, _Group, _Type)
+AND
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type)
+AND
+LLENEMY_Upgrades_QRY_CanApplyUpgrade(_Char, _Group, _Type, _Status, _Duration)
+AND
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status)
+THEN
+DB_NOOP(1);
+//END_REGION
+
 //REGION APPLYING
 PROC
 LLENEMY_Upgrades_RollForUpgrades((CHARACTERGUID)_Char)
@@ -463,6 +498,11 @@ THEN
 ObjectClearFlag(_Char, _RolledForFlag, 0);
 
 //Intercept and add to DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type) to block a specific group from applying regularly
+QRY
+LLENEMY_Upgrades_QRY_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type)
+THEN
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades(_Char, _Group, _Type);
+
 PROC
 LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type)
 THEN
@@ -609,6 +649,13 @@ NOT DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type);
 
 PROC
 LLENEMY_Upgrades_CleanupBlockedUpgrades((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type)
+AND
+DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status)
+THEN
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status);
+
+PROC
+LLENEMY_Upgrades_CleanupBlockedUpgrades((CHARACTERGUID)_Char)
 AND
 DB_LLENEMY_StatusUpgradeBlocked(_Char, _Group, _Type, _Status)
 THEN
@@ -1025,6 +1072,8 @@ PROC
 LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Level)
 AND
 DB_LLENEMY_Elites(_Level, _Char, _Group, _Type, _BonusUpgrades)
+AND
+LLENEMY_Upgrades_QRY_CanRollForGroup(_Group)
 THEN
 LLENEMY_Upgrades_Internal_ApplyEliteBonuses(_Char, _Group, _Type, _BonusUpgrades);
 LLENEMY_Upgrades_Internal_OnEliteBonusRolled(_Char, _Group, _Type, _BonusUpgrades);
@@ -1075,8 +1124,15 @@ AND
 DB_LLENEMY_Elites_GuaranteedUpgrades(_Level, _Char, _Status, _Duration)
 AND
 NOT LeaderLib_Helper_QRY_HasStatus(_Char, _Status)
+AND
+LLENEMY_Upgrades_QRY_CanRollForStatus(_Status)
 THEN
 LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus(_Char, _Status, _Duration);
+
+PROC
+LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Level)
+THEN
+LLENEMY_Upgrades_CleanupBlockedUpgrades(_Char);
 
 PROC
 LLENEMY_Upgrades_Internal_ApplyGuaranteedEliteBonus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
