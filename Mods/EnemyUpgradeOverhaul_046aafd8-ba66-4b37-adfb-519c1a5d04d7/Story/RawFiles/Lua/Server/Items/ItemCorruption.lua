@@ -397,6 +397,7 @@ local function GetClone(item,stat,statType)
 		NRD_ItemCloneSetInt("GoldValueOverwrite", value)
 	end
 
+	
 	SetRandomShadowName(item, statType)
 	local cloned = NRD_ItemClone()
 	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level)

@@ -39,6 +39,7 @@
 	<content contentuid="h127721f1g27f1g4ffag9b50gf2720cedb009">Armor Boost</content>
 	<content contentuid="h12db0e65g1dceg4d56g8857gb018ab29f393">Talent:  Comeback Kid</content>
 	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de">Character is empowered with random upgrades.[1][2]</content>
+	<content contentuid="h151a1213gf033g4845ga26eg4434d523475c">Disable Class Upgrades - These are upgrades that grant enemies new skillsets and small ability bonuses, in class-like themes. (Currently Enabled)</content>
 	<content contentuid="h15a9ae98gb2d3g49d5gbccbg0aecd38fe18c">Talent: Quickdraw</content>
 	<content contentuid="h1624d634gdfdcg4129g9624g9efe5660220b">Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.</content>
 	<content contentuid="h168f52b6g342ag42e0g99d0g47d94b7363c8">shadow</content>
@@ -46,6 +47,7 @@
 	<content contentuid="h176db059gab0eg4ec8g8017geb16079d503a">Character is immune to stun, and gains health when hit by &lt;font color=&apos;#7d71d9&apos;&gt;Air Damage&lt;/font&gt;.</content>
 	<content contentuid="h179efab0g7e6cg441ag8083gb11964394dc4">A &lt;i&gt;strange&lt;/i&gt; item retrieved from a &lt;font color=&apos;#9B30FF&apos; face=&apos;Copperplate Gothic Bold&apos;&gt;Shadow Orb&lt;/font&gt;.&lt;br&gt;&lt;font color=&apos;#BDA0CB&apos;&gt;Cold to the touch, when this item is held, your grip on reality may begin to slip.&lt;/font&gt;</content>
 	<content contentuid="h17c3aeabg026ag41e4g93a0gfd8da7534786">Mass Shackler</content>
+	<content contentuid="h17e326e9g8f4fg4d6bg83dfg8f54134ffda5">Enable Class Upgrades - These are upgrades that grant enemies new skillsets and small ability bonuses, in class-like themes. (Currently Disabled)</content>
 	<content contentuid="h18c28f76g6913g4685g81b9g6a6326ac81a3">Gathering Power</content>
 	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee">Source-Hungry Voidwolf</content>
 	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8">Talent: Torturer</content>
@@ -109,7 +111,6 @@
 	<content contentuid="h4cf1c406gceb1g411fga0d9gc9832cc4d2f5">Talent: Greedy Vessel</content>
 	<content contentuid="h4d505354g26bdg4ae8gb91fgcb5451d31bea">Source-Hungry Voidwoken Beetle</content>
 	<content contentuid="h4f3e64ebg09c2g4a07gbf4cg446fda449ce9">Source-Hungry Voidwoken Troll</content>
-	<content contentuid="h506de539g84a3g464fgba77g2fe643c629d9">Enable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
 	<content contentuid="h5073532ag87fag403fgaf2cgf4fc1febc983">Void Empowered</content>
 	<content contentuid="h51e25546g078ag4d32gbb99g3af66b2dc917">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Counter!&lt;/font&gt;</content>
 	<content contentuid="h51f428d7gd529g4b83gad1ag674a188d1492">Rage</content>
@@ -302,7 +303,6 @@
 	<content contentuid="hdace76dag01cbg499dg9777geb2c80877c7c">Dead</content>
 	<content contentuid="hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990">Perseverance Mastery</content>
 	<content contentuid="hdb001da6g340cg4f00g9190g13e8c1a96f90">Talent: Weatherproof</content>
-	<content contentuid="hdb982497gc47dg4fd4gabdega3d6af9b0760">Disable Stats Upgrades. Includes Armor, Magic Armor, Vitality, and Damage bonus upgrades. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
 	<content contentuid="hdc4e3c6dg30acg45c6ga046g0182ff2c70de">Damage Boost</content>
 	<content contentuid="hdcdcd727gc9e6g4548g88dag25a265517c1b">Elite Teslacoil</content>
 	<content contentuid="hdd62da1agf6adg438dg811cg08c9e58e07c9">Talent: Bully</content>

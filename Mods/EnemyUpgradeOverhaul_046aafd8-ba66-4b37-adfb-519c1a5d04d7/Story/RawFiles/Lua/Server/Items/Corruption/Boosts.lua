@@ -75,9 +75,9 @@ Boosts.Armor = {
 			Classes.ItemBoost:Create({
 				Classes.StatBoost:Create("MaxAP",1,1),
 			},{Chance=1, SlotType="Ring"}),
-			Classes.ItemBoost:Create({
-				Classes.StatBoost:Create("SourcePointsBoost",1,1),
-			},{Chance=1, SlotType="Ring"}),
+			-- Classes.ItemBoost:Create({
+			-- 	Classes.StatBoost:Create("SourcePointsBoost",1,1),
+			-- },{Chance=1, SlotType="Ring"}),
 			Classes.ItemBoost:Create({
 				Classes.StatBoost:Create("MovementSpeedBoost",1,5),
 			},{Chance=5, SlotType="Boots"}),

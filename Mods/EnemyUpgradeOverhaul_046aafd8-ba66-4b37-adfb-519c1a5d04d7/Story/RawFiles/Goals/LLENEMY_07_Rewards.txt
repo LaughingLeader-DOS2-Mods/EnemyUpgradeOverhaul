@@ -451,7 +451,6 @@ ObjectClearFlag(_Char, "LLENEMY_GenerateRewards");
 //REGION DUPLICANT_TREASURE
 IF
 CharacterPrecogDying(_Dupe)
-//StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_Dupe_DupeDied")
 AND
 DB_LLENEMY_Duplication_Temp_Active(_Enemy, _Dupe, _Region)
 AND
