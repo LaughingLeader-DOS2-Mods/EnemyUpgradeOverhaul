@@ -235,7 +235,8 @@ local function LLENEMY_DebugInit()
 	GetSourceDegredation(300000, 50)
 end
 
-local function ItemCorruptionTest(host)
+local function ItemCorruptionTest(command)
+	local host = CharacterGetHostCharacter()
 	local x,y,z = GetPosition(host)
 	--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
 	-- local level = GetRegion(host)
@@ -325,6 +326,8 @@ local function ItemCorruptionTest(host)
 	-- ItemToInventory(cloned, host, 1, 1, 1)
 	-- ItemRemove(item)
 end
+
+Ext.RegisterConsoleCommand("shadowitemtest", ItemCorruptionTest)
 
 function LLENEMY_Debug_SpawnTreasureGoblinTest()
 	local combat = Osi.DB_CombatCharacters:Get(nil,nil)

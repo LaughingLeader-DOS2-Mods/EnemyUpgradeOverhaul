@@ -391,6 +391,12 @@ local function GetClone(item,stat,statType)
 	NRD_ItemCloneSetString("ItemType", rarity)
 	NRD_ItemCloneSetString("GenerationItemType", rarity)
 
+	local value = ItemGetGoldValue(item)
+	if value > 0 then
+		value = math.floor(math.max(1, value * 0.40))
+		NRD_ItemCloneSetInt("GoldValueOverwrite", value)
+	end
+
 	SetRandomShadowName(item, statType)
 	local cloned = NRD_ItemClone()
 	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level)
@@ -429,6 +435,7 @@ local function TryShadowCorruptItem(uuid, container)
 					if CorruptionBoosts[statType] ~= nil then
 						local cloned = GetClone(uuid, stat, statType)
 						NRD_ItemSetIdentified(cloned,1)
+
 						if container == nil and ItemIsInInventory(uuid) then
 							container = GetInventoryOwner(uuid)
 							if container == nil then
