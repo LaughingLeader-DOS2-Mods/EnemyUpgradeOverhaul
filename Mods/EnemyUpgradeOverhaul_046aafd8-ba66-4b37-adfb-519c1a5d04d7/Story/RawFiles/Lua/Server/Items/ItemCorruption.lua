@@ -420,7 +420,6 @@ local function GetClone(item,stat,statType)
 		end
 	end
 
-
 	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level,minBoosts)
 	if totalBoosts > 0 then
 		--SetVarInteger(cloned, "LLENEMY_ItemCorruption_TotalBoosts", totalBoosts)

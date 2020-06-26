@@ -34,7 +34,9 @@ local ItemBoost = {
 	Boosts = {},
 	MinLevel = -1,
 	MaxLevel = -1,
-	Chance = 100
+	Chance = 100,
+	Limit = -1,
+	Applied = 0,
 }
 ItemBoost.__index = ItemBoost
 
@@ -49,6 +51,7 @@ local function SetVars(boost, vars)
 		if vars.SlotType ~= nil then boost.SlotType = vars.SlotType end
 		if vars.TwoHanded ~= nil then boost.TwoHanded = vars.TwoHanded end
 		if vars.WeaponType ~= nil then boost.WeaponType = vars.WeaponType end
+		if vars.Limit ~= nil then boost.Limit = vars.Limit end
 	end
 end
 
@@ -96,7 +99,7 @@ function ItemBoost:Apply(item,mod)
 				if currentValue == nil then currentValue = 0 end
 				local valMod = Ext.Random(v.Min, v.Max) * mod
 				if v.Stat == "WeaponRange" then
-					valMod = (Ext.Random(v.Min * 100, v.Max * 100) * mod) / 100
+					valMod = (Ext.Random(math.floor(v.Min * 100), math.ceil(v.Max * 100)) * mod) / 100
 				end
 				
 				local nextValue = currentValue + valMod
@@ -104,6 +107,7 @@ function ItemBoost:Apply(item,mod)
 				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 			end
 		end
+		self.Applied = self.Applied + 1
 	else
 		Ext.PrintError("[LLENEMY_ItemCorruptionBoosts.lua:ItemBoost:Apply] nil Boosts?")
 		Ext.PrintError(LeaderLib.Common.Dump(self))
@@ -148,6 +152,9 @@ end
 ---@param stat string
 ---@param statType string
 local function CanAddBoost(itemBoost,stat,statType)
+	if itemBoost.Limit > 0 and itemBoost.Applied >= itemBoost.Limit then
+		return false
+	end
 	if statType == "Weapon" then
 		if itemBoost.WeaponType ~= "" then
 			local weaponType = Ext.StatGetAttribute(stat, "WeaponType")
@@ -200,6 +207,12 @@ local function RollForBoost(itemBoost)
 	return false
 end
 
+function ItemBoostGroup:ResetApplied()
+	for i,v in pairs(self.Entries) do
+		v.Applied = 0
+	end
+end
+
 ---@param item string
 ---@param stat string
 ---@param statType string
@@ -218,6 +231,7 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 		if noRandomization == true then
 			for i,v in pairs(self.Entries) do
 				if limit > 0 and totalApplied >= limit then
+					self:ResetApplied()
 					return totalApplied
 				end
 				if CanAddBoost(v, stat, statType) then
@@ -236,6 +250,7 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 				while totalApplied < minAmount and loopLimit < 999 do
 					for i,v in pairs(self.Entries) do
 						if limit > 0 and totalApplied >= limit then
+							self:ResetApplied()
 							return totalApplied
 						end
 						if CanAddBoost(v, stat, statType) then
@@ -252,6 +267,7 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 			else
 				for i,v in pairs(self.Entries) do
 					if limit > 0 and totalApplied >= limit then
+						self:ResetApplied()
 						return totalApplied
 					end
 					if CanAddBoost(v, stat, statType) then
@@ -272,14 +288,13 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 					if v.MinLevel <= 0 and v.MaxLevel <= 0 or (level >= v.MinLevel and (level <= v.MaxLevel or v.MaxLevel <= 0)) then
 						v:Apply(item,mod)
 						totalApplied = totalApplied + 1
+						self:ResetApplied()
 						return totalApplied
 					end
 				end
 			end
 		end
-	else
-		Ext.PrintError("[EnemyUpgradeOverhaul:ItemBoostGroup:Apply] Empty Entries?")
-		Ext.PrintError(LeaderLib.Common.Dump(self))
 	end
+	self:ResetApplied()
 	return totalApplied
 end
