@@ -400,7 +400,28 @@ local function GetClone(item,stat,statType)
 	
 	SetRandomShadowName(item, statType)
 	local cloned = NRD_ItemClone()
-	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level)
+	SetTag(cloned, "LLENEMY_ShadowItem")
+
+	local minBoosts = 1
+	if Ext.IsDeveloperMode() then
+		minBoosts = 12
+	else
+		if level >= 4 then
+			minBoosts = minBoosts + 2
+		end
+		if level >= 8 then
+			minBoosts = minBoosts + 3
+		end
+		if level >= 13 then
+			minBoosts = minBoosts + 2
+		end
+		if level >= 16 then
+			minBoosts = minBoosts + 2
+		end
+	end
+
+
+	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level,minBoosts)
 	if totalBoosts > 0 then
 		--SetVarInteger(cloned, "LLENEMY_ItemCorruption_TotalBoosts", totalBoosts)
 		--Mods.LeaderLib.StartTimer("Timers_LLENEMY_AddNegativeItemBoosts", 100, cloned)

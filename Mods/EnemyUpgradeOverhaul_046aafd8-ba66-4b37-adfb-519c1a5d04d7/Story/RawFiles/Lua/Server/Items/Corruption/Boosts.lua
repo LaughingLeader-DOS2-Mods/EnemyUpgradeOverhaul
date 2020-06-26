@@ -25,8 +25,16 @@ Boosts.Weapon = {
 			},{Chance=50}),
 			Classes.ItemBoost:Create({
 				Classes.StatBoost:Create("DamageBoost",1,5),
-				Classes.StatBoost:Create("CriticalDamage",1,5),
-			},{Chance=25}),
+			},{Chance=25, MinLevel=1,MaxLevel=8}),
+			Classes.ItemBoost:Create({
+				Classes.StatBoost:Create("DamageBoost",1,10),
+			},{Chance=25, MinLevel=9,MaxLevel=-1}),
+			Classes.ItemBoost:Create({
+				Classes.StatBoost:Create("CriticalDamage",1,10),
+			},{Chance=25, MinLevel=1,MaxLevel=8}),
+			Classes.ItemBoost:Create({
+				Classes.StatBoost:Create("CriticalDamage",1,20),
+			},{Chance=25, MinLevel=9,MaxLevel=-1}),
 			Classes.ItemBoost:Create({
 				Classes.StatBoost:Create("MinDamage",1,5),
 				Classes.StatBoost:Create("MaxDamage",1,5),
@@ -100,7 +108,7 @@ Boosts.Armor = {
 				Classes.StatBoost:Create("MaxSummons",1,1),
 			},{Chance=2, SlotType="Helmet"}),
 			Classes.ItemBoost:Create({
-				Classes.StatBoost:Create("ChanceToHitBoost",1,5),
+				Classes.StatBoost:Create("ChanceToHitBoost",1,3),
 			},{Chance=3, SlotType="Helmet"}),
 			Classes.ItemBoost:Create({
 				Classes.StatBoost:Create("RuneSlots",1,1),
