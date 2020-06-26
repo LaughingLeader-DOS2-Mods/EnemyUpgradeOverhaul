@@ -23,6 +23,17 @@ Boosts.Weapon = {
 				Classes.StatBoost:Create("LifeSteal",1,5),
 				Classes.StatBoost:Create("DodgeBoost",1,5),
 			},{Chance=50}),
+			Classes.ItemBoost:Create({
+				Classes.StatBoost:Create("DamageBoost",1,5),
+				Classes.StatBoost:Create("CriticalDamage",1,5),
+			},{Chance=25}),
+			Classes.ItemBoost:Create({
+				Classes.StatBoost:Create("MinDamage",1,5),
+				Classes.StatBoost:Create("MaxDamage",1,5),
+			},{Chance=10}),
+			Classes.ItemBoost:Create({
+				Classes.StatBoost:Create("WeaponRange",0.10,1.0),
+			},{Chance=10}),
 		})
 	}
 Boosts.Shield = {
@@ -35,6 +46,10 @@ Boosts.Shield = {
 				Classes.StatBoost:Create("MagicArmorBoost",1,5),
 				Classes.StatBoost:Create("PiercingResistance",1,5),
 			},{Chance=10}),
+			Classes.ItemBoost:Create({
+				Classes.StatBoost:Create("MagicArmorValue",1,10),
+				Classes.StatBoost:Create("ArmorValue",1,10),
+			},{Chance=25}),
 		})
 }
 Boosts.Armor = {
