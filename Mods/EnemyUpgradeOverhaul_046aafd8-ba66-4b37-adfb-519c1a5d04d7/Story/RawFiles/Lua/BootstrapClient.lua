@@ -1,6 +1,7 @@
 Ext.Require("Shared/Init.lua")
 Ext.Require("Client/DescriptionParams.lua")
 Ext.Require("Client/ClientDebug.lua")
+local tooltipHandler = Ext.Require("Client/TooltipHandler.lua")
 
 local function LLENEMY_Client_ModuleLoading()
 	LLENEMY_Shared_InitModuleLoading()
@@ -14,6 +15,7 @@ local function LLENEMY_Client_SessionLoaded()
 	--ui:Show()
 	--ui:SetPosition(100, 300)
 	--Ext.Print("================Created second hotbar?!=======================")
+	tooltipHandler.Init()
 end
 
---Ext.RegisterListener("SessionLoaded", LLENEMY_Client_SessionLoaded)
+Ext.RegisterListener("SessionLoaded", LLENEMY_Client_SessionLoaded)
