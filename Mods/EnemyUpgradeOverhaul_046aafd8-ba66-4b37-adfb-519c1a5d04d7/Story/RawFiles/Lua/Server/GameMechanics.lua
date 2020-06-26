@@ -171,22 +171,32 @@ end
 
 function Duplication_CopySource(source,dupe)
 	local sourceCharacter = Ext.GetCharacter(source)
-	for i,slot in LeaderLib.Data.VisibleEquipmentSlots:Get() do
-		local item = CharacterGetEquippedItem(source, slot)
-		if item ~= nil then
-			NRD_ItemCloneBegin(item)
-			local clone = NRD_ItemClone()
-			CharacterEquipItem(dupe, clone)
-		end
-	end
-	local level = CharacterGetLevel(source)
-	CharacterLevelUpTo(dupe, level)
-	Duplication_CopySourceStat(source, dupe, "LLENEMY_ApplyStats")
+	-- for i,slot in LeaderLib.Data.VisibleEquipmentSlots:Get() do
+	-- 	local item = CharacterGetEquippedItem(source, slot)
+	-- 	if item ~= nil then
+	-- 		NRD_ItemCloneBegin(item)
+	-- 		local clone = NRD_ItemClone()
+	-- 		CharacterEquipItem(dupe, clone)
+	-- 	end
+	-- end
+	SetVarFixedString(dupe, "LLENEMY_Dupe_Stats", sourceCharacter.Stats.Name)
+	LeaderLib.PrintDebug("[LLENEMY_GameMechanics.lua:Duplication_CopySourceStat] Copying stat " .. tostring(sourceCharacter.Stats.Name) .." to dupe ("..dupe..").")
+	SetStoryEvent(dupe, "LLENEMY_ApplyStats")
 	Duplication_CopyName(source, dupe)
 	Duplication_CopyCP(source, dupe)
 	ClearGain(dupe)
 	NRD_CharacterIterateSkills(source, "LLENEMY_Dupe_CopySkill")
 	Osi.LLENEMY_Duplication_Internal_SetupDupe_StageTwo(source, dupe)
+
+	-- ---@type EsvCharacter
+	-- local sourceChar = Ext.GetCharacter(source)
+	-- local dupeChar = Ext.GetCharacter(dupe)
+	
+	-- print("Dupe level Source:",source, CharacterGetLevel(source), sourceChar.Stats.Level, sourceChar.Stats.Name, "Dupe:", dupe, CharacterGetLevel(dupe), dupeChar.Stats.Level, dupeChar.Stats.Name)
+
+	for i,tag in pairs(sourceCharacter:GetTags()) do
+		SetTag(dupe, tag)
+	end
 end
 
 function Duplication_CopyCP(source,dupe)
@@ -200,8 +210,6 @@ function Duplication_CopySourceStat(source,dupe,applyevent)
 	SetVarFixedString(dupe, "LLENEMY_Dupe_Stats", sourceCharStat)
 	LeaderLib.PrintDebug("[LLENEMY_GameMechanics.lua:Duplication_CopySourceStat] Copying stat " .. tostring(sourceCharStat) .." to dupe ("..dupe..").")
 	SetStoryEvent(dupe, applyevent)
-	NRD_CharacterSetPermanentBoostInt(dupe, "Gain", 0)
-	CharacterAddAttribute(dupe, "Dummy", 0)
 end
 
 function Duplication_CopyName(source,dupe)
