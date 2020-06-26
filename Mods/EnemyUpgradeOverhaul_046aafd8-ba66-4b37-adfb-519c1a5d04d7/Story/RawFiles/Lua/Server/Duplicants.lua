@@ -9,8 +9,8 @@ function Duplication_CopySource(source,dupe)
 	-- 		CharacterEquipItem(dupe, clone)
 	-- 	end
 	-- end
-	Duplication_CopySourceStats(source, dupe, sourceCharacter.Stats.Name)
-	Osi.LeaderLib_Helper_CopyTalents(dupe, source)
+	pcall(Duplication_CopyTalents, source, dupe)
+	pcall(Duplication_CopySourceStats, source, dupe, sourceCharacter.Stats.Name)
 	Duplication_CopyName(source, dupe)
 	Duplication_CopyCP(source, dupe)
 	ClearGain(dupe)
@@ -42,12 +42,12 @@ local CopyBoosts = {
 	"WaterResistance",
 	"AirResistance",
 	"PoisonResistance",
-	"ShadowResistance",
+	--"ShadowResistance",
 	"PiercingResistance",
 	"PhysicalResistance",
-	"CorrosiveResistance",
-	"MagicResistance",
-	"CustomResistance",
+	--"CorrosiveResistance",
+	--"MagicResistance",
+	--"CustomResistance",
 	"MaxResistance",
 	"Sight",
 	"Hearing",
@@ -57,7 +57,7 @@ local CopyBoosts = {
 	"CriticalChance",
 	"Initiative",
 	"Vitality",
-	"VitalityBoost",
+	--"VitalityBoost",
 	"MagicPoints",
 	"Armor",
 	"MagicArmor",
@@ -69,14 +69,14 @@ local CopyBoosts = {
 	"DamageBoostGrowthPerLevel",
 	"Accuracy",
 	"Dodge",
-	"LifeSteal",
+	--"LifeSteal",
 	"Weight",
-	"ChanceToHitBoost",
-	"RangeBoost",
-	"APCostBoost",
-	"SPCostBoost",
+	--"ChanceToHitBoost",
+	--"RangeBoost",
+	--"APCostBoost",
+	--"SPCostBoost",
 	"MaxSummons",
-	"BonusWeaponDamageMultiplier",
+	--"BonusWeaponDamageMultiplier",
 }
 
 function Duplication_CopySourceStats(source,dupe,baseStat)
@@ -84,29 +84,44 @@ function Duplication_CopySourceStats(source,dupe,baseStat)
 	-- SetVarFixedString(dupe, "LLENEMY_Dupe_Stats", sourceCharStat)
 	-- LeaderLib.PrintDebug("[LLENEMY_GameMechanics.lua:Duplication_CopySourceStat] Copying stat " .. tostring(sourceCharStat) .." to dupe ("..dupe..").")
 	-- SetStoryEvent(dupe, "LLENEMY_ApplyStats")
+	local dupeBaseStat = Ext.GetCharacter(dupe).Stats.Name
 	for i,boost in ipairs(CopyBoosts) do
+		print(boost)
 		local baseSource = Ext.StatGetAttribute(baseStat, boost)
-		if baseSource ~= nil then
-			local baseDupe = NRD_CharacterGetPermanentBoostInt(dupe, boost)
+		local baseDupe = Ext.StatGetAttribute(dupeBaseStat, boost)
+		--local baseDupe = NRD_CharacterGetPermanentBoostInt(dupe, boost)
+		if baseSource ~= nil and baseDupe ~= nil then
 			if baseDupe < baseSource then
 				local next = baseSource - baseDupe
 				NRD_CharacterSetPermanentBoostInt(dupe, boost, next)
-				print("Set", boost, "to", next, "for", dupe)
+				print("Set", boost, "to", next, "for", dupe, "from", baseDupe)
 			end
 		end
 	end
 	for i,stat in LeaderLib.Data.Attribute:Get() do
 		local baseSource = CharacterGetBaseAttribute(source, stat)
 		local baseDupe = CharacterGetBaseAttribute(dupe, stat)
-		if baseDupe < baseSource then
-			CharacterAddAttribute(dupe, stat, baseSource - baseDupe)
+		if baseDupe ~= nil and baseSource ~= nil and baseDupe < baseSource then
+			local next = baseSource - baseDupe
+			CharacterAddAttribute(dupe, stat, next)
+			print("Set", stat, "to", next, "for", dupe, "from", baseDupe)
 		end
 	end
 	for i,stat in LeaderLib.Data.Ability:Get() do
 		local baseSource = CharacterGetBaseAbility(source, stat)
 		local baseDupe = CharacterGetBaseAbility(dupe, stat)
-		if baseDupe < baseSource then
-			CharacterAddAbility(dupe, stat, baseSource - baseDupe)
+		if baseDupe ~= nil and baseSource ~= nil and baseDupe < baseSource then
+			local next = baseSource - baseDupe
+			CharacterAddAbility(dupe, stat, next)
+			print("Set", stat, "to", next, "for", dupe, "from", baseDupe)
+		end
+	end
+end
+
+function Duplication_CopyTalents(source,dupe)
+	for i,talent in LeaderLib.Data.Talents:Get() do
+		if CharacterHasTalent(source,talent) == 1 then
+			NRD_CharacterSetPermanentBoostTalent(dupe, talent, 1)
 		end
 	end
 end
