@@ -171,7 +171,7 @@ end
 
 function Duplication_CopySource(source,dupe)
 	local sourceCharacter = Ext.GetCharacter(source)
-	for i,slot in pairs(LeaderLib.Data.VisibleEquipmentSlots) do
+	for i,slot in LeaderLib.Data.VisibleEquipmentSlots:Get() do
 		local item = CharacterGetEquippedItem(source, slot)
 		if item ~= nil then
 			NRD_ItemCloneBegin(item)
@@ -272,7 +272,7 @@ local loneWolfAbilities = {
 }
 
 function ApplyLoneWolfBonuses(uuid)
-	for _,stat in pairs(LeaderLib.Data.Attribute) do
+	for _,stat in LeaderLib.Data.Attribute:Get() do
 		local baseVal = CharacterGetBaseAttribute(uuid, stat)
 		local currentVal = CharacterGetAttribute(uuid, stat)
 		if currentVal < Ext.ExtraData.AttributeSoftCap then
