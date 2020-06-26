@@ -45,7 +45,7 @@ LLENEMY_Upgrades_AddStatus("Duplication", "Normal", "LLENEMY_DUPE_NORMAL_WEAK", 
 //END_REGION
 
 //REGION SAVE_FIX
-// Duplicants revert to level 1 for some reason, upon loading a save
+// Transformed characters revert to level 1 for some reason, upon loading a save
 /*
 IF
 GameStarted(_Region,_)
@@ -55,9 +55,18 @@ AND
 ObjectExists(_Dupe, 1)
 AND
 CharacterGetLevel(_Source, _Level)
+AND
+GetUUID(_Dupe, _UUID)
 THEN
 CharacterLevelUpTo(_Dupe, _Level);
-LLENEMY_Duplication_CopyStat(_Source, _Dupe, "LLENEMY_ApplyStats");
+NRD_ModCall("EnemyUpgradeOverhaul", "ClearGain", _UUID);
+
+IF
+StoryEvent((CHARACTERGUID)_Dupe, "LLENEMY_ApplyStats_Done")
+AND
+GetUUID(_Dupe, _UUID)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "ClearGain", _UUID);
 */
 //END_REGION
 
@@ -110,12 +119,12 @@ PROC
 LLENEMY_Duplication_CreateDuplicant((CHARACTERGUID)_Source, (STRING)_Stats, (INTEGER)_CopyAttributes, (INTEGER)_CopyAbilities, (INTEGER)_CP)
 AND
 GetPosition(_Source, _x, _y, _z)
-//AND
-//GetTemplate(_Source, _Template)
+//AND GetTemplate(_Source, _Template)
 AND
 //"LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0"
 //CharacterCreateOutOfSightToObject(_Template, _Source, _Source, 0, "", _Dupe)
 CharacterCreateAtPosition(_x, _y, _z, "LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", 0, _Dupe)
+//CharacterCreateAtPosition(_x, _y, _z, _Template, 0, _Dupe)
 THEN
 SetVarInteger(_Dupe, "LLENEMY_ChallengePoints", _CP);
 // [BEGIN_NO_OSITOOLS]
@@ -141,7 +150,7 @@ SetOnStage(_Dupe, 0);
 CharacterSetDetached(_Dupe, 1);
 SetVarObject(_Dupe, "LLENEMY_Duplicant_Owner", _Source);
 ApplyStatus(_Dupe, "LLENEMY_DUPLICANT", -1.0, 0, _Source);
-CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 1, 1, 1, 1, 0);
+//CharacterTransformFromCharacter(_Dupe, _Source, 1, 1, 1, 1, 1, 1, 0);
 CharacterTransformAppearanceTo(_Dupe, _Source, 1, 1);
 SetFaction(_Dupe, _Faction);
 //ChangeAttitude(_Source, _Dupe, 200);
