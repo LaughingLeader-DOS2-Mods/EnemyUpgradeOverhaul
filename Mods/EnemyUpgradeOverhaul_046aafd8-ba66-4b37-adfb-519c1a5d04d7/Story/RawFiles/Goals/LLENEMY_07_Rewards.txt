@@ -607,6 +607,15 @@ LLENEMY_ShadowCorruptItem(_Item);
 */
 //END_REGION
 
+//REGION SHADOW_ITEM_CRAFTING_BLOCKING
+PROC
+ProcBlockCombineItem((CHARACTERGUID)_Char, (ITEMGUID)_Item)
+AND
+IsTagged(_Item, "LLENEMY_ShadowItem", 1)
+THEN
+DB_CustomCombineItemResponse(_Char,_Item,0);
+LeaderLog_LogTarget("NOTIFICATION", _Char, "LLENEMY_Notification_ShadowItem_NoCrafting");
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION

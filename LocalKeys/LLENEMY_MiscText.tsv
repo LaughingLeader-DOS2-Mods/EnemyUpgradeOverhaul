@@ -12,3 +12,4 @@ LLENEMY_StatusText_AtusaBossActivated	<font color='#FF3737' size='26'>*Atusa's c
 LLENEMY_StatusText_SeekerDiscoveredTarget	<font color='#FF3737' size='26'>*Revealed!*</font>
 LLENEMY_ShadowDuplicationName	<font color='#BF5FFF'>[1] (Shadow)</font>
 LLENEMY_DisplayText_TreasureGoblins_TurnsLeft	<font color='#FF3333' size='23'>[1] Turn(s) Left</font>
+LLENEMY_Notification_ShadowItem_NoCrafting	<font color='#BF5FFF' size='23'>*The otherwordly properties of this item prevent tampering.*</font>
