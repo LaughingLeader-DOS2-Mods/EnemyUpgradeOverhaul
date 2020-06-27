@@ -235,10 +235,25 @@ local function LLENEMY_DebugInit()
 	GetSourceDegredation(300000, 50)
 end
 
-local function ItemCorruptionTest(command)
+local function ItemCorruptionTest(command,level)
 	local host = CharacterGetHostCharacter()
 	local x,y,z = GetPosition(host)
-	--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
+	if level ~= nil then
+		level = math.tointeger(tonumber(level))
+	else
+		level = CharacterGetLevel(host)
+	end
+	local backpack = CreateItemTemplateAtPosition("LOOT_LeaderLib_BackPack_Invisible_98fa7688-0810-4113-ba94-9a8c8463f830", x, y, z)
+	GenerateTreasure(backpack, "LLENEMY_ShadowOrbRewards", level, host)
+	ShadowCorruptContainerItems(backpack)
+	MoveAllItemsTo(backpack, host, 0, 0, 1)
+	ItemRemove(backpack)
+end
+
+local function ItemCorruptionTest_FixedItems(command)
+	local host = CharacterGetHostCharacter()
+	local x,y,z = GetPosition(host)
+		--Osi.Proc_StartDialog(1, "CMB_AD_Comment_EvilLaugh", host)
 	-- local level = GetRegion(host)
 	-- if level == "TUT_Tutorial_A" then
 	-- 	debugCheckEnemies[#debugCheckEnemies+1] = "S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902"
