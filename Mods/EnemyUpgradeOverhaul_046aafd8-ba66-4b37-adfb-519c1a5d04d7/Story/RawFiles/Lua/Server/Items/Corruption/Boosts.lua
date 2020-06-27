@@ -36,14 +36,14 @@ Boosts.Weapon = {
 		},{Chance=25, MinLevel=9,MaxLevel=-1}),
 		Classes.ItemBoost:Create({
 			Classes.StatBoost:Create("CriticalDamage",1,10),
-		},{Chance=25, MinLevel=1,MaxLevel=8}),
+		},{Chance=25, MinLevel=1,MaxLevel=8, Limit=5}),
 		Classes.ItemBoost:Create({
 			Classes.StatBoost:Create("CriticalDamage",1,20),
-		},{Chance=25, MinLevel=9,MaxLevel=-1}),
+		},{Chance=25, MinLevel=9,MaxLevel=-1, Limit=5}),
 		Classes.ItemBoost:Create({
 			Classes.StatBoost:Create("MinDamage",1,5),
 			Classes.StatBoost:Create("MaxDamage",1,5),
-		},{Chance=10}),
+		},{Chance=10, Limit=5}),
 		Classes.ItemBoost:Create({
 			Classes.StatBoost:Create("WeaponRange",0.10,1.0),
 		},{Chance=10, Limit=1}),
