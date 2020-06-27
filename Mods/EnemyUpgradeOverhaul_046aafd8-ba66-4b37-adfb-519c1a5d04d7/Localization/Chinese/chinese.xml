@@ -58,7 +58,9 @@
 	<content contentuid="h1c2d5b0eg1592g498aga1dfg0c9d7fe116dc">Source-Hungry Voidwoken Nightmare</content>
 	<content contentuid="h1c81c46bg9330g4d43gba21g6b72b951b3fd">Talent: Sadist</content>
 	<content contentuid="h1d2be7b0gea03g4bfagbeaag02c29c65b877">Summons your glorious chicken armada to the battlefield. Bwak!</content>
+	<content contentuid="h1d44d1a4g804bg43fbg80dfgd3e3d07a897d">&lt;font color=&apos;#A020F0&apos;&gt;[1] of Shadows&lt;/font&gt;</content>
 	<content contentuid="h1dec449dgfec9g48eaga922gbbf72721497e">Shadow Duplicant</content>
+	<content contentuid="h217cada5gbab0g4023gb7f9g836986336689">&lt;font color=&apos;#A020F0&apos;&gt;[1] of Corruption&lt;/font&gt;</content>
 	<content contentuid="h233bf83cg2204g4f14gb46agad27f95deb43">[1][2][3]</content>
 	<content contentuid="h235cb048g7496g49acg9f6fg141610416505">Shadow Reflection</content>
 	<content contentuid="h2441b06cgd5a3g4039gb307g3c83762790c4">Skilled: Sourcery</content>
@@ -223,6 +225,7 @@
 	<content contentuid="h9624e77bg9496g4560ga804gbdf88861ba35">Source-Hungry Abyssal Void Flayer</content>
 	<content contentuid="h9713cc3dgea3ag4bf4gacb1g1428f7baa338">Dominator of the Void</content>
 	<content contentuid="h9729fa03g8b20g4eccgbde7gc08c1d8d8e73">A sack of loot that was previously carried by a Treasure Goblin.</content>
+	<content contentuid="h976f2a7cg5cc7g4172g8b51gd655b93c4889">Character has an elite set of new bonus skills, and a mastery of sourcery.</content>
 	<content contentuid="h9978b702g8683g49bbga061g0c806d92f829">Enable Duplication Upgrades. This is a chance for clones of enemies to appear in battle. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
 	<content contentuid="h99aba0bag7acbg4deagb9f3g0c52b807ce09">&lt;font color=&apos;#FF00CC&apos; size=&apos;18&apos;&gt;Insane Loot&lt;/font&gt;</content>
 	<content contentuid="h9a2a7390gc764g4fa0g8e97gf73ffac2a93c">Talent: Soulcatcher</content>
@@ -309,6 +312,7 @@
 	<content contentuid="hdee6d2a6gee37g4892g84e8g83a79ebfd9ed">Elite Cascader</content>
 	<content contentuid="hdf051e8cg6151g4f9dgab2bg2f6207ba84a3">Source-Hungry Voidwoken Troll</content>
 	<content contentuid="hdf0ea9a2g01cbg481dg8107g6ee870f53548">Talent: Unstable</content>
+	<content contentuid="hdf603fa9g2647g40efgb979gdf9aaaffc414">Elite Sourcery</content>
 	<content contentuid="hdfeb0377gbab4g4fc6ga428g98aa0a12eb88">Rage (II)</content>
 	<content contentuid="he10bc4ddge536g4696gb6f1g34a29479255c">Source-Hungry Voidwoken Salamander</content>
 	<content contentuid="he15a3e15g141dg45e5g96edg8148c2106792">[GLOBAL] Disable Hard Mode (Default - Disabled) (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
