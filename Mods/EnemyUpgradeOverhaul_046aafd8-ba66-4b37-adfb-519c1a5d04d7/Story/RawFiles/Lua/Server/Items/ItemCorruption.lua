@@ -362,11 +362,11 @@ local function GetClone(item,stat,statType)
 	if stat == nil or stat == "" then
 		stat = baseStat
 	end
-	if seed ~= nil and seed > 0 then
-		NRD_ItemCloneSetInt("GenerationRandom", seed)
-	else
-		NRD_ItemCloneSetInt("GenerationRandom", Ext.Random(1,9999999))
-	end
+	-- if seed ~= nil and seed > 0 then
+	-- 	NRD_ItemCloneSetInt("GenerationRandom", seed)
+	-- else
+	-- 	NRD_ItemCloneSetInt("GenerationRandom", Ext.Random(1,9999999))
+	-- end
 
 	if statType == "Weapon" then
 		-- Damage type fix
@@ -380,7 +380,7 @@ local function GetClone(item,stat,statType)
 
 	NRD_ItemCloneSetString("GenerationStatsId", stat)
 	NRD_ItemCloneSetString("StatsEntryName", stat)
-	NRD_ItemCloneSetInt("HasGeneratedStats", 1)
+	NRD_ItemCloneSetInt("HasGeneratedStats", 0)
 	NRD_ItemCloneSetInt("GenerationLevel", level)
 	NRD_ItemCloneSetInt("StatsLevel", level)
 	NRD_ItemCloneSetInt("IsIdentified", 1)

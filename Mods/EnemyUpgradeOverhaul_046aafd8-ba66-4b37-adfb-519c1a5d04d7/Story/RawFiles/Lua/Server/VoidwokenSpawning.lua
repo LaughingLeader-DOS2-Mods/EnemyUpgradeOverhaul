@@ -258,9 +258,9 @@ end
 
 local magicPointsVoidwokenChances = {
 	[0] = 0,
-	[1] = 10,
-	[2] = 25,
-	[3] = 35,
+	[1] = 5,
+	[2] = 15,
+	[3] = 30,
 	[4] = 65,
 	[5] = 75,
 	[6] = 85,
@@ -285,7 +285,27 @@ local function GetVoidwokenSpawnChanceRollThreshold(points, totalPointsUsed)
 	end
 end
 
+if IgnoredSourceSkills == nil then
+	IgnoredSourceSkills = {}
+end
+
+IgnoredSourceSkills["Target_Bless"] = {
+	CombatOnly = true
+}
+
+IgnoredSourceSkills["Target_Curse"] = {
+	CombatOnly = true
+}
+
 local function TrySummonVoidwoken(char, skill, skilltype, skillelement)
+	if IgnoredSourceSkills[skill] ~= nil then
+		local ignoreData = IgnoredSourceSkills[skill]
+		if ignoreData == true then
+			return false
+		elseif CharacterIsInCombat(char) == 0 and type(ignoreData) == "table" and ignoreData.CombatOnly == true then
+			return false
+		end
+	end
 	local magicCost = Ext.StatGetAttribute(skill, "Magic Cost")
 	if magicCost > 0 then
 		Osi.LLENEMY_HardMode_TrackTotalSourceUsed(magicCost)
