@@ -219,6 +219,18 @@ function ItemBoostGroup:ResetApplied()
 	end
 end
 
+function ItemBoostGroup:GetRandomEntries(totalEntries)
+	local ranEntries = {}
+	local shuffled = LeaderLib.Common.ShuffleTable(self.Entries)
+	local total = 0
+	while total < totalEntries do
+		local entry = LeaderLib.Common.GetRandomTableEntry(shuffled)
+		table.insert(ranEntries, entry)
+		total = total + 1
+	end
+	return ranEntries
+end
+
 ---@param item string
 ---@param stat string
 ---@param statType string
@@ -254,7 +266,8 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 			if minAmount > 0 then
 				local loopLimit = 0
 				while totalApplied < minAmount and loopLimit < 999 do
-					for i,v in pairs(self.Entries) do
+					local shuffled = LeaderLib.Common.ShuffleTable(self.Entries)
+					for i,v in pairs(shuffled) do
 						if limit > 0 and totalApplied >= limit then
 							self:ResetApplied()
 							return totalApplied

@@ -7,9 +7,6 @@ local TranslatedString = LeaderLib.Classes["TranslatedString"]
 local ItemBoost = LeaderLib.Classes["ItemBoost"]
 local ItemBoostGroup = LeaderLib.Classes["ItemBoostGroup"]
 
-local ShadowItemFallbackDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
-local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083gb11964394dc4", ShadowItemFallbackDescription)
-
 if ItemCorruption == nil then
 	ItemCorruption = {}
 end
@@ -170,7 +167,7 @@ end
 local function AddBoost(item,stat,min,max,negative)
 	local currentValue = NRD_ItemGetPermanentBoostInt(item, stat)
 	local valMod = 0
-	Ext.Print("Adding boost:",stat,min,max,negative)
+	print("Adding boost:",stat,min,max,negative)
 	if not negative then
 		valMod = Ext.Random(min, max)
 	else
@@ -204,9 +201,16 @@ local function AddRandomNegativeBoost_Old(item,stat,statType,level)
 	return false
 end
 
-local function AddRandomNegativeBoost(item,stat,statType,level)
+local function AddRandomNegativeBoosts(item,stat,statType,level,total)
 	if level == nil or level <= 0 then level = 1 end
-	CorruptionBoosts.Resistances:Apply(item,stat,statType,level,-1,false,Ext.Random(1,2))
+	local ranNegativeBoosts = CorruptionBoosts.Resistances:GetRandomEntries(2)
+	local i = 0
+	while i < total do
+		---@type ItemBoost
+		local boost = LeaderLib.Common.GetRandomTableEntry(ranNegativeBoosts)
+		boost:Apply(item, -1)
+		i = i + 1
+	end
 end
 
 local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,isClone)
@@ -308,7 +312,7 @@ end
 ItemCorruption.AddRandomBoosts = AddRandomBoosts
 
 local function SetRandomShadowName(item,statType)
-	if statType == "Weapon" then
+	if statType == "Weapon" or statType == "Shield" then
 		local name = LeaderLib.Common.GetRandomTableEntry(ShadowItemNames)
 		local color = LeaderLib.Common.GetRandomTableEntry(ShadowNameColors)
 		name = string.format("<font color='%s'>%s</font>", color, name)
@@ -316,19 +320,19 @@ local function SetRandomShadowName(item,statType)
 		if Ext.IsDeveloperMode() then
 			LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
 		end
-		NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription.Value)
+		--NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription.Value)
 	else
 		-- Wrap original names in a purple color
-		local handle,templateName = ItemTemplateGetDisplayString(GetTemplate(item))
-		LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] ("..item..") handle("..handle..") templateName("..templateName..")")
-		local originalName = Ext.GetTranslatedString(handle, templateName)
-		if originalName ~= NRD_ItemGetStatsId(item) and originalName ~= GetStatString(item) then
-			-- Name isn't a stat entry name.
-			local color = LeaderLib.Common.GetRandomTableEntry(ShadowNameColors)
-			local name = string.format("<font color='%s'>%s</font>", color, originalName)
-			NRD_ItemCloneSetString("CustomDisplayName", name)
-			LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
-		end
+		-- local handle,templateName = ItemTemplateGetDisplayString(GetTemplate(item))
+		-- LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] ("..item..") handle("..handle..") templateName("..templateName..")")
+		-- local originalName = Ext.GetTranslatedString(handle, templateName)
+		-- if originalName ~= NRD_ItemGetStatsId(item) and originalName ~= GetStatString(item) then
+		-- 	-- Name isn't a stat entry name.
+		-- 	local color = LeaderLib.Common.GetRandomTableEntry(ShadowNameColors)
+		-- 	local name = string.format("<font color='%s'>%s</font>", color, originalName)
+		-- 	NRD_ItemCloneSetString("CustomDisplayName", name)
+		-- 	LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
+		-- end
 	end
 end
 
@@ -343,6 +347,33 @@ local rarityValue = {
 	Divine = 5,
 	Unique = 6
 }
+
+local function AddRandomBoostsToItem(item,stat,statType,level,cloned)
+	local minBoosts = 1
+	if Ext.IsDeveloperMode() then
+		minBoosts = 12
+	else
+		if level >= 4 then
+			minBoosts = minBoosts + Ext.Random(0,2)
+		end
+		if level >= 8 then
+			minBoosts = minBoosts + Ext.Random(0,3)
+		end
+		if level >= 13 then
+			minBoosts = minBoosts + Ext.Random(0,2)
+		end
+		if level >= 16 then
+			minBoosts = minBoosts + Ext.Random(0,2)
+		end
+	end
+
+	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level,minBoosts)
+	if totalBoosts > 0 then
+		--SetVarInteger(cloned, "LLENEMY_ItemCorruption_TotalBoosts", totalBoosts)
+		--Mods.LeaderLib.StartTimer("Timers_LLENEMY_AddNegativeItemBoosts", 100, cloned)
+		AddRandomNegativeBoosts(cloned, stat, statType, level, math.max(2,math.ceil(totalBoosts/2)))
+	end
+end
 
 local function GetClone(item,stat,statType)
 	local baseStat,rarity,level,seed = NRD_ItemGetGenerationParams(item)
@@ -380,12 +411,12 @@ local function GetClone(item,stat,statType)
 
 	NRD_ItemCloneSetString("GenerationStatsId", stat)
 	NRD_ItemCloneSetString("StatsEntryName", stat)
-	NRD_ItemCloneSetInt("HasGeneratedStats", 0)
+	NRD_ItemCloneSetInt("HasGeneratedStats", 1)
 	NRD_ItemCloneSetInt("GenerationLevel", level)
 	NRD_ItemCloneSetInt("StatsLevel", level)
 	NRD_ItemCloneSetInt("IsIdentified", 1)
 	--NRD_ItemCloneSetInt("GMFolding", 0)
-	if rarity == nil or (rarityValue[rarity] < rarityValue["Epic"] and Ext.Random(1,100) >= 75) then
+	if rarity == nil or (rarityValue[rarity] < rarityValue["Epic"] and Ext.Random(0,100) <= 25) then
 		rarity = "Epic"
 	end
 	NRD_ItemCloneSetString("ItemType", rarity)
@@ -396,38 +427,14 @@ local function GetClone(item,stat,statType)
 		value = math.floor(math.max(1, value * 0.40))
 		NRD_ItemCloneSetInt("GoldValueOverwrite", value)
 	end
-
 	
 	SetRandomShadowName(item, statType)
 	local cloned = NRD_ItemClone()
 	SetTag(cloned, "LLENEMY_ShadowItem")
 
-	local minBoosts = 1
-	if Ext.IsDeveloperMode() then
-		minBoosts = 12
-	else
-		if level >= 4 then
-			minBoosts = minBoosts + Ext.Random(0,2)
-		end
-		if level >= 8 then
-			minBoosts = minBoosts + Ext.Random(0,3)
-		end
-		if level >= 13 then
-			minBoosts = minBoosts + Ext.Random(0,2)
-		end
-		if level >= 16 then
-			minBoosts = minBoosts + Ext.Random(0,2)
-		end
-	end
+	NRD_ItemIterateDeltaModifiers(cloned, "Iterator_LeaderLib_Debug_PrintDeltamods")
+	AddRandomBoostsToItem(item, stat, statType, level, cloned)
 
-	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level,minBoosts)
-	if totalBoosts > 0 then
-		--SetVarInteger(cloned, "LLENEMY_ItemCorruption_TotalBoosts", totalBoosts)
-		--Mods.LeaderLib.StartTimer("Timers_LLENEMY_AddNegativeItemBoosts", 100, cloned)
-		for k=0,math.max(2,math.ceil(totalBoosts/2)),1 do
-			AddRandomNegativeBoost(cloned, stat, statType, level)
-		end
-	end
 	return cloned
 end
 
