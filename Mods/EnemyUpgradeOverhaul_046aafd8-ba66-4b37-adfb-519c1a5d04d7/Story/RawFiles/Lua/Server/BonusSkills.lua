@@ -129,10 +129,14 @@ end
 
 -- Retroactively remove blacklisted skills if they were modified
 LeaderLib.RegisterListener("Initialized", function()
-	for _,skillgroup in pairs(EnemySkills) do
-		for i,skill in pairs(skillgroup.Skills) do
-			if IgnoreSkill(skill) then
-				table.remove(skillgroup.Skills, i)
+	if EnemySkills ~= nil and #EnemySkills > 0 then
+		for _,skillgroup in pairs(EnemySkills) do
+			if skillgroup.Entries ~= nil then
+				for i,skill in pairs(skillgroup.Entries) do
+					if IgnoreSkill(skill) then
+						table.remove(skillgroup.Entries, i)
+					end
+				end
 			end
 		end
 	end
