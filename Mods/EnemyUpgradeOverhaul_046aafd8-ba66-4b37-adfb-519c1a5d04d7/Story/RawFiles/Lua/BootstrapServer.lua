@@ -29,6 +29,11 @@ local function LLENEMY_Server_SessionLoaded()
 		-- This is a skill that applies DOS1's Oath of Desecration potion for +40% damage
 		IgnoredSkills["Target_EnemyTargetedDamageBoost"] = true
 	end
+	-- Divinity Conflux by Xorn
+	if Ext.IsModLoaded("723ad06b-0241-4a2e-a9f3-4d2b419e0fe3") then
+		-- Super damage
+		IgnoredSkills["ProjectileStrike_Enemy_Xorn_Comdor_Smash"] = true
+	end
 	bonusSkillsScript.Init()
 end
 Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
