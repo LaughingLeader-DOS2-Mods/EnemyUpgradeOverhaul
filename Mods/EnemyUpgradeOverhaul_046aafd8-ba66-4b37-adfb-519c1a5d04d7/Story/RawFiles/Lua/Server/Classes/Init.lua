@@ -3,3 +3,4 @@ if Classes == nil then
 end
 
 Ext.Require("Server/Classes/ItemBoosts.lua")
+Ext.Require("Server/Classes/BonusSkillClasses.lua")

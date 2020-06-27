@@ -2,8 +2,15 @@ LeaderLib = Mods["LeaderLib"]
 GameHelpers = LeaderLib.GameHelpers
 Common = LeaderLib.Common
 
+---@type table<string, boolean>
 IgnoredSkills = {}
+---@type string[]
 IgnoredWords = {}
+--- Skills ignored from the Voidwoken spawning system.
+---@type table<string, boolean>
+IgnoredSourceSkills = {}
+--- Enemy skills used when granting enemies bonus skills.
+---@type SkillGroup[]
 EnemySkills = {}
 StatusDescriptionParams = {}
 SINGLEPLAYER = false

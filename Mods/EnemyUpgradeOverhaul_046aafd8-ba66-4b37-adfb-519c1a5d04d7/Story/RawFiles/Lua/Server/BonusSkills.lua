@@ -1,227 +1,7 @@
 local ATTEMPTS_MAX = 40
 
-local ignored_skills = {
-	Target_BanishSummon = true,
-	Target_EnemyBanishSummon = true,
-	Cone_Enemy_WaterSpit_Troll = true,
-	Cone_EnemyCorrosiveSpray_Beetle = true,
-	Cone_EnemyDragonBreath = true,
-	Cone_EnemyDragonBreath_Air = true,
-	Cone_EnemyDragonBreath_Ice = true,
-	Cone_EnemyFlamebreath_Salamander = true,
-	Cone_EnemyGroundSmash_Dragon = true,
-	Cone_EnemyGroundSmash_Statue = true,
-	Cone_EnemyGroundSmash_Troll = true,
-	Cone_EnemySilencingStare_Bat = true,
-	Cone_EnemySilencingStare_LowVolume = true,
-	Cone_EnemySilencingStare_Wolf = true,
-	Jump_DragonDive = true,
-	Jump_EnemyBeetleJump = true,
-	Jump_EnemyCurseDive = true,
-	Jump_EnemyCurseDive_Braccus = true,
-	Jump_EnemyCurseDive_Kraken = true,
-	Jump_EnemyPhoenixDive_Shambling = true,
-	Jump_EnemyPhoenixDive_Shambling_Boss = true,
-	Jump_EnemySpiderBurrow = true,
-	Jump_EnemyTacticalRetreat_Frog = true,
-	Jump_EnemyTacticalRetreat_Mordus = true,
-	Jump_EnemyVoidGlide = true,
-	Jump_LLWEAPONEX_EnemyChaosDive = true,
-	MultiStrike_EnemyVault_ArenaChampion = true,
-	Projectile_ChainHeal_Horrorsleep = true,
-	Projectile_ChainHeal_Horrorsleep = true,
-	Projectile_DragonFlight = true,
-	Projectile_DragonFlight_Newt = true,
-	Projectile_EnemyBeetleDart = true,
-	Projectile_EnemyBeetleDart_Poison = true,
-	Projectile_EnemyBloodSpit = true,
-	Projectile_EnemyBloodSpit_Explo = true,
-	Projectile_EnemyBloodSpit_Heart = true,
-	Projectile_EnemyChainHeal_Mothertree = true,
-	Projectile_EnemyChainLightning_Lucian = true,
-	Projectile_EnemyDragon_Air = true,
-	Projectile_EnemyDustBlast_Scarecrow = true,
-	Projectile_EnemyEarthShard_Knockdown = true,
-	Projectile_EnemyEarthShard_Scarecrow = true,
-	Projectile_EnemyEarthShard_Scarecrow_Single = true,
-	Projectile_EnemyFireball_Cursed_Insect = true,
-	Projectile_EnemyFireball_Witch = true,
-	Projectile_EnemyFlare_Beetle = true,
-	Projectile_EnemyFlight_Ooze = true,
-	Projectile_EnemyFlight_Ooze_Fire = true,
-	Projectile_EnemyFlight_Ooze_Poison = true,
-	Projectile_EnemyFlight_Wolf = true,
-	Projectile_EnemyFrog_Air = true,
-	Projectile_EnemyFrogPoisonBall = true,
-	Projectile_EnemyInfectiousBlood_Bat = true,
-	Projectile_EnemyLaunchPoisonSlug = true,
-	Projectile_EnemyLightningBolt_Frog = true,
-	Projectile_EnemyMadnessSquall_Explosion  = true,
-	Projectile_EnemyMessengerOwl = true,
-	Projectile_EnemyOilSpit = true,
-	Projectile_EnemyPoisonball_Acid = true,
-	Projectile_EnemyPoisonball_Troll = true,
-	Projectile_EnemyTotemAir = true,
-	Projectile_EnemyTotemBlood = true,
-	Projectile_EnemyTotemBone = true,
-	Projectile_EnemyTotemFire = true,
-	Projectile_EnemyTotemOil = true,
-	Projectile_EnemyTotemPoison = true,
-	Projectile_EnemyTotemWater = true,
-	Projectile_EnemyTotemWood = true,
-	Projectile_EnemyTurtleBubbles = true,
-	Projectile_EnemyVWPoisonBall = true,
-	Projectile_LaunchPoisonSlug = true,
-	Projectile_TotemKillingSpell = true,
-	Projectile_TurretBallistaShot_LadyVengeance = true,
-	ProjectileStrike_EnemyMeteorShower_CombatMeteorScript = true,
-	ProjectileStrike_EnemyMeteorShower_Windego = true,
-	ProjectileStrike_EnemyShatteredStone = true, -- Stupid damage,
-	Quake_EnemyEarthquake_Bear = true,
-	Rain_EnemyBlood_Windego = true,
-	Rain_EnemyRain_Short = true,
-	Rain_EnemyWater_Blessed = true,
-	Rush_EnemyBatteringRam_Demons = true,
-	Rush_EnemyTurtleBatteringRam = true,
-	Rush_LLWEAPONEX_EnemyChaosCharge = true,
-	Shout_ChainPull = true,
-	Shout_EnemyBoneCage_Dog = true,
-	Shout_EnemyCauseMadness = true,
-	Shout_EnemyChameleonSkin_PurgedDaughter = true,
-	Shout_EnemyContamination_Shambling = true,
-	Shout_EnemyDragonWhirlwind = true,
-	Shout_EnemyFear = true,
-	Shout_EnemyFear_Scarecrow = true,
-	Shout_EnemyFear_Wolf = true,
-	Shout_EnemyIgnition_Troll = true,
-	Shout_EnemyInspire = true,
-	Shout_EnemyMassShacklesOfPain = true,
-	Shout_EnemyVileBurst = true, -- Kills the caster. Bad!,
-	Storm_EnemyLightning_MotherTree = true,
-	Summon_EnemyBoneTroll = true,
-	Summon_EnemyBoneTroll_Dog = true,
-	Summon_EnemyBoneTroll_Mini = true,
-	Summon_EnemyDemon_Doctor = true,
-	Summon_EnemyDog_Doctor = true,
-	Summon_EnemyHeart_Doctor = true,
-	Summon_EnemyShamblingMound_Caster = true,
-	Summon_EnemyShamblingMound_Melee = true,
-	Summon_EnemyShamblingMound_Ranger = true,
-	Summon_EnemySkeleton_Archer = true,
-	Summon_EnemySkeleton_Archer_Dog = true,
-	Summon_EnemySkeleton_Regular = true,
-	Summon_EnemySkeleton_Strong = true,
-	Summon_EnemySkeleton_Weak = true,
-	Summon_EnemyTotem_Blood = true,
-	Summon_EnemyTotem_Fire_Witch = true,
-	Summon_EnemyTotem_Poison = true,
-	Summon_EnemyTotemFromSurface = false,
-	Summon_EnemyZombie_Blood = true,
-	Target_Debug_KillCommand = true,
-	Target_EnemyBless_Alexandar = true,
-	Target_EnemyBless_Lucian = true,
-	Target_EnemyBloatedCorpse_Dog = true,
-	Target_EnemyBloodBubble_Heart = true,
-	Target_EnemyCleanseWounds_Troll = true,
-	Target_EnemyCorpseExplosion_Bat = true,
-	Target_EnemyCorpseExplosion_Heart = true,
-	Target_EnemyCorrosiveTouch_Dog = true,
-	Target_EnemyCorrosiveTouch_Heart = true,
-	Target_EnemyCorruptedBlade_Gheist = true,
-	Target_EnemyCripplingBlow_Shambling = true,
-	Target_EnemyCripplingBlow_Shambling_Boss = true,
-	Target_EnemyCripplingBlow_Wolf = true,
-	Target_EnemyCurse_Werewolf = true,
-	Target_EnemyCurse_Witch = true,
-	Target_EnemyDeathWish_Dog = true,
-	Target_EnemyDecayingTouch_Heart = true,
-	Target_EnemyDeepDwellerShacklesOfPain = true,
-	Target_EnemyDemonicConsume = true,
-	Target_EnemyDemonicMadness = true,
-	Target_EnemyDemonicMadness_Heart = true,
-	Target_EnemyDemonicMadness_Heart = true,
-	Target_EnemyEnrage_Wolf = true,
-	Target_EnemyFortify_Shambling = true,
-	Target_EnemyGagOrder_Gheist = true,
-	Target_EnemyHaste_Wolf = true,
-	Target_EnemyMosquitoSwarm_Special = true,
-	Target_EnemyOverpower_Shambling = true,
-	Target_EnemyOverpower_Werewolf = true,
-	Target_EnemyRestoration_Horrorsleep = true,
-	Target_EnemyShacklesOfPain_LowVolume = true,
-	Target_EnemyTargetedFireSurface_Lucian = true,
-	Target_EnemyTerrify_Dragon = true,
-	Target_EnemyTerrifyingCruelty_Gheist = true,
-	Target_EnemyVacuum_SilentMonk = true,
-	Target_EnemyVacuumTouch_Heart = true,
-	Target_EnemyWormTremor_MotherTree = true,
-	Target_NULLSKILL = true,
-	Teleportation_EnemyFeatherFallSelf_Lucian = true,
-	Teleportation_EnemyFeatherFallSelf_SkeletonMage = true,
-	Teleportation_EnemyFreeFall_Werewolf = true,
-	Teleportation_EnemyInsectBurrow = true,
-	Teleportation_EnemyMagisterTorturerTeleport = true,
-	Teleportation_EnemyNetherswap_Heart	 = true,
-	Target_EnemyResurrect = true,
-	Target_EnemyMassResurrect = true, -- Clay Embrace
-	Target_EnemyResurrect_Alan = true,
-	Target_EnemyResurrect_Alexandar = true,
-	Teleportation_EnemyResurrect_Alan = true,
-	Teleportation_EnemyResurrect_Alexandar = true,
-	Teleportation_EnemyResurrect_Chicken = true,
-	Teleportation_EnemyResurrect_Shambling = true,
-	Teleportation_EnemyResurrect_Werewolf = true,
-	--Teleportation_ResurrectScroll = true,
-	--Teleportation_StoryModeFreeResurrect = true,
-	-- Summoning Rework
-	Summon_EnemySoulWolf = true,
-	Summon_EnemyBear = true,
-	Summon_EnemyCrawlingTrunk_Melee = true,
-	Summon_EnemyBoneTroll_BoneWalker = true,
-	Summon_EnemyBoneHand__BoneWalker = true,
-	-- Base skills are granted by statuses
-	Projectile_EnemyFlight = true,
-	Projectile_EnemySpinWeb = true,
-	Projectile_EnemyInsectSpinWeb = true,
-}
-
-local ignored_skillwords = {
-	"_Adrama",
-	"_Alan",
-	"_Item_",
-	"_Kraken_",
-	"_LeaderLib_",
-	"_LLMIME_",
-	"_Newt",
-	"_Ooze",
-	"_Puppet",
-	"_Status_",
-	"Arrow",
-	"Burrow",
-	"CakeBomber",
-	"Debug",
-	"Drillworm",
-	"Dummy",
-	"EnemyStaffOfMagus",
-	"Explosion",
-	"Flight",
-	"Hound",
-	"Invulnerability",
-	"LLENEMY",
-	"Molespitter",
-	"Projectile_Grenade_",
-	"Projectile_Incarnate",
-	"QUEST",
-	"Quest",
-	"SilentMonk",
-	"SourceVampirism",
-	"Suicide",
-	"Talent",
-	"TEST",
-	"Trap",
-	"Turret",
-	"Resurrect",
-}
+local ignored_skills = Ext.Require("Server/BonusSkills/IgnoredSkills.lua")
+local ignored_skillwords = Ext.Require("Server/BonusSkills/IgnoredSkillWords.lua")
 
 local ignored_parents = {
 	Target_SourceVampirism = true
@@ -231,122 +11,25 @@ local redirected_skills = {
 	Rain_Oil = "Rain_LLENEMY_EnemyOil"
 }
 
+-- Has a mod already added to IgnoredSkills?
+if IgnoredSkills ~= nil then
+	for skill,b in pairs(IgnoredSkills) do
+		ignored_skills[skill] = b
+	end
+end
 IgnoredSkills = ignored_skills
+
+if IgnoredWords ~= nil then
+	for i,word in pairs(IgnoredWords) do
+		table.insert(ignored_skillwords, word)
+	end
+end
 IgnoredWords = ignored_skillwords
 
----@class SkillEntry
-local SkillEntry = {
-	id = "",
-	requirement = "None",
-	sp = 0,
-	tier = "None"
-}
-
-SkillEntry.__index = SkillEntry
-
-function SkillEntry:Create(id, requirement, sp, tier)
-    local this =
-    {
-		id = id,
-		requirement = requirement,
-		sp = sp,
-		tier = tier
-	}
-	setmetatable(this, self)
-    return this
-end
-
-function SkillEntry:WithinLevelRange(level)
-	local tier = self.tier
-	if tier == "Starter" or tier == "" or tier == "None" then
-		return true
-	elseif tier == "Novice" and level >= 4 then
-		return true
-	elseif tier == "Adept" and level >= 9 then
-		return true
-	elseif tier == "Master" and level >= 16 then
-		return true
-	end
-	return false
-end
-
-local function IgnoreSkillRequirement(requirement)
-	if type(requirement) == "string" then
-		if requirement == "" or requirement == "None" then
-			return true
-		end
-	elseif type(requirement) == "table" then
-		for _,v in pairs(requirement) do
-			if v == "" or v == "None" or v == nil then
-				return true
-			end
-		end
-	end
-	return requirement == nil
-end
-
----@class SkillGroup
-local SkillGroup = {
-	id = "None",
-	ability = "None",
-	skills = {}
-}
-
-SkillGroup.__index = SkillGroup
-
-function SkillGroup:Create(abilityname, skillability)
-    local this =
-    {
-		id = abilityname,
-		ability = skillability,
-		skills = {}
-	}
-	setmetatable(this, self)
-    return this
-end
-
----@param skill SkillEntry
----@return SkillGroup
-function SkillGroup:Add(skill)
-	self.skills[#self.skills+1] = skill
-	return self
-end
-
----Get a random skill from a SkillGroup, matching the preferred requirement.
----@param requirement string
----@return SkillEntry
-function SkillGroup:GetRandomSkill(enemy, requirement, level, sourceAllowed)
-	local available_skills = {}
-	
-	for _,skill in pairs(self.skills) do
-		if CharacterHasSkill(enemy, skill.id) ~= 1 and skill:WithinLevelRange(level) then
-			if IgnoreSkillRequirement(requirement) or IgnoreSkillRequirement(skill.requirement) then
-				if (skill.sp == 0 or sourceAllowed > 0) then 
-					available_skills[#available_skills+1] = skill
-				end
-			else
-				if type(requirement) == "string" then
-					if requirement == skill.requirement then
-						if (skill.sp == 0 or sourceAllowed > 0) then 
-							available_skills[#available_skills+1] = skill
-						end
-					end
-				elseif type(requirement) == "table" then
-					for _,v in pairs(requirement) do
-						if v == skill.requirement then
-							if (skill.sp == 0 or sourceAllowed > 0) then 
-								available_skills[#available_skills+1] = skill
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-	--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- Getting random skill from table count (".. tostring(#available_skills) ..") self.skills("..tostring(#self.skills)..") self.id("..tostring(#self.id)..").")
-	--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua:GetRandomSkill] ---- ("..tostring(LeaderLib.Common.Dump(available_skills))..").")
-	return LeaderLib.Common.GetRandomTableEntry(available_skills)
-end
+---@type SkillEntry
+local SkillEntry = Classes.SkillEntry
+---@type SkillGroup
+local SkillGroup = Classes.SkillGroup
 
 ---@param ability string
 ---@return SkillGroup
@@ -358,8 +41,8 @@ local function GetSkillGroup(self, ability)
 end
 
 local function IgnoreSkill(skill)
-	if ignored_skills[skill] == false then return false end
-	if ignored_skills[skill] == true then return true end
+	if IgnoredSkills[skill] == false then return false end
+	if IgnoredSkills[skill] == true then return true end
 	if string.sub(skill,1,1) == "_" then
 		return true
 	end
@@ -443,6 +126,17 @@ local function BuildEnemySkills()
 		end
 	end
 end
+
+-- Retroactively remove blacklisted skills if they were modified
+LeaderLib.RegisterListener("Initialized", function()
+	for _,skillgroup in pairs(EnemySkills) do
+		for i,skill in pairs(skillgroup.Skills) do
+			if IgnoreSkill(skill) then
+				table.remove(skillgroup.Skills, i)
+			end
+		end
+	end
+end)
 
 local function GetHighestAbility(enemy)
 	local last_highest_ability = "None"
