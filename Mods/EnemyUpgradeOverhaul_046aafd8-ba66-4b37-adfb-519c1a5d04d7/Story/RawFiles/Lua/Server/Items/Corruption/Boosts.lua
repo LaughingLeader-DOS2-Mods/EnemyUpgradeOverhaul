@@ -17,8 +17,13 @@ Boosts.Weapon = {
 	Classes.ItemBoostGroup:Create("WeaponMain", {
 		Classes.ItemBoost:Create({
 			Classes.StatBoost:Create("DamageFromBase",1,5),
-			Classes.StatBoost:Create("CriticalChance",1,5),
 		},{Chance=50}),
+		Classes.ItemBoost:Create({
+			Classes.StatBoost:Create("CriticalChance",1,5),
+		},{Chance=25, BlockWeaponTypes={Knife = true}}),
+		Classes.ItemBoost:Create({
+			Classes.StatBoost:Create("CriticalDamage",1,10),
+		},{Chance=15, WeaponType="Knife"}),
 		Classes.ItemBoost:Create({
 			Classes.StatBoost:Create("LifeSteal",1,5),
 			Classes.StatBoost:Create("DodgeBoost",1,5),

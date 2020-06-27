@@ -30,6 +30,9 @@ local ItemBoost = {
 	StatType = "",
 	SlotType = "",
 	WeaponType = "",
+	--- Weapon types to ignore for this boost
+	---@type table<string,bool>
+	BlockWeaponTypes = {},
 	TwoHanded = nil,
 	Boosts = {},
 	MinLevel = -1,
@@ -51,6 +54,7 @@ local function SetVars(boost, vars)
 		if vars.SlotType ~= nil then boost.SlotType = vars.SlotType end
 		if vars.TwoHanded ~= nil then boost.TwoHanded = vars.TwoHanded end
 		if vars.WeaponType ~= nil then boost.WeaponType = vars.WeaponType end
+		if vars.BlockWeaponTypes ~= nil then boost.BlockWeaponTypes = vars.BlockWeaponTypes end
 		if vars.Limit ~= nil then boost.Limit = vars.Limit end
 	end
 end
@@ -97,7 +101,7 @@ function ItemBoost:Apply(item,mod)
 			else
 				local currentValue = NRD_ItemGetPermanentBoostInt(item, v.Stat)
 				if currentValue == nil then currentValue = 0 end
-				local valMod = Ext.Random(v.Min, v.Max) * mod
+				local valMod = Ext.Random(math.floor(v.Min), math.max(v.Max)) * mod
 				if v.Stat == "WeaponRange" then
 					valMod = (Ext.Random(math.floor(v.Min * 100), math.ceil(v.Max * 100)) * mod) / 100
 				end
@@ -156,8 +160,8 @@ local function CanAddBoost(itemBoost,stat,statType)
 		return false
 	end
 	if statType == "Weapon" then
+		local weaponType = Ext.StatGetAttribute(stat, "WeaponType")
 		if itemBoost.WeaponType ~= "" then
-			local weaponType = Ext.StatGetAttribute(stat, "WeaponType")
 			if weaponType == itemBoost.WeaponType then
 				if itemBoost.TwoHanded ~= nil then
 					local isTwoHanded = Ext.StatGetAttribute(stat, "IsTwoHanded")
@@ -172,6 +176,8 @@ local function CanAddBoost(itemBoost,stat,statType)
 			else
 				return false
 			end
+		elseif itemBoost.BlockWeaponTypes ~= nil and itemBoost.BlockWeaponTypes[weaponType] == true then
+			return false
 		elseif itemBoost.TwoHanded ~= nil then
 			local isTwoHanded = Ext.StatGetAttribute(stat, "IsTwoHanded")
 			if isTwoHanded == "Yes" and itemBoost.TwoHanded == true then
