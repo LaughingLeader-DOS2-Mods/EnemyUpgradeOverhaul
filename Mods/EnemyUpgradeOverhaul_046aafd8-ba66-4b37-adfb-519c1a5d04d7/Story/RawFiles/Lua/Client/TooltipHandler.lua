@@ -5,12 +5,24 @@ local maxSummonsText = TranslatedString:Create("hd248998fge250g4a7bg8dd3gc88f19f
 local ShadowItemFallbackDescription = "A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>"
 local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083gb11964394dc4", ShadowItemFallbackDescription)
 local ShadowItemNameAffix = TranslatedString:Create("h1d44d1a4g804bg43fbg80dfgd3e3d07a897d", "<font color='#A020F0'>[1] of Shadows</font>")
+local ShadowItemRarity = TranslatedString:Create("habff2fe9g031cg4c7cg85feg28a1fa25fb14", "<font color='[1]'>Shadow Treasure</font>")
+
+local rarityColor = {
+	Common = "#BDA0CB",
+	Uncommon = "#BF3EFF",
+	Rare = "#A020F0",
+	Epic = "#8A2BE2",
+	Legendary = "#7F00FF",
+	Divine = "#AA00FF",
+	Unique = "#BF5FFF"
+}
 
 ---@param item EsvItem
 ---@param tooltip TooltipData
 local function OnItemTooltip(item, tooltip)
 	if item ~= nil then
 		if item:HasTag("LLENEMY_ShadowItem") then
+			print(item.ItemType, item.Stats.ItemType, item.Stats.ItemTypeReal)
 			local maxSummons = item.Stats.MaxSummons
 			for i,stat in pairs(item.Stats.DynamicStats) do
 				if stat ~= nil then
@@ -26,10 +38,22 @@ local function OnItemTooltip(item, tooltip)
 				}
 				tooltip:AppendElement(element)
 			end
-			local element = tooltip:GetElement("ItemDescription")
+			local element = tooltip:GetElement("ItemRarity")
+			if element ~= nil then
+				if element ~= nil then
+					local rarity = item.Stats.ItemTypeReal
+					if rarity == nil then
+						rarity = "Epic"
+					end
+					local color = rarityColor[rarity]
+					--element.Label = ShadowItemRarity.Value:gsub("%[1%]", element.Label)
+					element.Label = ShadowItemRarity.Value:gsub("%[1%]", color)
+				end
+			end
+			element = tooltip:GetElement("ItemDescription")
 			if element ~= nil then
 				if not LeaderLib.StringHelpers.IsNullOrEmpty(element.Label) then
-					element.Label = element.Label .. "<br>" .. ShadowItemDescription.Value
+					element.Label = element.Label .. "<br><br>" .. ShadowItemDescription.Value
 				else
 					element.Label = ShadowItemDescription.Value
 				end

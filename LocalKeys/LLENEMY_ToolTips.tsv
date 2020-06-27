@@ -13,4 +13,6 @@ LLENEMY_ToolTip_ChallengeLoot05	<font color='#FF00CC' size='18'>Insane Loot</fon
 LLENEMY_ToolTip_ShadowItemDescriptionA	A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>	h179efab0g7e6cg441ag8083gb11964394dc4
 LLENEMY_ToolTip_ShadowItemAffix1	<font color='#A020F0'>[1] of Shadows</font>	h1d44d1a4g804bg43fbg80dfgd3e3d07a897d
 LLENEMY_ToolTip_ShadowItemAffix2	<font color='#A020F0'>[1] of Corruption</font>	h217cada5gbab0g4023gb7f9g836986336689
+LLENEMY_ToolTip_ShadowItemRarity	<font color='[1]'>Shadow Treasure</font>	habff2fe9g031cg4c7cg85feg28a1fa25fb14
+LLENEMY_ToolTip_ShadowItemRarityWrapper	<font color='#A020F0'>[1] Shadow</font>	h41fe75a6gc090g4186g816egea95152a2d47
 LLENEMY_ToolTip_Param_CounterChance	<font color='#D416FF'>[1]%</font>	hd54110f8gbc6bg418dg8191g84eb716cbd54
