@@ -2,7 +2,7 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 // [BEGIN_NO_OSITOOLS]
-LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 2,0,0,32);
+LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 2,0,0,33);
 LeaderUpdater_Register_ActiveGoal("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_ZZZ_Updater");
 LeaderLib_Register_ModMenu("EnemyUpgradeOverhaul.Settings", "[Enemy Upgrade Overhaul] Settings", "LLENEMY_Settings", "EnemyUpgradeOverhaul", "LaughingLeader");
 // [END_NO_OSITOOLS]
@@ -17,7 +17,7 @@ AND
 NOT DB_LLENEMY_Updater_RegisteredNonExtender(_)
 THEN
 DB_LLENEMY_Updater_RegisteredNonExtender(1);
-LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 2,0,0,32);
+LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 2,0,0,33);
 LeaderUpdater_Register_ActiveGoal("EnemyUpgradeOverhaul", "LaughingLeader", "LLENEMY_ZZZ_Updater");
 LeaderLib_Register_ModMenu("EnemyUpgradeOverhaul.Settings", "[Enemy Upgrade Overhaul] Settings", "LLENEMY_Settings", "EnemyUpgradeOverhaul", "LaughingLeader");
 
@@ -26,9 +26,9 @@ GameStarted(_Level, _)
 AND
 IsGameLevel(_Level, 1)
 AND
-LeaderUpdater_QRY_ModUpdateNeeded("EnemyUpgradeOverhaul", "LaughingLeader", 2,0,0,32)
+LeaderUpdater_QRY_ModUpdateNeeded("EnemyUpgradeOverhaul", "LaughingLeader", 2,0,0,33)
 THEN
-LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 2,0,0,32);
+LeaderUpdater_Register_Mod("EnemyUpgradeOverhaul", "LaughingLeader", 2,0,0,33);
 // [END_NO_OSITOOLS]
 
 PROC
