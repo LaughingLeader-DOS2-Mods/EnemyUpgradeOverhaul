@@ -68,8 +68,19 @@ local function OnItemTooltip(item, tooltip)
 	end
 end
 
+---@param character EsvCharacter
+---@param status EsvStatus
+---@param tooltip TooltipData
+local function OnStatusTooltip(character, status, tooltip)
+	print(status)
+	print(LeaderLib.Common.Dump(tooltip.Data))
+end
+
 local function Init()
 	Game.Tooltip.RegisterListener("Item", nil, OnItemTooltip)
+	if Ext.IsDeveloperMode() then
+		Game.Tooltip.RegisterListener("Status", nil, OnStatusTooltip)
+	end
 end
 return {
 	Init = Init

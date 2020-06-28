@@ -56,8 +56,7 @@ local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 			i = i + 1
 		end
 		--LeaderLib.PrintDebug("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Upgrade info for (" .. uuid .. ") is nil or empty ("..LeaderLib.Common.Dump(data)..")")
-		-- LeaderLib.PrintDebug("Upgrade info:")
-		-- LeaderLib.PrintDebug(output)
+		--LeaderLib.PrintDebug("Upgrade info (".. tostring(uuid)..") = ("..output..")")
 		return output
 	end
 	return ""
