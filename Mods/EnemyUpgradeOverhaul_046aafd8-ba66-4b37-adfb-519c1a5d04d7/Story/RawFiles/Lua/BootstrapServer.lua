@@ -29,6 +29,11 @@ local function LLENEMY_Server_SessionLoaded()
 		-- This is a skill that applies DOS1's Oath of Desecration potion for +40% damage
 		IgnoredSkills["Target_EnemyTargetedDamageBoost"] = true
 	end
+	-- Odinblade's Aerotheurge Class Overhaul
+	if Ext.IsModLoaded("961ae59d-2964-46dd-9762-073697915dc2") then
+		-- Pretty brutal apparently
+		IgnoredSkills["Target_OdinAERO_Enemy_InsulationShield"] = true
+	end
 	-- Divinity Conflux by Xorn
 	if Ext.IsModLoaded("723ad06b-0241-4a2e-a9f3-4d2b419e0fe3") then
 		-- Super damage
