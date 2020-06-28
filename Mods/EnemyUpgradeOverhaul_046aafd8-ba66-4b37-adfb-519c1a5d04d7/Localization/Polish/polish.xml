@@ -3,6 +3,7 @@
 	<content contentuid="h00b9a551g2b32g43d4g8c3fg450945250ef0">Armor Boost</content>
 	<content contentuid="h02023d82gc736g447fgaea3g327be0956688">&lt;font color=&apos;#BF5FFF&apos;&gt;[1] (Shadow)&lt;/font&gt;</content>
 	<content contentuid="h02eee7f9g3786g4f33gad32gf34e10349c42">Upgrading world...</content>
+	<content contentuid="h0301fb1cg95a6g47e5gade7g8ccfc0ffef2f">&lt;font color=&apos;[1]&apos;&gt;[2]&lt;/font&gt;</content>
 	<content contentuid="h034ae0a4g858eg4d30g82dege3c983c8b18a">&lt;font color=&apos;#BBFF00&apos; size=&apos;23&apos;&gt;*[1] beings gained a new level of power...*&lt;/font&gt;</content>
 	<content contentuid="h03823bf7g9de8g48eag9e05g44ffcddb1a73">Today, we&apos;ll be playing Easy Mode.</content>
 	<content contentuid="h044ae60egd895g431fga21dgffdf784593c7">Power Boost</content>
@@ -99,6 +100,7 @@
 	<content contentuid="h3e93fbd4g6fe8g4f0bgae12g32a833f98bc0">Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
 	<content contentuid="h3f78a207gadfdg4801gb063g787c9f108845">When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.</content>
 	<content contentuid="h4075ecfag0da0g4c26gb858g06626a165ed9">[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;) (Default - Disabled)</content>
+	<content contentuid="h41fe75a6gc090g4186g816egea95152a2d47">&lt;font color=&apos;#A020F0&apos;&gt;[1] Shadow&lt;/font&gt;</content>
 	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38">Seeker (Disabled)</content>
 	<content contentuid="h4229d882g7235g4cf5gafe6g3ef702647b81">Game Settings</content>
 	<content contentuid="h43542436ge2dcg49f8g9233g292e2f887bf6">Enable Talent Upgrades. Includes talent types Normal, Elite, and Weapon. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
@@ -252,6 +254,7 @@
 	<content contentuid="ha963a343g4464g4bb3ga553g95a99a0d4cf7">Source-Hungry Vampiric Voidwoken</content>
 	<content contentuid="ha9dfee58ge73fg47e4gb9f7g1ff2ced6635e">Vitality Boost</content>
 	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8">Talent: Natural Conductor</content>
+	<content contentuid="habff2fe9g031cg4c7cg85feg28a1fa25fb14">&lt;font color=&apos;[1]&apos;&gt;Shadow Treasure&lt;/font&gt;</content>
 	<content contentuid="hac3946feg2bc8g4337gbcb7ge3980e905f1b">Talent: Assassin</content>
 	<content contentuid="had606e03g6713g4064g84c0gf28395d81019">Elite Infernoblazer</content>
 	<content contentuid="hae2a4999g9dd6g464bgacc8gf2899d818c05">Chicken Firestarter</content>
