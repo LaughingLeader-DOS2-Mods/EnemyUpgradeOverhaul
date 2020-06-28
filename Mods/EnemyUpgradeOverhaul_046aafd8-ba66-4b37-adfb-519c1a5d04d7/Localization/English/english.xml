@@ -125,6 +125,7 @@
 	<content contentuid="h5461b448g15ceg403dg8076ge4a9b00e6675">Character&apos;s attacks never miss but they cannot deal critical strikes.</content>
 	<content contentuid="h54e0b91cg48a7g4d5agaedcgbde756a109ea">([1]% Chance)</content>
 	<content contentuid="h55545e7ag3290g4520g9adfg6dcd737ca8c4">Source-Hungry Voidwoken Fire Beetle</content>
+	<content contentuid="h56071a05g1af6g4a52gaefagd001861c2c1e">Empowered by Madness</content>
 	<content contentuid="h570287eeg1beeg45efgb7b0g4eb6f2a1f501">Source-Hungry Abyssal Void Devourer</content>
 	<content contentuid="h57740f6ag6754g45bbg8310g304b3f91ab87">Infernoblazer</content>
 	<content contentuid="h57ae12ebg419eg4f53g8780g350576cd63c9">Source-Hungry Voidwoken Hound</content>
@@ -138,6 +139,7 @@
 	<content contentuid="h5bf7f290gc323g4ad5g97ffgdcc13b20fb5c">Demonic Celerity</content>
 	<content contentuid="h5c8f2c50g5a43g4a6agac29ge06c1f5ad378">Elite Melter</content>
 	<content contentuid="h5c8f7ecbg1aecg45f9g8be1gde4a3e95d448">Seeker</content>
+	<content contentuid="h5ca4298dgb15dg4b4cgb7ceg13938b2d93ba">Character is empowered by madness.&lt;br&gt;&lt;font color=&apos;#BB00FF&apos;&gt;When their turn ends, otherwordly tentacles lash out upon, dealing [1] in a [2]m radius.&lt;/font&gt;</content>
 	<content contentuid="h5cee1628g461bg4ac8ga1e9ga90077d376e4">Shadoweaver</content>
 	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6">Upgrade Group Settings</content>
 	<content contentuid="h5ec49a5ag418ag4d15ga917g2a406406060f">Reflect 20% of melee damage as shadow damage</content>
