@@ -361,6 +361,8 @@ function LLENEMY_Debug_SpawnTreasureGoblinTest()
 	end
 end
 
+Ext.RegisterConsoleCommand("goblintest", LLENEMY_Debug_SpawnTreasureGoblinTest)
+
 local function LLENEMY_SessionLoading()
 	Ext.Print("[LLENEMY:Debug.lua] Registered debug init call to LeaderLib.")
 	LeaderLib.AddDebugInitCall(LLENEMY_DebugInit)
