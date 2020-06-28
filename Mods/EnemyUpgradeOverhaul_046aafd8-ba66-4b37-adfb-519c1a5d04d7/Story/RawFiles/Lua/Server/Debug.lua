@@ -418,6 +418,10 @@ if Ext.IsDeveloperMode() then
 		Osi.DB_LLENEMY_Rewards_Temp_TreasureToGenerate(host, "LLENEMY_ShadowOrbRewards")
 		Osi.LLENEMY_Rewards_SpawnShadowOrb(host)
 	end)
+	Ext.RegisterConsoleCommand("refreshupgradeinfo", function(command)
+		UpgradeInfo_SetHighestPartyLoremaster()
+		UpgradeInfo_RefreshInfoStatuses()
+	end)
 end
 
 local ItemProperties = {

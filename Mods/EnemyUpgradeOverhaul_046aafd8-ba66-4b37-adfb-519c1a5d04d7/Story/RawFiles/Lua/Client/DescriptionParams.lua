@@ -26,7 +26,6 @@ local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 			local infoText = UpgradeInfo_GetText(status)
 			if infoText ~= nil then
 				local color = infoText.Color
-				Ext.Print("Highest Loremaster:" .. tostring(HighestLoremaster))
 				if HighestLoremaster > 0 then
 					---@type TranslatedString
 					local translatedString = infoText.Name
@@ -57,7 +56,8 @@ local function StatDescription_UpgradeInfo(status, target, param, statusSource)
 			i = i + 1
 		end
 		--LeaderLib.PrintDebug("[EnemyUpgradeOverhaul:LLENEMY_DescriptionParams.lua] Upgrade info for (" .. uuid .. ") is nil or empty ("..LeaderLib.Common.Dump(data)..")")
-		--LeaderLib.PrintDebug("Upgrade info (".. tostring(uuid)..") = ("..output..")")
+		-- LeaderLib.PrintDebug("Upgrade info:")
+		-- LeaderLib.PrintDebug(output)
 		return output
 	end
 	return ""
