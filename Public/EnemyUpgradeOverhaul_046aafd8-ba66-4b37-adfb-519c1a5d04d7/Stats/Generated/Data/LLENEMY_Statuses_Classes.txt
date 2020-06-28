@@ -22,7 +22,7 @@ using "_LLENEMY_HIDDEN_CONSUME_BASE"
 data "ForGameMaster" "Yes"
 data "StatsId" "Stats_LLENEMY_Class_HydroShock"
 data "StackId" "Stack_LLENEMY_Class_HydroShock"
-data "Skills" "Rain_EnemyWater;Target_EnemyVaporize;Projectile_EnemyLightningBolt;Shout_EnemyJellyfishSkin"
+data "Skills" "Rain_EnemyWater;Target_EnemyVaporize;Projectile_EnemyLightningBolt"
 
 new entry "Stats_LLENEMY_Class_HydroShock"
 type "Potion"
