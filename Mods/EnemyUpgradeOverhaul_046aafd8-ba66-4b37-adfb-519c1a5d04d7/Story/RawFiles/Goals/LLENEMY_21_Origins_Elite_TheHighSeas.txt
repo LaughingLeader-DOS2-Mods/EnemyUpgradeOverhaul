@@ -14,9 +14,9 @@ LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_LV_SecretCabin_Gheist_02_fb0cbb
 PROC
 LLENEMY_Elites_RegisterExtenderUpgrades("LV_HoE_Main")
 THEN
-LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-8263-87afe1a8d9b5, "LLENEMY_BONUSSKILLS_SET_ELITE");
-LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-8263-87afe1a8d9b5, "LLENEMY_BONUSSKILLS_SOURCE");
-LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, "LLENEMY_BONUSSKILLS_SOURCE");
+LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-8263-87afe1a8d9b5, "Buffs", "Normal");
+LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-8263-87afe1a8d9b5, "Buffs", "Normal");
+LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_GLO_Dallis_69b951dc-55a4-44b8-a2d5-5efedbd7d572, "Buffs", "Normal");
 LLENEMY_Elites_AddGuaranteedUpgrade("LV_HoE_Main", S_LV_SecretCabin_Gheist_02_fb0cbbf3-0dbf-4d3d-b7d3-60e723701a49, "LLENEMY_TALENT_COUNTER");
 
 PROC
@@ -35,6 +35,31 @@ LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_GLO_Braccus_358ba541-0710-43be-
 // Tarquin | Tags: BADASSCIVILIAN
 LLENEMY_Elites_AddUpgradeChance("LV_HoE_Main", S_GLO_Tarquin_a3d0cdcc-d0b0-464d-9ad7-43b38baed620);
 //END_REGION
+
+//REGION BLOCK_BONUS_SKILLS
+/* Dallis and the Cloaked Figure can get weird if they get additional skills here, so we'll block it. */
+
+// Dallis
+PROC
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
+AND
+GetUUID(_Enemy, "69b951dc-55a4-44b8-a2d5-5efedbd7d572")
+AND
+DB_CurrentLevel("LV_HoE_Main")
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
+
+// Cloaked Figure
+PROC
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
+AND
+GetUUID(_Enemy, "358ba541-0710-43be-8263-87afe1a8d9b5")
+AND
+DB_CurrentLevel("LV_HoE_Main")
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
+//END_REGION
+
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_20_Origins__Start"
