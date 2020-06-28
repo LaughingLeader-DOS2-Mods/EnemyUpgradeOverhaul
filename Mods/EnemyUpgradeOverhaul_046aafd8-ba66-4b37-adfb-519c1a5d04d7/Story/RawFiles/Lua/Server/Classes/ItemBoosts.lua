@@ -2,7 +2,8 @@
 local StatBoost = {
 	Stat = "",
 	Min = 1,
-	Max = 1
+	Max = 1,
+	Type = "StatBoost"
 }
 StatBoost.__index = StatBoost
 
@@ -15,7 +16,8 @@ function StatBoost:Create(stat,min,max)
     {
 		Stat = stat,
 		Min = min,
-		Max = max
+		Max = max,
+		Type = "StatBoost"
 	}
 	setmetatable(this, self)
     return this
@@ -23,6 +25,31 @@ end
 
 ---@type StatBoost
 Classes.StatBoost = StatBoost
+
+---@class TagBoost
+local TagBoost = {
+	Tag = "",
+	ScriptFlag = "",
+	Type = "TagBoost"
+}
+TagBoost.__index = TagBoost
+
+---@param tag string
+---@param flag string
+---@return TagBoost
+function TagBoost:Create(tag,flag)
+    local this =
+    {
+		Tag = tag,
+		ScriptFlag = flag,
+		Type = "TagBoost"
+	}
+	setmetatable(this, self)
+    return this
+end
+
+---@type TagBoost
+Classes.TagBoost = TagBoost
 
 ---A boost to be used with NRD_ItemSetPermanentBoost.
 ---@class ItemBoost
@@ -34,6 +61,7 @@ local ItemBoost = {
 	---@type table<string,bool>
 	BlockWeaponTypes = {},
 	TwoHanded = nil,
+	---@type StatBoost|TagBoost[]
 	Boosts = {},
 	MinLevel = -1,
 	MaxLevel = -1,
@@ -59,13 +87,13 @@ local function SetVars(boost, vars)
 	end
 end
 
----@param statBoosts table
+---@param statBoosts StatBoost|TagBoost[]
 ---@param vars table
 ---@return ItemBoost
-function ItemBoost:Create(statBoosts, vars)
+function ItemBoost:Create(boosts, vars)
     local this =
     {
-		Boosts = statBoosts,
+		Boosts = boosts,
 		MinLevel = -1,
 		MaxLevel = -1,
 		Chance = 100
@@ -83,32 +111,37 @@ function ItemBoost:Apply(item,mod)
 	if mod == nil or mod == 0 then mod = 1 end
 	if self.Boosts ~= nil and #self.Boosts > 0 then
 		for i,v in pairs(self.Boosts) do
-			--Ext.Print(LeaderLib.Common.Dump(v))
-			if v.Stat == "Skills" then
-				local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
-				local nextValue = ""
-				if currentValue == nil or currentValue == "" then
-					nextValue = v.Min
+			if v.Type == "StatBoost" then
+				--Ext.Print(LeaderLib.Common.Dump(v))
+				if v.Stat == "Skills" then
+					local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
+					local nextValue = ""
+					if currentValue == nil or currentValue == "" then
+						nextValue = v.Min
+					else
+						nextValue = currentValue .. ";" .. v.Min
+					end
+					NRD_ItemSetPermanentBoostString(item, v.Stat, nextValue)
+					LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
+				elseif v.Stat == "ItemColor" then
+					local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
+					NRD_ItemSetPermanentBoostString(item, v.Stat, v.Min)
+					LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(v.Min)..")")
 				else
-					nextValue = currentValue .. ";" .. v.Min
+					local currentValue = NRD_ItemGetPermanentBoostInt(item, v.Stat)
+					if currentValue == nil then currentValue = 0 end
+					local valMod = Ext.Random(math.floor(v.Min), math.max(v.Max)) * mod
+					if v.Stat == "WeaponRange" then
+						valMod = (Ext.Random(math.floor(v.Min * 100), math.ceil(v.Max * 100)) * mod) / 100
+					end
+					
+					local nextValue = currentValue + valMod
+					NRD_ItemSetPermanentBoostInt(item, v.Stat, nextValue)
+					LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 				end
-				NRD_ItemSetPermanentBoostString(item, v.Stat, nextValue)
-				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
-			elseif v.Stat == "ItemColor" then
-				local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
-				NRD_ItemSetPermanentBoostString(item, v.Stat, v.Min)
-				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(v.Min)..")")
-			else
-				local currentValue = NRD_ItemGetPermanentBoostInt(item, v.Stat)
-				if currentValue == nil then currentValue = 0 end
-				local valMod = Ext.Random(math.floor(v.Min), math.max(v.Max)) * mod
-				if v.Stat == "WeaponRange" then
-					valMod = (Ext.Random(math.floor(v.Min * 100), math.ceil(v.Max * 100)) * mod) / 100
-				end
-				
-				local nextValue = currentValue + valMod
-				NRD_ItemSetPermanentBoostInt(item, v.Stat, nextValue)
-				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
+			elseif v.Type == "TagBoost" then
+				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding TagBoost ["..v.Tag.."] to item.")
+				SetTag(item, v.Tag)
 			end
 		end
 		self.Applied = self.Applied + 1

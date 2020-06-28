@@ -112,6 +112,9 @@ Boosts.Armor = {
 		Classes.ItemBoost:Create({
 			Classes.StatBoost:Create("MaxSummons",1,1),
 		},{Chance=1, SlotType="Helmet", Limit=1}),
+		Classes.ItemBoost:Create({
+			ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_Madness,
+		},{Chance=80, SlotType="Helmet", Limit=1}),
 		-- Classes.ItemBoost:Create({
 		-- 	Classes.StatBoost:Create("ChanceToHitBoost",1,3),
 		-- },{Chance=3, SlotType="Helmet"}),

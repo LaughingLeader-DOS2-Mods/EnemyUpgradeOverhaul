@@ -136,9 +136,8 @@ UpgradeData = {
 	},
 }
 
-DropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#00FFAA' size='16'>Will drop [1] on death.</font>")
-ShadowDropText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm ([1]) on death.</font>")
-
+DropText = TranslatedString:Create("h623a7ed0gaaacg4c3egacdfg56f3c23a1dec", "<font color='#00FFAA' size='16'>Will drop <textformat leftmargin='1' rightmargin='1'>[1]</textformat> on death.</font>")
+ShadowDropText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm (<textformat leftmargin='1' rightmargin='1'>[1]</textformat>) on death.</font>")
 HiddenDropText = TranslatedString:Create("h623a9ed0gaaacg4c3egacdfg56f1c23a1dec", "<font color='#00FFAA' size='16'>Drops ??? on death.</font>")
 HiddenShadowDropText = TranslatedString:Create("h882390f1gfd9eg4a56g95e5g658283cc548a", "<font color='#9B30FF' size='16'>Drops ??? on death.</font>")
 

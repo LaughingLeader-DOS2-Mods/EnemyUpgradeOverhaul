@@ -1,0 +1,22 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+
+/* [OSITOOLS_ONLY]
+IF
+NRD_OnStatusAttempt(_Target, "MADNESS", _Handle, _Source)
+AND
+ObjectGetFlag(_Target, "LLENEMY_ShadowBonus_Madness_Enabled", 1)
+AND
+NRD_StatusGetReal(_Target, _Handle, "LifeTime", _Duration)
+THEN
+NRD_StatusPreventApply(_Target, _Handle, 1);
+ApplyStatus(_Target, "LLENEMY_SHADOWBONUS_MADNESS", _Duration, 0, _Target);
+*/
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LLENEMY_80_ToggledScripts"

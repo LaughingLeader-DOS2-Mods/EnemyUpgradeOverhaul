@@ -18,6 +18,8 @@ LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Rage", "LLENEMY_Rag
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_Seeker", "LLENEMY_SeekerEnabled", 0, 1);
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_DemonicHasted", "LLENEMY_DemonicHasted_Active", 0, 1);
 
+LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_ShadowBonus_Madness", "LLENEMY_ShadowBonus_Madness_Enabled", 0, 1);
+
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_LevelScaling", "LLENEMY_EnemyLevelingEnabled", 1);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_HardMode", "LLENEMY_HardModeEnabled", 1);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_TreasureGoblin", "LLENEMY_TreasureGoblin_Active", 1);

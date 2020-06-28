@@ -64,6 +64,16 @@ local function OnItemTooltip(item, tooltip)
 				--element.Label = ShadowItemNameColor.Value:gsub("%[1%]", color):gsub("%[2%]", element.Label:gsub("<font.->", ""):gsub("</font>.*", ""))
 				element.Label = element.Label:gsub("<font.->", "<font color='"..color.."'>")
 			end
+			for tag,entry in pairs(ItemCorruption.TagBoosts) do
+				if item:HasTag(tag) then
+					local element = {
+						Type = "OtherStatBoost",
+						Label = Ext.GetTranslatedStringFromKey(tag),
+						Value = "",
+					}
+					tooltip:AppendElement(element)
+				end
+			end
 		end
 	end
 end
@@ -72,15 +82,17 @@ end
 ---@param status EsvStatus
 ---@param tooltip TooltipData
 local function OnStatusTooltip(character, status, tooltip)
-	print(status)
+	print(status.StatusId)
 	print(LeaderLib.Common.Dump(tooltip.Data))
+	if status.StatusId == "LLENEMY_UPGRADE_INFO" then
+
+
+	end
 end
 
 local function Init()
 	Game.Tooltip.RegisterListener("Item", nil, OnItemTooltip)
-	if Ext.IsDeveloperMode() then
-		Game.Tooltip.RegisterListener("Status", nil, OnStatusTooltip)
-	end
+	Game.Tooltip.RegisterListener("Status", nil, OnStatusTooltip)
 end
 return {
 	Init = Init

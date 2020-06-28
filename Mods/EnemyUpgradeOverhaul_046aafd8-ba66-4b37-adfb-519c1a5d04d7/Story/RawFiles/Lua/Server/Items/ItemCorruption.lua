@@ -1,3 +1,9 @@
+if ItemCorruption == nil then
+	ItemCorruption = {}
+end
+local TagBoosts = Ext.Require("Server/Items/Corruption/TagBoosts.lua")
+ItemCorruption.TagBoosts = TagBoosts
+
 local ShadowItemNames = Ext.Require("Server/Items/Corruption/Names.lua")
 local ShadowNameColors = Ext.Require("Server/Items/Corruption/Colors.lua")
 local CorruptionBoosts = Ext.Require("Server/Items/Corruption/Boosts.lua")
@@ -6,10 +12,6 @@ local CorruptionDeltaMods = Ext.Require("Server/Items/Corruption/DeltaMods.lua")
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
 local ItemBoost = LeaderLib.Classes["ItemBoost"]
 local ItemBoostGroup = LeaderLib.Classes["ItemBoostGroup"]
-
-if ItemCorruption == nil then
-	ItemCorruption = {}
-end
 
 local function RollForBoost(entry)
 	if entry.Chance < 100 and entry.Chance > 0 then

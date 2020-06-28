@@ -1,0 +1,23 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+
+/* [OSITOOLS_ONLY]
+IF
+ItemEquipped(_Item, _Char)
+AND
+IsTagged(_Item, "LLENEMY_ShadowItem", 1)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "LLENEMY_ShadowItem_OnEquipped", (STRING)_Char, (STRING)_Item);
+
+IF
+ItemUnEquipped(_Item, _Char)
+AND
+IsTagged(_Item, "LLENEMY_ShadowItem", 1)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "LLENEMY_ShadowItem_OnUnEquipped", (STRING)_Char, (STRING)_Item);
+*/
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
