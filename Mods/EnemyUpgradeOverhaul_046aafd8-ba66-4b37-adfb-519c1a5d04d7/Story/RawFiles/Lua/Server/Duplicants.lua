@@ -86,7 +86,6 @@ function Duplication_CopySourceStats(source,dupe,baseStat)
 	-- SetStoryEvent(dupe, "LLENEMY_ApplyStats")
 	local dupeBaseStat = Ext.GetCharacter(dupe).Stats.Name
 	for i,boost in ipairs(CopyBoosts) do
-		print(boost)
 		local baseSource = Ext.StatGetAttribute(baseStat, boost)
 		local baseDupe = Ext.StatGetAttribute(dupeBaseStat, boost)
 		--local baseDupe = NRD_CharacterGetPermanentBoostInt(dupe, boost)

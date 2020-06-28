@@ -31,7 +31,6 @@ local function OnItemTooltip(item, tooltip)
 				end
 			end
 			if maxSummons > 0 then
-				print(maxSummons)
 				local element = {
 					Type = "AbilityBoost",
 					Label = maxSummonsText.Value,
