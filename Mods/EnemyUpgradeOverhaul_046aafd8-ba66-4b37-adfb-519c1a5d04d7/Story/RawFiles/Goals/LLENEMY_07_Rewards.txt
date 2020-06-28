@@ -592,6 +592,7 @@ DB_NOOP(1);
 // [END_NO_OSITOOLS]
 /* [OSITOOLS_ONLY]
 LeaderLib_Timers_StartObjectTimer(_Container, 100, "Timers_LLENEMY_Duplication_CorruptShadowRewards", "LLENEMY_Duplication_CorruptShadowRewards");
+LeaderLib_Timers_StartObjectTimer(_Container, 250, "Timers_LLENEMY_ShadowOrb_CheckEmpty", "LLENEMY_ShadowOrb_CheckEmpty");
 
 IF
 StoryEvent((ITEMGUID)_Container, "LLENEMY_Duplication_CorruptShadowRewards")
@@ -599,6 +600,13 @@ AND
 GetUUID(_Container, _UUID)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "ShadowCorruptContainerItems", _UUID);
+
+IF
+StoryEvent((ITEMGUID)_Container, "LLENEMY_ShadowOrb_CheckEmpty")
+AND
+GetUUID(_Container, _UUID)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "CheckEmptyShadowOrb", _UUID);
 
 IF
 StoryEvent((ITEMGUID)_Item, "Iterators_LLENEMY_CorruptItem")

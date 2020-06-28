@@ -501,6 +501,7 @@ local function TryShadowCorruptItem(uuid, container)
 end
 
 local corruptedItemLimit = {}
+local shadowOrbItemAmount = {}
 
 function ShadowCorruptItem(item)
 	local stat = NRD_ItemGetStatsId(item)
@@ -509,9 +510,17 @@ function ShadowCorruptItem(item)
 		Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Deleted item with NPC stat: "..stat)
 	else
 		local container = GetInventoryOwner(item)
-		local limit = corruptedItemLimit[container]
-		if limit ~= nil and limit <= 0 then
-			return nil
+		local limit = nil
+		if container ~= nil then
+			limit = corruptedItemLimit[container]
+			if limit ~= nil and limit <= 0 then
+				return nil
+			end
+			if shadowOrbItemAmount[container] == nil then
+				shadowOrbItemAmount[container] = 1
+			else
+				shadowOrbItemAmount[container] = shadowOrbItemAmount[container] + 1
+			end
 		end
 
 		local b,result = xpcall(TryShadowCorruptItem, debug.traceback, item, container)
@@ -530,8 +539,9 @@ end
 Ext.NewCall(ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
 function ShadowCorruptContainerItems(uuid)
-	corruptedItemLimit[uuid] = Ext.Random(2,6)
-	InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
+	corruptedItemLimit[uuid] = Ext.Random(1,3)
+	shadowOrbItemAmount[uuid] = 0
+	InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "")
 	--[[ local success = false
 	local item = Ext.GetItem(uuid)
 	if item ~= nil then
@@ -547,6 +557,16 @@ function ShadowCorruptContainerItems(uuid)
 		LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItems] Failed to get inventory for item ("..uuid..")")
 		InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
 	end ]]
+end
+
+function CheckEmptyShadowOrb(uuid)
+	local itemAmount = shadowOrbItemAmount[uuid]
+	if (itemAmount == nil or itemAmount == 0) and ContainerGetGoldValue(uuid) <= 0 then
+		ItemDestroy(uuid)
+		LeaderLib.PrintDebug("[EUO:CheckEmptyShadowOrb] Shadow Orb ("..uuid..") is empty. Deleting.")
+	end
+	shadowOrbItemAmount[uuid] = nil
+	corruptedItemLimit[uuid] = nil
 end
 
 ItemCorruption = {
