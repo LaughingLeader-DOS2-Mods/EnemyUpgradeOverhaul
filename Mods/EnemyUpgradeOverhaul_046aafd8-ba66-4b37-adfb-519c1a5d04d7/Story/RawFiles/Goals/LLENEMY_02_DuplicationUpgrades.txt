@@ -504,6 +504,8 @@ IF
 CharacterWentOnStage(_Dupe, 1)
 AND
 IsTagged(_Dupe, "LLENEMY_Duplicant", 1)
+AND
+CharacterIsDead(_Dupe, 1)
 THEN
 SetOnStage(_Dupe, 0);
 
