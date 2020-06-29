@@ -21,6 +21,8 @@ local rarityColor = {
 ---@param item EsvItem
 ---@param tooltip TooltipData
 local function OnItemTooltip(item, tooltip)
+	--print(item, "TagBoosts:", Common.Dump(tooltip.Data))
+	print(Ext.JsonStringify(tooltip.Data))
 	if item ~= nil then
 		if item:HasTag("LLENEMY_ShadowItem") then
 			--print(item.ItemType, item.Stats.ItemType, item.Stats.ItemTypeReal)
@@ -65,12 +67,21 @@ local function OnItemTooltip(item, tooltip)
 				element.Label = element.Label:gsub("<font.->", "<font color='"..color.."'>")
 			end
 			for tag,entry in pairs(ItemCorruption.TagBoosts) do
+				print(tag)
 				if item:HasTag(tag) then
 					local element = {
-						Type = "OtherStatBoost",
+						Type = "Tags",
 						Label = Ext.GetTranslatedStringFromKey(tag),
-						Value = "",
+						Value = string.format("<font size='16'>%s</font>", "Madness grants you bonuses and full control."),
 					}
+					-- local element = {
+					-- 	Type = "ArmorSet",
+					-- 	SetName = "The Best Set",
+					-- 	FoundPieces = 1,
+					-- 	TotalPieces = 99,
+					-- 	SetDescription = "Woo!",
+					-- 	GrantedStatuses = {{Label="Super Cool Status", IconIndex="1"}},
+					-- }
 					tooltip:AppendElement(element)
 				end
 			end
