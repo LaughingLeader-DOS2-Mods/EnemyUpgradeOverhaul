@@ -166,43 +166,43 @@ local function GetDefaultDeltamods()
 	--Ext.Print("Deltamods:\n" .. LeaderLib.Common.Dump(deltamods))
 end
 
-local function Init(CorruptionBoosts)
-	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Small"))
-	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Medium", {MinLevel=8}))
-	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Large", {MinLevel=12}))
-	--table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("Boost_Weapon_Secondary_Vitality_Small", {Chance=50}))
-	--table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("Boost_Weapon_Secondary_Vitality_Normal", {MinLevel=6, Chance=50}))
-	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("Boost_Weapon_Status_Set_Suffocating", {MinLevel=13, Chance=25}))
-	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("Boost_Weapon_LifeSteal", {Chance=50}))
-	table.insert(CorruptionBoosts.Weapon, DeltaMod:Create("Boost_Weapon_LifeSteal_Large", {MinLevel=12, Chance=50}))
+local function Init(boosts)
+	table.insert(boosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Small"))
+	table.insert(boosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Medium", {MinLevel=8}))
+	table.insert(boosts.Weapon, DeltaMod:Create("LLENEMY_Boost_Weapon_Damage_Shadow_Large", {MinLevel=12}))
+	--table.insert(boosts.Weapon, DeltaMod:Create("Boost_Weapon_Secondary_Vitality_Small", {Chance=50}))
+	--table.insert(boosts.Weapon, DeltaMod:Create("Boost_Weapon_Secondary_Vitality_Normal", {MinLevel=6, Chance=50}))
+	table.insert(boosts.Weapon, DeltaMod:Create("Boost_Weapon_Status_Set_Suffocating", {MinLevel=13, Chance=25}))
+	table.insert(boosts.Weapon, DeltaMod:Create("Boost_Weapon_LifeSteal", {Chance=50}))
+	table.insert(boosts.Weapon, DeltaMod:Create("Boost_Weapon_LifeSteal_Large", {MinLevel=12, Chance=50}))
 
-	table.insert(CorruptionBoosts.Shield, DeltaMod:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage"))
-	table.insert(CorruptionBoosts.Shield, DeltaMod:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium", {MinLevel=8}))
-	table.insert(CorruptionBoosts.Shield, DeltaMod:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large", {MinLevel=12}))
-	table.insert(CorruptionBoosts.Shield, DeltaModGroup:Create({
+	table.insert(boosts.Shield, DeltaMod:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage"))
+	table.insert(boosts.Shield, DeltaMod:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Medium", {MinLevel=8}))
+	table.insert(boosts.Shield, DeltaMod:Create("LLENEMY_Boost_Shield_Reflect_As_Shadow_Damage_Large", {MinLevel=12}))
+	table.insert(boosts.Shield, DeltaModGroup:Create({
 		DeltaMod:Create("Boost_Shield_Secondary_ChillContact", {Chance=25}),
 		DeltaMod:Create("Boost_Shield_Secondary_PoisonContact", {Chance=25}),
 		DeltaMod:Create("Boost_Shield_Secondary_BurnContact", {Chance=25}),
 	}))
-	table.insert(CorruptionBoosts.Shield, DeltaMod:Create("Boost_Shield_Secondary_PainReflection", {Chance=25}))
-	table.insert(CorruptionBoosts.Shield, DeltaMod:Create("Boost_Shield_Special_Block_Shield", {Chance=25}))
-	table.insert(CorruptionBoosts.Shield, DeltaMod:Create("Boost_Shield_Special_Block_Shield_Medium", {MinLevel=8, Chance=20}))
-	table.insert(CorruptionBoosts.Shield, DeltaMod:Create("Boost_Shield_Special_Block_Shield_Large", {MinLevel=12, Chance=15}))
+	table.insert(boosts.Shield, DeltaMod:Create("Boost_Shield_Secondary_PainReflection", {Chance=25}))
+	table.insert(boosts.Shield, DeltaMod:Create("Boost_Shield_Special_Block_Shield", {Chance=25}))
+	table.insert(boosts.Shield, DeltaMod:Create("Boost_Shield_Special_Block_Shield_Medium", {MinLevel=8, Chance=20}))
+	table.insert(boosts.Shield, DeltaMod:Create("Boost_Shield_Special_Block_Shield_Large", {MinLevel=12, Chance=15}))
 
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Sneaking", {Chance=8}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Sneaking_Medium", {MinLevel=8, Chance=8}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Sneaking_Large", {MinLevel=12, Chance=8}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Lockpicking", {Chance=8}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Lockpicking_Medium", {MinLevel=8, Chance=8}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Lockpicking_Large", {MinLevel=12, Chance=8}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_PhysicalResistance", {Chance=5}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_PhysicalResistance_Medium", {MinLevel=8, Chance=5}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_PhysicalResistance_Large", {MinLevel=12, Chance=5}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("Boost_Armor_Pants_Ability_Death", {Chance=15}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("Boost_Armor_Pants_Ability_Death_Medium", {MinLevel=8, Chance=15}))
-	table.insert(CorruptionBoosts.Armor, DeltaMod:Create("Boost_Armor_Pants_Ability_Death_Large", {MinLevel=12, Chance=15}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Sneaking", {Chance=8}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Sneaking_Medium", {MinLevel=8, Chance=8}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Sneaking_Large", {MinLevel=12, Chance=8}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Lockpicking", {Chance=8}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Lockpicking_Medium", {MinLevel=8, Chance=8}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_Ability_Lockpicking_Large", {MinLevel=12, Chance=8}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_PhysicalResistance", {Chance=5}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_PhysicalResistance_Medium", {MinLevel=8, Chance=5}))
+	table.insert(boosts.Armor, DeltaMod:Create("LLENEMY_Boost_Armor_PhysicalResistance_Large", {MinLevel=12, Chance=5}))
+	table.insert(boosts.Armor, DeltaMod:Create("Boost_Armor_Pants_Ability_Death", {Chance=15}))
+	table.insert(boosts.Armor, DeltaMod:Create("Boost_Armor_Pants_Ability_Death_Medium", {MinLevel=8, Chance=15}))
+	table.insert(boosts.Armor, DeltaMod:Create("Boost_Armor_Pants_Ability_Death_Large", {MinLevel=12, Chance=15}))
 
-	table.insert(CorruptionBoosts.Armor, DeltaModGroup:Create({
+	table.insert(boosts.Armor, DeltaModGroup:Create({
 		DeltaMod:Create("Boost_Armor_Pants_Skill_BloodBubble", {Chance=20}),
 		DeltaMod:Create("Boost_Armor_Pants_Immunity_Frozen_And_Chilled", {Chance=5}),
 		DeltaMod:Create("Boost_Armor_Pants_Immunity_KnockedDown_And_Crippled", {Chance=5}),
@@ -212,10 +212,10 @@ local function Init(CorruptionBoosts)
 	for uuid,tbl in pairs(ModBoosts) do
 		if Ext.IsModLoaded(uuid) then
 			for tableName,entries in pairs(tbl) do
-				if CorruptionBoosts[tableName] ~= nil then
+				if boosts[tableName] ~= nil then
 					LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua] Merging entries from ("..uuid..") into main table ("..tableName..")")
 					for i,entry in ipairs(entries) do
-						table.insert(CorruptionBoosts[tableName], entry)
+						table.insert(boosts[tableName], entry)
 					end
 				end
 			end
@@ -228,17 +228,17 @@ local function Init(CorruptionBoosts)
 		GetDefaultDeltamods()
 	end
 
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("Small"})
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("Normal"})
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("Large"})
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("Base"})
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("BaseUncommon"})
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("RuneEmpty", MinLevel=4})
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("BaseRare", MinLevel=6})
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("Primary", MinLevel=8})
-	--table.insert(CorruptionBoosts.All, DeltaMod:Create("Legendary", MinLevel=16})
+	--table.insert(boosts.All, DeltaMod:Create("Small"})
+	--table.insert(boosts.All, DeltaMod:Create("Normal"})
+	--table.insert(boosts.All, DeltaMod:Create("Large"})
+	--table.insert(boosts.All, DeltaMod:Create("Base"})
+	--table.insert(boosts.All, DeltaMod:Create("BaseUncommon"})
+	--table.insert(boosts.All, DeltaMod:Create("RuneEmpty", MinLevel=4})
+	--table.insert(boosts.All, DeltaMod:Create("BaseRare", MinLevel=6})
+	--table.insert(boosts.All, DeltaMod:Create("Primary", MinLevel=8})
+	--table.insert(boosts.All, DeltaMod:Create("Legendary", MinLevel=16})
 
-	LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua] Boosts:\n" .. LeaderLib.Common.Dump(CorruptionBoosts))
+	LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua] Boosts:\n" .. LeaderLib.Common.Dump(boosts))
 end
 
 return {

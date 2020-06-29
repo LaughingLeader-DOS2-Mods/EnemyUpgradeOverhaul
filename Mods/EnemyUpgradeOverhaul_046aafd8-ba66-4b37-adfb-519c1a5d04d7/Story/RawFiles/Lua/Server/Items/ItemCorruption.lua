@@ -1,14 +1,3 @@
-if ItemCorruption == nil then
-	ItemCorruption = {}
-end
-local TagBoosts = Ext.Require("Server/Items/Corruption/TagBoosts.lua")
-ItemCorruption.TagBoosts = TagBoosts
-
-local ShadowItemNames = Ext.Require("Server/Items/Corruption/Names.lua")
-local ShadowNameColors = Ext.Require("Server/Items/Corruption/Colors.lua")
-local CorruptionBoosts = Ext.Require("Server/Items/Corruption/Boosts.lua")
-local CorruptionDeltaMods = Ext.Require("Server/Items/Corruption/DeltaMods.lua")
-
 local TranslatedString = LeaderLib.Classes["TranslatedString"]
 local ItemBoost = LeaderLib.Classes["ItemBoost"]
 local ItemBoostGroup = LeaderLib.Classes["ItemBoostGroup"]
@@ -205,7 +194,7 @@ end
 
 local function AddRandomNegativeBoosts(item,stat,statType,level,total)
 	if level == nil or level <= 0 then level = 1 end
-	local ranNegativeBoosts = CorruptionBoosts.Resistances:GetRandomEntries(2)
+	local ranNegativeBoosts = ItemCorruption.Boosts.Resistances:GetRandomEntries(2)
 	local i = 0
 	while i < total do
 		---@type ItemBoost
@@ -303,11 +292,11 @@ end
 
 local function AddRandomBoosts(item,stat,statType,level,minBoosts)
 	local totalBoosts = 0
-	local boostTable = CorruptionBoosts[statType]
+	local boostTable = ItemCorruption.Boosts[statType]
 	if boostTable ~= nil then
 		totalBoosts = AddRandomBoostsFromTable(item,stat,statType,level,boostTable,minBoosts)
 	end
-	--AddRandomBoostsFromTable(item,stat,statType,level,CorruptionBoosts.All)
+	--AddRandomBoostsFromTable(item,stat,statType,level,ItemCorruption.Boosts.All)
 	return totalBoosts
 end
 
@@ -315,8 +304,8 @@ ItemCorruption.AddRandomBoosts = AddRandomBoosts
 
 local function SetRandomShadowName(item,statType)
 	if statType == "Weapon" or statType == "Shield" then
-		local name = LeaderLib.Common.GetRandomTableEntry(ShadowItemNames)
-		local color = LeaderLib.Common.GetRandomTableEntry(ShadowNameColors)
+		local name = LeaderLib.Common.GetRandomTableEntry(ItemCorruption.Names)
+		local color = LeaderLib.Common.GetRandomTableEntry(ItemCorruption.Colors)
 		name = string.format("<font color='%s'>%s</font>", color, name)
 		NRD_ItemCloneSetString("CustomDisplayName", name)
 		if Ext.IsDeveloperMode() then
@@ -330,7 +319,7 @@ local function SetRandomShadowName(item,statType)
 		-- local originalName = Ext.GetTranslatedString(handle, templateName)
 		-- if originalName ~= NRD_ItemGetStatsId(item) and originalName ~= GetStatString(item) then
 		-- 	-- Name isn't a stat entry name.
-		-- 	local color = LeaderLib.Common.GetRandomTableEntry(ShadowNameColors)
+		-- 	local color = LeaderLib.Common.GetRandomTableEntry(ItemCorruption.Colors)
 		-- 	local name = string.format("<font color='%s'>%s</font>", color, originalName)
 		-- 	NRD_ItemCloneSetString("CustomDisplayName", name)
 		-- 	LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
@@ -452,7 +441,9 @@ local corruptableTypes = {
 	Armor = true,
 }
 
+
 local function TryShadowCorruptItem(uuid, container)
+	print("ItemCorruption.Boosts", ItemCorruption.Boosts)
 	if uuid ~= nil then
 		local item = Ext.GetItem(uuid)
 		local stat = item.StatsId
@@ -462,7 +453,7 @@ local function TryShadowCorruptItem(uuid, container)
 			LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
 			if ignoredSlots[equippedSlot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
 				if item.Slot > 13 then
-					if CorruptionBoosts[statType] ~= nil then
+					if ItemCorruption.Boosts[statType] ~= nil then
 						local cloned = GetClone(uuid, stat, statType)
 						NRD_ItemSetIdentified(cloned,1)
 
@@ -571,8 +562,6 @@ function CheckEmptyShadowOrb(uuid)
 	corruptedItemLimit[uuid] = nil
 end
 
-ItemCorruption = {
-	AddRandomNegativeBoost = AddRandomNegativeBoost,
-	DebugItemStats = DebugItemStats,
-	InitDeltaMods = function() CorruptionDeltaMods.Init() end
-}
+ItemCorruption.AddRandomNegativeBoost = AddRandomNegativeBoost
+ItemCorruption.DebugItemStats = DebugItemStats
+ItemCorruption.InitDeltaMods = function() ItemCorruption.DeltaMods.Init() end

@@ -235,7 +235,7 @@ local function LLENEMY_DebugInit()
 	GetSourceDegredation(300000, 50)
 end
 
-local function ItemCorruptionTest(command,level)
+local function ItemCorruptionTest(level,delay)
 	local host = CharacterGetHostCharacter()
 	local x,y,z = GetPosition(host)
 	if level ~= nil then
@@ -245,10 +245,26 @@ local function ItemCorruptionTest(command,level)
 	end
 	local backpack = CreateItemTemplateAtPosition("LOOT_LeaderLib_BackPack_Invisible_98fa7688-0810-4113-ba94-9a8c8463f830", x, y, z)
 	GenerateTreasure(backpack, "LLENEMY_ShadowOrbRewards", level, host)
+	GenerateTreasure(backpack, "ST_QuestReward_RG_3", level, host)
 	ShadowCorruptContainerItems(backpack)
 	MoveAllItemsTo(backpack, host, 0, 0, 1)
 	ItemRemove(backpack)
 end
+
+Ext.RegisterConsoleCommand("shadowitemtest", function(call,level,delaystr)
+	if delaystr ~= nil then
+		local delay = tonumber(delaystr)
+		if delay > 0 then
+			LeaderLib.StartOneshotTimer("Timers_LLENEMY_Debug_ShadowItemTest", delay, function()
+				ItemCorruptionTest(level, delay)
+			end)
+		else
+			ItemCorruptionTest(level, delay)
+		end
+	else
+		ItemCorruptionTest(level)
+	end
+end)
 
 local function ItemCorruptionTest_FixedItems(command)
 	local host = CharacterGetHostCharacter()
@@ -338,8 +354,6 @@ local function ItemCorruptionTest_FixedItems(command)
 	-- ItemToInventory(cloned, host, 1, 1, 1)
 	-- ItemRemove(item)
 end
-
-Ext.RegisterConsoleCommand("shadowitemtest", ItemCorruptionTest)
 
 function LLENEMY_Debug_SpawnTreasureGoblinTest()
 	local combat = Osi.DB_CombatCharacters:Get(nil,nil)

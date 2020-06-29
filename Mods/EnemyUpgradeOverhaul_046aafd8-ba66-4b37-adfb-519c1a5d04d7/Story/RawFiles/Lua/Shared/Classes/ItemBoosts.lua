@@ -29,7 +29,7 @@ Classes.StatBoost = StatBoost
 ---@class TagBoost
 local TagBoost = {
 	Tag = "",
-	ScriptFlag = "",
+	Flag = "",
 	Type = "TagBoost"
 }
 TagBoost.__index = TagBoost
@@ -41,7 +41,7 @@ function TagBoost:Create(tag,flag)
     local this =
     {
 		Tag = tag,
-		ScriptFlag = flag,
+		Flag = flag,
 		Type = "TagBoost"
 	}
 	setmetatable(this, self)

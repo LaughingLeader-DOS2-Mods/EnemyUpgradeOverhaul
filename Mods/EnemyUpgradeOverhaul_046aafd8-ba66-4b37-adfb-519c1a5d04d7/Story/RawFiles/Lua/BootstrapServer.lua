@@ -4,7 +4,6 @@ PersistentVars = {
 	NewCorruptionStats = {}
 }
 
-Ext.Require("Server/Classes/Init.lua")
 Ext.Require("Server/UpgradeInfo.lua")
 local bonusSkillsScript = Ext.Require("Server/BonusSkills.lua")
 Ext.Require("Server/GameMechanics.lua")

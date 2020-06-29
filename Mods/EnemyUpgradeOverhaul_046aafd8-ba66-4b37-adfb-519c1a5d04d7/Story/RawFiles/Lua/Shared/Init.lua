@@ -26,17 +26,27 @@ VoiceMetaData = {}
 Commands = {
 	CHECKLOREMASTER = "CheckLoremaster"
 }
-CorruptionBoosts = { Weapon={}, Armor={}, Shield={}, Resistances={}}
+
+if ItemCorruption == nil then
+	ItemCorruption = {}
+end
+
+Ext.Require("Shared/Classes/Init.lua")
+ItemCorruption.TagBoosts = Ext.Require("Shared/Data/Corruption/TagBoosts.lua")
+ItemCorruption.Boosts = Ext.Require("Shared/Data/Corruption/Boosts.lua")
+ItemCorruption.Colors = Ext.Require("Shared/Data/Corruption/Colors.lua")
+ItemCorruption.DeltaMods = Ext.Require("Shared/Data/Corruption/DeltaMods.lua")
+ItemCorruption.Names = Ext.Require("Shared/Data/Corruption/Names.lua")
+
+local statOverrides = Ext.Require("Shared/StatOverrides.lua")
+Ext.Require("Shared/VoiceData.lua")
+Ext.Require("Shared/SharedUpgradeInfo.lua")
 
 function GetExtraDataValue(key, fallback)
 	local val = Ext.ExtraData[key]
 	if val ~= nil then return val end
 	return fallback
 end
-
-local statOverrides = Ext.Require("Shared/StatOverrides.lua")
-Ext.Require("Shared/VoiceData.lua")
-Ext.Require("Shared/SharedUpgradeInfo.lua")
 
 local function FixModTypos()
 	-- Greed typos
