@@ -61,20 +61,6 @@ LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldV
 THEN
 LLENEMY_System_InitSettings();
 
-// Setting up some variables in the lua scripts that may change when mods change.
-// These may need Osiris functions, so this is called outside of SessionLoading.
-/* [OSITOOLS_ONLY]
-IF
-SavegameLoaded(_,_,_,_)
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "Init");
-
-IF
-GameModeStarted(_,_)
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "Init");
-*/
-
 //REGION ACTIVE_MODS_CHANGED
 IF
 SavegameLoaded(_,_,_,_)
