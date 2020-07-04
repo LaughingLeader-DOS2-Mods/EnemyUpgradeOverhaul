@@ -423,7 +423,9 @@ local function GetClone(item,stat,statType)
 	local cloned = NRD_ItemClone()
 	SetTag(cloned, "LLENEMY_ShadowItem")
 
-	NRD_ItemIterateDeltaModifiers(cloned, "Iterator_LeaderLib_Debug_PrintDeltamods")
+	if Ext.IsDeveloperMode() then
+		NRD_ItemIterateDeltaModifiers(cloned, "Iterator_LeaderLib_Debug_PrintDeltamods")
+	end
 	AddRandomBoostsToItem(item, stat, statType, level, cloned)
 
 	return cloned
@@ -564,4 +566,3 @@ end
 
 ItemCorruption.AddRandomNegativeBoost = AddRandomNegativeBoost
 ItemCorruption.DebugItemStats = DebugItemStats
-ItemCorruption.InitDeltaMods = function() ItemCorruption.DeltaMods.Init() end
