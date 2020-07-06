@@ -5,26 +5,15 @@ LLENEMY_Scaling_LevelAllInCombat();
 KBSECTION
 
 //New region leveling
-IF
-GameStarted(_Region,_)
-AND
-GlobalGetFlag("LLENEMY_Scaling_CommitToWorld_Enabled", 1)
+PROC
+LeaderLib_Initialized((STRING)_Region)
 AND
 NOT DB_LLENEMY_Scaling_Temp_LeveledRegion(_Region)
+AND
+GlobalGetFlag("LLENEMY_Scaling_CommitToWorld_Enabled", 1)
 THEN
 DB_LLENEMY_Scaling_Temp_LeveledRegion(_Region);
 CharacterLaunchOsirisOnlyIterator("Iterator_LLENEMY_Scaling_LevelUp");
-
-//Stat resetting
-IF
-ObjectTransformed(_Char, _)
-AND
-ObjectIsCharacter((CHARACTERGUID)_Char, 1)
-AND
-NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
-THEN
-LLENEMY_Scaling_LevelUpCharacter(_Char);
-LLENEMY_Scaling_SaveTransformedCharacterLevel(_Char);
 
 PROC
 LLENEMY_OnCharacterJoinedCombat((CHARACTERGUID)_Enemy, (INTEGER)_CombatID)
@@ -108,7 +97,30 @@ CharacterIsNeutral(_Char, _PLayer, 1)
 THEN
 LLENEMY_Scaling_LevelUpCharacter(_Char);
 */
+//END_REGION
 
+//REGION TRANSFORMED_CHARACTER_BUG_WORKAROUND
+
+/* There's a game bug that resets transformed characters back to level 1 when you load a save. */
+PROC
+LeaderLib_Initialized((STRING)_Region)
+AND
+DB_LLENEMY_Scaling_Temp_TransformedCharacters(_Region, _Char, _Level)
+AND
+ObjectExists(_Char, _Exists)
+THEN
+LLENEMY_Scaling_CheckTransformedCharacterLevel(_Region, _Char, _Level, _Exists);
+
+//Stat resetting
+IF
+ObjectTransformed(_Char, _)
+AND
+ObjectIsCharacter((CHARACTERGUID)_Char, 1)
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
+THEN
+LLENEMY_Scaling_LevelUpCharacter(_Char);
+LLENEMY_Scaling_SaveTransformedCharacterLevel(_Char);
 //END_REGION
 
 EXITSECTION
