@@ -24,6 +24,7 @@ AND
 NOT LeaderLib_Helper_QRY_CharacterIsPlayer(_Char)
 THEN
 LLENEMY_Scaling_LevelUpCharacter(_Char);
+LLENEMY_Scaling_SaveTransformedCharacterLevel(_Char);
 
 PROC
 LLENEMY_OnCharacterJoinedCombat((CHARACTERGUID)_Enemy, (INTEGER)_CombatID)

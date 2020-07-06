@@ -2,6 +2,50 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
+
+//REGION LEVEL_!_SAVE_BUG
+PROC
+LLENEMY_Scaling_SaveTransformedCharacterLevel((CHARACTERGUID)_Char)
+AND
+CharacterIsPlayer(_Char, 0)
+AND
+GetRegion(_Char, _Region)
+AND
+CharacterGetLevel(_Char, _Level)
+THEN
+DB_LLENEMY_Scaling_Temp_TransformedCharacters(_Region, _Char, _Level);
+
+PROC
+LeaderLib_Initialized((STRING)_Region)
+AND
+DB_LLENEMY_Scaling_Temp_TransformedCharacters(_Region, _Char, _Level)
+AND
+ObjectExists(_Char, _Exists)
+THEN
+LLENEMY_Scaling_CheckTransformedCharacterLevel(_Region, _Char, _Level, _Exists);
+
+PROC
+LLENEMY_Scaling_CheckTransformedCharacterLevel((STRING)_Region, (CHARACTERGUID)_Char, (INTEGER)_TargetLevel, 1)
+AND
+CharacterGetLevel(_Char, _Level)
+AND
+_Level < _TargetLevel
+THEN
+CharacterLevelUpTo(_Char, _TargetLevel);
+
+PROC
+LLENEMY_Scaling_CheckTransformedCharacterLevel((STRING)_Region, (CHARACTERGUID)_Char, (INTEGER)_TargetLevel, 0)
+THEN
+NOT DB_LLENEMY_Scaling_Temp_TransformedCharacters(_Region, _Char, _TargetLevel);
+
+IF
+RegionEnded(_Region)
+AND
+DB_LLENEMY_Scaling_Temp_TransformedCharacters(_Region, _Char, _Level)
+THEN
+NOT DB_LLENEMY_Scaling_Temp_TransformedCharacters(_Region, _Char, _Level);
+//END_REGION
+
 //REGION LEVELING
 PROC
 LLENEMY_Scaling_LevelUpCharacter((CHARACTERGUID)_Char)
