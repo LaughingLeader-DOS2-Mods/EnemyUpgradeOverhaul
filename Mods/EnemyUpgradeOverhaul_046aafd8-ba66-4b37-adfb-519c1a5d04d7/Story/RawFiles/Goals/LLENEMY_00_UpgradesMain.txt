@@ -951,6 +951,7 @@ THEN
 NOT DB_LLENEMY_Upgrades_Temp_ChangeDurationOnCombat(_Region, _Char, _Status, _Duration);
 LLENEMY_Upgrades_Internal_ChangeStatusDuration(_Char, _Status, _Duration);
 
+/* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Upgrades_Internal_ChangeStatusDuration((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
 AND
@@ -958,6 +959,7 @@ NRD_StatusGetHandle(_Char, _Status, _Handle)
 THEN
 NRD_StatusSetReal(_Char, _Handle, "CurrentLifeTime", _Duration);
 NRD_StatusSetReal(_Char, _Handle, "LifeTime", _Duration);
+*/
 
 PROC
 LLENEMY_Upgrades_Internal_ChangeStatusDuration((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)

@@ -21,7 +21,7 @@ function Duplication_CopySource(source,dupe)
 	-- local sourceChar = Ext.GetCharacter(source)
 	local dupeChar = Ext.GetCharacter(dupe)
 	
-	print("Dupe level| Source:",source, CharacterGetLevel(source), sourceCharacter.Stats.Level, sourceCharacter.Stats.Name, "Dupe:", dupe, CharacterGetLevel(dupe), dupeChar.Stats.Level, dupeChar.Stats.Name)
+	Common.PrintDebug("Dupe level| Source:",source, CharacterGetLevel(source), sourceCharacter.Stats.Level, sourceCharacter.Stats.Name, "Dupe:", dupe, CharacterGetLevel(dupe), dupeChar.Stats.Level, dupeChar.Stats.Name)
 
 	for i,tag in pairs(sourceCharacter:GetTags()) do
 		SetTag(dupe, tag)

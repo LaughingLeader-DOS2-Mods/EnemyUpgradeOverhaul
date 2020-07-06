@@ -438,6 +438,37 @@ if Ext.IsDeveloperMode() then
 		UpgradeInfo_SetHighestPartyLoremaster()
 		UpgradeInfo_RefreshInfoStatuses()
 	end)
+	Ext.RegisterConsoleCommand("transformtest", function(command)
+		local host = CharacterGetHostCharacter()
+		local x,y,z = GetPosition(host)
+		local dupe = CharacterCreateAtPosition(x, y, z, "Humans_Hero_Male_25611432-e5e4-482a-8f5d-196c9e90001e", 0)
+		CharacterTransformFromCharacter(dupe, host, 1, 1, 1, 1, 1, 0, 0)
+		local level = CharacterGetLevel(host)
+		CharacterLevelUpTo(dupe, level)
+	end)
+	Ext.RegisterConsoleCommand("transformtest2", function(command)
+		local host = CharacterGetHostCharacter()
+		local x,y,z = GetPosition(host)
+		local dupe = CharacterCreateAtPosition(x, y, z, "LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", 0)
+		local dupe2 = CharacterCreateAtPosition(x, y, z, "LLENEMY_Dupe_A_54ad4e06-b57f-46d0-90fc-5da1208250e0", 0)
+		local level = CharacterGetLevel(host)
+		CharacterLevelUpTo(dupe, level)
+		
+		--Osi.LLENEMY_OnCharacterJoinedCombat(dupe, 0)
+		CharacterTransformFromCharacter(dupe2, host, 1, 1, 1, 1, 1, 1, 1)
+		LeaderLib.StartOneshotTimer("Timers_LLENEMY_Debug_TransformTest", 1250, function(...)
+			CharacterTransformFromCharacter(dupe, host, 1, 1, 1, 1, 1, 1, 1)
+			Osi.LLENEMY_OnCharacterJoinedCombat(dupe2, 0)
+		end)
+	end)
+
+	-- Ext.RegisterNetListener("LLENEMY_Debug_PrintComboCategory", function(call, payload, ...)
+	-- 	local item = Ext.GetItem(payload)
+	-- 	if item ~= nil then
+	-- 		print(string.format("%s ComboCategory:\n%s", item.Stats.Name, Ext.JsonStringify(item.Stats.ComboCategory)))
+	-- 		print(string.format("%s ComboCategory:\n%s", item.Stats.Name, Ext.JsonStringify(Ext.StatGetAttribute(item.Stats.Name, "ComboCategory"))))
+	-- 	end
+	-- end)
 end
 
 local ItemProperties = {

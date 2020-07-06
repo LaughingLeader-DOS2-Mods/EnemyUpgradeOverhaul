@@ -2,14 +2,12 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
-//REGION SKILL_CASTING_LISTENER
+/* [OSITOOLS_ONLY]
 IF
 SkillCast(_Character, _Skill, _SkillType, _SkillElement)
 THEN
 LLENEMY_OnSkillCast_TrySummonVoidwoken(_Character, _Skill, _SkillType, _SkillElement);
-//END_REGION
 
-/* [OSITOOLS_ONLY]
 // Source accumulation degrades over time.
 // By default, the in-game hour speed is 1 hour = 5 minutes of real time.
 PROC

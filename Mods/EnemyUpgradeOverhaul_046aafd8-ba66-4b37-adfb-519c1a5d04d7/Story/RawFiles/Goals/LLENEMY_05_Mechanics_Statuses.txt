@@ -167,6 +167,7 @@ LLENEMY_Statuses_QRY_AnyPlayerIsSneaking()
 THEN
 LLENEMY_Mechanics_Statuses_SeekerTakeAction(_Char);
 
+/* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Mechanics_Statuses_SeekerTakeAction((CHARACTERGUID)_Char)
 AND
@@ -190,6 +191,30 @@ NRD_SkillGetCooldown(_Char, "Rain_EnemyWater", 0.0)
 THEN
 DB_LLENEMY_StatusLogic_Temp_SeekerTookAction(_Char);
 CharacterUseSkill(_Char, "Rain_EnemyWater", _Char, 1, 0, 0);
+*/
+
+// [BEGIN_NO_OSITOOLS]
+PROC
+LLENEMY_Mechanics_Statuses_SeekerTakeAction((CHARACTERGUID)_Char)
+AND
+NOT DB_LLENEMY_StatusLogic_Temp_SeekerTookAction(_Char)
+AND
+CharacterHasSkill(_Char, "Rain_Water", 1)
+THEN
+DB_LLENEMY_StatusLogic_Temp_SeekerTookAction(_Char);
+CharacterUseSkill(_Char, "Rain_Water", _Char, 1, 0, 0);
+
+PROC
+LLENEMY_Mechanics_Statuses_SeekerTakeAction((CHARACTERGUID)_Char)
+AND
+NOT DB_LLENEMY_StatusLogic_Temp_SeekerTookAction(_Char)
+AND
+CharacterHasSkill(_Char, "Rain_EnemyWater", 1)
+THEN
+DB_LLENEMY_StatusLogic_Temp_SeekerTookAction(_Char);
+CharacterUseSkill(_Char, "Rain_EnemyWater", _Char, 1, 0, 0);
+// [END_NO_OSITOOLS]
+
 
 PROC
 LLENEMY_Mechanics_Statuses_SeekerTakeAction((CHARACTERGUID)_Char)

@@ -22,7 +22,9 @@ local rarityColor = {
 ---@param tooltip TooltipData
 local function OnItemTooltip(item, tooltip)
 	--print(item, "TagBoosts:", Common.Dump(tooltip.Data))
-	print(Ext.JsonStringify(tooltip.Data))
+	--print(Ext.JsonStringify(tooltip.Data))
+	--Ext.PostMessageToServer("LLENEMY_Debug_PrintComboCategory", item.MyGuid)
+	--print(string.format("%s ComboCategory:\n%s", item.Stats.Name, Ext.JsonStringify(item.Stats.ComboCategory)))
 	if item ~= nil then
 		if item:HasTag("LLENEMY_ShadowItem") then
 			--print(item.ItemType, item.Stats.ItemType, item.Stats.ItemTypeReal)
