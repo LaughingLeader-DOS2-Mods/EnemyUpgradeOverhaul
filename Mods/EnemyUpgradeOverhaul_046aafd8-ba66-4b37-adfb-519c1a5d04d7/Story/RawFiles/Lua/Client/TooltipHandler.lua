@@ -69,8 +69,7 @@ local function OnItemTooltip(item, tooltip)
 				element.Label = element.Label:gsub("<font.->", "<font color='"..color.."'>")
 			end
 			for tag,entry in pairs(ItemCorruption.TagBoosts) do
-				print(tag)
-				if item:HasTag(tag) then
+				if entry.DisplayInTooltip and item:HasTag(tag) then
 					local element = {
 						Type = "Tags",
 						Label = Ext.GetTranslatedStringFromKey(tag),

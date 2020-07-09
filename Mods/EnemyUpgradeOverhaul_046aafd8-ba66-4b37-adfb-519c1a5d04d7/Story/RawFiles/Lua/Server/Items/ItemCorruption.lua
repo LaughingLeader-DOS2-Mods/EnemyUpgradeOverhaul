@@ -294,6 +294,7 @@ local function AddRandomBoosts(item,stat,statType,level,minBoosts)
 	local totalBoosts = 0
 	local boostTable = ItemCorruption.Boosts[statType]
 	if boostTable ~= nil then
+		print("BoostTable:", Common.Dump(boostTable))
 		totalBoosts = AddRandomBoostsFromTable(item,stat,statType,level,boostTable,minBoosts)
 	end
 	--AddRandomBoostsFromTable(item,stat,statType,level,ItemCorruption.Boosts.All)
@@ -424,9 +425,12 @@ local function GetClone(item,stat,statType)
 	SetTag(cloned, "LLENEMY_ShadowItem")
 
 	if Ext.IsDeveloperMode() then
-		NRD_ItemIterateDeltaModifiers(cloned, "Iterator_LeaderLib_Debug_PrintDeltamods")
+		--NRD_ItemIterateDeltaModifiers(cloned, "Iterator_LeaderLib_Debug_PrintDeltamods")
 	end
-	AddRandomBoostsToItem(item, stat, statType, level, cloned)
+	local status,err = xpcall(AddRandomBoostsToItem, debug.traceback, item, stat, statType, level, cloned)
+	if not status then
+		print("[EnemyUpgradeOverhaul] Error calling AddRandomBoostsToItem:\n", err)
+	end
 
 	return cloned
 end
@@ -445,14 +449,13 @@ local corruptableTypes = {
 
 
 local function TryShadowCorruptItem(uuid, container)
-	print("ItemCorruption.Boosts", ItemCorruption.Boosts)
 	if uuid ~= nil then
 		local item = Ext.GetItem(uuid)
 		local stat = item.StatsId
 		local statType = NRD_StatGetType(stat)
 		if statType == "Weapon" or statType == "Armor" or statType == "Shield" then
 			local equippedSlot = Ext.StatGetAttribute(stat, "Slot")
-			LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
+			--LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItem] stat("..tostring(stat)..") SlotNumber("..tostring(item.Slot)..") Slot("..tostring(equippedSlot)..") ItemType("..tostring(item.ItemType)..")")
 			if ignoredSlots[equippedSlot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
 				if item.Slot > 13 then
 					if ItemCorruption.Boosts[statType] ~= nil then
@@ -531,7 +534,6 @@ function ShadowCorruptItem(item)
 	end
 	return nil
 end
-Ext.NewCall(ShadowCorruptItem, "LLENEMY_ShadowCorruptItem", "(ITEMGUID)_Item");
 
 function ShadowCorruptContainerItems(uuid)
 	corruptedItemLimit[uuid] = Ext.Random(1,3)

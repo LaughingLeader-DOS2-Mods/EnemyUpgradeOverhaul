@@ -32,7 +32,8 @@ if ItemCorruption == nil then
 end
 
 Ext.Require("Shared/Classes/Init.lua")
-ItemCorruption.TagBoosts = Ext.Require("Shared/Data/Corruption/TagBoosts.lua")
+---@type table<string, TagBoost>
+ItemCorruption.TagBoosts = Ext.Require("Shared/Data/Corruption/TagBoostEntries.lua")
 ItemCorruption.Boosts = Ext.Require("Shared/Data/Corruption/Boosts.lua")
 ItemCorruption.Colors = Ext.Require("Shared/Data/Corruption/Colors.lua")
 ItemCorruption.DeltaMods = Ext.Require("Shared/Data/Corruption/DeltaMods.lua")

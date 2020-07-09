@@ -215,3 +215,10 @@ object category "T_Demon",2,0,0,0,0,0,0,0
 object category "T_DemonForceDrop",2,0,0,0,0,0,0,0
 object category "T_ST_RareIngredient",6,0,0,0,0,0,0,0
 object category "T_DeathKnight",1,0,0,0,0,0,0,0
+
+new treasuretable "ST_LLENEMY_JustGloves"
+new subtable "10,1"
+object category "ClothGloves",1,0,1,0,0,0,0,0
+object category "LightGloves",1,0,1,0,0,0,0,0
+object category "HeavyGloves",1,0,1,0,0,0,0,0
+object category "MageGloves",1,0,1,0,0,0,0,0

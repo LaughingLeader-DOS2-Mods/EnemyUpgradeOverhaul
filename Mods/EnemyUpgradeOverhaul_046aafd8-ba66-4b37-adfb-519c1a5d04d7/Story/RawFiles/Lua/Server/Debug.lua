@@ -244,8 +244,9 @@ local function ItemCorruptionTest(level,delay)
 		level = CharacterGetLevel(host)
 	end
 	local backpack = CreateItemTemplateAtPosition("LOOT_LeaderLib_BackPack_Invisible_98fa7688-0810-4113-ba94-9a8c8463f830", x, y, z)
-	GenerateTreasure(backpack, "LLENEMY_ShadowOrbRewards", level, host)
-	GenerateTreasure(backpack, "ST_QuestReward_RG_3", level, host)
+	--GenerateTreasure(backpack, "LLENEMY_ShadowOrbRewards", level, host)
+	--GenerateTreasure(backpack, "ST_QuestReward_RG_3", level, host)
+	GenerateTreasure(backpack, "ST_LLENEMY_JustGloves", level, host)
 	ShadowCorruptContainerItems(backpack)
 	MoveAllItemsTo(backpack, host, 0, 0, 1)
 	ItemRemove(backpack)
@@ -509,6 +510,14 @@ function Debug_PrintItemProperties(obj)
 	end
 	Ext.Print("==========================")
 end
+
+Ext.RegisterConsoleCommand("euo_printrespentags", function(command)
+	for damageType,_ in pairs(LeaderLib.Data.DamageTypeToResistance) do
+		for i,entry in ipairs(LeaderLib.Data.ResistancePenetrationTags[damageType]) do
+			print(string.format("%s = Classes.TagBoost:Create(\"%s\", \"\", false),", entry.Tag, entry.Tag))
+		end
+	end
+end)
 
 BuiltinColorCodes = {
     [0] = "#FFFFFF",

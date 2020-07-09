@@ -1,176 +1,33 @@
----@class StatBoost
-local StatBoost = {
-	Stat = "",
-	Min = 1,
-	Max = 1,
-	Type = "StatBoost"
-}
-StatBoost.__index = StatBoost
 
----@param stat string
----@param min integer
----@param max integer
----@return StatBoost
-function StatBoost:Create(stat,min,max)
-    local this =
-    {
-		Stat = stat,
-		Min = min,
-		Max = max,
-		Type = "StatBoost"
-	}
-	setmetatable(this, self)
-    return this
-end
-
----@type StatBoost
-Classes.StatBoost = StatBoost
-
----@class TagBoost
-local TagBoost = {
-	Tag = "",
-	Flag = "",
-	Type = "TagBoost"
-}
-TagBoost.__index = TagBoost
-
----@param tag string
----@param flag string
----@return TagBoost
-function TagBoost:Create(tag,flag)
-    local this =
-    {
-		Tag = tag,
-		Flag = flag,
-		Type = "TagBoost"
-	}
-	setmetatable(this, self)
-    return this
-end
-
----@type TagBoost
-Classes.TagBoost = TagBoost
-
----A boost to be used with NRD_ItemSetPermanentBoost.
----@class ItemBoost
-local ItemBoost = {
-	StatType = "",
-	SlotType = "",
-	WeaponType = "",
-	--- Weapon types to ignore for this boost
-	---@type table<string,bool>
-	BlockWeaponTypes = {},
-	TwoHanded = nil,
-	---@type StatBoost|TagBoost[]
-	Boosts = {},
-	MinLevel = -1,
-	MaxLevel = -1,
-	Chance = 100,
+---@class ItemBoostGroup
+local ItemBoostGroup = {
+	ID = "",
+	Entries = {},
 	Limit = -1,
 	Applied = 0,
 }
-ItemBoost.__index = ItemBoost
+ItemBoostGroup.__index = ItemBoostGroup
 
 ---@param boost ItemBoost
 ---@param vars table
 local function SetVars(boost, vars)
 	if vars ~= nil then
-		if vars.StatType ~= nil then boost.StatType = vars.StatType end
-		if vars.MinLevel ~= nil then boost.MinLevel = vars.MinLevel end
-		if vars.MaxLevel ~= nil then boost.MaxLevel = vars.MaxLevel end
-		if vars.Chance ~= nil then boost.Chance = vars.Chance end
-		if vars.SlotType ~= nil then boost.SlotType = vars.SlotType end
-		if vars.TwoHanded ~= nil then boost.TwoHanded = vars.TwoHanded end
-		if vars.WeaponType ~= nil then boost.WeaponType = vars.WeaponType end
-		if vars.BlockWeaponTypes ~= nil then boost.BlockWeaponTypes = vars.BlockWeaponTypes end
 		if vars.Limit ~= nil then boost.Limit = vars.Limit end
 	end
 end
 
----@param statBoosts StatBoost|TagBoost[]
----@param vars table
----@return ItemBoost
-function ItemBoost:Create(boosts, vars)
-    local this =
-    {
-		Boosts = boosts,
-		MinLevel = -1,
-		MaxLevel = -1,
-		Chance = 100
-	}
-	setmetatable(this, self)
-	SetVars(this, vars)
-    return this
-end
-
----Applies stat boosts to an item.
----@param item string
----@param mod number A modifier to apply to the number, i.e. -1 to make it a negative boost.
----@return ItemBoost
-function ItemBoost:Apply(item,mod)
-	if mod == nil or mod == 0 then mod = 1 end
-	if self.Boosts ~= nil and #self.Boosts > 0 then
-		for i,v in pairs(self.Boosts) do
-			if v.Type == "StatBoost" then
-				--Ext.Print(LeaderLib.Common.Dump(v))
-				if v.Stat == "Skills" then
-					local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
-					local nextValue = ""
-					if currentValue == nil or currentValue == "" then
-						nextValue = v.Min
-					else
-						nextValue = currentValue .. ";" .. v.Min
-					end
-					NRD_ItemSetPermanentBoostString(item, v.Stat, nextValue)
-					LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
-				elseif v.Stat == "ItemColor" then
-					local currentValue = NRD_ItemGetPermanentBoostString(item, v.Stat)
-					NRD_ItemSetPermanentBoostString(item, v.Stat, v.Min)
-					LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(v.Min)..")")
-				else
-					local currentValue = NRD_ItemGetPermanentBoostInt(item, v.Stat)
-					if currentValue == nil then currentValue = 0 end
-					local valMod = Ext.Random(math.floor(v.Min), math.max(v.Max)) * mod
-					if v.Stat == "WeaponRange" then
-						valMod = (Ext.Random(math.floor(v.Min * 100), math.ceil(v.Max * 100)) * mod) / 100
-					end
-					
-					local nextValue = currentValue + valMod
-					NRD_ItemSetPermanentBoostInt(item, v.Stat, nextValue)
-					LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..v.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
-				end
-			elseif v.Type == "TagBoost" then
-				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding TagBoost ["..v.Tag.."] to item.")
-				SetTag(item, v.Tag)
-			end
-		end
-		self.Applied = self.Applied + 1
-	else
-		Ext.PrintError("[LLENEMY_ItemCorruptionBoosts.lua:ItemBoost:Apply] nil Boosts?")
-		Ext.PrintError(LeaderLib.Common.Dump(self))
-	end
-end
-
----@type ItemBoost
-Classes.ItemBoost = ItemBoost
-
----@class ItemBoostGroup
-local ItemBoostGroup = {
-	ID = "",
-	Entries = {}
-}
-ItemBoostGroup.__index = ItemBoostGroup
-
 ---@param id string
 ---@param entries table
+---@param vars table|nil
 ---@return ItemBoostGroup
-function ItemBoostGroup:Create(id, entries)
+function ItemBoostGroup:Create(id, entries, vars)
     local this =
     {
 		ID = id,
 		Entries = entries,
 	}
 	setmetatable(this, self)
+	SetVars(this, vars)
     return this
 end
 
@@ -191,6 +48,15 @@ end
 local function CanAddBoost(itemBoost,stat,statType)
 	if itemBoost.Limit > 0 and itemBoost.Applied >= itemBoost.Limit then
 		return false
+	end
+	if itemBoost.ObjectCategories ~= nil then
+		local objectCategory = Ext.StatGetAttribute(stat, "ObjectCategory")
+		if objectCategory == "MageGloves" or objectCategory == "ClothGloves" then
+			print("ObjectCategory check:",stat,objectCategory)
+		end
+		if itemBoost.ObjectCategories[objectCategory] ~= true then
+			return false
+		end
 	end
 	if statType == "Weapon" then
 		local weaponType = Ext.StatGetAttribute(stat, "WeaponType")
@@ -274,8 +140,18 @@ end
 ---@param minAmount integer|nil
 ---@return ItemBoostGroup
 function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit,minAmount)
-	if limit == nil then limit = 0 end
+	if limit == nil then 
+		if self.Limit > 0 then
+			limit = self.Limit
+		else
+			limit = 0
+		end
+	end
 	if minAmount == nil then minAmount = 0 end
+	if limit > 0 and self.Applied >= limit then
+		self.Applied = 0
+		return limit
+	end
 	local totalApplied = 0
 	if #self.Entries > 0 then
 		LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(self.ID) .. " | Total: " .. tostring(#self.Entries))

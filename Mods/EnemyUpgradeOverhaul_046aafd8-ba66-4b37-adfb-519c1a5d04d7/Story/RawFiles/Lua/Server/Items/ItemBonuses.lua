@@ -1,7 +1,7 @@
 
 function LLENEMY_ShadowItem_OnEquipped(char, item)
 	for tag,entry in pairs(ItemCorruption.BonusTags) do
-		if IsTagged(item, tag) == 1 then
+		if not LeaderLib.StringHelpers.IsNullorEmpty(entry.Flag) and IsTagged(item, tag) == 1 then
 			LeaderLib_ToggleScripts_EnableScriptForObject(char, entry.Flag, "EnemyUpgradeOverhaul", 1)
 		end
 	end
@@ -10,7 +10,7 @@ end
 function LLENEMY_ShadowItem_OnUnEquipped(char, item)
 	local removedTags = {}
 	for tag,entry in pairs(ItemCorruption.BonusTags) do
-		if IsTagged(item, tag) == 1 then
+		if not LeaderLib.StringHelpers.IsNullorEmpty(entry.Flag) and IsTagged(item, tag) == 1 then
 			--LeaderLib_ToggleScripts_DisableScriptForObject(char, flag, "EnemyUpgradeOverhaul", 1)
 			table.insert(removedTags, entry)
 		end

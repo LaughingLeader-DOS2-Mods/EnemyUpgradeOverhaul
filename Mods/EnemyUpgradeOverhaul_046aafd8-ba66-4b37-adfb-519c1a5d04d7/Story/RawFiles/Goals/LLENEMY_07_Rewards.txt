@@ -610,8 +610,10 @@ NRD_ModCall("EnemyUpgradeOverhaul", "CheckEmptyShadowOrb", _UUID);
 
 IF
 StoryEvent((ITEMGUID)_Item, "Iterators_LLENEMY_CorruptItem")
+AND
+GetUUID(_Item, _UUID)
 THEN
-LLENEMY_ShadowCorruptItem(_Item);
+NRD_ModCall("EnemyUpgradeOverhaul", "ShadowCorruptItem", _UUID);
 */
 //END_REGION
 
