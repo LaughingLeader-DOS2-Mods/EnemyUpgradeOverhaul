@@ -2,6 +2,12 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 KBSECTION
+PROC
+LLENEMY_Upgrades_RegisterAll((INTEGER)_HardmodeEnabled)
+THEN
+SysClear("DB_LLENEMY_Duplication_Blacklist", 1);
+// Driftwood Arena Voidwoken
+DB_LLENEMY_Duplication_Blacklist((CHARACTERGUID)S_RC_DW_UnderTavern_Voidwoken_13bb467b-de20-4726-8afd-757705352361);
 
 //REGION DALLIS_ALEXANDER_FLEEING_LOOT
 IF
@@ -61,6 +67,36 @@ NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Char, _Treasure);
 GenerateTreasure(_Container, _Treasure, _Level, _Char);
 //END_REGION
 
+//REGION BLOCK_DUPLICATION
+// Preventing shadow clones on Trompdoy illusions
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Char, "Duplication", (STRING)_Type, (STRING)_Status, (REAL)_Duration)
+AND
+NOT DB_LLENEMY_Origins_DuplicationBlocked(_Char)
+AND
+DB_SW_IllusionistsIllusions((CHARACTERGUID)_Char)
+THEN
+DB_LLENEMY_Origins_DuplicationBlocked(_Char);
+LLENEMY_Upgrades_RedirectUpgradeToGroupType(_Char, "Duplication", _Type, _Status, "Buffs", "Normal");
+
+// Ignore specific characters
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Char, "Duplication", (STRING)_Type, (STRING)_Status, (REAL)_Duration)
+AND
+NOT DB_LLENEMY_Origins_DuplicationBlocked(_Char)
+AND
+DB_LLENEMY_Duplication_Blacklist(_Char)
+THEN
+DB_LLENEMY_Origins_DuplicationBlocked(_Char);
+LLENEMY_Upgrades_RedirectUpgradeToGroupType(_Char, "Duplication", _Type, _Status, "Buffs", "Normal");
+
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Char, "Duplication", (STRING)_Type, (STRING)_Status, (REAL)_Duration)
+AND
+DB_LLENEMY_Origins_DuplicationBlocked(_Char)
+THEN
+NOT DB_LLENEMY_Origins_DuplicationBlocked(_Char);
+//END_REGION
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_20_Origins__Start"

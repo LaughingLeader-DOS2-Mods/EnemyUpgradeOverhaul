@@ -87,6 +87,8 @@ LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
 //END_REGION
 
 //REGION CREATE
+
+
 QRY
 LLENEMY_Duplication_QRY_CanSpawnDuplicant((CHARACTERGUID)_Char, 1)
 AND
