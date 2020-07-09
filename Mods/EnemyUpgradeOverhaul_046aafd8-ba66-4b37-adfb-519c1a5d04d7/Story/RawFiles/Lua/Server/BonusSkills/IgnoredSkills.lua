@@ -94,7 +94,7 @@ return {
 	Shout_EnemyIgnition_Troll = true,
 	Shout_EnemyInspire = true,
 	Shout_EnemyMassShacklesOfPain = true,
-	Shout_EnemyVileBurst = true, -- Kills the caster. Bad!,
+	Shout_EnemyVileBurst = true, -- Kills the caster. Bad!
 	Storm_EnemyLightning_MotherTree = true,
 	Summon_EnemyBoneTroll = true,
 	Summon_EnemyBoneTroll_Dog = true,
