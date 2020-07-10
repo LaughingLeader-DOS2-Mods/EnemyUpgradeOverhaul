@@ -16,7 +16,11 @@ Ext.Require("Server/TreasureGoblins.lua")
 Ext.Require("Server/VoidwokenSpawning.lua")
 Ext.Require("Server/ServerMessages.lua")
 Ext.Require("Server/Recruiter.lua")
-Ext.Require("Server/Debug.lua")
+
+if Ext.IsDeveloperMode() then
+	Ext.Require("Server/Debug/Init.lua")
+	Ext.Require("Server/Debug/ConsoleCommands.lua")
+end
 
 local function LLENEMY_Server_ModuleLoading()
 	LLENEMY_Shared_InitModuleLoading()
