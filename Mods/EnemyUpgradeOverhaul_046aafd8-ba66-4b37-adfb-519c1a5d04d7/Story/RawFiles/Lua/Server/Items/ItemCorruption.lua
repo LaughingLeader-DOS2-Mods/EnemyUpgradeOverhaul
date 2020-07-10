@@ -281,23 +281,16 @@ local function AddRandomDeltaModsFromTable(item,stat,statType,level,boostTable,i
 	return totalBoosts
 end
 
-local function AddRandomBoostsFromTable(item,stat,statType,level,boostTable,minBoosts)
-	local totalBoosts = 0
-	for i,group in ipairs(boostTable) do
-		LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(group.ID))
-		totalBoosts = totalBoosts + group:Apply(item,stat,statType,level,1,false,nil,minBoosts)
-	end
-	return totalBoosts
-end
-
 local function AddRandomBoosts(item,stat,statType,level,minBoosts)
 	local totalBoosts = 0
 	local boostTable = ItemCorruption.Boosts[statType]
 	if boostTable ~= nil then
-		print("BoostTable:", Common.Dump(boostTable))
-		totalBoosts = AddRandomBoostsFromTable(item,stat,statType,level,boostTable,minBoosts)
+		print("BoostTable:", statType)
+		for i,group in ipairs(boostTable) do
+			LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(group.ID))
+			totalBoosts = totalBoosts + group:Apply(item,stat,statType,level,1,false,nil,minBoosts)
+		end
 	end
-	--AddRandomBoostsFromTable(item,stat,statType,level,ItemCorruption.Boosts.All)
 	return totalBoosts
 end
 
@@ -360,6 +353,18 @@ local function AddRandomBoostsToItem(item,stat,statType,level,cloned)
 	end
 
 	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level,minBoosts)
+
+	local objectCategory = Ext.StatGetAttribute(stat, "ObjectCategory")
+	---@type ItemBoostGroup[]
+	local bonusCategoryTable = ItemCorruption.Boosts.ObjectCategory[objectCategory]
+	if bonusCategoryTable ~= nil then
+		---@type ItemBoostGroup
+		local group = Common.GetRandomTableEntry(bonusCategoryTable)
+		totalBoosts = totalBoosts + group:Apply(cloned,stat,statType,level,1,false,nil,minBoosts)
+	else
+		print(objectCategory, Ext.JsonStringify(ItemCorruption.Boosts.ObjectCategory))
+	end
+
 	if totalBoosts > 0 then
 		--SetVarInteger(cloned, "LLENEMY_ItemCorruption_TotalBoosts", totalBoosts)
 		--Mods.LeaderLib.StartTimer("Timers_LLENEMY_AddNegativeItemBoosts", 100, cloned)
@@ -531,7 +536,7 @@ function ShadowCorruptContainerItems(uuid)
 			if corruptionLimit <= 0 then
 				break	
 			end
-			local b,result = xpcall(TryShadowCorruptItem, debug.traceback, v, container)
+			local b,result = xpcall(TryShadowCorruptItem, debug.traceback, v, uuid)
 			if b then
 				corruptionLimit = corruptionLimit - 1
 			else
@@ -539,6 +544,13 @@ function ShadowCorruptContainerItems(uuid)
 			end
 		end
 	end
+
+	-- Reset limits
+	for k,group in pairs(ItemCorruption.Boosts) do
+		group.Applied = 0
+	end
+
+	ContainerIdentifyAll(uuid)
 end
 
 function CheckEmptyShadowOrb(uuid)

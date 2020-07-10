@@ -71,7 +71,6 @@ end
 ---@param itemBoostObject ItemBoost
 ---@param boost StatBoost|TagBoost
 local function ApplyBoost(item,mod,itemBoostObject,boost)
-	print(item,mod,itemBoostObject,boost)
 	if boost.Type == "StatBoost" then
 		--Ext.Print(LeaderLib.Common.Dump(v))
 		if boost.Stat == "Skills" then
@@ -101,7 +100,7 @@ local function ApplyBoost(item,mod,itemBoostObject,boost)
 			LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..boost.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 		end
 	elseif boost.Type == "TagBoost" then
-		LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding TagBoost ["..boost.Tag.."] to item.")
+		LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding TagBoost ["..boost.Tag.."] to item ["..item.."].")
 		SetTag(item, boost.Tag)
 		if boost.OnTagAdded ~= nil then
 			pcall(boost.OnTagAdded, item)

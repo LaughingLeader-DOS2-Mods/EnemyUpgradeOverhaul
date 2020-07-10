@@ -188,37 +188,6 @@ Boosts.Armor = {
 			Classes.StatBoost:Create("RuneSlots",1,1),
 		},{Chance=1, Limit=1})
 		}),
-	Classes.ItemBoostGroup:Create("ArmorResistancePenetration", {
-		-- Resistane Penetration
-		Classes.ItemBoost:Create({
-			LeaderLibResPenTags.Air5,
-			LeaderLibResPenTags.Earth5,
-			LeaderLibResPenTags.Fire5,
-			LeaderLibResPenTags.Poison5,
-			LeaderLibResPenTags.Water5,
-		},{Chance=40, SlotType="Gloves", ObjectCategories={"MageGloves","ClothGloves"}, Limit=1, All=false}),
-		Classes.ItemBoost:Create({
-			LeaderLibResPenTags.Air15,
-			LeaderLibResPenTags.Earth15,
-			LeaderLibResPenTags.Fire15,
-			LeaderLibResPenTags.Poison15,
-			LeaderLibResPenTags.Water15,
-		},{Chance=20, SlotType="Gloves", ObjectCategories={"MageGloves","ClothGloves"}, Limit=1, All=false}),
-		Classes.ItemBoost:Create({
-			LeaderLibResPenTags.Air25,
-			LeaderLibResPenTags.Earth25,
-			LeaderLibResPenTags.Fire25,
-			LeaderLibResPenTags.Poison25,
-			LeaderLibResPenTags.Water25,
-		},{Chance=5, SlotType="Gloves", ObjectCategories={"MageGloves","ClothGloves"}, Limit=1, All=false}),
-		Classes.ItemBoost:Create({
-			LeaderLibResPenTags.Air50,
-			LeaderLibResPenTags.Earth50,
-			LeaderLibResPenTags.Fire50,
-			LeaderLibResPenTags.Poison50,
-			LeaderLibResPenTags.Water50,
-		},{Chance=1, SlotType="Gloves", ObjectCategories={"MageGloves","ClothGloves"}, Limit=1, All=false}),
-	}, {Limit=1})
 }
 
 local armorResistances = {
@@ -252,5 +221,120 @@ end
 
 ---@type Classes.ItemBoostGroup
 Boosts.Resistances = resistanceGroups
+
+Boosts.ObjectCategory = {}
+
+local penSmallChance = 30
+local penMediumChance = 10
+local penLargeChance = 4
+local penExtraLargeChance = 1
+
+Boosts.ObjectCategory.MageGloves = {
+	Classes.ItemBoostGroup:Create("AirResPen", {
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Air5,
+		},{Chance=penSmallChance}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Air15,
+		},{Chance=penMediumChance, Limit=2}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Air25,
+		},{Chance=penLargeChance, Limit=1}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Air50,
+		},{Chance=penExtraLargeChance, Limit=1}),
+	}),
+	Classes.ItemBoostGroup:Create("EarthResPen", {
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Earth5,
+		},{Chance=penSmallChance}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Earth15,
+		},{Chance=penMediumChance, Limit=2}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Earth25,
+		},{Chance=penLargeChance, Limit=1}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Earth50,
+		},{Chance=penExtraLargeChance, Limit=1}),
+	}),
+	Classes.ItemBoostGroup:Create("PoisonResPen", {
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Poison5,
+		},{Chance=penSmallChance}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Poison15,
+		},{Chance=penMediumChance, Limit=2}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Poison25,
+		},{Chance=penLargeChance, Limit=1}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Poison50,
+		},{Chance=penExtraLargeChance, Limit=1}),
+	}),
+	Classes.ItemBoostGroup:Create("FireResPen", {
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Fire5,
+		},{Chance=penSmallChance}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Fire15,
+		},{Chance=penMediumChance, Limit=2}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Fire25,
+		},{Chance=penLargeChance, Limit=1}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Fire50,
+		},{Chance=penExtraLargeChance, Limit=1}),
+	}),
+	Classes.ItemBoostGroup:Create("WaterResPen", {
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Water5,
+		},{Chance=penSmallChance}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Water15,
+		},{Chance=penMediumChance, Limit=2}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Water25,
+		},{Chance=penLargeChance, Limit=1}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Water50,
+		},{Chance=penExtraLargeChance, Limit=1}),
+	}),
+}
+Boosts.ObjectCategory.ClothGloves = Boosts.ObjectCategory.MageGloves
+
+Boosts.ObjectCategory.HeavyGloves = {
+	Classes.ItemBoostGroup:Create("PhysicalResPen", {
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Physical5,
+		},{Chance=20}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Physical15,
+		},{Chance=penMediumChance, Limit=2}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Physical25,
+		},{Chance=penLargeChance, Limit=1}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Physical50,
+		},{Chance=penExtraLargeChance, Limit=1}),
+	})
+}
+
+Boosts.ObjectCategory.LightGloves = {
+	Classes.ItemBoostGroup:Create("PiercingResPen", {
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Piercing5,
+		},{Chance=penSmallChance}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Piercing15,
+		},{Chance=penMediumChance, Limit=2}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Piercing25,
+		},{Chance=penLargeChance, Limit=1}),
+		Classes.ItemBoost:Create({
+			LeaderLibResPenTags.Piercing50,
+		},{Chance=penExtraLargeChance, Limit=1}),
+	})
+}
 
 return Boosts

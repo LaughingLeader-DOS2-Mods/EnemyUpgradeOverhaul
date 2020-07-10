@@ -5,6 +5,7 @@ local ItemBoostGroup = {
 	Entries = {},
 	Limit = -1,
 	Applied = 0,
+	Chance = 100,
 }
 ItemBoostGroup.__index = ItemBoostGroup
 
@@ -13,6 +14,7 @@ ItemBoostGroup.__index = ItemBoostGroup
 local function SetVars(boost, vars)
 	if vars ~= nil then
 		if vars.Limit ~= nil then boost.Limit = vars.Limit end
+		if vars.Chance ~= nil then boost.Chance = vars.Chance end
 	end
 end
 
@@ -51,9 +53,6 @@ local function CanAddBoost(itemBoost,stat,statType)
 	end
 	if itemBoost.ObjectCategories ~= nil then
 		local objectCategory = Ext.StatGetAttribute(stat, "ObjectCategory")
-		if objectCategory == "MageGloves" or objectCategory == "ClothGloves" then
-			print("ObjectCategory check:",stat,objectCategory)
-		end
 		if itemBoost.ObjectCategories[objectCategory] ~= true then
 			return false
 		end
@@ -152,6 +151,13 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 		self.Applied = 0
 		return limit
 	end
+	if self.Chance < 100 and self.Chance > 0 then
+		local roll = Ext.Random(1,100)
+		print(roll)
+		if roll > self.Chance then
+			return 0
+		end
+	end
 	local totalApplied = 0
 	if #self.Entries > 0 then
 		LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(self.ID) .. " | Total: " .. tostring(#self.Entries))
@@ -173,24 +179,53 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 			end
 		else
 			if minAmount > 0 then
-				local loopLimit = 0
-				while totalApplied < minAmount and loopLimit < 999 do
-					local shuffled = LeaderLib.Common.ShuffleTable(self.Entries)
-					for i,v in pairs(shuffled) do
-						if limit > 0 and totalApplied >= limit then
+				local validEntries = {}
+				for i,v in pairs(self.Entries) do
+					if CanAddBoost(v, stat, statType) then
+						if v.MinLevel <= 0 and v.MaxLevel <= 0 or (level >= v.MinLevel and (level <= v.MaxLevel or v.MaxLevel <= 0)) then
+							table.insert(validEntries, v)
+						end
+					end
+				end
+				if #validEntries > 1 then
+					local loopLimit = 0
+					while totalApplied < minAmount and loopLimit < 50 do
+						if (limit > 0 and totalApplied >= limit) or #validEntries == 0 then
 							self:ResetApplied()
 							return totalApplied
 						end
-						if CanAddBoost(v, stat, statType) then
-							if v.MinLevel <= 0 and v.MaxLevel <= 0 or (level >= v.MinLevel and (level <= v.MaxLevel or v.MaxLevel <= 0)) then
-								if RollForBoost(v) then
-									v:Apply(item,mod)
+						---@type ItemBoost
+						local entry = LeaderLib.Common.GetRandomTableEntry(validEntries)
+						if CanAddBoost(entry, stat, statType) then
+							if entry.MinLevel <= 0 and entry.MaxLevel <= 0 or (level >= entry.MinLevel and (level <= entry.MaxLevel or entry.MaxLevel <= 0)) then
+								if RollForBoost(entry) then
+									entry:Apply(item,mod)
 									totalApplied = totalApplied + 1
+
+									if entry.Applied >= entry.Limit then
+										local index = 1
+										for i,v in ipairs(validEntries) do
+											if v == entry then
+												index = i
+												break
+											end
+										end
+										table.remove(validEntries, index)
+									end
 								end
 							end
 						end
+						loopLimit = loopLimit + 1
 					end
-					loopLimit = loopLimit + 1
+				elseif #validEntries == 1 then
+					local entry = validEntries[1]					
+					if RollForBoost(entry) then
+						entry:Apply(item,mod)
+						totalApplied = totalApplied + 1
+					end
+				else
+					self:ResetApplied()
+					return totalApplied
 				end
 			else
 				for i,v in pairs(self.Entries) do

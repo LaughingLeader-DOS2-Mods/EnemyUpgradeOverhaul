@@ -34,9 +34,12 @@ end
 Ext.Require("Shared/Classes/Init.lua")
 ---@type table<string, TagBoost>
 ItemCorruption.TagBoosts = Ext.Require("Shared/Data/Corruption/TagBoostEntries.lua")
+---@type table<string,ItemBoostGroup>
 ItemCorruption.Boosts = Ext.Require("Shared/Data/Corruption/Boosts.lua")
+---@type string[]
 ItemCorruption.Colors = Ext.Require("Shared/Data/Corruption/Colors.lua")
 ItemCorruption.DeltaMods = Ext.Require("Shared/Data/Corruption/DeltaMods.lua")
+---@type string[]
 ItemCorruption.Names = Ext.Require("Shared/Data/Corruption/Names.lua")
 
 local statOverrides = Ext.Require("Shared/StatOverrides.lua")
