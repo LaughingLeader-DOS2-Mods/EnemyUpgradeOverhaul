@@ -50,14 +50,10 @@ function ScatterInventory(char)
 end
 
 function DestroyEmptyContainer(uuid)
-	local containerGoldValue = ContainerGetGoldValue(uuid)
-	if Ext.IsDeveloperMode() then
-		local containerValue = ItemGetGoldValue(uuid)
-		LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:DestroyEmptyContainer] Destroy ("..uuid..")? containerGoldValue("..tostring(containerGoldValue)..") containerValue("..tostring(containerValue)..")")
-	end
-	if containerGoldValue <= 1 then
-		ItemDestroy(uuid)
-	else
-		--InventoryLaunchIterator(uuid, "LLENEMY_EmptyContainer_CheckContents", "")
-	end
+	pcall(function()
+		local items = Ext.GetItem(uuid):GetInventoryItems()
+		if (#items == 0) then
+			ItemDestroy(uuid)
+		end
+	end)
 end

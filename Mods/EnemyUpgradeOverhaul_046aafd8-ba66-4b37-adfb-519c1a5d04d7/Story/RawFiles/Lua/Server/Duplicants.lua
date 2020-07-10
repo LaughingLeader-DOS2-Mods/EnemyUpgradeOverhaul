@@ -1,5 +1,6 @@
 
 function Duplication_CopySource(source,dupe)
+	---@type EsvCharacter
 	local sourceCharacter = Ext.GetCharacter(source)
 	-- for i,slot in LeaderLib.Data.VisibleEquipmentSlots:Get() do
 	-- 	local item = CharacterGetEquippedItem(source, slot)
@@ -14,7 +15,17 @@ function Duplication_CopySource(source,dupe)
 	Duplication_CopyName(source, dupe)
 	Duplication_CopyCP(source, dupe)
 	ClearGain(dupe)
-	NRD_CharacterIterateSkills(source, "LLENEMY_Dupe_CopySkill")
+	---@type string[]
+	local skills = sourceCharacter:GetSkills()
+	if skills ~= nil and #skills > 0 then
+		for i,skill in pairs(skills) do
+			CharacterAddSkill(dupe, skill, 0)
+			---@type EsvSkillInfo
+			--local skillInfo = sourceCharacter:GetSkillInfo(skill)
+		end
+	else
+		NRD_CharacterIterateSkills(source, "LLENEMY_Dupe_CopySkill")
+	end
 	Osi.LLENEMY_Duplication_Internal_SetupDupe_StageTwo(source, dupe)
 
 	-- ---@type EsvCharacter

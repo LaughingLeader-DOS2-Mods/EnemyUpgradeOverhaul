@@ -447,7 +447,9 @@ local corruptableTypes = {
 	Armor = true,
 }
 
-
+---@param uuid string The item to corrupt.
+---@param container string The item it's container, if any.
+---@return string|nil The corrupted item.
 local function TryShadowCorruptItem(uuid, container)
 	if uuid ~= nil then
 		local item = Ext.GetItem(uuid)
@@ -498,72 +500,57 @@ local function TryShadowCorruptItem(uuid, container)
 	end
 end
 
-local corruptedItemLimit = {}
-local shadowOrbItemAmount = {}
-
 function ShadowCorruptItem(item)
-	local stat = NRD_ItemGetStatsId(item)
-	if string.sub(stat,1,1) == "_" then
-		ItemRemove(item)
-		Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Deleted item with NPC stat: "..stat)
+	local container = GetInventoryOwner(item)
+	local b,result = xpcall(TryShadowCorruptItem, debug.traceback, item, container)
+	if b then
+		return result
 	else
-		local container = GetInventoryOwner(item)
-		local limit = nil
-		if container ~= nil then
-			limit = corruptedItemLimit[container]
-			if limit ~= nil and limit <= 0 then
-				return nil
-			end
-			if shadowOrbItemAmount[container] == nil then
-				shadowOrbItemAmount[container] = 1
-			else
-				shadowOrbItemAmount[container] = shadowOrbItemAmount[container] + 1
-			end
-		end
-
-		local b,result = xpcall(TryShadowCorruptItem, debug.traceback, item, container)
-		if b then
-			if limit ~= nil then
-				limit = limit - 1
-				corruptedItemLimit[container] = limit
-			end
-			return result
-		else
-			Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
-		end
+		Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
 	end
 	return nil
 end
 
 function ShadowCorruptContainerItems(uuid)
-	corruptedItemLimit[uuid] = Ext.Random(1,3)
-	shadowOrbItemAmount[uuid] = 0
-	InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "")
-	--[[ local success = false
-	local item = Ext.GetItem(uuid)
-	if item ~= nil then
-		local inventory = item:GetInventoryItems()
-		if inventory ~= nil and #inventory > 0 then
-			success = true
-			for k,v in pairs(inventory) do
-				ShadowCorruptItem(v, uuid)
+	local min = math.floor(GameHelpers.GetExtraData("LLENEMY_ItemCorruption_MinItemsAffected", 1))
+	local max = math.ceil(GameHelpers.GetExtraData("LLENEMY_ItemCorruption_MaxItemsAffected", 3))
+
+	local corruptionLimit = Ext.Random(min,max)
+
+	---@type EsvItem
+	local container = Ext.GetItem(uuid)
+	---@type string[]
+	local items = container:GetInventoryItems()
+
+	for i,v in pairs(items) do
+		local stat = NRD_ItemGetStatsId(v)
+		if string.sub(stat,1,1) == "_" then
+			ItemRemove(v)
+			Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Deleted item with NPC stat: "..stat)
+		else
+			if corruptionLimit <= 0 then
+				break	
+			end
+			local b,result = xpcall(TryShadowCorruptItem, debug.traceback, v, container)
+			if b then
+				corruptionLimit = corruptionLimit - 1
+			else
+				Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
 			end
 		end
 	end
-	if not success then
-		LeaderLib.PrintDebug("[LLENEMY_ItemMechanics.lua:ShadowCorruptItems] Failed to get inventory for item ("..uuid..")")
-		InventoryLaunchIterator(uuid, "Iterators_LLENEMY_CorruptItem", "");
-	end ]]
 end
 
 function CheckEmptyShadowOrb(uuid)
-	local itemAmount = shadowOrbItemAmount[uuid]
+	local items = Ext.GetItem(uuid):GetInventoryItems()
+	local itemAmount = 0
+	if items ~= nil then
+		itemAmount = #items
+	end
 	if (itemAmount == nil or itemAmount == 0) and ContainerGetGoldValue(uuid) <= 0 then
 		ItemDestroy(uuid)
 		LeaderLib.PrintDebug("[EUO:CheckEmptyShadowOrb] Shadow Orb ("..uuid..") is empty. Deleting.")
 	end
-	shadowOrbItemAmount[uuid] = nil
-	corruptedItemLimit[uuid] = nil
 end
 
 ItemCorruption.AddRandomNegativeBoost = AddRandomNegativeBoost
