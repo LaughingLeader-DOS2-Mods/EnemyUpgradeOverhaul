@@ -358,11 +358,16 @@ local function AddRandomBoostsToItem(item,stat,statType,level,cloned)
 	---@type ItemBoostGroup[]
 	local bonusCategoryTable = ItemCorruption.Boosts.ObjectCategory[objectCategory]
 	if bonusCategoryTable ~= nil then
-		---@type ItemBoostGroup
-		local group = Common.GetRandomTableEntry(bonusCategoryTable)
-		totalBoosts = totalBoosts + group:Apply(cloned,stat,statType,level,1,false,nil,minBoosts)
-	else
-		print(objectCategory, Ext.JsonStringify(ItemCorruption.Boosts.ObjectCategory))
+		for i,v in pairs(bonusCategoryTable) do
+			if v.ID == "RandomGroupContainer" then
+				---@type ItemBoostGroup
+				local group = Common.GetRandomTableEntry(v.Entries)
+				totalBoosts = totalBoosts + group:Apply(cloned,stat,statType,level,1,false,nil,minBoosts)
+			elseif v.ID == "ItemBoostGroup" then
+				totalBoosts = totalBoosts + v:Apply(cloned,stat,statType,level,1,false,nil,minBoosts)
+			end
+		end
+
 	end
 
 	if totalBoosts > 0 then

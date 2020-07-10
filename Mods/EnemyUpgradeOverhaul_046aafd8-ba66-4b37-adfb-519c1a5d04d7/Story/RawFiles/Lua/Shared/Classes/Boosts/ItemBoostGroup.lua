@@ -153,7 +153,6 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 	end
 	if self.Chance < 100 and self.Chance > 0 then
 		local roll = Ext.Random(1,100)
-		print(roll)
 		if roll > self.Chance then
 			return 0
 		end

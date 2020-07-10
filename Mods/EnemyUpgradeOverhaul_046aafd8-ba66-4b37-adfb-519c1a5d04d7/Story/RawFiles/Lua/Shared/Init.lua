@@ -36,6 +36,9 @@ Ext.Require("Shared/Classes/Init.lua")
 ItemCorruption.TagBoosts = Ext.Require("Shared/Data/Corruption/TagBoostEntries.lua")
 ---@type table<string,ItemBoostGroup>
 ItemCorruption.Boosts = Ext.Require("Shared/Data/Corruption/Boosts.lua")
+---@class ModBoostInitializer
+---@field Init function Checks active mods and adds additional corruption boosts.
+local modBoosts = Ext.Require("Shared/Data/Corruption/ModBoosts.lua")
 ---@type string[]
 ItemCorruption.Colors = Ext.Require("Shared/Data/Corruption/Colors.lua")
 ItemCorruption.DeltaMods = Ext.Require("Shared/Data/Corruption/DeltaMods.lua")
@@ -81,6 +84,7 @@ function LLENEMY_Shared_InitModuleLoading()
 	if Ext.IsDeveloperMode() and Ext.Version() >= 44 and Ext.GetDeltaMod ~= nil then
 		FixModTypos()
 	end
+	modBoosts.Init()
 end
 
 local function LLENEMY_Shared_SessionLoading()
