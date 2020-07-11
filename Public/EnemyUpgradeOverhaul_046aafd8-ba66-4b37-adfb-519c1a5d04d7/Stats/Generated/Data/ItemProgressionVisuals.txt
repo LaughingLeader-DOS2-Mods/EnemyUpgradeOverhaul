@@ -9,3 +9,45 @@ new itemgroup "WPN_LLENEMY_Drillworm_A_Debug"
 add levelgroup 0,0,"All"
 add rootgroup "c5e9a07c-571c-4046-bd1e-a35fd9439a03",""
 add namegroup "EMPTY","",""
+
+new itemgroup "WPN_LLENEMY_ShadowTreasure_Cleaver_1H"
+
+add levelgroup 0,0,"All"
+add rootgroup "46d638b4-ab83-49e8-bd45-c97dd1065311",""
+add namegroup "WPN_LLENEMY_ShadowTreasure_Cleaver_1H","",""
+
+new itemgroup "WPN_LLENEMY_ShadowTreasure_Scythe_2H"
+
+add levelgroup 0,0,"All"
+add rootgroup "05f434ca-89fa-45ac-8c38-3a4e8fa6e26c",""
+add namegroup "WPN_LLENEMY_ShadowTreasure_Scythe_2H","",""
+
+new itemgroup "WPN_LLENEMY_ShadowTreasure_Spear_2H"
+
+add levelgroup 0,0,"All"
+add rootgroup "de72e1eb-e6e3-432f-be91-af3d98045a8a",""
+add namegroup "WPN_LLENEMY_ShadowTreasure_Spear_2H","",""
+
+new itemgroup "WPN_LLENEMY_ShadowTreasure_Sword_2H"
+
+add levelgroup 0,0,"All"
+add rootgroup "5b2328ac-ac93-4949-ae26-ae2fc3a572d0",""
+add namegroup "WPN_LLENEMY_ShadowTreasure_Sword_2H","",""
+
+new itemgroup "WPN_LLENEMY_ShadowTreasure_Mallet_2H"
+
+add levelgroup 0,0,"All"
+add rootgroup "fddb422e-39a2-405a-8255-35bfd94052c9",""
+add namegroup "WPN_LLENEMY_ShadowTreasure_Mallet_2H","",""
+
+new itemgroup "WPN_LLENEMY_ShadowTreasure_Shovel_2H"
+
+add levelgroup 0,0,"All"
+add rootgroup "fef2dc65-7cf7-41f8-8d16-c3ae23ba0588",""
+add namegroup "WPN_LLENEMY_ShadowTreasure_Shovel_2H","",""
+
+new itemgroup "WPN_LLENEMY_ShadowTreasure_Sickle_1H"
+
+add levelgroup 0,0,"All"
+add rootgroup "9c60fe0a-b13a-4489-ab23-bbefb57d37bd",""
+add namegroup "WPN_LLENEMY_ShadowTreasure_Sickle_1H","",""
