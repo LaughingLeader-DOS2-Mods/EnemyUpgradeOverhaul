@@ -78,12 +78,14 @@ local function ApplyBoost(item,mod,itemBoostObject,boost)
 			local currentValue = NRD_ItemGetPermanentBoostString(item, boost.Stat)
 			local nextValue = ""
 			if currentValue == nil or currentValue == "" then
-				nextValue = boost.Min
+				--nextValue = boost.Min
+				LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..boost.Stat.."] to item. () => ("..tostring(nextValue)..")")
+				NRD_ItemSetPermanentBoostString(item, boost.Stat, boost.Min)
 			else
-				nextValue = currentValue .. ";" .. boost.Min
+				--nextValue = currentValue .. ";" .. boost.Min
 			end
-			NRD_ItemSetPermanentBoostString(item, boost.Stat, nextValue)
-			LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..boost.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
+			--NRD_ItemSetPermanentBoostString(item, boost.Stat, nextValue)
+			--LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..boost.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 		elseif boost.Stat == "ItemColor" then
 			local currentValue = NRD_ItemGetPermanentBoostString(item, boost.Stat)
 			NRD_ItemSetPermanentBoostString(item, boost.Stat, boost.Min)
