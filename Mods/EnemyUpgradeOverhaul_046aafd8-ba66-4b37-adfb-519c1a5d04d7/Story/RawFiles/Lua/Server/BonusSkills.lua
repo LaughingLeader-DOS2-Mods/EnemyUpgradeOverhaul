@@ -77,6 +77,17 @@ local function LLENEMY_ParentSkillIsInvalid(skill)
 	return false
 end
 
+---@param requirementsTable StatRequirement[]
+---@return boolean
+local function HasTagRequirement(requirementsTable)
+	for i,v in pairs(requirementsTable) do
+		if v.Requirement == "Tag" then
+			return true
+		end
+	end
+	return false
+end
+
 local function BuildEnemySkills()
 	EnemySkills = {
 		SkillGroup:Create("None", "None"),
@@ -101,26 +112,59 @@ local function BuildEnemySkills()
 		end
 		local isenemy = Ext.StatGetAttribute(skill, "IsEnemySkill")
 		local aiflags = Ext.StatGetAttribute(skill, "AIFlags")
-		if aiflags ~= AIFLAG_CANNOT_USE and (isenemy == "Yes" and string.find(skill, "Enemy")) and not IgnoreSkill(skill) then
-			local ap = Ext.StatGetAttribute(skill, "ActionPoints")
-			local cd = Ext.StatGetAttribute(skill, "Cooldown")
-			if ap > 0 or cd > 0 then
-				local b,invalidSkill = pcall(LLENEMY_ParentSkillIsInvalid, skill)
-				if not b then invalidSkill = true end
-				if not invalidSkill then
-					local ability = Ext.StatGetAttribute(skill, "Ability")
-					local requirement = Ext.StatGetAttribute(skill, "Requirement")
-					local sp = Ext.StatGetAttribute(skill, "Magic Cost")
-					if sp == nil then sp = 0 end
-					local tier = Ext.StatGetAttribute(skill, "Tier")
-					local skillgroup = GetSkillGroup(EnemySkills, ability)
-					if skillgroup ~= nil then
-						skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
-						--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
-						--LeaderLib.PrintDebug(tostring(skill))
+		local ap = Ext.StatGetAttribute(skill, "ActionPoints")
+		local cd = Ext.StatGetAttribute(skill, "Cooldown")
+
+		if not IgnoreSkill(skill) then
+			if aiflags ~= AIFLAG_CANNOT_USE and (isenemy == "Yes" and string.find(skill, "Enemy")) then
+				if ap > 0 or cd > 0 then
+					local b,invalidSkill = pcall(LLENEMY_ParentSkillIsInvalid, skill)
+					if not b then invalidSkill = true end
+					if not invalidSkill then
+						local ability = Ext.StatGetAttribute(skill, "Ability")
+						local requirement = Ext.StatGetAttribute(skill, "Requirement")
+						local sp = Ext.StatGetAttribute(skill, "Magic Cost")
+						if sp == nil then sp = 0 end
+						local tier = Ext.StatGetAttribute(skill, "Tier")
+						local skillgroup = GetSkillGroup(EnemySkills, ability)
+						if skillgroup ~= nil then
+							skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
+							--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
+							--LeaderLib.PrintDebug(tostring(skill))
+						end
+					else
+						LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua] Skill '" .. tostring(skill) .. "' is invalid? pcall (".. tostring(b) ..") invalidSkill(".. tostring(invalidSkill)..")")
 					end
-				else
-					LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua] Skill '" .. tostring(skill) .. "' is invalid? pcall (".. tostring(b) ..") invalidSkill(".. tostring(invalidSkill)..")")
+				end
+			else
+				if Ext.StatGetAttribute(skill, "ForGameMaster") == "Yes" and isenemy ~= "Yes" and Ext.StatGetAttribute(skill, "Memory Cost") > 0 then
+					local tier = Ext.StatGetAttribute(skill, "Tier")
+					if LeaderLib.Data.OriginalSkillTiers ~= nil and LeaderLib.Data.OriginalSkillTiers[skill] ~= nil then
+						tier = LeaderLib.Data.OriginalSkillTiers[skill]
+					end
+					if tier ~= nil and tier ~= "" and tier ~= "None" then
+						---@type StatRequirement[]
+						local requirements = Ext.StatGetAttribute(skill, "Requirements")
+						---@type StatRequirement[]
+						local memorizationRequirements = Ext.StatGetAttribute(skill, "MemorizationRequirements")
+
+						-- Skills with tag requirements tend to be special and shouldn't be randomly added
+						if not HasTagRequirement(requirements) and not HasTagRequirement(memorizationRequirements) then
+							local ability = Ext.StatGetAttribute(skill, "Ability")
+							if ability ~= "" and ability ~= "None" then
+								-- Poison skills being under the Earth Ability
+								if ability == "Earth" then
+									if string.find(skill, "Poison") or Ext.StatGetAttribute(skill, "DamageType") == "Poison" then
+										ability = "Poison"
+									end
+								end
+								if ItemCorruption.Boosts.BonusSkills[ability] == nil then
+									ItemCorruption.Boosts.BonusSkills[ability] = {}
+								end
+								table.insert(ItemCorruption.Boosts.BonusSkills[ability], skill)
+							end
+						end
+					end
 				end
 			end
 		end

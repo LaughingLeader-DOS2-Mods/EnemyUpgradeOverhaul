@@ -6,6 +6,7 @@ local ItemBoostGroup = {
 	Limit = -1,
 	Applied = 0,
 	Chance = 100,
+	Type = "ItemBoostGroup"
 }
 ItemBoostGroup.__index = ItemBoostGroup
 
@@ -159,7 +160,7 @@ function ItemBoostGroup:Apply(item,stat,statType,level,mod,noRandomization,limit
 	end
 	local totalApplied = 0
 	if #self.Entries > 0 then
-		LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(self.ID) .. " | Total: " .. tostring(#self.Entries))
+		--LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(self.ID) .. " | Total: " .. tostring(#self.Entries))
 		if noRandomization == true then
 			for i,v in pairs(self.Entries) do
 				if limit > 0 and totalApplied >= limit then

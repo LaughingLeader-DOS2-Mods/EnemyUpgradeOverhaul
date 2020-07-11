@@ -3,8 +3,61 @@ local StatBoost = Classes.StatBoost
 local ItemBoost = Classes.ItemBoost
 local ItemBoostGroup = Classes.ItemBoostGroup
 
-local OnLeaderLibResPenTag = function(item)
+local Boosts = {
+	---@type ItemBoostGroup[]
+	Weapon = {},
+	---@type ItemBoostGroup[]
+	Shield = {},
+	---@type ItemBoostGroup[]
+	Armor = {},
+	---@type ItemBoostGroup
+	Resistances = {},
+	---@type table<string, ItemBoostGroup>
+	ObjectCategory = {},
+	---@type table<string, string[]>
+	BonusSkills = {},
+}
+
+local bonusSkillChance = 20
+
+local OnLeaderLibResPenTag = function(item,tag)
 	SetTag(item, "LeaderLib_HasResistancePenetration")
+	local skills = NRD_ItemGetPermanentBoostString(item, "Skills")
+	--print("OnLeaderLibResPenTag", item,tag,skills,StringHelpers.IsNullOrEmpty(skills))
+	if LeaderLib.StringHelpers.IsNullOrEmpty(skills) then
+		if Ext.Random(1,100) <= bonusSkillChance then
+			local skill = ""
+			if string.find(tag, "Piercing") then
+				if NRD_ItemGetPermanentBoostInt(item, "IntelligenceBoost") > 0 then
+					skill = Common.GetRandomTableEntry(Boosts.BonusSkills["Death"])
+				elseif NRD_ItemGetPermanentBoostInt(item, "FinesseBoost") > 0 then
+					if NRD_ItemGetPermanentBoostAbility(item, "RogueLore") > 0 then
+						skill = Common.GetRandomTableEntry(Boosts.BonusSkills["Rogue"])
+					elseif NRD_ItemGetPermanentBoostAbility(item, "RangerLore") > 0 then
+						skill = Common.GetRandomTableEntry(Boosts.BonusSkills["Ranger"])
+					else
+						local ability = Common.GetRandomTableEntry({"Ranger", "Rogue"})
+						skill = Common.GetRandomTableEntry(Boosts.BonusSkills[ability])
+					end
+				else
+					local ability = Common.GetRandomTableEntry({"Death", "Rogue", "Ranger"})
+					skill = Common.GetRandomTableEntry(Boosts.BonusSkills[ability])
+				end
+			elseif string.find(tag, "Physical") then
+				skill = Common.GetRandomTableEntry(Boosts.BonusSkills["Warrior"])
+			else
+				for ability,skills in pairs(Boosts.BonusSkills) do
+					if string.find(tag, ability) then
+						skill = Common.GetRandomTableEntry(skills)
+						break
+					end
+				end
+			end
+			if skill ~= "" then
+				NRD_ItemSetPermanentBoostString(item, "Skills", skill)
+			end
+		end
+	end
 end
 
 local LeaderLibResPenTags = {
@@ -80,121 +133,6 @@ local LeaderLibResPenTags = {
 	Poison50 = TagBoost:Create("LeaderLib_ResistancePenetration_Poison50", "", false, OnLeaderLibResPenTag),
 }
 
-local Boosts = {}
-
-Boosts.Weapon = {
-	ItemBoostGroup:Create("WeaponMain", {
-		ItemBoost:Create({
-			StatBoost:Create("DamageFromBase",1,5),
-		},{Chance=50}),
-		ItemBoost:Create({
-			StatBoost:Create("CriticalChance",1,5),
-		},{Chance=25, BlockWeaponTypes={Knife = true}}),
-		ItemBoost:Create({
-			StatBoost:Create("CriticalDamage",1,10),
-		},{Chance=15, WeaponType="Knife"}),
-		ItemBoost:Create({
-			StatBoost:Create("LifeSteal",1,5),
-			StatBoost:Create("DodgeBoost",1,5),
-		},{Chance=50}),
-		ItemBoost:Create({
-			StatBoost:Create("DamageBoost",1,5),
-		},{Chance=25, MinLevel=1,MaxLevel=8}),
-		ItemBoost:Create({
-			StatBoost:Create("DamageBoost",1,10),
-		},{Chance=25, MinLevel=9,MaxLevel=-1}),
-		ItemBoost:Create({
-			StatBoost:Create("CriticalDamage",1,10),
-		},{Chance=25, MinLevel=1,MaxLevel=8, Limit=5}),
-		ItemBoost:Create({
-			StatBoost:Create("CriticalDamage",1,20),
-		},{Chance=25, MinLevel=9,MaxLevel=-1, Limit=5}),
-		ItemBoost:Create({
-			StatBoost:Create("MinDamage",1,5),
-			StatBoost:Create("MaxDamage",1,5),
-		},{Chance=10, Limit=5, All=true}),
-		ItemBoost:Create({
-			StatBoost:Create("WeaponRange",0.10,1.0),
-		},{Chance=10, Limit=1}),
-	})
-}
-Boosts.Shield = {
-	ItemBoostGroup:Create("ShieldMain", {
-		ItemBoost:Create({
-			StatBoost:Create("Blocking",1,5),
-			StatBoost:Create("ArmorBoost",1,5),
-		},{Chance=50}),
-		ItemBoost:Create({
-			StatBoost:Create("MagicArmorBoost",1,5),
-			StatBoost:Create("PiercingResistance",1,5),
-		},{Chance=10}),
-		ItemBoost:Create({
-			StatBoost:Create("MagicArmorValue",1,10),
-			StatBoost:Create("ArmorValue",1,10),
-		},{Chance=25}),
-	})
-}
-
----@type ItemBoostGroup[]
-Boosts.Armor = {
-	ItemBoostGroup:Create("ArmorMain", {
-		ItemBoost:Create({
-			StatBoost:Create("CriticalChance",1,3),
-		},{Chance=10, MinLevel=1,MaxLevel=8,SlotType="Gloves"}),
-		ItemBoost:Create({
-			StatBoost:Create("CriticalChance",1,5),
-		},{Chance=10, MinLevel=9,MaxLevel=13,SlotType="Gloves"}),
-		ItemBoost:Create({
-			StatBoost:Create("CriticalChance",1,7),
-		},{Chance=10, MinLevel=14,MaxLevel=-1,SlotType="Gloves"}),
-		ItemBoost:Create({
-			StatBoost:Create("LifeSteal",1,3),
-		},{Chance=25, MinLevel=1,MaxLevel=8,SlotType="Ring"}),
-		ItemBoost:Create({
-			StatBoost:Create("LifeSteal",1,5),
-		},{Chance=25, MinLevel=9,MaxLevel=13,SlotType="Ring"}),
-		ItemBoost:Create({
-			StatBoost:Create("LifeSteal",1,7),
-		},{Chance=25, MinLevel=14,MaxLevel=-1,SlotType="Ring"}),
-		ItemBoost:Create({
-			StatBoost:Create("VitalityBoost",1,3),
-		},{Chance=25, MinLevel=1,MaxLevel=8,SlotType="Breast"}),
-		ItemBoost:Create({
-			StatBoost:Create("VitalityBoost",1,5),
-		},{Chance=25, MinLevel=9,MaxLevel=13,SlotType="Breast"}),
-		ItemBoost:Create({
-			StatBoost:Create("VitalityBoost",1,7),
-		},{Chance=25, MinLevel=14,MaxLevel=-1,SlotType="Breast"}),
-		ItemBoost:Create({
-			StatBoost:Create("MemoryBoost",1,1),
-		},{Chance=10, SlotType="Helmet", Limit=3}),
-		ItemBoost:Create({
-			StatBoost:Create("StartAP",1,1),
-		},{Chance=2, SlotType="Ring", Limit=1}),
-		ItemBoost:Create({
-			StatBoost:Create("MaxAP",1,1),
-		},{Chance=1, SlotType="Ring", Limit=1}),
-		-- ItemBoost:Create({
-		-- 	StatBoost:Create("SourcePointsBoost",1,1),
-		-- },{Chance=1, SlotType="Ring"}),
-		ItemBoost:Create({
-			StatBoost:Create("MovementSpeedBoost",1,5),
-		},{Chance=5, SlotType="Boots"}),
-		ItemBoost:Create({
-			StatBoost:Create("MaxSummons",1,1),
-		},{Chance=1, SlotType="Helmet", Limit=1}),
-		ItemBoost:Create({
-			ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_Madness,
-		},{Chance=80, SlotType="Helmet", Limit=1}),
-		-- ItemBoost:Create({
-		-- 	StatBoost:Create("ChanceToHitBoost",1,3),
-		-- },{Chance=3, SlotType="Helmet"}),
-		ItemBoost:Create({
-			StatBoost:Create("RuneSlots",1,1),
-		},{Chance=1, Limit=1})
-		}),
-}
-
 local armorResistances = {
 	"FireResistance",
 	"AirResistance",
@@ -208,163 +146,278 @@ local armorResistances = {
 	--"MagicResistance",
 }
 
-local resistanceGroups = ItemBoostGroup:Create("Resistances");
-for i,v in pairs(armorResistances) do
-	local a = ItemBoost:Create({
-		StatBoost:Create(v,1,2),
-	},{Chance=10, MinLevel=1,MaxLevel=8})
-	local b = ItemBoost:Create({
-		StatBoost:Create(v,2,4),
-	},{Chance=10, MinLevel=9,MaxLevel=13})
-	local c = ItemBoost:Create({
-		StatBoost:Create(v,4,8),
-	},{Chance=10, MinLevel=14,MaxLevel=-1})
-	resistanceGroups.Entries[#resistanceGroups.Entries+1] = a
-	resistanceGroups.Entries[#resistanceGroups.Entries+1] = b
-	resistanceGroups.Entries[#resistanceGroups.Entries+1] = c
-end
-
 ---@type ItemBoostGroup
-Boosts.Resistances = resistanceGroups
-
+Boosts.Resistances = {}
 Boosts.ObjectCategory = {}
 
-local penSmallChance = 30
-local penMediumChance = 10
-local penLargeChance = 4
-local penExtraLargeChance = 1
+local function Init()
+	local penSmallChance = 		GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 30)
+	local penMediumChance = 	GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 10)
+	local penLargeChance = 		GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 4)
+	local penExtraLargeChance = GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 4)
+	bonusSkillChance = 	GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 20)
 
-local elementalResPen = {
-	ID = "RandomGroupContainer",
-	Entries = {
-		ItemBoostGroup:Create("AirResPen", {
+	Boosts.Weapon = {
+		ItemBoostGroup:Create("WeaponMain", {
 			ItemBoost:Create({
-				LeaderLibResPenTags.Air5,
-			},{Chance=penSmallChance}),
+				StatBoost:Create("DamageFromBase",1,5),
+			},{Chance=50}),
 			ItemBoost:Create({
-				LeaderLibResPenTags.Air15,
+				StatBoost:Create("CriticalChance",1,5),
+			},{Chance=25, BlockWeaponTypes={Knife = true}}),
+			ItemBoost:Create({
+				StatBoost:Create("CriticalDamage",1,10),
+			},{Chance=15, WeaponType="Knife"}),
+			ItemBoost:Create({
+				StatBoost:Create("LifeSteal",1,5),
+				StatBoost:Create("DodgeBoost",1,5),
+			},{Chance=50, All=true}),
+			ItemBoost:Create({
+				StatBoost:Create("DamageBoost",1,5),
+			},{Chance=25, MinLevel=1,MaxLevel=8}),
+			ItemBoost:Create({
+				StatBoost:Create("DamageBoost",1,10),
+			},{Chance=25, MinLevel=9,MaxLevel=-1}),
+			ItemBoost:Create({
+				StatBoost:Create("CriticalDamage",1,10),
+			},{Chance=25, MinLevel=1,MaxLevel=8, Limit=5}),
+			ItemBoost:Create({
+				StatBoost:Create("CriticalDamage",1,20),
+			},{Chance=25, MinLevel=9,MaxLevel=-1, Limit=5}),
+			ItemBoost:Create({
+				StatBoost:Create("MinDamage",1,5),
+				StatBoost:Create("MaxDamage",1,5),
+			},{Chance=10, Limit=5, All=true}),
+			ItemBoost:Create({
+				StatBoost:Create("WeaponRange",0.10,1.0),
+			},{Chance=10, Limit=1}),
+		})
+	}
+	Boosts.Shield = {
+		ItemBoostGroup:Create("ShieldMain", {
+			ItemBoost:Create({
+				StatBoost:Create("Blocking",1,5),
+				StatBoost:Create("ArmorBoost",1,5),
+			},{Chance=50}),
+			ItemBoost:Create({
+				StatBoost:Create("MagicArmorBoost",1,5),
+				StatBoost:Create("PiercingResistance",1,5),
+			},{Chance=10}),
+			ItemBoost:Create({
+				StatBoost:Create("MagicArmorValue",1,10),
+				StatBoost:Create("ArmorValue",1,10),
+			},{Chance=25}),
+		})
+	}
+	
+	---@type ItemBoostGroup[]
+	Boosts.Armor = {
+		ItemBoostGroup:Create("ArmorMain", {
+			ItemBoost:Create({
+				StatBoost:Create("CriticalChance",1,3),
+			},{Chance=10, MinLevel=1,MaxLevel=8,SlotType="Gloves"}),
+			ItemBoost:Create({
+				StatBoost:Create("CriticalChance",1,5),
+			},{Chance=10, MinLevel=9,MaxLevel=13,SlotType="Gloves"}),
+			ItemBoost:Create({
+				StatBoost:Create("CriticalChance",1,7),
+			},{Chance=10, MinLevel=14,MaxLevel=-1,SlotType="Gloves"}),
+			ItemBoost:Create({
+				StatBoost:Create("LifeSteal",1,3),
+			},{Chance=25, MinLevel=1,MaxLevel=8,SlotType="Ring"}),
+			ItemBoost:Create({
+				StatBoost:Create("LifeSteal",1,5),
+			},{Chance=25, MinLevel=9,MaxLevel=13,SlotType="Ring"}),
+			ItemBoost:Create({
+				StatBoost:Create("LifeSteal",1,7),
+			},{Chance=25, MinLevel=14,MaxLevel=-1,SlotType="Ring"}),
+			ItemBoost:Create({
+				StatBoost:Create("VitalityBoost",1,3),
+			},{Chance=25, MinLevel=1,MaxLevel=8,SlotType="Breast"}),
+			ItemBoost:Create({
+				StatBoost:Create("VitalityBoost",1,5),
+			},{Chance=25, MinLevel=9,MaxLevel=13,SlotType="Breast"}),
+			ItemBoost:Create({
+				StatBoost:Create("VitalityBoost",1,7),
+			},{Chance=25, MinLevel=14,MaxLevel=-1,SlotType="Breast"}),
+			ItemBoost:Create({
+				StatBoost:Create("MemoryBoost",1,1),
+			},{Chance=10, SlotType="Helmet", Limit=3}),
+			ItemBoost:Create({
+				StatBoost:Create("StartAP",1,1),
+			},{Chance=2, SlotType="Ring", Limit=1}),
+			ItemBoost:Create({
+				StatBoost:Create("MaxAP",1,1),
+			},{Chance=1, SlotType="Ring", Limit=1}),
+			-- ItemBoost:Create({
+			-- 	StatBoost:Create("SourcePointsBoost",1,1),
+			-- },{Chance=1, SlotType="Ring"}),
+			ItemBoost:Create({
+				StatBoost:Create("MovementSpeedBoost",1,5),
+			},{Chance=5, SlotType="Boots"}),
+			ItemBoost:Create({
+				StatBoost:Create("MaxSummons",1,1),
+			},{Chance=1, SlotType="Helmet", Limit=1}),
+			ItemBoost:Create({
+				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_Madness,
+			},{Chance=80, SlotType="Helmet", Limit=1}),
+			-- ItemBoost:Create({
+			-- 	StatBoost:Create("ChanceToHitBoost",1,3),
+			-- },{Chance=3, SlotType="Helmet"}),
+			ItemBoost:Create({
+				StatBoost:Create("RuneSlots",1,1),
+			},{Chance=1, Limit=1})
+			}),
+	}
+
+	local resistanceGroups = ItemBoostGroup:Create("Resistances");
+	for i,v in pairs(armorResistances) do
+		local a = ItemBoost:Create({
+			StatBoost:Create(v,1,2),
+		},{Chance=10, MinLevel=1,MaxLevel=8})
+		local b = ItemBoost:Create({
+			StatBoost:Create(v,2,4),
+		},{Chance=10, MinLevel=9,MaxLevel=13})
+		local c = ItemBoost:Create({
+			StatBoost:Create(v,4,8),
+		},{Chance=10, MinLevel=14,MaxLevel=-1})
+		resistanceGroups.Entries[#resistanceGroups.Entries+1] = a
+		resistanceGroups.Entries[#resistanceGroups.Entries+1] = b
+		resistanceGroups.Entries[#resistanceGroups.Entries+1] = c
+	end
+
+	Boosts.Resistances = resistanceGroups
+	
+	local elementalResPen = {
+		Type = "RandomGroupContainer",
+		Entries = {
+			ItemBoostGroup:Create("AirResPen", {
+				ItemBoost:Create({
+					LeaderLibResPenTags.Air5,
+				},{Chance=penSmallChance}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Air15,
+				},{Chance=penMediumChance, Limit=2}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Air25,
+				},{Chance=penLargeChance, Limit=1}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Air50,
+				},{Chance=penExtraLargeChance, Limit=1}),
+			}),
+			ItemBoostGroup:Create("EarthResPen", {
+				ItemBoost:Create({
+					LeaderLibResPenTags.Earth5,
+				},{Chance=penSmallChance}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Earth15,
+				},{Chance=penMediumChance, Limit=2}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Earth25,
+				},{Chance=penLargeChance, Limit=1}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Earth50,
+				},{Chance=penExtraLargeChance, Limit=1}),
+			}),
+			ItemBoostGroup:Create("PoisonResPen", {
+				ItemBoost:Create({
+					LeaderLibResPenTags.Poison5,
+				},{Chance=penSmallChance}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Poison15,
+				},{Chance=penMediumChance, Limit=2}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Poison25,
+				},{Chance=penLargeChance, Limit=1}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Poison50,
+				},{Chance=penExtraLargeChance, Limit=1}),
+			}),
+			ItemBoostGroup:Create("FireResPen", {
+				ItemBoost:Create({
+					LeaderLibResPenTags.Fire5,
+				},{Chance=penSmallChance}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Fire15,
+				},{Chance=penMediumChance, Limit=2}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Fire25,
+				},{Chance=penLargeChance, Limit=1}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Fire50,
+				},{Chance=penExtraLargeChance, Limit=1}),
+			}),
+			ItemBoostGroup:Create("WaterResPen", {
+				ItemBoost:Create({
+					LeaderLibResPenTags.Water5,
+				},{Chance=penSmallChance}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Water15,
+				},{Chance=penMediumChance, Limit=2}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Water25,
+				},{Chance=penLargeChance, Limit=1}),
+				ItemBoost:Create({
+					LeaderLibResPenTags.Water50,
+				},{Chance=penExtraLargeChance, Limit=1}),
+			})
+		}
+	}
+	
+	Boosts.ObjectCategory.MageGloves = {
+		elementalResPen,
+		ItemBoostGroup:Create("MageBoosts", {
+			ItemBoost:Create({
+				StatBoost:Create("IntelligenceBoost",1,1),
+			},{Limit=1, All=false}),
+		}, {Chance=10})
+	}
+	Boosts.ObjectCategory.ClothGloves = {
+		elementalResPen,
+		ItemBoostGroup:Create("ClothBoosts", {
+			ItemBoost:Create({
+				StatBoost:Create("WitsBoost",1,1),
+			},{Limit=1, All=false}),
+		}, {Chance=10})
+	}
+	
+	Boosts.ObjectCategory.HeavyGloves = {
+		ItemBoostGroup:Create("PhysicalResPen", {
+			ItemBoost:Create({
+				LeaderLibResPenTags.Physical5,
+			},{Chance=20}),
+			ItemBoost:Create({
+				LeaderLibResPenTags.Physical15,
 			},{Chance=penMediumChance, Limit=2}),
 			ItemBoost:Create({
-				LeaderLibResPenTags.Air25,
+				LeaderLibResPenTags.Physical25,
 			},{Chance=penLargeChance, Limit=1}),
 			ItemBoost:Create({
-				LeaderLibResPenTags.Air50,
-			},{Chance=penExtraLargeChance, Limit=1}),
-		}),
-		ItemBoostGroup:Create("EarthResPen", {
-			ItemBoost:Create({
-				LeaderLibResPenTags.Earth5,
-			},{Chance=penSmallChance}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Earth15,
-			},{Chance=penMediumChance, Limit=2}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Earth25,
-			},{Chance=penLargeChance, Limit=1}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Earth50,
-			},{Chance=penExtraLargeChance, Limit=1}),
-		}),
-		ItemBoostGroup:Create("PoisonResPen", {
-			ItemBoost:Create({
-				LeaderLibResPenTags.Poison5,
-			},{Chance=penSmallChance}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Poison15,
-			},{Chance=penMediumChance, Limit=2}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Poison25,
-			},{Chance=penLargeChance, Limit=1}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Poison50,
-			},{Chance=penExtraLargeChance, Limit=1}),
-		}),
-		ItemBoostGroup:Create("FireResPen", {
-			ItemBoost:Create({
-				LeaderLibResPenTags.Fire5,
-			},{Chance=penSmallChance}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Fire15,
-			},{Chance=penMediumChance, Limit=2}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Fire25,
-			},{Chance=penLargeChance, Limit=1}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Fire50,
-			},{Chance=penExtraLargeChance, Limit=1}),
-		}),
-		ItemBoostGroup:Create("WaterResPen", {
-			ItemBoost:Create({
-				LeaderLibResPenTags.Water5,
-			},{Chance=penSmallChance}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Water15,
-			},{Chance=penMediumChance, Limit=2}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Water25,
-			},{Chance=penLargeChance, Limit=1}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Water50,
+				LeaderLibResPenTags.Physical50,
 			},{Chance=penExtraLargeChance, Limit=1}),
 		})
 	}
-}
+	
+	Boosts.ObjectCategory.LightGloves = {
+		ItemBoostGroup:Create("PiercingResPen", {
+			ItemBoost:Create({
+				LeaderLibResPenTags.Piercing5,
+			},{Chance=penSmallChance}),
+			ItemBoost:Create({
+				LeaderLibResPenTags.Piercing15,
+			},{Chance=penMediumChance, Limit=2}),
+			ItemBoost:Create({
+				LeaderLibResPenTags.Piercing25,
+			},{Chance=penLargeChance, Limit=1}),
+			ItemBoost:Create({
+				LeaderLibResPenTags.Piercing50,
+			},{Chance=penExtraLargeChance, Limit=1}),
+		})
+	}
 
-Boosts.ObjectCategory.MageGloves = {
-	elementalResPen,
-	ItemBoostGroup:Create("FireSpells", {
-		ItemBoost:Create({
-			StatBoost:Create("Skills","Projectile_EnemyFireball_Cursed"),
-			StatBoost:Create("Skills","ProjectileStrike_MeteorShower"),
-			StatBoost:Create("Skills","Rain_EnemyFire"),
-			StatBoost:Create("Skills","Shout_Supernova"),
-		},{Limit=1, All=false}),
-	}, {Chance=20})
-}
-Boosts.ObjectCategory.ClothGloves = {
-	elementalResPen,
-	ItemBoostGroup:Create("WaterSpells", {
-		ItemBoost:Create({
-			StatBoost:Create("Skills","Cone_Shatter"),
-			StatBoost:Create("Skills","Projectile_IceFan"),
-			StatBoost:Create("Skills","Shout_IceBreaker"),
-			StatBoost:Create("Skills","Shout_FrostAura"),
-		},{Limit=1, All=false}),
-	}, {Chance=20})
-}
+	ItemCorruption.Boosts = Boosts
+end
 
-Boosts.ObjectCategory.HeavyGloves = {
-	ItemBoostGroup:Create("PhysicalResPen", {
-		ItemBoost:Create({
-			LeaderLibResPenTags.Physical5,
-		},{Chance=20}),
-		ItemBoost:Create({
-			LeaderLibResPenTags.Physical15,
-		},{Chance=penMediumChance, Limit=2}),
-		ItemBoost:Create({
-			LeaderLibResPenTags.Physical25,
-		},{Chance=penLargeChance, Limit=1}),
-		ItemBoost:Create({
-			LeaderLibResPenTags.Physical50,
-		},{Chance=penExtraLargeChance, Limit=1}),
-	})
+return {
+	Init = Init
 }
-
-Boosts.ObjectCategory.LightGloves = {
-	ItemBoostGroup:Create("PiercingResPen", {
-		ItemBoost:Create({
-			LeaderLibResPenTags.Piercing5,
-		},{Chance=penSmallChance}),
-		ItemBoost:Create({
-			LeaderLibResPenTags.Piercing15,
-		},{Chance=penMediumChance, Limit=2}),
-		ItemBoost:Create({
-			LeaderLibResPenTags.Piercing25,
-		},{Chance=penLargeChance, Limit=1}),
-		ItemBoost:Create({
-			LeaderLibResPenTags.Piercing50,
-		},{Chance=penExtraLargeChance, Limit=1}),
-	})
-}
-
-return Boosts

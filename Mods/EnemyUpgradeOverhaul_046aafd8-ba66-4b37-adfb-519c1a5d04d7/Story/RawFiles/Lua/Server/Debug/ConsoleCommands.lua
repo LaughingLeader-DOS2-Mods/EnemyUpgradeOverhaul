@@ -16,17 +16,23 @@ local function ItemCorruptionTest(level,delay)
 end
 
 Ext.RegisterConsoleCommand("shadowitemtest", function(command,level,delaystr)
-	if delaystr ~= nil then
-		local delay = tonumber(delaystr)
-		if delay > 0 then
-			LeaderLib.StartOneshotTimer("Timers_LLENEMY_Debug_ShadowItemTest", delay, function()
+	local status,err = xpcall(function() 
+		if delaystr ~= nil then
+			local delay = tonumber(delaystr)
+			if delay > 0 then
+				LeaderLib.StartOneshotTimer("Timers_LLENEMY_Debug_ShadowItemTest", delay, function()
+					ItemCorruptionTest(level, delay)
+				end)
+			else
 				ItemCorruptionTest(level, delay)
-			end)
+			end
 		else
-			ItemCorruptionTest(level, delay)
+			ItemCorruptionTest(level)
 		end
-	else
-		ItemCorruptionTest(level)
+	end, debug.traceback)
+	if not status then
+		print("[EUO:shadowitemtest] Error:")
+		print(err)
 	end
 end)
 

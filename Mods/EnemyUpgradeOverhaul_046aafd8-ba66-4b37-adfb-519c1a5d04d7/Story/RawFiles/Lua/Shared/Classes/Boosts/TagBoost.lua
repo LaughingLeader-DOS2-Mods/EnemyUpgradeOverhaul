@@ -4,6 +4,7 @@ local TagBoost = {
 	Flag = "",
 	Type = "TagBoost",
 	DisplayInTooltip = false,
+	---@type function<string,string>
 	OnTagAdded = nil
 }
 TagBoost.__index = TagBoost

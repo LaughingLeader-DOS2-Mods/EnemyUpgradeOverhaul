@@ -18,7 +18,8 @@ local ItemBoost = {
 	Applied = 0,
 	---@type table<string,boolean> Optional set of object categories to limit this group to
 	ObjectCategories = nil,
-	All = false, -- Apply all boosts?
+	All = true, -- Apply all boosts?,
+	Type = "ItemBoost"
 }
 ItemBoost.__index = ItemBoost
 
@@ -99,21 +100,27 @@ local function ApplyBoost(item,mod,itemBoostObject,boost)
 			NRD_ItemSetPermanentBoostInt(item, boost.Stat, nextValue)
 			LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding boost ["..boost.Stat.."] to item. ("..tostring(currentValue)..") => ("..tostring(nextValue)..")")
 		end
+		itemBoostObject.Applied = itemBoostObject.Applied + 1
 	elseif boost.Type == "TagBoost" then
 		LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding TagBoost ["..boost.Tag.."] to item ["..item.."].")
-		SetTag(item, boost.Tag)
 		if boost.OnTagAdded ~= nil then
-			pcall(boost.OnTagAdded, item)
+			local status,err = xpcall(boost.OnTagAdded, debug.traceback, item, boost.Tag)
+			if not status then
+				print(err)
+			end
 		end
+		itemBoostObject.Applied = itemBoostObject.Applied + 1
+	elseif boost.Type == "ItemBoost" then
+		boost:Apply(item, mod)
+		itemBoostObject.Applied = itemBoostObject.Applied + boost.Applied
 	end
-	itemBoostObject.Applied = itemBoostObject.Applied + 1
 end
 
 ---Applies stat boosts to an item.
 ---@param item string
 ---@param mod number A modifier to apply to the number, i.e. -1 to make it a negative boost.
 ---@return ItemBoost
-function ItemBoost:Apply(item,mod)
+function ItemBoost:Apply(item, mod)
 	if mod == nil or mod == 0 then mod = 1 end
 	if self.Boosts ~= nil and #self.Boosts > 0 then
 		if self.All == true then

@@ -358,16 +358,18 @@ local function AddRandomBoostsToItem(item,stat,statType,level,cloned)
 	---@type ItemBoostGroup[]
 	local bonusCategoryTable = ItemCorruption.Boosts.ObjectCategory[objectCategory]
 	if bonusCategoryTable ~= nil then
+		--print("Adding ObjectCategory bonuses", objectCategory)
+		--print(Common.Dump(bonusCategoryTable))
 		for i,v in pairs(bonusCategoryTable) do
-			if v.ID == "RandomGroupContainer" then
+			print("ID:",v.ID)
+			if v.Type == "RandomGroupContainer" then
 				---@type ItemBoostGroup
 				local group = Common.GetRandomTableEntry(v.Entries)
 				totalBoosts = totalBoosts + group:Apply(cloned,stat,statType,level,1,false,nil,minBoosts)
-			elseif v.ID == "ItemBoostGroup" then
+			elseif v.Type == "ItemBoostGroup" then
 				totalBoosts = totalBoosts + v:Apply(cloned,stat,statType,level,1,false,nil,minBoosts)
 			end
 		end
-
 	end
 
 	if totalBoosts > 0 then
@@ -526,6 +528,10 @@ function ShadowCorruptContainerItems(uuid)
 	local max = math.ceil(GameHelpers.GetExtraData("LLENEMY_ItemCorruption_MaxItemsAffected", 3))
 
 	local corruptionLimit = Ext.Random(min,max)
+	
+	if Ext.IsDeveloperMode() then
+		corruptionLimit = 99
+	end
 
 	---@type EsvItem
 	local container = Ext.GetItem(uuid)

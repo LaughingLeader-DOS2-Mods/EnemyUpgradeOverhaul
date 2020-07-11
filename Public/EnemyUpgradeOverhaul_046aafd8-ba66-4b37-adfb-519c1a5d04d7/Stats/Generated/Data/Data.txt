@@ -1,3 +1,8 @@
 key "LLENEMY_Counter_MaxChance","75"
 key "LLENEMY_ItemCorruption_MinItemsAffected","1"
 key "LLENEMY_ItemCorruption_MaxItemsAffected","3"
+key "LLENEMY_Treasure_BoostChance_SmallResistancePenetration","30"
+key "LLENEMY_Treasure_BoostChance_MediumResistancePenetration","10"
+key "LLENEMY_Treasure_BoostChance_LargeResistancePenetration","4"
+key "LLENEMY_Treasure_BoostChance_HugeResistancePenetration","1"
+key "LLENEMY_Treasure_BoostChance_BonusSkills","20"
