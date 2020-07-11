@@ -152,10 +152,10 @@ Boosts.ObjectCategory = {}
 
 local function Init()
 	local penSmallChance = 		GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 30)
-	local penMediumChance = 	GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 10)
-	local penLargeChance = 		GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 4)
-	local penExtraLargeChance = GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 4)
-	bonusSkillChance = 	GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_SmallResistancePenetration", 20)
+	local penMediumChance = 	GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_MediumResistancePenetration", 10)
+	local penLargeChance = 		GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_LargeResistancePenetration", 4)
+	local penExtraLargeChance = GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_HugeResistancePenetration", 4)
+	bonusSkillChance = 	GameHelpers.GetExtraData("LLENEMY_Treasure_BoostChance_ResistancePenetrationBonusSkill", 20)
 
 	Boosts.Weapon = {
 		ItemBoostGroup:Create("WeaponMain", {
