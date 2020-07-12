@@ -171,7 +171,7 @@ local function Init()
 			ItemBoost:Create({
 				StatBoost:Create("LifeSteal",1,5),
 				StatBoost:Create("DodgeBoost",1,5),
-			},{Chance=50, All=true}),
+			},{Chance=50, All=false}),
 			ItemBoost:Create({
 				StatBoost:Create("DamageBoost",1,5),
 			},{Chance=25, MinLevel=1,MaxLevel=8}),

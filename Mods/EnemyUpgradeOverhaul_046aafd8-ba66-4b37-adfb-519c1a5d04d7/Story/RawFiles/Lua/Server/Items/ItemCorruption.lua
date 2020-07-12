@@ -424,6 +424,9 @@ local function GetClone(item,stat,statType)
 		rarity = "Epic"
 	end
 	NRD_ItemCloneSetString("ItemType", rarity)
+	if statType == "Weapon" then
+		NRD_ItemCloneSetString("ItemType", "Epic") -- Since the name is custom anyway
+	end
 	NRD_ItemCloneSetString("GenerationItemType", rarity)
 
 	local value = ItemGetGoldValue(item)
