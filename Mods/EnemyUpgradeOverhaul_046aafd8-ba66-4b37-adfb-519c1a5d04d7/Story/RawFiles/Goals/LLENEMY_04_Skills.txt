@@ -138,6 +138,103 @@ CharacterUsedSkillAtPosition(_Worm, _X, _Y, _Z, "Jump_LLENEMY_EnemyDrillwormBurr
 THEN
 SetVarFloat3(_Worm, "SkillTargetPos_Jump_EnemyDrillwormBurrow", _X, _Y, _Z);
 //END_REGION
+
+//REGION DIG_GRAVE
+IF
+CharacterUsedSkillOnTarget(_Char, _Target, "Target_LLENEMY_DigGrave", _, _)
+THEN
+DB_LLENEMY_Skills_Temp_DigGraveTarget(_Char, _Target);
+
+/* [OSITOOLS_ONLY]
+IF
+SkillCast(_Char, "Target_LLENEMY_DigGrave", _, _)
+AND
+GetUUID(_Char, _UUID)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "DigGrave_StartDigging", _UUID, _UUID2);
+
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_DigGrave_OnDiggingDone")
+AND
+DB_LLENEMY_Skills_Temp_DigGraveTarget(_Char, _Target)
+AND
+GetUUID(_Char, _UUID)
+AND
+GetUUID(_Target, _UUID2)
+THEN
+NOT DB_LLENEMY_Skills_Temp_DigGraveTarget(_Char, _Target);
+NRD_ModCall("EnemyUpgradeOverhaul", "DigGrave_OnDiggingDone", _UUID, _UUID2);
+
+IF
+CharacterItemEvent(_Char, _DirtMound, "LLENEMY_DigGrave_DigUpPile")
+AND
+DB_LLENEMY_Skills_Temp_DigGraveMound(_Region, _OriginalBurialChar, _Target, _DirtMound)
+AND
+GetUUID(_Char, _UUID)
+THEN
+DB_LLENEMY_Skills_Temp_DigGraveTarget(_Char, (GUIDSTRING)_Target);
+NRD_ModCall("EnemyUpgradeOverhaul", "DigGrave_StartDigging", _UUID);
+*/
+
+// [BEGIN_NO_OSITOOLS]
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_DigGrave_OnDiggingDone")
+AND
+DB_LLENEMY_Skills_Temp_DigGraveTarget(_Char, _Target)
+THEN
+NOT DB_LLENEMY_Skills_Temp_DigGraveTarget(_Char, _Target);
+// [END_NO_OSITOOLS]
+
+PROC
+LLENEMY_Skills_DigGrave_SaveDirtMound((STRING)_Region, (CHARACTERGUID)_Char, (GUIDSTRING)_Target, (ITEMGUID)_DirtMound)
+THEN
+DB_LLENEMY_Skills_Temp_DigGraveMound(_Region, _Char, _Target, _DirtMound);
+
+IF
+RegionEnded(_Region)
+AND
+DB_LLENEMY_Skills_Temp_DigGraveMound(_Region, _Char, _Target, _DirtMound)
+THEN
+NOT DB_LLENEMY_Skills_Temp_DigGraveMound(_Region, _Char, _Target, _DirtMound);
+
+IF
+StoryEvent((CHARACTERGUID)_Target, "LLENEMY_DigGrave_ReleaseTarget")
+AND
+DB_LLENEMY_Skills_Temp_DigGraveMound(_Region, _Char, _Target, _DirtMound)
+THEN
+NOT DB_LLENEMY_Skills_Temp_DigGraveMound(_Region, _Char, _Target, _DirtMound);
+ClearTag(_Target, "BLOCK_RESURRECTION");
+ClearTag(_Target, "LLENEMY_BURIED");
+SetVisible(_Target, 1);
+ItemDestroy(_DirtMound);
+//END_REGION
+
+//REGION BURIAL_LOOT_GENERATION
+/* [OSITOOLS_ONLY]
+PROC
+LLENEMY_Skills_DigGrave_OnBuried((CHARACTERGUID)_Char, (GUIDSTRING)_Target)
+AND
+ObjectGetFlag(_Target, "LLENEMY_DigGrave_BonusLootRolled", 0)
+AND
+GetUUID(_Char, _UUID)
+AND
+GetUUID(_Target, _UUID2)
+THEN
+ObjectSetFlag(_Target, "LLENEMY_DigGrave_BonusLootRolled", 0);
+NRD_ModCall("EnemyUpgradeOverhaul", "DigGrave_RollForBonusLoot", _UUID, _UUID2);
+*/
+
+PROC
+LLENEMY_Skills_DigGrave_OnBuried((CHARACTERGUID)_Char, (GUIDSTRING)_Target)
+AND
+ObjectIsCharacter((CHARACTERGUID)_Target, 1)
+THEN
+GenerateItems(_Char, _Target);
+
+PROC
+LLENEMY_Skills_DigGrave_OnBuried((CHARACTERGUID)_Char, (GUIDSTRING)_Target)
+THEN
+MoveAllItemsTo(_Target, _Char, 0, 0, 0);
 EXITSECTION
 
 ENDEXITSECTION

@@ -230,3 +230,14 @@ object category "MageGloves",1,0,1,0,0,0,0,0
 new treasuretable "ST_LLENEMY_ShadowTreasureWeaponsTest"
 new subtable "-3"
 object category "LLENEMY_ShadowTreasure_Weapons",1,0,0,0,1,0,0,0
+
+new treasuretable "LLENEMY_DigGraveBonusLoot"
+new subtable "1,1"
+object category "NeoGoldReward_Medium",1,0,0,0,0,0,0,0
+object category "T_ST_RandomLootSuper",3,0,0,0,0,0,0,0
+object category "T_ST_WeaponLegendary",1,0,0,0,0,0,0,0
+object category "T_ST_ArmorLegendary",1,0,0,0,0,0,0,0
+object category "T_ST_RingAmuletBeltLegendary",1,0,0,0,0,0,0,0
+object category "T_ST_WeaponRare",1,0,0,0,0,0,0,0
+object category "T_ST_ArmorRare",1,0,0,0,0,0,0,0
+object category "T_ST_RingAmuletBeltRare",1,0,0,0,0,0,0,0
