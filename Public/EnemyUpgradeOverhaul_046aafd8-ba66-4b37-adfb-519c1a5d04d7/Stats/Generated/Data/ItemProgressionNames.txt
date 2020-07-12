@@ -2,23 +2,23 @@ new namegroup "WPN_LLENEMY_TreasureSack_A"
 add name "Sack of Treasure",""
 add namecool "Overflowing Sack of Treasure",""
 
-new namegroup "WPN_LLENEMY_ShadowTreasure_Treasure_Cleaver_1H"
+new namegroup "WPN_LLENEMY_ShadowTreasure_Cleaver_1H"
 add name "Shadow Weapon (Placeholder)",""
 
-new namegroup "WPN_LLENEMY_ShadowTreasure_Treasure_Scythe_2H"
+new namegroup "WPN_LLENEMY_ShadowTreasure_Scythe_2H"
 add name "Shadow Weapon (Placeholder)",""
 
-new namegroup "WPN_LLENEMY_ShadowTreasure_Treasure_Spear_2H"
+new namegroup "WPN_LLENEMY_ShadowTreasure_Spear_2H"
 add name "Shadow Weapon (Placeholder)",""
 
-new namegroup "WPN_LLENEMY_ShadowTreasure_Treasure_Sword_2H"
+new namegroup "WPN_LLENEMY_ShadowTreasure_Sword_2H"
 add name "Shadow Weapon (Placeholder)",""
 
-new namegroup "WPN_LLENEMY_ShadowTreasure_Treasure_Mallet_2H"
+new namegroup "WPN_LLENEMY_ShadowTreasure_Mallet_2H"
 add name "Shadow Weapon (Placeholder)",""
 
-new namegroup "WPN_LLENEMY_ShadowTreasure_Treasure_Shovel_2H"
+new namegroup "WPN_LLENEMY_ShadowTreasure_Shovel_2H"
 add name "Shadow Weapon (Placeholder)",""
 
-new namegroup "WPN_LLENEMY_ShadowTreasure_Treasure_Sickle_1H"
+new namegroup "WPN_LLENEMY_ShadowTreasure_Sickle_1H"
 add name "Shadow Weapon (Placeholder)",""
