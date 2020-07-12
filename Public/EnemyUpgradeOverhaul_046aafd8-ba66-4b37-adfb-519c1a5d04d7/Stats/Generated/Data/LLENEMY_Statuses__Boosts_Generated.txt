@@ -5,7 +5,7 @@ data "Act part" "0"
 
 new entry "LLENEMY_BOOST_ARMOR_5"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_5"
 
 new entry "Stats_LLENEMY_Boost_Armor_5"
@@ -16,7 +16,7 @@ data "Armor" "40"
 
 new entry "LLENEMY_BOOST_ARMOR_10"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_10"
 
 new entry "Stats_LLENEMY_Boost_Armor_10"
@@ -26,7 +26,7 @@ data "ArmorBoost" "10"
 
 new entry "LLENEMY_BOOST_ARMOR_15"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_15"
 
 new entry "Stats_LLENEMY_Boost_Armor_15"
@@ -36,7 +36,7 @@ data "ArmorBoost" "15"
 
 new entry "LLENEMY_BOOST_ARMOR_20"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_20"
 
 new entry "Stats_LLENEMY_Boost_Armor_20"
@@ -46,7 +46,7 @@ data "ArmorBoost" "20"
 
 new entry "LLENEMY_BOOST_ARMOR_25"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_25"
 
 new entry "Stats_LLENEMY_Boost_Armor_25"
@@ -56,7 +56,7 @@ data "ArmorBoost" "25"
 
 new entry "LLENEMY_BOOST_ARMOR_30"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_30"
 
 new entry "Stats_LLENEMY_Boost_Armor_30"
@@ -66,7 +66,7 @@ data "ArmorBoost" "30"
 
 new entry "LLENEMY_BOOST_ARMOR_35"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_35"
 
 new entry "Stats_LLENEMY_Boost_Armor_35"
@@ -76,7 +76,7 @@ data "ArmorBoost" "35"
 
 new entry "LLENEMY_BOOST_ARMOR_40"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_40"
 
 new entry "Stats_LLENEMY_Boost_Armor_40"
@@ -86,7 +86,7 @@ data "ArmorBoost" "40"
 
 new entry "LLENEMY_BOOST_ARMOR_45"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_45"
 
 new entry "Stats_LLENEMY_Boost_Armor_45"
@@ -96,7 +96,7 @@ data "ArmorBoost" "45"
 
 new entry "LLENEMY_BOOST_ARMOR_50"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Armor_50"
 
 new entry "Stats_LLENEMY_Boost_Armor_50"
@@ -106,7 +106,7 @@ data "ArmorBoost" "50"
 
 new entry "LLENEMY_BOOST_DAMAGE_5"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Damage_5"
 
 new entry "Stats_LLENEMY_Boost_Damage_5"
@@ -116,7 +116,7 @@ data "DamageBoost" "5"
 
 new entry "LLENEMY_BOOST_DAMAGE_10"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Damage_10"
 
 new entry "Stats_LLENEMY_Boost_Damage_10"
@@ -126,7 +126,7 @@ data "DamageBoost" "10"
 
 new entry "LLENEMY_BOOST_DAMAGE_15"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Damage_15"
 
 new entry "Stats_LLENEMY_Boost_Damage_15"
@@ -136,7 +136,7 @@ data "DamageBoost" "15"
 
 new entry "LLENEMY_BOOST_DAMAGE_20"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Damage_20"
 
 new entry "Stats_LLENEMY_Boost_Damage_20"
@@ -146,7 +146,7 @@ data "DamageBoost" "20"
 
 new entry "LLENEMY_BOOST_DAMAGE_25"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Damage_25"
 
 new entry "Stats_LLENEMY_Boost_Damage_25"
@@ -156,7 +156,7 @@ data "DamageBoost" "25"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_5"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_5"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_5"
@@ -167,7 +167,7 @@ data "MagicArmorBoost" "5"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_10"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_10"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_10"
@@ -177,7 +177,7 @@ data "MagicArmorBoost" "10"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_15"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_15"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_15"
@@ -187,7 +187,7 @@ data "MagicArmorBoost" "15"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_20"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_20"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_20"
@@ -197,7 +197,7 @@ data "MagicArmorBoost" "20"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_25"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_25"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_25"
@@ -207,7 +207,7 @@ data "MagicArmorBoost" "25"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_30"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_30"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_30"
@@ -217,7 +217,7 @@ data "MagicArmorBoost" "30"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_35"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_35"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_35"
@@ -227,7 +227,7 @@ data "MagicArmorBoost" "35"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_40"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_40"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_40"
@@ -237,7 +237,7 @@ data "MagicArmorBoost" "40"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_45"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_45"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_45"
@@ -247,7 +247,7 @@ data "MagicArmorBoost" "45"
 
 new entry "LLENEMY_BOOST_MAGICARMOR_50"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_MagicArmor_50"
 
 new entry "Stats_LLENEMY_Boost_MagicArmor_50"
@@ -257,7 +257,7 @@ data "MagicArmorBoost" "50"
 
 new entry "LLENEMY_BOOST_VITALITY_5"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_5"
 
 new entry "Stats_LLENEMY_Boost_Vitality_5"
@@ -267,7 +267,7 @@ data "VitalityBoost" "5"
 
 new entry "LLENEMY_BOOST_VITALITY_10"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_10"
 
 new entry "Stats_LLENEMY_Boost_Vitality_10"
@@ -277,7 +277,7 @@ data "VitalityBoost" "10"
 
 new entry "LLENEMY_BOOST_VITALITY_15"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_15"
 
 new entry "Stats_LLENEMY_Boost_Vitality_15"
@@ -287,7 +287,7 @@ data "VitalityBoost" "15"
 
 new entry "LLENEMY_BOOST_VITALITY_20"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_20"
 
 new entry "Stats_LLENEMY_Boost_Vitality_20"
@@ -297,7 +297,7 @@ data "VitalityBoost" "20"
 
 new entry "LLENEMY_BOOST_VITALITY_25"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_25"
 
 new entry "Stats_LLENEMY_Boost_Vitality_25"
@@ -307,7 +307,7 @@ data "VitalityBoost" "25"
 
 new entry "LLENEMY_BOOST_VITALITY_30"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_30"
 
 new entry "Stats_LLENEMY_Boost_Vitality_30"
@@ -317,7 +317,7 @@ data "VitalityBoost" "30"
 
 new entry "LLENEMY_BOOST_VITALITY_35"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_35"
 
 new entry "Stats_LLENEMY_Boost_Vitality_35"
@@ -327,7 +327,7 @@ data "VitalityBoost" "35"
 
 new entry "LLENEMY_BOOST_VITALITY_40"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_40"
 
 new entry "Stats_LLENEMY_Boost_Vitality_40"
@@ -337,7 +337,7 @@ data "VitalityBoost" "40"
 
 new entry "LLENEMY_BOOST_VITALITY_45"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_45"
 
 new entry "Stats_LLENEMY_Boost_Vitality_45"
@@ -347,7 +347,7 @@ data "VitalityBoost" "45"
 
 new entry "LLENEMY_BOOST_VITALITY_50"
 type "StatusData"
-using "_LLENEMY_HIDDEN_CONSUME_BASE"
+using "_LEADERLIB_HIDDEN_CONSUME_BASE"
 data "StatsId" "Stats_LLENEMY_Boost_Vitality_50"
 
 new entry "Stats_LLENEMY_Boost_Vitality_50"
