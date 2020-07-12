@@ -57,9 +57,9 @@ local function OnItemTooltip(item, tooltip)
 			element = tooltip:GetElement("ItemDescription")
 			if element ~= nil then
 				if not LeaderLib.StringHelpers.IsNullOrEmpty(element.Label) then
-					element.Label = element.Label .. "<br><br>" .. ShadowItemDescription.Value
+					element.Label = element.Label .. "<br><font size='16'>" .. ShadowItemDescription.Value .. "</font>"
 				else
-					element.Label = ShadowItemDescription.Value
+					element.Label = "<font size='16'>" .. ShadowItemDescription.Value .. "</font>"
 				end
 			end
 			element = tooltip:GetElement("ItemName")
