@@ -137,6 +137,19 @@ local function CharacterBasePointsChanged(player, stat, lastVal, nextVal)
 end
 LeaderLib.RegisterListener("CharacterBasePointsChanged", CharacterBasePointsChanged)
 
+-- event CharacterBaseAbilityChanged((CHARACTERGUID)_Character, (STRING)_Ability, (INTEGER)_OldBaseValue, (INTEGER)_NewBaseValue)
+---@type character string
+---@type ability string
+---@type old integer
+---@type new integer
+local function OnCharacterBaseAbilityChanged(character, ability, old, new)
+	if ability == "Loremaster" and CharacterIsPlayer(character) == 1 and CharacterIsSummon(character) == 0 and CharacterIsPartyFollower(character) == 0 then
+		SaveHighestLoremaster(character, ability, old, new)
+	end
+end
+
+Ext.RegisterOsirisListener("CharacterBaseAbilityChanged", 4, "after", OnCharacterBaseAbilityChanged)
+
 function StoreHighestLoremaster(nextHighest)
 	HighestLoremaster = nextHighest
 	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(HighestLoremaster)
