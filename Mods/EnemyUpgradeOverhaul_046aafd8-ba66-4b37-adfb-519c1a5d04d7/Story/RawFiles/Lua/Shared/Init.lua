@@ -50,7 +50,7 @@ local modBoosts = Ext.Require("Shared/Data/Corruption/ModBoosts.lua")
 ---@type string[]
 ItemCorruption.Colors = Ext.Require("Shared/Data/Corruption/Colors.lua")
 
-ItemCorruption.DeltaMods = Ext.Require("Shared/Data/Corruption/DeltaMods.lua")
+--ItemCorruption.DeltaMods = Ext.Require("Shared/Data/Corruption/DeltaMods.lua")
 
 ---@type string[]
 ItemCorruption.Names = Ext.Require("Shared/Data/Corruption/Names.lua")

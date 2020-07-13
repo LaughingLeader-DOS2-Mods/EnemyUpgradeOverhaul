@@ -415,6 +415,7 @@ local function Init()
 		})
 	}
 
+	---@type table<string, ItemBoostGroup[]>
 	ItemCorruption.Boosts = Boosts
 end
 

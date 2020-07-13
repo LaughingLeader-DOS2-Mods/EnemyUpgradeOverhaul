@@ -16,3 +16,5 @@ local function LLENEMY_Debug_PrintTags(call, datastr)
 end
 
 Ext.RegisterNetListener("LLENEMY_Debug_PrintTags", LLENEMY_Debug_PrintTags)
+
+Ext.Require("Client/GameTooltipDebug.lua")

@@ -5,8 +5,6 @@ LLENEMY_DisplayText_TotalCharactersLeveled	<font color='#BBFF00' size='23'>*[1] 
 LLENEMY_DisplayText_TreasureGoblins_TurnsLeft	<font color='#FF3333' size='23'>[1] Turn(s) Left</font>	h62cbd27fgb53ag4e4bgaee0gb0dfd466fe48
 LLENEMY_MessageBox_ConfirmEnemyLevelingCommit	Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.<br><font color='#FF0000' size='26'>This cannot be undone.</font>	hff477e91gde34g4795g863ag2c508293666d
 LLENEMY_MessageBox_SingleplayerUserWarning	<font color='#FF3737' size='23'>The EUO Singleplayer mod is active, yet the game is no longer singleplayer. Upgrade Info will not be synced for players.</font>	h745855c9g9761g40fdg8929g1fbc5ff29cb2
-LLENEMY_Notification_DigGrave_BonusLoot_LuckBonus	Your luck ensured you found bonus loot!	hd06b9c4agb89dg43e1gb53fg0b974cd745c2
-LLENEMY_Notification_DigGrave_BonusLoot_SharedLuckBonus	[1]'s luck ensured you found bonus loot!	hf2f2e197g4e04g4821g8bbdg1db16849d036
 LLENEMY_Notification_ShadowItem_NoCrafting	<font color='#BF5FFF' size='23'>*The otherwordly properties of this item prevent tampering.*</font>	hffd1c196gaff6g48c9ga687g14752b048946
 LLENEMY_ShadowDuplicationName	<font color='#BF5FFF'>[1] (Shadow)</font>	h02023d82gc736g447fgaea3g327be0956688
 LLENEMY_StatusText_AtusaBossActivated	<font color='#FF3737' size='26'>*Atusa's corpse oozes to life!*</font>	hbd7fc3f3g08f1g4684g8c47gccc404622fc6

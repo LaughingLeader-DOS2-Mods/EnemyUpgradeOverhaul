@@ -190,6 +190,11 @@ local function OverrideStats()
 		end
 		--LeaderLib.PrintDebug("==============================================================")
 	end
+
+	-- Gravedigger_be822931-e829-4555-b50f-3b80b6f17d86
+	if Ext.IsModLoaded("be822931-e829-4555-b50f-3b80b6f17d86") then
+		Ext.StatSetAttribute("WPN_LLENEMY_ShadowTreasure_Shovel_2H", "Skills", "Target_HeavyAttack;Target_LLGRAVE_Dig")
+	end
 	LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats (added talents to enemy weapons).")
 end
 

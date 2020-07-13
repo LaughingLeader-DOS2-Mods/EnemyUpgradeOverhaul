@@ -561,7 +561,17 @@ function ShadowCorruptContainerItems(uuid)
 
 	-- Reset limits
 	for k,group in pairs(ItemCorruption.Boosts) do
-		group.Applied = 0
+		if group.Type == "ItemBoostGroup" then
+			group:ResetApplied()
+			group.Applied = 0
+		elseif type(group) == "table" then
+			for i,v in pairs(group) do
+				if group.Type == "ItemBoostGroup" then
+					group:ResetApplied()
+					group.Applied = 0
+				end
+			end
+		end
 	end
 
 	ContainerIdentifyAll(uuid)

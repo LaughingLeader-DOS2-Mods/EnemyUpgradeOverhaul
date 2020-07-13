@@ -21,7 +21,7 @@ local rarityColor = {
 ---@param item EsvItem
 ---@param tooltip TooltipData
 local function OnItemTooltip(item, tooltip)
-	--print(item, "TagBoosts:", Common.Dump(tooltip.Data))
+	--print(item.StatsId, item.RootTemplate, item.MyGuid)
 	--print(Ext.JsonStringify(tooltip.Data))
 	--Ext.PostMessageToServer("LLENEMY_Debug_PrintComboCategory", item.MyGuid)
 	--print(string.format("%s ComboCategory:\n%s", item.Stats.Name, Ext.JsonStringify(item.Stats.ComboCategory)))
