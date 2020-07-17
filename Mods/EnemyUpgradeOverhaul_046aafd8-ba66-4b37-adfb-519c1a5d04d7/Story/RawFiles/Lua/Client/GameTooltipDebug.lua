@@ -1,4 +1,4 @@
-local originalFunc = Game.Tooltip.TooltipHooks.OnRequestTooltip
+--local originalFunc = Game.Tooltip.TooltipHooks.OnRequestTooltip
 
 local function PrintArrayValue(ui, index, arrayName)
 	local val = ui:GetValue(arrayName, "number", index)
@@ -28,17 +28,17 @@ local function PrintArray(ui, arrayName)
 end
 
 --- @param ui UIObject
-function Game.Tooltip.TooltipHooks.OnRequestTooltip(self, ui, method, arg1, arg2, arg3, ...)
-	print("TooltipHooks.OnRequestTooltip", ui, method, arg1, arg2, arg3, Common.Dump({...}))
-	pcall(originalFunc, self, ui, method, arg1, arg2, arg3, ...)
-end
+-- function Game.Tooltip.TooltipHooks.OnRequestTooltip(self, ui, method, arg1, arg2, arg3, ...)
+-- 	print("TooltipHooks.OnRequestTooltip", ui, method, arg1, arg2, arg3, Common.Dump({...}))
+-- 	pcall(originalFunc, self, ui, method, arg1, arg2, arg3, ...)
+-- end
 
 local function traceCompareData(ui, ...)
 	print("traceCompareData", Common.Dump({...}))
 	PrintArray(ui, "equipTooltip_array")
 end
 
-Ext.RegisterListener("SessionLoaded", function()
+--[[ Ext.RegisterListener("SessionLoaded", function()
 	Ext.RegisterUINameInvokeListener("updateEquipTooltip", traceCompareData)
 	Ext.RegisterUINameInvokeListener("updateEquipOffhandTooltip", traceCompareData)
 
@@ -54,4 +54,4 @@ Ext.RegisterListener("SessionLoaded", function()
 		Ext.RegisterUIInvokeListener(ui, "updateItems", traceCompareData)
 		print("Listening for updateEquipTooltip in partyInventory")
 	end
-end)
+end) ]]

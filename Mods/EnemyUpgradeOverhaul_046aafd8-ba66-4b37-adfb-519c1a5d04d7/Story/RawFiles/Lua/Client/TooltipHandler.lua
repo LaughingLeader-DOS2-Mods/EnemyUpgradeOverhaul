@@ -70,10 +70,13 @@ local function OnItemTooltip(item, tooltip)
 			end
 			for tag,entry in pairs(ItemCorruption.TagBoosts) do
 				if entry.DisplayInTooltip and item:HasTag(tag) then
+					local tagName,nameHandle = Ext.GetTranslatedStringFromKey(tag)
+					local tagDesc,descHandle = Ext.GetTranslatedStringFromKey(tag.."_Description")
+					
 					local element = {
 						Type = "Tags",
-						Label = Ext.GetTranslatedStringFromKey(tag),
-						Value = string.format("<font size='16'>%s</font>", "Madness grants you bonuses and full control."),
+						Label = tagName,
+						Value = tagDesc,
 					}
 					-- local element = {
 					-- 	Type = "ArmorSet",

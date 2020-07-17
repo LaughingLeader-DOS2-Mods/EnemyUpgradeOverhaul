@@ -11,11 +11,21 @@ AND
 ObjectGetFlag(_Target, "LLENEMY_ShadowBonus_Madness_Enabled", 1)
 AND
 NRD_StatusGetReal(_Target, _Handle, "LifeTime", _Duration)
+AND
+RealSum(_Duration, 6.0, _NextDuration)
 THEN
 NRD_StatusPreventApply(_Target, _Handle, 1);
-ApplyStatus(_Target, "LLENEMY_SHADOWBONUS_MADNESS", _Duration, 0, _Target);
-*/
+ApplyStatus(_Target, "LLENEMY_SHADOWBONUS_MADNESS", _NextDuration, 0, _Target);
 
+IF
+ObjectTurnStarted((CHARACTERGUID)_Char)
+AND
+ObjectGetFlag(_Char, "LLENEMY_ShadowBonus_Madness_Enabled", 1)
+AND
+HasActiveStatus(_Char, "LLENEMY_SHADOWBONUS_MADNESS", 0)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "RollForMaddness", (STRING)_Char);
+*/
 EXITSECTION
 
 ENDEXITSECTION
