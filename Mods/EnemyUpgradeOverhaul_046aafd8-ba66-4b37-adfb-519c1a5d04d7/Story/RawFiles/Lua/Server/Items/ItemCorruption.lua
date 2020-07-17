@@ -158,7 +158,6 @@ end
 local function AddBoost(item,stat,min,max,negative)
 	local currentValue = NRD_ItemGetPermanentBoostInt(item, stat)
 	local valMod = 0
-	print("Adding boost:",stat,min,max,negative)
 	if not negative then
 		valMod = Ext.Random(min, max)
 	else
@@ -530,51 +529,102 @@ function ShadowCorruptContainerItems(uuid)
 	local min = math.floor(GameHelpers.GetExtraData("LLENEMY_ItemCorruption_MinItemsAffected", 1))
 	local max = math.ceil(GameHelpers.GetExtraData("LLENEMY_ItemCorruption_MaxItemsAffected", 3))
 
-	local corruptionLimit = Ext.Random(min,max)
+	local items = nil
+	local level = 1
+
+	if ObjectIsItem(uuid) == 1 then
+		---@type EsvItem
+		local container = Ext.GetItem(uuid)
+		---@type string[]
+		items = container:GetInventoryItems()
+		level = container.Stats.Level
+	elseif ObjectIsCharacter(uuid) == 1 then
+		---@type EsvCharacter
+		local character = Ext.GetCharacter(uuid)
+		---@type string[]
+		items = character:GetInventoryItems()
+		level = character.Stats.Level
+	end
+
+	-- 9
+	local leap1 = math.tointeger(Ext.ExtraData["FirstPriceLeapLevel"])
+	-- 13
+	local leap2 = math.tointeger(Ext.ExtraData["SecondPriceLeapLevel"])
+	-- 16
+	local leap3 = math.tointeger(Ext.ExtraData["ThirdPriceLeapLevel"])
+	-- 18
+	local leap4 = math.tointeger(Ext.ExtraData["FourthPriceLeapLevel"])
+
+	if level >= leap1 then
+		local rollBonus = math.tointeger(Ext.ExtraData["LLENEMY_ShadowTreasure_FirstPriceLeapRollBonus"] or 1)
+		min = min + rollBonus
+		max = max + rollBonus
+	end
+	if level >= leap2 then
+		local rollBonus = math.tointeger(Ext.ExtraData["LLENEMY_ShadowTreasure_SecondPriceLeapRollBonus"] or 2)
+		min = min + rollBonus
+		max = max + rollBonus
+	end
+	if level >= leap3 then
+		local rollBonus = math.tointeger(Ext.ExtraData["LLENEMY_ShadowTreasure_ThirdPriceLeapRollBonus"] or 1)
+		min = min + rollBonus
+		max = max + rollBonus
+	end
+	if level >= leap4 then
+		local rollBonus = math.tointeger(Ext.ExtraData["LLENEMY_ShadowTreasure_FourthPriceLeapRollBonus"] or 2)
+		min = min + rollBonus
+		max = max + rollBonus
+	end
+
+	local corruptionLimit = 1
+	if min == max then
+		corruptionLimit = max
+	else
+		corruptionLimit = Ext.Random(min,max)
+	end
 	
 	if Ext.IsDeveloperMode() then
 		corruptionLimit = 99
 	end
 
-	---@type EsvItem
-	local container = Ext.GetItem(uuid)
-	---@type string[]
-	local items = container:GetInventoryItems()
-
-	for i,v in pairs(items) do
-		local stat = NRD_ItemGetStatsId(v)
-		if string.sub(stat,1,1) == "_" then
-			ItemRemove(v)
-			Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Deleted item with NPC stat: "..stat)
-		else
-			if corruptionLimit <= 0 then
-				break	
-			end
-			local b,result = xpcall(TryShadowCorruptItem, debug.traceback, v, uuid)
-			if b then
-				corruptionLimit = corruptionLimit - 1
+	if items ~= nil then
+		for i,v in pairs(items) do
+			local stat = NRD_ItemGetStatsId(v)
+			if string.sub(stat,1,1) == "_" then
+				ItemRemove(v)
+				Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Deleted item with NPC stat: "..stat)
 			else
-				Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
-			end
-		end
-	end
-
-	-- Reset limits
-	for k,group in pairs(ItemCorruption.Boosts) do
-		if group.Type == "ItemBoostGroup" then
-			group:ResetApplied()
-			group.Applied = 0
-		elseif type(group) == "table" then
-			for i,v in pairs(group) do
-				if group.Type == "ItemBoostGroup" then
-					group:ResetApplied()
-					group.Applied = 0
+				if corruptionLimit <= 0 then
+					break	
+				end
+				local b,result = xpcall(TryShadowCorruptItem, debug.traceback, v, uuid)
+				if b then
+					corruptionLimit = corruptionLimit - 1
+				else
+					Ext.PrintError("[LLENEMY_ItemMechanics.lua:LLENEMY_ShadowCorruptItem] Error corrupting item:\n"..tostring(result))
 				end
 			end
 		end
-	end
 
-	ContainerIdentifyAll(uuid)
+		-- Reset limits
+		for k,group in pairs(ItemCorruption.Boosts) do
+			if group.Type == "ItemBoostGroup" then
+				group:ResetApplied()
+				group.Applied = 0
+			elseif type(group) == "table" then
+				for i,v in pairs(group) do
+					if group.Type == "ItemBoostGroup" then
+						group:ResetApplied()
+						group.Applied = 0
+					end
+				end
+			end
+		end
+
+		if ObjectIsItem(uuid) == 1 then
+			ContainerIdentifyAll(uuid)
+		end
+	end
 end
 
 function CheckEmptyShadowOrb(uuid)
