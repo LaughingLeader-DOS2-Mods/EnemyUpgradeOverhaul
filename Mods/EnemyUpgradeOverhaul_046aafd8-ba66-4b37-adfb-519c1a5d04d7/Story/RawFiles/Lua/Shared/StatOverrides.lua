@@ -80,6 +80,10 @@ local stat_overrides = {
 	},
 	DEATH_RESIST = {
 		StackId = "Stack_Death_Resist"
+	},
+	-- So Madness can be cast on allies with Empowered by Madness
+	Target_MaddeningSong = {
+		TargetConditions = "Character"
 	}
 }
 

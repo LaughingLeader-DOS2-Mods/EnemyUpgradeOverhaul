@@ -22,11 +22,37 @@ ObjectTurnStarted((CHARACTERGUID)_Char)
 AND
 ObjectGetFlag(_Char, "LLENEMY_ShadowBonus_Madness_Enabled", 1)
 AND
+NOT DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _)
+AND
 HasActiveStatus(_Char, "LLENEMY_SHADOWBONUS_MADNESS", 0)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "RollForMaddness", (STRING)_Char);
+
+IF
+ObjectTurnEnded((CHARACTERGUID)_Char)
+AND
+DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _TurnsLeft)
+AND
+IntegerSubtract(_TurnsLeft, 1, _Next)
+THEN
+NOT DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _TurnsLeft);
+DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _Next);
+
+IF
+ObjectLeftCombat((CHARACTERGUID)_Char, _)
+AND
+DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _TurnsLeft)
+THEN
+NOT DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _TurnsLeft);
+
+IF
+DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _TurnsLeft)
+AND
+_TurnsLeft <= 0
+THEN
+NOT DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _TurnsLeft);
 */
 EXITSECTION
-
+SysClear("DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown", 2);
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_80_ToggledScripts"

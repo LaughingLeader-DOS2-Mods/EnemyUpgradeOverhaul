@@ -34,11 +34,32 @@ end
 function RollForMaddness(char)
 	local chance = math.tointeger(Ext.ExtraData["LLENEMY_ShadowTreasure_MadnessChanceOnTurn"] or 20)
 	if chance > 0 then
+		local rollCooldown = math.tointeger(Ext.ExtraData["LLENEMY_ShadowTreasure_MadnessRollTurnCooldown"] or 2)
 		local turnDuration = (Ext.ExtraData["LLENEMY_ShadowTreasure_MadnessTurnDuration"] or 2) * 6.0
 		if chance >= 100 then
 			ApplyStatus(char, "LLENEMY_SHADOWBONUS_MADNESS", turnDuration, 0, char)
+			Osi.DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(char, rollCooldown)
 		elseif Ext.Random(0, 100) <= chance then
 			ApplyStatus(char, "LLENEMY_SHADOWBONUS_MADNESS", turnDuration, 0, char)
+			Osi.DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(char, rollCooldown)
 		end
 	end
 end
+
+--- @param target string
+--- @param source string
+--- @param damage integer
+--- @param handle integer
+local function OnPrepareHit(target,source,damage,handle)
+
+end
+LeaderLib.RegisterListener("OnPrepareHit", OnPrepareHit)
+
+--- @param target string
+--- @param source string
+--- @param damage integer
+--- @param handle integer
+local function OnHit(target,source,damage,handle)
+
+end
+LeaderLib.RegisterListener("OnHit", OnHit)
