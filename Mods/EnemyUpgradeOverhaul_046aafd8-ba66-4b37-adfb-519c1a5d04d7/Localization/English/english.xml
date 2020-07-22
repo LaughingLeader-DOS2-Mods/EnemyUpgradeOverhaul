@@ -39,7 +39,7 @@
 	<content contentuid="h113eaf38g98cfg4905gbdcbge7974c230658">Source-Hungry Void Flayer</content>
 	<content contentuid="h127721f1g27f1g4ffag9b50gf2720cedb009">Armor Boost</content>
 	<content contentuid="h12db0e65g1dceg4d56g8857gb018ab29f393">Talent:  Comeback Kid</content>
-	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de">Character is empowered with random upgrades.[1][2]</content>
+	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de">Character is empowered with random upgrades.</content>
 	<content contentuid="h151a1213gf033g4845ga26eg4434d523475c">Disable Class Upgrades - These are upgrades that grant enemies new skillsets and small ability bonuses, in class-like themes. (Currently Enabled)</content>
 	<content contentuid="h15a9ae98gb2d3g49d5gbccbg0aecd38fe18c">Talent: Quickdraw</content>
 	<content contentuid="h1624d634gdfdcg4129g9624g9efe5660220b">Empowered by the Void, character has increased resistances, Accuracy, and Dodging. Protects against Diseased, Decaying, Petrified, Stunned.</content>
@@ -53,6 +53,7 @@
 	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee">Source-Hungry Voidwolf</content>
 	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8">Talent: Torturer</content>
 	<content contentuid="h194ac7f5g9da2g4067g83efgf23de735ad79">Bonus Treasure</content>
+	<content contentuid="h19830defg8efbg4be0ga890g34311649a588">&lt;font color=&apos;#73F6FF&apos;&gt;[1] Cleansed [2]&lt;/font&gt;</content>
 	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
 	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770">Talent</content>
 	<content contentuid="h1b451d33g304bg4112gab43g51a4721adab7">Elite Earthcracker</content>
@@ -167,6 +168,7 @@
 	<content contentuid="h7083987bg5f4dg45b6gbc43g96939df3b059">Armor Boost</content>
 	<content contentuid="h70e74b6fg7c33g41e5g8bf4g6fe9a096a69d">Elite Cascader</content>
 	<content contentuid="h719b59cdg64e5g4fe1g97bbgd6bd66675614">Magic Armor Boost</content>
+	<content contentuid="h71f1ad1eg4a13g4975g8617g638ca4950c28">Despite looking like a simple wooden mallet, this tool is more suited for smashing heads than fence posts.</content>
 	<content contentuid="h721c6341gf33bg4b02ga7adg42e9249a22c4">Source-Hungry Voidwoken Turtle</content>
 	<content contentuid="h722182d2g6efbg4d7bgb38ag2cdfd476d61b">Dead?</content>
 	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f">Character is a &lt;font color=&apos;#9B30FF&apos;&gt;Shadow&lt;/font&gt; of another character.&lt;br&gt;&lt;font color=&apos;#65C900&apos; size=&apos;16&apos;&gt;Grants no experience, but drops guaranteed loot.&lt;/font&gt;</content>
@@ -215,6 +217,7 @@
 	<content contentuid="h8ad314ffg18f8g496eg9893gcacf42981a8d">Source-Hungry Vampiric Voidwoken</content>
 	<content contentuid="h8c7cfc30gfa1ag46b8ga23bg524410b565c8">Rage (IV)</content>
 	<content contentuid="h8cfd1ba3gcfb3g4f0cga950gc29672af34c9">Perfect Control</content>
+	<content contentuid="h8d127986g3f48g4594ga0aeg36773f79d4c7">Despite looking like a large dowsing rod, this spear is more akin to a demon&apos;s carving fork.</content>
 	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9">Evolved Voidling</content>
 	<content contentuid="h8e75cbbdg06d7g4404gbfb2g92f6fd11147d">Infernoblazer</content>
 	<content contentuid="h8edc2076g91e3g43d3g8314g5efb21208571">Character has increased attack range of Bows and Crossbows by 2m.</content>
@@ -222,6 +225,7 @@
 	<content contentuid="h8fecc0a7g0c7eg4a22g8528g1a6ac5bf5f30">Magic Armor Boost</content>
 	<content contentuid="h90795f7dg9422g4b51g9835g0449efe50b1b">Enemy Upgrade Overhaul Settings</content>
 	<content contentuid="h90ef8331gf15cg484egaefbgcbd1109a8698">Rage (V)</content>
+	<content contentuid="h917be1dcge9d5g4bd7g829dg58c553256597">A razor-sharp cleaver capable of severing flesh from bone.</content>
 	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf">Character can backstab with non-dagger weapons.</content>
 	<content contentuid="h95d57e81gc533g4236gbb95g2ee7097f5155">Magic Armor Boost</content>
 	<content contentuid="h95fbde3bg3be6g4b7cgb6acg1bacabcba562">Character has a chance to steal a consumable item on attack.&lt;br&gt;Can only happen once per turn.</content>
@@ -280,14 +284,18 @@
 	<content contentuid="hbb85295eg78f4g4744gbc9aged84e4a88eca">Settings updated.</content>
 	<content contentuid="hbba08b72g0d5bg416eg9a46gb2150b29fb05">The treasure goblin is fleeing!&lt;br&gt;&lt;font color=&apos;#FF00CC&apos; size=&apos;24&apos;&gt;Quickly, strike it down for &lt;font color=&apos;#C7A758&apos; size=&apos;24&apos; face=&apos;Copperplate Gothic Light&apos;&gt;LOOT&lt;/font&gt;!&lt;/font&gt;</content>
 	<content contentuid="hbc7f9c3dg471bg47c6ga015g77c92a439e4e">Talent: Lightning Rod</content>
+	<content contentuid="hbd52c1d5g57a6g441cgb95ag6579562eab20"></content>
 	<content contentuid="hbd7fc3f3g08f1g4684g8c47gccc404622fc6">&lt;font color=&apos;#FF3737&apos; size=&apos;26&apos;&gt;*Atusa&apos;s corpse oozes to life!*&lt;/font&gt;</content>
 	<content contentuid="hbe6a42a1g49e0g44e0g9546g4b45f038d6cb">Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
 	<content contentuid="hbf07ab58g09aag415fg999eg4e4f1bc04f8e">[GLOBAL] Enable source spells having a chance to lure Voidwoken into battle. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)&lt;br&gt;&lt;br&gt;Total source points used in the level will be tracked, and will gradually increase the chance and difficulty of voidwoken spawned. Total SP degrades every 5 minutes of real time (default).&lt;br&gt;Higher cost source skills have a higher chance to lure hostile voidwoken.</content>
 	<content contentuid="hbfafd8eeg3703g4b46g837eg2389c8302f35">Cooldown (Master Thief)</content>
+	<content contentuid="hc00cabb2g7deag47ebg8836gead9952cf706">A gravedigger&apos;s shovel, this multi-purpose tool not only digs graves, but prepares their cargo for burial.</content>
 	<content contentuid="hc0a53dd7g55f4g4c2cgae98g350ed1b9cbb9">Character will revive once when killed, coming back with full health.</content>
 	<content contentuid="hc2dfd3fcg7132g4e47g9a89g35e2089966df">Character is healed when standing in blood.</content>
+	<content contentuid="hc32985b1g2e5bg4864ga696gff59634aadf2">A blade said to be sharp enough to reap souls. While not a practical weapon, this scythe is deadly in the right hands.</content>
 	<content contentuid="hc3f8497bg97acg449ag910ag07b825f3b8bb">Firestarter</content>
 	<content contentuid="hc505e9aagab98g49e8g8777g72eb60325a35">Character will discover hidden enemies while in combat.&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Stealthed and Invisible enemies within 4m are revealed.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF3333&apos;&gt;Becoming Drunk or disabled temporarily disables a Seeker&apos;s detection.&lt;/font&gt;</content>
+	<content contentuid="hc7c70ba4g0bfdg4afbg8db1ga39d0eead1eb">Empowered by Madness</content>
 	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937">Character is obsessed with collecting grenades. One misstep and boom!</content>
 	<content contentuid="hcb08a432g19a5g4571g820fg92ddc92ac4d9">Talent: Lone Wolf</content>
 	<content contentuid="hce14d863g96b1g4817ga295gbea6423c0190">Magic Armor Boost</content>
@@ -334,6 +342,7 @@
 	<content contentuid="he9cb8fddg5db3g4d64ga27cgb93613250725">Melter</content>
 	<content contentuid="hea2ac23fg62fag4befg9b85g1277c11011e6">Character is infused with tremendous power, granting a variety of bonuses and extra skills.</content>
 	<content contentuid="hea8180efg9c0eg4cdega019g233a720fc32c">Storm-wing Voidwoken</content>
+	<content contentuid="hedbd8a1cg2701g418cg96f9gfc8f473a4114">A corrupted distortion of a legendary sword, said to be able to slay Gods.</content>
 	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58">Talent: Lightning Rod</content>
 	<content contentuid="hef0955d5g3d94g4d39g87b1g20872d999f16">Magic Armor Boost</content>
 	<content contentuid="hf03d120ag2329g476dg94dcg7df0d27c3e1e">&lt;font color=&apos;#F7BA14&apos; size=&apos;16&apos;&gt;Good Loot&lt;/font&gt;</content>

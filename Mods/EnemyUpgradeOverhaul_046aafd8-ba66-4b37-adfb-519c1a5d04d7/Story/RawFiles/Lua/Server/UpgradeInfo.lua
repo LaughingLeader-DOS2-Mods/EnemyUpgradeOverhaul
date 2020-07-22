@@ -72,10 +72,9 @@ function UpgradeInfo_SetHighestPartyLoremaster()
 end
 
 function UpgradeInfo_SendHighestLoremaster(highest)
-	local highestStr = tostring(highest)
-	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", highestStr, nil)
+	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(highest), nil)
 	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highestStr..")")
-	UpgradeInfo_RefreshInfoStatuses()
+	--UpgradeInfo_RefreshInfoStatuses()
 end
 
 local function TimerFinished(event, ...)
@@ -148,7 +147,9 @@ local function OnCharacterBaseAbilityChanged(character, ability, old, new)
 	end
 end
 
-Ext.RegisterOsirisListener("CharacterBaseAbilityChanged", 4, "after", OnCharacterBaseAbilityChanged)
+if Ext.Version() >= 50 then
+	Ext.RegisterOsirisListener("CharacterBaseAbilityChanged", 4, "after", OnCharacterBaseAbilityChanged)
+end
 
 function StoreHighestLoremaster(nextHighest)
 	HighestLoremaster = nextHighest
