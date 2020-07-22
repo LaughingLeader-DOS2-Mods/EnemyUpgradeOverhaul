@@ -51,7 +51,12 @@ end
 --- @param damage integer
 --- @param handle integer
 local function OnPrepareHit(target,source,damage,handle)
-
+	if ObjectGetFlag(target, "LLENEMY_ShadowBonus_StunDefense_Enabled") == 1 then
+		local damageReduction = Ext.ExtraData["LLENEMY_ShadowBonus_StunDefense_DamageReduction"] or 0.5
+		if damageReduction > 0 then
+			GameHelpers.ReduceDamage(target, source, handle, damageReduction, true)
+		end
+	end
 end
 LeaderLib.RegisterListener("OnPrepareHit", OnPrepareHit)
 
@@ -63,3 +68,38 @@ local function OnHit(target,source,damage,handle)
 
 end
 LeaderLib.RegisterListener("OnHit", OnHit)
+
+local function OnTurnEndedOrLeftCombat(object, combatId)
+	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_DotCleanser_Enabled") == 1 then
+		if ObjectIsCharacter(object) == 1 then
+			local cleansed = {}
+			local character = Ext.GetCharacter(object)
+			for i,status in pairs(character:GetStatuses()()) do
+				if Ext.StatGetAttribute(status, "StatusType") == "DAMAGE" then
+					local weaponStat = Ext.StatGetAttribute(status, "DamageStats")
+					if weaponStat ~= nil and Ext.StatGetAttribute(weaponStat, "DamageFromBase") > 0 then
+						table.insert(cleansed, GameHelpers.GetStringKeyText(Ext.StatGetAttribute(status, "DisplayName"), status))
+						RemoveStatus(object, status.StatusId)
+					end
+				end
+			end
+			if #cleansed > 0 then
+				local statusText = GameHelpers.GetStringKeyText("LLENEMY_StatusText_Cleansed", "<font color='#73F6FF'>[1] Cleansed [2]</font>")
+				local itemResponsible = CharacterFindTaggedItem(object, "LLENEMY_ShadowBonus_DotCleanser")
+				local cleanseSource = ""
+				if itemResponsible ~= nil then
+					cleanseSource = Ext.GetItem(itemResponsible).DisplayName
+				else
+					cleanseSource = GameHelpers.GetStringKeyText("LLENEMY_ShadowBonus_DotCleanser", "Immune Boost")
+				end
+				statusText = statusText:gsub("%[1%]", cleanseSource):gsub("%[2%]", StringHelpers.Join(", ", cleansed))
+				CharacterStatusText(character, statusText)
+			end
+		end
+	end
+end
+
+if Ext.Version() >= 50 then
+	Ext.RegisterOsirisListener("ObjectTurnEnded", 1, "after", OnTurnEndedOrLeftCombat)
+	Ext.RegisterOsirisListener("ObjectLeftCombat", 2, "after", OnTurnEndedOrLeftCombat)
+end

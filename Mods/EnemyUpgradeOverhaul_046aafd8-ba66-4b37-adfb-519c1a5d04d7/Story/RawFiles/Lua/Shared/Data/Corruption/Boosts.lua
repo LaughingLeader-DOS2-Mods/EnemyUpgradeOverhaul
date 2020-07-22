@@ -260,7 +260,11 @@ local function Init()
 			},{Chance=1, SlotType="Helmet", Limit=1}),
 			ItemBoost:Create({
 				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_Madness,
-			},{Chance=80, SlotType="Helmet", Limit=1}),
+			},{Chance=2, SlotType="Helmet", Limit=1}),
+			ItemBoost:Create({
+				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_StunDefense,
+				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_DotCleanser,
+			},{Chance=2, SlotType="Breast", Limit=1, All=false}),
 			-- ItemBoost:Create({
 			-- 	StatBoost:Create("ChanceToHitBoost",1,3),
 			-- },{Chance=3, SlotType="Helmet"}),

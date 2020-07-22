@@ -13,3 +13,4 @@ LLENEMY_StatusText_ImmuneToDamageOnMove	<font color='#FF3737' size='18'>Immune t
 LLENEMY_StatusText_RageReduced	<font color='#FF3737' size='23'>Rage Reduced</font>	h5f654029g8f4ag454egbbd9g42e75c7fdfc1
 LLENEMY_StatusText_SeekerDiscoveredTarget	<font color='#FF3737' size='26'>*Revealed!*</font>	h483cc43ag6b13g4d05gaad9gb3c595847c6a
 LLENEMY_StatusText_VoidlingTransformed	<font color='#73F6FF' size='26'>Empowered Evolution</font>	h0c6fe9ccg70f0g434dgbe60gc2275abaa7d1
+LLENEMY_StatusText_Cleansed	<font color='#73F6FF'>[1] Cleansed [2]</font>	h19830defg8efbg4be0ga890g34311649a588

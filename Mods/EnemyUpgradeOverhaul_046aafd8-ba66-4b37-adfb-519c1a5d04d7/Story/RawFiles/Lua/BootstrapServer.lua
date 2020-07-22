@@ -51,3 +51,7 @@ Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
 	
 -- end
 -- Ext.RegisterListener("SessionLoading", LLENEMY_Server_SessionLoading)
+
+LeaderLib.RegisterListener("Initialized", function()
+	LeaderLib.EnableFeature("ResistancePenetration")
+end)
