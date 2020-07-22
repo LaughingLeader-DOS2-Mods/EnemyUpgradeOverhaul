@@ -93,21 +93,21 @@ local function OnItemTooltip(item, tooltip)
 	end
 end
 
+local upgradeInfoHelpers = Ext.Require("Client/UpgradeInfoTooltip.lua")
+
 ---@param character EsvCharacter
 ---@param status EsvStatus
 ---@param tooltip TooltipData
-local function OnStatusTooltip(character, status, tooltip)
-	print(status.StatusId)
-	print(LeaderLib.Common.Dump(tooltip.Data))
-	if status.StatusId == "LLENEMY_UPGRADE_INFO" then
-
-
-	end
+local function OnUpgradeInfoTooltip(character, status, tooltip)
+	local upgradeInfoText = upgradeInfoHelpers.GetUpgradeInfoText(character)
+	local challengePointsText = upgradeInfoHelpers.GetChallengePointsText(character)
+	local element = tooltip:GetElement("StatusDescription")
+	element.Label = string.format("%s<br>%s<br>%s", element.Label, upgradeInfoText, challengePointsText)
 end
 
 local function Init()
 	Game.Tooltip.RegisterListener("Item", nil, OnItemTooltip)
-	Game.Tooltip.RegisterListener("Status", nil, OnStatusTooltip)
+	Game.Tooltip.RegisterListener("Status", "LLENEMY_UPGRADE_INFO", OnUpgradeInfoTooltip)
 end
 return {
 	Init = Init

@@ -19,3 +19,8 @@ local function LLENEMY_Client_SessionLoaded()
 end
 
 Ext.RegisterListener("SessionLoaded", LLENEMY_Client_SessionLoaded)
+
+Ext.RegisterNetListener("LLENEMY_SetHighestLoremaster", function(call, valStr)
+	LeaderLib.PrintDebug("[LLENEMY_Shared.lua:LLENEMY_SetHighestLoremaster] Set highest loremaster value to ("..valStr..") on client.")
+	HighestLoremaster = math.tointeger(valStr)
+end)
