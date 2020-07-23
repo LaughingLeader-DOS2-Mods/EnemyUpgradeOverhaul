@@ -71,12 +71,12 @@ LLENEMY_Buffs_AddGrenadeSkill("Projectile_Grenade_Flashbang", 60);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Elite", (INTEGER)_HardModeEnabled)
 THEN
+DB_LLENEMY_Statuses_FixedDuration("DOUBLE_DAMAGE");
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 40, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "FLAMING_CRESCENDO", 90, 4, 12.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_ACTIVATE_FLAMING_TONGUES", 160, 5, 0.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "INVULNERABLE", 10, 10, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "LLENEMY_CHICKEN_OVERLORD", 20, 9);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "SPARK_MASTER", 260, 6);
 
@@ -131,6 +131,8 @@ LLENEMY_Upgrades_AddStatus("Auras", "Auras_Main", "LLENEMY_ACTIVATE_HEALING_TEAR
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Immunities", "Auras", (INTEGER)_HardModeEnabled)
 THEN
+DB_LLENEMY_Statuses_FixedDuration("ELEMENTAL_IMMUNITY_AURA");
+DB_LLENEMY_Statuses_FixedDuration("PHYSICAL_IMMUNITY_AURA");
 LLENEMY_Upgrades_AddStatus("Immunities", "Auras", "AIR_IMMUNITY_AURA", 50, 7, 12.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Auras", "EARTH_IMMUNITY_AURA", 40, 7, 12.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Auras", "ELEMENTAL_IMMUNITY_AURA", 10, 9, 6.0);
@@ -142,15 +144,17 @@ LLENEMY_Upgrades_AddStatus("Immunities", "Auras", "PHYSICAL_IMMUNITY_AURA", 10, 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Immunities", "Immunity", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "ELECTRIC_SKIN", 60, 8, 12.0);
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "FIRE_SKIN", 40, 8, 12.0);
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "ICE_SKIN", 60, 8, 12.0);
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "POISON_SKIN", 110, 8, 12.0);
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_BURNING", 120, 6, 18.0);
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_ELECTRIFYING", 120, 6, 18.0);
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_POISONING", 129, 6, 18.0);
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "LLENEMY_IMMUNITY_PIERCING", 120, 8, 36.0);
-LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "LLENEMY_IMMUNITY_LOSECONTROL", 360, 7);
+DB_LLENEMY_Statuses_FixedDuration("INVULNERABLE");
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "INVULNERABLE", 10, 6, 6.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "ELECTRIC_SKIN", 60, 4, 12.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "FIRE_SKIN", 40, 4, 12.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "ICE_SKIN", 60, 4, 12.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "POISON_SKIN", 110, 4, 12.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_BURNING", 120, 3, 18.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_ELECTRIFYING", 120, 3, 18.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "IMMUNE_TO_POISONING", 129, 3, 18.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "LLENEMY_IMMUNITY_PIERCING", 120, 4, 36.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "LLENEMY_IMMUNITY_LOSECONTROL", 360, 6);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Bonus", "Infusion", (INTEGER)_HardModeEnabled)

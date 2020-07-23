@@ -73,7 +73,7 @@ end
 
 function UpgradeInfo_SendHighestLoremaster(highest)
 	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(highest), nil)
-	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highestStr..")")
+	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highest..")")
 	--UpgradeInfo_RefreshInfoStatuses()
 end
 
@@ -145,6 +145,10 @@ local function OnCharacterBaseAbilityChanged(character, ability, old, new)
 	if ability == "Loremaster" and CharacterIsPlayer(character) == 1 and CharacterIsSummon(character) == 0 and CharacterIsPartyFollower(character) == 0 then
 		SaveHighestLoremaster(character, ability, old, new)
 	end
+end
+
+function OnCharacterBaseAbilityChanged_Call(character, ability, old, new)
+	OnCharacterBaseAbilityChanged(character, ability, math.tointeger(tonumber(old)), math.tointeger(tonumber(new)))
 end
 
 if Ext.Version() >= 50 then

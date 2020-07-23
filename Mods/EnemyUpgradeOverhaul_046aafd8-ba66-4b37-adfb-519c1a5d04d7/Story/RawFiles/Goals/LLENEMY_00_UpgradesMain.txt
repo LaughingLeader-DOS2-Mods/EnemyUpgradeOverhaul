@@ -862,6 +862,8 @@ LLENEMY_Upgrades_ApplyStatus(_Char, _Group, _Type, _Status, _Duration, _HardMode
 PROC
 LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, 1)
 AND
+NOT DB_LLENEMY_Statuses_FixedDuration(_Status)
+AND
 _Duration > 0.0
 AND
 NRD_RandomReal(6.0, 18.0, _Ran)
@@ -881,6 +883,8 @@ LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type
 AND
 _Duration > 0.0
 AND
+NOT DB_LLENEMY_Statuses_FixedDuration(_Status)
+AND
 LeaderLib_Random_QRY(6,18)
 AND
 DB_LeaderLib_Random(_RanInt)
@@ -891,6 +895,13 @@ RealSum(_Duration, _Ran, _NewDuration)
 THEN
 ApplyStatus(_Char, _Status, _NewDuration, 1, _Char);
 // [END_NO_OSITOOLS]
+
+PROC
+LLENEMY_Upgrades_ApplyStatus((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (REAL)_Duration, 1)
+AND
+DB_LLENEMY_Statuses_FixedDuration(_Status)
+THEN
+LLENEMY_Upgrades_Internal_FinallyApplyStatus(_Char, _Status, _Duration);
 
 // Non-hardmode regular durations
 PROC
@@ -916,6 +927,18 @@ ApplyStatus(_Char, _Status, _Duration, 1, _Char);
 
 PROC
 LLENEMY_Upgrades_Internal_FinallyApplyStatus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
+AND
+GlobalGetFlag("LLENEMY_WorldUpgradesEnabled", 0)
+THEN
+DB_LLENEMY_Upgrades_Temp_StatusApplied(_Char, _Status);
+ApplyStatus(_Char, _Status, _Duration, 1, _Char);
+
+PROC
+LLENEMY_Upgrades_Internal_FinallyApplyStatus((CHARACTERGUID)_Char, (STRING)_Status, (REAL)_Duration)
+AND
+NOT DB_LLENEMY_Upgrades_Temp_StatusApplied(_Char, _Status)
+AND
+GlobalGetFlag("LLENEMY_WorldUpgradesEnabled", 1)
 AND
 CharacterIsInCombat(_Char, 1)
 THEN

@@ -113,7 +113,7 @@ LLENEMY_TALENT_SOULCATCHER_Description	When an allied character dies, a Zombie C
 LLENEMY_TALENT_SOULCATCHER_DisplayName	Talent: Soulcatcher	h9a2a7390gc764g4fa0g8e97gf73ffac2a93c
 LLENEMY_TALENT_TORTURER_Description	Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.	h64144ff5gee91g4ac5g87cdg43d27aaacef3
 LLENEMY_TALENT_TORTURER_DisplayName	Talent: Torturer	h18ff40ffg5d06g48c6gb09egaec569a55aa8
-LLENEMY_TALENT_UNSTABLE_Description	Character will explode in a bloody cloud when killed, dealing 50% of their vitality as physical damage in a 3m radius.	hf39968a3gf18eg4e17gba81g6d3cff64d4aa
+LLENEMY_TALENT_UNSTABLE_Description	Character will explode in a bloody cloud when killed, dealing 50% of their vitality as <font color='#9A00FF'>chaos damage</font> in a 3m radius to their enemies.	hf39968a3gf18eg4e17gba81g6d3cff64d4aa
 LLENEMY_TALENT_UNSTABLE_DisplayName	Talent: Unstable	h2b8ca96eg181cg4d13gaef5g84d2bb6f88fc
 LLENEMY_TALENT_WEATHERPROOF_Description	Character is immune to enviromental effects.	h08f37745g3fbeg43d9gaf74g9e9bfd4ca89f
 LLENEMY_TALENT_WEATHERPROOF_DisplayName	Talent: Weatherproof	hdb001da6g340cg4f00g9190g13e8c1a96f90

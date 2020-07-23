@@ -1,3 +1,6 @@
+---@class TranslatedString
+local TranslatedString = LeaderLib.Classes["TranslatedString"]
+
 local counterParamText = TranslatedString:Create("h662390f7gfd9eg4a56g95e5g658283cc548a", "<font color='#D416FF'>[1]%</font>")
 
 local function StatDescription_Counter(status, target, param, statusSource)
