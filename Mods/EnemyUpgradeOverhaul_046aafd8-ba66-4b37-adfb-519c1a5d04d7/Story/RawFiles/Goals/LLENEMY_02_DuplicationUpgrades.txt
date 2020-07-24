@@ -87,6 +87,17 @@ LLENEMY_Duplication_Internal_SetupDupe(_Source, _Dupe, 0);
 //END_REGION
 
 //REGION BLOCKING
+// Ignore specific characters
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Enemy, "Duplication", (STRING)_Type, (STRING)_Status, (REAL)_Duration)
+AND
+NOT DB_LLENEMY_Origins_DuplicationBlocked(_Enemy)
+AND
+DB_LLENEMY_Duplication_Blacklist(_Enemy)
+THEN
+DB_LLENEMY_Origins_DuplicationBlocked(_Enemy);
+LLENEMY_Upgrades_RedirectUpgradeToGroupType(_Enemy, "Duplication", _Type, _Status, "Buffs", "Normal");
+
 PROC
 LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Duplication", (STRING)_Type)
 AND

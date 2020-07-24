@@ -4,6 +4,12 @@ INITSECTION
 
 KBSECTION
 
+PROC
+LLENEMY_Origins_InitRegistration("RC_Main")
+THEN
+// Driftwood Arena Voidwoken
+DB_LLENEMY_Duplication_Blacklist((CHARACTERGUID)S_RC_DW_UnderTavern_Voidwoken_13bb467b-de20-4726-8afd-757705352361);
+
 //REGION CUSTOM
 PROC
 LLENEMY_Elites_InitLevel("RC_Main")
@@ -131,6 +137,12 @@ LLENEMY_Elites_AddUpgradeChance("RC_Main", S_GLO_GarethFriend_9372d7fb-dc95-4acf
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_OIL_InnerField_Magister_5_a8ca9245-b132-4e9e-b73a-81b41a6a297b);
 // Zerachial the Accursed | Treasure: TinyBoss
 LLENEMY_Elites_AddUpgradeChance("RC_Main", S_RC_BI_DemonSpot1_Demon_001_839d90c0-9457-4d9d-a263-dd1c0cd71c8a);
+
+IF
+RegionEnded("RC_Main")
+THEN
+NOT DB_LLENEMY_Duplication_Blacklist(S_RC_DW_UnderTavern_Voidwoken_13bb467b-de20-4726-8afd-757705352361);
+
 EXITSECTION
 
 ENDEXITSECTION

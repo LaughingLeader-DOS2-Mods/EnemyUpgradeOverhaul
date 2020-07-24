@@ -5,6 +5,11 @@ INITSECTION
 KBSECTION
 //REGION CUSTOM
 PROC
+LLENEMY_Origins_InitRegistration("CoS_Main")
+THEN
+DB_LLENEMY_Duplication_Blacklist(S_CoS_Temples_BlackRingHub_Troll_0c148028-84ff-4bdd-957b-5f093b4a7521);
+
+PROC
 LLENEMY_Elites_InitLevel("CoS_Main")
 THEN
 //MajesticNoodle suggestions;
@@ -81,6 +86,10 @@ LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_SpyMaster_787c6c4a-6e5
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Academy_SentientVoidwoken_001_1f1f40cc-4d58-4b0d-a359-4bd3d5c00a1a);
 //END_REGION
 
+IF
+RegionEnded("CoS_Main")
+THEN
+NOT DB_LLENEMY_Duplication_Blacklist(S_CoS_Temples_BlackRingHub_Troll_0c148028-84ff-4bdd-957b-5f093b4a7521);
 
 EXITSECTION
 
