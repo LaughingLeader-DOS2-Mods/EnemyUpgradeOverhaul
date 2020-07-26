@@ -86,7 +86,6 @@ THEN
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BLESSED", 20, 2, 18.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "BREATHING_BUBBLE", 40, 3, 18.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "ETHEREAL_SOLES", 120, 1, 12.0);
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "EVADING", 80, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FIREBLOOD", 60, 2);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "FORTIFIED", 130, 2, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "MAGIC_SHELL", 130, 2, 12.0);
@@ -145,7 +144,9 @@ PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Immunities", "Immunity", (INTEGER)_HardModeEnabled)
 THEN
 DB_LLENEMY_Statuses_FixedDuration("INVULNERABLE");
+DB_LLENEMY_Statuses_FixedDuration("EVADING");
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "INVULNERABLE", 10, 6, 6.0);
+LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "EVADING", 30, 4, 6.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "ELECTRIC_SKIN", 60, 4, 12.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "FIRE_SKIN", 40, 4, 12.0);
 LLENEMY_Upgrades_AddStatus("Immunities", "Immunity", "ICE_SKIN", 60, 4, 12.0);

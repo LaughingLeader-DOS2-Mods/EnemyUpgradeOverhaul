@@ -77,6 +77,7 @@ local function OnItemTooltip(item, tooltip)
 						Type = "Tags",
 						Label = tagName,
 						Value = tagDesc,
+						Warning = ""
 					}
 					-- local element = {
 					-- 	Type = "ArmorSet",

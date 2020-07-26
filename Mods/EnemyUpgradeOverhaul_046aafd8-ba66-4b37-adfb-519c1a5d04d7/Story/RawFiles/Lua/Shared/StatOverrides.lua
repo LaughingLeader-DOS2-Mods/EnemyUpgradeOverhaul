@@ -163,37 +163,31 @@ local function OverrideStats()
 
     for statname,overrides in pairs(stat_overrides) do
         for property,value in pairs(overrides) do
-            LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"")
+            --LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"")
             Ext.StatSetAttribute(statname, property, value)
             total_changes = total_changes + 1
         end
         total_stats = total_stats + 1
 	end
 
-	if Ext.Version() >= 40 then
-		for statname,overrides in pairs(talent_belt_overrides) do
-			for property,value in pairs(overrides) do
-				LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"")
-				Ext.StatSetAttribute(statname, property, value)
-				total_changes = total_changes + 1
-			end
-			total_stats = total_stats + 1
+	for statname,overrides in pairs(talent_belt_overrides) do
+		for property,value in pairs(overrides) do
+			--LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"")
+			Ext.StatSetAttribute(statname, property, value)
+			total_changes = total_changes + 1
 		end
+		total_stats = total_stats + 1
 	end
 
-	--EnemyUpgradeOverhaulSingleplayer_88d7c1d3-8de9-4494-be12-a8fcbc8171e9
-	if Ext.Version() >= 42 then
-		--LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Enabling v42+ enhancements.")
-		--LeaderLib.PrintDebug("==============================================================")
-		--LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] (Upgrade Info) enabled. Hiding statuses used for info.")
-		for _,statname in pairs(upgrade_info_statuses) do
-			LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Hiding icon for stat: " .. statname)
-			Ext.StatSetAttribute(statname, "Icon", "")
-			total_changes = total_changes + 1
-			total_stats = total_stats + 1
-		end
-		--LeaderLib.PrintDebug("==============================================================")
+	--LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] Enabling v42+ enhancements.")
+	--LeaderLib.PrintDebug("==============================================================")
+	--LeaderLib.PrintDebug("LLENEMY_StatOverrides.lua] (Upgrade Info) enabled. Hiding statuses used for info.")
+	for _,statname in pairs(upgrade_info_statuses) do
+		Ext.StatSetAttribute(statname, "Icon", "")
+		total_changes = total_changes + 1
+		total_stats = total_stats + 1
 	end
+	--LeaderLib.PrintDebug("==============================================================")
 
 	-- Gravedigger_be822931-e829-4555-b50f-3b80b6f17d86
 	if Ext.IsModLoaded("be822931-e829-4555-b50f-3b80b6f17d86") then
