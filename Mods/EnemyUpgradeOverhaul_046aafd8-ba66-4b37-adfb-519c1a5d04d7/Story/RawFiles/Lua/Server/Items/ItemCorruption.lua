@@ -537,7 +537,13 @@ function ShadowCorruptContainerItems(uuid)
 		local container = Ext.GetItem(uuid)
 		---@type string[]
 		items = container:GetInventoryItems()
-		level = container.Stats.Level
+		if container.TreasureLevel > container.LevelOverride then
+			level = container.TreasureLevel
+		elseif container.LevelOverride > 0 then
+			level = container.LevelOverride
+		else
+			level = CharacterGetLevel(CharacterGetHostCharacter())
+		end
 	elseif ObjectIsCharacter(uuid) == 1 then
 		---@type EsvCharacter
 		local character = Ext.GetCharacter(uuid)
