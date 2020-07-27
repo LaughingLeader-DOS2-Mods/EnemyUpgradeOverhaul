@@ -124,8 +124,6 @@ local function RegisterVoiceMetaData()
 	end
 end
 
-local function LLENEMY_Shared_SessionLoaded()
-	--RegisterVoiceMetaData()
-end
-
-Ext.RegisterListener("SessionLoaded", LLENEMY_Shared_SessionLoaded)
+Ext.RegisterListener("SessionLoaded", function()
+	LeaderLib.EnableFeature("ResistancePenetration")
+end)

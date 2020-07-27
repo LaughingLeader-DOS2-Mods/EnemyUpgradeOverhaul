@@ -365,6 +365,17 @@ SysClear("DB_LLENEMY_HM_TUT_ReruiterFreed", 1);
 DB_LLENEMY_HM_TUT_ReruiterFreed(1);
 //END_REGION
 
+//REGION REGAIN_WEAPONS
+// Giving players a fighting change to take on the guard / prisoner.
+IF
+DB_TUT_LostWeapon((CHARACTERGUID)_Char, (STRING)_Slot, (ITEMGUID)_Item)
+AND
+DB_IsPlayer(_Char)
+THEN
+ItemToInventory(_Item, _Char, 1, 1, 0);
+NOT DB_TUT_LostWeapon(_Char, _Slot, _Item);
+//END_REGION
+
 EXITSECTION
 SysClear("DB_LLENEMY_TUT_Temp_ReplacementMagister", 2);
 SysClear("DB_LLENEMY_HM_TUT_LarianTriedToKillCaptain", 1);
