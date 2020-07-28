@@ -35,4 +35,5 @@ return {
 	"Turret",
 	"Resurrect",
 	"LLWEAPONEX", -- Weapon Expansion Skills are mostly weapon-specific
+	"EnemyCurse",
 }

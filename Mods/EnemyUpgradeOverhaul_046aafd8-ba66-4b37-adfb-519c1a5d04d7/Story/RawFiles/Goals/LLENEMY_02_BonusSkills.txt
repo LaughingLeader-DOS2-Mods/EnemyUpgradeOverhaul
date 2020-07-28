@@ -25,32 +25,32 @@ DB_LLENEMY_BonusSkills_Settings("LLENEMY_BONUSSKILLS_SOURCE", 1, 1);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Normal", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE", 700, 2);
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SET_NORMAL", 299, 6);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SINGLE", 800, 1);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Normal", "LLENEMY_BONUSSKILLS_SET_NORMAL", 199, 3);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Elite", 0)
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_SKILL_MASS_SHACKLES", 10, 8);
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 899, 10);
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_SOURCE_ELITE", 99, 14);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_SKILL_MASS_SHACKLES", 10, 6);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 899, 4);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_SOURCE_ELITE", 99, 5);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Elite", 1)
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_SKILL_MASS_SHACKLES", 50, 8);
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 800, 10);
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_SOURCE_ELITE", 147, 14);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_SKILL_MASS_SHACKLES", 50, 6);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_ELITE", 800, 4);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Elite", "LLENEMY_BONUSSKILLS_SET_SOURCE_ELITE", 147, 5);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source1", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 998, 4);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 998, 2);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("BonusSkills", "Source2", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 998, 4);
+LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 998, 2);
 //END_REGION
 
 //REGION ROLLING
@@ -62,14 +62,12 @@ THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
 // [END_NO_OSITOOLS]
 
-/* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
 AND
 NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Enemy)
 THEN
 DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
-*/
 
 PROC
 LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
@@ -109,7 +107,7 @@ NRD_ModCall("EnemyUpgradeOverhaul", "AddBonusSkills", _EnemyStr, _AddSkillsStr, 
 */
 
 IF
-CharacterStatusAttempt(_Char, "LLENEMY_BONUSSKILLS_SOURCE", _)
+CharacterStatusApplied(_Char, "LLENEMY_BONUSSKILLS_SOURCE", _)
 AND
 CharacterGetMaxSourcePoints(_Char, _Max)
 AND
@@ -118,6 +116,19 @@ AND
 IntegerMin(3, _NextMax, _Next) // Cap it at 3 max
 THEN
 CharacterOverrideMaxSourcePoints(_Char, _Next);
+CharacterAddSourcePoints(_Char, 3);
+
+IF
+CharacterStatusApplied(_Char, "LLENEMY_BONUSSKILLS_SET_SOURCE_ELITE", _)
+AND
+CharacterGetMaxSourcePoints(_Char, _Max)
+AND
+IntegerSum(_Max, 1, _NextMax)
+AND
+IntegerMin(3, _NextMax, _Next) // Cap it at 3 max
+THEN
+CharacterOverrideMaxSourcePoints(_Char, _Next);
+CharacterAddSourcePoints(_Char, 3);
 //END_REGION
 EXITSECTION
 

@@ -1,4 +1,6 @@
 return {
+	Target_EnemyCurse = true, -- 0 SP cost
+	Target_EnemyBless = true,
 	Target_BanishSummon = true,
 	Target_EnemyBanishSummon = true,
 	Cone_Enemy_WaterSpit_Troll = true,

@@ -366,7 +366,7 @@ DB_LLENEMY_HM_TUT_ReruiterFreed(1);
 //END_REGION
 
 //REGION REGAIN_WEAPONS
-// Giving players a fighting change to take on the guard / prisoner.
+// Giving players a fighting change to take on the guard / prisoner
 IF
 DB_TUT_LostWeapon((CHARACTERGUID)_Char, (STRING)_Slot, (ITEMGUID)_Item)
 AND
