@@ -773,6 +773,8 @@ LLENEMY_Upgrades_ApplyUpgrade(_Char, _Group, _Type, _NewStatus, _Duration, _CP);
 PROC
 LLENEMY_Upgrades_Internal_ApplyRedirectedUpgrade((CHARACTERGUID)_Char, (STRING)_Group, (STRING)_Type, (STRING)_Status, (STRING)_NewStatus, 1)
 AND
+NOT DB_LLENEMY_Statuses_FixedDuration(_Status)
+AND
 NOT DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus)
 AND
 NRD_StatusGetHandle(_Char, _NewStatus, _Handle)
@@ -781,9 +783,15 @@ NRD_StatusGetReal(_Char, _Handle, "CurrentLifeTime", _CurrentDuration)
 AND
 _CurrentDuration > 0.0
 AND
-NRD_RandomReal(6.0, 12.0, _AddDuration)
+_CurrentDuration <= 12.0
 AND
-RealSum(_CurrentDuration, _AddDuration, _NextDuration)
+NRD_RandomReal(0.0, 6.0, _Rnd)
+AND
+RealSum(_CurrentDuration, _Rnd, _Next)
+AND
+RealMin(_Next, 18.0, _AddDuration) // Don't get too crazy with the turn extensions
+AND
+_AddDuration != _CurrentDuration
 THEN
 LLENEMY_Upgrades_IncreaseChallengePoints(_Char, 1);
 DB_LLENEMY_Upgrades_Temp_RedirectedUpgradeResolved(_Char, _Status, _NewStatus);
