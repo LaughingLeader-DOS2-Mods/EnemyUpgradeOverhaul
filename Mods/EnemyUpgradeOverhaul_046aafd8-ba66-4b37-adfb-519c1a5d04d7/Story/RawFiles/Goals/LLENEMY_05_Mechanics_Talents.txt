@@ -17,17 +17,17 @@ DB_LLENEMY_Talents_MasterThief_Tags("Potion");
 IF
 CharacterStatusRemoved(_Char, "LLENEMY_TALENT_RESISTDEAD", _)
 THEN
-LeaderLib_ToggleScripts_DisableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
+LeaderLib_ToggleScripts_DisableScriptForObjectAfterDelay(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul", 3000);
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_TALENT_RESISTDEAD2", _)
+THEN
+LeaderLib_ToggleScripts_DisableScriptForObjectAfterDelay(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul", 3000);
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD", _)
 THEN
 LeaderLib_ToggleScripts_EnableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
-
-IF
-CharacterStatusRemoved(_Char, "LLENEMY_TALENT_RESISTDEAD2", _)
-THEN
-LeaderLib_ToggleScripts_DisableScriptForObject(_Char, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
 
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_RESISTDEAD2", _)
