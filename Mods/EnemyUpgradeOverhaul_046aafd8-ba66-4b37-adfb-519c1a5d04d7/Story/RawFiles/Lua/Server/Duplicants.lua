@@ -37,6 +37,11 @@ function Duplication_CopySource(source,dupe)
 	for i,tag in pairs(sourceCharacter:GetTags()) do
 		SetTag(dupe, tag)
 	end
+
+	local scale = sourceCharacter.Scale
+	if scale ~= 1.0 then
+		dupeChar:SetScale(scale)
+	end
 end
 
 function Duplication_CopyCP(source,dupe)
