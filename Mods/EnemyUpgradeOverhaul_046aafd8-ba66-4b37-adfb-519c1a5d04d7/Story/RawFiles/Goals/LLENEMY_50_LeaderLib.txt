@@ -17,21 +17,7 @@ LeaderLib_ToggleScripts_EnableScript("LeaderLib_StatusEvents_DisableScriptEnable
 
 PROC
 LLENEMY_LeaderLib_RegisterSettings()
-AND
-DB_LLENEMY_Upgrades_Groups(_Group, _GlobalDisableFlag, _RolledForFlag, _GroupSuccessFlag)
 THEN
-LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, _GlobalDisableFlag, 1);
-
-PROC
-LLENEMY_LeaderLib_RegisterSettings()
-THEN
-LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_HardModeEnabled", 1);
-LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_EnemyLevelingEnabled", 1);
-LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_RewardsDisabled", 1);
-LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Debug_LevelCapDisabled");
-LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_WorldUpgradesEnabled", 1);
-LeaderLib_GlobalSettings_Register_GlobalFlag(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_VoidwokenSourceSpawningEnabled", 1);
-LeaderLib_GlobalSettings_Register_GlobalInteger(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Scaling_LevelModifier", 0);
 LeaderLib_Register_ModMenu("046aafd8-ba66-4b37-adfb-519c1a5d04d7", "LLENEMY_Settings", "[Enemy Upgrade Overhaul] Settings");
 
 PROC
@@ -41,24 +27,6 @@ NOT DB_LLENEMY_LeaderLib_Registered(1)
 THEN
 LLENEMY_LeaderLib_RegisterSettings();
 DB_LLENEMY_LeaderLib_Registered(1);
-
-PROC
-LeaderLib_GlobalSettings_GetIntegerVariable(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Scaling_LevelModifier")
-AND
-DB_LLENEMY_LevelModifier(_Value)
-THEN
-LeaderLib_GlobalSettings_SaveIntegerVariable(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Scaling_LevelModifier", _Value);
-
-//Called by LeaderLib_GlobalSettings.lua, listened for in mods
-PROC
-LeaderLib_GlobalSettings_SetIntegerVariable(046aafd8-ba66-4b37-adfb-519c1a5d04d7, "LLENEMY_Scaling_LevelModifier", (INTEGER)_Value)
-AND
-IntegerMax(-1, _Value, _ClampedValue1)
-AND
-IntegerMin(_ClampedValue1, 20, _ClampedValue2)
-THEN
-SysClear("DB_LLENEMY_LevelModifier", 1);
-DB_LLENEMY_LevelModifier(_ClampedValue2);
 
 //REGION EXTENDER_SUPPORT
 /*

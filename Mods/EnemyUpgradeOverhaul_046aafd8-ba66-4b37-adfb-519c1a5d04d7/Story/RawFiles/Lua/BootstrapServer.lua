@@ -27,6 +27,29 @@ local function LLENEMY_Server_ModuleLoading()
 end
 Ext.RegisterListener("ModuleLoading", LLENEMY_Server_ModuleLoading)
 
+---@type ModSettings
+local ModSettings = LeaderLib.Classes.ModSettingsClasses.ModSettings
+local settings = ModSettings:Create("046aafd8-ba66-4b37-adfb-519c1a5d04d7")
+settings.Global:AddFlags({
+	"LLENEMY_Debug_LevelCapDisabled",
+	"LLENEMY_EnemyLevelingEnabled",
+	"LLENEMY_HardModeEnabled",
+	"LLENEMY_RewardsDisabled",
+	"LLENEMY_Scaling_LevelModifier",
+	"LLENEMY_VoidwokenSourceSpawningEnabled",
+	"LLENEMY_WorldUpgradesEnabled",
+	"LLENEMY_AuraUpgradesDisabled",
+	"LLENEMY_BonusBuffUpgradesDisabled",
+	"LLENEMY_BonusSkillsUpgradesDisabled",
+	"LLENEMY_BuffUpgradesDisabled",
+	"LLENEMY_ClassUpgradesUpgradesDisabled",
+	"LLENEMY_DuplicationUpgradesDisabled",
+	"LLENEMY_ImmunityUpgradesDisabled",
+	"LLENEMY_TalentUpgradesDisabled",
+	"LLENEMY_WorldUpgradesEnabled",
+})
+settings.Global:AddVariable("LLENEMY_Scaling_LevelModifier", 0, "integer")
+
 local function LLENEMY_Server_SessionLoaded()
 	-- Odinblade's Necromancy Overhaul
 	if Ext.IsModLoaded("8700ba4e-7d4b-40ca-a23f-b43816794957") then
@@ -44,8 +67,15 @@ local function LLENEMY_Server_SessionLoaded()
 		IgnoredSkills["ProjectileStrike_Enemy_Xorn_Comdor_Smash"] = true
 	end
 	bonusSkillsScript.Init()
+
+	SettingsManager.AddSettings(settings)
 end
 Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
+
+LeaderLib.RegisterListener("ModSettingsLoaded", function()
+	Osi.DB_LLENEMY_LevelModifier:Delete(nil)
+	Osi.DB_LLENEMY_LevelModifier(settings.Global.Variables.LLENEMY_Scaling_LevelModifier.Value or 0)
+end)
 
 -- local function LLENEMY_Server_SessionLoading()
 	
