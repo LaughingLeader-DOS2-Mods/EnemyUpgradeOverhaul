@@ -26,7 +26,7 @@ NOT DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(_Char, _)
 AND
 HasActiveStatus(_Char, "LLENEMY_SHADOWBONUS_MADNESS", 0)
 THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "RollForMaddness", (STRING)_Char);
+NRD_ModCall("EnemyUpgradeOverhaul", "RollForMadness", (STRING)_Char);
 
 IF
 ObjectTurnEnded((CHARACTERGUID)_Char)

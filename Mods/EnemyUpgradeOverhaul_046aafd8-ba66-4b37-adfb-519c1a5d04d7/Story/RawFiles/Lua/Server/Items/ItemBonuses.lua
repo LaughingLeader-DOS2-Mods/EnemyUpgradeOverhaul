@@ -31,11 +31,11 @@ function ShadowItem_OnUnEquipped(char, item)
 end
 
 -- From the LLENEMY_ShadowBonus_Madness tag boost
-function RollForMaddness(char)
-	local chance = math.tointeger(Ext.ExtraData["LLENEMY_ShadowTreasure_MadnessChanceOnTurn"] or 20)
+function RollForMadness(char)
+	local chance = math.tointeger(Ext.ExtraData["LLENEMY_ShadowBonus_Madness_ChanceOnTurn"] or 20)
 	if chance > 0 then
-		local rollCooldown = math.tointeger(Ext.ExtraData["LLENEMY_ShadowTreasure_MadnessRollTurnCooldown"] or 2)
-		local turnDuration = (Ext.ExtraData["LLENEMY_ShadowTreasure_MadnessTurnDuration"] or 2) * 6.0
+		local rollCooldown = math.tointeger(Ext.ExtraData["LLENEMY_ShadowBonus_Madness_RollTurnCooldown"] or 2)
+		local turnDuration = (Ext.ExtraData["LLENEMY_ShadowBonus_Madness_TurnDuration"] or 2) * 6.0
 		if chance >= 100 then
 			ApplyStatus(char, "LLENEMY_SHADOWBONUS_MADNESS", turnDuration, 0, char)
 			Osi.DB_LLENEMY_ItemBonuses_Temp_MadnessCooldown(char, rollCooldown)
@@ -51,7 +51,7 @@ end
 --- @param damage integer
 --- @param handle integer
 local function OnPrepareHit(target,source,damage,handle)
-	if ObjectGetFlag(target, "LLENEMY_ShadowBonus_StunDefense_Enabled") == 1 then
+	if ObjectGetFlag(target, "LLENEMY_ShadowBonus_StunDefense_Enabled") == 1 and GameHelpers.Status.IsDisabled(target) then
 		local damageReduction = Ext.ExtraData["LLENEMY_ShadowBonus_StunDefense_DamageReduction"] or 0.5
 		if damageReduction > 0 then
 			GameHelpers.ReduceDamage(target, source, handle, damageReduction, true)
@@ -67,7 +67,18 @@ LeaderLib.RegisterListener("OnPrepareHit", OnPrepareHit)
 local function OnHit(target,source,damage,handle)
 
 end
-LeaderLib.RegisterListener("OnHit", OnHit)
+--LeaderLib.RegisterListener("OnHit", OnHit)
+
+local function MadnessBonus_FindTargets(source)
+	local x,y,z = GetPosition(source)
+	local radius = Ext.ExtraData["LLENEMY_ShadowBonus_Madness_DamageRadius"] or 6.0
+	for i,v in pairs(Ext.GetCharactersAroundPosition(x,y,z, radius)) do
+		if v ~= source and (CharacterIsEnemy(v, source) == 1 or IsTagged(v, "LeaderLib_FriendlyFireEnabled") == 1) then
+			PlayBeamEffect(source, v, "LLENEMY_FX_Status_TentacleLash_Beam_01", "Dummy_BodyFX", "Dummy_BodyFX")
+			Osi.LeaderLib_Timers_StartCharacterCharacterTimer(source, v, 500, "Timers_LLENEMY_Madness_TentacleDamage", "LLENEMY_Madness_TentacleDamage")
+		end
+	end
+end
 
 local function OnTurnEndedOrLeftCombat(object, combatId)
 	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_DotCleanser_Enabled") == 1 then
@@ -97,6 +108,19 @@ local function OnTurnEndedOrLeftCombat(object, combatId)
 			end
 		end
 	end
+	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_Madness_Enabled") == 1 then
+		MadnessBonus_FindTargets(object)
+	end
+end
+
+function ShadowItem_OnMadnessTick(char)
+	if CharacterIsInCombat(char) == 0 then
+		MadnessBonus_FindTargets(char)
+	end
+end
+
+function ShadowItem_ApplyMadnessTentacleDamage(source, char)
+	GameHelpers.ExplodeProjectile(source, char, "Projectile_LLENEMY_ShadowBonus_Madness_Damage")
 end
 
 if Ext.Version() >= 50 then

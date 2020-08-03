@@ -100,3 +100,16 @@ Ext.RegisterConsoleCommand("euo_printrespentags", function(command)
 		end
 	end
 end)
+
+Ext.RegisterConsoleCommand("euo_tagtest", function(command,reset)
+	local host = CharacterGetHostCharacter()
+	for i,entry in pairs(ItemCorruption.TagBoosts) do
+		if reset == nil then
+			ObjectSetFlag(host, entry.Flag, 0)
+			CharacterStatusText(host, entry.Flag .. " Set")
+		else
+			ObjectClearFlag(host, entry.Flag, 0)
+			CharacterStatusText(host, entry.Flag .. " Cleared")
+		end
+	end
+end)
