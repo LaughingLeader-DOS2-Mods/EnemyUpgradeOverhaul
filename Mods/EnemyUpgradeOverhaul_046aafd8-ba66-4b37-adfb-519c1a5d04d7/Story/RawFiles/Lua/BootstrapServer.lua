@@ -9,6 +9,7 @@ local bonusSkillsScript = Ext.Require("Server/BonusSkills.lua")
 Ext.Require("Server/GameMechanics.lua")
 Ext.Require("Server/Duplicants.lua")
 Ext.Require("Server/ItemMechanics.lua")
+Ext.Require("Server/HardmodeMechanics.lua")
 Ext.Require("Server/Items/ItemCorruption.lua")
 Ext.Require("Server/Items/ItemCorruptionStatCreator.lua")
 Ext.Require("Server/Items/ItemBonuses.lua")
@@ -26,29 +27,6 @@ local function LLENEMY_Server_ModuleLoading()
 	LLENEMY_Shared_InitModuleLoading()
 end
 Ext.RegisterListener("ModuleLoading", LLENEMY_Server_ModuleLoading)
-
----@type ModSettings
-local ModSettings = LeaderLib.Classes.ModSettingsClasses.ModSettings
-local settings = ModSettings:Create("046aafd8-ba66-4b37-adfb-519c1a5d04d7")
-settings.Global:AddFlags({
-	"LLENEMY_Debug_LevelCapDisabled",
-	"LLENEMY_EnemyLevelingEnabled",
-	"LLENEMY_HardModeEnabled",
-	"LLENEMY_RewardsDisabled",
-	"LLENEMY_Scaling_LevelModifier",
-	"LLENEMY_VoidwokenSourceSpawningEnabled",
-	"LLENEMY_WorldUpgradesEnabled",
-	"LLENEMY_AuraUpgradesDisabled",
-	"LLENEMY_BonusBuffUpgradesDisabled",
-	"LLENEMY_BonusSkillsUpgradesDisabled",
-	"LLENEMY_BuffUpgradesDisabled",
-	"LLENEMY_ClassUpgradesUpgradesDisabled",
-	"LLENEMY_DuplicationUpgradesDisabled",
-	"LLENEMY_ImmunityUpgradesDisabled",
-	"LLENEMY_TalentUpgradesDisabled",
-	"LLENEMY_WorldUpgradesEnabled",
-})
-settings.Global:AddVariable("LLENEMY_Scaling_LevelModifier", 0, "integer")
 
 local function LLENEMY_Server_SessionLoaded()
 	-- Odinblade's Necromancy Overhaul
@@ -68,7 +46,7 @@ local function LLENEMY_Server_SessionLoaded()
 	end
 	bonusSkillsScript.Init()
 
-	SettingsManager.AddSettings(settings)
+	SettingsManager.AddSettings(Settings)
 end
 Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
 
