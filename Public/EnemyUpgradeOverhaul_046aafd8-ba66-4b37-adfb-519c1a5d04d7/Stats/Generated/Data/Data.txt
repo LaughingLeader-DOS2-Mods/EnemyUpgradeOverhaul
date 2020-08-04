@@ -1,3 +1,4 @@
+key "LLENEMY_Hardmode_DefaultStartingUpgradeRolls","4"
 key "LLENEMY_Counter_MaxChance","75"
 key "LLENEMY_ItemCorruption_MinItemsAffected","1"
 key "LLENEMY_ItemCorruption_MaxItemsAffected","3"

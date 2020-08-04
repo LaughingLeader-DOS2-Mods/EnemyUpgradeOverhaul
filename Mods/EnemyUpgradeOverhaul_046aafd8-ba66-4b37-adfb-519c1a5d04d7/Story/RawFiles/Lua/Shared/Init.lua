@@ -58,12 +58,8 @@ ItemCorruption.Names = Ext.Require("Shared/Data/Corruption/Names.lua")
 local statOverrides = Ext.Require("Shared/StatOverrides.lua")
 Ext.Require("Shared/VoiceData.lua")
 Ext.Require("Shared/SharedUpgradeInfo.lua")
-
-function GetExtraDataValue(key, fallback)
-	local val = Ext.ExtraData[key]
-	if val ~= nil then return val end
-	return fallback
-end
+---@type ModSettings
+Settings = Ext.Require("Shared/Settings.lua")
 
 local function FixModTypos()
 	-- Greed typos
