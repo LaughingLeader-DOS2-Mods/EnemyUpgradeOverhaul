@@ -103,6 +103,7 @@ local function ApplyBoost(item,mod,itemBoostObject,boost)
 		itemBoostObject.Applied = itemBoostObject.Applied + 1
 	elseif boost.Type == "TagBoost" then
 		LeaderLib.PrintDebug("[LLENEMY_ItemCorruptionDeltamods.lua:Boost:Apply] Adding TagBoost ["..boost.Tag.."] to item ["..item.."].")
+		SetTag(item, boost.Tag)
 		if boost.OnTagAdded ~= nil then
 			local status,err = xpcall(boost.OnTagAdded, debug.traceback, item, boost.Tag)
 			if not status then
