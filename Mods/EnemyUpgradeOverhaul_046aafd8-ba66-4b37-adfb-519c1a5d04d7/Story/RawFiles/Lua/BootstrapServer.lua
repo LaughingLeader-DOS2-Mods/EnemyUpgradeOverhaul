@@ -46,13 +46,13 @@ local function LLENEMY_Server_SessionLoaded()
 	end
 	bonusSkillsScript.Init()
 
-	SettingsManager.AddSettings(Settings)
+	LeaderLib.SettingsManager.AddSettings(Settings)
 end
 Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
 
 LeaderLib.RegisterListener("ModSettingsLoaded", function()
 	Osi.DB_LLENEMY_LevelModifier:Delete(nil)
-	Osi.DB_LLENEMY_LevelModifier(settings.Global.Variables.LLENEMY_Scaling_LevelModifier.Value or 0)
+	Osi.DB_LLENEMY_LevelModifier(Settings.Global.Variables.LLENEMY_Scaling_LevelModifier.Value or 0)
 end)
 
 -- local function LLENEMY_Server_SessionLoading()
