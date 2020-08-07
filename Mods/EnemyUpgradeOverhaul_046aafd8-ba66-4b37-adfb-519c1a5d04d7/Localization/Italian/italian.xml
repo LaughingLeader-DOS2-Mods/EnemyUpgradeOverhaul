@@ -34,7 +34,7 @@
 	<content contentuid="h0f2a61a6g5427g4e2bgbc76g986dc3e1fa79">Disable Bonus Skill Upgrades. These give enemies new skills using the Script Extender. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
 	<content contentuid="h0f4b3d6bg416cg43b1g9ae2g879d929b4151">Commit Level Modifier to the World - This will level up every non-player character in the world to the desired level modifier, including neutral or allied characters (non-recruited Origin companions are ignored).</content>
 	<content contentuid="h0fac50d9g63c1g4dc1gb769g9fba10e602df">Piercing Immunity</content>
-	<content contentuid="h0fd762dcg98f8g4483g9cd5ga74f7c4b02c8">When Disabled (Stunned, Knocked Down, etc.) reduce incoming damage by [1]%. </content>
+	<content contentuid="h0fd762dcg98f8g4483g9cd5ga74f7c4b02c8">&lt;font size=&apos;16&apos;&gt;When Disabled (Stunned, Knocked Down, etc.),&lt;br&gt;incoming damage is reduced by [ExtraData:LLENEMY_ShadowBonus_StunDefense_DamageReduction]%.&lt;/font&gt; </content>
 	<content contentuid="h1049b802g537bg4815gb5b6g34c387f9aa9c">Elite Melter</content>
 	<content contentuid="h106bb9f5ge8a1g4019g9d9dgebb27474f992">Elite Heatsapper</content>
 	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c">Rage (V)</content>
@@ -55,7 +55,7 @@
 	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee">Source-Hungry Voidwolf</content>
 	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8">Talent: Torturer</content>
 	<content contentuid="h194ac7f5g9da2g4067g83efgf23de735ad79">Bonus Treasure</content>
-	<content contentuid="h19593f3fg3755g47f5gb70dg61954a8a6bf3">&lt;font size=&apos;16&apos;&gt;[1]% chance to gain Madness every turn.&lt;br&gt;Madness grants you bonuses and full control.&lt;/font&gt;</content>
+	<content contentuid="h19593f3fg3755g47f5gb70dg61954a8a6bf3">&lt;font size=&apos;16&apos;&gt;[ExtraData:LLENEMY_ShadowBonus_Madness_ChanceOnTurn]% chance to gain Madness every turn.&lt;br&gt;Madness grants you bonuses and full control.&lt;/font&gt;</content>
 	<content contentuid="h19830defg8efbg4be0ga890g34311649a588">&lt;font color=&apos;#73F6FF&apos;&gt;[1] Cleansed [2]&lt;/font&gt;</content>
 	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
 	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770">Talent</content>

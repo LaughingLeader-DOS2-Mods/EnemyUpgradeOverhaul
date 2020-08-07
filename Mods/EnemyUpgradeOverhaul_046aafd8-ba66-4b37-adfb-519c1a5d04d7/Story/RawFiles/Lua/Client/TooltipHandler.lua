@@ -21,7 +21,7 @@ local rarityColor = {
 ---@param item EsvItem
 ---@param tooltip TooltipData
 local function OnItemTooltip(item, tooltip)
-	--print(item.StatsId, item.RootTemplate, item.MyGuid)
+	--print(item.StatsId, item.RootTemplate, item.MyGuid, item:HasTag("LLENEMY_ShadowItem"))
 	--print(Ext.JsonStringify(tooltip.Data))
 	--Ext.PostMessageToServer("LLENEMY_Debug_PrintComboCategory", item.MyGuid)
 	--print(string.format("%s ComboCategory:\n%s", item.Stats.Name, Ext.JsonStringify(item.Stats.ComboCategory)))
@@ -64,14 +64,16 @@ local function OnItemTooltip(item, tooltip)
 			end
 			element = tooltip:GetElement("ItemName")
 			if element ~= nil then
-				--element.Label = ShadowItemNameAffix.Value:gsub("%[1%]", element.Label:gsub("<font.->", ""):gsub("</font>.*", ""))
-				--element.Label = ShadowItemNameColor.Value:gsub("%[1%]", color):gsub("%[2%]", element.Label:gsub("<font.->", ""):gsub("</font>.*", ""))
+				-- Shadow Treasure has custom name colors, so we remove the default rarity color here.
 				element.Label = element.Label:gsub("<font.->", "<font color='"..color.."'>")
 			end
 			for tag,entry in pairs(ItemCorruption.TagBoosts) do
 				if entry.DisplayInTooltip and item:HasTag(tag) then
+					--print(tag, item:HasTag(tag), entry.DisplayInTooltip)
 					local tagName,nameHandle = Ext.GetTranslatedStringFromKey(tag)
 					local tagDesc,descHandle = Ext.GetTranslatedStringFromKey(tag.."_Description")
+
+					tagDesc = GameHelpers.Tooltip.ReplacePlaceholders(tagDesc)
 					
 					local element = {
 						Type = "Tags",
@@ -79,14 +81,6 @@ local function OnItemTooltip(item, tooltip)
 						Value = tagDesc,
 						Warning = ""
 					}
-					-- local element = {
-					-- 	Type = "ArmorSet",
-					-- 	SetName = "The Best Set",
-					-- 	FoundPieces = 1,
-					-- 	TotalPieces = 99,
-					-- 	SetDescription = "Woo!",
-					-- 	GrantedStatuses = {{Label="Super Cool Status", IconIndex="1"}},
-					-- }
 					tooltip:AppendElement(element)
 				end
 			end
