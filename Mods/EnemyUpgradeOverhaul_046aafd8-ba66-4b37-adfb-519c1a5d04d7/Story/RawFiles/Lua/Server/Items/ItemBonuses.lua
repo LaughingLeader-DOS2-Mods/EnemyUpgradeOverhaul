@@ -1,8 +1,13 @@
 
 function ShadowItem_OnEquipped(char, item)
 	for tag,entry in pairs(ItemCorruption.TagBoosts) do
-		if not LeaderLib.StringHelpers.IsNullOrEmpty(entry.Flag) and IsTagged(item, tag) == 1 then
-			LeaderLib_ToggleScripts_EnableScriptForObject(char, entry.Flag, "EnemyUpgradeOverhaul", 1)
+		print(tag, IsTagged(item, tag), entry.Flag, StringHelpers.IsNullOrEmpty(entry.Flag))
+		if not StringHelpers.IsNullOrEmpty(entry.Flag) and IsTagged(item, tag) == 1 then
+			if entry.HasToggleScript == true then
+				Osi.LeaderLib_ToggleScripts_EnableScriptForObject(char, entry.Flag, "EnemyUpgradeOverhaul", 1)
+			else
+				ObjectSetFlag(char, entry.Flag, 0)
+			end
 		end
 	end
 end
@@ -10,7 +15,7 @@ end
 function ShadowItem_OnUnEquipped(char, item)
 	local removedTags = {}
 	for tag,entry in pairs(ItemCorruption.TagBoosts) do
-		if not LeaderLib.StringHelpers.IsNullOrEmpty(entry.Flag) and IsTagged(item, tag) == 1 then
+		if not StringHelpers.IsNullOrEmpty(entry.Flag) and IsTagged(item, tag) == 1 then
 			--LeaderLib_ToggleScripts_DisableScriptForObject(char, flag, "EnemyUpgradeOverhaul", 1)
 			table.insert(removedTags, entry)
 		end
@@ -25,7 +30,11 @@ function ShadowItem_OnUnEquipped(char, item)
 			end
 		end
 		if not hasTaggedItem then
-			LeaderLib_ToggleScripts_DisableScriptForObject(char, entry.Flag, "EnemyUpgradeOverhaul", 1)
+			if entry.HasToggleScript == true then
+				Osi.LeaderLib_ToggleScripts_DisableScriptForObject(char, entry.Flag, "EnemyUpgradeOverhaul", 1)
+			else
+				ObjectClearFlag(char, entry.Flag, 0)
+			end
 		end
 	end
 end
@@ -81,30 +90,42 @@ local function MadnessBonus_FindTargets(source)
 end
 
 local function OnTurnEndedOrLeftCombat(object, combatId)
+	print("LLENEMY_ShadowBonus_DotCleanser_Enabled", ObjectGetFlag(object, "LLENEMY_ShadowBonus_DotCleanser_Enabled"))
 	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_DotCleanser_Enabled") == 1 then
 		if ObjectIsCharacter(object) == 1 then
 			local cleansed = {}
 			local character = Ext.GetCharacter(object)
-			for i,status in pairs(character:GetStatuses()()) do
+			for i,status in pairs(character:GetStatuses()) do
+				if type(status) ~= "string" and status.StatusId ~= nil then
+					status = status.StatusId
+				end
 				if Ext.StatGetAttribute(status, "StatusType") == "DAMAGE" then
 					local weaponStat = Ext.StatGetAttribute(status, "DamageStats")
 					if weaponStat ~= nil and Ext.StatGetAttribute(weaponStat, "DamageFromBase") > 0 then
 						table.insert(cleansed, GameHelpers.GetStringKeyText(Ext.StatGetAttribute(status, "DisplayName"), status))
-						RemoveStatus(object, status.StatusId)
+						RemoveStatus(object, status)
 					end
 				end
 			end
 			if #cleansed > 0 then
 				local statusText = GameHelpers.GetStringKeyText("LLENEMY_StatusText_Cleansed", "<font color='#73F6FF'>[1] Cleansed [2]</font>")
 				local itemResponsible = CharacterFindTaggedItem(object, "LLENEMY_ShadowBonus_DotCleanser")
-				local cleanseSource = ""
-				if itemResponsible ~= nil then
-					cleanseSource = Ext.GetItem(itemResponsible).DisplayName
-				else
-					cleanseSource = GameHelpers.GetStringKeyText("LLENEMY_ShadowBonus_DotCleanser", "Immune Boost")
-				end
+				local cleanseSource = GameHelpers.GetStringKeyText("LLENEMY_ShadowBonus_DotCleanser", "Immune Boost")
+				-- if itemResponsible ~= nil then
+				-- 	cleanseSource = Ext.GetItem(itemResponsible).DisplayName
+				-- else
+				-- 	cleanseSource = GameHelpers.GetStringKeyText("LLENEMY_ShadowBonus_DotCleanser", "Immune Boost")
+				-- end
 				statusText = statusText:gsub("%[1%]", cleanseSource):gsub("%[2%]", StringHelpers.Join(", ", cleansed))
-				CharacterStatusText(character, statusText)
+				CharacterStatusText(object, statusText)
+
+				local health = CharacterGetHitpointsPercentage(object)
+				if health < 100.0 then
+					for i=#cleansed,1,-1 do
+						health = health + ((Ext.ExtraData["LLENEMY_ShadowBonus_ImmuneBoost_HealPercentage"] or 0.1) * 100)
+					end
+					CharacterSetHitpointsPercentage(object, math.min(100.0, health))
+				end
 			end
 		end
 	end
