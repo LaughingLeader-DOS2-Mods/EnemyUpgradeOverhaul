@@ -136,11 +136,11 @@ function ClearGain(char)
 	if Ext.IsModLoaded("d5e1b4bc-dc7b-43dc-8bd0-d9f2b5e3a418") then
 		SetTag(char, "LLXPSCALE_DisableDeathExperience")
 	end
-	NRD_CharacterSetPermanentBoostInt(char, "Gain", 0)
-	CharacterAddAttribute(char, "Dummy", 0)
-
 	local gain = NRD_CharacterGetPermanentBoostInt(char, "Gain")
-	print(char, "gain:", gain)
+	if gain > 0 then
+		NRD_CharacterSetPermanentBoostInt(char, "Gain", gain * -1)
+		CharacterAddAttribute(char, "Dummy", 0)
+	end
 end
 
 function SpawnTreasureGoblin(x,y,z,level,combatid)
