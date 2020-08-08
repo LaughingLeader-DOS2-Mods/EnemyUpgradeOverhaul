@@ -1,7 +1,6 @@
 
 function ShadowItem_OnEquipped(char, item)
 	for tag,entry in pairs(ItemCorruption.TagBoosts) do
-		print(tag, IsTagged(item, tag), entry.Flag, StringHelpers.IsNullOrEmpty(entry.Flag))
 		if not StringHelpers.IsNullOrEmpty(entry.Flag) and IsTagged(item, tag) == 1 then
 			if entry.HasToggleScript == true then
 				Osi.LeaderLib_ToggleScripts_EnableScriptForObject(char, entry.Flag, "EnemyUpgradeOverhaul", 1)
@@ -90,7 +89,6 @@ local function MadnessBonus_FindTargets(source)
 end
 
 local function OnTurnEndedOrLeftCombat(object, combatId)
-	print("LLENEMY_ShadowBonus_DotCleanser_Enabled", ObjectGetFlag(object, "LLENEMY_ShadowBonus_DotCleanser_Enabled"))
 	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_DotCleanser_Enabled") == 1 then
 		if ObjectIsCharacter(object) == 1 then
 			local cleansed = {}

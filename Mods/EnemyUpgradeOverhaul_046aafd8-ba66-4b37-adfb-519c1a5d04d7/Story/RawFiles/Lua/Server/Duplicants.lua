@@ -109,7 +109,7 @@ function Duplication_CopySourceStats(source,dupe,baseStat)
 			if baseDupe < baseSource then
 				local next = baseSource - baseDupe
 				NRD_CharacterSetPermanentBoostInt(dupe, boost, next)
-				print("Set", boost, "to", next, "for", dupe, "from", baseDupe)
+				--PrintDebug("Set", boost, "to", next, "for", dupe, "from", baseDupe)
 			end
 		end
 	end
@@ -119,7 +119,7 @@ function Duplication_CopySourceStats(source,dupe,baseStat)
 		if baseDupe ~= nil and baseSource ~= nil and baseDupe < baseSource then
 			local next = baseSource - baseDupe
 			CharacterAddAttribute(dupe, stat, next)
-			print("Set", stat, "to", next, "for", dupe, "from", baseDupe)
+			--PrintDebug("Set", stat, "to", next, "for", dupe, "from", baseDupe)
 		end
 	end
 	for i,stat in LeaderLib.Data.Ability:Get() do
@@ -128,7 +128,7 @@ function Duplication_CopySourceStats(source,dupe,baseStat)
 		if baseDupe ~= nil and baseSource ~= nil and baseDupe < baseSource then
 			local next = baseSource - baseDupe
 			CharacterAddAbility(dupe, stat, next)
-			print("Set", stat, "to", next, "for", dupe, "from", baseDupe)
+			--PrintDebug("Set", stat, "to", next, "for", dupe, "from", baseDupe)
 		end
 	end
 end

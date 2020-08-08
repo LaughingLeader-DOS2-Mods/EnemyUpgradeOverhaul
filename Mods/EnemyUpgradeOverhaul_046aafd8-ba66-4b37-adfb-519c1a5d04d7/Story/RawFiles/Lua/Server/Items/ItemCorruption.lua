@@ -284,7 +284,6 @@ local function AddRandomBoosts(item,stat,statType,level,minBoosts)
 	local totalBoosts = 0
 	local boostTable = ItemCorruption.Boosts[statType]
 	if boostTable ~= nil then
-		print("BoostTable:", statType)
 		for i,group in ipairs(boostTable) do
 			LeaderLib.PrintDebug("Applying boosts from group: " .. tostring(group.ID))
 			totalBoosts = totalBoosts + group:Apply(item,stat,statType,level,1,false,nil,minBoosts)
@@ -360,7 +359,6 @@ local function AddRandomBoostsToItem(item,stat,statType,level,cloned)
 		--print("Adding ObjectCategory bonuses", objectCategory)
 		--print(Common.Dump(bonusCategoryTable))
 		for i,v in pairs(bonusCategoryTable) do
-			print("ID:",v.ID)
 			if v.Type == "RandomGroupContainer" then
 				---@type ItemBoostGroup
 				local group = Common.GetRandomTableEntry(v.Entries)

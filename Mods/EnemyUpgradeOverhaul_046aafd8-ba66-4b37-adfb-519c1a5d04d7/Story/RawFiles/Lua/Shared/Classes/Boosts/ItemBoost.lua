@@ -107,7 +107,8 @@ local function ApplyBoost(item,mod,itemBoostObject,boost)
 		if boost.OnTagAdded ~= nil then
 			local status,err = xpcall(boost.OnTagAdded, debug.traceback, item, boost.Tag)
 			if not status then
-				print(err)
+				PrintError("[EnemyUpgradeOverhaul] Error calling OnTagAdded callback:")
+				PrintError(err)
 			end
 		end
 		itemBoostObject.Applied = itemBoostObject.Applied + 1
