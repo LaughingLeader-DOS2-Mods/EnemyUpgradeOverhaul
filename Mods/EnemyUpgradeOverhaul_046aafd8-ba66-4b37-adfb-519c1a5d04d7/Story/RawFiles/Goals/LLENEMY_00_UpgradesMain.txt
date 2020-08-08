@@ -453,7 +453,7 @@ DB_LeaderLib_Random(_Roll)
 // [END_NO_OSITOOLS]
 /* [OSITOOLS_ONLY]
 AND
-LeaderLib_Ext_Random(0,_RollMaxInt,_Roll)
+LeaderLib_Ext_Random(0,999,_Roll)
 */
 THEN
 NOT DB_LeaderLib_Random(_Roll);
