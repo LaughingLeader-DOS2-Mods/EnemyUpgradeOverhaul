@@ -262,7 +262,7 @@
 	<content contentuid="ha78e3050g202cg4650g8df9g2ef53c2463a2">Source-Hungry Slippery Voidling</content>
 	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19">Rewards Settings</content>
 	<content contentuid="ha963a343g4464g4bb3ga553g95a99a0d4cf7">Source-Hungry Vampiric Voidwoken</content>
-	<content contentuid="ha9bac902g50e1g46dagb76fg74085358d300">When your turn ends, harmful damage-over-time statuses are &lt;font color=&apos;#97FBFF&apos;&gt;cleansed&lt;/font&gt;, &lt;font color=&apos;#97FBFF&apos;&gt;restoring [ExtraData:LLENEMY_ShadowBonus_ImmuneBoost_HealPercentage]% vitality&lt;/font&gt; per status. </content>
+	<content contentuid="ha9bac902g50e1g46dagb76fg74085358d300">When your turn ends, harmful damage-over-time statuses are &lt;font color=&apos;#4197E2&apos;&gt;cleansed&lt;/font&gt;, restoring &lt;font color=&apos;#97FBFF&apos;&gt;[ExtraData:LLENEMY_ShadowBonus_ImmuneBoost_HealPercentage]% Vitality&lt;/font&gt; per status. </content>
 	<content contentuid="ha9dfee58ge73fg47e4gb9f7g1ff2ced6635e">Vitality Boost</content>
 	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8">Talent: Natural Conductor</content>
 	<content contentuid="habff2fe9g031cg4c7cg85feg28a1fa25fb14">&lt;font color=&apos;[1]&apos;&gt;Shadow Treasure&lt;/font&gt;</content>

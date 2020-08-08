@@ -112,7 +112,7 @@ local function FormatTagElements(tooltip_mc, group, ...)
 				-- else
 				-- 	element.removeChildAt(3)
 				-- end
-				element.removeChildAt(3)
+				element.removeChildAt(3) -- Removes the tag icon
 
 				element.label_txt.x = 0
 				element.value_txt.x = 0
