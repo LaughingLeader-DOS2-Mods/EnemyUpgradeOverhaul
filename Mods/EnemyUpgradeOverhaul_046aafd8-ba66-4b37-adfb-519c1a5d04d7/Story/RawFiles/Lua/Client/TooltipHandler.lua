@@ -99,10 +99,9 @@ local function OnUpgradeInfoTooltip(character, status, tooltip)
 	element.Label = string.format("%s<br>%s<br>%s", element.Label, upgradeInfoText, challengePointsText)
 end
 
-local function FormatTagElements(tooltip_mc, group)
+local function FormatTagElements(tooltip_mc, group, ...)
 	group.iconId = 16
 	group.setupHeader()
-	--group.base.m_Leading = 0
 	for i=0,#group.list.content_array,1 do
 		local element = group.list.content_array[i]
 		if element ~= nil then
@@ -138,11 +137,13 @@ local function FormatTagElements(tooltip_mc, group)
 end
 
 local function FormatTagTooltip(ui, tooltip_mc, ...)
-	for i=0,#tooltip_mc.list.content_array,1 do
-		local group = tooltip_mc.list.content_array[i]
-		if group ~= nil then
-			if group.groupID == 13 and group.list ~= nil then
-				FormatTagElements(tooltip_mc, group)
+	if #tooltip_mc.list.content_array > 0 then
+		for i=0,#tooltip_mc.list.content_array,1 do
+			local group = tooltip_mc.list.content_array[i]
+			if group ~= nil then
+				if group.groupID == 13 and group.list ~= nil then
+					FormatTagElements(tooltip_mc, group, ...)
+				end
 			end
 		end
 	end
