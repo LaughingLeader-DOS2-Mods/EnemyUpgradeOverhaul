@@ -1,6 +1,6 @@
 Key	Content	Handle
 LLENEMY_ShadowBonus_Madness	<font color='#7D71D9'>Empowered by Madness</font>	hc7c70ba4g0bfdg4afbg8db1ga39d0eead1eb
-LLENEMY_ShadowBonus_Madness_Description	<font color='#00FF00'>[ExtraData:LLENEMY_ShadowBonus_Madness_ChanceOnTurn]%</font> chance to gain <font color='#B823CB'>Madness</font> every turn.<br>Madness grants you bonuses and full control over your actions.	h19593f3fg3755g47f5gb70dg61954a8a6bf3
+LLENEMY_ShadowBonus_Madness_Description	<font color='#00FF00'>[ExtraData:LLENEMY_ShadowBonus_Madness_ChanceOnTurn]%</font> chance to gain <font color='#B823CB'>Madness</font> when your turn ends.<br><font color='#B823CB'>Madness</font> grants you bonuses and full control over your actions.	h19593f3fg3755g47f5gb70dg61954a8a6bf3
 LLENEMY_ShadowBonus_StunDefense	<font color='#C7A758'>King's Defense</font>	h41bd5db2gef31g44f0gb660g3f7c9a4fcf0a
 LLENEMY_ShadowBonus_StunDefense_Description	When <font color='#FF0000'>disabled</font> (Knocked Down, Stunned, etc), <font color='#FFAB00'>incoming damage is reduced by [ExtraData:LLENEMY_ShadowBonus_StunDefense_DamageReduction]%</font>. 	h0fd762dcg98f8g4483g9cd5ga74f7c4b02c8
 LLENEMY_ShadowBonus_DotCleanser	<font color='#99CC00'>Immune Boost</font>	h0ec991aag3f8dg4100gb60bg272af43d6334

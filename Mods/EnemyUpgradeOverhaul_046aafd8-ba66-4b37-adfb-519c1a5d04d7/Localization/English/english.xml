@@ -55,7 +55,7 @@
 	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee">Source-Hungry Voidwolf</content>
 	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8">Talent: Torturer</content>
 	<content contentuid="h194ac7f5g9da2g4067g83efgf23de735ad79">Bonus Treasure</content>
-	<content contentuid="h19593f3fg3755g47f5gb70dg61954a8a6bf3">&lt;font color=&apos;#00FF00&apos;&gt;[ExtraData:LLENEMY_ShadowBonus_Madness_ChanceOnTurn]%&lt;/font&gt; chance to gain &lt;font color=&apos;#B823CB&apos;&gt;Madness&lt;/font&gt; every turn.&lt;br&gt;Madness grants you bonuses and full control over your actions.</content>
+	<content contentuid="h19593f3fg3755g47f5gb70dg61954a8a6bf3">&lt;font color=&apos;#00FF00&apos;&gt;[ExtraData:LLENEMY_ShadowBonus_Madness_ChanceOnTurn]%&lt;/font&gt; chance to gain &lt;font color=&apos;#B823CB&apos;&gt;Madness&lt;/font&gt; when your turn ends.&lt;br&gt;&lt;font color=&apos;#B823CB&apos;&gt;Madness&lt;/font&gt; grants you bonuses and full control over your actions.</content>
 	<content contentuid="h19830defg8efbg4be0ga890g34311649a588">&lt;font color=&apos;#73F6FF&apos;&gt;[1] Cleansed [2]&lt;/font&gt;</content>
 	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
 	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770">Talent</content>
