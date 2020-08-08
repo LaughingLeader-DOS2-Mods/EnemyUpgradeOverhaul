@@ -54,6 +54,27 @@ function RollForMadness(char)
 	end
 end
 
+local function MadnessBonus_FindTargets(source)
+	local x,y,z = GetPosition(source)
+	local radius = Ext.ExtraData["LLENEMY_ShadowBonus_Madness_DamageRadius"] or 6.0
+	for i,v in pairs(Ext.GetCharactersAroundPosition(x,y,z, radius)) do
+		if v ~= source and (CharacterIsDead(v) == 0 and CharacterIsEnemy(v, source) == 1 or IsTagged(v, "LeaderLib_FriendlyFireEnabled") == 1) then
+			PlayBeamEffect(source, v, "LLENEMY_FX_Status_TentacleLash_Beam_01", "Dummy_BodyFX", "Dummy_BodyFX")
+			Osi.LeaderLib_Timers_StartCharacterCharacterTimer(source, v, 500, "Timers_LLENEMY_Madness_TentacleDamage", "LLENEMY_Madness_TentacleDamage")
+		end
+	end
+end
+
+function ShadowItem_OnMadnessTick(char)
+	if CharacterIsInCombat(char) == 0 then
+		MadnessBonus_FindTargets(char)
+	end
+end
+
+function ShadowItem_ApplyMadnessTentacleDamage(source, char)
+	GameHelpers.ExplodeProjectile(source, char, "Projectile_LLENEMY_ShadowBonus_Madness_Damage")
+end
+
 --- @param target string
 --- @param source string
 --- @param damage integer
@@ -76,17 +97,6 @@ local function OnHit(target,source,damage,handle)
 
 end
 --LeaderLib.RegisterListener("OnHit", OnHit)
-
-local function MadnessBonus_FindTargets(source)
-	local x,y,z = GetPosition(source)
-	local radius = Ext.ExtraData["LLENEMY_ShadowBonus_Madness_DamageRadius"] or 6.0
-	for i,v in pairs(Ext.GetCharactersAroundPosition(x,y,z, radius)) do
-		if v ~= source and (CharacterIsEnemy(v, source) == 1 or IsTagged(v, "LeaderLib_FriendlyFireEnabled") == 1) then
-			PlayBeamEffect(source, v, "LLENEMY_FX_Status_TentacleLash_Beam_01", "Dummy_BodyFX", "Dummy_BodyFX")
-			Osi.LeaderLib_Timers_StartCharacterCharacterTimer(source, v, 500, "Timers_LLENEMY_Madness_TentacleDamage", "LLENEMY_Madness_TentacleDamage")
-		end
-	end
-end
 
 local function OnTurnEndedOrLeftCombat(object, combatId)
 	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_DotCleanser_Enabled") == 1 then
@@ -127,22 +137,14 @@ local function OnTurnEndedOrLeftCombat(object, combatId)
 			end
 		end
 	end
-	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_Madness_Enabled") == 1 then
+	if HasActiveStatus(object, "LLENEMY_SHADOWBONUS_MADNESS") == 1 then
 		MadnessBonus_FindTargets(object)
 	end
 end
 
-function ShadowItem_OnMadnessTick(char)
-	if CharacterIsInCombat(char) == 0 then
-		MadnessBonus_FindTargets(char)
-	end
-end
-
-function ShadowItem_ApplyMadnessTentacleDamage(source, char)
-	GameHelpers.ExplodeProjectile(source, char, "Projectile_LLENEMY_ShadowBonus_Madness_Damage")
-end
-
 if Ext.Version() >= 50 then
-	Ext.RegisterOsirisListener("ObjectTurnEnded", 1, "after", OnTurnEndedOrLeftCombat)
+	Ext.RegisterOsirisListener("ObjectTurnEnded", 1, "after", function(object)
+		OnTurnEndedOrLeftCombat(object)
+	end)
 	Ext.RegisterOsirisListener("ObjectLeftCombat", 2, "after", OnTurnEndedOrLeftCombat)
 end
