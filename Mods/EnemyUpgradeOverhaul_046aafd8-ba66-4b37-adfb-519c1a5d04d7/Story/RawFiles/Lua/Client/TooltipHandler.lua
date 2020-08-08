@@ -107,29 +107,27 @@ local function FormatTagElements(tooltip_mc, group)
 		local element = group.list.content_array[i]
 		if element ~= nil then
 			pcall(function()
-				local icon = element.getChildAt(3) or element.getChildByName("tt_groupIcon")
-				if icon ~= nil then
-					icon.gotoAndStop(17)
-				else
-					element.removeChildAt(3)
-				end
-				local tag = element.label_txt.htmlText
-				local tagEntry = ItemCorruption.TagBoosts[tag]
-				
+				-- local icon = element.getChildAt(3) or element.getChildByName("tt_groupIcon")
+				-- if icon ~= nil then
+				-- 	icon.gotoAndStop(17)
+				-- else
+				-- 	element.removeChildAt(3)
+				-- end
+				element.removeChildAt(3)
+
 				element.label_txt.x = 0
 				element.value_txt.x = 0
 				element.warning_txt.x = 0
+
+				local tag = element.label_txt.htmlText
+				local tagEntry = ItemCorruption.TagBoosts[tag]
 
 				if tagEntry ~= nil then
 					local tagName,nameHandle = Ext.GetTranslatedStringFromKey(tag)
 					local tagDesc,descHandle = Ext.GetTranslatedStringFromKey(tag.."_Description")
 					tagDesc = GameHelpers.Tooltip.ReplacePlaceholders(tagDesc)
-					--element.label_txt.htmlText = string.format("<font color='%s'>%s</font>", tagEntry.TitleColor, tagName)
 					element.label_txt.htmlText = tagName
 					element.warning_txt.htmlText = tagDesc
-					--group.base.applyLeading(element, 0)
-					--val4.warning_txt.y = val4.value_txt.y + val4.value_txt.textHeight + this.s_TextYSpacing;
-					print(element.label_txt.textHeight)
 					element.warning_txt.y = element.label_txt.y + element.label_txt.textHeight
 				end
 			end)
@@ -139,24 +137,16 @@ local function FormatTagElements(tooltip_mc, group)
 	tooltip_mc.repositionElements()
 end
 
-local function FormatTagTooltip(ui, ...)
-	local root = ui:GetRoot()
-	if root ~= nil then
-		local tooltip_mc = root.formatTooltip.tooltip_mc or root.compareTooltip.tooltip_mc
-		if tooltip_mc ~= nil then
-			for i=0,#tooltip_mc.list.content_array,1 do
-				local group = tooltip_mc.list.content_array[i]
-				if group ~= nil then
-					if group.groupID == 13 and group.list ~= nil then
-						FormatTagElements(tooltip_mc, group)
-					end
-				end
-				--print(i, v, v.label_txt, v.value_txt, v.warning_txt)
+local function FormatTagTooltip(ui, tooltip_mc, ...)
+	for i=0,#tooltip_mc.list.content_array,1 do
+		local group = tooltip_mc.list.content_array[i]
+		if group ~= nil then
+			if group.groupID == 13 and group.list ~= nil then
+				FormatTagElements(tooltip_mc, group)
 			end
 		end
 	end
 end
-
 
 local function Init()
 	Game.Tooltip.RegisterListener("Item", nil, OnItemTooltip)
