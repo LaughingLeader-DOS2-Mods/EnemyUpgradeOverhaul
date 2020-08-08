@@ -3,6 +3,14 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
+PROC
+LLENEMY_Origins_InitRegistration("FJ_FortJoy_Main")
+THEN
+DB_LLENEMY_Duplication_Blacklist(S_FTJ_Torturer_Golem_01_584db8ce-8dcf-4906-bc6f-e51eb057de08);
+DB_LLENEMY_Duplication_Blacklist(S_FTJ_Torturer_Golem_02_aff8be39-58b0-4bff-8fa6-7cf501b5060b);
+DB_LLENEMY_Duplication_Blacklist(S_FTJ_Torturer_Golem_03_d32d32b2-c05b-4acd-944c-f2b802ec7234);
+
+//REGION UPDATES
 //Wrong level name
 PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
@@ -13,6 +21,7 @@ DB_CurrentLevel("FJ_FortJoy_Main")
 THEN
 LLENEMY_Elites_ClearUpgradesForLevel("FJ_FortJoy");
 LLENEMY_Elites_InitLevel("FJ_FortJoy_Main");
+//END_REGION
 
 //REGION BLOCK_DUPLICATION
 // Preventing shadow clones on Trompdoy illusions
