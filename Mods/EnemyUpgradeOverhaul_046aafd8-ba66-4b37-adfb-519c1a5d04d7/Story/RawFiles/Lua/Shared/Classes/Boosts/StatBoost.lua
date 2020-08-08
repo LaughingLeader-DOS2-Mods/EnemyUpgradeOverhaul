@@ -14,8 +14,7 @@ StatBoost.__index = StatBoost
 function StatBoost:Create(stat,min,max)
     local this =
     {
-		Stat = stat,
-		Type = "StatBoost"
+		Stat = stat
 	}
 	if min ~= nil then
 		this.Min = min

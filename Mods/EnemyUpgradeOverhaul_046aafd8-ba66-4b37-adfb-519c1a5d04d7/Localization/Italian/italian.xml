@@ -30,11 +30,11 @@
 	<content contentuid="h0d80c25ag2866g4c58g9cdag227856e9e48c">Damage Boost</content>
 	<content contentuid="h0dda4bf0g924ag4c8bgaf5ag1d6e7e643b50">Talent: Haymaker</content>
 	<content contentuid="h0e137225ge71fg4b5dg9822g1f73a6646671">Elite Venomstriker</content>
-	<content contentuid="h0ec991aag3f8dg4100gb60bg272af43d6334">Immune Boost</content>
+	<content contentuid="h0ec991aag3f8dg4100gb60bg272af43d6334">&lt;font color=&apos;#99CC00&apos;&gt;Immune Boost&lt;/font&gt;</content>
 	<content contentuid="h0f2a61a6g5427g4e2bgbc76g986dc3e1fa79">Disable Bonus Skill Upgrades. These give enemies new skills using the Script Extender. (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
 	<content contentuid="h0f4b3d6bg416cg43b1g9ae2g879d929b4151">Commit Level Modifier to the World - This will level up every non-player character in the world to the desired level modifier, including neutral or allied characters (non-recruited Origin companions are ignored).</content>
 	<content contentuid="h0fac50d9g63c1g4dc1gb769g9fba10e602df">Piercing Immunity</content>
-	<content contentuid="h0fd762dcg98f8g4483g9cd5ga74f7c4b02c8">&lt;font size=&apos;16&apos;&gt;When Disabled,&lt;br&gt;incoming damage is reduced by [ExtraData:LLENEMY_ShadowBonus_StunDefense_DamageReduction]%.&lt;/font&gt; </content>
+	<content contentuid="h0fd762dcg98f8g4483g9cd5ga74f7c4b02c8">When &lt;font color=&apos;#FF0000&apos;&gt;disabled&lt;/font&gt; (Knocked Down, Stunned, etc), &lt;font color=&apos;#FFAB00&apos;&gt;incoming damage is reduced by [ExtraData:LLENEMY_ShadowBonus_StunDefense_DamageReduction]%&lt;/font&gt;. </content>
 	<content contentuid="h1049b802g537bg4815gb5b6g34c387f9aa9c">Elite Melter</content>
 	<content contentuid="h106bb9f5ge8a1g4019g9d9dgebb27474f992">Elite Heatsapper</content>
 	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c">Rage (V)</content>
@@ -55,7 +55,7 @@
 	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee">Source-Hungry Voidwolf</content>
 	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8">Talent: Torturer</content>
 	<content contentuid="h194ac7f5g9da2g4067g83efgf23de735ad79">Bonus Treasure</content>
-	<content contentuid="h19593f3fg3755g47f5gb70dg61954a8a6bf3">&lt;font size=&apos;16&apos;&gt;[ExtraData:LLENEMY_ShadowBonus_Madness_ChanceOnTurn]% chance to gain Madness every turn.&lt;br&gt;Madness grants you bonuses and full control.&lt;/font&gt;</content>
+	<content contentuid="h19593f3fg3755g47f5gb70dg61954a8a6bf3">&lt;font color=&apos;#00FF00&apos;&gt;[ExtraData:LLENEMY_ShadowBonus_Madness_ChanceOnTurn]%&lt;/font&gt; chance to gain &lt;font color=&apos;#B823CB&apos;&gt;Madness&lt;/font&gt; every turn.&lt;br&gt;Madness grants you bonuses and full control over your actions.</content>
 	<content contentuid="h19830defg8efbg4be0ga890g34311649a588">&lt;font color=&apos;#73F6FF&apos;&gt;[1] Cleansed [2]&lt;/font&gt;</content>
 	<content contentuid="h1a306bc6gbee4g4d46g9748g69148e74ded0">Character rolled a &lt;font color=&apos;#FF0000&apos;&gt;Critical Failure (0)&lt;/font&gt;, and now has to give bonus treasure if killed before this status expires. Hurry!</content>
 	<content contentuid="h1ad605c4gb69bg4562ga6adgc2d42e102770">Talent</content>
@@ -104,7 +104,7 @@
 	<content contentuid="h3e93fbd4g6fe8g4f0bgae12g32a833f98bc0">Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
 	<content contentuid="h3f78a207gadfdg4801gb063g787c9f108845">When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.</content>
 	<content contentuid="h4075ecfag0da0g4c26gb858g06626a165ed9">[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;) (Default - Disabled)</content>
-	<content contentuid="h41bd5db2gef31g44f0gb660g3f7c9a4fcf0a">King&apos;s Defense</content>
+	<content contentuid="h41bd5db2gef31g44f0gb660g3f7c9a4fcf0a">&lt;font color=&apos;#C7A758&apos;&gt;King&apos;s Defense&lt;/font&gt;</content>
 	<content contentuid="h41fe75a6gc090g4186g816egea95152a2d47">&lt;font color=&apos;#A020F0&apos;&gt;[1] Shadow&lt;/font&gt;</content>
 	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38">Seeker (Disabled)</content>
 	<content contentuid="h4229d882g7235g4cf5gafe6g3ef702647b81">Game Settings</content>
@@ -262,7 +262,7 @@
 	<content contentuid="ha78e3050g202cg4650g8df9g2ef53c2463a2">Source-Hungry Slippery Voidling</content>
 	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19">Rewards Settings</content>
 	<content contentuid="ha963a343g4464g4bb3ga553g95a99a0d4cf7">Source-Hungry Vampiric Voidwoken</content>
-	<content contentuid="ha9bac902g50e1g46dagb76fg74085358d300">&lt;font size=&apos;16&apos;&gt;When your turn ends,&lt;br&gt;harmful damage-over-time statuses are cleansed.&lt;/font&gt; </content>
+	<content contentuid="ha9bac902g50e1g46dagb76fg74085358d300">When your turn ends, harmful damage-over-time statuses are &lt;font color=&apos;#97FBFF&apos;&gt;cleansed&lt;/font&gt;, &lt;font color=&apos;#97FBFF&apos;&gt;restoring [ExtraData:LLENEMY_ShadowBonus_ImmuneBoost_HealPercentage]% vitality&lt;/font&gt; per status. </content>
 	<content contentuid="ha9dfee58ge73fg47e4gb9f7g1ff2ced6635e">Vitality Boost</content>
 	<content contentuid="ha9e5c55dg7d32g47deg8168g8a7aa027e8e8">Talent: Natural Conductor</content>
 	<content contentuid="habff2fe9g031cg4c7cg85feg28a1fa25fb14">&lt;font color=&apos;[1]&apos;&gt;Shadow Treasure&lt;/font&gt;</content>
@@ -300,7 +300,7 @@
 	<content contentuid="hc32985b1g2e5bg4864ga696gff59634aadf2">A blade said to be sharp enough to reap souls. While not a practical weapon, this scythe is deadly in the right hands.</content>
 	<content contentuid="hc3f8497bg97acg449ag910ag07b825f3b8bb">Firestarter</content>
 	<content contentuid="hc505e9aagab98g49e8g8777g72eb60325a35">Character will discover hidden enemies while in combat.&lt;br&gt;&lt;font color=&apos;#FF00CC&apos;&gt;Stealthed and Invisible enemies within 4m are revealed.&lt;/font&gt;&lt;br&gt;&lt;font color=&apos;#FF3333&apos;&gt;Becoming Drunk or disabled temporarily disables a Seeker&apos;s detection.&lt;/font&gt;</content>
-	<content contentuid="hc7c70ba4g0bfdg4afbg8db1ga39d0eead1eb">Empowered by Madness</content>
+	<content contentuid="hc7c70ba4g0bfdg4afbg8db1ga39d0eead1eb">&lt;font color=&apos;#7D71D9&apos;&gt;Empowered by Madness&lt;/font&gt;</content>
 	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937">Character is obsessed with collecting grenades. One misstep and boom!</content>
 	<content contentuid="hcb08a432g19a5g4571g820fg92ddc92ac4d9">Talent: Lone Wolf</content>
 	<content contentuid="hce14d863g96b1g4817ga295gbea6423c0190">Magic Armor Boost</content>

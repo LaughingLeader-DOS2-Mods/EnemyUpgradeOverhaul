@@ -5,24 +5,32 @@ local TagBoost = {
 	Type = "TagBoost",
 	DisplayInTooltip = false,
 	---@type function<string,string>
-	OnTagAdded = nil
+	OnTagAdded = nil,
+	HasToggleScript = false,
+	---@type string
+	TitleColor = nil
 }
 TagBoost.__index = TagBoost
 
 ---@param tag string
 ---@param flag string
----@param autoDisplayInTooltip boolean
----@param onTagAdded function|nil
+---@param params table
+---@param onTagAdded function
 ---@return TagBoost
-function TagBoost:Create(tag,flag,autoDisplayInTooltip,onTagAdded)
+function TagBoost:Create(tag,flag,params,onTagAdded)
     local this =
     {
 		Tag = tag,
 		Flag = flag,
-		DisplayInTooltip = autoDisplayInTooltip or false,
 		OnTagAdded = onTagAdded or nil,
-		Type = "TagBoost"
+		DisplayInTooltip = false,
+		HasToggleScript = false,
 	}
+	if params ~= nil then
+		for prop,value in pairs(params) do
+			this[prop] = value
+		end
+	end
 	setmetatable(this, self)
     return this
 end
