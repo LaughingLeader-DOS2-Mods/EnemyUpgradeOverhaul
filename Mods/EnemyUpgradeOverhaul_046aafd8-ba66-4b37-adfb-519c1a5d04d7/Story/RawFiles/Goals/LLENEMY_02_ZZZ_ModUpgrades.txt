@@ -81,7 +81,7 @@ LLENEMY_Upgrades_AddStatus("Buffs", "Weak", "OdinNECRO_TRANSFIXED_IMMUNITY", 50,
 PROC
 LLENEMY_Upgrades_Register_ModUpgrades(8700ba4e-7d4b-40ca-a23f-b43816794957, "Buffs", "Normal", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinNECRO_REANIMATOR", 150, 4);
+LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinNECRO_REANIMATOR", 50, 4);
 LLENEMY_Upgrades_AddStatus("Buffs", "Normal", "OdinNECRO_OATHOFDESECRATION", 30, 6);
 
 // OdinbladeHuntsmanOverhaul_7db12ae8-0e96-4050-adb2-06c906897b70

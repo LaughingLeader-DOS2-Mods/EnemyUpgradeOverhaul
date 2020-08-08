@@ -14,7 +14,7 @@ LLENEMY_Upgrades_AddType("Talents", "Weapon", 50, 600, 4);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite", 0)
 THEN
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LIGHTNINGROD", 50, 4);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LIGHTNINGROD", 20, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LONEWOLF", 100, 12);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD", 125, 8);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD2", 20, 10);
@@ -26,7 +26,7 @@ LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_BULLY", 200, 6);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Talents", "Elite", 1)
 THEN
-LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LIGHTNINGROD", 60, 4);
+LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LIGHTNINGROD", 20, 4);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_LONEWOLF", 150, 12);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD", 150, 8);
 LLENEMY_Upgrades_AddStatus("Talents", "Elite", "LLENEMY_TALENT_RESISTDEAD2", 100, 10);
