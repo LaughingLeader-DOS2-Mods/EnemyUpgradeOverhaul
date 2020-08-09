@@ -145,13 +145,7 @@ local function OnCharacterBaseAbilityChanged(character, ability, old, new)
 	end
 end
 
-function OnCharacterBaseAbilityChanged_Call(character, ability, old, new)
-	OnCharacterBaseAbilityChanged(character, ability, math.tointeger(tonumber(old)), math.tointeger(tonumber(new)))
-end
-
-if Ext.Version() >= 50 then
-	Ext.RegisterOsirisListener("CharacterBaseAbilityChanged", 4, "after", OnCharacterBaseAbilityChanged)
-end
+Ext.RegisterOsirisListener("CharacterBaseAbilityChanged", 4, "after", OnCharacterBaseAbilityChanged)
 
 function StoreHighestLoremaster(nextHighest)
 	HighestLoremaster = nextHighest

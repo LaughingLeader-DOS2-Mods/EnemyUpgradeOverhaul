@@ -31,13 +31,6 @@ NRD_ModCall("EnemyUpgradeOverhaul", "SetChallengePointsTag", _UUID);
 //END_REGION
 
 //REGION LOREMASTER
-/* [OSITOOLS_ONLY]
-IF
-CharacterBaseAbilityChanged(_Char, "Loremaster", _Old, _New)
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "OnCharacterBaseAbilityChanged_Call", (STRING)_Char, "Loremaster", (STRING)_Old, (STRING)_New);
-*/
-
 PROC
 LLENEMY_UpgradeInfo_StoreLoremaster((INTEGER)_Lore)
 THEN
