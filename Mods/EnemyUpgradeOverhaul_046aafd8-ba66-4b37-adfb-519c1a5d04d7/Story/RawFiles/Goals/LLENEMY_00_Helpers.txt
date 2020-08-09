@@ -100,6 +100,22 @@ CharacterIsEnemy(_Enemy, _Player, 1)
 THEN
 DB_NOOP(1);
 
+// GM NPC vs. NPC?
+QRY
+LLENEMY_QRY_IsEnemyOfParty((CHARACTERGUID)_Enemy)
+AND
+NOT DB_IsPlayer(_)
+AND
+CharacterIsPartyFollower(_Enemy, 0)
+AND
+CharacterIsSummon(_Enemy, 0)
+AND
+GetFaction(_Enemy, _Faction)
+AND
+StringContains(_Faction, "Evil", 1)
+THEN
+DB_LLENEMY_System_Temp_IsEnemyOfPartyResolved(_Enemy);
+
 QRY
 LLENEMY_QRY_IsAllyOfParty((CHARACTERGUID)_Char)
 AND
