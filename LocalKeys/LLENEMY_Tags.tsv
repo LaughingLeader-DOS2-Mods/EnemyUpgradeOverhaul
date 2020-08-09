@@ -8,4 +8,4 @@ LLENEMY_ShadowBonus_DotCleanser_Description	When your turn ends, harmful damage-
 LLENEMY_ShadowBonus_CursedFire	<font color='#B823FF'>Cursed Fire</font>	h31a9398eg9fa7g4bb9ga1a0gf17ad0f74f11
 LLENEMY_ShadowBonus_CursedFire_Description	Damaging <font color='#FE6E27'>fire spells</font> have a chance to apply <font color='#B823CB'>Necrofire</font>. 	h11435de3g7c5fg4a04ga59fg3c0e3e0cc836
 LLENEMY_ShadowBonus_ShockingRain	<font color='#7D71D9'>Shocking Rain</font>	ha5b5dafeg1804g494dg92a2gcc7af36a3092
-LLENEMY_ShadowBonus_ShockingRain_Description	<font color='#4197E2'>[Key:Rain_Water_DisplayName]</font> triggers a mild <font color='#7D71D9'>lightning storm</font> at the target location. 	h185353bfgd688g4ac3ga6f8gb7b57293b96f
+LLENEMY_ShadowBonus_ShockingRain_Description	<font color='#4197E2'>[Key:Rain_Water_DisplayName]</font> creates a mild <font color='#7D71D9'>lightning storm</font> at the target location. 	h185353bfgd688g4ac3ga6f8gb7b57293b96f

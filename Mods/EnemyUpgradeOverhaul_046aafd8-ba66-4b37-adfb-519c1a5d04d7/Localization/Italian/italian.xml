@@ -52,7 +52,7 @@
 	<content contentuid="h179efab0g7e6cg441ag8083gb11964394dc4">A &lt;i&gt;strange&lt;/i&gt; item retrieved from a &lt;font color=&apos;#9B30FF&apos; face=&apos;Copperplate Gothic Bold&apos;&gt;Shadow Orb&lt;/font&gt;.&lt;br&gt;&lt;font color=&apos;#BDA0CB&apos;&gt;Cold to the touch, when this item is held, your grip on reality may begin to slip.&lt;/font&gt;</content>
 	<content contentuid="h17c3aeabg026ag41e4g93a0gfd8da7534786">Mass Shackler</content>
 	<content contentuid="h17e326e9g8f4fg4d6bg83dfg8f54134ffda5">Enable Class Upgrades - These are upgrades that grant enemies new skillsets and small ability bonuses, in class-like themes. (Currently Disabled)</content>
-	<content contentuid="h185353bfgd688g4ac3ga6f8gb7b57293b96f">&lt;font color=&apos;#4197E2&apos;&gt;[Key:Rain_Water_DisplayName]&lt;/font&gt; triggers a mild &lt;font color=&apos;#7D71D9&apos;&gt;lightning storm&lt;/font&gt; at the target location. </content>
+	<content contentuid="h185353bfgd688g4ac3ga6f8gb7b57293b96f">&lt;font color=&apos;#4197E2&apos;&gt;[Key:Rain_Water_DisplayName]&lt;/font&gt; creates a mild &lt;font color=&apos;#7D71D9&apos;&gt;lightning storm&lt;/font&gt; at the target location. </content>
 	<content contentuid="h18c28f76g6913g4685g81b9g6a6326ac81a3">Gathering Power</content>
 	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee">Source-Hungry Voidwolf</content>
 	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8">Talent: Torturer</content>
