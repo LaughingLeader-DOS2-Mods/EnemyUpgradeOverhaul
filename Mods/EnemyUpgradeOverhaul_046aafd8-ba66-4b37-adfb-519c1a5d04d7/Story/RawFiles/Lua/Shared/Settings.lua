@@ -19,6 +19,6 @@ settings.Global:AddFlags({
 	"LLENEMY_WorldUpgradesEnabled",
 })
 settings.Global:AddVariable("LLENEMY_Scaling_LevelModifier", 0)
-settings.Global:AddVariable("Hardmode_MinBonusRolls", math.tointeger(Ext.ExtraData["LLENEMY_Hardmode_DefaultBonusRolls_Min"] or 1))
-settings.Global:AddVariable("Hardmode_MaxBonusRolls", math.tointeger(Ext.ExtraData["LLENEMY_Hardmode_DefaultBonusRolls_Max"] or 4))
+settings.Global:AddVariable("Hardmode_MinBonusRolls", 1)
+settings.Global:AddVariable("Hardmode_MaxBonusRolls", 4)
 return settings

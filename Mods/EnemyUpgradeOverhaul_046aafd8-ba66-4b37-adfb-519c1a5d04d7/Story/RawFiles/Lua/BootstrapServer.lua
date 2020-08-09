@@ -47,6 +47,10 @@ local function LLENEMY_Server_SessionLoaded()
 	end
 	bonusSkillsScript.Init()
 
+	-- Defaults
+	Settings.Global.Variables.Hardmode_MinBonusRolls.Value = math.tointeger(Ext.ExtraData["LLENEMY_Hardmode_DefaultBonusRolls_Min"] or 1)
+	Settings.Global.Variables.Hardmode_MaxBonusRolls.Value = math.tointeger(Ext.ExtraData["LLENEMY_Hardmode_DefaultBonusRolls_Max"] or 4)
+
 	LeaderLib.SettingsManager.AddSettings(Settings)
 end
 Ext.RegisterListener("SessionLoaded", LLENEMY_Server_SessionLoaded)
