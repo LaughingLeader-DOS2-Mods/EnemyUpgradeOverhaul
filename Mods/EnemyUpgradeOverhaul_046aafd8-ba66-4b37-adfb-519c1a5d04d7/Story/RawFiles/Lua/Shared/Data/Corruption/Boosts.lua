@@ -18,13 +18,12 @@ local Boosts = {
 	BonusSkills = {},
 }
 
-local bonusSkillChance = 20
 
 local OnLeaderLibResPenTag = function(item,tag)
 	SetTag(item, "LeaderLib_HasResistancePenetration")
 	local skills = NRD_ItemGetPermanentBoostString(item, "Skills")
-	--print("OnLeaderLibResPenTag", item,tag,skills,StringHelpers.IsNullOrEmpty(skills))
 	if LeaderLib.StringHelpers.IsNullOrEmpty(skills) then
+		local bonusSkillChance = Ext.ExtraData["LLENEMY_Treasure_BoostChance_ResistancePenetrationBonusSkill"] or 20
 		if Ext.Random(1,100) <= bonusSkillChance then
 			local skill = ""
 			if string.find(tag, "Piercing") then
@@ -61,16 +60,16 @@ local OnLeaderLibResPenTag = function(item,tag)
 end
 
 local LeaderLibResPenTags = {
-	Physical5 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical5", "", nil, OnLeaderLibResPenTag),
-	Physical10 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical10", "", nil, OnLeaderLibResPenTag),
-	Physical15 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical15", "", nil, OnLeaderLibResPenTag),
-	Physical20 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical20", "", nil, OnLeaderLibResPenTag),
-	Physical25 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical25", "", nil, OnLeaderLibResPenTag),
-	Physical30 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical30", "", nil, OnLeaderLibResPenTag),
-	Physical35 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical35", "", nil, OnLeaderLibResPenTag),
-	Physical40 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical40", "", nil, OnLeaderLibResPenTag),
-	Physical45 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical45", "", nil, OnLeaderLibResPenTag),
-	Physical50 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical50", "", nil, OnLeaderLibResPenTag),
+	--Physical5 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical5", "", nil, OnLeaderLibResPenTag),
+	--Physical10 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical10", "", nil, OnLeaderLibResPenTag),
+	--Physical15 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical15", "", nil, OnLeaderLibResPenTag),
+	--Physical20 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical20", "", nil, OnLeaderLibResPenTag),
+	--Physical25 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical25", "", nil, OnLeaderLibResPenTag),
+	--Physical30 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical30", "", nil, OnLeaderLibResPenTag),
+	--Physical35 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical35", "", nil, OnLeaderLibResPenTag),
+	--Physical40 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical40", "", nil, OnLeaderLibResPenTag),
+	--Physical45 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical45", "", nil, OnLeaderLibResPenTag),
+	--Physical50 = TagBoost:Create("LeaderLib_ResistancePenetration_Physical50", "", nil, OnLeaderLibResPenTag),
 	Earth5 = TagBoost:Create("LeaderLib_ResistancePenetration_Earth5", "", nil, OnLeaderLibResPenTag),
 	Earth10 = TagBoost:Create("LeaderLib_ResistancePenetration_Earth10", "", nil, OnLeaderLibResPenTag),
 	Earth15 = TagBoost:Create("LeaderLib_ResistancePenetration_Earth15", "", nil, OnLeaderLibResPenTag),
