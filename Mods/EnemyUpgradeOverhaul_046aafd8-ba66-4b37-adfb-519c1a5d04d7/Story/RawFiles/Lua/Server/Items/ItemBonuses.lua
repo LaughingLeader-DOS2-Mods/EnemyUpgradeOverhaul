@@ -97,22 +97,22 @@ local skipHitCheck = {}
 --- @param handle integer
 --- @param skill string
 local function OnHit(target,source,damage,handle,skill)
-	if not skipHitCheck[target..source] and damage > 0 then
-		if skill ~= nil then
-			local ability = Ext.StatGetAttribute(skill, "Ability")
-			if ability == "Fire" and ObjectGetFlag(source, "LLENEMY_ShadowBonus_CursedFire_Enabled") == 1 then
-				local chance = Ext.ExtraData["LLENEMY_ShadowBonus_CursedFire_Chance"] or 40
-				if Ext.Random(0,100) <= chance then
-					ApplyStatus(target, "NECROFIRE", 6.0, 0, source)
-					if ObjectIsCharacter(target) == 1 then
-						local text = GameHelpers.GetStringKeyText("LLENEMY_ShadowBonus_CursedFire", "<font color='#B823FF'>Cursed Fire</font>")
-						CharacterStatusText(target, text)
-					end
-					skipHitCheck[target..source] = true
-					LeaderLib.StartOneshotTimer("Timers_LLENEMY_ResetSkipHitCheck_"..target..source, 50, function()
-						skipHitCheck[target..source] = nil
-					end)
+	if skill ~= nil and source ~= nil and damage > 0 and not skipHitCheck[target..source] then
+		local ability = Ext.StatGetAttribute(skill, "Ability")
+		if ability == "Fire" and ObjectGetFlag(source, "LLENEMY_ShadowBonus_CursedFire_Enabled") == 1 then
+			local chance = Ext.ExtraData["LLENEMY_ShadowBonus_CursedFire_Chance"] or 40
+			if Ext.Random(0,100) <= chance then
+				ApplyStatus(target, "NECROFIRE", 6.0, 0, source)
+				local x,y,z = GetPosition(target)
+				TransformSurfaceAtPosition(x, y, z, "Curse", "Ground", 1.0, 6.0, source)
+				if ObjectIsCharacter(target) == 1 then
+					local text = GameHelpers.GetStringKeyText("LLENEMY_ShadowBonus_CursedFire", "<font color='#B823FF'>Cursed Fire</font>")
+					CharacterStatusText(target, text)
 				end
+				skipHitCheck[target..source] = true
+				LeaderLib.StartOneshotTimer("Timers_LLENEMY_ResetSkipHitCheck_"..target..source, 50, function()
+					skipHitCheck[target..source] = nil
+				end)
 			end
 		end
 	end
