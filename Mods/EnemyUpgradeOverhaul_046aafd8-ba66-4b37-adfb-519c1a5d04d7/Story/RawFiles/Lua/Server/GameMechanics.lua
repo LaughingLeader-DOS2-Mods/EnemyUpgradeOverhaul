@@ -1,7 +1,8 @@
 function RollForCounterAttack(character,target)
 	local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
-	local chance = (math.log(1 + initiative) / math.log(1 + ExtraData.LLENEMY_Counter_MaxChance))
-	chance = math.floor(chance * ExtraData.LLENEMY_Counter_MaxChance) * 10
+	local counterMax = (Ext.ExtraData.LLENEMY_Counter_MaxChance or 75)
+	local chance = (math.log(1 + initiative) / math.log(1 + counterMax))
+	chance = math.floor(chance * counterMax) * 10
 	local roll = LeaderLib.Common.GetRandom(999)
 	LeaderLib.PrintDebug("Counter roll: " .. tostring(roll) .. " / " .. tostring(chance))
 	if roll >= chance then
