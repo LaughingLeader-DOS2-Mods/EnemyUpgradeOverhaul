@@ -3,12 +3,7 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
-IF
-AttackedByObject((CHARACTERGUID)_Enemy, _, (CHARACTERGUID)_Attacker, _, _)
-AND
-HasActiveStatus(_Enemy, "LLENEMY_TALENT_COUNTER", 1)
-THEN
-CharacterCharacterSetEvent(_Enemy, _Attacker, "LLENEMY_Counter_OnAttacked");
+
 
 IF
 CharacterCharacterEvent(_Enemy, _Attacker, "LLENEMY_Counter_CanStarterCounter")
@@ -16,6 +11,15 @@ THEN
 LeaderLib_Timers_StartCharacterCharacterTimer(_Enemy, _Attacker, 1000, "Timers_LLENEMY_Counter_RollForCounterAttack", "LLENEMY_Counter_RollForCounterAttack");
 
 // [BEGIN_NO_OSITOOLS]
+IF
+AttackedByObject((CHARACTERGUID)_Enemy, _, (CHARACTERGUID)_Attacker, _, _)
+AND
+NOT DB_LLENEMY_Temp_JustCountered(_Enemy)
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_COUNTER", 1)
+THEN
+CharacterCharacterSetEvent(_Enemy, _Attacker, "LLENEMY_Counter_OnAttacked");
+
 IF
 CharacterCharacterEvent(_Enemy, _Attacker, "LLENEMY_Counter_RollForCounterAttack")
 AND
@@ -25,22 +29,60 @@ CharacterIsDead(_Attacker, 0)
 AND
 LeaderLib_Roll_QRY(300, 999)
 THEN
+DB_LLENEMY_Temp_JustCountered(_Enemy);
 CharacterAttack(_Enemy, _Attacker);
 CharacterStatusText(_Enemy, "LLENEMY_StatusText_CounterAttack");
-
+LeaderLib_Timers_StartObjectTimer(_Enemy, 1000, "Timers_LLENEMY_ResetJustCountered", "LLENEMY_ResetJustCountered");
 // [END_NO_OSITOOLS]
 
 /* [OSITOOLS_ONLY]
 IF
+NRD_OnHit((CHARACTERGUID)_Enemy, (CHARACTERGUID)_Attacker, _Damage, _Handle)
+AND
+NOT DB_LLENEMY_Temp_JustCountered(_Enemy)
+AND
+_Damage > 0
+AND
+HasActiveStatus(_Enemy, "LLENEMY_TALENT_COUNTER", 1)
+AND
+NOT NRD_StatusGetString(_Enemy, _Handle, "HitType", "Reflected")
+AND
+NOT NRD_StatusGetString(_Enemy, _Handle, "HitType", "Surface")
+AND
+NOT NRD_StatusGetString(_Enemy, _Handle, "HitType", "DoT")
+THEN
+CharacterCharacterSetEvent(_Enemy, _Attacker, "LLENEMY_Counter_OnAttacked");
+
+IF
 CharacterCharacterEvent(_Enemy, _Attacker, "LLENEMY_Counter_RollForCounterAttack")
+AND
+NOT DB_LLENEMY_Temp_JustCountered(_Enemy)
 AND
 CharacterIsDead(_Enemy, 0)
 AND
 CharacterIsDead(_Attacker, 0)
+AND
+GetUUID(_Enemy, _UUID)
+AND
+GetUUID(_Attacker, _AttackerUUID)
+AND
+NRD_ModQuery2("EnemyUpgradeOverhaul", "RollForCounterAttack", _UUID, _AttackerUUID)
 THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "RollForCounterAttack", (STRING)_Enemy, (STRING)_Attacker);
+DB_LLENEMY_Temp_JustCountered(_Enemy);
+LeaderLib_Timers_StartObjectTimer(_Enemy, 1000, "Timers_LLENEMY_ResetJustCountered", "LLENEMY_ResetJustCountered");
 */
-EXITSECTION
 
+IF
+StoryEvent((CHARACTERGUID)_Enemy, "LLENEMY_ResetJustCountered")
+THEN
+NOT DB_LLENEMY_Temp_JustCountered(_Enemy);
+
+IF
+RegionEnded(_)
+THEN
+SysClear("DB_LLENEMY_Temp_JustCountered", 2);
+
+EXITSECTION
+SysClear("DB_LLENEMY_Temp_JustCountered", 2);
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_80_ToggledScripts"

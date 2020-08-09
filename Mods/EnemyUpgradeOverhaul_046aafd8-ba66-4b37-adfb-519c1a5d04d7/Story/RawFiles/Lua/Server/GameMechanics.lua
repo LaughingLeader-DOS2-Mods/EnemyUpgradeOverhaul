@@ -3,11 +3,11 @@ function RollForCounterAttack(character,target)
 	local counterMax = (Ext.ExtraData.LLENEMY_Counter_MaxChance or 75)
 	local chance = (math.log(1 + initiative) / math.log(1 + counterMax))
 	chance = math.floor(chance * counterMax) * 10
-	local roll = LeaderLib.Common.GetRandom(999)
-	LeaderLib.PrintDebug("Counter roll: " .. tostring(roll) .. " / " .. tostring(chance))
+	local roll = Ext.Random(0,999)
 	if roll >= chance then
 		CharacterAttack(character, target)
 		CharacterStatusText(character, "LLENEMY_StatusText_CounterAttack")
+		return true
 	end
 end
 
