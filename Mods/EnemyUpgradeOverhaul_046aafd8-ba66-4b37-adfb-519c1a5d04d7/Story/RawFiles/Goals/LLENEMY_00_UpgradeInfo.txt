@@ -29,43 +29,6 @@ THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "SetChallengePointsTag", _UUID);
 */
 //END_REGION
-
-//REGION LOREMASTER
-PROC
-LLENEMY_UpgradeInfo_StoreLoremaster((INTEGER)_Lore)
-THEN
-SysClear("DB_LLENEMY_HighestLoremaster", 1);
-DB_LLENEMY_HighestLoremaster(_Lore);
-
-PROC
-LLENEMY_UpgradeInfo_ClearLoremaster()
-AND
-DB_LLENEMY_HighestLoremaster(_Lore)
-THEN
-NOT DB_LLENEMY_HighestLoremaster(_Lore);
-
-/* [OSITOOLS_ONLY]
-PROC
-LeaderLib_Initialized((STRING)_Region)
-AND
-IsGameLevel(_Region, 1)
-AND
-NOT DB_LLENEMY_HighestLoremaster(_)
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "UpgradeInfo_SetHighestPartyLoremaster");
-
-PROC
-LeaderLib_Initialized((STRING)_Region)
-AND
-IsGameLevel(_Region, 1)
-AND
-DB_LLENEMY_HighestLoremaster(_Lore)
-AND
-_Lore > 0
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "UpgradeInfo_SendHighestLoremaster", (STRING)_Lore);
-*/
-//END_REGION
 EXITSECTION
 
 ENDEXITSECTION

@@ -7,11 +7,12 @@ local function StatDescription_Counter(status, target, param, statusSource)
 	--local initiative = NRD_CharacterGetComputedStat(character, "Initiative", 0)
 	--Ext.Print("Char: " .. tostring(character) .. " | " .. LeaderLib.Common.Dump(character))
 	local initiative = target.Initiative
+	local counterMax = (Ext.ExtraData.LLENEMY_Counter_MaxChance or 75)
 	--local percent = (initiative - COUNTER_MIN) / (COUNTER_MAX - COUNTER_MIN)
-	local chance = (math.log(1 + initiative) / math.log(1 + ExtraData.LLENEMY_Counter_MaxChance))
+	local chance = (math.log(1 + initiative) / math.log(1 + counterMax))
 	--Ext.Print("Chance: " .. tostring(chance))
 	--local chance = (math.log(initiative/COUNTER_MIN) / math.log(COUNTER_MAX/COUNTER_MIN)) * COUNTER_MAX
-	return string.gsub(counterParamText.Value, "%[1%]", tostring(math.floor(chance * ExtraData.LLENEMY_Counter_MaxChance)))
+	return string.gsub(counterParamText.Value, "%[1%]", tostring(math.floor(chance * counterMax)))
 end
 
 StatusDescriptionParams["LLENEMY_Talent_CounterChance"] = StatDescription_Counter

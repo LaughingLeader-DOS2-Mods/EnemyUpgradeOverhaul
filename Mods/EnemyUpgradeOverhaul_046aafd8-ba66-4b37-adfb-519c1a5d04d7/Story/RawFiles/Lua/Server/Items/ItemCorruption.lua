@@ -370,8 +370,6 @@ local function AddRandomBoostsToItem(item,stat,statType,level,cloned)
 	end
 
 	if totalBoosts > 0 then
-		--SetVarInteger(cloned, "LLENEMY_ItemCorruption_TotalBoosts", totalBoosts)
-		--Mods.LeaderLib.StartTimer("Timers_LLENEMY_AddNegativeItemBoosts", 100, cloned)
 		AddRandomNegativeBoosts(cloned, stat, statType, level, math.max(2,math.ceil(totalBoosts/2)))
 	end
 end

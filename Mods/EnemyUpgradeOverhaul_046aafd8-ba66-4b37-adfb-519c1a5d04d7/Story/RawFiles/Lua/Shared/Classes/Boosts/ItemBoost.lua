@@ -73,7 +73,6 @@ end
 ---@param boost StatBoost|TagBoost
 local function ApplyBoost(item,mod,itemBoostObject,boost)
 	if boost.Type == "StatBoost" then
-		--Ext.Print(LeaderLib.Common.Dump(v))
 		if boost.Stat == "Skills" then
 			local currentValue = NRD_ItemGetPermanentBoostString(item, boost.Stat)
 			local nextValue = ""

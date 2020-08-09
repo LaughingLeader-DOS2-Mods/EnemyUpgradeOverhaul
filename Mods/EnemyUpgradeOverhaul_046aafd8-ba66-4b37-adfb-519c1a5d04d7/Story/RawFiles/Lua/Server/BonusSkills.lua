@@ -40,7 +40,7 @@ local function GetSkillGroup(self, ability)
 	return nil
 end
 
-local function IgnoreSkill(skill)
+function IgnoreSkill(skill)
 	if IgnoredSkills[skill] == false then return false end
 	if IgnoredSkills[skill] == true then return true end
 	if string.sub(skill,1,1) == "_" then
@@ -170,21 +170,6 @@ local function BuildEnemySkills()
 		end
 	end
 end
-
--- Retroactively remove blacklisted skills if they were modified
-LeaderLib.RegisterListener("Initialized", function()
-	if EnemySkills ~= nil and #EnemySkills > 0 then
-		for _,skillgroup in pairs(EnemySkills) do
-			if skillgroup.Entries ~= nil then
-				for i,skill in pairs(skillgroup.Entries) do
-					if IgnoreSkill(skill) then
-						table.remove(skillgroup.Entries, i)
-					end
-				end
-			end
-		end
-	end
-end)
 
 local function GetHighestAbility(enemy)
 	local last_highest_ability = "None"

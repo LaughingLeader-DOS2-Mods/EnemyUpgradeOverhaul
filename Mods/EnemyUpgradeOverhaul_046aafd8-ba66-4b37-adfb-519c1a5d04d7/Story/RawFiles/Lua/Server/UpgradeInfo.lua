@@ -1,7 +1,7 @@
 function SetChallengePointsTag(uuid)
 	local cp = GetVarInteger(uuid, "LLENEMY_ChallengePoints")
 	if cp == nil or cp < 0 then cp = 0 end
-	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
+	LeaderLib.PrintDebug("[EUO:UpgradeInfo.lua:SetChallengePointsTag] Character ("..uuid..") CP("..tostring(cp)..")")
 	for k,tbl in pairs(ChallengePointsText) do
 		if cp >= tbl.Min and cp <= tbl.Max then
 			SetTag(uuid, tbl.Tag)
@@ -46,7 +46,7 @@ function UpgradeInfo_RefreshInfoStatuses()
 				ApplyStatus(uuid, "LLENEMY_UPGRADE_INFO", -1.0, 1, uuid)
 			end
 		end
-		LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:RefreshInfoStatuses] Refreshed upgrade info on characters in combat.")
+		LeaderLib.PrintDebug("[EUO:UpgradeInfo.lua:RefreshInfoStatuses] Refreshed upgrade info on characters in combat.")
 	end
 end
 
@@ -63,48 +63,10 @@ local function GetHighestPartyLoremaster()
 	return nextHighest
 end
 
-function UpgradeInfo_SetHighestPartyLoremaster()
+function SetHighestPartyLoremaster()
 	HighestLoremaster = GetHighestPartyLoremaster()
-	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(HighestLoremaster)
-	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now (",HighestLoremaster,")")
-	LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 500)
+	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster), nil)
 end
-
-function UpgradeInfo_SendHighestLoremaster(highest)
-	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(highest), nil)
-	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Sending Loremaster value to clients ("..highest..")")
-	--UpgradeInfo_RefreshInfoStatuses()
-end
-
-local function TimerFinished(event, ...)
-	--Ext.Print("TimerFinished: ", event, LeaderLib.Common.Dump({...}))
-	if event == "Timers_LLENEMY_SendHighestLoremaster" then
-		UpgradeInfo_SendHighestLoremaster(HighestLoremaster)
-	elseif event == "Timers_LLENEMY_AddNegativeItemBoosts" then
-		local params = {...}
-		local item = params[1]
-		local totalBoosts = GetVarInteger(item, "LLENEMY_ItemCorruption_TotalBoosts")
-		local stat = NRD_ItemGetStatsId(item)
-		local statType = NRD_StatGetType(stat)
-		local level = 1
-		local baseStat,rarity,level,seed = NRD_ItemGetGenerationParams(item)
-		if level == nil then
-			level = NRD_ItemGetInt(item, "LevelOverride")
-			if level == 0 or level == nil then
-				level = CharacterGetLevel(CharacterGetHostCharacter())
-			end
-		end
-		for k=0,totalBoosts,1 do
-			ItemCorruption.AddRandomNegativeBoost(item, stat, statType, level)
-		end
-		Ext.Print("=============================================")
-		Ext.Print("Cloned Item Stats:"..item)
-		Ext.Print("=============================================")
-		ItemCorruption.DebugItemStats(item)
-		Ext.Print("=============================================")
-	end
-end
-LeaderLib.RegisterListener("TimerFinished", TimerFinished)
 
 -- Loremaster
 local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
@@ -123,7 +85,8 @@ local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
 	end
 
 	if HighestLoremaster ~= nextHighest then
-		StoreHighestLoremaster(nextHighest)
+		HighestLoremaster = nextHighest
+		Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster), nil)
 	end
 end
 
@@ -146,13 +109,6 @@ local function OnCharacterBaseAbilityChanged(character, ability, old, new)
 end
 
 Ext.RegisterOsirisListener("CharacterBaseAbilityChanged", 4, "after", OnCharacterBaseAbilityChanged)
-
-function StoreHighestLoremaster(nextHighest)
-	HighestLoremaster = nextHighest
-	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(HighestLoremaster)
-	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(HighestLoremaster)..")")
-	LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 500)
-end
 
 Ext.RegisterOsirisListener("UserConnected", 3, "after", function(id, username, profileId)
 	HighestLoremaster = GetHighestPartyLoremaster()

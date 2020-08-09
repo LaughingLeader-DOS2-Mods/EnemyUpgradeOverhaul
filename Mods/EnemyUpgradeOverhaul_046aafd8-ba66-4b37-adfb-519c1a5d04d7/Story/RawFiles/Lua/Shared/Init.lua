@@ -20,9 +20,6 @@ InvisibleStatuses = {
 	["SNEAKING"] = true,
 	["INVISIBLE"] = true,
 }
-ExtraData = {
-	LLENEMY_Counter_MaxChance = 75
-}
 VoiceMetaData = {}
 Commands = {
 	CHECKLOREMASTER = "CheckLoremaster"
@@ -82,14 +79,7 @@ end
 function LLENEMY_Shared_InitModuleLoading()
 	statOverrides.Init()
 	Ext.Print("LLENEMY_Shared.lua] Module is loading.")
-	for key,fallback in pairs(ExtraData) do
-		local value = LeaderLib.GameHelpers.GetExtraData(key, fallback)
-		ExtraData[key] = value
-		LeaderLib.PrintDebug("[LLENEMY_Shared.lua:LLENEMY_ModuleLoading] Loaded Data.txt key - [" .. tostring(key) .. "] = (" .. tostring(value) .. ")")
-	end
-	if Ext.IsDeveloperMode() and Ext.Version() >= 44 and Ext.GetDeltaMod ~= nil then
-		FixModTypos()
-	end
+	FixModTypos()
 end
 
 local function LLENEMY_Shared_SessionLoading()

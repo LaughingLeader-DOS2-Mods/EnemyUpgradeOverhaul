@@ -60,7 +60,18 @@ LeaderLib.RegisterListener("ModSettingsLoaded", function()
 	Osi.DB_LLENEMY_LevelModifier(Settings.Global.Variables.LLENEMY_Scaling_LevelModifier.Value or 0)
 end)
 
--- local function LLENEMY_Server_SessionLoading()
-	
--- end
--- Ext.RegisterListener("SessionLoading", LLENEMY_Server_SessionLoading)
+-- Retroactively remove blacklisted skills if they were modified
+LeaderLib.RegisterListener("Initialized", function()
+	if EnemySkills ~= nil and #EnemySkills > 0 then
+		for _,skillgroup in pairs(EnemySkills) do
+			if skillgroup.Entries ~= nil then
+				for i,skill in pairs(skillgroup.Entries) do
+					if IgnoreSkill(skill) then
+						table.remove(skillgroup.Entries, i)
+					end
+				end
+			end
+		end
+	end
+	SetHighestPartyLoremaster()
+end)
