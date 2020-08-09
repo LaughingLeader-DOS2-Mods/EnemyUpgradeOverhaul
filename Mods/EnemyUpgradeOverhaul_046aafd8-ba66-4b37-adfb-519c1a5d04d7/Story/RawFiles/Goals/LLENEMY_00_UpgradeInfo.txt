@@ -53,7 +53,9 @@ NOT DB_LLENEMY_HighestLoremaster(_Lore);
 
 /* [OSITOOLS_ONLY]
 PROC
-LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, _LastVersion, _NextVersion)
+LeaderLib_Initialized((STRING)_Region)
+AND
+IsGameLevel(_Region, 1)
 AND
 NOT DB_LLENEMY_HighestLoremaster(_)
 THEN
@@ -67,10 +69,8 @@ AND
 DB_LLENEMY_HighestLoremaster(_Lore)
 AND
 _Lore > 0
-AND
-IntegertoString(_Lore, _Highest)
 THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "UpgradeInfo_SendHighestLoremaster", _Highest);
+NRD_ModCall("EnemyUpgradeOverhaul", "UpgradeInfo_SendHighestLoremaster", (STRING)_Lore);
 */
 //END_REGION
 EXITSECTION

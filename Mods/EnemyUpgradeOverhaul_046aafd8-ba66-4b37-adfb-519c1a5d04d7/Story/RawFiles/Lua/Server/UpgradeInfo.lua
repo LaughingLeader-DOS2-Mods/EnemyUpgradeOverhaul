@@ -64,10 +64,9 @@ local function GetHighestPartyLoremaster()
 end
 
 function UpgradeInfo_SetHighestPartyLoremaster()
-	local highest = GetHighestPartyLoremaster()
-	HighestLoremaster = highest
-	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(highest)
-	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(HighestLoremaster)..")")
+	HighestLoremaster = GetHighestPartyLoremaster()
+	Osi.LLENEMY_UpgradeInfo_StoreLoremaster(HighestLoremaster)
+	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now (",HighestLoremaster,")")
 	LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 500)
 end
 
@@ -81,8 +80,7 @@ local function TimerFinished(event, ...)
 	--Ext.Print("TimerFinished: ", event, LeaderLib.Common.Dump({...}))
 	if event == "Timers_LLENEMY_SendHighestLoremaster" then
 		UpgradeInfo_SendHighestLoremaster(HighestLoremaster)
-	end
-	if event == "Timers_LLENEMY_AddNegativeItemBoosts" then
+	elseif event == "Timers_LLENEMY_AddNegativeItemBoosts" then
 		local params = {...}
 		local item = params[1]
 		local totalBoosts = GetVarInteger(item, "LLENEMY_ItemCorruption_TotalBoosts")
@@ -161,3 +159,8 @@ function StoreHighestLoremaster(nextHighest)
 	LeaderLib.PrintDebug("[LLENEMY_UpgradeInfo.lua:SaveHighestLoremaster] Highest Loremaster is now ("..tostring(HighestLoremaster)..")")
 	LeaderLib.StartTimer("Timers_LLENEMY_SendHighestLoremaster", 500)
 end
+
+Ext.RegisterOsirisListener("UserConnected", 3, "after", function(id, username, profileId)
+	HighestLoremaster = GetHighestPartyLoremaster()
+	Ext.PostMessageToUser(id, "LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster))
+end)
