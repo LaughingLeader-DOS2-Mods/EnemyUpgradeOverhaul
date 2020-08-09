@@ -114,3 +114,15 @@ Ext.RegisterConsoleCommand("euo_tagtest", function(command,reset)
 		end
 	end
 end)
+
+Ext.RegisterConsoleCommand("euo_ringtest", function(command)
+	local host = CharacterGetHostCharacter()
+	local ring = GameHelpers.Item.CreateItemByStat("ARM_Ring", 12, "Epic", true, 1)
+	SetTag(ring, "LLENEMY_ShadowItem")
+	SetTag(ring, ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_CursedFire.Tag)
+	SetTag(ring, ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_ShockingRain.Tag)
+	ItemToInventory(ring, host)
+	CharacterAddSkill(host, "Projectile_EnemyFireball", 0)
+	CharacterAddAbilityPoint(host, 2)
+	CharacterAddSkill(host, "Rain_Water", 0)
+end)

@@ -5,3 +5,7 @@ LLENEMY_ShadowBonus_StunDefense	<font color='#C7A758'>King's Defense</font>	h41b
 LLENEMY_ShadowBonus_StunDefense_Description	When <font color='#FF0000'>disabled</font> (Knocked Down, Stunned, etc), <font color='#FFAB00'>incoming damage is reduced by [ExtraData:LLENEMY_ShadowBonus_StunDefense_DamageReduction]%</font>. 	h0fd762dcg98f8g4483g9cd5ga74f7c4b02c8
 LLENEMY_ShadowBonus_DotCleanser	<font color='#99CC00'>Immune Boost</font>	h0ec991aag3f8dg4100gb60bg272af43d6334
 LLENEMY_ShadowBonus_DotCleanser_Description	When your turn ends, harmful damage-over-time statuses are <font color='#4197E2'>cleansed</font>, restoring <font color='#97FBFF'>[ExtraData:LLENEMY_ShadowBonus_ImmuneBoost_HealPercentage]% Vitality</font> per status. 	ha9bac902g50e1g46dagb76fg74085358d300
+LLENEMY_ShadowBonus_CursedFire	<font color='#B823FF'>Cursed Fire</font>	h31a9398eg9fa7g4bb9ga1a0gf17ad0f74f11
+LLENEMY_ShadowBonus_CursedFire_Description	Damaging <font color='#FE6E27'>fire spells</font> have a chance to apply <font color='#B823CB'>Necrofire</font>. 	h11435de3g7c5fg4a04ga59fg3c0e3e0cc836
+LLENEMY_ShadowBonus_ShockingRain	<font color='#7D71D9'>Shocking Rain</font>	ha5b5dafeg1804g494dg92a2gcc7af36a3092
+LLENEMY_ShadowBonus_ShockingRain_Description	<font color='#4197E2'>[Key:Rain_Water_DisplayName]</font> triggers a mild <font color='#7D71D9'>lightning storm</font> at the target location. 	h185353bfgd688g4ac3ga6f8gb7b57293b96f

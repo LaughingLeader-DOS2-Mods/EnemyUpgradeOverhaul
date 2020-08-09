@@ -249,6 +249,10 @@ local function Init()
 			ItemBoost:Create({
 				StatBoost:Create("MaxAP",1,1),
 			},{Chance=1, SlotType="Ring", Limit=1}),
+			ItemBoost:Create({
+				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_CursedFire,
+				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_ShockingRain,
+			},{Chance=6, SlotType="Ring", Limit=1}),
 			-- ItemBoost:Create({
 			-- 	StatBoost:Create("SourcePointsBoost",1,1),
 			-- },{Chance=1, SlotType="Ring"}),

@@ -39,6 +39,7 @@
 	<content contentuid="h106bb9f5ge8a1g4019g9d9dgebb27474f992">Elite Heatsapper</content>
 	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c">Rage (V)</content>
 	<content contentuid="h113eaf38g98cfg4905gbdcbge7974c230658">Source-Hungry Void Flayer</content>
+	<content contentuid="h11435de3g7c5fg4a04ga59fg3c0e3e0cc836">Damaging &lt;font color=&apos;#FE6E27&apos;&gt;fire spells&lt;/font&gt; have a chance to apply &lt;font color=&apos;#B823CB&apos;&gt;Necrofire&lt;/font&gt;. </content>
 	<content contentuid="h127721f1g27f1g4ffag9b50gf2720cedb009">Armor Boost</content>
 	<content contentuid="h12db0e65g1dceg4d56g8857gb018ab29f393">Talent:  Comeback Kid</content>
 	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de">Character is empowered with random upgrades.</content>
@@ -51,6 +52,7 @@
 	<content contentuid="h179efab0g7e6cg441ag8083gb11964394dc4">A &lt;i&gt;strange&lt;/i&gt; item retrieved from a &lt;font color=&apos;#9B30FF&apos; face=&apos;Copperplate Gothic Bold&apos;&gt;Shadow Orb&lt;/font&gt;.&lt;br&gt;&lt;font color=&apos;#BDA0CB&apos;&gt;Cold to the touch, when this item is held, your grip on reality may begin to slip.&lt;/font&gt;</content>
 	<content contentuid="h17c3aeabg026ag41e4g93a0gfd8da7534786">Mass Shackler</content>
 	<content contentuid="h17e326e9g8f4fg4d6bg83dfg8f54134ffda5">Enable Class Upgrades - These are upgrades that grant enemies new skillsets and small ability bonuses, in class-like themes. (Currently Disabled)</content>
+	<content contentuid="h185353bfgd688g4ac3ga6f8gb7b57293b96f">&lt;font color=&apos;#4197E2&apos;&gt;[Key:Rain_Water_DisplayName]&lt;/font&gt; triggers a mild &lt;font color=&apos;#7D71D9&apos;&gt;lightning storm&lt;/font&gt; at the target location. </content>
 	<content contentuid="h18c28f76g6913g4685g81b9g6a6326ac81a3">Gathering Power</content>
 	<content contentuid="h18df0fecgf914g49b6ga573gc75298cee2ee">Source-Hungry Voidwolf</content>
 	<content contentuid="h18ff40ffg5d06g48c6gb09egaec569a55aa8">Talent: Torturer</content>
@@ -84,6 +86,7 @@
 	<content contentuid="h2e45720ag8842g4c73g917fg7e1d2044cb52">Character has a set of new bonus skills.</content>
 	<content contentuid="h2f3fff9cge409g42a9gb29fgff5fc6065221">Summon Chicken Armada</content>
 	<content contentuid="h2f7446a2gcb4ag4ee6gbf5age4425fa2851b">Elite Teslacoil</content>
+	<content contentuid="h31a9398eg9fa7g4bb9ga1a0gf17ad0f74f11">&lt;font color=&apos;#B823FF&apos;&gt;Cursed Fire&lt;/font&gt;</content>
 	<content contentuid="h31d032dcg2e05g4d91gb846g125bbed07f42">Elite Bloodbender</content>
 	<content contentuid="h34700b60g0ce9g4882gb6b3gc2e82bf65f77">Source-Hungry Voidwoken Spider</content>
 	<content contentuid="h34c37ad9g928bg4504g9e35g9e19f9698a14">Enable Enemy Level Scaling - Enemy will scale to the party&apos;s level + the current Level Modifier value. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
@@ -258,6 +261,7 @@
 	<content contentuid="ha3ccca0bg576dg4a64gb2edg8819d8f2cdc0">Chicken Infantry</content>
 	<content contentuid="ha4587526ge140g42f9g9a98gc92b537d4209">&lt;img src=&apos;Icon_BulletPoint&apos;&gt;&lt;font color=&apos;[2]&apos; size=&apos;18&apos;&gt;[1]&lt;/font&gt;</content>
 	<content contentuid="ha4a3d3cfg755ag46deg86d2g4f1060841ee2">Elite Bloodbender</content>
+	<content contentuid="ha5b5dafeg1804g494dg92a2gcc7af36a3092">&lt;font color=&apos;#7D71D9&apos;&gt;Shocking Rain&lt;/font&gt;</content>
 	<content contentuid="ha5f6b750g5322g4043gac1dgfc82734fde21">Updated settings.</content>
 	<content contentuid="ha78e3050g202cg4650g8df9g2ef53c2463a2">Source-Hungry Slippery Voidling</content>
 	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19">Rewards Settings</content>
