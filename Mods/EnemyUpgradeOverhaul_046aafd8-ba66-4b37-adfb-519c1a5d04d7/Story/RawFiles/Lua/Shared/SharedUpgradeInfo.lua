@@ -34,7 +34,7 @@ end
 
 UpgradeData = {
 	Statuses = {
-		LLENEMY_TALENT_BACKSTAB = UpgradeInfoData:Create(TranslatedString:Create("h9305ff62g9590g4f7fg82beg5e3ab9edafbf", "Talent: Backstab"), "#F59B00"),
+		LLENEMY_TALENT_BACKSTAB = UpgradeInfoData:Create(TranslatedString:Create("h9305ff62g9590g4f7fg82beg5e3ab9edafbf", "Talent: Assassin"), "#F59B00"),
 		LLENEMY_TALENT_GLADIATOR = UpgradeInfoData:Create(TranslatedString:Create("h3d6d46bbg4819g48fbga980gcb521d5c49d8", "Talent: Gladiator"), "#F59B00"),
 		LLENEMY_TALENT_GREEDYVESSEL = UpgradeInfoData:Create(TranslatedString:Create("h4cf1c406gceb1g411fga0d9gc9832cc4d2f5", "Talent: Greedy Vessel"), "#F1D466"),
 		LLENEMY_TALENT_HAYMAKER = UpgradeInfoData:Create(TranslatedString:Create("h0dda4bf0g924ag4c8bgaf5ag1d6e7e643b50", "Talent: Haymaker"), "#B083FF"),
