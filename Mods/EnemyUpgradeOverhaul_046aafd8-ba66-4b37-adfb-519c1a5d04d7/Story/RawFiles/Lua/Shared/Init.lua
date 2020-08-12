@@ -112,4 +112,5 @@ end
 
 Ext.RegisterListener("SessionLoaded", function()
 	LeaderLib.EnableFeature("ResistancePenetration")
+	LeaderLib.EnableFeature("BackstabCalculation")
 end)

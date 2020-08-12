@@ -404,7 +404,8 @@ NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "GreedyVessel");
 IF
 CharacterStatusApplied(_Char, "LLENEMY_TALENT_BACKSTAB", _)
 THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Backstab");
+NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "RogueLoreDaggerBackStab");
+//NRD_ModCall("EnemyUpgradeOverhaul", "AddTalent", (STRING)_Char, "Backstab");
 */
 //END_REGION
 

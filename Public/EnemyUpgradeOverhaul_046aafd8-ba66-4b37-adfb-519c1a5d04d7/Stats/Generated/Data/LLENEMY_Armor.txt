@@ -10,7 +10,7 @@ new entry "_LLENEMY_TalentBelt_Backstab"
 type "Armor"
 using "_LLENEMY_TalentBeltBase"
 data "Slot" "Ring"
-data "Talents" "Backstab"
+data "Talents" "RogueLoreDaggerBackStab"
 
 new entry "_LLENEMY_TalentBelt_LoneWolf"
 type "Armor"
