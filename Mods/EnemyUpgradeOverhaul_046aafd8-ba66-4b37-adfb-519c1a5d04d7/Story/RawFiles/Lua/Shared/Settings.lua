@@ -21,4 +21,17 @@ settings.Global:AddFlags({
 settings.Global:AddVariable("LLENEMY_Scaling_LevelModifier", 0)
 settings.Global:AddVariable("Hardmode_MinBonusRolls", 1)
 settings.Global:AddVariable("Hardmode_MaxBonusRolls", 4)
+
+---@param self SettingsData
+---@param name string
+---@param data VariableData
+settings.UpdateVariable = function(self, name, data)
+	print(name, data)
+	if name == "LLENEMY_Scaling_LevelModifier" then
+		local entry = Osi.DB_LLENEMY_LevelModifier:Get(nil)
+		if entry ~= nil then
+			data.Value = entry[1][1]
+		end
+	end
+end
 return settings
