@@ -93,10 +93,16 @@ local upgradeInfoHelpers = Ext.Require("Client/UpgradeInfoTooltip.lua")
 ---@param status EsvStatus
 ---@param tooltip TooltipData
 local function OnUpgradeInfoTooltip(character, status, tooltip)
-	local upgradeInfoText = upgradeInfoHelpers.GetUpgradeInfoText(character)
-	local challengePointsText = upgradeInfoHelpers.GetChallengePointsText(character)
 	local element = tooltip:GetElement("StatusDescription")
-	element.Label = string.format("%s<br>%s<br>%s", element.Label, upgradeInfoText, challengePointsText)
+	if element ~= nil then
+		local upgradeInfoText = upgradeInfoHelpers.GetUpgradeInfoText(character)
+		if not character:HasTag("LLENEMY_RewardsDisabled") then
+			local challengePointsText = upgradeInfoHelpers.GetChallengePointsText(character)
+			element.Label = string.format("%s<br>%s<br>%s", element.Label, upgradeInfoText, challengePointsText)
+		else
+			element.Label = string.format("%s<br>%s", element.Label, upgradeInfoText)
+		end
+	end
 end
 
 local function FormatTagElements(tooltip_mc, group, ...)
