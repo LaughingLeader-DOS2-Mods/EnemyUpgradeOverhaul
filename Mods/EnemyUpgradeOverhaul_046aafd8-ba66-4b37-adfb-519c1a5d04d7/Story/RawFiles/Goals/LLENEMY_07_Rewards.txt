@@ -255,6 +255,8 @@ CharacterPrecogDying(_Char)
 AND
 NOT DB_GlobalFlag("LLENEMY_RewardsDisabled")
 AND
+IsTagged(_Char, "LLENEMY_RewardsDisabled", 0)
+AND
 CharacterIsPlayer(_Char, 0)
 AND
 CharacterIsSummon(_Char, 0)
