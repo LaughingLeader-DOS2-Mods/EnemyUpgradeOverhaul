@@ -8,6 +8,9 @@ PROC
 LLENEMY_Origins_InitRegistration("CoS_Main")
 THEN
 DB_LLENEMY_Duplication_Blacklist(S_CoS_Temples_BlackRingHub_Troll_0c148028-84ff-4bdd-957b-5f093b4a7521);
+DB_LLENEMY_Duplication_Blacklist(S_GLO_Academy_TempleAutomation_681a2c86-0ff0-4622-a6fc-1ee085d38178);
+//This guy keeps reviving
+SetTag(S_GLO_Academy_TempleAutomation_681a2c86-0ff0-4622-a6fc-1ee085d38178, "LLENEMY_RewardsDisabled");
 
 PROC
 LLENEMY_Elites_InitLevel("CoS_Main")
@@ -17,8 +20,6 @@ THEN
 LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_BlackRingHub_Captain_7d32e545-6c6c-4a95-90dd-3ed14d3a20de);
 //Spirit of Cursed Knight of Duna | DWARF, DWARVES, GHOST, MALE
 /*LLENEMY_Elites_AddUpgradeChance("CoS_Main", S_CoS_Temples_Dwarf_KnightOfDuna_Ghost_6de0b387-a8f5-471b-9906-12d91724770c);*/
-//This guy keeps reviving
-SetTag(S_GLO_Academy_TempleAutomation_681a2c86-0ff0-4622-a6fc-1ee085d38178, "LLENEMY_RewardsDisabled");
 
 PROC
 LLENEMY_Elites_RegisterExtenderUpgrades("CoS_Main")
