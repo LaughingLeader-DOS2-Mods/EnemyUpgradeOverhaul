@@ -117,47 +117,6 @@ ProcSetInvulnerable(_Char, 1);
 CharacterSetImmortal(_Char, 1);
 //END_REGION
 
-//REGION TRACKING_SOURCE_USED
-PROC
-LLENEMY_HardMode_TrackTotalSourceUsed((INTEGER)_SourcePointsUsed)
-AND
-DB_CurrentLevel(_Region)
-AND
-NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _)
-THEN
-DB_LLENEMY_HardMode_SourcePointsUsed(_Region, 0);
-
-PROC
-LLENEMY_HardMode_TrackTotalSourceUsed((INTEGER)_SourcePointsUsed)
-AND
-DB_CurrentLevel(_Region)
-AND
-DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
-AND
-IntegerSum(_LastSP, _SourcePointsUsed, _Next)
-THEN
-NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
-DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _Next);
-
-IF
-RegionEnded(_Region)
-AND
-DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
-THEN
-NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
-
-PROC
-LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NewVersion)
-AND
-_LastVersion <= 536870925
-AND
-DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP)
-AND
-_TotalSP < 0
-THEN
-NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP);
-DB_LLENEMY_HardMode_SourcePointsUsed(_Region, 0);
-//END_REGION
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

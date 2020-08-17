@@ -1,0 +1,94 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+//REGION ARENA_SETUP
+IF
+CharacterCharacterEvent(_Source, _Voidwoken, "LLENEMY_VoidwokenSpawned")
+AND
+DB_Arena_MobParticipants(_Inst,_Source,_Trig,_Team)
+AND
+CharacterIsPlayer(_Source, _IsPlayer)
+THEN
+LLENEMY_Voidwoken_ArenaSetup(_Source, _Voidwoken, _Inst, _Trig, _Team, _IsPlayer);
+
+PROC
+LLENEMY_Voidwoken_ArenaSetup((CHARACTERGUID)_Source, (CHARACTERGUID)_Voidwoken, (INTEGER)_Instance, (TRIGGERGUID)_Trigger, (STRING)_Team, 0)
+THEN
+DB_Arena_MobParticipants(_Instance,_Voidwoken,_Trigger,_Team);
+SetInArena(_Voidwoken, 1);
+SetFaction(_Voidwoken, _Team);
+
+// Player source
+PROC
+LLENEMY_Voidwoken_ArenaSetup((CHARACTERGUID)_Source, (CHARACTERGUID)_Voidwoken, (INTEGER)_Instance, (TRIGGERGUID)_Trigger, (STRING)_Team, 1)
+AND
+DB_Arena_MobParticipants(_Instance, _Enemy, _OtherTrigger, _OtherTeam)
+AND
+_OtherTeam != _Team
+AND
+NOT DB_Arena_MobParticipants(_,_Voidwoken,_,_)
+THEN
+DB_Arena_MobParticipants(_Instance, _Voidwoken, _OtherTrigger, _OtherTeam);
+SetInArena(_Voidwoken, 1);
+SetFaction(_Voidwoken, _OtherTeam);
+//END_REGION
+
+//REGION TRACKING_SOURCE_USED
+PROC
+LLENEMY_HardMode_TrackTotalSourceUsed((INTEGER)_SourcePointsUsed)
+AND
+DB_CurrentLevel(_Region)
+AND
+NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _)
+THEN
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, 0);
+
+PROC
+LLENEMY_HardMode_TrackTotalSourceUsed((INTEGER)_SourcePointsUsed)
+AND
+DB_CurrentLevel(_Region)
+AND
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
+AND
+IntegerSum(_LastSP, _SourcePointsUsed, _Next)
+THEN
+NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _Next);
+
+IF
+RegionEnded(_Region)
+AND
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
+THEN
+NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
+
+PROC
+LLENEMY_HardMode_ReduceTotalSourceUsed((INTEGER)_Amount)
+AND
+DB_CurrentLevel(_Region)
+AND
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP)
+AND
+IntegerSubtract(_LastSP, _Amount, _Next)
+AND
+IntegerMax(0, _Next, _CappedNext)
+THEN
+NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _LastSP);
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _CappedNext);
+
+PROC
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NewVersion)
+AND
+_LastVersion <= 536870925
+AND
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP)
+AND
+_TotalSP < 0
+THEN
+NOT DB_LLENEMY_HardMode_SourcePointsUsed(_Region, _TotalSP);
+DB_LLENEMY_HardMode_SourcePointsUsed(_Region, 0);
+//END_REGION
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
