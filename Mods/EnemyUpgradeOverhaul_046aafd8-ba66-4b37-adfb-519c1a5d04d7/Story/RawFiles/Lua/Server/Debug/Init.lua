@@ -223,7 +223,7 @@ local function LLENEMY_DebugInit()
 		--NRD_Summon(host, "e63a712f-fc87-4469-8848-fd8941043afd", x, y, z, -1, 1, 1, 1)
 		--NRD_Summon(host, "26f10a2d-910c-42ed-b629-9a3ce550c1f7", x, y, z, -1, 1, 1, 1)
 		--CharacterSetImmortal(host, 1)
-		--SpawnVoidwoken(host, true)
+		--SpawnVoidwoken(host, 0, true)
 	end
 
 	if Ext.IsDeveloperMode() then
