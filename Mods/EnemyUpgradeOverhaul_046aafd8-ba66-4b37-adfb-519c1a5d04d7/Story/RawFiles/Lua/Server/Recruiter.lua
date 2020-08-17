@@ -14,5 +14,6 @@ function SetupRecruiter(region)
 		TeleportTo(recruiter, host, "LLENEMY_HM_RecruiterTeleportedToLevel", 1, 0, 1)
 		TeleportToPosition(recruiter, data.Position[1], data.Position[2], data.Position[3], "LLENEMY_HM_RecruiterTeleportedToPosition", 1, 0)
 		GameHelpers.Math.SetRotation(recruiter, data.Rotation[1], data.Rotation[2])
+		CharacterSetCanSpotSneakers(recruiter, 0)
 	end
 end
