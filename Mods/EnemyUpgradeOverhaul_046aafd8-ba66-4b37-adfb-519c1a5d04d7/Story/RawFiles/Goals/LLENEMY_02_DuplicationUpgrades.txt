@@ -115,11 +115,15 @@ AND
 GlobalGetFlag("LLENEMY_DuplicationUpgrades_BossesDisabled", 0)
 AND
 ObjectGetFlag(_Char, "LLENEMY_DuplicationUpgradeAdded", 0)
+AND
+IsTagged(_Char, "LLENEMY_DuplicationBlocked", 0)
 THEN
 DB_NOOP(1);
 
 QRY
 LLENEMY_Duplication_QRY_CanSpawnDuplicant((CHARACTERGUID)_Char, 0)
+AND
+IsTagged(_Char, "LLENEMY_DuplicationBlocked", 0)
 THEN
 DB_NOOP(1);
 

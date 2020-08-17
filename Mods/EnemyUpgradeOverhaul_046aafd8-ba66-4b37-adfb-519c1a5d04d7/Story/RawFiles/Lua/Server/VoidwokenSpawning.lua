@@ -229,7 +229,7 @@ function SpawnVoidwoken(source,totalPoints,skipSpawning)
 				end
 
 				local voidwoken = CharacterCreateAtPosition(x, y, z, entry:GetTemplate(), 1)
-				ObjectSetFlag(voidwoken, "LLENEMY_DuplicationBlocked")
+				SetTag(voidwoken, "LLENEMY_DuplicationBlocked")
 				ClearGain(voidwoken)
 				SetFaction(voidwoken, "Evil NPC")
 				CharacterLevelUpTo(voidwoken, CharacterGetLevel(source))
