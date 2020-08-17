@@ -328,6 +328,8 @@ NOT DB_LLENEMY_Rewards_Temp_BonusTreasure(_Char, _Current);
 
 IF
 CharacterPrecogDying(_Char)
+AND
+IsTagged(_Char, "LLENEMY_RewardsDisabled", 0)
 THEN
 LLENEMY_Rewards_StartGeneration(_Char);
 
