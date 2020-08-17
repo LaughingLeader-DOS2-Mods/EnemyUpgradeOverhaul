@@ -171,7 +171,7 @@ end
 
 local totalResets = 0
 
-function SpawnVoidwoken(source,testing,totalPoints)
+function SpawnVoidwoken(source,totalPoints,skipSpawning)
 	local totalPointsUsed = 0
 	if totalPoints ~= nil then
 		totalPointsUsed = totalPoints
@@ -216,7 +216,7 @@ function SpawnVoidwoken(source,testing,totalPoints)
 		end
 		if entry ~= nil then
 			LeaderLib.PrintDebug("Picked random entry: " .. entry.Template .. " | " ..tostring(rand) .. " / " .. tostring(totalWeight))
-			if testing ~= true then
+			if skipSpawning ~= true then
 				totalResets = 0
 				local x,y,z = GetPosition(source)
 				local combatid = CombatGetIDForCharacter(source)
@@ -229,12 +229,9 @@ function SpawnVoidwoken(source,testing,totalPoints)
 				end
 
 				local voidwoken = CharacterCreateAtPosition(x, y, z, entry:GetTemplate(), 1)
+				ObjectSetFlag(voidwoken, "LLENEMY_DuplicationBlocked")
+				ClearGain(voidwoken)
 				SetFaction(voidwoken, "Evil NPC")
-				--Osi.LeaderLib_Helper_MakeHostileToPlayers(voidwoken)
-				--CharacterSetRelationFactionToFaction("RC_Voidwoken","Hero",0)
-				--CharacterSetRelationFactionToFaction("Hero","RC_Voidwoken",0)
-				NRD_CharacterSetPermanentBoostInt(voidwoken, "Gain", 0)
-				CharacterAddAttribute(voidwoken, "Dummy", 0)
 				CharacterLevelUpTo(voidwoken, CharacterGetLevel(source))
 				TeleportToRandomPosition(voidwoken, 12.0, "")
 				CharacterCharacterSetEvent(source, voidwoken, "LLENEMY_VoidwokenSpawned")
@@ -251,19 +248,19 @@ function SpawnVoidwoken(source,testing,totalPoints)
 			for i,v in pairs(voidwokenTemplates) do
 				v.Weight = v.DefaultWeight
 			end
-			SpawnVoidwoken(source, testing)
+			SpawnVoidwoken(source, totalPointsUsed, skipSpawning)
 		end
 	end
 end
 
 local magicPointsVoidwokenChances = {
 	[0] = 0,
-	[1] = 5,
-	[2] = 15,
-	[3] = 30,
-	[4] = 65,
-	[5] = 75,
-	[6] = 85,
+	[1] = 2,
+	[2] = 7,
+	[3] = 15,
+	[4] = 20,
+	[5] = 25,
+	[6] = 30
 }
 
 local pointsModC = 0
@@ -274,14 +271,20 @@ local function DetermineTotalSPModifier(total)
 	return 1 - (((pointsModB - total * pointsModD) / (pointsModC * total + pointsModB)) / 100)
 end
 
+if Ext.IsDeveloperMode() then
+	Ext.RegisterConsoleCommand("llenemy_totalspmod", function(cmd, totalstr)
+		
+	end)
+end
+
 --- Gets a chance threshold for spawning voidwoken, based on the source points cost of a skill.
 ---@param points integer
 ---@return integer
 local function GetVoidwokenSpawnChanceRollThreshold(points, totalPointsUsed)
 	if points >= #magicPointsVoidwokenChances then
-		return 90
+		return 35
 	else
-		return math.min(90, math.ceil(magicPointsVoidwokenChances[points] * DetermineTotalSPModifier(totalPointsUsed)))
+		return math.min(35, math.ceil(magicPointsVoidwokenChances[points] * DetermineTotalSPModifier(totalPointsUsed)))
 	end
 end
 
@@ -297,7 +300,7 @@ IgnoredSourceSkills["Target_Curse"] = {
 	CombatOnly = true
 }
 
-local function TrySummonVoidwoken(char, skill, skilltype, skillelement)
+local function SkillCanSummonVoidwoken(char, skill, skilltype, skillelement)
 	if IgnoredSourceSkills[skill] ~= nil then
 		local ignoreData = IgnoredSourceSkills[skill]
 		if ignoreData == true then
@@ -306,24 +309,29 @@ local function TrySummonVoidwoken(char, skill, skilltype, skillelement)
 			return false
 		end
 	end
-	local magicCost = Ext.StatGetAttribute(skill, "Magic Cost")
+	local magicCost = Ext.StatGetAttribute(skill, "Magic Cost") or 0
 	if magicCost > 0 then
-		Osi.LLENEMY_HardMode_TrackTotalSourceUsed(magicCost)
-		local totalPointsUsed = 0
-		local b,p = pcall(GetTotalPointsForRegion, char)
-		if b then
-			totalPointsUsed = p
-		end
-		LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Character ("..char..") cast a source skill ("..skill..")["..tostring(magicCost).."].")
-		local chance = GetVoidwokenSpawnChanceRollThreshold(magicCost, totalPointsUsed)
-		local roll = Ext.Random(0,100)
-		LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Roll: ["..tostring(roll).."/100 <= "..tostring(chance).."] TotalSP ("..tostring(totalPointsUsed)..").")
-		if roll <= chance then
-			SpawnVoidwoken(char)
-		end
+		return magicCost
+	end
+	return false
+end
+Ext.NewCall(SkillCanSummonVoidwoken, "LLENEMY_QRY_SkillCanSummonVoidwoken", "[in](CHARACTERGUID)_Character, [in](STRING)_Skill, [in](STRING)_SkillType, [in](STRING)_SkillElement, [out](INTEGER)_Bool");
+
+local function TrySummonVoidwoken(char)
+	local totalPointsUsed = 0
+	local b,p = pcall(GetTotalPointsForRegion, char)
+	if b then
+		totalPointsUsed = p
+	end
+	local chance = GetVoidwokenSpawnChanceRollThreshold(magicCost, totalPointsUsed)
+	local roll = Ext.Random(0,100)
+	LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Roll: ["..tostring(roll).."/100 <= "..tostring(chance).."] TotalSP ("..tostring(totalPointsUsed)..").")
+	if roll > 0 and roll <= chance then
+		SpawnVoidwoken(char, totalPointsUsed)
+	elseif roll == 0 then
+		Osi.LLENEMY_HardMode_ReduceTotalSourceUsed(Ext.Random(1,3))
 	end
 end
-Ext.NewCall(TrySummonVoidwoken, "LLENEMY_OnSkillCast_TrySummonVoidwoken", "(CHARACTERGUID)_Character, (STRING)_Skill, (STRING)_SkillType, (STRING)_SkillElement");
 
 local function GetSourceDegredation(gameHourSpeed, totalPoints)
 	-- Speed is 300000 by default, i.e. 5 minutes
