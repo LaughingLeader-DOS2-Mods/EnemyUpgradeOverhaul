@@ -315,7 +315,7 @@ local function SkillCanSummonVoidwoken(char, skill, skilltype, skillelement)
 	end
 	return false
 end
-Ext.NewCall(SkillCanSummonVoidwoken, "LLENEMY_QRY_SkillCanSummonVoidwoken", "[in](CHARACTERGUID)_Character, [in](STRING)_Skill, [in](STRING)_SkillType, [in](STRING)_SkillElement, [out](INTEGER)_Bool");
+Ext.NewQuery(SkillCanSummonVoidwoken, "LLENEMY_QRY_SkillCanSummonVoidwoken", "[in](CHARACTERGUID)_Character, [in](STRING)_Skill, [in](STRING)_SkillType, [in](STRING)_SkillElement, [out](INTEGER)_Bool");
 
 local function TrySummonVoidwoken(char)
 	local totalPointsUsed = 0
