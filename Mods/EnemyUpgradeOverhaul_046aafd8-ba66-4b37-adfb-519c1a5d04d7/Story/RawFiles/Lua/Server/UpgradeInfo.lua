@@ -125,7 +125,7 @@ Ext.RegisterOsirisListener("CharacterBaseAbilityChanged", 4, "after", OnCharacte
 
 Ext.RegisterOsirisListener("UserConnected", 3, "after", function(id, username, profileId)
 	HighestLoremaster = GetHighestPartyLoremaster()
-	if Ext.GetGameState() == "Running" then
+	if Ext.GetGameState() == "Running" and GetCurrentCharacter(id) ~= nil then
 		Ext.PostMessageToUser(id, "LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster))
 	else
 		TimerCancel("Timers_LLENEMY_SyncHighestLoremaster")
