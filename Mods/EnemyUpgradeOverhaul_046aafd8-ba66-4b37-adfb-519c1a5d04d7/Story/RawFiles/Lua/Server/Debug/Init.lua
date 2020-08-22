@@ -237,7 +237,7 @@ end
 
 local function LLENEMY_SessionLoading()
 	Ext.Print("[LLENEMY:Debug.lua] Registered debug init call to LeaderLib.")
-	LeaderLib.AddDebugInitCall(LLENEMY_DebugInit)
+	--LeaderLib.AddDebugInitCall(LLENEMY_DebugInit)
 end
 
 local function LLENEMY_Debug_SessionLoaded()
