@@ -55,9 +55,11 @@ local function GetHighestPartyLoremaster()
 	local players = Osi.DB_IsPlayer:Get(nil)
 	for _,entry in pairs(players) do
 		local uuid = entry[1]
-		local lore = CharacterGetAbility(uuid, "Loremaster")
-		if lore > nextHighest then
-			nextHighest = lore
+		local character = Ext.GetCharacter(uuid)
+		if character ~= nil then
+			if character.Stats.Loremaster > nextHighest then
+				nextHighest = character.Stats.Loremaster
+			end
 		end
 	end
 	return nextHighest
@@ -65,7 +67,13 @@ end
 
 function SetHighestPartyLoremaster()
 	HighestLoremaster = GetHighestPartyLoremaster()
-	Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster), nil)
+	if Ext.GetGameState() == "Running" then
+		Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster), nil)
+		LeaderLib.PrintDebug("[EUO:SetHighestPartyLoremaster] Synced highest party loremaster.",HighestLoremaster)
+	else
+		TimerCancel("Timers_LLENEMY_SyncHighestLoremaster")
+		TimerLaunch("Timers_LLENEMY_SyncHighestLoremaster", 500)
+	end
 end
 
 -- Loremaster
@@ -86,7 +94,12 @@ local function SaveHighestLoremaster(player, stat, lastVal, nextVal)
 
 	if HighestLoremaster ~= nextHighest then
 		HighestLoremaster = nextHighest
-		Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster), nil)
+		if Ext.GetGameState() == "Running" then
+			Ext.BroadcastMessage("LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster), nil)
+		else
+			TimerCancel("Timers_LLENEMY_SyncHighestLoremaster")
+			TimerLaunch("Timers_LLENEMY_SyncHighestLoremaster", 500)
+		end
 	end
 end
 
@@ -112,5 +125,10 @@ Ext.RegisterOsirisListener("CharacterBaseAbilityChanged", 4, "after", OnCharacte
 
 Ext.RegisterOsirisListener("UserConnected", 3, "after", function(id, username, profileId)
 	HighestLoremaster = GetHighestPartyLoremaster()
-	Ext.PostMessageToUser(id, "LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster))
+	if Ext.GetGameState() == "Running" then
+		Ext.PostMessageToUser(id, "LLENEMY_SetHighestLoremaster", tostring(HighestLoremaster))
+	else
+		TimerCancel("Timers_LLENEMY_SyncHighestLoremaster")
+		TimerLaunch("Timers_LLENEMY_SyncHighestLoremaster", 500)
+	end
 end)

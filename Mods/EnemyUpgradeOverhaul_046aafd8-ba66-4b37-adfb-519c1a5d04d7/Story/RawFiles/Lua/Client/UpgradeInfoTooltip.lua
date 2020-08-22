@@ -10,6 +10,16 @@ local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4c
 
 ---@param character EsvCharacter
 local function GetUpgradeInfoText(character)
+	if HighestLoremaster == nil or HighestLoremaster == 0 then
+		pcall(function()
+			if LeaderLib.UI.ClientCharacter ~= nil then
+				local clientChar = Ext.GetCharacter(LeaderLib.UI.ClientCharacter)
+				if clientChar ~= nil and clientChar.Stats.Loremaster > 0 then
+					HighestLoremaster = clientChar.Stats.Loremaster
+				end
+			end
+		end)
+	end
 	local upgradeKeys = {}
 	for status,data in pairs(UpgradeData.Statuses) do
 		if character:GetStatus(status) ~= nil then

@@ -26,7 +26,6 @@ settings.Global:AddVariable("Hardmode_MaxBonusRolls", 4)
 ---@param name string
 ---@param data VariableData
 settings.UpdateVariable = function(self, name, data)
-	print(name, data)
 	if name == "LLENEMY_Scaling_LevelModifier" then
 		local entry = Osi.DB_LLENEMY_LevelModifier:Get(nil)
 		if entry ~= nil then

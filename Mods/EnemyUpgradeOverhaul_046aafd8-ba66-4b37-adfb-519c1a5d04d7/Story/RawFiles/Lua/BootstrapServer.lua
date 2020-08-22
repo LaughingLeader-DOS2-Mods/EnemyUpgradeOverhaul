@@ -62,16 +62,23 @@ end)
 
 -- Retroactively remove blacklisted skills if they were modified
 LeaderLib.RegisterListener("Initialized", function()
-	if EnemySkills ~= nil and #EnemySkills > 0 then
-		for _,skillgroup in pairs(EnemySkills) do
-			if skillgroup.Entries ~= nil then
-				for i,skill in pairs(skillgroup.Entries) do
-					if IgnoreSkill(skill) then
-						table.remove(skillgroup.Entries, i)
+	local status,err = xpcall(function()
+		if EnemySkills ~= nil and #EnemySkills > 0 then
+			for _,skillgroup in pairs(EnemySkills) do
+				if skillgroup.Entries ~= nil then
+					for i,skill in pairs(skillgroup.Entries) do
+						if IgnoreSkill(skill) then
+							skillgroup.Entries[i] = nil
+						end
 					end
 				end
 			end
 		end
+	end, debug.traceback)
+	if not status then
+		Ext.PrintError("[EUO] Error adjusting EnemySkills:")
+		Ext.PrintError(err)
 	end
+
 	SetHighestPartyLoremaster()
 end)

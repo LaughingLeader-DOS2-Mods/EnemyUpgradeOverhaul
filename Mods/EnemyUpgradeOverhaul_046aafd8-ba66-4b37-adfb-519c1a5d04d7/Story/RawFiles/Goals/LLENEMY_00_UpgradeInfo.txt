@@ -27,8 +27,15 @@ AND
 GetUUID(_Char, _UUID)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "SetChallengePointsTag", _UUID);
+
+IF
+TimerFinished("Timers_LLENEMY_SyncHighestLoremaster")
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "SetHighestPartyLoremaster");
 */
 //END_REGION
+
+
 EXITSECTION
 
 ENDEXITSECTION
