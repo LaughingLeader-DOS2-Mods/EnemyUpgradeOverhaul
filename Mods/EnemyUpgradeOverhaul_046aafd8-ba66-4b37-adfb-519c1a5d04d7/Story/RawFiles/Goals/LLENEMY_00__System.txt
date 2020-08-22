@@ -42,6 +42,8 @@ DB_LLENEMY_IgnoredDuplicantStatuses("NULL");
 DB_LLENEMY_IgnoredDuplicantStatuses("LLENEMY_UPGRADE_INFO");
 DB_LLENEMY_IgnoredDuplicantStatuses("LLENEMY_FAKE_DYING");
 DB_LLENEMY_IgnoredDuplicantStatuses("LLENEMY_SKILL_MASS_SHACKLES");
+DB_LLENEMY_IgnoredDuplicantStatuses("LLENEMY_TALENT_RESISTDEAD");
+DB_LLENEMY_IgnoredDuplicantStatuses("LLENEMY_TALENT_RESISTDEAD2");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("BLIND");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("CHARMED");
 DB_LLENEMY_IgnoredDuplicantStatusTypes("DAMAGE_ON_MOVE");

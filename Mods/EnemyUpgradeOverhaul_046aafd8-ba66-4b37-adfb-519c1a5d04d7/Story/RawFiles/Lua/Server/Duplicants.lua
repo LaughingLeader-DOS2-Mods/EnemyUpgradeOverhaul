@@ -154,8 +154,26 @@ local function StatusHasAura(status)
 	return auraRadius ~= nil and auraRadius > 0
 end
 
+local IgnoredDuplicantStatuses = {
+	LLENEMY_TALENT_RESISTDEAD = true,
+	LLENEMY_TALENT_RESISTDEAD2 = true,
+}
+
+local function IgnoreStatus(status)
+	if LeaderLib.Data.EngineStatus[status] == true then
+		return true
+	end
+	if IgnoredDuplicantStatuses[status] == true then
+		return true
+	end
+	if string.find(status, "LLENEMY_DUPE") or string.find(status, "QUEST") then
+		return true
+	end
+	return false
+end
+
 function Duplication_CopyStatus(source,dupe,status,handlestr)
-	if not StatusHasAura(status) and HasActiveStatus(dupe, status) == 0 then
+	if not StatusHasAura(status) and not IgnoreStatus(status) and HasActiveStatus(dupe, status) == 0 then
 		local handle = math.tointeger(handlestr)
 		local duration = NRD_StatusGetReal(source, handle, "CurrentLifeTime")
 		local statusSourceHandle = NRD_StatusGetGuidString(source, handle, "StatusSourceHandle")
