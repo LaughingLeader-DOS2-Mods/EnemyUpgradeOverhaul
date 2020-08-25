@@ -126,3 +126,55 @@ Ext.RegisterConsoleCommand("euo_ringtest", function(command)
 	CharacterAddAbilityPoint(host, 2)
 	CharacterAddSkill(host, "Rain_Water", 0)
 end)
+
+Ext.RegisterConsoleCommand("enemytest1", function(cmd)
+	print("[enemytest1] Spawning enemy")
+	local status,err = xpcall(function()
+		local host = CharacterGetHostCharacter()
+		local x,y,z = GetPosition(host)
+		local tx,ty,tz = FindValidPosition(x,y,z, 12.0, host)
+		local template = GetTemplate(host)
+		local enemy = TemporaryCharacterCreateAtPosition(tx,ty,tz, template, 0)
+		CharacterAddSkill(enemy, "Projectile_EnemyFireball", 0)
+		CharacterAddSkill(enemy, "Projectile_EnemyFlamingDaggers", 0)
+		CharacterAddSkill(enemy, "Projectile_EnemyPyroclasticRock", 0)
+		CharacterAddSkill(enemy, "Projectile_EnemyLightningBolt", 0)
+		CharacterAddSkill(enemy, "Target_FirstAidEnemy", 0)
+		CharacterAddSkill(enemy, "Target_EnemyElementalArrowheads", 0)
+		CharacterAddSkill(enemy, "Target_EnemyMosquitoSwarm", 0)
+		CharacterAddSkill(enemy, "Target_EnemyDecayingTouch", 0)
+		CharacterAddSkill(enemy, "Target_EnemyFortify", 0)
+		CharacterAddSkill(enemy, "Target_EnemyFrostyShell", 0)
+		CharacterAddSkill(enemy, "Target_EnemyRestoration", 0)
+		CharacterAddSkill(enemy, "Target_EnemyHaste", 0)
+		CharacterAddSkill(enemy, "Target_EnemyTentacleLash", 0)
+		CharacterAddSkill(enemy, "Shout_EnemyBullHorns", 0)
+		SetFaction(enemy, "Evil NPC")
+	end, debug.traceback)
+	if not status then
+		print(err)
+	end
+end)
+
+local presets = {
+	"Knight_Act2",
+	"Rogue_Act2",
+	"Wizard_Act2",
+	"Battlemage_Act2",
+	"Witch_Act2",
+	"Enchanter_Act2",
+}
+
+Ext.RegisterConsoleCommand("enemytest2", function(cmd)
+	local host = CharacterGetHostCharacter()
+	local x,y,z = GetPosition(host)
+	local tx,ty,tz = FindValidPosition(x,y,z, 20.0, host)
+	local template = GetTemplate(host)
+	local enemy = TemporaryCharacterCreateAtPosition(tx or x,ty or y,tz or z, template, 0)
+	SetFaction(enemy, "Evil NPC")
+
+	local preset = LeaderLib.Common.GetRandomTableEntry(presets)
+	CharacterApplyPreset(enemy, preset)
+
+	AddBonusSkills(enemy, "25", "5")
+end)
