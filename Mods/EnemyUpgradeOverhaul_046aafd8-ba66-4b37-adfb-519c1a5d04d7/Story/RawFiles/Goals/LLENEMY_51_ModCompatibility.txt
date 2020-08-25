@@ -1,0 +1,19 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+//REGION FULL_LOOT
+QRY
+LLFULOOT_QRY_SkipLootSetup((CHARACTERGUID)_Char)
+AND
+HasActiveStatus(_Char, "LLENEMY_TALENT_RESISTDEAD", _a)
+AND
+HasActiveStatus(_Char, "LLENEMY_TALENT_RESISTDEAD2", _b)
+AND
+IntegerMax(_a, _b, 1)
+THEN
+DB_NOOP(1);
+//END_REGION
+EXITSECTION
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
