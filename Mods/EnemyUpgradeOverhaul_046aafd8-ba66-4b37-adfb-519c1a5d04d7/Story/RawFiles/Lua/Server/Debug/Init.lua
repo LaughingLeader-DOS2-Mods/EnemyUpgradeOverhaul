@@ -88,7 +88,7 @@ function InitDebugLevel()
 	CharacterAddAbility(host, "Loremaster", 10)
 	CharacterAddAttribute(host, "Memory", 20)
 	--CharacterTransformAppearanceToWithEquipmentSet(host, host, "ArenaRogue", 0)
-	for k,skill in pairs(Ext.GetSkillSet("ArenaRogue")) do
+	for k,skill in pairs(Ext.GetSkillSet("ArenaRogue").Skills) do
 		CharacterAddSkill(host, skill, 0)
 	end
 	
