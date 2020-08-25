@@ -64,6 +64,14 @@ local function IgnoreSkill_QRY(skill)
 end
 Ext.NewQuery(IgnoreSkill_QRY, "LLENEMY_Ext_QRY_IgnoreSkill", "[in](STRING)_Skill, [out](INTEGER)_Ignored")
 
+local function TotalSkills_QRY(uuid)
+	local char = Ext.GetCharacter(uuid)
+	if char ~= nil then
+		return #char:GetSkills()
+	end
+end
+Ext.NewQuery(TotalSkills_QRY, "LLENEMY_Ext_QRY_GetTotalSkills", "[in](CHARACTERGUID)_Character, [out](INTEGER)_TotalSkills")
+
 local AIFLAG_CANNOT_USE = 140689826905584
 
 local function LLENEMY_ParentSkillIsInvalid(skill)
@@ -256,19 +264,24 @@ local function GetPreferredSkillGroup(ability,requirement,lastgroup)
 			local rantable = LeaderLib.Common.GetRandomTableEntry(EnemySkills)
 			if rantable ~= nil then
 				local ranskill = LeaderLib.Common.GetRandomTableEntry(rantable.skills)
-				if ranskill.requirement == "None" then
-					return rantable
-				end
-				if type(requirement) == "string" and ranskill.requirement == requirement then
-					--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua:GetPreferredSkillGroup] ---- Matched skill (" .. tostring(ranskill.id) .. ") to requirement ("..requirement..") for group ("..rantable.id..")")
-					return rantable
-				elseif type(requirement) == "table" then
-					for k,v in pairs(requirement) do
-						if v == ranskill.requirement then
-							--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua:GetPreferredSkillGroup] ---- Matched skill (" .. tostring(ranskill.id) .. ") to requirement ("..v..") for group ("..rantable.id..")")
-							return rantable
+				if ranskill ~= nil then
+					if ranskill.requirement == "None" then
+						return rantable
+					end
+					if type(requirement) == "string" and ranskill.requirement == requirement then
+						--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua:GetPreferredSkillGroup] ---- Matched skill (" .. tostring(ranskill.id) .. ") to requirement ("..requirement..") for group ("..rantable.id..")")
+						return rantable
+					elseif type(requirement) == "table" then
+						for k,v in pairs(requirement) do
+							if v == ranskill.requirement then
+								--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua:GetPreferredSkillGroup] ---- Matched skill (" .. tostring(ranskill.id) .. ") to requirement ("..v..") for group ("..rantable.id..")")
+								return rantable
+							end
 						end
 					end
+				else
+					print("Failed to get random skill:")
+					print(Ext.JsonStringify(rantable))
 				end
 			end
 			attempts = attempts + 1

@@ -53,7 +53,7 @@ THEN
 LLENEMY_Upgrades_AddStatus("BonusSkills", "Source1", "LLENEMY_BONUSSKILLS_SOURCE", 998, 2);
 //END_REGION
 
-//REGION ROLLING
+//REGION BLOCKING_REDIRECTING
 // [BEGIN_NO_OSITOOLS]
 PROC
 LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
@@ -73,8 +73,39 @@ PROC
 LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
 AND
 NOT DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type)
+AND
+LLENEMY_Ext_QRY_GetTotalSkills(_Enemy, _Total)
+AND
+_Total >= 10
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type);
+
+PROC
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type)
+AND
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "BonusSkills", _Type)
 THEN
 SetStoryEvent(_Enemy, "LeaderLog_Commands_SetSkillRequirement");
+
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Enemy,  "BonusSkills", (STRING)_Type, (STRING)_Upgrade, (REAL)_Duration)
+AND
+_Type != "Normal"
+AND
+LLENEMY_Ext_QRY_GetTotalSkills(_Enemy, _Total)
+AND
+_Total >= 5
+THEN
+LLENEMY_Upgrades_RedirectUpgradeToGroupType(_Enemy, "BonusSkills", _Type, _Upgrade, "Buffs", "Elite");
+
+PROC
+LLENEMY_Upgrades_CanApplyUpgrade((CHARACTERGUID)_Enemy,  "BonusSkills", "Normal", (STRING)_Upgrade, (REAL)_Duration)
+AND
+LLENEMY_Ext_QRY_GetTotalSkills(_Enemy, _Total)
+AND
+_Total >= 5
+THEN
+LLENEMY_Upgrades_RedirectUpgradeToGroupType(_Enemy, "BonusSkills", "Normal", _Upgrade, "Buffs", "Normal");
 
 // Prevent Magisters from getting source skills
 PROC
@@ -90,7 +121,9 @@ AND
 IsTagged(_Enemy, "MAGISTER", 1)
 THEN
 LLENEMY_Upgrades_RedirectUpgrade(_Enemy, _Group, _Type, "LLENEMY_BONUSSKILLS_SET_SOURCE_ELITE", "LLENEMY_BONUSSKILLS_SET_ELITE");
+//END_REGION
 
+//REGION ROLLING
 /* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Upgrades_ApplyUpgrade((CHARACTERGUID)_Enemy, "BonusSkills", (STRING)_Type, (STRING)_Status, (REAL)_Duration, (INTEGER)_CP)
