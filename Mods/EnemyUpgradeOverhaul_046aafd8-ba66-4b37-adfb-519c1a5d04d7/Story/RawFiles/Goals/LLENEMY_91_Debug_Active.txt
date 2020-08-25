@@ -161,13 +161,6 @@ THEN
 LeaderLog_Log("TRACE", "[LLENEMY:Rewards:Debug] Enemy [",_Name,"] died. Challenge Points [",_PointsStr,"].");
 //END_REGION
 
-/* [OSITOOLS_ONLY]
-IF
-StoryEvent(_, "LeaderLib_Initialized")
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "InitDebugLevel");
-*/
-
 IF
 GameStarted(_,1)
 THEN
