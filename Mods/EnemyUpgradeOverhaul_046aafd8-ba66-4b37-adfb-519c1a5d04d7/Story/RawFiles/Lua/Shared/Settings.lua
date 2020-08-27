@@ -17,6 +17,7 @@ settings.Global:AddFlags({
 	"LLENEMY_ImmunityUpgradesDisabled",
 	"LLENEMY_TalentUpgradesDisabled",
 	"LLENEMY_WorldUpgradesEnabled",
+	"LLENEMY_SummonerUpgradesDisabled",
 })
 settings.Global:AddVariable("LLENEMY_Scaling_LevelModifier", 0)
 settings.Global:AddVariable("Hardmode_MinBonusRolls", 1)

@@ -5,7 +5,7 @@ PersistentVars = {
 }
 
 Ext.Require("Server/UpgradeInfo.lua")
-local bonusSkillsScript = Ext.Require("Server/BonusSkills.lua")
+Ext.Require("Server/BonusSkills.lua")
 Ext.Require("Server/GameMechanics.lua")
 Ext.Require("Server/Duplicants.lua")
 Ext.Require("Server/ItemMechanics.lua")
@@ -45,7 +45,7 @@ local function LLENEMY_Server_SessionLoaded()
 		-- Super damage
 		IgnoredSkills["ProjectileStrike_Enemy_Xorn_Comdor_Smash"] = true
 	end
-	bonusSkillsScript.Init()
+	BuildEnemySkills()
 
 	-- Defaults
 	Settings.Global.Variables.Hardmode_MinBonusRolls.Value = math.tointeger(Ext.ExtraData["LLENEMY_Hardmode_DefaultBonusRolls_Min"] or 1)

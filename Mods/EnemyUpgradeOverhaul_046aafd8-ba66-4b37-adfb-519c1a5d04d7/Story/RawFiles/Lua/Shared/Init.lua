@@ -13,6 +13,8 @@ IgnoredSourceSkills = {}
 --- Enemy skills used when granting enemies bonus skills.
 ---@type SkillGroup[]
 EnemySkills = {}
+---@type table<string, SkillEntry>
+EnemySummonSkills = {}
 StatusDescriptionParams = {}
 SINGLEPLAYER = false
 HighestLoremaster = 0

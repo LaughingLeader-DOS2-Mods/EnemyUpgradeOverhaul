@@ -40,10 +40,29 @@ local function GetSkillGroup(self, ability)
 	return nil
 end
 
+local function IsSummmonSkill(skill)
+	if Ext.StatGetAttribute(skill, "SkillType") == "Summon" then
+		return true
+	else
+		---@type StatProperty[]
+		local props = Ext.StatGetAttribute(skill, "SkillProperties")
+		if props ~= nil and #props > 0 then
+			for i,v in pairs(props) do
+				if v.Type == "Summon" then
+					return true
+				end
+			end
+		end
+	end
+end
+
 function IgnoreSkill(skill)
 	if IgnoredSkills[skill] == false then return false end
 	if IgnoredSkills[skill] == true then return true end
 	if string.sub(skill,1,1) == "_" then
+		return true
+	end
+	if IsSummmonSkill(skill) then
 		return true
 	end
 	local parent = Ext.StatGetAttribute(skill, "Using")
@@ -96,7 +115,7 @@ local function HasTagRequirement(requirementsTable)
 	return false
 end
 
-local function BuildEnemySkills()
+function BuildEnemySkills()
 	EnemySkills = {
 		SkillGroup:Create("None", "None"),
 		SkillGroup:Create("WarriorLore", "Warrior"),
@@ -134,11 +153,13 @@ local function BuildEnemySkills()
 						local sp = Ext.StatGetAttribute(skill, "Magic Cost")
 						if sp == nil then sp = 0 end
 						local tier = Ext.StatGetAttribute(skill, "Tier")
-						local skillgroup = GetSkillGroup(EnemySkills, ability)
-						if skillgroup ~= nil then
-							skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
-							--LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua] Added enemy skill '" .. tostring(skill) .. "' to group (".. skillgroup.ability .."). Requirement(".. tostring(requirement) ..") SP(".. tostring(sp) ..")")
-							--LeaderLib.PrintDebug(tostring(skill))
+						if IsSummmonSkill(skill) then
+							EnemySummonSkills[skill] = SkillEntry:Create(skill, requirement, sp, tier)
+						else
+							local skillgroup = GetSkillGroup(EnemySkills, ability)
+							if skillgroup ~= nil then
+								skillgroup:Add(SkillEntry:Create(skill, requirement, sp, tier))
+							end
 						end
 					else
 						LeaderLib.PrintDebug("[LLENEMY_BonusSkills.lua] Skill '" .. tostring(skill) .. "' is invalid? pcall (".. tostring(b) ..") invalidSkill(".. tostring(invalidSkill)..")")
@@ -335,6 +356,14 @@ function AddBonusSkills(enemy,remainingstr,source_skills_remainingstr)
 	end
 end
 
-return {
-	Init = BuildEnemySkills
-}
+function AddSummonSkill(enemy, amountStr)
+	local skills = {}
+	for skill,v in pairs(EnemySummonSkills) do
+		table.insert(skills, skill)
+	end
+	skills = Common.ShuffleTable(skills)
+	local addSkill = Common.GetRandomTableEntry(skills)
+	if not StringHelpers.IsNullOrEmpty(addSkill) then
+		CharacterAddSkill(enemy, addSkill, 0)
+	end
+end
