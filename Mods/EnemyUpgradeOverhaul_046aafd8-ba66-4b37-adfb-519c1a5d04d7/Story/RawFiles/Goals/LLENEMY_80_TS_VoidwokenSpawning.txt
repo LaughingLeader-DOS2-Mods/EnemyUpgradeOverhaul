@@ -22,7 +22,7 @@ AND
 DB_LLENEMY_TrySummonVoidwoken_Temp_Caster(_UUID)
 THEN
 NOT DB_LLENEMY_TrySummonVoidwoken_Temp_Caster(_UUID);
-NRD_ModCall("EnemyUpgradeOverhaul", _UUID);
+NRD_ModCall("EnemyUpgradeOverhaul", "SpawnVoidwoken", _UUID);
 
 // Source accumulation degrades over time.
 // By default, the in-game hour speed is 1 hour = 5 minutes of real time.
