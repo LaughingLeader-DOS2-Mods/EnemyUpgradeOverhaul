@@ -85,6 +85,8 @@ UpgradeData = {
 		LLENEMY_CLASS_HYDROSHOCK = UpgradeInfoData:Create(TranslatedString:Create("h4b7423d8g2abag4800g8f4eg32dcda21a98d","Shockspiker"), "#7D71D9"),
 		LLENEMY_CLASS_CONTAMINATOR = UpgradeInfoData:Create(TranslatedString:Create("h4b7423d8g2abag4800g8f4eg32dcda21a98d","Contaminator"), "#65C900"),
 		LLENEMY_CLASS_MEDIC = UpgradeInfoData:Create(TranslatedString:Create("h088dd9a8gef75g467agbf95g8c20353ac773","Field Medic"), "#65C933"),
+		LLENEMY_CLASS_TOTEMANCER = UpgradeInfoData:Create(TranslatedString:Create("hcd5648efg6d58g48a2gb9f5gf6fdcaaa07b1","Totemancer"), "#7F25D4"),
+		LLENEMY_CLASS_INCARNATEKING = UpgradeInfoData:Create(TranslatedString:Create("h7f1bd517g489fg4d87g91b7g9ded2561a976","Incarnate King"), "#7F25D4"),
 		-- Hidden vanilla statuses
 		LLENEMY_HERBMIX_COURAGE = UpgradeInfoData:Create(TranslatedString:Create("h503bd9fag7526g41abgbe28g612e3bffe6a1","Courage"), "#AAF0FF", 1),
 		LLENEMY_HERBMIX_FEROCITY = UpgradeInfoData:Create(TranslatedString:Create("hefe488c0g2e40g4f25gb312g21899f4bbd90","Ferocity"), "#FF3382"),

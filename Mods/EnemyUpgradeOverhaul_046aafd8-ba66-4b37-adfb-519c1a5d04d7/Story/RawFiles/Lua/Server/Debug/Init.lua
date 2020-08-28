@@ -94,7 +94,6 @@ function InitDebugLevel()
 	
 	CharacterRemoveSkill(host, "Projectile_Chloroform")
 	CharacterAddSkill(host, "Projectile_Chloroform", 0)
-	CharacterAddSkill(host, "Projectile_LLENEMY_Helaene_Mirage_ChaoticBarrage", 0)
 	CharacterAddSkill(host, "Target_EnemyFlurry", 0)
 	NRD_SkillBarSetSkill(host, 0, "Projectile_Chloroform")
 
@@ -196,8 +195,6 @@ local function LLENEMY_DebugInit()
 	local user = CharacterGetReservedUserID(host)
 	local profile = GetUserName(user)
 	if string.find(profile, "LaughingLeader") then
-		CharacterAddSkill(host, "Projectile_LLENEMY_Helaene_Mirage_ChaoticBarrage", 0)
-		NRD_SkillBarSetSkill(host, 6, "Projectile_LLENEMY_Helaene_Mirage_ChaoticBarrage")
 		if CharacterGetEquippedWeapon(host) == nil then
 			local inventory = Ext.GetCharacter(host):GetInventoryItems()
 			for k,v in pairs(inventory) do

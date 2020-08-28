@@ -555,6 +555,18 @@ THEN
 DB_LLENEMY_StatusLogic_Temp_DemonicHastedMoveCheck(_Char, _x, _y, _z);
 LeaderLib_Timers_StartObjectTimer(_Char, 750, "Timers_LLENEMY_DemonicHasted_CheckForMovement", "LLENEMY_DemonicHasted_CheckForMovement");
 //END_REGION
+
+/* [OSITOOLS_ONLY]
+IF
+CharacterStatusAttempt(_Summon, "LLENEMY_INF_SET_ELEMENT", _Owner)
+AND
+GetUUID(_Summon, _UUID)
+AND
+GetUUID(_Owner, _UUID2)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "SetIncarnateSurfaceBuff", _UUID, _UUID2);
+*/
+
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

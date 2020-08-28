@@ -11,6 +11,18 @@ LLENEMY_Upgrades_AddGroup("Class", "LLENEMY_ClassUpgradesUpgradesDisabled", "LLE
 LLENEMY_Upgrades_AddType("Class", "Default", 445, 528, 5);
 LLENEMY_Upgrades_AddType("Class", "Mods", 600, 900, 5);
 
+LLENEMY_Upgrades_AddGroup("SummoningClasses", "LLENEMY_SummoningClassUpgradesUpgradesDisabled", "LLENEMY_SummonerClassUpgradesRolled", "LLENEMY_SummonerClassUpgradesUpgradeAdded");
+
+PROC
+LLENEMY_Upgrades_RegisterAll(0)
+THEN
+LLENEMY_Upgrades_AddType("SummoningClasses", "Default", 120, 180, 6);
+
+PROC
+LLENEMY_Upgrades_RegisterAll(1)
+THEN
+LLENEMY_Upgrades_AddType("SummoningClasses", "Default", 1, 240, 6);
+
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Class", "Default", (INTEGER)_HardModeEnabled)
 THEN
@@ -18,6 +30,12 @@ LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_GEOPYRO", 100, 6);
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_HYDROSHOCK", 25, 7);
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_CONTAMINATOR", 100, 6);
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_MEDIC", 25, 8);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("SummoningClasses", "Default", (INTEGER)_HardModeEnabled)
+THEN
+LLENEMY_Upgrades_AddStatus("SummoningClasses", "Default", "LLENEMY_CLASS_TOTEMANCER", 100, 2);
+LLENEMY_Upgrades_AddStatus("SummoningClasses", "Default", "LLENEMY_CLASS_INCARNATEKING", 100, 4);
 //END_REGION
 
 //REGION MOD_REGISTRATION_EXAMPLE
