@@ -12,6 +12,7 @@ function ShadowItem_OnEquipped(char, item)
 end
 
 function ShadowItem_OnUnEquipped(char, item)
+	---@type TagBoost[]
 	local removedTags = {}
 	for tag,entry in pairs(ItemCorruption.TagBoosts) do
 		if not StringHelpers.IsNullOrEmpty(entry.Flag) and IsTagged(item, tag) == 1 then
@@ -23,7 +24,7 @@ function ShadowItem_OnUnEquipped(char, item)
 		local hasTaggedItem = false
 		for i,slot in LeaderLib.Data.VisibleEquipmentSlots:Get() do
 			local slotItem = CharacterGetEquippedItem(char, slot)
-			if slotItem ~= nil and IsTagged(item, entry.Tag) == 1 then
+			if slotItem ~= nil and IsTagged(slotItem, entry.Tag) == 1 then
 				hasTaggedItem = true
 				break
 			end
@@ -110,7 +111,8 @@ local function OnHit(target,source,damage,handle,skill)
 					CharacterStatusText(target, text)
 				end
 				skipHitCheck[target..source] = true
-				LeaderLib.StartOneshotTimer("Timers_LLENEMY_ResetSkipHitCheck_"..target..source, 50, function()
+				local timerName = string.format("Timers_LLENEMY_ResetSkipHitCheck_%s%s", target, source)
+				LeaderLib.StartOneshotTimer(timerName, 50, function()
 					skipHitCheck[target..source] = nil
 				end)
 			end
@@ -163,9 +165,18 @@ local function OnTurnEndedOrLeftCombat(object, combatId)
 	end
 end
 
-if Ext.Version() >= 50 then
-	Ext.RegisterOsirisListener("ObjectTurnEnded", 1, "after", function(object)
-		OnTurnEndedOrLeftCombat(object)
-	end)
-	Ext.RegisterOsirisListener("ObjectLeftCombat", 2, "after", OnTurnEndedOrLeftCombat)
-end
+Ext.RegisterOsirisListener("ObjectEnteredCombat", 2, "after", function(object, combatid)
+	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_SlipperyRogue_Enabled") == 1 then
+		ApplyStatus(object, "INVISIBLE", 6.0, 0, object)
+	end
+	if ObjectGetFlag(object, "LLENEMY_ShadowBonus_DefensiveStart_Enabled") == 1 then
+		ApplyStatus(object, "FORTIFIED", 12.0, 0, object)
+		ApplyStatus(object, "MAGIC_SHELL", 12.0, 0, object)
+	end
+end)
+
+Ext.RegisterOsirisListener("ObjectTurnEnded", 1, "after", function(object)
+	OnTurnEndedOrLeftCombat(object)
+end)
+
+Ext.RegisterOsirisListener("ObjectLeftCombat", 2, "after", OnTurnEndedOrLeftCombat)
