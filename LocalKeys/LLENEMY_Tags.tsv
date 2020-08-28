@@ -9,3 +9,7 @@ LLENEMY_ShadowBonus_CursedFire	<font color='#B823FF'>Cursed Fire</font>	h31a9398
 LLENEMY_ShadowBonus_CursedFire_Description	Damaging <font color='#FE6E27'>fire spells</font> have a chance to apply <font color='#B823CB'>Necrofire</font>. 	h11435de3g7c5fg4a04ga59fg3c0e3e0cc836
 LLENEMY_ShadowBonus_ShockingRain	<font color='#7D71D9'>Shocking Rain</font>	ha5b5dafeg1804g494dg92a2gcc7af36a3092
 LLENEMY_ShadowBonus_ShockingRain_Description	<font color='#4197E2'>[Key:Rain_Water_DisplayName]</font> creates a mild <font color='#7D71D9'>lightning storm</font> at the target location. 	h185353bfgd688g4ac3ga6f8gb7b57293b96f
+LLENEMY_ShadowBonus_SlipperyRogue	<font color='#639594'>Slippery Rogue</font>	h2e0d9032g35a0g454cga82age8e8bc9ee5a6
+LLENEMY_ShadowBonus_SlipperyRogue_Description	Start combat by going [Key:INVISIBLE_DisplayName].	hb5046330g2473g4d21g80ecgc49d05235e4e
+LLENEMY_ShadowBonus_DefensiveStart	<font color='#FCD203'>Defensive Start</font>	h37849b58g7693g4058g88e2g9c3e934eedca
+LLENEMY_ShadowBonus_DefensiveStart_Description	Start combat with [Key:FORTIFIED_DisplayName] and [Key:MAGIC_SHELL_DisplayName]. 	h4cbda363g10cfg4587g94c4gdc6e539d4397

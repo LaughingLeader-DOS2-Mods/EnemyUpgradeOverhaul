@@ -251,6 +251,8 @@ local function Init()
 			ItemBoost:Create({
 				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_CursedFire,
 				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_ShockingRain,
+				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_SlipperyRogue,
+				ItemCorruption.TagBoosts.LLENEMY_ShadowBonus_DefensiveStart,
 			},{Chance=6, SlotType="Ring", Limit=1, All=false}),
 			-- ItemBoost:Create({
 			-- 	StatBoost:Create("SourcePointsBoost",1,1),

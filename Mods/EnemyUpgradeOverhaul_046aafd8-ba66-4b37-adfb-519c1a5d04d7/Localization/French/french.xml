@@ -83,6 +83,7 @@
 	<content contentuid="h2a92d66eg220eg4196gb8dag81570a513978">Seeker</content>
 	<content contentuid="h2b3daf7egef57g4286g9247gf5c0b9752757">Character has a new bonus source skill.</content>
 	<content contentuid="h2b8ca96eg181cg4d13gaef5g84d2bb6f88fc">Talent: Unstable</content>
+	<content contentuid="h2e0d9032g35a0g454cga82age8e8bc9ee5a6">&lt;font color=&apos;#639594&apos;&gt;Slippery Rogue&lt;/font&gt;</content>
 	<content contentuid="h2e424a5ag2a45g4c6bg9ca3gd3302a0c31ed">[DEBUG] Enable Enemy Level Limit [&lt;b&gt;Recommended&lt;/b&gt;] - Enemy levels above 35 may crash the game, so enable the limit to prevent leveling above 35. (Enemy Level Limit Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
 	<content contentuid="h2e45720ag8842g4c73g917fg7e1d2044cb52">Character has a set of new bonus skills.</content>
 	<content contentuid="h2f3fff9cge409g42a9gb29fgff5fc6065221">Summon Chicken Armada</content>
@@ -96,6 +97,7 @@
 	<content contentuid="h358b00a4g6320g494fg9441g94add11507ba">Character has an elite set of new bonus skills.</content>
 	<content contentuid="h35f368f7g6d97g4adfgb26cgfcbf91e6a9fc">Character appears to be dead.</content>
 	<content contentuid="h369c8cf4g1083g4df3gbc79gac57bc3f6074">Enable Bonus Upgrades. Includes upgrade types Infusion and Elite Infusion. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
+	<content contentuid="h37849b58g7693g4058g88e2g9c3e934eedca">&lt;font color=&apos;#FCD203&apos;&gt;Defensive Start&lt;/font&gt;</content>
 	<content contentuid="h3784f369g657fg462dg8381g97d55c3229aa">Character is as quick as a demon.&lt;br&gt;&lt;font color=&apos;#CD1F1F&apos;&gt;With how fast this character can move, they&apos;re almost guaranteed to slip on ice.&lt;/font&gt;</content>
 	<content contentuid="h38491eddg4d2cg40adg96f3g33994e1a96d6">Character will revive once when killed, coming back with 30% health.</content>
 	<content contentuid="h387574fbg27c8g4eafg97bfg00d5ebd19c95">Circuitbreaker</content>
@@ -121,6 +123,7 @@
 	<content contentuid="h48b2c770g394eg43abg8e87g170941d31051">There&apos;s a reason no one plays this mode, and you&apos;re about to find out.</content>
 	<content contentuid="h4b7423d8g2abag4800g8f4eg32dcda21a98d">Shockspiker</content>
 	<content contentuid="h4c9f3466gccd0g48bfg9e37gc1c23bacb69a">Shadow Reflection</content>
+	<content contentuid="h4cbda363g10cfg4587g94c4gdc6e539d4397">Start combat with [Key:FORTIFIED_DisplayName] and [Key:MAGIC_SHELL_DisplayName]. </content>
 	<content contentuid="h4cf1c406gceb1g411fga0d9gc9832cc4d2f5">Talent: Greedy Vessel</content>
 	<content contentuid="h4d505354g26bdg4ae8gb91fgcb5451d31bea">Source-Hungry Voidwoken Beetle</content>
 	<content contentuid="h4f3e64ebg09c2g4a07gbf4cg446fda449ce9">Source-Hungry Voidwoken Troll</content>
@@ -280,6 +283,7 @@
 	<content contentuid="haec75225g4305g4fcdg8e61g0f9b4de56075">Talent: Elite Comeback Kid</content>
 	<content contentuid="hb03b0770g292ag4844g977dgf0e7534a1f5b">Damage Boost</content>
 	<content contentuid="hb3bee298g2eb6g461bgafb8ge07c9ecc8094">Vitality Boost</content>
+	<content contentuid="hb5046330g2473g4d21g80ecgc49d05235e4e">Start combat by going [Key:INVISIBLE_DisplayName]. </content>
 	<content contentuid="hb52d1ac1g7c4fg45a4g87d8g52056a5a2ba2">Talent: Indomitable</content>
 	<content contentuid="hb5ed98e3g8acbg404cgaab9gdf882ba463ce">&lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;*Stole &lt;/font&gt;&lt;font color=&apos;#C7A758&apos; size=&apos;26&apos;&gt;[1]&lt;/font&gt; &lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;Gold!*&lt;/font&gt;</content>
 	<content contentuid="hb7ee58faga3c6g41e0gad2age7b6783006dc">Source-Hungry Slippery Voidling</content>

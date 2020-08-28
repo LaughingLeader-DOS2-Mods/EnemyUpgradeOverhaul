@@ -22,7 +22,6 @@ local rarityColor = {
 ---@param tooltip TooltipData
 local function OnItemTooltip(item, tooltip)
 	--print(item.StatsId, item.RootTemplate, item.MyGuid, item:HasTag("LLENEMY_ShadowItem"))
-	--print(Ext.JsonStringify(tooltip.Data))
 	--Ext.PostMessageToServer("LLENEMY_Debug_PrintComboCategory", item.MyGuid)
 	--print(string.format("%s ComboCategory:\n%s", item.Stats.Name, Ext.JsonStringify(item.Stats.ComboCategory)))
 	if item ~= nil then
@@ -107,11 +106,11 @@ end
 
 local function FormatTagElements(tooltip_mc, group, ...)
 	group.iconId = 16
-	group.setupHeader()
+	--group.setupHeader()
 	for i=0,#group.list.content_array,1 do
 		local element = group.list.content_array[i]
 		if element ~= nil then
-			pcall(function()
+			local b,result = xpcall(function()
 				-- local icon = element.getChildAt(3) or element.getChildByName("tt_groupIcon")
 				-- if icon ~= nil then
 				-- 	icon.gotoAndStop(17)
@@ -135,11 +134,31 @@ local function FormatTagElements(tooltip_mc, group, ...)
 					element.warning_txt.htmlText = tagDesc
 					element.warning_txt.y = element.label_txt.y + element.label_txt.textHeight
 				end
-			end)
+			end, debug.traceback)
+			if not b then
+				print("[EUO:FormatTagElements] Error:")
+				print(result)
+			end
 		end
 	end
 	--tooltip_mc.resetBackground()
-	tooltip_mc.repositionElements()
+	--[[
+	CASEINSENSITIVE : uint = 1
+	  Specifies case-insensitive sorting for the Array class sorting methods.
+	DESCENDING : uint = 2
+	  Specifies descending sorting for the Array class sorting methods.
+	NUMERIC : uint = 16
+	  Specifies numeric (instead of character-string) sorting for the Array class sorting methods.
+	RETURNINDEXEDARRAY : uint = 8
+	  Specifies that a sort returns an array that consists of array indices.
+	UNIQUESORT : uint = 4
+	  Specifies the unique sorting requirement for the Array class sorting methods.
+	]]
+	--tooltip_mc.list.TOP_SPACING = 0
+	--tooltip_mc.list.m_SortOnFieldName = "label_txt"
+	--tooltip_mc.list.m_SortOnOptions = 1
+	--print(string.format("m_SortOnFieldName(%s) m_SortOnOptions(%s)", tooltip_mc.list.m_SortOnFieldName, tooltip_mc.list.m_SortOnOptions))
+	--tooltip_mc.repositionElements()
 end
 
 local function FormatTagTooltip(ui, tooltip_mc, ...)
