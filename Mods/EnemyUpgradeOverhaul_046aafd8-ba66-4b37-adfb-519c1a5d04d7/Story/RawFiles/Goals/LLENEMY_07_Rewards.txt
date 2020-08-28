@@ -96,27 +96,79 @@ THEN
 DB_LLENEMY_Rewards_TreasureEffects(_Treasure, _Effect);
 //END_REGION
 
+//REGION GET_TREASURE_LEVEL
+QRY
+LLENEMY_Rewards_QRY_GetTreasureLevel((CHARACTERGUID)_Enemy, (INTEGER)_EnemyLevel, (INTEGER)_ScalingEnabled)
+AND
+DB_LLENEMY_Rewards_TreasureLevel(_Enemy, _Level)
+THEN
+NOT DB_LLENEMY_Rewards_TreasureLevel(_Enemy, _Level);
+
+QRY
+LLENEMY_Rewards_QRY_GetTreasureLevel((CHARACTERGUID)_Enemy, (INTEGER)_EnemyLevel, 1)
+AND
+LeaderLib_Helper_QRY_GetHighestPlayerLevel()
+AND
+DB_LeaderLib_Helper_Temp_HighestLevelPlayer(_Host, _Level)
+THEN
+DB_LLENEMY_Rewards_TreasureLevel(_Enemy, _Level);
+
+QRY
+LLENEMY_Rewards_QRY_GetTreasureLevel((CHARACTERGUID)_Enemy, (INTEGER)_EnemyLevel, 0)
+AND
+LeaderLib_Helper_QRY_GetHighestPlayerLevel()
+AND
+DB_LeaderLib_Helper_Temp_HighestLevelPlayer(_Host, _Level)
+AND
+_Level < _EnemyLevel
+THEN
+DB_LLENEMY_Rewards_TreasureLevel(_Enemy, _EnemyLevel);
+
+QRY
+LLENEMY_Rewards_QRY_GetTreasureLevel((CHARACTERGUID)_Enemy, (INTEGER)_EnemyLevel, 0)
+AND
+DB_LeaderLib_Helper_Temp_HighestLevelPlayer(_Host, _Level)
+AND
+_Level >= _EnemyLevel
+THEN
+DB_LLENEMY_Rewards_TreasureLevel(_Enemy, _Level);
+//END_REGION
+
 //REGION GENERATE
 PROC
-LLENEMY_Rewards_GenerateTreasure((GUIDSTRING)_SendTo, (STRING)_Treasure)
+LLENEMY_Rewards_GenerateTreasure((CHARACTERGUID)_SendTo, (STRING)_Treasure)
 THEN
 LLENEMY_Rewards_GenerateTreasure(_SendTo, _Treasure, 1);
 
 PROC
-LLENEMY_Rewards_GenerateTreasure((GUIDSTRING)_SendTo, (STRING)_Treasure, 0)
+LLENEMY_Rewards_GenerateTreasure((CHARACTERGUID)_SendTo, (STRING)_Treasure, 0)
 AND
-CharacterGetHostCharacter(_Host)
+GlobalGetFlag("LLENEMY_EnemyLevelingEnabled", _ScalingEnabled)
+AND
+CharacterGetLevel(_SendTo, _Level)
+AND
+LLENEMY_Rewards_QRY_GetTreasureLevel(_SendTo, _Level, _ScalingEnabled)
+AND
+DB_LLENEMY_Rewards_TreasureLevel(_SendTo, _TreasureLevel)
 THEN
+NOT DB_LLENEMY_Rewards_TreasureLevel(_SendTo, _TreasureLevel);
 //CharacterGiveReward(_Char, _Treasure, 0);
-GenerateTreasure(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _Treasure, -1, _Host);
+GenerateTreasure(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _Treasure, _TreasureLevel, _SendTo);
 MoveAllItemsTo(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _SendTo);
 
 PROC
-LLENEMY_Rewards_GenerateTreasure((GUIDSTRING)_SendTo, (STRING)_Treasure, 1)
+LLENEMY_Rewards_GenerateTreasure((CHARACTERGUID)_SendTo, (STRING)_Treasure, 1)
 AND
-CharacterGetHostCharacter(_Host)
+GlobalGetFlag("LLENEMY_EnemyLevelingEnabled", _ScalingEnabled)
+AND
+CharacterGetLevel(_SendTo, _Level)
+AND
+LLENEMY_Rewards_QRY_GetTreasureLevel(_SendTo, _Level, _ScalingEnabled)
+AND
+DB_LLENEMY_Rewards_TreasureLevel(_SendTo, _TreasureLevel)
 THEN
-GenerateTreasure(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _Treasure, -1, _Host);
+NOT DB_LLENEMY_Rewards_TreasureLevel(_SendTo, _TreasureLevel);
+GenerateTreasure(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _Treasure, _TreasureLevel, _SendTo);
 ContainerIdentifyAll(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9);
 MoveAllItemsTo(S_LLENEMY_LootGeneratorChest_76086dd5-f951-4ba3-a319-c204108a94c9, _SendTo);
 //END_REGION
@@ -486,13 +538,26 @@ LLENEMY_Rewards_SpawnShadowOrb((CHARACTERGUID)_Dupe)
 AND
 DB_LLENEMY_Duplication_Temp_ShadowOrbs(_Dupe, _Container)
 AND
+GlobalGetFlag("LLENEMY_EnemyLevelingEnabled", _ScalingEnabled)
+AND
 CharacterGetLevel(_Dupe, _Level)
+AND
+LLENEMY_Rewards_QRY_GetTreasureLevel(_Dupe, _Level, _ScalingEnabled)
+AND
+DB_LLENEMY_Rewards_TreasureLevel(_Dupe, _TreasureLevel)
 AND
 DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure)
 THEN
 NOT DB_LLENEMY_Rewards_Temp_TreasureToGenerate(_Dupe, _Treasure);
-GenerateTreasure(_Container, _Treasure, _Level, _Dupe);
+GenerateTreasure(_Container, _Treasure, _TreasureLevel, _Dupe);
 ContainerIdentifyAll(_Container);
+
+PROC
+LLENEMY_Rewards_SpawnShadowOrb((CHARACTERGUID)_Dupe)
+AND
+DB_LLENEMY_Rewards_TreasureLevel(_Dupe, _TreasureLevel)
+THEN
+NOT DB_LLENEMY_Rewards_TreasureLevel(_Dupe, _TreasureLevel);
 
 PROC
 LLENEMY_Rewards_SpawnShadowOrb((CHARACTERGUID)_Dupe)

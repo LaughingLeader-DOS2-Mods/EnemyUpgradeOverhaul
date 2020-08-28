@@ -244,10 +244,17 @@ AND
 _TotalHits > 0
 AND
 IntegerSubtract(_TotalHits, 1, _Next)
+AND
+GlobalGetFlag("LLENEMY_EnemyLevelingEnabled", _ScalingEnabled)
+AND
+LLENEMY_Rewards_QRY_GetTreasureLevel(_Goblin, _Level, _ScalingEnabled)
+AND
+DB_LLENEMY_Rewards_TreasureLevel(_Goblin, _TreasureLevel)
 THEN
+NOT DB_LLENEMY_Rewards_TreasureLevel(_Goblin, _TreasureLevel);
 NOT DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _TotalHits);
 DB_LLENEMY_Rewards_Temp_DefeatedGoblin(_Goblin, _Bag, _Level, _Next);
-GenerateTreasure(_Bag, "LLENEMY_TreasureGoblin_A", _Level, _Goblin);
+GenerateTreasure(_Bag, "LLENEMY_TreasureGoblin_A", _TreasureLevel, _Goblin);
 LeaderLib_Timers_StartObjectTimer(_Goblin, 25, "Timers_LLENEMY_TreasureGoblins_SpawnDefeatedLoot", "LLENEMY_TreasureGoblins_SpawnDefeatedLoot");
 
 IF
