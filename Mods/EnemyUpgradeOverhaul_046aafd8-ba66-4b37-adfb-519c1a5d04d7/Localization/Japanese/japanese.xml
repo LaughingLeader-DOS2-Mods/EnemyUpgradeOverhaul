@@ -39,7 +39,7 @@
 	<content contentuid="h106bb9f5ge8a1g4019g9d9dgebb27474f992">Elite Heatsapper</content>
 	<content contentuid="h10a8c3f8g6fedg4baag91f7g5b421eaa770c">Rage (V)</content>
 	<content contentuid="h113eaf38g98cfg4905gbdcbge7974c230658">Source-Hungry Void Flayer</content>
-	<content contentuid="h11435de3g7c5fg4a04ga59fg3c0e3e0cc836">Damaging &lt;font color=&apos;#FE6E27&apos;&gt;fire spells&lt;/font&gt; have a chance to apply &lt;font color=&apos;#B823CB&apos;&gt;Necrofire&lt;/font&gt;. </content>
+	<content contentuid="h11435de3g7c5fg4a04ga59fg3c0e3e0cc836">Damaging &lt;font color=&apos;#FE6E27&apos;&gt;fire spells&lt;/font&gt; have a [ExtraData:LLENEMY_ShadowBonus_CursedFire_Chance]% chance to apply &lt;font color=&apos;#B823CB&apos;&gt;Necrofire&lt;/font&gt;. </content>
 	<content contentuid="h127721f1g27f1g4ffag9b50gf2720cedb009">Armor Boost</content>
 	<content contentuid="h12db0e65g1dceg4d56g8857gb018ab29f393">Talent:  Comeback Kid</content>
 	<content contentuid="h12f95fb9g81e2g430egba6eg7db9633652de">Character is empowered with random upgrades.</content>
@@ -283,7 +283,7 @@
 	<content contentuid="haec75225g4305g4fcdg8e61g0f9b4de56075">Talent: Elite Comeback Kid</content>
 	<content contentuid="hb03b0770g292ag4844g977dgf0e7534a1f5b">Damage Boost</content>
 	<content contentuid="hb3bee298g2eb6g461bgafb8ge07c9ecc8094">Vitality Boost</content>
-	<content contentuid="hb5046330g2473g4d21g80ecgc49d05235e4e">Start combat by going [Key:INVISIBLE_DisplayName]. </content>
+	<content contentuid="hb5046330g2473g4d21g80ecgc49d05235e4e">Start combat by going [Key:INVISIBLE_DisplayName].</content>
 	<content contentuid="hb52d1ac1g7c4fg45a4g87d8g52056a5a2ba2">Talent: Indomitable</content>
 	<content contentuid="hb5ed98e3g8acbg404cgaab9gdf882ba463ce">&lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;*Stole &lt;/font&gt;&lt;font color=&apos;#C7A758&apos; size=&apos;26&apos;&gt;[1]&lt;/font&gt; &lt;font color=&apos;#33FF33&apos; size=&apos;23&apos;&gt;Gold!*&lt;/font&gt;</content>
 	<content contentuid="hb7ee58faga3c6g41e0gad2age7b6783006dc">Source-Hungry Slippery Voidling</content>
