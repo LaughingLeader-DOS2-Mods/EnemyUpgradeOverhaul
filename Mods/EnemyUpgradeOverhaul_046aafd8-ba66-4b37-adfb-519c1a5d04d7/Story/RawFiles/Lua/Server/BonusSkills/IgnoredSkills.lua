@@ -115,7 +115,7 @@ return {
 	Summon_EnemyTotem_Blood = true,
 	Summon_EnemyTotem_Fire_Witch = true,
 	Summon_EnemyTotem_Poison = true,
-	Summon_EnemyTotemFromSurface = false,
+	Summon_EnemyTotemFromSurface = true,
 	Summon_EnemyZombie_Blood = true,
 	Target_Debug_KillCommand = true,
 	Target_EnemyBless_Alexandar = true,

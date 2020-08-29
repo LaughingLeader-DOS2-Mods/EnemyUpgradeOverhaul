@@ -51,6 +51,27 @@ LLENEMY_Upgrades_Register_ModUpgrades(e4a5c8ca-7f04-23ab-8115-18161eb702bf, "Cla
 THEN
 LLENEMY_Upgrades_AddStatus("Class", "Mods", "MYMOD_EUO_UPGRADE_CLASS_SPECTRE", 75, 6);
 */
+//END_REGION
+
+//REGION INCARNATEKING
+/* [OSITOOLS_ONLY]
+IF
+CharacterStatusAttempt(_Summon, "LLENEMY_INF_SET_ELEMENT", _Owner)
+AND
+GetUUID(_Summon, _UUID)
+AND
+GetUUID(_Owner, _UUID2)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "SetIncarnateSurfaceBuff", _UUID, _UUID2);
+
+IF
+CharacterStatusApplied(_Enemy, "LLENEMY_CLASS_INCARNATEKING", _)
+AND
+GetUUID(_Enemy, _UUID)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "ModifySummoningAbility", _UUID);
+*/
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION

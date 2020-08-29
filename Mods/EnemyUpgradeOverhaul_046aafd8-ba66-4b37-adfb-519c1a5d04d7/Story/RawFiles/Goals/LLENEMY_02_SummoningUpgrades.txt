@@ -1,0 +1,57 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+KBSECTION
+//REGION SETTINGS
+PROC
+LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
+THEN
+LLENEMY_Upgrades_AddGroup("Summoning", "LLENEMY_SummoningUpgradesUpgradesDisabled", "LLENEMY_SummoningUpgradesRolled", "LLENEMY_SummoningUpgradesUpgradeAdded");
+
+LLENEMY_Upgrades_AddType("Summoning", "Passive", 556, 712, 2);
+
+PROC
+LLENEMY_Upgrades_RegisterAll(0)
+THEN
+LLENEMY_Upgrades_AddType("Summoning", "Class", 120, 180, 2);
+
+PROC
+LLENEMY_Upgrades_RegisterAll(1)
+THEN
+LLENEMY_Upgrades_AddType("Summoning", "Class", 1, 240, 2);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Class", (INTEGER)_HardModeEnabled)
+THEN
+LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_TOTEMANCER", 100, 2);
+LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_INCARNATEKING", 100, 4);
+
+PROC
+LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Passive", (INTEGER)_HardModeEnabled)
+THEN
+LLENEMY_Upgrades_AddStatus("Summoning", "Passive", "LLENEMY_SUMMON_AUTOMATON", 100, 2, 24.0);
+//END_REGION
+
+//REGION INCARNATEKING
+/* [OSITOOLS_ONLY]
+IF
+CharacterStatusAttempt(_Summon, "LLENEMY_INF_SET_ELEMENT", _Owner)
+AND
+GetUUID(_Summon, _UUID)
+AND
+GetUUID(_Owner, _UUID2)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "SetIncarnateSurfaceBuff", _UUID, _UUID2);
+
+IF
+CharacterStatusApplied(_Enemy, "LLENEMY_CLASS_INCARNATEKING", _)
+AND
+GetUUID(_Enemy, _UUID)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "ModifySummoningAbility", _UUID);
+*/
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"
