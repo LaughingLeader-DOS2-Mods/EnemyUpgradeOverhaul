@@ -151,7 +151,7 @@
 	<content contentuid="h5bf7f290gc323g4ad5g97ffgdcc13b20fb5c">Demonic Celerity</content>
 	<content contentuid="h5c8f2c50g5a43g4a6agac29ge06c1f5ad378">Elite Melter</content>
 	<content contentuid="h5c8f7ecbg1aecg45f9g8be1gde4a3e95d448">Seeker</content>
-	<content contentuid="h5ca4298dgb15dg4b4cgb7ceg13938b2d93ba">Character is empowered by madness.&lt;br&gt;&lt;font color=&apos;#BB00FF&apos;&gt;When their turn ends, otherwordly tentacles lash out upon, dealing [1] in a [ExtraData:LLENEMY_ShadowBonus_Madness_DamageRadius]m radius.&lt;/font&gt;</content>
+	<content contentuid="h5ca4298dgb15dg4b4cgb7ceg13938b2d93ba">Character is empowered by madness.&lt;br&gt;&lt;font color=&apos;#BB00FF&apos;&gt;When their turn ends, otherwordly tentacles lash out upon, dealing [SkillDamage:Projectile_LLENEMY_ShadowBonus_Madness_Damage] in a [ExtraData:LLENEMY_ShadowBonus_Madness_DamageRadius]m radius.&lt;/font&gt;</content>
 	<content contentuid="h5cee1628g461bg4ac8ga1e9ga90077d376e4">Shadoweaver</content>
 	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6">Upgrade Group Settings</content>
 	<content contentuid="h5ec49a5ag418ag4d15ga917g2a406406060f">Reflect 20% of melee damage as shadow damage</content>
