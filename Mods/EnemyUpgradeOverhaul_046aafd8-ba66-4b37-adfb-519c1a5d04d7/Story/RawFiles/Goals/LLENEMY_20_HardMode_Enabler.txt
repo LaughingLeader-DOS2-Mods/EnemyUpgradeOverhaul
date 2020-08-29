@@ -80,6 +80,12 @@ AND
 SysStatus("DOS2ModWrapper", _Status)
 THEN
 SysActivateGoal("LLENEMY_30_Origins_HardMode");
+
+IF
+GameStarted(_,_)
+THEN
+TimerCancel("Timers_LLENEMY_HardModeToggled");
+TimerLaunch("Timers_LLENEMY_HardModeToggled", 500);
 //END_REGION
 
 //REGION DISABLING
