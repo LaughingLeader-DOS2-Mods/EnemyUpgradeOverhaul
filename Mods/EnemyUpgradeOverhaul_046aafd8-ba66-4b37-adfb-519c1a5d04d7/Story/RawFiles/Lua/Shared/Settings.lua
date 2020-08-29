@@ -5,9 +5,10 @@ settings.Global:AddFlags({
 	"LLENEMY_Debug_LevelCapDisabled",
 	"LLENEMY_EnemyLevelingEnabled",
 	"LLENEMY_HardModeEnabled",
+	"LLENEMY_HardModeRollingDisabled",
 	"LLENEMY_RewardsDisabled",
 	"LLENEMY_VoidwokenSourceSpawningEnabled",
-	"LLENEMY_WorldUpgradesEnabled",
+	--"LLENEMY_WorldUpgradesEnabled",
 	"LLENEMY_AuraUpgradesDisabled",
 	"LLENEMY_BonusBuffUpgradesDisabled",
 	"LLENEMY_BonusSkillsUpgradesDisabled",
@@ -16,8 +17,7 @@ settings.Global:AddFlags({
 	"LLENEMY_DuplicationUpgradesDisabled",
 	"LLENEMY_ImmunityUpgradesDisabled",
 	"LLENEMY_TalentUpgradesDisabled",
-	"LLENEMY_WorldUpgradesEnabled",
-	"LLENEMY_SummonerUpgradesDisabled",
+	"LLENEMY_SummoningUpgradesDisabled",
 })
 settings.Global:AddVariable("LLENEMY_Scaling_LevelModifier", 0)
 settings.Global:AddVariable("Hardmode_MinBonusRolls", 1)

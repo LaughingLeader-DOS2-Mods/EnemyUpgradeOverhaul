@@ -6,7 +6,7 @@ KBSECTION
 PROC
 LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddGroup("Summoning", "LLENEMY_SummoningUpgradesUpgradesDisabled", "LLENEMY_SummoningUpgradesRolled", "LLENEMY_SummoningUpgradesUpgradeAdded");
+LLENEMY_Upgrades_AddGroup("Summoning", "LLENEMY_SummoningUpgradesDisabled", "LLENEMY_SummoningUpgradesRolled", "LLENEMY_SummoningUpgradesUpgradeAdded");
 
 LLENEMY_Upgrades_AddType("Summoning", "Passive", 556, 712, 2);
 
