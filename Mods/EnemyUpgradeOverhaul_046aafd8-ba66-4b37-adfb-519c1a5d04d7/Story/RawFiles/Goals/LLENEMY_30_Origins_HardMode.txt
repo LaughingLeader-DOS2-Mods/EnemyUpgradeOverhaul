@@ -15,7 +15,7 @@ DB_LLENEMY_HardMode_Origins_Scripts("TUT_Tutorial_A", "LLENEMY_31_Origins_HM_Tut
 DB_LLENEMY_HardMode_Origins_Scripts("FJ_FortJoy_Main", "LLENEMY_31_Origins_HM_FortJoy");
 
 PROC
-LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
 THEN
 LLENEMY_HardMode_Origins_InitScripts();
 //END_REGION

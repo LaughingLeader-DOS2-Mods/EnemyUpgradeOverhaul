@@ -27,6 +27,13 @@ LLENEMY_HardMode_SetupRecruiter("TUT_Tutorial_A");
 //NOT DB_TUT_TopDeckTentacles((CHARACTERGUID)CHARACTERGUID_S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6, (TRIGGERGUID)TRIGGERGUID_S_TUT_TopDeck_TentacleTarget1_1a80890f-b410-4ddf-a21e-f50f169b0cce);
 //END_REGION
 
+PROC
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
+AND
+_LastVersion < 537198595
+THEN
+LLENEMY_HardMode_SetupRecruiter("TUT_Tutorial_A");
+
 //REGION LEVEL_UP_TENTACLES 
 IF
 ObjectEnteredCombat(S_TUT_TopDeckVoidling10_bd0123ae-26fd-4dad-8326-b6ae9a3fc1c5, _CombatID)
