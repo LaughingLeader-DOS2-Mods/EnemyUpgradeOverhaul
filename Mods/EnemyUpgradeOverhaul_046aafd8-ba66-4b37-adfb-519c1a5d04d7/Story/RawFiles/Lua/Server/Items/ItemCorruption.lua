@@ -321,6 +321,16 @@ end
 
 ItemCorruption.SetRandomShadowName = SetRandomShadowName
 
+local AllRarities = {
+	"Common",
+	"Uncommon",
+	"Rare",
+	"Epic",
+	"Legendary",
+	"Divine",
+	"Unique",
+}
+
 local rarityValue = {
 	Common = 0,
 	Uncommon = 1,
@@ -374,7 +384,7 @@ local function AddRandomBoostsToItem(item,stat,statType,level,cloned)
 	end
 end
 
-local function GetClone(item,stat,statType)
+local function GetClone(item,stat,statType,forceRarity)
 	local baseStat,rarity,level,seed = NRD_ItemGetGenerationParams(item)
 	if level == nil then
 		level = NRD_ItemGetInt(item, "LevelOverride")
@@ -415,6 +425,13 @@ local function GetClone(item,stat,statType)
 	NRD_ItemCloneSetInt("StatsLevel", level)
 	NRD_ItemCloneSetInt("IsIdentified", 1)
 	--NRD_ItemCloneSetInt("GMFolding", 0)
+
+	if forceRarity == "Random" then
+		rarity = Common.GetRandomTableEntry(AllRarities)
+	elseif forceRarity ~= nil then
+		rarity = forceRarity
+	end
+
 	if rarity == nil or (rarityValue[rarity] < rarityValue["Epic"] and Ext.Random(0,100) <= 25) then
 		rarity = "Epic"
 	end
@@ -460,7 +477,7 @@ local corruptableTypes = {
 ---@param uuid string The item to corrupt.
 ---@param container string The item it's container, if any.
 ---@return string|nil The corrupted item.
-local function TryShadowCorruptItem(uuid, container)
+local function TryShadowCorruptItem(uuid, container, forceRarity)
 	if uuid ~= nil then
 		local item = Ext.GetItem(uuid)
 		local stat = item.StatsId
@@ -471,7 +488,7 @@ local function TryShadowCorruptItem(uuid, container)
 			if ignoredSlots[equippedSlot] ~= true and string.sub(stat, 1, 1) ~= "_" then -- Not equipped in a hidden slot, not an NPC item
 				if item.Slot > 13 then
 					if ItemCorruption.Boosts[statType] ~= nil then
-						local cloned = GetClone(uuid, stat, statType)
+						local cloned = GetClone(uuid, stat, statType, forceRarity)
 						NRD_ItemSetIdentified(cloned,1)
 
 						if container == nil and ItemIsInInventory(uuid) then
@@ -521,7 +538,7 @@ function ShadowCorruptItem(item)
 	return nil
 end
 
-function ShadowCorruptContainerItems(uuid)
+function ShadowCorruptContainerItems(uuid, forceRarity)
 	local min = math.floor(GameHelpers.GetExtraData("LLENEMY_ItemCorruption_MinItemsAffected", 1))
 	local max = math.ceil(GameHelpers.GetExtraData("LLENEMY_ItemCorruption_MaxItemsAffected", 3))
 
@@ -599,7 +616,7 @@ function ShadowCorruptContainerItems(uuid)
 				if corruptionLimit <= 0 then
 					break	
 				end
-				local b,result = xpcall(TryShadowCorruptItem, debug.traceback, v, uuid)
+				local b,result = xpcall(TryShadowCorruptItem, debug.traceback, v, uuid, forceRarity)
 				if b then
 					corruptionLimit = corruptionLimit - 1
 				else

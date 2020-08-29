@@ -12,7 +12,7 @@ local function ItemCorruptionTest(level,delay)
 	--GenerateTreasure(backpack, "ST_LLENEMY_JustGloves", level, host)
 	--GenerateTreasure(backpack, "ST_LLENEMY_ShadowTreasureWeaponsTest", level, host)
 	GenerateTreasure(backpack, "CheatHeavyArmor", level, host)
-	ShadowCorruptContainerItems(backpack)
+	ShadowCorruptContainerItems(backpack, "Random")
 	MoveAllItemsTo(backpack, host, 0, 0, 1)
 	ItemRemove(backpack)
 end
