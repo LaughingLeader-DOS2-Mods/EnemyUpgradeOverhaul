@@ -10,6 +10,9 @@ local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4c
 
 ---@param character EsvCharacter
 local function GetUpgradeInfoText(character)
+	if Ext.IsDeveloperMode() then
+		HighestLoremaster = 10
+	end
 	if HighestLoremaster == nil or HighestLoremaster == 0 then
 		pcall(function()
 			if LeaderLib.UI.ClientCharacter ~= nil then
