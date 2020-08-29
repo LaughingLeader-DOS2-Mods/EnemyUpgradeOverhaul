@@ -23,8 +23,8 @@ LLENEMY_Upgrades_AddType("Summoning", "Class", 1, 240, 2);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Class", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_TOTEMANCER", 100, 2);
-LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_INCARNATEKING", 100, 4);
+LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_TOTEMANCER", 699, 2);
+LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_INCARNATEKING", 200, 4);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Passive", (INTEGER)_HardModeEnabled)

@@ -11,18 +11,6 @@ LLENEMY_Upgrades_AddGroup("Class", "LLENEMY_ClassUpgradesUpgradesDisabled", "LLE
 LLENEMY_Upgrades_AddType("Class", "Default", 445, 528, 5);
 LLENEMY_Upgrades_AddType("Class", "Mods", 600, 900, 5);
 
-LLENEMY_Upgrades_AddGroup("SummoningClasses", "LLENEMY_SummoningClassUpgradesUpgradesDisabled", "LLENEMY_SummonerClassUpgradesRolled", "LLENEMY_SummonerClassUpgradesUpgradeAdded");
-
-PROC
-LLENEMY_Upgrades_RegisterAll(0)
-THEN
-LLENEMY_Upgrades_AddType("SummoningClasses", "Default", 120, 180, 6);
-
-PROC
-LLENEMY_Upgrades_RegisterAll(1)
-THEN
-LLENEMY_Upgrades_AddType("SummoningClasses", "Default", 1, 240, 6);
-
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Class", "Default", (INTEGER)_HardModeEnabled)
 THEN
@@ -30,12 +18,6 @@ LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_GEOPYRO", 100, 6);
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_HYDROSHOCK", 25, 7);
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_CONTAMINATOR", 100, 6);
 LLENEMY_Upgrades_AddStatus("Class", "Default", "LLENEMY_CLASS_MEDIC", 25, 8);
-
-PROC
-LLENEMY_Upgrades_Register_TypeUpgrades("SummoningClasses", "Default", (INTEGER)_HardModeEnabled)
-THEN
-LLENEMY_Upgrades_AddStatus("SummoningClasses", "Default", "LLENEMY_CLASS_TOTEMANCER", 100, 2);
-LLENEMY_Upgrades_AddStatus("SummoningClasses", "Default", "LLENEMY_CLASS_INCARNATEKING", 100, 4);
 //END_REGION
 
 //REGION MOD_REGISTRATION_EXAMPLE
@@ -50,26 +32,6 @@ PROC
 LLENEMY_Upgrades_Register_ModUpgrades(e4a5c8ca-7f04-23ab-8115-18161eb702bf, "Class", "Mods")
 THEN
 LLENEMY_Upgrades_AddStatus("Class", "Mods", "MYMOD_EUO_UPGRADE_CLASS_SPECTRE", 75, 6);
-*/
-//END_REGION
-
-//REGION INCARNATEKING
-/* [OSITOOLS_ONLY]
-IF
-CharacterStatusAttempt(_Summon, "LLENEMY_INF_SET_ELEMENT", _Owner)
-AND
-GetUUID(_Summon, _UUID)
-AND
-GetUUID(_Owner, _UUID2)
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "SetIncarnateSurfaceBuff", _UUID, _UUID2);
-
-IF
-CharacterStatusApplied(_Enemy, "LLENEMY_CLASS_INCARNATEKING", _)
-AND
-GetUUID(_Enemy, _UUID)
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "ModifySummoningAbility", _UUID);
 */
 //END_REGION
 EXITSECTION
