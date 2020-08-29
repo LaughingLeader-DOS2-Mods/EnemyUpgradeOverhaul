@@ -115,4 +115,10 @@ end
 Ext.RegisterListener("SessionLoaded", function()
 	LeaderLib.EnableFeature("ResistancePenetration")
 	LeaderLib.EnableFeature("BackstabCalculation")
+	
+	LeaderLib.EnableFeature("ApplyBonusWeaponStatuses")
+    LeaderLib.EnableFeature("ReplaceTooltipPlaceholders")
+	LeaderLib.EnableFeature("TooltipGrammarHelper")
+	LeaderLib.EnableFeature("FixChaosDamageDisplay")
+	LeaderLib.EnableFeature("StatusParamSkillDamage")
 end)
