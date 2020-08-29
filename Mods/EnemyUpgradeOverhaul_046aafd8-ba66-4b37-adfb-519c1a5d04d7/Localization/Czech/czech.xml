@@ -191,6 +191,7 @@
 	<content contentuid="h752158cdg06beg4034gaddeg66921ff01d83">Rage (IV)</content>
 	<content contentuid="h77532147gd01fg47efgb317gbf00813dbcb6">Grenade Enthusiast</content>
 	<content contentuid="h77bbc2b5gb387g4ba2g97c6gbbc058bbb5c6">Infused</content>
+	<content contentuid="h77c480f3g8276g47d3gad6dg0d02b187739d">Calling Reinforcements</content>
 	<content contentuid="h77e60cc9g0b40g40d9ga0e0g5aad6e789633">Automaton (Reinforcements)</content>
 	<content contentuid="h78190c63gaa74g4228gb184g7cc2e09afb27">Armor Boost</content>
 	<content contentuid="h785703b8g60c4g4264g8810gb50962fa237c">Source-Hungry Voidwoken Statue</content>
@@ -259,6 +260,7 @@
 	<content contentuid="h9bcf1767g7b81g4ae1gbf20ge19a6b4454ef">&lt;font color=&apos;#AA00FF&apos;&gt;Shadow Treasure&lt;/font&gt;</content>
 	<content contentuid="h9c5daca5g3786g435agb9feg0ad41260a1bc">Enable Rewards - When upgraded enemies die, there&apos;s a chance for bonus loot, depending on their total number of &quot;Challenge Points&quot;, which is determined by their upgrades. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled&lt;/font&gt;)</content>
 	<content contentuid="h9cf11b15g91d4g4d12gae38ga5a8f70272be">Elite Heatsapper</content>
+	<content contentuid="h9dbcfa86gbc12g474eg805bg72b4d3e381a3">Character is summoning reinforcements!</content>
 	<content contentuid="h9edeb358g11e7g4372g92e7g8a164695e1e4">Vitality Boost</content>
 	<content contentuid="h9f11e267gfe5bg41c6gad9ag7315b3f9e57b">&lt;font color=&apos;#e6bc53&apos;&gt;Treasure Goblin&apos;s Hoard&lt;/font&gt;</content>
 	<content contentuid="h9f5a8ee9gda2dg4e5bg96fcgb6c8c3f7cc50">Earthcracker</content>
@@ -311,6 +313,7 @@
 	<content contentuid="hbfafd8eeg3703g4b46g837eg2389c8302f35">Cooldown (Master Thief)</content>
 	<content contentuid="hc00cabb2g7deag47ebg8836gead9952cf706">A gravedigger&apos;s shovel, this multi-purpose tool not only digs graves, but prepares their cargo for burial.</content>
 	<content contentuid="hc0a53dd7g55f4g4c2cgae98g350ed1b9cbb9">Character will revive once when killed, coming back with full health.</content>
+	<content contentuid="hc2d0f477ge86eg40d3gbd0fg11cb72683430">Calling Reinforcements</content>
 	<content contentuid="hc2dfd3fcg7132g4e47g9a89g35e2089966df">Character is healed when standing in blood.</content>
 	<content contentuid="hc32985b1g2e5bg4864ga696gff59634aadf2">A blade said to be sharp enough to reap souls. While not a practical weapon, this scythe is deadly in the right hands.</content>
 	<content contentuid="hc3f8497bg97acg449ag910ag07b825f3b8bb">Firestarter</content>

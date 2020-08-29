@@ -127,3 +127,5 @@ LLENEMY_VOID_EMPOWERED_Description	Empowered by the Void, character has increase
 LLENEMY_VOID_EMPOWERED_DisplayName	Void Empowered	h398b5931gfa52g4a26gadb9gf94bbb7d35e2
 LLENEMY_SKILL_MASS_SHACKLES_DisplayName	Mass Shackler	h17c3aeabg026ag41e4g93a0gfd8da7534786
 LLENEMY_SHADOWBONUS_MADNESS_Description	Character is empowered by madness.<br><font color='#BB00FF'>When their turn ends, otherwordly tentacles lash out upon, dealing [SkillDamage:Projectile_LLENEMY_ShadowBonus_Madness_Damage] in a [ExtraData:LLENEMY_ShadowBonus_Madness_DamageRadius]m radius.</font>	h5ca4298dgb15dg4b4cgb7ceg13938b2d93ba
+LLENEMY_SUMMON_AUTOMATON_DisplayName	Calling Reinforcements	hc2d0f477ge86eg40d3gbd0fg11cb72683430
+LLENEMY_SUMMON_AUTOMATON_Description	Character is summoning reinforcements!	h9dbcfa86gbc12g474eg805bg72b4d3e381a3
