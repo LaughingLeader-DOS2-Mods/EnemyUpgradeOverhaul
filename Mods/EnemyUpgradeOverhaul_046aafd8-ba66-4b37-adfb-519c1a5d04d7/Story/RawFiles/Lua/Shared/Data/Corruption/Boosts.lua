@@ -399,22 +399,22 @@ local function Init()
 		}, {Chance=10})
 	}
 	
-	Boosts.ObjectCategory.HeavyGloves = {
-		ItemBoostGroup:Create("PhysicalResPen", {
-			ItemBoost:Create({
-				LeaderLibResPenTags.Physical5,
-			},{Chance=20}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Physical15,
-			},{Chance=penMediumChance, Limit=2}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Physical25,
-			},{Chance=penLargeChance, Limit=1}),
-			ItemBoost:Create({
-				LeaderLibResPenTags.Physical50,
-			},{Chance=penExtraLargeChance, Limit=1}),
-		})
-	}
+	-- Boosts.ObjectCategory.HeavyGloves = {
+	-- 	ItemBoostGroup:Create("PhysicalResPen", {
+	-- 		ItemBoost:Create({
+	-- 			LeaderLibResPenTags.Physical5,
+	-- 		},{Chance=20}),
+	-- 		ItemBoost:Create({
+	-- 			LeaderLibResPenTags.Physical15,
+	-- 		},{Chance=penMediumChance, Limit=2}),
+	-- 		ItemBoost:Create({
+	-- 			LeaderLibResPenTags.Physical25,
+	-- 		},{Chance=penLargeChance, Limit=1}),
+	-- 		ItemBoost:Create({
+	-- 			LeaderLibResPenTags.Physical50,
+	-- 		},{Chance=penExtraLargeChance, Limit=1}),
+	-- 	})
+	-- }
 	
 	Boosts.ObjectCategory.LightGloves = {
 		ItemBoostGroup:Create("PiercingResPen", {
