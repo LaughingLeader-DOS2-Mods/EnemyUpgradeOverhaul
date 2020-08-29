@@ -603,7 +603,7 @@ function ShadowCorruptContainerItems(uuid, forceRarity)
 	end
 	
 	if Ext.IsDeveloperMode() then
-		corruptionLimit = 99
+		--corruptionLimit = 99
 	end
 
 	if items ~= nil then
