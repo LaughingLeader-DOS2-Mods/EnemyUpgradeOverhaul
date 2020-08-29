@@ -7,20 +7,42 @@ local ShadowItemDescription = TranslatedString:Create("h179efab0g7e6cg441ag8083g
 local ShadowItemNameColor = TranslatedString:Create("h0301fb1cg95a6g47e5gade7g8ccfc0ffef2f", "<font color='[1]'>[2]</font>")
 local ShadowItemNameAffix = TranslatedString:Create("h1d44d1a4g804bg43fbg80dfgd3e3d07a897d", "<font color='#A020F0'>[1] of Shadows</font>")
 local ShadowItemRarity = TranslatedString:Create("habff2fe9g031cg4c7cg85feg28a1fa25fb14", "<font color='[1]'>Shadow Treasure</font>")
+local ShadowItemRarityDescription = TranslatedString:Create("h6d3ad5e8g6bf2g4c8dgb1b8gef0e3ead4982", "<font color='#33FF88' size='20'>Appraisers say this item used to be [1].</font>")
 
 local rarityColor = {
-	Common = "#BDA0CB",
-	Uncommon = "#BF3EFF",
-	Rare = "#A020F0",
+	Common = "#AEA8FF",
+	Uncommon = "#877FFF",
+	Rare = "#6D50FF",
 	Epic = "#8A2BE2",
 	Legendary = "#7F00FF",
 	Divine = "#AA00FF",
 	Unique = "#BF5FFF"
 }
 
+local originalRarityColor = {
+	Common = "#FFFFFF",
+	Uncommon = "#00A900",
+	Rare = "#33CCFF",
+	Epic = "#A346E9",
+	Legendary = "#D1007C",
+	Divine = "#EBC808",
+	Unique = "#C7A758"
+}
+
+local rarityName = {
+	Common = TranslatedString:Create("h5c0f3da4g83a2g4f3fg9944gc80920bcb4df", "Common"),
+	Uncommon = TranslatedString:Create("h7682e16bg7c69g4a72g8f1fg1b32519665f3", "Uncommon"),
+	Rare = TranslatedString:Create("heb7ba0d5g7f4cg49e9g9ce2g86cf5e5bd277", "Rare"),
+	Epic = TranslatedString:Create("hd75b2771g8abag49b5g9b8egb608d51b9ddf", "Epic"),
+	Legendary = TranslatedString:Create("h97227897g1345g4046gbb62g842dcc292db1", "Legendary"),
+	Divine = TranslatedString:Create("h09d00ab3g7edbg4569ga4d7gf37b9b7b04cb", "Divine"),
+	Unique = TranslatedString:Create("h04685fd1g024ag4641gaed6g0ffb2d0ff103", "Unique"),
+}
+
 ---@param item EsvItem
 ---@param tooltip TooltipData
 local function OnItemTooltip(item, tooltip)
+	print(item.Stats.ItemTypeReal, item:HasTag("LLENEMY_ShadowItem"), Ext.JsonStringify(tooltip.Data))
 	--print(item.StatsId, item.RootTemplate, item.MyGuid, item:HasTag("LLENEMY_ShadowItem"))
 	--Ext.PostMessageToServer("LLENEMY_Debug_PrintComboCategory", item.MyGuid)
 	--print(string.format("%s ComboCategory:\n%s", item.Stats.Name, Ext.JsonStringify(item.Stats.ComboCategory)))
@@ -43,7 +65,7 @@ local function OnItemTooltip(item, tooltip)
 			end
 			local rarity = item.Stats.ItemTypeReal
 			if rarity == nil then
-				rarity = "Epic"
+				rarity = "Common"
 			end
 			local color = rarityColor[rarity]
 			local element = tooltip:GetElement("ItemRarity")
@@ -60,6 +82,8 @@ local function OnItemTooltip(item, tooltip)
 				else
 					element.Label = "<font size='16'>" .. ShadowItemDescription.Value .. "</font>"
 				end
+				local rarityName = string.format("<font color='%s'>%s</font>", originalRarityColor[rarity], rarityName[rarity].Value)
+				element.Label = element.Label .. "<br>" .. ShadowItemRarityDescription:ReplacePlaceholders(rarityName)
 			end
 			element = tooltip:GetElement("ItemName")
 			if element ~= nil then
