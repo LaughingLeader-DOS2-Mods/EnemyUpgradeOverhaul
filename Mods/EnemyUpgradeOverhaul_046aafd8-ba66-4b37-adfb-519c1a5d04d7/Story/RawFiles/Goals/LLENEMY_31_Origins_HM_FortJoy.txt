@@ -65,4 +65,4 @@ TeleportTo(_AtusaBoss, CHARACTERGUID_S_FTJ_Florence_c272a37a-85ea-438f-9871-1551
 EXITSECTION
 
 ENDEXITSECTION
-ParentTargetEdge "LLENEMY_30_Origins_HardMode"
+ParentTargetEdge "LLENEMY_30_Origins_HM_Parent"

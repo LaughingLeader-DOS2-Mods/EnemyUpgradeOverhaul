@@ -65,4 +65,4 @@ SysActivateGoal("GLO_LVHub_Henchmen");
 EXITSECTION
 LLENEMY_HardMode_DisableScripts();
 ENDEXITSECTION
-ParentTargetEdge "LLENEMY_20_Origins__Start"
+ParentTargetEdge "LLENEMY_30_Origins_HM_Parent"

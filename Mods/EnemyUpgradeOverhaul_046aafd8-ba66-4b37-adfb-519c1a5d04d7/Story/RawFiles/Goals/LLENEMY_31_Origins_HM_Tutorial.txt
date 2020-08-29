@@ -18,6 +18,10 @@ LLENEMY_HardMode_SetupNPC(S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0e
 CharacterSetHitpointsPercentage(TUT_CargoDeck_Humans_Male_Magister_Grunt_000_a06e61dd-58c6-4119-99be-716c3a4fc1ef, 100.0);
 LeaderLib_Helper_AddAndEquipItemTemplate(TUT_CargoDeck_Humans_Male_Magister_Grunt_000_a06e61dd-58c6-4119-99be-716c3a4fc1ef, "47131328-5335-4349-999b-c0fa4ad0a806", 0);
 LeaderLib_Helper_AddAndEquipItemTemplate(TUT_CargoDeck_Humans_Male_Magister_Grunt_000_a06e61dd-58c6-4119-99be-716c3a4fc1ef, "ec4769e6-bcfc-44e0-9e9c-de62e0bdf407", 0);
+
+PROC
+LLENEMY_HardMode_InitLevel("TUT_Tutorial_A")
+THEN
 LLENEMY_HardMode_SetupRecruiter("TUT_Tutorial_A");
 
 //NOT DB_TUT_TopDeckTentacles((CHARACTERGUID)CHARACTERGUID_S_TUT_TopDeck_Tentacle1_6cbd4fbf-a9f0-403c-8ee1-5679e4ae03a6, (TRIGGERGUID)TRIGGERGUID_S_TUT_TopDeck_TentacleTarget1_1a80890f-b410-4ddf-a21e-f50f169b0cce);
@@ -383,4 +387,4 @@ SysClear("DB_LLENEMY_HM_TUT_MadeMortal", 1);
 SysClear("DB_LLENEMY_HM_TUT_SlapWorkaround", 1);
 SysClear("DB_LLENEMY_HM_TUT_ReruiterFreed", 1);
 ENDEXITSECTION
-ParentTargetEdge "LLENEMY_30_Origins_HardMode"
+ParentTargetEdge "LLENEMY_30_Origins_HM_Parent"

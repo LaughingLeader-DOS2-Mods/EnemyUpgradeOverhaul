@@ -85,7 +85,7 @@ IF
 GameStarted(_,_)
 THEN
 TimerCancel("Timers_LLENEMY_HardModeToggled");
-TimerLaunch("Timers_LLENEMY_HardModeToggled", 500);
+TimerLaunch("Timers_LLENEMY_HardModeToggled", 250);
 //END_REGION
 
 //REGION DISABLING
