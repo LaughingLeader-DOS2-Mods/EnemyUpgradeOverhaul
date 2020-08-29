@@ -47,6 +47,8 @@ LLENEMY_Upgrades_Internal_StartBonusTimer(_Char);
 /* [OSITOOLS_ONLY]
 PROC
 LLENEMY_Upgrades_OnRollingDone((CHARACTERGUID)_Char, (STRING)_Region)
+AND
+GlobalGetFlag("LLENEMY_HardModeRollingDisabled", 0)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "HM_RollAdditionalUpgrades", (STRING)_Char);
 */

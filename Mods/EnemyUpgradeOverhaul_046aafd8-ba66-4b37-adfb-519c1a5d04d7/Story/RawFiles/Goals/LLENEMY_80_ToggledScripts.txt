@@ -21,7 +21,9 @@ LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_DemonicHasted", "LL
 LeaderLib_ToggleScripts_Register_ObjectScript("LLENEMY_80_TS_ShadowBonus_Madness", "LLENEMY_ShadowBonus_Madness_Enabled", 0, 1);
 
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_LevelScaling", "LLENEMY_EnemyLevelingEnabled", 1);
-LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_HardMode", "LLENEMY_HardModeEnabled", 1);
+LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_HardModeRolling", "LLENEMY_HardModeEnabled", 1);
+
+//LLENEMY_HardModeRollingDisabled
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_TreasureGoblin", "LLENEMY_TreasureGoblin_Active", 1);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_VoidwokenSpawning", "LLENEMY_VoidwokenSourceSpawningEnabled", 1);
 LeaderLib_ToggleScripts_Register_Script("LLENEMY_80_TS_WorldUpgrading", "LLENEMY_WorldUpgradesEnabled", 1);
@@ -32,6 +34,23 @@ PROC
 LeaderUpdater_ModUpdated("EnemyUpgradeOverhaul", "LaughingLeader", (STRING)_OldVersion, (STRING)_NewVersion)
 THEN
 LLENEMY_ToggleScripts_RegisterScripts();
+
+PROC
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
+AND
+_LastVersion < 537198592
+THEN
+LeaderLib_ToggleScripts_Clear_ByGoal("LLENEMY_80_TS_HardMode");
+
+PROC
+LeaderLib_Mods_OnVersionChanged(046aafd8-ba66-4b37-adfb-519c1a5d04d7, (INTEGER)_LastVersion, (INTEGER)_NextVersion)
+AND
+_LastVersion < 537198592
+AND
+SysIsActive("LLENEMY_80_TS_HardMode")
+THEN
+SysCompleteGoal("LLENEMY_80_TS_HardMode");
+SysActivateGoal("LLENEMY_80_TS_HardModeRolling");
 //END_REGION
 
 //REGION RETROACTIVE_TOGGLE
