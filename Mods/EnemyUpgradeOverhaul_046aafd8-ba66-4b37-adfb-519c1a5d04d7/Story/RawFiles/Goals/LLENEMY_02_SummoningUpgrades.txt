@@ -29,7 +29,7 @@ LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_INCARNATEKING", 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Passive", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Summoning", "Passive", "LLENEMY_SUMMON_AUTOMATON", 100, 2, 24.0);
+LLENEMY_Upgrades_AddStatusToRange("Summoning", "Passive", "LLENEMY_SUMMON_AUTOMATON", 245, 325, 2, 24.0);
 //END_REGION
 
 //REGION INCARNATEKING
