@@ -3,23 +3,6 @@ INIT
 	USING LLENEMY_Skills
 EVENTS
 
-EVENT LLENEMY_SummonAutomaton_Start
-VARS
-	CHARACTER:_Char
-	FLOAT3:_TargetPos
-	FLOAT:_SkillRangeMax
-ON
-	OnCharacterStatusApplied(_Char, LLENEMY_SUMMON_AUTOMATON)
-ACTIONS
-IF "c1&c2"
-	CharacterGetSkillRange(_, _SkillRangeMax, _Char, ProjectileStrike_LLENEMY_SummonAutomaton)
-	FindPosition(_TargetPos, _Char, 1, 0, 4, _SkillRangeMax, 3, _Char, -1, -1, -1, -1)
-THEN
-	CharacterApplyStatus(_Char, LLENEMY_SUMMONING_CAP_INCREASE, -1, 0, _Char)
-	SetVar(_Char, "LLENEMY_Automaton_SummonPosition", _TargetPos)
-	CharacterEvent(_Char, "LLENEMY_Automaton_SummonPositionSet")
-ENDIF
-
 EVENT LLENEMY_ApplyStats
 VARS
 	FLOAT:_HpCurrent

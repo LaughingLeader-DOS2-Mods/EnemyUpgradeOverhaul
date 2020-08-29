@@ -15,8 +15,26 @@ IF
 CharacterStatusRemoved(_Char, "LLENEMY_GATHERING_POWER", _)
 AND
 NOT DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_GATHERING_POWER")
+AND
+CharacterIsDead(_Char, 0)
 THEN
 LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Statuses_ApplyEmpowered", "LLENEMY_Statuses_ApplyEmpowered");
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_SUMMON_AUTOMATON", _)
+AND
+DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_SUMMON_AUTOMATON")
+THEN
+NOT DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_SUMMON_AUTOMATON");
+
+IF
+CharacterStatusRemoved(_Char, "LLENEMY_SUMMON_AUTOMATON", _)
+AND
+NOT DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_SUMMON_AUTOMATON")
+AND
+CharacterIsDead(_Char, 0)
+THEN
+LeaderLib_Timers_StartObjectTimer(_Char, 250, "Timers_LLENEMY_Statuses_SummonAutomaton", "LLENEMY_Statuses_SummonAutomaton");
 
 EXITSECTION
 SysClear("DB_LLENEMY_Statuses_Temp_WaitForRemoval", 2);
