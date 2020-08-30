@@ -75,15 +75,18 @@ function SummonAutomaton(uuid)
 		ApplyStatus(uuid, "LLENEMY_SUMMONING_CAP_INCREASE", 54.0, 0, uuid)
 	end
 	local x,y,z = GetPosition(uuid)
-	local combatid = CombatGetIDForCharacter(uuid)
-	if combatid ~= nil then
-		local combatEntries = Osi.DB_CombatCharacters:Get(nil,combatid)
-		local randomEntry = LeaderLib.Common.GetRandomTableEntry(combatEntries)
-		if randomEntry ~= nil then
-			x,y,z = GetPosition(randomEntry[1])
-			x,y,z = FindValidPosition(x,y,z, 12.0, uuid)
-		end
-	end
+	-- local combatid = CombatGetIDForCharacter(uuid)
+	-- if combatid ~= nil then
+	-- 	local combatEntries = Osi.DB_CombatCharacters:Get(nil,combatid)
+	-- 	local randomEntry = LeaderLib.Common.GetRandomTableEntry(combatEntries)
+	-- 	if randomEntry ~= nil then
+	-- 		x,y,z = GetPosition(randomEntry[1])
+	-- 		x,y,z = FindValidPosition(x,y,z, 12.0, uuid)
+	-- 	end
+	-- end
+	-- if x == nil or y == nil or z == nil then
+	-- 	x,y,z = GetPosition(uuid)
+	-- end
 	local handle = NRD_CreateStorm(uuid, "Storm_LLENEMY_SpawnAutomaton", x,y,z)
 	NRD_GameActionSetLifeTime(handle, 48.0)
 	--local sx,sy,sz = GetPosition(uuid)
