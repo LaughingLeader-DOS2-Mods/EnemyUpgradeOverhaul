@@ -11,13 +11,13 @@ ACTIONS
 	SetVar(__Me, "Following", INT:0)
 	//StartTimer("LLENEMY_Summon_Automaton_ClearInactive", 1.25, 0)
 	//StartTimer("LLENEMY_Summon_Automaton_ApplyInactive", 1.0, 0)
-	CharacterApplyStatus(__Me, LLENEMY_AUTOMATON_INACTIVE, 1, 1)
+	CharacterApplyStatus(__Me, LLENEMY_AUTOMATON_INACTIVE, 2, 1)
 
 EVENT LLENEMY_Automaton_OnApplyInactiveTimer
 ON
 	OnTimer("LLENEMY_Summon_Automaton_ApplyInactive")
 ACTIONS
-	CharacterApplyStatus(__Me, LLENEMY_AUTOMATON_INACTIVE, 1, 1)
+	CharacterApplyStatus(__Me, LLENEMY_AUTOMATON_INACTIVE, 2, 1)
 
 EVENT LLENEMY_Automaton_OnInactiveApplied
 ON
