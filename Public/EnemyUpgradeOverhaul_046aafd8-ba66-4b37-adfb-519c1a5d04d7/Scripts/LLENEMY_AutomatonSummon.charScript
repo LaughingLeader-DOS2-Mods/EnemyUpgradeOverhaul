@@ -9,7 +9,6 @@ ON
 ACTIONS
 	SetPriority("StartFollow", 0)
 	SetVar(__Me, "Following", INT:0)
-	CharacterSetAnimationSetOverride(__Me, "Inactive_01")
 	//StartTimer("LLENEMY_Summon_Automaton_ClearInactive", 1.25, 0)
 	//StartTimer("LLENEMY_Summon_Automaton_ApplyInactive", 1.0, 0)
 	CharacterApplyStatus(__Me, LLENEMY_AUTOMATON_INACTIVE, 1, 1)
@@ -19,6 +18,14 @@ ON
 	OnTimer("LLENEMY_Summon_Automaton_ApplyInactive")
 ACTIONS
 	CharacterApplyStatus(__Me, LLENEMY_AUTOMATON_INACTIVE, 1, 1)
+
+EVENT LLENEMY_Automaton_OnInactiveApplied
+ON
+	OnCharacterStatusApplied(__Me, LLENEMY_AUTOMATON_INACTIVE)
+ACTIONS
+	SetPriority("StartFollow", 0)
+	SetVar(__Me, "Following", INT:0)
+	CharacterSetAnimationSetOverride(__Me, "Inactive_01")
 
 EVENT LLENEMY_Automaton_ActivateByDamage
 ON
