@@ -8,7 +8,7 @@ LLENEMY_Upgrades_RegisterAll((INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddGroup("Summoning", "LLENEMY_SummoningUpgradesDisabled", "LLENEMY_SummoningUpgradesRolled", "LLENEMY_SummoningUpgradesUpgradeAdded");
 
-LLENEMY_Upgrades_AddType("Summoning", "Passive", 556, 712, 2);
+LLENEMY_Upgrades_AddType("Summoning", "Passive", 556, 612, 2);
 
 PROC
 LLENEMY_Upgrades_RegisterAll(0)
@@ -24,13 +24,22 @@ PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Class", (INTEGER)_HardModeEnabled)
 THEN
 LLENEMY_Upgrades_AddStatusToRange("Summoning", "Class", "LLENEMY_CLASS_TOTEMANCER", 425, 512, 2, -1.0);
-LLENEMY_Upgrades_AddStatusToRange("Summoning", "Class", "LLENEMY_CLASS_INCARNATEKING", 777, 798, 4, -1.0);
+LLENEMY_Upgrades_AddStatusToRange("Summoning", "Class", "LLENEMY_CLASS_INCARNATEKING", 777, 790, 4, -1.0);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Passive", (INTEGER)_HardModeEnabled)
 THEN
 DB_LLENEMY_Statuses_FixedDuration("LLENEMY_SUMMON_AUTOMATON");
-LLENEMY_Upgrades_AddStatusToRange("Summoning", "Passive", "LLENEMY_SUMMON_AUTOMATON", 245, 325, 2, 24.0);
+LLENEMY_Upgrades_AddStatusToRange("Summoning", "Passive", "LLENEMY_SUMMON_AUTOMATON", 275, 325, 2, 24.0);
+//END_REGION
+
+//REGION BLOCKING
+PROC
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Summoning", (STRING)_Type)
+AND
+IsTagged(_Enemy, "LLENEMY_Duplicant", 1)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Summoning", _Type);
 //END_REGION
 
 //REGION INCARNATEKING
