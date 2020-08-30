@@ -77,11 +77,9 @@ _Remaining > 0
 AND
 GetPosition(_Enemy, _x, _y, _z)
 AND
-FindValidPosition(_x, _y, _z, 20.0, _Enemy, _tx, _ty, _tz)
-AND
 DB_LLENEMY_ChickenArmada_Members(_Remaining, _Template)
 AND
-TemporaryCharacterCreateAtPosition(_tx, _ty, _tz, _Template, 1, _Chicken)
+TemporaryCharacterCreateAtPosition(_x, _y, _z, _Template, 1, _Chicken)
 AND
 IntegerSubtract(_Remaining, 1, _NextRemaining)
 AND
@@ -94,10 +92,30 @@ SetVarObject(_Chicken, "LLENEMY_ChickenOverlord", _Enemy);
 PlayEffect(_Chicken, "RS3_FX_Skills_Totem_Impact_Summon_Overlay_01");
 ApplyStatus(_Chicken, "SUMMONING_ABILITY", 180.0, 0, _Enemy);
 SetFaction(_Chicken, _Faction);
+LLENEMY_Skills_OnChickenSummoned(_Chicken, _Enemy);
 //ProcSetRelationToPlayers(_Chicken, 0);
 //CharacterAddAttitudeTowardsPlayer(_Chicken, _Enemy, 200);
 CharacterSetCorpseLootable(_Chicken, 0);
 LLENEMY_Skills_CreateChickenArmada(_Enemy, _NextRemaining);
+
+PROC
+LLENEMY_Skills_OnChickenSummoned((CHARACTERGUID)_Chicken, (CHARACTERGUID)_Enemy)
+THEN
+TeleportToRandomPosition(_Chicken, 3.0, "");
+
+PROC
+LLENEMY_Skills_OnChickenSummoned((CHARACTERGUID)_Chicken, (CHARACTERGUID)_Enemy)
+AND
+LeaderLib_Helper_QRY_CharacterIsPlayerOrGM(_Enemy)
+THEN
+CharacterAddToPlayerCharacter(_Chicken, _Enemy);
+
+PROC
+LLENEMY_Skills_OnChickenSummoned((CHARACTERGUID)_Chicken, (CHARACTERGUID)_Enemy)
+AND
+CharacterIsInCombat(_Enemy, 0)
+THEN
+ProcCharacterFollowCharacter(_Chicken, _Enemy);
 
 IF
 CharacterCharacterEvent(_Chicken, _Enemy, "LLENEMY_BattleChicken_FollowOwner")
@@ -122,6 +140,7 @@ AND
 DB_LLENEMY_Temp_ChickenArmada(_Enemy, _Chicken)
 THEN
 NOT DB_LLENEMY_Temp_ChickenArmada(_Enemy, _Chicken);
+CharacterRemoveFromPlayerCharacter(_Chicken, _Enemy);
 ProcObjectTimer(_Character, "LLENEMY_Timers_RemoveTemporaryCharacter", 1200);
 
 PROC

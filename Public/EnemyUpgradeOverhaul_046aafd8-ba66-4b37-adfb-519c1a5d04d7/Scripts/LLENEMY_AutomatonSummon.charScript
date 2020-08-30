@@ -1,0 +1,57 @@
+INIT
+	CHARACTER:__Me
+	EXTERN INT:%LLENEMY_DeleteCorpse = 0
+EVENTS
+
+EVENT LLENEMY_Automaton_InactiveStart
+ON
+	OnCharacterStatusApplied(__Me, SUMMONING)
+ACTIONS
+	SetPriority("StartFollow", 0)
+	SetVar(__Me, "Following", INT:0)
+	CharacterSetAnimationSetOverride(__Me, "Inactive_01")
+	//StartTimer("LLENEMY_Summon_Automaton_ClearInactive", 1.25, 0)
+	//StartTimer("LLENEMY_Summon_Automaton_ApplyInactive", 1.0, 0)
+	CharacterApplyStatus(__Me, LLENEMY_AUTOMATON_INACTIVE, 1, 1)
+
+EVENT LLENEMY_Automaton_OnApplyInactiveTimer
+ON
+	OnTimer("LLENEMY_Summon_Automaton_ApplyInactive")
+ACTIONS
+	CharacterApplyStatus(__Me, LLENEMY_AUTOMATON_INACTIVE, 1, 1)
+
+EVENT LLENEMY_Automaton_ActivateByDamage
+ON
+	OnDamage(_,_,_,_)
+	OnCharacterStartAttackObject(__Me, _, _, _)
+	OnCharacterUsedSkillOnMe(__Me, _)
+ACTIONS
+IF "c1"
+	CharacterHasStatus(__Me, LLENEMY_AUTOMATON_INACTIVE)
+THEN
+	CharacterRemoveStatus(__Me, LLENEMY_AUTOMATON_INACTIVE)
+ENDIF
+
+EVENT LLENEMY_Automaton_Activate
+ON
+	OnTimer("LLENEMY_Summon_Automaton_ClearInactive")
+	OnCharacterStatusRemoved(__Me, LLENEMY_AUTOMATON_INACTIVE)
+ACTIONS
+	CharacterEvent(__Me, "LLENEMY_Automaton_PlayActivateAnimation")
+	
+EVENT LLENEMY_Automaton_ClearInactive
+ON
+	OnCharacterEvent(__Me, "LLENEMY_Automaton_ClearInactive")
+ACTIONS
+	SetPriority("StartFollow", 10)
+	CharacterSetAnimationSetOverride(__Me, "")
+
+EVENT LLENEMY_Automaton_NoCorpse
+ON
+	OnDie(__Me, _, _, _)
+ACTIONS
+IF "c1"
+	IsGreaterThen(%LLENEMY_DeleteCorpse, 0)
+THEN
+	CharacterSetOffStage()
+ENDIF

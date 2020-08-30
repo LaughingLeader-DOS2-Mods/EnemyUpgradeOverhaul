@@ -555,34 +555,6 @@ THEN
 DB_LLENEMY_StatusLogic_Temp_DemonicHastedMoveCheck(_Char, _x, _y, _z);
 LeaderLib_Timers_StartObjectTimer(_Char, 750, "Timers_LLENEMY_DemonicHasted_CheckForMovement", "LLENEMY_DemonicHasted_CheckForMovement");
 //END_REGION
-
-//REGION AUTOMATON
-IF
-CharacterStatusApplied(_Char, "LLENEMY_SUMMON_AUTOMATON", _)
-THEN
-DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_SUMMON_AUTOMATON");
-
-/* [OSITOOLS_ONLY]
-IF
-StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_SummonAutomaton")
-AND
-GetUUID(_Char, _UUID)
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "SummonAutomaton", _UUID);
-
-IF
-StoryEvent(_Char, "LLENEMY_Automaton_PlayActivateAnimation")
-AND
-GetUUID(_Char, _UUID)
-THEN
-NRD_ModCall("EnemyUpgradeOverhaul", "SummonSetFaction", _UUID);
-*/
-
-IF
-StoryEvent(_Automaton, "LLENEMY_Automaton_PlayActivateAnimation")
-THEN
-PlayAnimation(_Automaton, "Custom_Activate_01", "LLENEMY_Automaton_ClearInactive");
-//END_REGION
 EXITSECTION
 ENDEXITSECTION
 ParentTargetEdge "LaughingLeader_EnemyUpgradeOverhaul"

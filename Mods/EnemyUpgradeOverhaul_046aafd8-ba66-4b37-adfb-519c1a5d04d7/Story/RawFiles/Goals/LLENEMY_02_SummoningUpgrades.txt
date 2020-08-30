@@ -23,8 +23,8 @@ LLENEMY_Upgrades_AddType("Summoning", "Class", 1, 240, 2);
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Class", (INTEGER)_HardModeEnabled)
 THEN
-LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_TOTEMANCER", 699, 2);
-LLENEMY_Upgrades_AddStatus("Summoning", "Class", "LLENEMY_CLASS_INCARNATEKING", 200, 4);
+LLENEMY_Upgrades_AddStatusToRange("Summoning", "Class", "LLENEMY_CLASS_TOTEMANCER", 425, 512, 2, -1.0);
+LLENEMY_Upgrades_AddStatusToRange("Summoning", "Class", "LLENEMY_CLASS_INCARNATEKING", 777, 798, 4, -1.0);
 
 PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Summoning", "Passive", (INTEGER)_HardModeEnabled)
@@ -50,6 +50,43 @@ AND
 GetUUID(_Enemy, _UUID)
 THEN
 NRD_ModCall("EnemyUpgradeOverhaul", "ModifySummoningAbility", _UUID);
+*/
+//END_REGION
+
+//REGION AUTOMATON
+IF
+CharacterStatusApplied(_Char, "LLENEMY_SUMMON_AUTOMATON", _)
+THEN
+DB_LLENEMY_Statuses_Temp_WaitForRemoval(_Char, "LLENEMY_SUMMON_AUTOMATON");
+
+IF
+StoryEvent(_Automaton, "LLENEMY_Automaton_PlayActivateAnimation")
+THEN
+PlayAnimation(_Automaton, "Custom_Activate_01", "LLENEMY_Automaton_ClearInactive");
+
+/* [OSITOOLS_ONLY]
+IF
+StoryEvent((CHARACTERGUID)_Char, "LLENEMY_Statuses_SummonAutomaton")
+AND
+GetUUID(_Char, _UUID)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "SummonAutomaton", _UUID);
+
+IF
+StoryEvent(_Automaton, "LLENEMY_Automaton_PlayActivateAnimation")
+AND
+GetUUID(_Automaton, _UUID)
+THEN
+NRD_ModCall("EnemyUpgradeOverhaul", "SummonSetFaction", _UUID);
+
+IF
+CharacterStatusRemoved(_Automaton, "LLENEMY_AUTOMATON_INACTIVE", _)
+AND
+CharacterGetOwner(_Automaton, _Owner)
+AND
+NRD_CharacterGetReal(_Automaton, "LifeTime", _Duration)
+THEN
+ApplyStatus(_Automaton, "SUMMONING_ABILITY", _Duration, 1, _Owner);
 */
 //END_REGION
 EXITSECTION
