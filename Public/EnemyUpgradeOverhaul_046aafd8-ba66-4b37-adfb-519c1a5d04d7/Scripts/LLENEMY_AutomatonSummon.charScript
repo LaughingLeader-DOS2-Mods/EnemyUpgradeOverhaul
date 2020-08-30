@@ -44,7 +44,17 @@ ON
 	OnCharacterEvent(__Me, "LLENEMY_Automaton_ClearInactive")
 ACTIONS
 	SetPriority("StartFollow", 10)
-	CharacterSetAnimationSetOverride(__Me, "")
+	CharacterSetAnimationSetOverride(__Me, "")	
+
+EVENT LLENEMY_Automaton_OnInactiveTurn
+ON
+	OnTurn(__Me, _)
+ACTIONS
+IF "c1"
+	CharacterHasStatus(__Me, LLENEMY_AUTOMATON_INACTIVE)
+THEN
+	EndTurn(__Me)
+ENDIF
 
 EVENT LLENEMY_Automaton_NoCorpse
 ON

@@ -34,7 +34,7 @@
                     <attribute id="Tags" value="Difficulty;RNG" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
                     <attribute id="UUID" value="046aafd8-ba66-4b37-adfb-519c1a5d04d7" type="22" />
-                    <attribute id="Version" value="537198598" type="4" />
+                    <attribute id="Version" value="537264128" type="4" />
                     <children>
                         <node id="PublishVersion">
                             <attribute id="Version" value="908857753" type="4" />
