@@ -311,6 +311,18 @@ local function GetPreferredSkillGroup(ability,requirement,lastgroup)
 	return nil
 end
 
+local function SkillIsBlockedByUser(skill)
+	local userList = Settings.Global.Variables.EnemySkillIgnoreList
+	if userList ~= nil and #userList > 0 then
+		for i,v in pairs(userList) do
+			if v == skill or string.find(skill, v) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
 function AddBonusSkills(enemy,remainingstr,source_skills_remainingstr)
 	local remaining = math.max(tonumber(remainingstr), 1)
 	local source_skills_remaining = math.max(tonumber(source_skills_remainingstr), 0)
@@ -329,7 +341,7 @@ function AddBonusSkills(enemy,remainingstr,source_skills_remainingstr)
 	while remaining > 0 and attempts < ATTEMPTS_MAX do
 		local success = false
 		local skill = skillgroup:GetRandomSkill(enemy, preferred_requirement, level, source_skills_remaining)
-		if skill ~= nil then
+		if skill ~= nil and not SkillIsBlockedByUser(skill) then
 			if skill.sp > 0 then
 				source_skills_remaining = source_skills_remaining - 1
 			end
