@@ -224,29 +224,12 @@ local function LLENEMY_DebugInit()
 	end
 
 	if Ext.IsDeveloperMode() then
-		GlobalSetFlag("IsDeveloperMode")
+		GlobalSetFlag("LLENEMY_Ext_IsDeveloperMode")
 	else
-		GlobalClearFlag("IsDeveloperMode")
+		GlobalClearFlag("LLENEMY_Ext_IsDeveloperMode")
 	end
 
 	GetSourceDegredation(300000, 50)
-end
-
-local function LLENEMY_SessionLoading()
-	Ext.Print("[LLENEMY:Debug.lua] Registered debug init call to LeaderLib.")
-	--LeaderLib.AddDebugInitCall(LLENEMY_DebugInit)
-end
-
-local function LLENEMY_Debug_SessionLoaded()
-	LeaderLib.PrintDebug("[LLENEMY:Debug.lua] VENOM_AURA | StackId("..Ext.StatGetAttribute("VENOM_AURA", "StackId")..")")
-	LeaderLib.PrintDebug("[LLENEMY:Debug.lua] VENOM_COATING | StackId("..Ext.StatGetAttribute("VENOM_COATING", "StackId")..")")
-	LeaderLib.PrintDebug("[LLENEMY:Debug.lua] FIRE_BRAND_AURA | StackId("..Ext.StatGetAttribute("FIRE_BRAND_AURA", "StackId")..")")
-	LeaderLib.PrintDebug("[LLENEMY:Debug.lua] FIRE_BRAND | StackId("..Ext.StatGetAttribute("FIRE_BRAND", "StackId")..")")
-end
-
-if Ext.IsDeveloperMode() then
-	Ext.RegisterListener("SessionLoading", LLENEMY_SessionLoading)
-	Ext.RegisterListener("SessionLoaded", LLENEMY_Debug_SessionLoaded)
 end
 
 function Debug_PrintFlags(obj)

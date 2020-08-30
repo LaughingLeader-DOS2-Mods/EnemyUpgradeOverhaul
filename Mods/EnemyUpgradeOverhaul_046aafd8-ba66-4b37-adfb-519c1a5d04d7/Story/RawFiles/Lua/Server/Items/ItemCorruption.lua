@@ -18,19 +18,17 @@ end
 local function CanAddBoost(entry, stat, statType)
 	if statType == "Weapon" then
 		local weaponType = Ext.StatGetAttribute(stat, "WeaponType")
-		if Ext.IsDeveloperMode() and Ext.Version() >= 44 and Ext.GetDeltaMod ~= nil then
-			local dm = Ext.GetDeltaMod(entry.Boost, statType)
-			if dm ~= nil then
-				if dm.WeaponType == "Sentinel" or dm.WeaponType == weaponType then
-					return true
-				else
-					LeaderLib.PrintDebug("[LLENEMY_ItemCorruption.lua:CanAddBoost] WeaponType deltamod mismatch for ("..stat..") ("..weaponType..") => ("..dm.WeaponType..") with deltamod ["..entry.Boost.."]")
-					--LeaderLib.PrintDebug(Ext.JsonStringify(dm))
-					return false
-				end
-			else
+		local dm = Ext.GetDeltaMod(entry.Boost, statType)
+		if dm ~= nil then
+			if dm.WeaponType == "Sentinel" or dm.WeaponType == weaponType then
 				return true
+			else
+				LeaderLib.PrintDebug("[LLENEMY_ItemCorruption.lua:CanAddBoost] WeaponType deltamod mismatch for ("..stat..") ("..weaponType..") => ("..dm.WeaponType..") with deltamod ["..entry.Boost.."]")
+				--LeaderLib.PrintDebug(Ext.JsonStringify(dm))
+				return false
 			end
+		else
+			return true
 		end
 	end
 	return true
@@ -300,9 +298,6 @@ local function SetRandomShadowName(item,statType)
 		local color = LeaderLib.Common.GetRandomTableEntry(ItemCorruption.Colors)
 		name = string.format("<font color='%s'>%s</font>", color, name)
 		NRD_ItemCloneSetString("CustomDisplayName", name)
-		if Ext.IsDeveloperMode() then
-			LeaderLib.PrintDebug("[LLENEMY:LLENEMY_ItemMechanics.lua:SetRandomShadowName] New shadow item name is ("..name..")")
-		end
 		--NRD_ItemCloneSetString("CustomDescription", ShadowItemDescription.Value)
 	else
 		-- Wrap original names in a purple color
@@ -342,22 +337,21 @@ local rarityValue = {
 }
 
 local function AddRandomBoostsToItem(item,stat,statType,level,cloned)
-	local minBoosts = 1
-	if Ext.IsDeveloperMode() then
-		minBoosts = 12
-	else
-		if level >= 4 then
-			minBoosts = minBoosts + Ext.Random(0,2)
-		end
-		if level >= 8 then
-			minBoosts = minBoosts + Ext.Random(0,3)
-		end
-		if level >= 13 then
-			minBoosts = minBoosts + Ext.Random(0,2)
-		end
-		if level >= 16 then
-			minBoosts = minBoosts + Ext.Random(0,2)
-		end
+	local minBoosts = Ext.Random(1,3)
+	-- if Ext.IsDeveloperMode() then
+	-- 	minBoosts = 12
+	-- end
+	if level >= 4 then
+		minBoosts = minBoosts + Ext.Random(0,2)
+	end
+	if level >= 8 then
+		minBoosts = minBoosts + Ext.Random(0,3)
+	end
+	if level >= 13 then
+		minBoosts = minBoosts + Ext.Random(0,2)
+	end
+	if level >= 16 then
+		minBoosts = minBoosts + Ext.Random(0,2)
 	end
 
 	local totalBoosts = AddRandomBoosts(cloned,stat,statType,level,minBoosts)

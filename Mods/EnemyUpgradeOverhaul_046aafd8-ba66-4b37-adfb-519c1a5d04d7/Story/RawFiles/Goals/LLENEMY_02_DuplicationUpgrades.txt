@@ -179,7 +179,7 @@ PROC
 LLENEMY_Duplication_Internal_SetupDupe((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe, 1)
 THEN
 LeaderLib_Tags_PreserveTag(_Dupe, "LLENEMY_UpgradesDisabled");
-LeaderLib_Timers_StartObjectTimer(_Source, 250, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
+//LeaderLib_Timers_StartObjectTimer(_Source, 250, "Timers_LLENEMY_Duplication_CopyStatuses", "LLENEMY_Duplication_CopyStatuses");
 
 IF
 StoryEvent(_Dupe, "LLENEMY_Duplication_SetCPTag")
@@ -192,7 +192,7 @@ NRD_ModCall("EnemyUpgradeOverhaul", "SetChallengePointsTag", _UUID);
 
 //REGION COPY_STATUSES
 QRY
-LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
+LLENEMY_Duplication_QRY_IgnoreStatus((CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration)
 AND
 NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
 AND
@@ -201,7 +201,7 @@ THEN
 DB_LLENEMY_Duplication_IgnoredStatus(_Status);
 
 QRY
-LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
+LLENEMY_Duplication_QRY_IgnoreStatus((CHARACTERGUID)_Dupe, (STRING)_Status, (REAL)_Duration)
 AND
 NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
 AND
@@ -210,7 +210,7 @@ THEN
 DB_LLENEMY_Duplication_IgnoredStatus(_Status);
 
 QRY
-LLENEMY_Duplication_QRY_IgnoreStatus((STRING)_Status)
+LLENEMY_Duplication_QRY_IgnoreStatus((CHARACTERGUID)_Dupe, (STRING)_Status)
 AND
 NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
 AND
@@ -219,6 +219,39 @@ AND
 DB_LLENEMY_IgnoredDuplicantStatusTypes(_StatusType)
 THEN
 DB_LLENEMY_Duplication_IgnoredStatus(_Status);
+
+QRY
+LLENEMY_Duplication_QRY_IgnoreStatus((CHARACTERGUID)_Dupe, (STRING)_Status)
+AND
+NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _EndInt, _Duration, _ChallengePoints)
+AND
+NOT LLENEMY_Upgrades_QRY_CanApplyGroupTypeUpgrades(_Dupe, _Group, _Type)
+THEN
+DB_LLENEMY_Duplication_IgnoredStatus(_Status);
+
+QRY
+LLENEMY_Duplication_QRY_IgnoreStatus((CHARACTERGUID)_Dupe, (STRING)_Status)
+AND
+NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
+AND
+DB_LLENEMY_Upgrades_Statuses(_Group, _Type, _Status, _StartInt, _EndInt, _Duration, _ChallengePoints)
+AND
+NOT LLENEMY_Upgrades_QRY_CanApplyUpgrade(_Dupe, _Group, _Type, _Status, 6.0)
+THEN
+DB_LLENEMY_Duplication_IgnoredStatus(_Status);
+
+QRY
+LLENEMY_Duplication_QRY_CanCopyStatus((CHARACTERGUID)_Dupe, (STRING)_Status)
+AND
+NOT DB_LeaderLib_EngineStatus(_Status)
+AND
+NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
+AND
+NOT LLENEMY_Duplication_QRY_IgnoreStatus(_Dupe, _Status)
+THEN
+DB_NOOP(1);
 
 /* [OSITOOLS_ONLY]
 IF
@@ -229,15 +262,11 @@ NRD_IterateStatuses(_Source, "LLENEMY_Dupe_CopyStatus");
 IF
 NRD_StatusIteratorEvent("LLENEMY_Dupe_CopyStatus", (CHARACTERGUID)_Source, _Status, _Handle)
 AND
-NOT DB_LeaderLib_EngineStatus(_Status)
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
-NOT DB_LLENEMY_Duplication_IgnoredStatus(_Status)
-AND
-NOT LLENEMY_Duplication_QRY_IgnoreStatus(_Status)
+LLENEMY_Duplication_QRY_CanCopyStatus(_Dupe, _Status)
 AND
 GetUUID(_Source, _SourceUUID)
-AND
-DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 AND
 GetUUID(_Dupe, _DupeUUID)
 THEN
@@ -306,17 +335,6 @@ DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
 THEN
 CharacterAddSkill(_Dupe, _Skill, 0);
 */
-
-PROC
-LLENEMY_Duplication_Internal_SetupDupe_StageTwo((CHARACTERGUID)_Source, (CHARACTERGUID)_Dupe)
-THEN
-CharacterSetDetached(_Dupe, 0);
-TeleportTo(_Dupe, _Source, "LLENEMY_DupeCharacterTeleported", 1, 1, 0);
-CharacterSetFollowCharacter(_Dupe, _Source);
-PlayEffect(_Dupe, "RS3_FX_GP_ScriptedEvent_Teleport_GenericSmoke_01");
-CharacterSetHitpointsPercentage(_Dupe, 100.0);
-CharacterSetArmorPercentage(_Dupe,100.0);
-CharacterSetMagicArmorPercentage(_Dupe,100.0);
 //END_REGION
 
 //REGION DUPLICANT_NON_EXTENDER
@@ -546,6 +564,17 @@ NOT DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region);
 LeaderLib_Tags_ClearAllPreservedTagData(_Dupe);
 SetOnStage(_Dupe, 0);
 //END_REGION
+
+/*
+IF
+CharacterStatusRemoved(_Dupe, "LEADERLIB_RECALC", _)
+AND
+DB_LLENEMY_Duplication_Temp_Active(_Source, _Dupe, _Region)
+THEN
+CharacterSetArmorPercentage(_Dupe, 100.0);
+CharacterSetMagicArmorPercentage(_Dupe, 100.0);
+CharacterSetHitpointsPercentage(_Dupe, 100.0);
+*/
 EXITSECTION
 
 ENDEXITSECTION

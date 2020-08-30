@@ -271,12 +271,6 @@ local function DetermineTotalSPModifier(total)
 	return 1 - (((pointsModB - total * pointsModD) / (pointsModC * total + pointsModB)) / 100)
 end
 
-if Ext.IsDeveloperMode() then
-	Ext.RegisterConsoleCommand("llenemy_totalspmod", function(cmd, totalstr)
-		
-	end)
-end
-
 --- Gets a chance threshold for spawning voidwoken, based on the source points cost of a skill.
 ---@param points integer
 ---@return integer

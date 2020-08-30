@@ -35,9 +35,6 @@ end
 function MugTarget_Start(attacker, target, damage, handle)
 	local hit_type = NRD_StatusGetInt(target, handle, "HitReason")
 	if (hit_type == 0 or hit_type == 3) and LeaderLib.GameHelpers.HitSucceeded(target, handle, 0) then
-		if Ext.IsDeveloperMode() then
-			pcall(Mods.LeaderLib.Debug_TraceOnHit,target,attacker,damage,handle)
-		end
 		local weaponHandle = NRD_StatusGetGuidString(target, handle, "WeaponHandle")
 		local hitWithWeapon = NRD_StatusGetInt(target, handle, "HitWithWeapon")
 		local isMelee = hitWithWeapon == 1 or (weaponHandle ~= "NULL_00000000-0000-0000-0000-000000000000" and weaponHandle ~= nil)
@@ -207,7 +204,10 @@ local loneWolfAbilities = {
 	--"Brewmaster",
 }
 
-function ApplyLoneWolfBonuses(uuid)
+function ApplyLoneWolfBonuses(uuid, test)
+	if ObjectGetFlag(uuid, "LLENEMY_LoneWolfBonusesApplied") == 1 then
+		return
+	end
 	for _,stat in LeaderLib.Data.Attribute:Get() do
 		local baseVal = CharacterGetBaseAttribute(uuid, stat)
 		local currentVal = CharacterGetAttribute(uuid, stat)
@@ -215,8 +215,10 @@ function ApplyLoneWolfBonuses(uuid)
 			local nextVal = math.min(Ext.ExtraData.AttributeSoftCap, baseVal * 2) -- Capped at 40
 			nextVal = nextVal - baseVal
 			if nextVal > 0 then
-				CharacterAddAttribute(uuid, stat, nextVal);
-				LeaderLib.PrintDebug("[LLENEMY_GameMechanics:ApplyLoneWolfBonuses] ("..uuid..") ["..stat.."]["..tostring(currentVal).."] => ["..tostring(currentVal+nextVal).."] Bonus("..tostring(nextVal)..")")
+				if test == nil then
+					CharacterAddAttribute(uuid, stat, nextVal)
+				end
+				Ext.Print("[LLENEMY_GameMechanics:ApplyLoneWolfBonuses] ("..uuid..") ["..stat.."]["..tostring(currentVal).."] => ["..tostring(currentVal+nextVal).."] Bonus("..tostring(nextVal)..")")
 			end
 		end
 	end
@@ -227,9 +229,14 @@ function ApplyLoneWolfBonuses(uuid)
 			local nextVal = math.min(Ext.ExtraData.CombatAbilityCap, baseVal * 2) -- Capped at 10
 			nextVal = nextVal - baseVal
 			if nextVal > 0 then
-				CharacterAddAbility(uuid, stat, nextVal);
-				LeaderLib.PrintDebug("[LLENEMY_GameMechanics:ApplyLoneWolfBonuses] ("..uuid..") ["..stat.."]["..tostring(currentVal).."] => ["..tostring(currentVal+nextVal).."] Bonus("..tostring(nextVal)..")")
+				if test == nil then
+					CharacterAddAbility(uuid, stat, nextVal)
+				end
+				Ext.Print("[LLENEMY_GameMechanics:ApplyLoneWolfBonuses] ("..uuid..") ["..stat.."]["..tostring(currentVal).."] => ["..tostring(currentVal+nextVal).."] Bonus("..tostring(nextVal)..")")
 			end
 		end
+	end
+	if test == nil then
+		ObjectSetFlag(uuid, "LLENEMY_LoneWolfBonusesApplied", 0)
 	end
 end
