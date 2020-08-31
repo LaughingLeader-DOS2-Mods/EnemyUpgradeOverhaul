@@ -20,26 +20,20 @@ DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 100);
 IF
 CharacterDied(_Enemy)
 AND
-DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 20)
+DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, _Amount)
 THEN
-//20% health resurrection
-PlayEffect(_Enemy, "LLENEMY_FX_Status_ComebackKid_Resurrect_01");
-LeaderLib_Skills_UseSkillOnTarget(_Enemy, _Enemy, "Target_EnemyResurrect", 0, 0);
-
-IF
-CharacterDied(_Enemy)
-AND
-DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, 100)
-THEN
-PlayEffect(_Enemy, "LLENEMY_FX_Status_ComebackKid_Resurrect_01");
 CharacterResurrect(_Enemy);
 
 IF
 CharacterStatusRemoved(_Enemy, "RESURRECT", _)
 AND
 DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, _Amount)
+AND
+Real(_Amount, _Percentage)
 THEN
 NOT DB_LLENEMY_Talents_Temp_ReviveNext(_Enemy, _Amount);
+PlayEffect(_Enemy, "LLENEMY_FX_Status_ComebackKid_Resurrect_01");
+CharacterSetHitpointsPercentage(_Enemy, _Percentage);
 //Reroll buffs! Let the evil floowwwww.
 LeaderLib_ToggleScripts_DisableScriptForObject(_Enemy, "LLENEMY_ResistDead_Active", "EnemyUpgradeOverhaul");
 LLENEMY_Upgrades_ClearFlags(_Enemy);
