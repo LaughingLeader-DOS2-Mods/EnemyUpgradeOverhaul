@@ -84,7 +84,11 @@ local stat_overrides = {
 	-- So Madness can be cast on allies with Empowered by Madness
 	Target_MaddeningSong = {
 		TargetConditions = "Character"
-	}
+	},
+	-- So Piercing Immunity doesn't make you immune to deathfog
+	DamageSurface_Deathfog = {
+		["Damage Type"] = "None"
+	},
 }
 
 -- v40 and up introduced a way to add talents to NPCs
