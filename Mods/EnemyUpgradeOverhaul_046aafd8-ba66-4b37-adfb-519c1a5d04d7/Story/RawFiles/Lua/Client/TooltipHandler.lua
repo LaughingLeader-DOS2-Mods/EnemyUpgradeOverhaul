@@ -201,7 +201,7 @@ end
 local function Init()
 	Game.Tooltip.RegisterListener("Item", nil, OnItemTooltip)
 	Game.Tooltip.RegisterListener("Status", "LLENEMY_UPGRADE_INFO", OnUpgradeInfoTooltip)
-	LeaderLib.UI.RegisterListener("OnTooltipPositioned", FormatTagTooltip)
+	--LeaderLib.UI.RegisterListener("OnTooltipPositioned", FormatTagTooltip)
 end
 return {
 	Init = Init
