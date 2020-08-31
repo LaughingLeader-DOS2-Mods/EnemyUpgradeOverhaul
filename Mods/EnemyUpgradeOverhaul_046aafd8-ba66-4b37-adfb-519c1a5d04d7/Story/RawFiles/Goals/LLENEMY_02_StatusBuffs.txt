@@ -72,6 +72,7 @@ PROC
 LLENEMY_Upgrades_Register_TypeUpgrades("Buffs", "Elite", (INTEGER)_HardModeEnabled)
 THEN
 DB_LLENEMY_Statuses_FixedDuration("DOUBLE_DAMAGE");
+DB_LLENEMY_Statuses_FixedDuration("DEATH_RESIST");
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_RESIST", 40, 3, 6.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DEATH_WISH", 200, 8, 24.0);
 LLENEMY_Upgrades_AddStatus("Buffs", "Elite", "DOUBLE_DAMAGE", 10, 12, 12.0);
