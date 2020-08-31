@@ -400,5 +400,9 @@ SysClear("DB_LLENEMY_HM_TUT_LarianTriedToKillCaptain", 1);
 SysClear("DB_LLENEMY_HM_TUT_MadeMortal", 1);
 SysClear("DB_LLENEMY_HM_TUT_SlapWorkaround", 1);
 SysClear("DB_LLENEMY_HM_TUT_ReruiterFreed", 1);
+ProcSetInvulnerable(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, 0);
+CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeckMagister1_de400bda-b14e-4cff-b5f5-737781437902, 0);
+ProcSetInvulnerable(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 0);
+CharacterSetImmortal(CHARACTERGUID_S_TUT_TopDeckMagister2_e2d47d73-4f9d-4de2-8a3c-c774a0ea114a, 0);
 ENDEXITSECTION
 ParentTargetEdge "LLENEMY_30_Origins_HM_Parent"
