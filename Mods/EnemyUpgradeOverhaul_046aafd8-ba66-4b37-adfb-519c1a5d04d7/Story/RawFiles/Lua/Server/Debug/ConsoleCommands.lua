@@ -8,7 +8,7 @@ local function ItemCorruptionTest(level,delay)
 	end
 	local backpack = CreateItemTemplateAtPosition("LOOT_LeaderLib_BackPack_Invisible_98fa7688-0810-4113-ba94-9a8c8463f830", x, y, z)
 	GenerateTreasure(backpack, "LLENEMY_ShadowOrbRewards", level, host)
-	--GenerateTreasure(backpack, "ST_QuestReward_RG_3", level, host)
+	--GenerateTreasure(backpack, "ST_WeaponLegendary", level, host)
 	--GenerateTreasure(backpack, "ST_LLENEMY_JustGloves", level, host)
 	--GenerateTreasure(backpack, "ST_LLENEMY_ShadowTreasureWeaponsTest", level, host)
 	--GenerateTreasure(backpack, "CheatHeavyArmor", level, host)

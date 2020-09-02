@@ -8,4 +8,12 @@ local entries = {
 	LLENEMY_ShadowBonus_DefensiveStart = Classes.TagBoost:Create("LLENEMY_ShadowBonus_DefensiveStart","LLENEMY_ShadowBonus_DefensiveStart_Enabled", {DisplayInTooltip = true}),
 }
 
+if Ext.IsClient() then
+	Ext.RegisterListener("SessionLoaded", function()
+		for tag,entry in pairs(entries) do
+			LeaderLib.UI.RegisterItemTooltipTag(tag)
+		end
+	end)
+end
+
 return entries

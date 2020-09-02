@@ -90,22 +90,6 @@ local function OnItemTooltip(item, tooltip)
 				-- Shadow Treasure has custom name colors, so we remove the default rarity color here.
 				element.Label = element.Label:gsub("<font.->", "<font color='"..color.."'>")
 			end
-			for tag,entry in pairs(ItemCorruption.TagBoosts) do
-				if entry.DisplayInTooltip and item:HasTag(tag) then
-					--print(tag, item:HasTag(tag), entry.DisplayInTooltip)
-					--local tagName,nameHandle = Ext.GetTranslatedStringFromKey(tag)
-					local tagDesc,descHandle = Ext.GetTranslatedStringFromKey(tag.."_Description")
-					tagDesc = GameHelpers.Tooltip.ReplacePlaceholders(tagDesc)
-					-- The description still needs to be set so the textfield has the right height.
-					local element = {
-						Type = "Tags",
-						Label = tag,
-						Value = "",
-						Warning = tagDesc
-					}
-					tooltip:AppendElement(element)
-				end
-			end
 		end
 	end
 end

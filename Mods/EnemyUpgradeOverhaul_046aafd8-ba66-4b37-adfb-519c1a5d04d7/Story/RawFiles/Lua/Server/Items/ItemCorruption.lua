@@ -426,13 +426,10 @@ local function GetClone(item,stat,statType,forceRarity)
 		rarity = forceRarity
 	end
 
-	if rarity == nil or (rarityValue[rarity] < rarityValue["Epic"] and Ext.Random(0,100) <= 25) then
-		rarity = "Epic"
-	end
+	-- if rarity == nil or (rarityValue[rarity] < rarityValue["Epic"] and Ext.Random(0,100) <= 25) then
+	-- 	rarity = "Epic"
+	-- end
 	NRD_ItemCloneSetString("ItemType", rarity)
-	if statType == "Weapon" then
-		NRD_ItemCloneSetString("ItemType", "Epic") -- Since the name is custom anyway
-	end
 	NRD_ItemCloneSetString("GenerationItemType", rarity)
 
 	local value = ItemGetGoldValue(item)
@@ -451,6 +448,20 @@ local function GetClone(item,stat,statType,forceRarity)
 	local status,err = xpcall(AddRandomBoostsToItem, debug.traceback, item, stat, statType, level, cloned)
 	if not status then
 		print("[EnemyUpgradeOverhaul] Error calling AddRandomBoostsToItem:\n", err)
+	end
+
+	local itemObj = Ext.GetItem(item)
+	local cloneObj = Ext.GetItem(cloned)
+
+	if Ext.IsDeveloperMode() then
+		LeaderLib.PrintDebug("Original:")
+		for i,v in pairs(itemObj:GetGeneratedBoosts()) do
+			print(i,v)
+		end
+		LeaderLib.PrintDebug("Clone:")
+		for i,v in pairs(cloneObj:GetGeneratedBoosts()) do
+			print(i,v)
+		end
 	end
 
 	return cloned
