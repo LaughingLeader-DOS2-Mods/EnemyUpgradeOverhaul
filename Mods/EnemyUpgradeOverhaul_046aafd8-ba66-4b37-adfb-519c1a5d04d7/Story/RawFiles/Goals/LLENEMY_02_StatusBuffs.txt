@@ -10,8 +10,9 @@ LLENEMY_Upgrades_AddGroup("Buffs", "LLENEMY_BuffUpgradesDisabled", "LLENEMY_Buff
 LLENEMY_Upgrades_AddType("Buffs", "Elite", 1, 99, 9);
 LLENEMY_Upgrades_AddType("Buffs", "Normal", 100, 699, 5);
 LLENEMY_Upgrades_AddType("Buffs", "Weak", 700, 999, 3);
-DB_LLENEMY_Upgrades_TypeRollValues("Buffs", "Polymorph", 1, 999);
-LLENEMY_Upgrades_AddType("Buffs", "Polymorph", 1, 999, 2);
+
+LLENEMY_Upgrades_AddGroup("Polymorph", "LLENEMY_BuffUpgradesDisabled", "LLENEMY_PolymorphRolled", "LLENEMY_PolymorphUpgradeAdded");
+LLENEMY_Upgrades_AddType("Polymorph", "Skills", 451, 612, 1);
 
 LLENEMY_Upgrades_AddGroup("Auras", "LLENEMY_AuraUpgradesDisabled", "LLENEMY_AuraUpgradeRolled", "LLENEMY_AuraUpgradeAdded");
 LLENEMY_Upgrades_AddType("Auras", "Auras_Main", 800, 898, 7);
@@ -229,6 +230,24 @@ DB_LLENEMY_LastGrenadeInt(_NextStartInt, _EndInt);
 //END_REGION
 
 //REGION IMMERSION
+PROC
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Polymorph", "Skills")
+AND
+NOT LeaderLib_Helper_QRY_CharacterIsHumanoid(_Enemy)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Polymorph", "Skills");
+
+PROC
+LLENEMY_Upgrades_CanApplyGroupTypeUpgrades((CHARACTERGUID)_Enemy, "Polymorph", "Skills")
+AND
+NOT DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Polymorph", "Skills")
+AND
+DB_LLENEMY_Upgrades_Statuses("Polymorph", "Skills", _Status, _, _, _, _)
+AND
+HasActiveStatus(_Enemy, _Status, 1)
+THEN
+DB_LLENEMY_StatusUpgradeBlocked(_Enemy, "Polymorph", "Skills");
+
 QRY
 LLENEMY_Upgrades_QRY_ApplyStatus((CHARACTERGUID)_Character, (STRING)_Group, (STRING)_Type, "BLESSED", (REAL)_Duration, (INTEGER)_IsHardMode)
 AND
