@@ -36,6 +36,37 @@ NOT DB_LLENEMY_Scaling_Temp_TransformedCharacters(_Region, _Char, _Level);
 //END_REGION
 
 //REGION LEVELING
+QRY
+LLENEMY_Scaling_QRY_GetTargetLevel((CHARACTERGUID)_Char, (INTEGER)_HostLevel)
+AND
+DB_LLENEMY_Scaling_Temp_TargetLevel(_Char, _TargetLevel)
+THEN
+NOT DB_LLENEMY_Scaling_Temp_TargetLevel(_Char, _TargetLevel);
+
+QRY
+LLENEMY_Scaling_QRY_GetTargetLevel((CHARACTERGUID)_Char, (INTEGER)_HostLevel)
+AND
+NOT DB_GlobalFlag("LLENEMY_LevelEnemiesToPartyLevelDisabled")
+AND
+DB_LLENEMY_LevelModifier(_Modifier)
+AND
+IntegerSum(_HostLevel, _Modifier, _TargetLevel)
+THEN
+DB_LLENEMY_Scaling_Temp_TargetLevel(_Char, _TargetLevel);
+
+QRY
+LLENEMY_Scaling_QRY_GetTargetLevel((CHARACTERGUID)_Char, (INTEGER)_HostLevel)
+AND
+DB_GlobalFlag("LLENEMY_LevelEnemiesToPartyLevelDisabled")
+AND
+CharacterGetLevel(_Char, _Level)
+AND
+DB_LLENEMY_LevelModifier(_Modifier)
+AND
+IntegerSum(_Level, _Modifier, _TargetLevel)
+THEN
+DB_LLENEMY_Scaling_Temp_TargetLevel(_Char, _TargetLevel);
+
 PROC
 LLENEMY_Scaling_LevelUpCharacter((CHARACTERGUID)_Char)
 THEN
@@ -50,15 +81,17 @@ GlobalGetFlag("LLENEMY_Debug_LevelCapDisabled", _CapDisabled)
 AND
 NOT DB_Origins(_Char) // Don't do anything for Origin characters, since they may be recruited again
 AND
-CharacterGetHostCharacter(_Host)
+LeaderLib_Helper_QRY_GetHighestPlayerLevel()
 AND
-CharacterGetLevel(_Host, _HostLevel)
+DB_LeaderLib_Helper_Temp_HighestLevelPlayer(_Player, _PartyLevel)
 AND
-DB_LLENEMY_LevelModifier(_Modifier)
+LLENEMY_Scaling_QRY_GetTargetLevel(_Char, _PartyLevel)
 AND
-IntegerSum(_HostLevel, _Modifier, _TargetLevel)
+DB_LLENEMY_Scaling_Temp_TargetLevel(_Char, _TargetLevel)
 THEN
-LLENEMY_Scaling_Internal_EvaluateCharacter(_Char, _TargetLevel, _HostLevel, _Force, _CapDisabled);
+NOT DB_LeaderLib_Helper_Temp_HighestLevelPlayer(_Player, _PartyLevel);
+NOT DB_LLENEMY_Scaling_Temp_TargetLevel(_Char, _TargetLevel);
+LLENEMY_Scaling_Internal_EvaluateCharacter(_Char, _TargetLevel, _PartyLevel, _Force, _CapDisabled);
 
 PROC
 LLENEMY_Scaling_Internal_EvaluateCharacter((CHARACTERGUID)_Char, (INTEGER)_TargetLevel, (INTEGER)_HostLevel, 1, (INTEGER)_CapDisabled)
