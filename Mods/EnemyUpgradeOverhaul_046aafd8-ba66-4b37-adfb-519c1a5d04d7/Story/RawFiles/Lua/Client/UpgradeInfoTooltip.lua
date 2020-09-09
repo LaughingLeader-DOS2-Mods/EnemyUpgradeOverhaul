@@ -5,11 +5,11 @@ local function sortupgrades(a,b)
 	return a:upper() < b:upper()
 end
 
-local upgradeInfoEntryColorText = TranslatedString:Create("ha4587526ge140g42f9g9a98gc92b537d4209", "<img src='Icon_BulletPoint'><font color='[2]' size='18'>[1]</font>")
-local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4cc2ga233g7c22612af67b", "<img src='Icon_BulletPoint'><font size='18'>[1]</font>")
+local upgradeInfoEntryColorText = TranslatedString:Create("ha4587526ge140g42f9g9a98gc92b537d4209", "<font color='[2]' size='18'>[1]</font>")
+local upgradeInfoEntryColorlessText = TranslatedString:Create("h869a7616gfbb7g4cc2ga233g7c22612af67b", "<font size='18'>[1]</font>")
 
 ---@param character EsvCharacter
-local function GetUpgradeInfoText(character)
+local function GetUpgradeInfoText(character, isControllerMode)
 	if Ext.IsDeveloperMode() then
 		HighestLoremaster = 10
 	end
@@ -33,6 +33,9 @@ local function GetUpgradeInfoText(character)
 	if count > 0 then
 		table.sort(upgradeKeys, sortupgrades)
 		local output = "<img src='Icon_Line' width='350%'><br>"
+		if isControllerMode == true then
+			output = "" -- No Icon_Line
+		end
 		local i = 0
 		for _,status in ipairs(upgradeKeys) do
 			local infoText = UpgradeInfo_GetText(status)
@@ -48,17 +51,31 @@ local function GetUpgradeInfoText(character)
 						end
 						if color ~= nil and color ~= "" then
 							local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", nameText):gsub("%[2%]", color)
+							if isControllerMode ~= true then
+								text = "<img src='Icon_BulletPoint'>"..text
+							end
 							output = output..text
 						else
-							output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", nameText)
+							if isControllerMode ~= true then
+								output = output.."<img src='Icon_BulletPoint'>"..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", nameText)
+							else
+								output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", nameText)
+							end
 						end
 					end
 				else
 					if color ~= nil and color ~= "" then
 						local text = string.gsub(upgradeInfoEntryColorText.Value, "%[1%]", "???"):gsub("%[2%]", color)
+						if isControllerMode ~= true then
+							text = "<img src='Icon_BulletPoint'>"..text
+						end
 						output = output..text
 					else
-						output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", "???")
+						if isControllerMode ~= true then
+							output = output.."<img src='Icon_BulletPoint'>"..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", "???")
+						else
+							output = output..string.gsub(upgradeInfoEntryColorlessText.Value, "%[1%]", "???")
+						end
 					end
 				end
 				if i < count - 1 then
@@ -75,8 +92,11 @@ local function GetUpgradeInfoText(character)
 end
 
 ---@param character EsvCharacter
-local function GetChallengePointsText(character)
+local function GetChallengePointsText(character, isControllerMode)
 	local output = "<img src='Icon_Line' width='350%'><br>"
+	if isControllerMode == true then
+		output = "" -- No Icon_Line
+	end
 	local isTagged = false
 	for k,tbl in pairs(ChallengePointsText) do
 		if character:HasTag(tbl.Tag) then

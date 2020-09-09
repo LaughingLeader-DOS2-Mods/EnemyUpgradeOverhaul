@@ -68,19 +68,21 @@ local function OnItemTooltip(item, tooltip)
 				rarity = "Common"
 			end
 			local color = rarityColor[rarity]
-			local element = tooltip:GetElement("ItemRarity")
+			local element = tooltip:GetElement("ItemRarity") or {Type = "ItemRarity", Label = ""}
 			if element ~= nil then
-				if element ~= nil then
-					--element.Label = ShadowItemRarity.Value:gsub("%[1%]", element.Label)
-					element.Label = ShadowItemRarity.Value:gsub("%[1%]", color)
-				end
+				--element.Label = ShadowItemRarity.Value:gsub("%[1%]", element.Label)
+				element.Label = ShadowItemRarity.Value:gsub("%[1%]", color)
 			end
-			element = tooltip:GetElement("ItemDescription")
+			element = tooltip:GetElement("ItemDescription") or {Type = "ItemDescription", Label = ""}
 			if element ~= nil then
+				local fontTag = "<font size='16'>"
+				if tooltip.ControllerEnabled == true then
+					fontTag = "<font size='24'>"
+				end
 				if not LeaderLib.StringHelpers.IsNullOrEmpty(element.Label) then
-					element.Label = element.Label .. "<br><font size='16'>" .. ShadowItemDescription.Value .. "</font>"
+					element.Label = element.Label .. "<br>"..fontTag .. ShadowItemDescription.Value .. "</font>"
 				else
-					element.Label = "<font size='16'>" .. ShadowItemDescription.Value .. "</font>"
+					element.Label = fontTag .. ShadowItemDescription.Value .. "</font>"
 				end
 				local rarityName = string.format("<font color='%s'>%s</font>", originalRarityColor[rarity], rarityName[rarity].Value)
 				element.Label = element.Label .. "<br>" .. ShadowItemRarityDescription:ReplacePlaceholders(rarityName)
