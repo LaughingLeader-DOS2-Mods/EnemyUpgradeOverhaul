@@ -46,52 +46,58 @@ local function OnItemTooltip(item, tooltip)
 	--print(item.StatsId, item.RootTemplate, item.MyGuid, item:HasTag("LLENEMY_ShadowItem"))
 	--Ext.PostMessageToServer("LLENEMY_Debug_PrintComboCategory", item.MyGuid)
 	--print(string.format("%s ComboCategory:\n%s", item.Stats.Name, Ext.JsonStringify(item.Stats.ComboCategory)))
-	if item ~= nil then
-		if item:HasTag("LLENEMY_ShadowItem") then
-			--print(item.ItemType, item.Stats.ItemType, item.Stats.ItemTypeReal)
-			local maxSummons = item.Stats.MaxSummons
-			for i,stat in pairs(item.Stats.DynamicStats) do
-				if stat ~= nil then
-					maxSummons = maxSummons + stat.MaxSummons
-				end
+	if item ~= nil and item:HasTag("LLENEMY_ShadowItem") then
+		--print(item.ItemType, item.Stats.ItemType, item.Stats.ItemTypeReal)
+		local maxSummons = item.Stats.MaxSummons
+		for i,stat in pairs(item.Stats.DynamicStats) do
+			if stat ~= nil then
+				maxSummons = maxSummons + stat.MaxSummons
 			end
-			if maxSummons > 0 then
-				local element = {
-					Type = "AbilityBoost",
-					Label = maxSummonsText.Value,
-					Value = maxSummons,
-				}
+		end
+		if maxSummons > 0 then
+			local element = {
+				Type = "AbilityBoost",
+				Label = maxSummonsText.Value,
+				Value = maxSummons,
+			}
+			tooltip:AppendElement(element)
+		end
+		local rarity = item.Stats.ItemTypeReal
+		if rarity == nil then
+			rarity = "Common"
+		end
+		local color = rarityColor[rarity]
+		local element = tooltip:GetElement("ItemRarity") or {Type = "ItemRarity", Label = "", New = true}
+		if element ~= nil then
+			--element.Label = ShadowItemRarity.Value:gsub("%[1%]", element.Label)
+			element.Label = ShadowItemRarity.Value:gsub("%[1%]", color)
+			if element.New == true then
+				element.New = nil
 				tooltip:AppendElement(element)
 			end
-			local rarity = item.Stats.ItemTypeReal
-			if rarity == nil then
-				rarity = "Common"
+		end
+		element = tooltip:GetElement("ItemDescription") or {Type = "ItemDescription", Label = "", New = true}
+		if element ~= nil then
+			local fontTag = "<font size='16'>"
+			if tooltip.ControllerEnabled == true then
+				fontTag = "<font size='24'>"
 			end
-			local color = rarityColor[rarity]
-			local element = tooltip:GetElement("ItemRarity") or {Type = "ItemRarity", Label = ""}
-			if element ~= nil then
-				--element.Label = ShadowItemRarity.Value:gsub("%[1%]", element.Label)
-				element.Label = ShadowItemRarity.Value:gsub("%[1%]", color)
+			if not LeaderLib.StringHelpers.IsNullOrEmpty(element.Label) then
+				element.Label = element.Label .. "<br>"..fontTag .. ShadowItemDescription.Value .. "</font>"
+			else
+				element.Label = fontTag .. ShadowItemDescription.Value .. "</font>"
 			end
-			element = tooltip:GetElement("ItemDescription") or {Type = "ItemDescription", Label = ""}
-			if element ~= nil then
-				local fontTag = "<font size='16'>"
-				if tooltip.ControllerEnabled == true then
-					fontTag = "<font size='24'>"
-				end
-				if not LeaderLib.StringHelpers.IsNullOrEmpty(element.Label) then
-					element.Label = element.Label .. "<br>"..fontTag .. ShadowItemDescription.Value .. "</font>"
-				else
-					element.Label = fontTag .. ShadowItemDescription.Value .. "</font>"
-				end
-				local rarityName = string.format("<font color='%s'>%s</font>", originalRarityColor[rarity], rarityName[rarity].Value)
-				element.Label = element.Label .. "<br>" .. ShadowItemRarityDescription:ReplacePlaceholders(rarityName)
+			local rarityName = string.format("<font color='%s'>%s</font>", originalRarityColor[rarity], rarityName[rarity].Value)
+			element.Label = element.Label .. "<br>" .. ShadowItemRarityDescription:ReplacePlaceholders(rarityName)
+			if element.New == true then
+				element.New = nil
+				tooltip:AppendElement(element)
 			end
-			element = tooltip:GetElement("ItemName")
-			if element ~= nil then
-				-- Shadow Treasure has custom name colors, so we remove the default rarity color here.
-				element.Label = element.Label:gsub("<font.->", "<font color='"..color.."'>")
-			end
+		end
+		element = tooltip:GetElement("ItemName")
+		if element ~= nil then
+			-- Shadow Treasure has custom name colors, so we remove the default rarity color here.
+			element.Label = element.Label:gsub("<font.->", "<font color='"..color.."'>")
 		end
 	end
 end
