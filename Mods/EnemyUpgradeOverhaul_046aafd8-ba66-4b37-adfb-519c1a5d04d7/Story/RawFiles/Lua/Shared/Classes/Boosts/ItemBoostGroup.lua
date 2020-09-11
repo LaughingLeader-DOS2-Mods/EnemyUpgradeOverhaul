@@ -118,6 +118,8 @@ function ItemBoostGroup:ResetApplied()
 	end
 end
 
+---@param totalEntries integer
+---@return ItemBoost[]
 function ItemBoostGroup:GetRandomEntries(totalEntries)
 	local ranEntries = {}
 	local shuffled = LeaderLib.Common.ShuffleTable(self.Entries)
