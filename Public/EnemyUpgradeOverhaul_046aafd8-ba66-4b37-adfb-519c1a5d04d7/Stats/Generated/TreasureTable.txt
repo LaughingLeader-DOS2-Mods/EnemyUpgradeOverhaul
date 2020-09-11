@@ -193,21 +193,21 @@ new subtable "1,1"
 StartLevel "9"
 EndLevel "12"
 object category "T_ST_WeaponMagic",4,0,0,1,0,0,0,0
-object category "LLENEMY_ShadowTreasure_Weapons",1,0,0,1,0,0,0,0
+object category "LLENEMY_ShadowTreasure_Weapons",1,0,1,1,0,0,0,0
 new subtable "1,1"
 StartLevel "13"
 EndLevel "15"
 object category "T_ST_WeaponRare",4,0,0,0,1,0,0,0
-object category "LLENEMY_ShadowTreasure_Weapons",1,0,0,0,1,0,0,0
+object category "LLENEMY_ShadowTreasure_Weapons",1,0,1,1,1,0,0,0
 new subtable "1,1"
 StartLevel "16"
 EndLevel "21"
 object category "T_ST_WeaponLegendary",4,0,0,0,0,1,0,0
-object category "LLENEMY_ShadowTreasure_Weapons",1,0,0,0,0,1,0,0
+object category "LLENEMY_ShadowTreasure_Weapons",1,0,1,1,1,1,0,0
 new subtable "1,1"
 StartLevel "22"
 object category "T_ST_WeaponNormal",3,0,0,0,0,0,1,0
-object category "LLENEMY_ShadowTreasure_Weapons",1,0,0,0,0,0,1,0
+object category "LLENEMY_ShadowTreasure_Weapons",1,0,1,1,1,1,1,0
 
 new treasuretable "LLENEMY_ShadowOrbRewards"
 new subtable "0,2;1,1"
