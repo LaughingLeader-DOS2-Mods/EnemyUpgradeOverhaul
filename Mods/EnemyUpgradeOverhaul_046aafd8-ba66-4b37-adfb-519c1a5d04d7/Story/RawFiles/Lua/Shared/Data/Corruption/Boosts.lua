@@ -173,16 +173,22 @@ local function Init()
 			},{Chance=50, All=false}),
 			ItemBoost:Create({
 				StatBoost:Create("DamageBoost",1,5),
-			},{Chance=25, MinLevel=1,MaxLevel=8}),
+			},{Chance=20, MinLevel=1,MaxLevel=8}),
 			ItemBoost:Create({
 				StatBoost:Create("DamageBoost",1,10),
-			},{Chance=25, MinLevel=9,MaxLevel=-1}),
+			},{Chance=20, MinLevel=9,MaxLevel=-1}),
 			ItemBoost:Create({
 				StatBoost:Create("CriticalDamage",1,10),
-			},{Chance=25, MinLevel=1,MaxLevel=8, Limit=5}),
+			},{Chance=10, MinLevel=1,MaxLevel=8, Limit=3, BlockWeaponTypes={Knife = true}}),
 			ItemBoost:Create({
 				StatBoost:Create("CriticalDamage",1,20),
-			},{Chance=25, MinLevel=9,MaxLevel=-1, Limit=5}),
+			},{Chance=10, MinLevel=9,MaxLevel=-1, Limit=3, BlockWeaponTypes={Knife = true}}),
+			ItemBoost:Create({
+				StatBoost:Create("CriticalDamage",1,5),
+			},{Chance=5, MinLevel=1,MaxLevel=8, Limit=2, WeaponType="Knife"}),
+			ItemBoost:Create({
+				StatBoost:Create("CriticalDamage",1,10),
+			},{Chance=5, MinLevel=9,MaxLevel=-1, Limit=2, WeaponType="Knife"}),
 			ItemBoost:Create({
 				StatBoost:Create("MinDamage",1,5),
 				StatBoost:Create("MaxDamage",1,5),
