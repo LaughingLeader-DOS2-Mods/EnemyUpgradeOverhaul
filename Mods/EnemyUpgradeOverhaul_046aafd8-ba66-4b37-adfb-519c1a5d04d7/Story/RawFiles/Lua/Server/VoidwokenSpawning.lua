@@ -294,6 +294,22 @@ IgnoredSourceSkills["Target_Curse"] = {
 	CombatOnly = true
 }
 
+local function CanSummonVoidwoken(char, spCost)
+	local totalPointsUsed = 0
+	local b,p = pcall(GetTotalPointsForRegion, char)
+	if b then
+		totalPointsUsed = p
+	end
+	local chance = GetVoidwokenSpawnChanceRollThreshold(spCost, totalPointsUsed)
+	local roll = Ext.Random(0,100)
+	if roll > 0 and roll <= chance then
+		return true
+	elseif roll == 0 then
+		Osi.LLENEMY_HardMode_ReduceTotalSourceUsed(Ext.Random(1,3))
+	end
+	return false
+end
+
 local function SkillCanSummonVoidwoken(char, skill, skilltype, skillelement)
 	if IgnoredSourceSkills[skill] ~= nil then
 		local ignoreData = IgnoredSourceSkills[skill]
@@ -303,9 +319,9 @@ local function SkillCanSummonVoidwoken(char, skill, skilltype, skillelement)
 			return false
 		end
 	end
-	local magicCost = Ext.StatGetAttribute(skill, "Magic Cost") or 0
-	if magicCost > 0 then
-		return magicCost
+	local spCost = Ext.StatGetAttribute(skill, "Magic Cost") or 0
+	if spCost > 0 and CanSummonVoidwoken(char, spCost) then
+		return spCost
 	end
 	return false
 end
@@ -316,23 +332,7 @@ local function SkillCanSummonVoidwoken_QRY(char, skill, skilltype, skillelement)
 		return result
 	end
 end
-Ext.NewQuery(SkillCanSummonVoidwoken_QRY, "LLENEMY_QRY_SkillCanSummonVoidwoken", "[in](CHARACTERGUID)_Character, [in](STRING)_Skill, [in](STRING)_SkillType, [in](STRING)_SkillElement, [out](INTEGER)_SourcePointCost");
-
-local function TrySummonVoidwoken(char)
-	local totalPointsUsed = 0
-	local b,p = pcall(GetTotalPointsForRegion, char)
-	if b then
-		totalPointsUsed = p
-	end
-	local chance = GetVoidwokenSpawnChanceRollThreshold(magicCost, totalPointsUsed)
-	local roll = Ext.Random(0,100)
-	LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:TrySummonVoidwoken] Roll: ["..tostring(roll).."/100 <= "..tostring(chance).."] TotalSP ("..tostring(totalPointsUsed)..").")
-	if roll > 0 and roll <= chance then
-		SpawnVoidwoken(char, totalPointsUsed)
-	elseif roll == 0 then
-		Osi.LLENEMY_HardMode_ReduceTotalSourceUsed(Ext.Random(1,3))
-	end
-end
+Ext.NewQuery(SkillCanSummonVoidwoken_QRY, "LLENEMY_QRY_SkillCanSummonVoidwoken", "[in](CHARACTERGUID)_Character, [in](STRING)_Skill, [in](STRING)_SkillType, [in](STRING)_SkillElement, [out](INTEGER)_SourcePointCost")
 
 local function GetSourceDegredation(gameHourSpeed, totalPoints)
 	-- Speed is 300000 by default, i.e. 5 minutes
