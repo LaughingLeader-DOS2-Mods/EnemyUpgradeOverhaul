@@ -1,20 +1,20 @@
 Key	Content	Handle
-LLENEMY_ToolTip_UpgradeInfo_DropText	<font color='#00FFAA' size='16'>Will drop <textformat leftmargin='1' rightmargin='1'>[1]</textformat> on death.</font>	h623a7ed0gaaacg4c3egacdfg56f3c23a1dec
-LLENEMY_ToolTip_UpgradeInfo_ShadowDropText	<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm (<textformat leftmargin='1' rightmargin='1'>[1]</textformat>) on death.</font>	h662390f7gfd9eg4a56g95e5g658283cc548a
-LLENEMY_ToolTip_UpgradeInfo_HiddenDropText	<font color='#00FFAA' size='16'>Drops ??? on death.</font>	h623a9ed0gaaacg4c3egacdfg56f1c23a1dec
-LLENEMY_ToolTip_UpgradeInfo_HiddenShadowDropText	<font color='#9B30FF' size='16'>Drops ??? on death.</font>	h882390f1gfd9eg4a56g95e5g658283cc548a
-LLENEMY_ToolTip_UpgradeInfo_Entry_WithColor	<font color='[2]' size='18'>[1]</font>	ha4587526ge140g42f9g9a98gc92b537d4209
-LLENEMY_ToolTip_UpgradeInfo_Entry_NoColor	<font size='18'>[1]</font>	h869a7616gfbb7g4cc2ga233g7c22612af67b
 LLENEMY_ToolTip_ChallengeLoot01	<font color='#FFFFFF' size='12'>Regular Bonus Loot</font>	h5addfbc4gcac7g4935g8effg8096574b8913
 LLENEMY_ToolTip_ChallengeLoot02	<font color='#4197E2' size='14'>Moderate Loot</font>	h8a442345g8c3ag4161g8f45gd93745f99d3e
 LLENEMY_ToolTip_ChallengeLoot03	<font color='#F7BA14' size='16'>Good Loot</font>	hf03d120ag2329g476dg94dcg7df0d27c3e1e
 LLENEMY_ToolTip_ChallengeLoot04	<font color='#B823CB' size='18'>Great Loot</font>	h8886e1f1gb725g4e9fg8f5bg4ab1f7262f48
 LLENEMY_ToolTip_ChallengeLoot05	<font color='#FF00CC' size='18'>Insane Loot</font>	h99aba0bag7acbg4deagb9f3g0c52b807ce09
-LLENEMY_ToolTip_ShadowItemDescriptionA	A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>	h179efab0g7e6cg441ag8083gb11964394dc4
-LLENEMY_ToolTip_ShadowItemNameColor	<font color='[1]'>[2]</font>	h0301fb1cg95a6g47e5gade7g8ccfc0ffef2f
+LLENEMY_ToolTip_Param_CounterChance	<font color='#D416FF'>[1]%</font>	hd54110f8gbc6bg418dg8191g84eb716cbd54
 LLENEMY_ToolTip_ShadowItemAffix1	<font color='#A020F0'>[1] of Shadows</font>	h1d44d1a4g804bg43fbg80dfgd3e3d07a897d
 LLENEMY_ToolTip_ShadowItemAffix2	<font color='#A020F0'>[1] of Corruption</font>	h217cada5gbab0g4023gb7f9g836986336689
+LLENEMY_ToolTip_ShadowItemDescriptionA	A <i>strange</i> item retrieved from a <font color='#9B30FF' face='Copperplate Gothic Bold'>Shadow Orb</font>.<br><font color='#BDA0CB'>Cold to the touch, when this item is held, your grip on reality may begin to slip.</font>	h179efab0g7e6cg441ag8083gb11964394dc4
+LLENEMY_ToolTip_ShadowItemNameColor	<font color='[1]'>[2]</font>	h0301fb1cg95a6g47e5gade7g8ccfc0ffef2f
 LLENEMY_ToolTip_ShadowItemRarity	<font color='[1]'>Shadow Treasure</font>	habff2fe9g031cg4c7cg85feg28a1fa25fb14
-LLENEMY_ToolTip_ShadowItemRarityWrapper	<font color='#A020F0'>[1] Shadow</font>	h41fe75a6gc090g4186g816egea95152a2d47
-LLENEMY_ToolTip_Param_CounterChance	<font color='#D416FF'>[1]%</font>	hd54110f8gbc6bg418dg8191g84eb716cbd54
 LLENEMY_ToolTip_ShadowItemRarityDescription	<font color='#33FF88' size='16'>Appraisers say this item used to be [1].</font>	h6d3ad5e8g6bf2g4c8dgb1b8gef0e3ead4982
+LLENEMY_ToolTip_ShadowItemRarityWrapper	<font color='#A020F0'>[1] Shadow</font>	h41fe75a6gc090g4186g816egea95152a2d47
+LLENEMY_ToolTip_UpgradeInfo_DropText	<font color='#00FFAA' size='16'>Will drop <textformat leftmargin='1' rightmargin='1'>[1]</textformat> on death.</font>	h623a7ed0gaaacg4c3egacdfg56f3c23a1dec
+LLENEMY_ToolTip_UpgradeInfo_Entry_NoColor	<font size='18'>[1]</font>	h869a7616gfbb7g4cc2ga233g7c22612af67b
+LLENEMY_ToolTip_UpgradeInfo_Entry_WithColor	<font color='[2]' size='18'>[1]</font>	ha4587526ge140g42f9g9a98gc92b537d4209
+LLENEMY_ToolTip_UpgradeInfo_HiddenDropText	<font color='#00FFAA' size='16'>Drops ??? on death.</font>	h623a9ed0gaaacg4c3egacdfg56f1c23a1dec
+LLENEMY_ToolTip_UpgradeInfo_HiddenShadowDropText	<font color='#9B30FF' size='16'>Drops ??? on death.</font>	h882390f1gfd9eg4a56g95e5g658283cc548a
+LLENEMY_ToolTip_UpgradeInfo_ShadowDropText	<font color='#9B30FF' size='16'>Grants Treasure of the Shadow Realm (<textformat leftmargin='1' rightmargin='1'>[1]</textformat>) on death.</font>	h662390f7gfd9eg4a56g95e5g658283cc548a

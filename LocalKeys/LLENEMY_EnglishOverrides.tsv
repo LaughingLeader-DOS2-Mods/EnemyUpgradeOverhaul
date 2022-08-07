@@ -1,7 +1,7 @@
 Key	Content	Handle
+LLENEMY_Override_FumbleText		ha0eca831g2e16g463fgb80fg09f33092c2ee
 LLENEMY_Override_RotDamage1	shadow Damage	h256557fbg1d49g45d9g8690gb86b39d2a135
 LLENEMY_Override_RotDamage2	shadow	h168f52b6g342ag42e0g99d0g47d94b7363c8
 LLENEMY_Override_RotDamage3	Shadow	hf4632a8fg42a7g4d53gbe26gd203f28e3d5e
-LLENEMY_Override_StatusApplySet	[1][2][3]	h233bf83cg2204g4f14gb46agad27f95deb43
 LLENEMY_Override_StatusApplyChance	([1]% Chance)	h54e0b91cg48a7g4d5agaedcgbde756a109ea
-LLENEMY_Override_FumbleText		ha0eca831g2e16g463fgb80fg09f33092c2ee
+LLENEMY_Override_StatusApplySet	[1][2][3]	h233bf83cg2204g4f14gb46agad27f95deb43

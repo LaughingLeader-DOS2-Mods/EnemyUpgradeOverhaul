@@ -8,9 +8,9 @@ LLENEMY_MessageBox_SingleplayerUserWarning	<font color='#FF3737' size='23'>The E
 LLENEMY_Notification_ShadowItem_NoCrafting	<font color='#BF5FFF' size='23'>*The otherwordly properties of this item prevent tampering.*</font>	hffd1c196gaff6g48c9ga687g14752b048946
 LLENEMY_ShadowDuplicationName	<font color='#BF5FFF'>[1] (Shadow)</font>	h02023d82gc736g447fgaea3g327be0956688
 LLENEMY_StatusText_AtusaBossActivated	<font color='#FF3737' size='26'>*Atusa's corpse oozes to life!*</font>	hbd7fc3f3g08f1g4684g8c47gccc404622fc6
+LLENEMY_StatusText_Cleansed	<font color='#73F6FF'>[1] Cleansed [2]</font>	h19830defg8efbg4be0ga890g34311649a588
 LLENEMY_StatusText_CounterAttack	<font color='#FF3737' size='23'>Counter!</font>	h51e25546g078ag4d32gbb99g3af66b2dc917
 LLENEMY_StatusText_ImmuneToDamageOnMove	<font color='#FF3737' size='18'>Immune to Movement-Based Damage Statuses</font>	ha0190ec0g350eg4c71g9456g078481ad4128
 LLENEMY_StatusText_RageReduced	<font color='#FF3737' size='23'>Rage Reduced</font>	h5f654029g8f4ag454egbbd9g42e75c7fdfc1
 LLENEMY_StatusText_SeekerDiscoveredTarget	<font color='#FF3737' size='26'>*Revealed!*</font>	h483cc43ag6b13g4d05gaad9gb3c595847c6a
 LLENEMY_StatusText_VoidlingTransformed	<font color='#73F6FF' size='26'>Empowered Evolution</font>	h0c6fe9ccg70f0g434dgbe60gc2275abaa7d1
-LLENEMY_StatusText_Cleansed	<font color='#73F6FF'>[1] Cleansed [2]</font>	h19830defg8efbg4be0ga890g34311649a588
