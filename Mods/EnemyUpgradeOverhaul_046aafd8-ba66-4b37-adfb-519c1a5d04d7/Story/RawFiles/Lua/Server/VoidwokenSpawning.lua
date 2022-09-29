@@ -319,9 +319,17 @@ local function SkillCanSummonVoidwoken(char, skill, skilltype, skillelement)
 			return false
 		end
 	end
-	local spCost = Ext.StatGetAttribute(skill, "Magic Cost") or 0
-	if spCost > 0 and CanSummonVoidwoken(char, spCost) then
-		return spCost
+	local spCost = 0
+	local skillStat = Ext.Stats.Get(skill, nil, false)
+	if skillStat then
+		spCost = skillStat["Magic Cost"]
+	end
+	if spCost > 0 then
+		if CanSummonVoidwoken(char, spCost) then
+			return spCost
+		else
+			Osi.LLENEMY_HardMode_TrackTotalSourceUsed(spCost)
+		end
 	end
 	return false
 end
