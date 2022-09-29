@@ -163,6 +163,7 @@ local function GetTotalPointsForRegion(source)
 	if pointsDB ~= nil and #pointsDB > 0 then
 		local points = pointsDB[1][2]
 		if points ~= nil then
+			---@cast points number
 			return points
 		end
 	end
@@ -191,7 +192,7 @@ function SpawnVoidwoken(source,totalPoints,skipSpawning)
 	end
 
 	if #voidwokenTemplates > 0 then
-		LeaderLib.PrintDebug("Voidwoken Templates for SP("..tostring(totalPointsUsed).."): " .. LeaderLib.Common.Dump(voidwokenTemplates))
+		--LeaderLib.PrintDebug("Voidwoken Templates for SP("..tostring(totalPointsUsed).."): " .. LeaderLib.Common.Dump(voidwokenTemplates))
 		local totalWeight = 0
 		for i=1,#voidwokenTemplates do
 			local entry = voidwokenTemplates[i]
@@ -201,7 +202,7 @@ function SpawnVoidwoken(source,totalPoints,skipSpawning)
 			totalWeight = totalWeight + entry.Weight
 		end
 
-		local rand = Ext.Random() * totalWeight
+		local rand = Ext.Utils.Random() * totalWeight
 		local entry = nil
 		voidwokenTemplates = LeaderLib.Common.ShuffleTable(voidwokenTemplates)
 		for i,v in pairs(voidwokenTemplates) do
@@ -215,7 +216,7 @@ function SpawnVoidwoken(source,totalPoints,skipSpawning)
 			end
 		end
 		if entry ~= nil then
-			LeaderLib.PrintDebug("Picked random entry: " .. entry.Template .. " | " ..tostring(rand) .. " / " .. tostring(totalWeight))
+			--LeaderLib.PrintDebug("Picked random entry: " .. entry.Template .. " | " ..tostring(rand) .. " / " .. tostring(totalWeight))
 			if skipSpawning ~= true then
 				totalResets = 0
 				local x,y,z = GetPosition(source)
@@ -236,7 +237,7 @@ function SpawnVoidwoken(source,totalPoints,skipSpawning)
 				TeleportToRandomPosition(voidwoken, 12.0, "")
 				CharacterCharacterSetEvent(source, voidwoken, "LLENEMY_VoidwokenSpawned")
 				if ObjectExists(voidwoken) == 0 then
-					LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] Failed to spawn voidwoken at (",x,y,z,")")
+					Ext.Utils.PrintError("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] Failed to spawn voidwoken at (",x,y,z,")")
 				else
 					x,y,z = GetPosition(voidwoken)
 					PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_FJ_Worm_Voidwoken_Spawning_01", x,y,z)
@@ -244,7 +245,7 @@ function SpawnVoidwoken(source,totalPoints,skipSpawning)
 			end
 		elseif totalResets < 30 then
 			totalResets = totalResets + 1
-			LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] No entry picked! Resetting.")
+			--LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:LLENEMY_SpawnVoidwoken] No entry picked! Resetting.")
 			for i,v in pairs(voidwokenTemplates) do
 				v.Weight = v.DefaultWeight
 			end
@@ -298,14 +299,15 @@ local function CanSummonVoidwoken(char, spCost)
 	local totalPointsUsed = 0
 	local b,p = pcall(GetTotalPointsForRegion, char)
 	if b then
+		---@cast p number
 		totalPointsUsed = p
 	end
 	local chance = GetVoidwokenSpawnChanceRollThreshold(spCost, totalPointsUsed)
-	local roll = Ext.Random(0,100)
+	local roll = Ext.Utils.Random(0,100)
 	if roll > 0 and roll <= chance then
 		return true
 	elseif roll == 0 then
-		Osi.LLENEMY_HardMode_ReduceTotalSourceUsed(Ext.Random(1,3))
+		Osi.LLENEMY_HardMode_ReduceTotalSourceUsed(Ext.Utils.Random(1,3))
 	end
 	return false
 end
@@ -347,8 +349,8 @@ local function GetSourceDegredation(gameHourSpeed, totalPoints)
 	local mult = gameHourSpeed / 300000
 	local min = math.max(1, math.floor(2 * mult))
 	local max = math.min(min * 2, (math.max(6, totalPoints / 2)))
-	local ran = Ext.Random(min, max)
-	LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:GetSourceDegredation] SP degredation speed ("..tostring(min).."-"..tostring(max)..") => ("..tostring(ran)..") TotalSP("..tostring(totalPoints)..") gameHourSpeed("..tostring(gameHourSpeed)..").")
+	local ran = Ext.Utils.Random(min, max)
+	--LeaderLib.PrintDebug("[LLENEMY_VoidwokenSpawning.lua:GetSourceDegredation] SP degredation speed ("..tostring(min).."-"..tostring(max)..") => ("..tostring(ran)..") TotalSP("..tostring(totalPoints)..") gameHourSpeed("..tostring(gameHourSpeed)..").")
 	return ran
 end
 
