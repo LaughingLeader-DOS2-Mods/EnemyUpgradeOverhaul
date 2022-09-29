@@ -1,0 +1,37 @@
+Key	Content	Handle
+LLENEMY_AuraUpgradesDisabled	Enable Auras	h33ba4dc1g6f4ag481bga5f3g46197d44c9d8
+LLENEMY_AuraUpgradesDisabled_Description	Aura upgrades include upgrades like Fire Brand and Vacuum Aura.	h6b214033gf1d4g4f73gb121gecf893af7126
+LLENEMY_BonusBuffUpgradesDisabled	Enable Bonus Buffs	ha903a113gffa1g498ag9d6cg671b4a630418
+LLENEMY_BonusBuffUpgradesDisabled_Description	Bonus buff upgrades include stronger rare ones like Rage, Seeker, and Perseverance Mastery.	ha903a113gffa1g498ag9d6cg671b4a630418
+LLENEMY_BonusSkillsUpgradesDisabled	Enable Bonus Skills	h393e18a0g0f6bg4b97ga8b5g49c8d8b014ef
+LLENEMY_BonusSkillsUpgradesDisabled_Description	If not disabled, enemies will gain a random amount of bonus skills.	hb75dc082g97cag4811ga8efg338c1562adb9
+LLENEMY_BuffUpgradesDisabled	Enable Buffs	h71fdfdebg8b3dg4f00gb6b6g5538a3f38a80
+LLENEMY_BuffUpgradesDisabled_Description	Enable the main group of upgrades, including anything from Rested to Death Resist.	h0e4f18e6g16feg44cfgae15g59a88e718a6a
+LLENEMY_ClassUpgradesUpgradesDisabled	Enable Classes	hae0d1287g0506g4975g9bc3g7b50c5009113
+LLENEMY_ClassUpgradesUpgradesDisabled_Description	Enable class upgrades. These are upgrades that provide a set of abilities and skills, such as Hydroshocker.	h9df9f904g22feg4ef8g9f38gdd4a5c97bae4
+LLENEMY_DuplicationUpgradesDisabled	Enable Duplication	hbba8088cg05f5g42c8gb5a5gd0f32dd157b7
+LLENEMY_DuplicationUpgradesDisabled_Description	Enable enemy duplication. Depending on duplication settings, enemies may gain duplicate copies in battle that grant special loot.	h1b262514g57c3g428dga028gb3fe6e5e963a
+LLENEMY_EnemyLevelingEnabled	Enable Level Scaling	ha3f84340g5d90g493cg82a3g694fc62b4228
+LLENEMY_EnemyLevelingEnabled_Description	Enable level scaling. Enemies and NPCs will be leveled up to the set modifier (+1 level higher than the party etc.).
+LLENEMY_HardModeEnabled	Enable Hardmode	hbc479dedg4841g4a76g9647g253280972dd8
+LLENEMY_HardModeEnabled_Description	Hardmode grants enemies bonus upgrades and enables specific challenges in various sections of the game. 	h66c91c9cg953dg4834gb6bag6eae82f73167
+LLENEMY_HardModeRollingDisabled	Enable Bonus Upgrades	h6e247ec1gcc9ag4134g90d4gc1d6c5897b2c
+LLENEMY_HardModeRollingDisabled_Description	Enemies will get additional upgrades by rolling between the minimum and maximum values set to determine bonus rolls. Each roll runs through the upgrade system to see if they get any upgrades.	h58acccd4g5c09g48a8g96c4gda7abce5973e
+LLENEMY_ImmunityUpgradesDisabled	Enable Immunities	hf27abd79gae4bg4fc1g82e6g794c46d7de42
+LLENEMY_ImmunityUpgradesDisabled_Description	Enable immunity upgrades, including upgrades that grant full resistance or evasion.	h86a4a201g7c6eg474cgbfbeg2b49c803a093
+LLENEMY_RewardsDisabled	Enable Rewards	h582a8e7eg3fe8g46f4ga652g5ba5576c1217
+LLENEMY_RewardsDisabled_Description	Enable bonus rewards on enemies that scale to their "Challenge Point" value. Enemies with more difficult upgrades gain more challenge points, and have a higher chance to drop better loot.	hc1ccf779g09dbg4a68ga777g0c6c218c1cd5
+LLENEMY_SummoningUpgradesDisabled	Enable Summoning	h69d5f5ccg1e2eg413fgb4b9gf6ec7d93f2f2
+LLENEMY_SummoningUpgradesDisabled_Description	Enable summoning upgrades, such as Totemancer.	h4f5657e8gcce5g4f6cg8d8dgaa981017e6df
+LLENEMY_TalentUpgradesDisabled	Enable Talents	h99de5375g8b9ag4253g9179g1f5736864ffe
+LLENEMY_TalentUpgradesDisabled_Description	Enable talent upgrades.	h8c298c39g106cg45aegb915gcb67544c3a44
+LLENEMY_VoidwokenSourceSpawningEnabled	Spawn Voidwoken from Source Skills	he0cce29cge8eag4139gaf2dg567db71ce8b5
+LLENEMY_VoidwokenSourceSpawningEnabled_Description	If enabled, voidwoken have a chance to spawn when casting source skills. This chance increases depending on the source cost, and total source points used in a level, which naturally degrades over time.	h89d7b792gf727g4e3cg99d7g9ce7d3294be3
+LLENEMY_Debug_LevelCapDisabled	[Debug] Enable Level Cap	hb507b7f9g3a42g4d8bg93aegebe13b908ff5
+LLENEMY_Debug_LevelCapDisabled_Description	Enable restricting the highest level an enemy can be leveled up to when scaling them per the level modifier. This is not recommended, as leveling past 35 can crash the game.	he28799e1gaeb5g4ba6gbb8agae9ba710cdd0
+LLENEMY_Variable_AutoLeveling_Modifier	Level Modifier	h2d1b58e7g43fdg47b9gbcf7g937916656917
+LLENEMY_Variable_AutoLeveling_Modifier_Description	The level modifier used when leveling enemies up (+2 higher than the party's level etc.).	had2da86ag085fg4955gbef5g9a93d292bfd8
+LLENEMY_Variable_Hardmode_MinBonusRolls	Min Bonus Upgrades	h05a9e971g599dg4863g9a3cg9b3944d5d764
+LLENEMY_Variable_Hardmode_MinBonusRolls_Description	The minimum amount of bonus upgrades to gain in hardmode. Hardmode bonus upgrades will be a random value between the min and max. 	hb3caf7b0g7049g4df9ga3d9g210a92d40ec7
+LLENEMY_Variable_Hardmode_MaxBonusRolls	Max Bonus Upgrades	hb70864f6g78fcg4fe9g8cb3g579c3ae439a3
+LLENEMY_Variable_Hardmode_MaxBonusRolls_Description	The maximum amount of bonus upgrades to gain in hardmode. Hardmode bonus upgrades will be a random value between the min and max.	hfb8bbaa3gc050g425egaaa1gc5fdba8b0705

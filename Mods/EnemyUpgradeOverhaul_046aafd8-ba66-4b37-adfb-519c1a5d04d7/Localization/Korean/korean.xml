@@ -8,6 +8,7 @@
 	<content contentuid="h03823bf7g9de8g48eag9e05g44ffcddb1a73">Today, we&apos;ll be playing Easy Mode.</content>
 	<content contentuid="h044ae60egd895g431fga21dgffdf784593c7">Power Boost</content>
 	<content contentuid="h04644a8dg313cg4d53gb2b4g1dc1a5fea103">Character is infused with a mysterious power, granting a variety of bonuses and extra skills.</content>
+	<content contentuid="h04fa0e7agd078g4523ga5a4g71f7082c1211">Enable Bonus Skills</content>
 	<content contentuid="h05040c61g84bfg4989ga083g48f7642fbeb5">Armor Boost</content>
 	<content contentuid="h055079e8g89f6g4275gb06ag48f70f0c7e1b">Character has immunity to Stunned, Frozen, Knocked Down, Polymorphed, Petrified, Crippled for 1 turn after being affected by one of these statuses.&lt;br&gt;Can happen once every 3 turns.</content>
 	<content contentuid="h061dd3e2gfbc2g47afg860bg1a623122d95e">Reset Level Modifier (0)</content>
@@ -22,6 +23,7 @@
 	<content contentuid="h09ee507ag16fag471cg9e13gf4b0a614dcb8">Talent: Magic Cycles</content>
 	<content contentuid="h0a5513b9g841bg4565g8384g33d9251b832f">Upgrade the world. Unleash the power!</content>
 	<content contentuid="h0ab60959ga9a0g49b3g9f1cgc98d30ea13f1">Heatsapper</content>
+	<content contentuid="h0be47980g59b5g44e0gb45bgf5a3b891fb88">Enable the main group of upgrades, including anything from Rested to Death Resist.</content>
 	<content contentuid="h0c13903cgd246g4a35gbce9g19db61af1db9">Disable Commit Level Modifier to the World - &lt;b&gt;*NOTE* &lt;/b&gt;This will not down-level enemies. Leveling only works one way! (Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
 	<content contentuid="h0c6343ecg8be2g4c1ag90b6g4549612a33e0">Armor Boost</content>
 	<content contentuid="h0c6fe9ccg70f0g434dgbe60gc2275abaa7d1">&lt;font color=&apos;#73F6FF&apos; size=&apos;26&apos;&gt;Empowered Evolution&lt;/font&gt;</content>
@@ -81,6 +83,7 @@
 	<content contentuid="h279bcad6g5064g45ccg8e09g870c92e0cf6e">[Host Required] Upgrade Group Settings</content>
 	<content contentuid="h27f6719cgc82fg4176g8f60g170b786d3c24">Elite Venomstriker</content>
 	<content contentuid="h29ba8b31g5c24g4d12ga056gb4a3880fadf5">Firestarter</content>
+	<content contentuid="h2a627d17ge735g48c2ga77ag07b53445dd5c">Enable Rewards</content>
 	<content contentuid="h2a92d66eg220eg4196gb8dag81570a513978">Seeker</content>
 	<content contentuid="h2b3daf7egef57g4286g9247gf5c0b9752757">Character has a new bonus source skill.</content>
 	<content contentuid="h2b8ca96eg181cg4d13gaef5g84d2bb6f88fc">Talent: Unstable</content>
@@ -103,14 +106,18 @@
 	<content contentuid="h38491eddg4d2cg40adg96f3g33994e1a96d6">Character will revive once when killed, coming back with 30% health.</content>
 	<content contentuid="h387574fbg27c8g4eafg97bfg00d5ebd19c95">Circuitbreaker</content>
 	<content contentuid="h398b5931gfa52g4a26gadb9gf94bbb7d35e2">Void Empowered</content>
+	<content contentuid="h39a8d98eg1838g45c4g80d8g38057a864004">Level Modifier</content>
+	<content contentuid="h39c7cf41gb76fg463cgb04egfafd71d1147e">Enable Classes</content>
 	<content contentuid="h3ab830begfaf4g4524g9b76g97e55e6b1703">At the start of an encounter, you gain one of two statuses: Cycle of Fire and Water or Cycle of Earth and Air. Cyle of Fire and Water increases Pyro and Hyro by 2. Cyle of Earth and Air increases Geo and Aero by 2. Statuses swap each turn.</content>
 	<content contentuid="h3b229661g43b9g44e1gbaebgc33ab487ce44">Talent: Lone Wolf</content>
+	<content contentuid="h3b8f6c6fg8314g45ddgb7a3g84526ec7b995">The level modifier used when leveling enemies up (+2 higher than the party&apos;s level etc.).</content>
 	<content contentuid="h3c47b59cgd1f6g49a4g9e6bg9624181d40d1">Talent: Counter</content>
 	<content contentuid="h3d6d46bbg4819g48fbga980gcb521d5c49d8">Talent: Gladiator</content>
 	<content contentuid="h3d82bfaag7871g4fe4gb3d0gf326ec25ad1b">Character gets 1 AP worth of free movement each turn.</content>
 	<content contentuid="h3e93fbd4g6fe8g4f0bgae12g32a833f98bc0">Enable Boss Duplication - Bosses have a chance to be duplicated, like any other enemy. (Currently Disabled)</content>
 	<content contentuid="h3f78a207gadfdg4801gb063g787c9f108845">When an allied character dies, a Zombie Crawler is raised at their corpse, under their control. Zombie Crawler lasts 3 turns or until character is resurrected. Range 12m. Does not affect summoned creatures.</content>
 	<content contentuid="h4075ecfag0da0g4c26gb858g06626a165ed9">[GLOBAL] Enable Hard Mode - Enemies will get more upgrades, upgrades randomly get additional turns, and hidden hard mode features will be enabled. (Currently Disabled) (Default - Disabled)</content>
+	<content contentuid="h410b670dgb620g4896ga273g3f728cd378a7">Enable Level Scaling</content>
 	<content contentuid="h41bd5db2gef31g44f0gb660g3f7c9a4fcf0a">&lt;font color=&apos;#C7A758&apos;&gt;King&apos;s Defense&lt;/font&gt;</content>
 	<content contentuid="h41fe75a6gc090g4186g816egea95152a2d47">&lt;font color=&apos;#A020F0&apos;&gt;[1] Shadow&lt;/font&gt;</content>
 	<content contentuid="h420749e5g8297g4de6ga556g9b67569e6c38">Seeker (Disabled)</content>
@@ -122,6 +129,7 @@
 	<content contentuid="h47cc8f43g77e0g4fafg908dg744a41931eec">Chicken Overlord</content>
 	<content contentuid="h483cc43ag6b13g4d05gaad9gb3c595847c6a">&lt;font color=&apos;#FF3737&apos; size=&apos;26&apos;&gt;*Revealed!*&lt;/font&gt;</content>
 	<content contentuid="h48b2c770g394eg43abg8e87g170941d31051">There&apos;s a reason no one plays this mode, and you&apos;re about to find out.</content>
+	<content contentuid="h48c98102g2becg4988ga0c1gb4f7ae44ee06">Enable Buffs</content>
 	<content contentuid="h4b7423d8g2abag4800g8f4eg32dcda21a98d">Shockspiker</content>
 	<content contentuid="h4c9f3466gccd0g48bfg9e37gc1c23bacb69a">Shadow Reflection</content>
 	<content contentuid="h4cbda363g10cfg4587g94c4gdc6e539d4397">Start combat with [Key:FORTIFIED_DisplayName] and [Key:MAGIC_SHELL_DisplayName]. </content>
@@ -142,6 +150,7 @@
 	<content contentuid="h570287eeg1beeg45efgb7b0g4eb6f2a1f501">Source-Hungry Abyssal Void Devourer</content>
 	<content contentuid="h57740f6ag6754g45bbg8310g304b3f91ab87">Infernoblazer</content>
 	<content contentuid="h57ae12ebg419eg4f53g8780g350576cd63c9">Source-Hungry Voidwoken Hound</content>
+	<content contentuid="h57f2a3adg993dg4320g968dg65e9c5b8a147">[Debug] Enable Level Cap</content>
 	<content contentuid="h5a190392g61c4g439dgbd08gc227c5e69923">Disable Immunity Upgrades. Includes limited duration elemental immunities like Fire Skin (2 turns), to Immune to Electrifying (3 turns). (Currently Enabled)</content>
 	<content contentuid="h5aa2a41bgbaa4g46d0g9987ge5c19c4b4aa4">Bonus Skillset</content>
 	<content contentuid="h5ad0d829g7dd4g4a79gaa2cgd5d882d05390">Character deals 50% extra damage with direct attacks against opponents that are Slowed, Crippled or Knocked Down.</content>
@@ -153,20 +162,24 @@
 	<content contentuid="h5c8f2c50g5a43g4a6agac29ge06c1f5ad378">Elite Melter</content>
 	<content contentuid="h5c8f7ecbg1aecg45f9g8be1gde4a3e95d448">Seeker</content>
 	<content contentuid="h5ca4298dgb15dg4b4cgb7ceg13938b2d93ba">Character is empowered by madness.&lt;br&gt;&lt;font color=&apos;#BB00FF&apos;&gt;When their turn ends, otherwordly tentacles lash out upon, dealing [SkillDamage:Projectile_LLENEMY_ShadowBonus_Madness_Damage] in a [ExtraData:LLENEMY_ShadowBonus_Madness_DamageRadius]m radius.&lt;/font&gt;</content>
+	<content contentuid="h5cb16e9bg804eg4a69g80c8g1804fd30c1b3">Enable Hardmode</content>
 	<content contentuid="h5cee1628g461bg4ac8ga1e9ga90077d376e4">Shadoweaver</content>
 	<content contentuid="h5e8fe6a0g52c0g4435gaa3fg56987228c7f6">Upgrade Group Settings</content>
 	<content contentuid="h5ec49a5ag418ag4d15ga917g2a406406060f">Reflect 20% of melee damage as shadow damage</content>
 	<content contentuid="h5f654029g8f4ag454egbbd9g42e75c7fdfc1">&lt;font color=&apos;#FF3737&apos; size=&apos;23&apos;&gt;Rage Reduced&lt;/font&gt;</content>
 	<content contentuid="h5f6eb2f9g93d6g4054gae42gd34eb9d7bbf6">Elite Circuitbreaker</content>
 	<content contentuid="h5ff7ce69gb95ag417ag8a63g5fe67a7fb7f7">Character has a chance to counter-attack when attacked within weapon range.</content>
+	<content contentuid="h60a7cbc4gc018g465cgb1c2gcb25535a4a54">Min Bonus Upgrades</content>
 	<content contentuid="h623a7ed0gaaacg4c3egacdfg56f3c23a1dec">&lt;font color=&apos;#00FFAA&apos; size=&apos;16&apos;&gt;Will drop &lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt; on death.&lt;/font&gt;</content>
 	<content contentuid="h623a9ed0gaaacg4c3egacdfg56f1c23a1dec">&lt;font color=&apos;#00FFAA&apos; size=&apos;16&apos;&gt;Drops ??? on death.&lt;/font&gt;</content>
 	<content contentuid="h626f03b5gb1a5g4e8eg94b3g1686a8687718">Character is immune to losing control, either through Fear, Charm, Madness, or being turned into a chicken.</content>
 	<content contentuid="h62cbd27fgb53ag4e4bgaee0gb0dfd466fe48">&lt;font color=&apos;#FF3333&apos; size=&apos;23&apos;&gt;[1] Turn(s) Left&lt;/font&gt;</content>
+	<content contentuid="h640ea1b0g5ebeg41bagade2gd908369ef69b">Hardmode grants enemies bonus upgrades and enables specific challenges in various sections of the game. </content>
 	<content contentuid="h64144ff5gee91g4ac5g87cdg43d27aaacef3">Character has the ability for certain statuses to no longer be blocked by Magic or Physical Armour, and their duration is extended by one turn.</content>
 	<content contentuid="h64497dc1gb13dg4e22gba1ag630a0ca66154">Disable Summoner Upgrades - These grant enemies the power to summon creatures. (Currently Enabled)</content>
 	<content contentuid="h645270dag6b15g47a8gad4bgfcc34034a77e">Cascader</content>
 	<content contentuid="h6493380bgf46eg46fdga0f8g399ed299b249">[DEBUG] Disable Enemy Level Limit - &lt;b&gt;WARNING&lt;/b&gt; - Enemy levels above 35 may crash the game. Uncap at your own risk! (Level Limit Currently &lt;font color=&apos;#8AFF49&apos;&gt;Enabled&lt;/font&gt;)</content>
+	<content contentuid="h64a60be4g359bg4b4dgbfa1gf2dde05d405d">Enable Talents</content>
 	<content contentuid="h662390f7gfd9eg4a56g95e5g658283cc548a">&lt;font color=&apos;#9B30FF&apos; size=&apos;16&apos;&gt;Grants Treasure of the Shadow Realm (&lt;textformat leftmargin=&apos;1&apos; rightmargin=&apos;1&apos;&gt;[1]&lt;/textformat&gt;) on death.&lt;/font&gt;</content>
 	<content contentuid="h66ec71efgc7eeg47f2g920bgcbe909afcee4">Bloodbender</content>
 	<content contentuid="h6819a20fg7aefg4b55g919bg3dbe4b22cb81">Source-Hungry Voidwoken Statue</content>
@@ -183,6 +196,7 @@
 	<content contentuid="h70e74b6fg7c33g41e5g8bf4g6fe9a096a69d">Elite Cascader</content>
 	<content contentuid="h719b59cdg64e5g4fe1g97bbgd6bd66675614">Magic Armor Boost</content>
 	<content contentuid="h71f1ad1eg4a13g4975g8617g638ca4950c28">Despite looking like a simple wooden mallet, this tool is more suited for smashing heads than fence posts.</content>
+	<content contentuid="h71fa7947g773eg4dd1gb296g481a37f73f92">Enable enemy duplication. Depending on duplication settings, enemies may gain duplicate copies in battle that grant special loot.</content>
 	<content contentuid="h721c6341gf33bg4b02ga7adg42e9249a22c4">Source-Hungry Voidwoken Turtle</content>
 	<content contentuid="h722182d2g6efbg4d7bgb38ag2cdfd476d61b">Dead?</content>
 	<content contentuid="h726f61abg07a3g4986g8837g02503a578c5f">Character is a &lt;font color=&apos;#9B30FF&apos;&gt;Shadow&lt;/font&gt; of another character.&lt;br&gt;&lt;font color=&apos;#65C900&apos; size=&apos;16&apos;&gt;Grants no experience, but drops guaranteed loot.&lt;/font&gt;</content>
@@ -201,12 +215,15 @@
 	<content contentuid="h79f5b874g6cb3g4a99ga1cfg9f472c12036f">Talent: The Pawn</content>
 	<content contentuid="h7a8c8cd6ge3f7g4f9bgb0a3g98c51b7e9066">Elite Firestarter</content>
 	<content contentuid="h7b712de8ga474g487bgb2d8gd05c1e1d71c6">Increase Level Modifier +1</content>
+	<content contentuid="h7b8894b1g4d4ag4fb8g8ca1gdd78ee13902c">If enabled, voidwoken have a chance to spawn when casting source skills. This chance increases depending on the source cost, and total source points used in a level, which naturally degrades over time.</content>
 	<content contentuid="h7c05fad0gf6f3g44c6g8a28g7eb8f9bc548c">Loot Generator</content>
 	<content contentuid="h7ce216e9gc9f4g4753gb39dgf42c27bfc01a">Range Boost</content>
 	<content contentuid="h7dc61280g5743g4a60g85c1g8bde41a13abb">Magic Armor Boost</content>
 	<content contentuid="h7e28471fg1959g47e6g9d58g4d4f8ce054f6">Talent: Leech</content>
+	<content contentuid="h7e87f2a7g1219g4bf4ga89bg574e1059a1c9">Enable Auras</content>
 	<content contentuid="h7f1bd517g489fg4d87g91b7g9ded2561a976">Incarnate King</content>
 	<content contentuid="h7f31f21fg9232g4fcbg8eadg2eacf1f25ae6">Source-Hungry Voidwoken Bear</content>
+	<content contentuid="h80472806g9e54g43b4g8ef9ge1c4c9e5cfb4">Spawn Voidwoken from Source Skills</content>
 	<content contentuid="h8074f9d7g5360g49fbgb949gce8a729c7755">Piercing Immunity</content>
 	<content contentuid="h80df5eb1gf3cag41cfgbaecg1c053ae7e83c">Every time character is hit with a melee attack while wielding a shield, they perform a counterattack.&lt;br&gt;Can happen only once per turn. </content>
 	<content contentuid="h80e776e3gfe62g41c6g9bb0g4fc913baf4a4">Vitality Boost</content>
@@ -235,14 +252,17 @@
 	<content contentuid="h8c7cfc30gfa1ag46b8ga23bg524410b565c8">Rage (IV)</content>
 	<content contentuid="h8cfd1ba3gcfb3g4f0cga950gc29672af34c9">Perfect Control</content>
 	<content contentuid="h8d127986g3f48g4594ga0aeg36773f79d4c7">Despite looking like a large dowsing rod, this spear is more akin to a demon&apos;s carving fork.</content>
+	<content contentuid="h8d276e5dgd4ccg46ebg91c4ge4e5c78702c2">Max Bonus Upgrades</content>
 	<content contentuid="h8e2441d5g2c10g490ag8bd4g9b74ffeb72e9">Evolved Voidling</content>
 	<content contentuid="h8e75cbbdg06d7g4404gbfb2g92f6fd11147d">Infernoblazer</content>
 	<content contentuid="h8edc2076g91e3g43d3g8314g5efb21208571">Character has increased attack range of Bows and Crossbows by 2m.</content>
+	<content contentuid="h8f03bc78g17c5g4bf2g89bagb59777975479">Aura upgrades include upgrades like Fire Brand and Vacuum Aura.</content>
 	<content contentuid="h8f68810dg481ag4379gb223g0f03f78434f5">Character is preparing to unleash their full power.</content>
 	<content contentuid="h8fecc0a7g0c7eg4a22g8528g1a6ac5bf5f30">Magic Armor Boost</content>
 	<content contentuid="h90795f7dg9422g4b51g9835g0449efe50b1b">Enemy Upgrade Overhaul Settings</content>
 	<content contentuid="h90ef8331gf15cg484egaefbgcbd1109a8698">Rage (V)</content>
 	<content contentuid="h917be1dcge9d5g4bd7g829dg58c553256597">A razor-sharp cleaver capable of severing flesh from bone.</content>
+	<content contentuid="h91899171gb272g45dbgb162g6498a32b84c6">Enemies will get additional upgrades by rolling between the minimum and maximum values set to determine bonus rolls. Each roll runs through the upgrade system to see if they get any upgrades.</content>
 	<content contentuid="h9305ff62g9590g4f7fg82beg5e3ab9edafbf">Character can backstab with non-dagger weapons.</content>
 	<content contentuid="h95d57e81gc533g4236gbb95g2ee7097f5155">Magic Armor Boost</content>
 	<content contentuid="h95fbde3bg3be6g4b7cgb6acg1bacabcba562">Character has a chance to steal a consumable item on attack.&lt;br&gt;Can only happen once per turn.</content>
@@ -276,6 +296,7 @@
 	<content contentuid="ha5f6b750g5322g4043gac1dgfc82734fde21">Updated settings.</content>
 	<content contentuid="ha78e3050g202cg4650g8df9g2ef53c2463a2">Source-Hungry Slippery Voidling</content>
 	<content contentuid="ha7f53e28gd690g469ega89cga38b27f8dd19">Rewards Settings</content>
+	<content contentuid="ha848cfc0gec31g431eg943bg5755f0c950d8">Bonus buff upgrades include stronger rare ones like Rage, Seeker, and Perseverance Mastery.</content>
 	<content contentuid="ha963a343g4464g4bb3ga553g95a99a0d4cf7">Source-Hungry Vampiric Voidwoken</content>
 	<content contentuid="ha9bac902g50e1g46dagb76fg74085358d300">When your turn ends, harmful damage-over-time statuses are &lt;font color=&apos;#4197E2&apos;&gt;cleansed&lt;/font&gt;, restoring &lt;font color=&apos;#97FBFF&apos;&gt;[ExtraData:LLENEMY_ShadowBonus_ImmuneBoost_HealPercentage]% Vitality&lt;/font&gt; per status. </content>
 	<content contentuid="ha9dfee58ge73fg47e4gb9f7g1ff2ced6635e">Vitality Boost</content>
@@ -290,6 +311,7 @@
 	<content contentuid="haeb6c61bga35fg45d8ga373gadf142b6fc2b">Source-Hungry Voidwoken Boar</content>
 	<content contentuid="haec75225g4305g4fcdg8e61g0f9b4de56075">Talent: Elite Comeback Kid</content>
 	<content contentuid="hb03b0770g292ag4844g977dgf0e7534a1f5b">Damage Boost</content>
+	<content contentuid="hb3add185g944eg4a1fg8e17g9588845f5d52">Enable Summoning</content>
 	<content contentuid="hb3bee298g2eb6g461bgafb8ge07c9ecc8094">Vitality Boost</content>
 	<content contentuid="hb5046330g2473g4d21g80ecgc49d05235e4e">Start combat by going [Key:INVISIBLE_DisplayName].</content>
 	<content contentuid="hb52d1ac1g7c4fg45a4g87d8g52056a5a2ba2">Talent: Indomitable</content>
@@ -310,9 +332,11 @@
 	<content contentuid="hbd7fc3f3g08f1g4684g8c47gccc404622fc6">&lt;font color=&apos;#FF3737&apos; size=&apos;26&apos;&gt;*Atusa&apos;s corpse oozes to life!*&lt;/font&gt;</content>
 	<content contentuid="hbe6a42a1g49e0g44e0g9546g4b45f038d6cb">Disable Aura Upgrades. Includes auras such as Fire Brand Aura / Favourable Wind Aura, to limited duration elemental immunity auras. (Currently Enabled)</content>
 	<content contentuid="hbf07ab58g09aag415fg999eg4e4f1bc04f8e">[GLOBAL] Enable source spells having a chance to lure Voidwoken into battle. (Currently &lt;font color=&apos;#FF4949&apos;&gt;Disabled)&lt;br&gt;&lt;br&gt;Total source points used in the level will be tracked, and will gradually increase the chance and difficulty of voidwoken spawned. Total SP degrades every 5 minutes of real time (default).&lt;br&gt;Higher cost source skills have a higher chance to lure hostile voidwoken.</content>
+	<content contentuid="hbf280bfbga62ag4216g9280g5eb4d29b3260">Enable Duplication</content>
 	<content contentuid="hbfafd8eeg3703g4b46g837eg2389c8302f35">Cooldown (Master Thief)</content>
 	<content contentuid="hc00cabb2g7deag47ebg8836gead9952cf706">A gravedigger&apos;s shovel, this multi-purpose tool not only digs graves, but prepares their cargo for burial.</content>
 	<content contentuid="hc0a53dd7g55f4g4c2cgae98g350ed1b9cbb9">Character will revive once when killed, coming back with full health.</content>
+	<content contentuid="hc0c23b55g601eg43ecga44fg7f72aca50572">Enable class upgrades. These are upgrades that provide a set of abilities and skills, such as Hydroshocker.</content>
 	<content contentuid="hc2d0f477ge86eg40d3gbd0fg11cb72683430">Calling Reinforcements</content>
 	<content contentuid="hc2dfd3fcg7132g4e47g9a89g35e2089966df">Character is healed when standing in blood.</content>
 	<content contentuid="hc32985b1g2e5bg4864ga696gff59634aadf2">A blade said to be sharp enough to reap souls. While not a practical weapon, this scythe is deadly in the right hands.</content>
@@ -323,8 +347,10 @@
 	<content contentuid="hc950451dgfa32g421eg8f77g3de4f2ba4937">Character is obsessed with collecting grenades. One misstep and boom!</content>
 	<content contentuid="hcb08a432g19a5g4571g820fg92ddc92ac4d9">Talent: Lone Wolf</content>
 	<content contentuid="hcd5648efg6d58g48a2gb9f5gf6fdcaaa07b1">Totemancer</content>
+	<content contentuid="hce06996dg040eg4c6ag9a62gf780ec90b575">Enable immunity upgrades, including upgrades that grant full resistance or evasion.</content>
 	<content contentuid="hce14d863g96b1g4817ga295gbea6423c0190">Magic Armor Boost</content>
 	<content contentuid="hceb85350g54fdg4134gba42g9a0da585edb8">Character is immune to &lt;font color=&apos;#FF0000&apos;&gt;Piercing Damage&lt;/font&gt;.</content>
+	<content contentuid="hced8f668g59efg4748gbd3agbc2bcffb381d">Enable Immunities</content>
 	<content contentuid="hd041be63gbfdeg4355g84c1ge870d92387af">Empowered</content>
 	<content contentuid="hd0938a28g404dg47bagb7afg1ab9a2215f9d">Talent: What a Rush</content>
 	<content contentuid="hd1a568b1g2c56g4343gb1fcg4ae8f47c28e4">Bonus Source Skill</content>
@@ -340,6 +366,7 @@
 	<content contentuid="hd880d646g45b4g4fa6ga6cbgd746dcd242bd">Elite Firestarter</content>
 	<content contentuid="hd8e442d5ge3fag4dbfg87d1g7403c979c4f7">Perfect Control</content>
 	<content contentuid="hd8f04806g2228g4144g964eg5f6694865d41">Character cannot discover hidden enemies while disabled/drunk.</content>
+	<content contentuid="hd94a07ecgb5f9g4ee8g90c1g4e5b38ab8caa">The maximum amount of bonus upgrades to gain in hardmode. Hardmode bonus upgrades will be a random value between the min and max.</content>
 	<content contentuid="hda008820gb374g4cf8g87c3g294742c772d8">Gathering Power</content>
 	<content contentuid="hdace76dag01cbg499dg9777geb2c80877c7c">Dead</content>
 	<content contentuid="hdaeb8fa0g4a4fg4cd5gbf0eg0c7cbe96c990">Perseverance Mastery</content>
@@ -352,21 +379,26 @@
 	<content contentuid="hdf0ea9a2g01cbg481dg8107g6ee870f53548">Talent: Unstable</content>
 	<content contentuid="hdf603fa9g2647g40efgb979gdf9aaaffc414">Elite Sourcery</content>
 	<content contentuid="hdfeb0377gbab4g4fc6ga428g98aa0a12eb88">Rage (II)</content>
+	<content contentuid="he0cf1bfcg01e2g4cd3g8f34g55d4c052b7ec">Enable talent upgrades.</content>
 	<content contentuid="he10bc4ddge536g4696gb6f1g34a29479255c">Source-Hungry Voidwoken Salamander</content>
 	<content contentuid="he15a3e15g141dg45e5g96edg8148c2106792">[GLOBAL] Disable Hard Mode (Default - Disabled) (Currently Enabled)</content>
 	<content contentuid="he2172050g115bg4345gae5eg4a45798086b4">Empowered</content>
 	<content contentuid="he23ccfa9gadbcg4c34g9f04g1c93f864badf">Character must wait before they can mug again.</content>
 	<content contentuid="he4a9526dg0dd1g4babg824eg01a0e9993e55">Disable Talent Upgrades. Includes talent types Normal, Elite, and Weapon. (Currently Enabled)</content>
+	<content contentuid="he50c5296gdff9g4f63g9a57ge2b5502cf554">Enable summoning upgrades, such as Totemancer.</content>
 	<content contentuid="he60340acg7e80g46b2g9449geba4ea159ab1">Really make characters in the level gain upgrades? This cannot be undone!</content>
 	<content contentuid="he6532e10gc9d5g4923g9544g033fca885329">Character has increased recovery and maximum Action Points when their health is below 50%.</content>
 	<content contentuid="he76b283bgc7a8g4d4eg9c2bg2398cbe51a9e">Rage</content>
 	<content contentuid="he79478e5gfa95g4461gba2bg9122ba540b28">Bonus Skill</content>
 	<content contentuid="he7dfdae3gf1bbg47ecg84edg1a094e326d94">Elite Earthcracker</content>
 	<content contentuid="he845eb33gfbffg4903ga161ge64d9dbf567d">Every time someone casts a Source spell in combat, character has a 20% chance of gaining a Source Point.</content>
+	<content contentuid="he8f42f68gf9e5g4db2gb4dcg1e0e0a0e7e9f">Enable Bonus Upgrades</content>
 	<content contentuid="he98adb62g6a62g43abg9723g160e736ebd6d">Disable Buff Upgrades. Includes upgrade types Weak, Normal, and Elite. (Currently Enabled)</content>
 	<content contentuid="he9cb8fddg5db3g4d64ga27cgb93613250725">Melter</content>
+	<content contentuid="he9e830e8g0714g44c0g9c71g53e995932d24">Enable Bonus Buffs</content>
 	<content contentuid="hea2ac23fg62fag4befg9b85g1277c11011e6">Character is infused with tremendous power, granting a variety of bonuses and extra skills.</content>
 	<content contentuid="hea8180efg9c0eg4cdega019g233a720fc32c">Storm-wing Voidwoken</content>
+	<content contentuid="hecc2fe53gea17g49bdgad05g8eea9c32e14d">Enable bonus rewards on enemies that scale to their &quot;Challenge Point&quot; value. Enemies with more difficult upgrades gain more challenge points, and have a higher chance to drop better loot.</content>
 	<content contentuid="hed6ead98gab54g47a4g889eg842a82c865e4">Inactive Automaton</content>
 	<content contentuid="hedbd8a1cg2701g418cg96f9gfc8f473a4114">A corrupted distortion of a legendary sword, said to be able to slay Gods.</content>
 	<content contentuid="heef87919gc4d9g40efgbae6geca09dc17b58">Talent: Lightning Rod</content>
@@ -375,6 +407,7 @@
 	<content contentuid="hf06524bdgf767g4831g8076gbb18355712ec">Source-Hungry Void Devourer</content>
 	<content contentuid="hf13c9277g29bfg4baegbecega1e5cd8aef76">Enemy Scaling Settings</content>
 	<content contentuid="hf180561cge97ag426cg84ddg83dd257ce95d">Double Dip</content>
+	<content contentuid="hf2350a58g7ae8g498cg9358g5fbe4f6067b6">The minimum amount of bonus upgrades to gain in hardmode. Hardmode bonus upgrades will be a random value between the min and max. </content>
 	<content contentuid="hf34ecf43gdb49g40b5g9e50g876244609429">Melee attacks deal additional fire damage to burning targets, poison damage to poisoned targets and physical damage to bleeding targets.</content>
 	<content contentuid="hf39968a3gf18eg4e17gba81g6d3cff64d4aa">Character will explode in a bloody cloud when killed, dealing 50% of their vitality as &lt;font color=&apos;#9A00FF&apos;&gt;chaos damage&lt;/font&gt; in a 3m radius to their enemies.</content>
 	<content contentuid="hf3eea666ge611g406eg9838gcaf7b89b5c93">Talent: The Pawn</content>
@@ -383,12 +416,14 @@
 	<content contentuid="hf60945a4g7f7ag445cgacceg7f43da4a7f06">Armor Boost</content>
 	<content contentuid="hf6486123g0005g46c9g8a40ga098203e2ab6">Character is growing even more powerful through a second round of upgrades!</content>
 	<content contentuid="hf652aa9fgeca8g4265ga6b2ge3d557dfb11c">Disabling Enemy Level Scaling</content>
+	<content contentuid="hf7fbf859gf671g4671g9908g507d723904bf">Enable restricting the highest level an enemy can be leveled up to when scaling them per the level modifier. This is not recommended, as leveling past 35 can crash the game.</content>
 	<content contentuid="hf91deedcga4c7g427eg8153g2e347c06d3e8">Shadow Duplicant</content>
 	<content contentuid="hfb82117ag09acg4668ga5ccg081651aff9a9">Character has a [1] chance to counter-attack when attacked within weapon range.</content>
 	<content contentuid="hfd58a531g37f8g4573gbce3gdbac65d61add">Elite Infernoblazer</content>
 	<content contentuid="hfd7e86eag59d8g44ebgb158g019d6de9b814">Armor Boost</content>
 	<content contentuid="hfe5af913g4943g4a55g9572gb009a79c71a2">Vitality Boost</content>
 	<content contentuid="hfe69818cgb11eg4957gbdfbg5dd37b13cadc">Source-Hungry Voidwoken Spider</content>
+	<content contentuid="hfea4c9bag19eag4f4ag8aeegc72941789b07">If not disabled, enemies will gain a random amount of bonus skills.</content>
 	<content contentuid="hfef82f38g204fg4ec0gbf1ag00b51c532e2c">Rage (III)</content>
 	<content contentuid="hff19af0agb6b4g4337g953agb4dbb019b450">Source-Hungry Armoured Voidling</content>
 	<content contentuid="hff477e91gde34g4795g863ag2c508293666d">Lock in the enemy scale? This will level up all non-player characters in the world to the the set level.&lt;br&gt;&lt;font color=&apos;#FF0000&apos; size=&apos;26&apos;&gt;This cannot be undone.&lt;/font&gt;</content>
