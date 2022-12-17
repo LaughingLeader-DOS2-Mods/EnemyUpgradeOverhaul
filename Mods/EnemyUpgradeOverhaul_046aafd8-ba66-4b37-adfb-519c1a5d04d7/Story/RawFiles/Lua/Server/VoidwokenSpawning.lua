@@ -302,8 +302,8 @@ local function CanSummonVoidwoken(char, spCost)
 		---@cast p number
 		totalPointsUsed = p
 	end
-	local chance = GetVoidwokenSpawnChanceRollThreshold(spCost, totalPointsUsed)
-	local roll = Ext.Utils.Random(0,100)
+	local chance = GetVoidwokenSpawnChanceRollThreshold(spCost, totalPointsUsed) * 100
+	local roll = Ext.Utils.Random(0,10000) -- Higher values tend to be more random
 	if roll > 0 and roll <= chance then
 		return true
 	elseif roll == 0 then
