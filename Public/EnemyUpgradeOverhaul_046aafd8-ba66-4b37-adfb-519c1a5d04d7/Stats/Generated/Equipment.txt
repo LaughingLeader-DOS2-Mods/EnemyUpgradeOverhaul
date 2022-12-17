@@ -1,18 +1,18 @@
 new equipment "LLENEMY_BattleChicken_A"
 add equipmentgroup
-add equipment entry "LLENEMY_BattleChicken_Claw_A"
+add equipment entry "_LLENEMY_BattleChicken_Claw_A"
 add equipmentgroup
 add equipment entry "NoShield"
 
 new equipment "LLENEMY_BattleChicken_B"
 add equipmentgroup
-add equipment entry "LLENEMY_BattleChicken_Claw_B"
+add equipment entry "_LLENEMY_BattleChicken_Claw_B"
 add equipmentgroup
 add equipment entry "NoShield"
 
 new equipment "LLENEMY_BattleChicken_C"
 add equipmentgroup
-add equipment entry "LLENEMY_BattleChicken_Claw_C"
+add equipment entry "_LLENEMY_BattleChicken_Claw_C"
 add equipmentgroup
 add equipment entry "NoShield"
 
@@ -56,6 +56,14 @@ add equipment entry "_LLENEMY_Drillworm_B_Ranged"
 add equipmentgroup
 add equipment entry "NoShield"
 
-new equipment "LLENEMY_Drillworm_A_Debug"
+new equipment "LLENEMY_ARX_Voidwoken_Frozen_Caster"
 add equipmentgroup
-add equipment entry "WPN_LLENEMY_Drillworm_A_Debug"
+add equipment entry "_LLENEMY_ARX_Voidwoken_Frozen_Caster"
+
+new equipment "LLENEMY_ARX_Voidwoken_Frozen_Tank"
+add equipmentgroup
+add equipment entry "_LLENEMY_ARX_Voidwoken_Frozen_Tank"
+
+new equipment "LLENEMY_ARX_Voidwoken_Frozen_Melee"
+add equipmentgroup
+add equipment entry "_LLENEMY_ARX_Voidwoken_Frozen_Melee"
